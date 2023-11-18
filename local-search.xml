@@ -4,12 +4,51 @@
   
   
   <entry>
+    <title>739. Daily Temperatures - Medium</title>
+    <link href="/2023/11/18/739.%20Daily%20Temperatures%20-%20Medium/"/>
+    <url>/2023/11/18/739.%20Daily%20Temperatures%20-%20Medium/</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/daily-temperatures/description/">題目連結</a></p><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>暴力解法好像也不會到太差，每項都往後找到比自己大的，每項最多n次，總共m項，那就是$n^2$</li><li>除此之外沒什麼想法</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>看了官神的影片發現這題又是一個新的技巧，Monotonic stack</p><p>Github: <a href="https://github.com/wisdompeak/LeetCode/tree/master/Stack/739.Daily-Temperatures">連結</a></p><iframe width=100% height=500px src="https://www.youtube.com/embed/xcMqDfiLuGg" title="【每日一题】739. Daily Temperatures, 08/01/2019" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p>這部分我參考Neetcode大大的，比較簡潔清楚</p><p>Neetcode原始程式碼: <a href="https://github.com/neetcode-gh/leetcode/blob/main/java/0739-daily-temperatures.java">連結</a></p><iframe width=100% height=500px src="https://www.youtube.com/embed/cTBiBSnjO3c" title="Daily Temperatures - Monotonic Stack - Leetcode 739 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] dailyTemperatures(<span class="hljs-type">int</span>[] temperatures) &#123;<br>        <span class="hljs-comment">// Index storage</span><br>        Stack&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;&gt;();<br>        <span class="hljs-type">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[temperatures.length];<br><br>        <span class="hljs-comment">// Loop through temperatures</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; temperatures.length; ++i) &#123;<br>            <span class="hljs-comment">// When current temp is higher than the last remaining one</span><br>            <span class="hljs-keyword">while</span> (!stack.isEmpty() &amp;&amp;<br>                temperatures[i] &gt; temperatures[stack.peek()]<br>                ) &#123;<br>                    <span class="hljs-type">int</span> <span class="hljs-variable">prevDay</span> <span class="hljs-operator">=</span> stack.pop();<br>                    res[prevDay] = i - prevDay;<br>                &#125;<br>            <span class="hljs-comment">// Add current day index to the stack</span><br>            stack.add(i);<br>        &#125;<br><br>        <span class="hljs-keyword">return</span> res;<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Array</tag>
+      
+      <tag>Stack</tag>
+      
+      <tag>Monotonic Stack</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>程式碼測試</title>
     <link href="/2023/11/17/%E7%A8%8B%E5%BC%8F%E7%A2%BC%E6%B8%AC%E8%A9%A6/"/>
     <url>/2023/11/17/%E7%A8%8B%E5%BC%8F%E7%A2%BC%E6%B8%AC%E8%A9%A6/</url>
     
     <content type="html"><![CDATA[<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br><br>        <span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">0</span>) &#123;<br>            System.out.println(<span class="hljs-string">&quot;yes&quot;</span>);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;firstName&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;John&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;lastName&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Smith&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;age&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">25</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>]]></content>
     
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+    </categories>
     
     
     <tags>
