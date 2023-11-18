@@ -1,53 +1,626 @@
-<!DOCTYPE html><html lang="zh-TW"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#93C6D6"><meta name="author" content="Simon Lai"><meta name="copyright" content="Simon Lai"><meta name="generator" content="Hexo 7.0.0"><meta name="theme" content="hexo-theme-yun"><title>程式碼測試 | Simon Lai's Blog</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&amp;display=swap" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/star-markdown-css@0.4.1/dist/yun/yun-markdown.min.css"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/prism-theme-vars/base.css"><script src="https://fastly.jsdelivr.net/npm/scrollreveal/dist/scrollreveal.min.js" defer></script><script>function initScrollReveal() {
-  [".post-card",".markdown-body img"].forEach((target)=> {
-    ScrollReveal().reveal(target);
-  })
-}
-document.addEventListener("DOMContentLoaded", initScrollReveal);
-document.addEventListener("pjax:success", initScrollReveal);
-</script><link rel="icon" type="image/png" href="/favicon.ico"><link rel="mask-icon" href="/favicon.ico" color="#93C6D6"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="preconnect" href="https://fastly.jsdelivr.net/npm/" crossorigin><script id="yun-config">
-    window.Yun = {}
-    window.CONFIG = {"hostname":"f88083.github.io","root":"/","title":["Simon","Lai's","Blog"],"version":"1.10.11","mode":"auto","copycode":true,"page":{"isPost":true},"i18n":{"placeholder":"搜索...","empty":"找不到您查詢的內容: ${query}","hits":"找到 ${hits} 條結果","hits_time":"找到 ${hits} 條結果（用時 ${time} 毫秒）"},"anonymous_image":"https://cdn.yunyoujun.cn/img/avatar/none.jpg","fireworks":{"colors":null},"vendors":{"host":"https://fastly.jsdelivr.net/npm/","darken":"https://fastly.jsdelivr.net/npm/darken@1.5.0"}};
-  </script><link rel="stylesheet" href="/css/hexo-theme-yun.css"><script src="/js/hexo-theme-yun.js" type="module"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror-theme-vars/base.css"><meta name="description" content="Javaclass Solution &#123;     public static void main(String[] args) &#123;         int i &#x3D; 0;          while (i &lt; 0) &#123;             System.out.println(&quot;yes&quot;);         &#125;     &amp;#12">
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Simon Lai">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Java123456789class Solution &#123;    public static void main(String[] args) &#123;        int i &#x3D; 0;        while (i &lt; 0) &#123;            System.out.println(&quot;yes&quot;);        &#125;    &amp;#">
 <meta property="og:type" content="article">
 <meta property="og:title" content="程式碼測試">
 <meta property="og:url" content="https://f88083.github.io/2023/11/17/%E7%A8%8B%E5%BC%8F%E7%A2%BC%E6%B8%AC%E8%A9%A6/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="Javaclass Solution &#123;     public static void main(String[] args) &#123;         int i &#x3D; 0;          while (i &lt; 0) &#123;             System.out.println(&quot;yes&quot;);         &#125;     &amp;#12">
+<meta property="og:description" content="Java123456789class Solution &#123;    public static void main(String[] args) &#123;        int i &#x3D; 0;        while (i &lt; 0) &#123;            System.out.println(&quot;yes&quot;);        &#125;    &amp;#">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2023-11-17T00:00:00.000Z">
-<meta property="article:modified_time" content="2023-11-17T11:07:32.993Z">
+<meta property="article:modified_time" content="2023-11-18T11:44:12.136Z">
 <meta property="article:author" content="Simon Lai">
 <meta property="article:tag" content="Leetcode">
 <meta property="article:tag" content="心得">
-<meta name="twitter:card" content="summary"><script>(function() {
-  if (CONFIG.mode !== 'auto') return
-  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-  const setting = localStorage.getItem('darken-mode') || 'auto'
-  if (setting === 'dark' || (prefersDark && setting !== 'light'))
-    document.documentElement.classList.toggle('dark', true)
-})()</script></head><body><script src="https://code.iconify.design/2/2.1.1/iconify.min.js"></script><script>// Define global variable
-IconifyProviders = {
-  // Empty prefix: overwrite default API provider configuration
-  '': {
-    // Use custom API first, use Iconify public API as backup
-    resources: [
-        'https://api.iconify.design',
-    ],
-    // Wait for 1 second before switching API hosts
-    rotate: 1000,
-  },
-};</script><script defer src="https://fastly.jsdelivr.net/npm/animejs@latest"></script><script defer src="/js/ui/fireworks.js" type="module"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script src="/js/sidebar.js" type="module"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="文章目錄"><span class="icon iconify" data-icon="ri:list-ordered"></span></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="網站概觀"><span class="icon iconify" data-icon="ri:passport-line"></span></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about/" title="Simon Lai"><img width="96" loading="lazy" src="/images/avatar.jpg" alt="Simon Lai"></a><div class="site-author-name"><a href="/about/">Simon Lai</a></div><span class="site-name">Simon Lai's Blog</span><sub class="site-subtitle"></sub><div class="site-description">一個知識和心得的分享空間</div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="首頁"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:home-4-line"></span></span></a><div class="site-state-item"><a href="/archives/" title="歸檔"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:archive-line"></span></span><span class="site-state-item-count">2</span></a></div><div class="site-state-item"><a href="/categories/" title="分類"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:folder-2-line"></span></span><span class="site-state-item-count">0</span></a></div><div class="site-state-item"><a href="/tags/" title="標籤"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="site-state-item-count">2</span></a></div><a class="site-state-item hty-icon-button" href="/#" title="關於我"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:settings-line"></span></span></a></nav><hr style="margin-bottom:0.5rem"><br><a class="links-item hty-icon-button" id="toggle-mode-btn" href="javascript:;" title="Mode" style="color: #f1cb64"><span class="icon iconify" data-icon="ri:contrast-2-line"></span></a></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Java"><span class="toc-number">1.</span> <span class="toc-text">Java</span></a></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="hty-card post-block" itemscope itemtype="https://schema.org/Article" style="--smc-primary:#93C6D6;"><link itemprop="mainEntityOfPage" href="https://f88083.github.io/2023/11/17/%E7%A8%8B%E5%BC%8F%E7%A2%BC%E6%B8%AC%E8%A9%A6/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="Simon Lai"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="Simon Lai's Blog"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">程式碼測試</h1><div class="post-meta"><div class="post-time"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:calendar-line"></span></span> <time title="創建時間：2023-11-17 00:00:00" itemprop="dateCreated datePublished" datetime="2023-11-17T00:00:00+00:00">2023-11-17</time></div><div class="post-classify"><span class="post-tag"><a class="tag-item" href="/tags/Leetcode/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="tag-name">Leetcode</span></a><a class="tag-item" href="/tags/%E5%BF%83%E5%BE%97/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="tag-name">心得</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body"><h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><pre><code class="highlight java"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;
-    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;
-        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>程式碼測試 - Simon Lai&#39;s Blog</title>
 
-        <span class="keyword">while</span> (i &lt; <span class="number">0</span>) &#123;
-            System.out.println(<span class="string">&quot;yes&quot;</span>);
-        &#125;
-    &#125;
-&#125;</code></pre>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
-<blockquote>
-<p>以上是範例</p>
-</blockquote>
-</div></section><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>Simon Lai</li><li class="post-copyright-link"><strong>本文連結：</strong><a href="https://f88083.github.io/2023/11/17/%E7%A8%8B%E5%BC%8F%E7%A2%BC%E6%B8%AC%E8%A9%A6/" title="程式碼測試">https://f88083.github.io/2023/11/17/%E7%A8%8B%E5%BC%8F%E7%A2%BC%E6%B8%AC%E8%A9%A6/</a></li><li class="post-copyright-license"><strong>版權聲明：</strong>本部落格所有文章除特別聲明外，均預設採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><span class="icon iconify" data-icon="ri:creative-commons-line"></span><span class="icon iconify" data-icon="ri:creative-commons-by-line"></span><span class="icon iconify" data-icon="ri:creative-commons-nc-line"></span><span class="icon iconify" data-icon="ri:creative-commons-sa-line"></span></a> 許可協議。</li></ul></article><div class="post-nav"><div class="post-nav-item"></div><div class="post-nav-item"><a class="post-nav-next" href="/2023/11/16/hello-world/" rel="next" title="你好世界"><span class="post-nav-text">你好世界</span><span class="icon iconify" data-icon="ri:arrow-right-s-line"></span></a></div></div></div><div class="hty-card" id="comment"></div></main><footer class="sidebar-translate" id="footer"><div class="copyright"><span>&copy; 2019 – 2023 </span><span class="with-love" id="animate"><span class="icon iconify" data-icon="ri:cloud-line"></span></span><span class="author"> Simon Lai</span></div><div class="powered"><span>由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驅動 v7.0.0</span><span class="footer-separator">|</span><span>主題 - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v1.10.11</span></div></footer></div><a class="hty-icon-button" id="back-to-top" aria-label="back-to-top" href="#"><span class="icon iconify" data-icon="ri:arrow-up-s-line"></span><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#93C6D6" stroke-width="2" stroke-linecap="round"></circle></svg></a><a class="popup-trigger hty-icon-button icon-search" id="search" target="_blank" rel="noopener" href="https://www.google.com/search?q=site:f88083.github.io" title="搜索"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:search-line"></span></span></a></body></html>
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"f88083.github.io","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首頁</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>歸檔</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分類</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>標籤</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>關於</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="程式碼測試"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-11-17 00:00" pubdate>
+          2023年11月17日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          265 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          3 分鐘
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">程式碼測試</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br><br>        <span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">0</span>) &#123;<br>            System.out.println(<span class="hljs-string">&quot;yes&quot;</span>);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;firstName&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;John&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;lastName&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Smith&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;age&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">25</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Leetcode/" class="print-no-link">#Leetcode</a>
+      
+        <a href="/tags/%E5%BF%83%E5%BE%97/" class="print-no-link">#心得</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>程式碼測試</div>
+      <div>https://f88083.github.io/2023/11/17/程式碼測試/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Simon Lai</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>發布於</div>
+          <div>2023年11月17日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>許可協議</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/11/16/hello-world/" title="你好世界">
+                        <span class="hidden-mobile">你好世界</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目錄</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">關鍵字</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允許 JavaScript 運行的環境下瀏覽效果更佳</div>
+  </noscript>
+</body>
+</html>
