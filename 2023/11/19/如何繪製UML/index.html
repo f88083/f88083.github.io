@@ -16,25 +16,27 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="題目連結想法 看起來是選中一個初始的位置，然後往後隔一個取一次就好了，但這樣可能會有以下問題: 隔一個取反而取不到大的值 那要隔幾個取?    思路這題看了DP解答有看懂了，但這種題目到底要怎麼想才能想出答案😂  需要兩個變數，一個是紀錄搶當前的，一個是不搶當前的屋子 每一輪都看到底這間不搶比較高還是搶比較高 最後輸出max值  Code  12345678910111213class Solu">
+    <meta name="description" content="為什麼要畫?方便快速理解整個系統的架構，與class之間的關係 UMLClass 如圖總共三格:  第一格Library Management System是Class的名稱(如是abstract class請使用斜體) 第二格是放Attributes的 第三格是methods Methods裡的parameters不一定要寫，也可以寫，增加細節  Visibility每個attributes或是">
 <meta property="og:type" content="article">
-<meta property="og:title" content="198. House Robber - Medium">
-<meta property="og:url" content="https://f88083.github.io/2023/11/19/198-House-Robber-Medium/index.html">
+<meta property="og:title" content="如何繪製UML Diagram?">
+<meta property="og:url" content="https://f88083.github.io/2023/11/19/%E5%A6%82%E4%BD%95%E7%B9%AA%E8%A3%BDUML/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="題目連結想法 看起來是選中一個初始的位置，然後往後隔一個取一次就好了，但這樣可能會有以下問題: 隔一個取反而取不到大的值 那要隔幾個取?    思路這題看了DP解答有看懂了，但這種題目到底要怎麼想才能想出答案😂  需要兩個變數，一個是紀錄搶當前的，一個是不搶當前的屋子 每一輪都看到底這間不搶比較高還是搶比較高 最後輸出max值  Code  12345678910111213class Solu">
+<meta property="og:description" content="為什麼要畫?方便快速理解整個系統的架構，與class之間的關係 UMLClass 如圖總共三格:  第一格Library Management System是Class的名稱(如是abstract class請使用斜體) 第二格是放Attributes的 第三格是methods Methods裡的parameters不一定要寫，也可以寫，增加細節  Visibility每個attributes或是">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2023-11-19T09:34:17.000Z">
-<meta property="article:modified_time" content="2023-11-19T15:29:47.516Z">
+<meta property="og:image" content="https://i.imgur.com/kQYUawp.png">
+<meta property="og:image" content="https://i.imgur.com/DwHDAJ4.png">
+<meta property="og:image" content="https://i.imgur.com/Q7NVXXM.png">
+<meta property="og:image" content="https://i.imgur.com/P5JxO9p.png">
+<meta property="article:published_time" content="2023-11-19T17:56:03.000Z">
+<meta property="article:modified_time" content="2023-11-19T20:42:53.545Z">
 <meta property="article:author" content="Simon Lai">
-<meta property="article:tag" content="Leetcode">
-<meta property="article:tag" content="心得">
-<meta property="article:tag" content="Array">
-<meta property="article:tag" content="Dynamic programming">
+<meta property="article:tag" content="UML">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.imgur.com/kQYUawp.png">
   
   
   
-  <title>198. House Robber - Medium - Simon Lai&#39;s Blog</title>
+  <title>如何繪製UML Diagram? - Simon Lai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +202,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="198. House Robber - Medium"></span>
+            <span id="subtitle" data-typed-text="如何繪製UML Diagram?"></span>
           
         </div>
 
@@ -211,8 +213,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-19 09:34" pubdate>
-          2023年11月19日 上午
+        <time datetime="2023-11-19 17:56" pubdate>
+          2023年11月19日 下午
         </time>
       </span>
     
@@ -223,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          431 字
+          682 字
         
       </span>
     
@@ -234,7 +236,7 @@
         
         
         
-          3 分鐘
+          4 分鐘
         
       </span>
     
@@ -271,27 +273,60 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">198. House Robber - Medium</h1>
+            <h1 id="seo-header">如何繪製UML Diagram?</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="題目連結"><a href="#題目連結" class="headerlink" title="題目連結"></a><a target="_blank" rel="noopener" href="https://leetcode.com/problems/house-robber/description/">題目連結</a></h2><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul>
-<li>看起來是選中一個初始的位置，然後往後隔一個取一次就好了，但這樣可能會有以下問題:<ul>
-<li>隔一個取反而取不到大的值</li>
-<li>那要隔幾個取?</li>
+                <h2 id="為什麼要畫"><a href="#為什麼要畫" class="headerlink" title="為什麼要畫?"></a>為什麼要畫?</h2><p>方便快速理解整個系統的架構，與class之間的關係</p>
+<h2 id="UML"><a href="#UML" class="headerlink" title="UML"></a>UML</h2><h3 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h3><p><img src="https://i.imgur.com/kQYUawp.png" srcset="/img/loading.gif" lazyload alt="Class"></p>
+<p>如圖總共三格:</p>
+<ul>
+<li>第一格Library Management System是Class的名稱(如是abstract class請使用斜體)</li>
+<li>第二格是放Attributes的</li>
+<li>第三格是methods</li>
+<li>Methods裡的parameters不一定要寫，也可以寫，增加細節</li>
 </ul>
-</li>
-</ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>這題看了DP解答有看懂了，但這種題目到底要怎麼想才能想出答案😂</p>
-<ol>
-<li>需要兩個變數，一個是紀錄搶當前的，一個是不搶當前的屋子</li>
-<li>每一輪都看到底這間不搶比較高還是搶比較高</li>
-<li>最後輸出max值</li>
-</ol>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width=100% height="500px" src="https://www.youtube.com/embed/73r3KWiEvyk" title="House Robber -  Leetcode 198 - Python Dynamic Programming" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<h4 id="Visibility"><a href="#Visibility" class="headerlink" title="Visibility"></a>Visibility</h4><p>每個attributes或是methods都會有可見度，以下是幾個常用的符號</p>
+<img src="https://i.imgur.com/DwHDAJ4.png" srcset="/img/loading.gif" lazyload alt="By參考資料第二項" height="300px"/>
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">rob</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">rob1</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, rob2 = <span class="hljs-number">0</span>;<br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; nums.length; ++i) &#123;<br>            <span class="hljs-comment">// Determine the max, rob or not rob the current house</span><br>            <span class="hljs-type">int</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> Math.max(nums[i] + rob1, rob2);<br>            rob1 = rob2; <span class="hljs-comment">// Update rob1 for next round</span><br>            rob2 = temp;<br>        &#125;<br>        <span class="hljs-keyword">return</span> rob2;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>protected可以被subclass存取</li>
+<li>package&#x2F;default十分少用，整個package可以存取</li>
+</ul>
+<h3 id="關係"><a href="#關係" class="headerlink" title="關係"></a>關係</h3><p><img src="https://i.imgur.com/Q7NVXXM.png" srcset="/img/loading.gif" lazyload alt="Relationships by Ref. 3"></p>
+<h4 id="Association"><a href="#Association" class="headerlink" title="Association"></a>Association</h4><ul>
+<li>純粹代表他們之間有關係</li>
+<li>常常會在線中間加上動詞之類來辨識，例如A吃B</li>
+</ul>
+<h4 id="Inheritance"><a href="#Inheritance" class="headerlink" title="Inheritance"></a>Inheritance</h4><ul>
+<li>就是OOP當中的Inheritance</li>
+<li>例如<code>A -&gt; B</code>，那就是A繼承B</li>
+<li><img src="https://i.imgur.com/P5JxO9p.png" srcset="/img/loading.gif" lazyload alt="Image"></li>
+</ul>
+<h4 id="Realization"><a href="#Realization" class="headerlink" title="Realization"></a>Realization</h4><ul>
+<li>就是implementation</li>
+<li><code>A -&gt; B</code>，那就是A implements B</li>
+</ul>
+<h4 id="Dependency"><a href="#Dependency" class="headerlink" title="Dependency"></a>Dependency</h4><ul>
+<li>依賴</li>
+<li><code>A -&gt; B</code>，A使用B，例如A是車子，一定要有B駕駛來開</li>
+<li>單一方改變了另一方可能會受到影響(非雙方)</li>
+</ul>
+<h4 id="Aggregation"><a href="#Aggregation" class="headerlink" title="Aggregation"></a>Aggregation</h4><ul>
+<li><code>A 菱形- B</code>或是<code>A 菱形-&gt;B</code>，<code>A owns B</code>，任一方消失不會影響另一方</li>
+</ul>
+<h4 id="Composition"><a href="#Composition" class="headerlink" title="Composition"></a>Composition</h4><ul>
+<li><code>A 實心菱形- B</code>或是<code>A 實心菱形-&gt; B</code>，B是A的一部分，A消失B就會跟著消失</li>
+<li>例如人擁有頭手腳，但人如果消失，那頭手腳也會跟著消失</li>
+</ul>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://misomiso43.medium.com/%E7%B0%A1%E5%96%AE%E7%90%86%E8%A7%A3-uml-%E9%A1%9E%E5%88%A5%E5%9C%96-f0b32a3272c">簡單理解 UML 類別圖</a></li>
+<li>這個影片非常清楚的解釋了UML: <a target="_blank" rel="noopener" href="https://youtu.be/6XrL5jXmTwM">UML class diagrams</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.visual-paradigm.com/guide/uml-unified-modeling-language/uml-class-diagram-tutorial/">UML Class Diagram Tutorial</a></li>
+<li><a target="_blank" rel="noopener" href="https://dongstudio.medium.com/%E5%BF%AB%E9%80%9F%E6%90%9E%E6%87%82-uml-%E9%A1%9E%E5%88%A5%E5%9C%96-6-%E7%A8%AE%E9%97%9C%E4%BF%82%E7%B7%9A-dependency-association-aggregation-composition-generalization-realization-bf0670370c3d">快速搞懂 UML 類別圖 6 種關係線</a></li>
+</ol>
 
                 
               </div>
@@ -310,15 +345,8 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  <a href="/categories/%E7%B6%9C%E5%90%88/" class="category-chain-item">綜合</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
   
 
       </span>
@@ -332,13 +360,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Leetcode/" class="print-no-link">#Leetcode</a>
-      
-        <a href="/tags/%E5%BF%83%E5%BE%97/" class="print-no-link">#心得</a>
-      
-        <a href="/tags/Array/" class="print-no-link">#Array</a>
-      
-        <a href="/tags/Dynamic-programming/" class="print-no-link">#Dynamic programming</a>
+        <a href="/tags/UML/" class="print-no-link">#UML</a>
       
     </div>
   
@@ -350,8 +372,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>198. House Robber - Medium</div>
-      <div>https://f88083.github.io/2023/11/19/198-House-Robber-Medium/</div>
+      <div>如何繪製UML Diagram?</div>
+      <div>https://f88083.github.io/2023/11/19/如何繪製UML/</div>
     </div>
     <div class="license-meta">
       
@@ -395,18 +417,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/19/%E5%A6%82%E4%BD%95%E7%B9%AA%E8%A3%BDUML/" title="如何繪製UML Diagram?">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">如何繪製UML Diagram?</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/11/18/Abstract-classes%E5%92%8CInterfaces%E5%88%B0%E5%BA%95%E5%B7%AE%E5%9C%A8%E5%93%AA/" title="Abstract classes和Interfaces到底差在哪?">
-                        <span class="hidden-mobile">Abstract classes和Interfaces到底差在哪?</span>
+                      <a href="/2023/11/19/198-House-Robber-Medium/" title="198. House Robber - Medium">
+                        <span class="hidden-mobile">198. House Robber - Medium</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
