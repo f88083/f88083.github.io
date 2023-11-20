@@ -16,22 +16,21 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="使用環境hexo: 7.0.0 hexo-cli: 4.3.1 問題無論在_config.yml如何設置prismjs，就是無法使用，只能用highlightjs 原因無意間在hexo github repo找到解答，是因為升級到v7.0.0之後無法單純再使用hightlight以及prism底下的enable屬性來開關 解決方法要使用以下屬性來切換 syntax_highlighter: hig">
+    <meta name="description" content="如題，但為什麼不在medium上po文了呢?原因有幾點  架設自己的Blog不僅有趣又美觀，高度自定義頁面，還有更多功能可以使用，例如我很喜歡的markdown寫作 現在架設自己的Blog無須任何費用，github自帶免費靜態頁面給你用，也就是github pages! Medium寫作只有兩層標題，很痛苦 Medium沒有目錄功能，無法快速切換 還有很多小細節，Medium真的太簡化了🤣">
 <meta property="og:type" content="article">
-<meta property="og:title" content="終於修復hexo無法使用prismjs的問題了!">
-<meta property="og:url" content="https://f88083.github.io/2023/11/20/%E7%B5%82%E6%96%BC%E4%BF%AE%E5%BE%A9hexo%E7%84%A1%E6%B3%95%E4%BD%BF%E7%94%A8prismjs%E7%9A%84%E5%95%8F%E9%A1%8C%E4%BA%86/index.html">
+<meta property="og:title" content="搬家到自己架設的Blog-使用Hexo和Github Pages">
+<meta property="og:url" content="https://f88083.github.io/2023/11/20/%E6%90%AC%E5%AE%B6%E5%88%B0%E8%87%AA%E5%B7%B1%E6%9E%B6%E8%A8%AD%E7%9A%84Blog-%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub-Pages/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="使用環境hexo: 7.0.0 hexo-cli: 4.3.1 問題無論在_config.yml如何設置prismjs，就是無法使用，只能用highlightjs 原因無意間在hexo github repo找到解答，是因為升級到v7.0.0之後無法單純再使用hightlight以及prism底下的enable屬性來開關 解決方法要使用以下屬性來切換 syntax_highlighter: hig">
+<meta property="og:description" content="如題，但為什麼不在medium上po文了呢?原因有幾點  架設自己的Blog不僅有趣又美觀，高度自定義頁面，還有更多功能可以使用，例如我很喜歡的markdown寫作 現在架設自己的Blog無須任何費用，github自帶免費靜態頁面給你用，也就是github pages! Medium寫作只有兩層標題，很痛苦 Medium沒有目錄功能，無法快速切換 還有很多小細節，Medium真的太簡化了🤣">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2023-11-20T18:20:57.000Z">
-<meta property="article:modified_time" content="2023-11-20T18:22:13.518Z">
+<meta property="article:published_time" content="2023-11-20T20:18:47.000Z">
+<meta property="article:modified_time" content="2023-11-20T20:21:07.657Z">
 <meta property="article:author" content="Simon Lai">
-<meta property="article:tag" content="筆記">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>終於修復hexo無法使用prismjs的問題了! - Simon Lai&#39;s Blog</title>
+  <title>搬家到自己架設的Blog-使用Hexo和Github Pages - Simon Lai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -226,7 +225,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="終於修復hexo無法使用prismjs的問題了!"></span>
+            <span id="subtitle" data-typed-text="搬家到自己架設的Blog-使用Hexo和Github Pages"></span>
           
         </div>
 
@@ -237,7 +236,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-20 18:20" pubdate>
+        <time datetime="2023-11-20 20:18" pubdate>
           2023年11月20日 晚上
         </time>
       </span>
@@ -249,7 +248,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          306 字
+          190 字
         
       </span>
     
@@ -297,26 +296,19 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">終於修復hexo無法使用prismjs的問題了!</h1>
+            <h1 id="seo-header">搬家到自己架設的Blog-使用Hexo和Github Pages</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="使用環境"><a href="#使用環境" class="headerlink" title="使用環境"></a>使用環境</h2><p><code>hexo: 7.0.0</code></p>
-<p><code>hexo-cli: 4.3.1</code></p>
-<h2 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h2><p>無論在<code>_config.yml</code>如何設置prismjs，就是無法使用，只能用highlightjs</p>
-<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>無意間在hexo github repo找到解答，是因為升級到v7.0.0之後無法單純再使用<code>hightlight</code>以及<code>prism</code>底下的<code>enable</code>屬性來開關</p>
-<h2 id="解決方法"><a href="#解決方法" class="headerlink" title="解決方法"></a>解決方法</h2><p>要使用以下屬性來切換</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">syntax_highlighter</span><span class="token punctuation">:</span> highlight.js <span class="token comment"># highlight.js | prismjs | &lt;empty></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-
-<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ol>
-<li><p><a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/releases/tag/v7.0.0">Hexo repo</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues/5283">Code Highlight error in 7.0.0-rc2</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues/5351">v7.0.0 Can not change highlight to prismjs</a></p>
-</li>
-</ol>
+                <p>如題，但為什麼不在medium上po文了呢?原因有幾點</p>
+<ul>
+<li>架設自己的Blog不僅有趣又美觀，高度自定義頁面，還有更多功能可以使用，例如我很喜歡的markdown寫作</li>
+<li>現在架設自己的Blog無須任何費用，github自帶免費靜態頁面給你用，也就是github pages!</li>
+<li>Medium寫作只有兩層標題，很痛苦</li>
+<li>Medium沒有目錄功能，無法快速切換</li>
+<li>還有很多小細節，Medium真的太簡化了🤣</li>
+</ul>
 
                 
               </div>
@@ -347,13 +339,6 @@
     </div>
   
   
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E7%AD%86%E8%A8%98/" class="print-no-link">#筆記</a>
-      
-    </div>
-  
 </div>
 
 
@@ -362,8 +347,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>終於修復hexo無法使用prismjs的問題了!</div>
-      <div>https://f88083.github.io/2023/11/20/終於修復hexo無法使用prismjs的問題了/</div>
+      <div>搬家到自己架設的Blog-使用Hexo和Github Pages</div>
+      <div>https://f88083.github.io/2023/11/20/搬家到自己架設的Blog-使用Hexo和Github-Pages/</div>
     </div>
     <div class="license-meta">
       
@@ -407,18 +392,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/20/%E6%90%AC%E5%AE%B6%E5%88%B0%E8%87%AA%E5%B7%B1%E6%9E%B6%E8%A8%AD%E7%9A%84Blog-%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub-Pages/" title="搬家到自己架設的Blog-使用Hexo和Github Pages">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">搬家到自己架設的Blog-使用Hexo和Github Pages</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/11/19/%E5%A6%82%E4%BD%95%E7%B9%AA%E8%A3%BDUML/" title="如何繪製UML Diagram?">
-                        <span class="hidden-mobile">如何繪製UML Diagram?</span>
+                      <a href="/2023/11/20/%E7%B5%82%E6%96%BC%E4%BF%AE%E5%BE%A9hexo%E7%84%A1%E6%B3%95%E4%BD%BF%E7%94%A8prismjs%E7%9A%84%E5%95%8F%E9%A1%8C%E4%BA%86/" title="終於修復hexo無法使用prismjs的問題了!">
+                        <span class="hidden-mobile">終於修復hexo無法使用prismjs的問題了!</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
