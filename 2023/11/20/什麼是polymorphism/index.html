@@ -16,25 +16,23 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="題目連結想法 看起來是選中一個初始的位置，然後往後隔一個取一次就好了，但這樣可能會有以下問題: 隔一個取反而取不到大的值 那要隔幾個取?    思路這題看了DP解答有看懂了，但這種題目到底要怎麼想才能想出答案😂  需要兩個變數，一個是紀錄搶當前的，一個是不搶當前的屋子 每一輪都看到底這間不搶比較高還是搶比較高 最後輸出max值  Code  class Solution &#123;     p">
+    <meta name="description" content="定義 Polymorphism refers to the ability of different objects to be treated as objects of a common type. It allows a single interface to be used for entities of different types.  白話來說就是，允許同個名子的東西有不同行為。 例">
 <meta property="og:type" content="article">
-<meta property="og:title" content="198. House Robber - Medium">
-<meta property="og:url" content="https://f88083.github.io/2023/11/19/198-House-Robber-Medium/index.html">
+<meta property="og:title" content="什麼是polymorphism?">
+<meta property="og:url" content="https://f88083.github.io/2023/11/20/%E4%BB%80%E9%BA%BC%E6%98%AFpolymorphism/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="題目連結想法 看起來是選中一個初始的位置，然後往後隔一個取一次就好了，但這樣可能會有以下問題: 隔一個取反而取不到大的值 那要隔幾個取?    思路這題看了DP解答有看懂了，但這種題目到底要怎麼想才能想出答案😂  需要兩個變數，一個是紀錄搶當前的，一個是不搶當前的屋子 每一輪都看到底這間不搶比較高還是搶比較高 最後輸出max值  Code  class Solution &#123;     p">
+<meta property="og:description" content="定義 Polymorphism refers to the ability of different objects to be treated as objects of a common type. It allows a single interface to be used for entities of different types.  白話來說就是，允許同個名子的東西有不同行為。 例">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2023-11-19T09:34:17.000Z">
-<meta property="article:modified_time" content="2023-11-19T15:29:47.516Z">
+<meta property="article:published_time" content="2023-11-20T20:32:47.000Z">
+<meta property="article:modified_time" content="2023-11-20T20:51:23.577Z">
 <meta property="article:author" content="Simon Lai">
-<meta property="article:tag" content="Leetcode">
-<meta property="article:tag" content="心得">
-<meta property="article:tag" content="Array">
-<meta property="article:tag" content="Dynamic programming">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="OOP">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>198. House Robber - Medium - Simon Lai&#39;s Blog</title>
+  <title>什麼是polymorphism? - Simon Lai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -229,7 +227,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="198. House Robber - Medium"></span>
+            <span id="subtitle" data-typed-text="什麼是polymorphism?"></span>
           
         </div>
 
@@ -240,8 +238,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-19 09:34" pubdate>
-          2023年11月19日 上午
+        <time datetime="2023-11-20 20:32" pubdate>
+          2023年11月20日 晚上
         </time>
       </span>
     
@@ -252,7 +250,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          414 字
+          984 字
         
       </span>
     
@@ -263,7 +261,7 @@
         
         
         
-          2 分鐘
+          5 分鐘
         
       </span>
     
@@ -300,39 +298,61 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">198. House Robber - Medium</h1>
+            <h1 id="seo-header">什麼是polymorphism?</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="題目連結"><a href="#題目連結" class="headerlink" title="題目連結"></a><a target="_blank" rel="noopener" href="https://leetcode.com/problems/house-robber/description/">題目連結</a></h2><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul>
-<li>看起來是選中一個初始的位置，然後往後隔一個取一次就好了，但這樣可能會有以下問題:<ul>
-<li>隔一個取反而取不到大的值</li>
-<li>那要隔幾個取?</li>
+                <h2 id="定義"><a href="#定義" class="headerlink" title="定義"></a>定義</h2><blockquote>
+<p><strong>Polymorphism</strong> refers to the ability of different objects to be treated as objects of a common type. It allows a single interface to be used for entities of different types.</p>
+</blockquote>
+<p>白話來說就是，允許同個名子的東西有不同行為。</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><ul>
+<li>Overloading: 也就是同個Method名，不同Parameters</li>
+<li>Overriding: 子類覆蓋父類的Method</li>
 </ul>
-</li>
-</ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>這題看了DP解答有看懂了，但這種題目到底要怎麼想才能想出答案😂</p>
-<ol>
-<li>需要兩個變數，一個是紀錄搶當前的，一個是不搶當前的屋子</li>
-<li>每一輪都看到底這間不搶比較高還是搶比較高</li>
-<li>最後輸出max值</li>
-</ol>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width=100% height="500px" src="https://www.youtube.com/embed/73r3KWiEvyk" title="House Robber -  Leetcode 198 - Python Dynamic Programming" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">rob</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">int</span> rob1 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> rob2 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token comment">// Determine the max, rob or not rob the current house</span>
-            <span class="token keyword">int</span> temp <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> rob1<span class="token punctuation">,</span> rob2<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            rob1 <span class="token operator">=</span> rob2<span class="token punctuation">;</span> <span class="token comment">// Update rob1 for next round</span>
-            rob2 <span class="token operator">=</span> temp<span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">return</span> rob2<span class="token punctuation">;</span>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// Base class</span>
+<span class="token keyword">class</span> <span class="token class-name">Shape</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">double</span> <span class="token function">calculateArea</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// Default, will be overridden by subclasses</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// Subclass 1</span>
+<span class="token keyword">class</span> <span class="token class-name">Circle</span> <span class="token keyword">extends</span> <span class="token class-name">Shape</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">private</span> <span class="token keyword">double</span> radius<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">Circle</span><span class="token punctuation">(</span><span class="token keyword">double</span> radius<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>radius <span class="token operator">=</span> radius<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">double</span> <span class="token function">calculateArea</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token constant">PI</span> <span class="token operator">*</span> radius <span class="token operator">*</span> radius<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// Subclass 2</span>
+<span class="token keyword">class</span> <span class="token class-name">Square</span> <span class="token keyword">extends</span> <span class="token class-name">Shape</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">private</span> <span class="token keyword">double</span> side<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">Square</span><span class="token punctuation">(</span><span class="token keyword">double</span> side<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>side <span class="token operator">=</span> side<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">double</span> <span class="token function">calculateArea</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> side <span class="token operator">*</span> side<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Shape</span> circle <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Circle</span><span class="token punctuation">(</span><span class="token number">5.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Shape</span> square <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Square</span><span class="token punctuation">(</span><span class="token number">4.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">double</span> areaOfCircle <span class="token operator">=</span> circle<span class="token punctuation">.</span><span class="token function">calculateArea</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Calls Circle's calculateArea()</span>
+<span class="token keyword">double</span> areaOfSquare <span class="token operator">=</span> square<span class="token punctuation">.</span><span class="token function">calculateArea</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Calls Square's calculateArea()</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p>由此可以看出，雖然都是<code>calculateArea()</code>卻可以有不同的行為及定義，這就是歸功於OOP的Polymorphism</p>
 
                 
               </div>
@@ -351,15 +371,8 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  <a href="/categories/Java/" class="category-chain-item">Java</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
   
 
       </span>
@@ -373,13 +386,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Leetcode/" class="print-no-link">#Leetcode</a>
+        <a href="/tags/Java/" class="print-no-link">#Java</a>
       
-        <a href="/tags/%E5%BF%83%E5%BE%97/" class="print-no-link">#心得</a>
-      
-        <a href="/tags/Array/" class="print-no-link">#Array</a>
-      
-        <a href="/tags/Dynamic-programming/" class="print-no-link">#Dynamic programming</a>
+        <a href="/tags/OOP/" class="print-no-link">#OOP</a>
       
     </div>
   
@@ -391,8 +400,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>198. House Robber - Medium</div>
-      <div>https://f88083.github.io/2023/11/19/198-House-Robber-Medium/</div>
+      <div>什麼是polymorphism?</div>
+      <div>https://f88083.github.io/2023/11/20/什麼是polymorphism/</div>
     </div>
     <div class="license-meta">
       
@@ -404,7 +413,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>發布於</div>
-          <div>2023年11月19日</div>
+          <div>2023年11月20日</div>
         </div>
       
       
@@ -436,18 +445,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/19/%E5%A6%82%E4%BD%95%E7%B9%AA%E8%A3%BDUML/" title="如何繪製UML Diagram?">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">如何繪製UML Diagram?</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/11/18/Abstract-classes%E5%92%8CInterfaces%E5%88%B0%E5%BA%95%E5%B7%AE%E5%9C%A8%E5%93%AA/" title="Abstract classes和Interfaces到底差在哪?">
-                        <span class="hidden-mobile">Abstract classes和Interfaces到底差在哪?</span>
+                      <a href="/2023/11/20/%E6%90%AC%E5%AE%B6%E5%88%B0%E8%87%AA%E5%B7%B1%E6%9E%B6%E8%A8%AD%E7%9A%84Blog-%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub-Pages/" title="搬家到自己架設的Blog-使用Hexo和Github Pages">
+                        <span class="hidden-mobile">搬家到自己架設的Blog-使用Hexo和Github Pages</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -16,15 +16,15 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Javaclass Solution &#123;     public static void main(String[] args) &#123;         int i &#x3D; 0;          while (i &lt; 0) &#123;             System.out.println(&quot;yes&quot;);         &#125;     &#125; &#125;">
+    <meta name="description" content="第一次寫medium 第一次把自己的心得Publish出來，契機是來自huli大大的文章。期望未來的自己回來看的時候可以深刻的回憶起這些東西，不管是覺得好笑，還是恍然大悟這題的解法，都會是有意義的。文章就是照著自己的想法簡簡單單的寫出來，不想花太多時間琢磨，因為是自己的心得筆記。如果路過的讀者有幸獲得一點點收穫，那我也會很開心的。 每一篇心得都有價值——為什麼初學者才更應該要寫心得筆記 記得大二的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="程式碼測試">
-<meta property="og:url" content="https://f88083.github.io/2023/11/17/%E7%A8%8B%E5%BC%8F%E7%A2%BC%E6%B8%AC%E8%A9%A6/index.html">
+<meta property="og:title" content="1. Two Sum - 兩周前做過，回來看還是沒辦法一次做出來">
+<meta property="og:url" content="https://f88083.github.io/2023/10/07/1-two-sum-%E5%85%A9%E5%91%A8%E5%89%8D%E5%81%9A%E9%81%8E-%E5%9B%9E%E4%BE%86%E7%9C%8B%E9%82%84%E6%98%AF%E6%B2%92%E8%BE%A6%E6%B3%95%E4%B8%80%E6%AC%A1%E5%81%9A%E5%87%BA%E4%BE%86/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="Javaclass Solution &#123;     public static void main(String[] args) &#123;         int i &#x3D; 0;          while (i &lt; 0) &#123;             System.out.println(&quot;yes&quot;);         &#125;     &#125; &#125;">
+<meta property="og:description" content="第一次寫medium 第一次把自己的心得Publish出來，契機是來自huli大大的文章。期望未來的自己回來看的時候可以深刻的回憶起這些東西，不管是覺得好笑，還是恍然大悟這題的解法，都會是有意義的。文章就是照著自己的想法簡簡單單的寫出來，不想花太多時間琢磨，因為是自己的心得筆記。如果路過的讀者有幸獲得一點點收穫，那我也會很開心的。 每一篇心得都有價值——為什麼初學者才更應該要寫心得筆記 記得大二的">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2023-11-17T00:00:00.000Z">
-<meta property="article:modified_time" content="2023-11-18T14:21:41.687Z">
+<meta property="article:published_time" content="2023-10-07T13:42:55.000Z">
+<meta property="article:modified_time" content="2023-11-20T22:20:29.334Z">
 <meta property="article:author" content="Simon Lai">
 <meta property="article:tag" content="Leetcode">
 <meta property="article:tag" content="心得">
@@ -32,7 +32,7 @@
   
   
   
-  <title>程式碼測試 - Simon Lai&#39;s Blog</title>
+  <title>1. Two Sum - 兩周前做過，回來看還是沒辦法一次做出來 - Simon Lai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -227,7 +227,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="程式碼測試"></span>
+            <span id="subtitle" data-typed-text="1. Two Sum - 兩周前做過，回來看還是沒辦法一次做出來"></span>
           
         </div>
 
@@ -238,8 +238,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-17 00:00" pubdate>
-          2023年11月17日 凌晨
+        <time datetime="2023-10-07 14:42" pubdate>
+          2023年10月7日 下午
         </time>
       </span>
     
@@ -250,7 +250,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          191 字
+          1.5k 字
         
       </span>
     
@@ -261,7 +261,7 @@
         
         
         
-          2 分鐘
+          7 分鐘
         
       </span>
     
@@ -298,26 +298,51 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">程式碼測試</h1>
+            <h1 id="seo-header">1. Two Sum - 兩周前做過，回來看還是沒辦法一次做出來</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+                <p>第一次寫medium</p>
+<p>第一次把自己的心得Publish出來，契機是來自huli大大的文章。期望未來的自己回來看的時候可以深刻的回憶起這些東西，不管是覺得好笑，還是恍然大悟這題的解法，都會是有意義的。文章就是照著自己的想法簡簡單單的寫出來，不想花太多時間琢磨，因為是自己的心得筆記。如果路過的讀者有幸獲得一點點收穫，那我也會很開心的。</p>
+<p><a target="_blank" rel="noopener" href="https://hulitw.medium.com/why-blogging-ab77fd8c6ffa"><strong>每一篇心得都有價值——為什麼初學者才更應該要寫心得筆記</strong></a></p>
+<p>記得大二的時候就寫過leetcode，那時候寫沒幾題，就空了兩年，再回來已經是大四了。寫論文之前也是非常斷斷續續的寫LC，直到寫完論文開始做面試準備的時候才真的認真面對。解題的時候我其實是享受的，比起準備Behavioral question (BQ)，我更喜歡解LC，BQ練一練都會想睡，好無聊，解題有趣多了，還能更加深Data Structure and Algorithms(DSA)的概念，雖然偶爾看著題海，自己只有不到50題左右，90%還忘光的情況下，現在回來看天字第一題還是不會，難免會有些挫折。</p>
+<p>但，難道我就這樣不準備了嗎?當然不可能，既然不可能，就乖乖寫吧。這段話我可能要看上萬次🤣每次崩潰的時候都回來看一下。</p>
+<h2 id="正題"><a href="#正題" class="headerlink" title="正題"></a>正題</h2><p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/two-sum/description/"><strong>1. Two Sum</strong></a></p>
+<p>最近每天都有寫兩題leetcode，簡單到複雜的都有寫過，兩周過去後再回來寫天字第一題，還是沒寫出來。甚至題目都沒完全搞懂，一開始還直接sort了一下，五分鐘內寫完，run，爆炸。才發現我是需要return原本array的index，sort完後就跟原本的不同了。</p>
+<p>於是怎麼辦呢，想不到，一直覺得是2 pointers，因為最熟就2 pointers，而且也簡單😂完全沒考慮到HashMap的部分。想了幾分鐘看upvote最高的解法才恍然大悟，對耶HashMap的搜尋是O(N)既可以拿來解決問題，還能優化時間。因為題目有個follow-up是想出比O(N²)更快的解法。</p>
+<p>而HashMap怎麼解決問題呢，循環每一個nums的element的時候都算一下他的complement，也就是總數減掉其中一個數後，剩餘的那個數。這樣只要在HashMap找到complement的時候就可以同時知道第一個數，和第二個數的位置，因為其中一個數就是我們疊代到的數字，另一個直接搜尋一下.get(complement)得到他的index，回傳數組就OK了。</p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ol>
+<li><p>建立一個HashMap</p>
+</li>
+<li><p>開始疊代數組nums，每個element為num</p>
+</li>
+<li><p>算每個num的complement</p>
+</li>
+<li><p>如果有在HashMap找到complement的話，取出他的index</p>
+</li>
+<li><p>和當前num組成數組，回傳</p>
+</li>
+</ol>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">twoSum</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">,</span> <span class="token keyword">int</span> target<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span></span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"yes"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">int</span> complement <span class="token operator">=</span> target <span class="token operator">-</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+            <span class="token comment">// Found the pair</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>map<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>complement<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">&#123;</span>map<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>complement<span class="token punctuation">)</span><span class="token punctuation">,</span> i<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token comment">// If not found, store it</span>
+            map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
-<figure><div class="code-wrapper"><pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
-  <span class="token property">"firstName"</span><span class="token operator">:</span> <span class="token string">"John"</span><span class="token punctuation">,</span>
-  <span class="token property">"lastName"</span><span class="token operator">:</span> <span class="token string">"Smith"</span><span class="token punctuation">,</span>
-  <span class="token property">"age"</span><span class="token operator">:</span> <span class="token number">25</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<h2 id="參考解答"><a href="#參考解答" class="headerlink" title="參考解答"></a>參考解答</h2><p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/two-sum/solutions/3619262/3-method-s-c-java-python-beginner-friendly/"><strong>leetcode</strong></a></p>
 
                 
               </div>
@@ -338,6 +363,13 @@
         
   <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
+  
+  
+
   
 
       </span>
@@ -365,8 +397,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>程式碼測試</div>
-      <div>https://f88083.github.io/2023/11/17/程式碼測試/</div>
+      <div>1. Two Sum - 兩周前做過，回來看還是沒辦法一次做出來</div>
+      <div>https://f88083.github.io/2023/10/07/1-two-sum-兩周前做過-回來看還是沒辦法一次做出來/</div>
     </div>
     <div class="license-meta">
       
@@ -378,7 +410,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>發布於</div>
-          <div>2023年11月17日</div>
+          <div>2023年10月7日</div>
         </div>
       
       
@@ -410,21 +442,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/18/739.%20Daily%20Temperatures%20-%20Medium/" title="739. Daily Temperatures - Medium">
+                      <a href="/2023/10/08/20-valid-parentheses-%E4%B8%80%E6%A8%A3%E6%98%AF%E5%85%A9%E5%91%A8%E5%89%8D%E7%9A%84%E9%A1%8C%E7%9B%AE-%E9%82%84%E6%98%AFwa/" title="20. Valid Parentheses — 一樣是兩周前的題目，還是WA">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">739. Daily Temperatures - Medium</span>
+                        <span class="hidden-mobile">20. Valid Parentheses — 一樣是兩周前的題目，還是WA</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
-                    
-                      <a href="/2023/11/16/hello-world/" title="你好世界">
-                        <span class="hidden-mobile">你好世界</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
                     
                   </article>
                 </div>
