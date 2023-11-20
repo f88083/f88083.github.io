@@ -1,114 +1,123 @@
-pre code.hljs {
-  display: block;
-  overflow-x: auto;
-  padding: 1em
+/**
+ * prism.js tomorrow night eighties for JavaScript, CoffeeScript, CSS and HTML
+ * Based on https://github.com/chriskempson/tomorrow-theme
+ * @author Rose Pritchard
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #ccc;
+	background: none;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+
 }
-code.hljs {
-  padding: 3px 5px
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
 }
-/*!
-  Theme: Tokyo-night-Dark
-  origin: https://github.com/enkia/tokyo-night-vscode-theme
-  Description: Original highlight.js style
-  Author: (c) Henri Vandersleyen <hvandersleyen@gmail.com>
-  License: see project LICENSE
-  Touched: 2022
-*/
-/*  Comment */
-.hljs-meta,
-.hljs-comment {
-  color: #565f89
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #2d2d2d;
 }
-/* Red */
-/*INFO: This keyword, HTML elements, Regex group symbol, CSS units, Terminal Red */
-.hljs-tag,
-.hljs-doctag,
-.hljs-selector-id,
-.hljs-selector-class,
-.hljs-regexp,
-.hljs-template-tag,
-.hljs-selector-pseudo,
-.hljs-selector-attr,
-.hljs-variable.language_,
-.hljs-deletion {
-  color: #f7768e
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
 }
-/*Orange */
-/*INFO: Number and Boolean constants, Language support constants */
-.hljs-variable,
-.hljs-template-variable,
-.hljs-number,
-.hljs-literal,
-.hljs-type,
-.hljs-params,
-.hljs-link {
-  color: #ff9e64
+
+.token.comment,
+.token.block-comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #999;
 }
-/*  Yellow */
-/* INFO:  	Function parameters, Regex character sets, Terminal Yellow */
-.hljs-built_in,
-.hljs-attribute {
-  color: #e0af68
+
+.token.punctuation {
+	color: #ccc;
 }
-/* cyan */
-/* INFO: Language support functions, CSS HTML elements */
-.hljs-selector-tag {
-  color: #2ac3de
+
+.token.tag,
+.token.attr-name,
+.token.namespace,
+.token.deleted {
+	color: #e2777a;
 }
-/* light blue */
-/* INFO: Object properties, Regex quantifiers and flags, Markdown headings, Terminal Cyan, Markdown code, Import/export keywords */
-.hljs-keyword,
-.hljs-title.function_,
-.hljs-title,
-.hljs-title.class_,
-.hljs-title.class_.inherited__,
-.hljs-subst,
-.hljs-property {
-  color: #7dcfff
+
+.token.function-name {
+	color: #6196cc;
 }
-/*Green*/
-/* INFO: Object literal keys, Markdown links, Terminal Green */
-.hljs-selector-tag {
-  color: #73daca
+
+.token.boolean,
+.token.number,
+.token.function {
+	color: #f08d49;
 }
-/*Green(er) */
-/* INFO: Strings, CSS class names */
-.hljs-quote,
-.hljs-string,
-.hljs-symbol,
-.hljs-bullet,
-.hljs-addition {
-  color: #9ece6a
+
+.token.property,
+.token.class-name,
+.token.constant,
+.token.symbol {
+	color: #f8c555;
 }
-/* Blue */
-/* INFO:  	Function names, CSS property names, Terminal Blue */
-.hljs-code,
-.hljs-formula,
-.hljs-section {
-  color: #7aa2f7
+
+.token.selector,
+.token.important,
+.token.atrule,
+.token.keyword,
+.token.builtin {
+	color: #cc99cd;
 }
-/* Magenta */
-/*INFO: Control Keywords, Storage Types, Regex symbols and operators, HTML Attributes, Terminal Magenta */
-.hljs-name,
-.hljs-keyword,
-.hljs-operator,
-.hljs-keyword,
-.hljs-char.escape_,
-.hljs-attr {
-  color: #bb9af7
+
+.token.string,
+.token.char,
+.token.attr-value,
+.token.regex,
+.token.variable {
+	color: #7ec699;
 }
-/* white*/
-/* INFO: Variables, Class names, Terminal White */
-.hljs-punctuation {
-  color: #c0caf5
+
+.token.operator,
+.token.entity,
+.token.url {
+	color: #67cdcc;
 }
-.hljs {
-  background: #1a1b26;
-  color: #9aa5ce
+
+.token.important,
+.token.bold {
+	font-weight: bold;
 }
-.hljs-emphasis {
-  font-style: italic
+.token.italic {
+	font-style: italic;
 }
-.hljs-strong {
-  font-weight: bold
+
+.token.entity {
+	cursor: help;
 }
+
+.token.inserted {
+	color: green;
+}
+
