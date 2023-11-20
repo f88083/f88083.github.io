@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>終於修復hexo無法使用prismjs的問題了!</title>
+    <link href="/2023/11/20/%E7%B5%82%E6%96%BC%E4%BF%AE%E5%BE%A9hexo%E7%84%A1%E6%B3%95%E4%BD%BF%E7%94%A8prismjs%E7%9A%84%E5%95%8F%E9%A1%8C%E4%BA%86/"/>
+    <url>/2023/11/20/%E7%B5%82%E6%96%BC%E4%BF%AE%E5%BE%A9hexo%E7%84%A1%E6%B3%95%E4%BD%BF%E7%94%A8prismjs%E7%9A%84%E5%95%8F%E9%A1%8C%E4%BA%86/</url>
+    
+    <content type="html"><![CDATA[<h2 id="使用環境"><a href="#使用環境" class="headerlink" title="使用環境"></a>使用環境</h2><p><code>hexo: 7.0.0</code></p><p><code>hexo-cli: 4.3.1</code></p><h2 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h2><p>無論在<code>_config.yml</code>如何設置prismjs，就是無法使用，只能用highlightjs</p><h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>無意間在hexo github repo找到解答，是因為升級到v7.0.0之後無法單純再使用<code>hightlight</code>以及<code>prism</code>底下的<code>enable</code>屬性來開關</p><h2 id="解決方法"><a href="#解決方法" class="headerlink" title="解決方法"></a>解決方法</h2><p>要使用以下屬性來切換</p><figure><div class="code-wrapper"><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">syntax_highlighter</span><span class="token punctuation">:</span> highlight.js <span class="token comment"># highlight.js | prismjs | &lt;empty></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ol><li><p><a href="https://github.com/hexojs/hexo/releases/tag/v7.0.0">Hexo repo</a></p></li><li><p><a href="https://github.com/hexojs/hexo/issues/5283">Code Highlight error in 7.0.0-rc2</a></p></li><li><p><a href="https://github.com/hexojs/hexo/issues/5351">v7.0.0 Can not change highlight to prismjs</a></p></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>綜合</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>筆記</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>如何繪製UML Diagram?</title>
     <link href="/2023/11/19/%E5%A6%82%E4%BD%95%E7%B9%AA%E8%A3%BDUML/"/>
     <url>/2023/11/19/%E5%A6%82%E4%BD%95%E7%B9%AA%E8%A3%BDUML/</url>
