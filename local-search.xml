@@ -149,13 +149,13 @@
     
     <tags>
       
+      <tag>筆記</tag>
+      
       <tag>Java</tag>
       
       <tag>Interface</tag>
       
       <tag>Abstract</tag>
-      
-      <tag>筆記</tag>
       
     </tags>
     
@@ -191,6 +191,68 @@
       <tag>Array</tag>
       
       <tag>Monotonic Stack</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>206. Reverse Linked List - 邏輯轉換有點障礙</title>
+    <link href="/2023/10/09/206-reverse-linked-list-%E9%82%8F%E8%BC%AF%E8%BD%89%E6%8F%9B%E6%9C%89%E9%BB%9E%E9%9A%9C%E7%A4%99/"/>
+    <url>/2023/10/09/206-reverse-linked-list-%E9%82%8F%E8%BC%AF%E8%BD%89%E6%8F%9B%E6%9C%89%E9%BB%9E%E9%9A%9C%E7%A4%99/</url>
+    
+    <content type="html"><![CDATA[<h2 id="題目連結"><a href="#題目連結" class="headerlink" title="題目連結"></a><a href="https://leetcode.com/problems/reverse-linked-list/description/?source=post_page-----976660364263--------------------------------">題目連結</a></h2><p>這題目標很明確，反轉Linked List，初始的想法是一個一個node看，然後倒著裝就行了，馬上寫完後Time Limit Exceeded (TLE)。</p><h2 id="TLE的Code"><a href="#TLE的Code" class="headerlink" title="TLE的Code"></a>TLE的Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token class-name">ListNode</span> <span class="token function">reverseList</span><span class="token punctuation">(</span><span class="token class-name">ListNode</span> head<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>head <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> head<span class="token punctuation">.</span>next <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> head<span class="token punctuation">;</span>        <span class="token class-name">ListNode</span> prev <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">,</span> curr <span class="token operator">=</span> head<span class="token punctuation">;</span>                <span class="token comment">// Iterate through the list</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>curr <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token class-name">ListNode</span> nxt <span class="token operator">=</span> curr<span class="token punctuation">.</span>next<span class="token punctuation">;</span> <span class="token comment">// Original next one</span>            curr<span class="token punctuation">.</span>next <span class="token operator">=</span> prev<span class="token punctuation">;</span> <span class="token comment">// Point in reverse direction</span>            prev <span class="token operator">=</span> curr<span class="token punctuation">;</span> <span class="token comment">// Current node become the previous for the next round</span>            curr <span class="token operator">=</span> nxt<span class="token punctuation">;</span> <span class="token comment">// Original next one becomes the current node</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> prev<span class="token punctuation">;</span> <span class="token comment">// Return the Last node</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure><p>看了一下Neetcode的影片</p><center><iframe width="100%" height="500" src="https://www.youtube.com/embed/G0_I-ZF0S38" frameborder="0" allowfullscreen></iframe></center><p>邏輯上沒什麼問題，都是嘗試把指針換邊，但他多了一個變量，應該是我換邊的邏輯有誤，導致無限迴圈。以下正解</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token class-name">ListNode</span> <span class="token function">reverseList</span><span class="token punctuation">(</span><span class="token class-name">ListNode</span> head<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>head <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> head<span class="token punctuation">.</span>next <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> head<span class="token punctuation">;</span>        <span class="token class-name">ListNode</span> prev <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">,</span> curr <span class="token operator">=</span> head<span class="token punctuation">;</span>                <span class="token comment">// Iterate through the list</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>curr <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token class-name">ListNode</span> nxt <span class="token operator">=</span> curr<span class="token punctuation">.</span>next<span class="token punctuation">;</span> <span class="token comment">// Original next one</span>            curr<span class="token punctuation">.</span>next <span class="token operator">=</span> prev<span class="token punctuation">;</span> <span class="token comment">// Point in reverse direction</span>            prev <span class="token operator">=</span> curr<span class="token punctuation">;</span> <span class="token comment">// Current node become the previous for the next round</span>            curr <span class="token operator">=</span> nxt<span class="token punctuation">;</span> <span class="token comment">// Original next one becomes the current node</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> prev<span class="token punctuation">;</span> <span class="token comment">// Return the Last node</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure><p>這題左右轉換讓我的腦袋轉不過來，理解code的時候花了一些時間才懂，還是看到這個LC評論才更清晰</p><p><img src="https://cdn-images-1.medium.com/max/2000/1*usrHOQ_cBfG6bFXVd5V7QA.png" alt="206. Solution"></p><p>這個解釋我一看就懂了，最核心的部分就是，把每個Node的previous node放到Node的Next，沒了就這樣。遞迴也是一樣的道理，把next存下來，然後把node.next換成prev，如此一來就換邊了，然後再用原本的next call自己。</p><p>感覺兩周後來看應該還是會卡住，不過沒關係，你會懂的😭</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Easy</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>LinkedList</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Algorithms Part 1 — Week 2之Stacks筆記</title>
+    <link href="/2023/10/08/algorithms-part-1-week-2%E4%B9%8Bstacks%E7%AD%86%E8%A8%98/"/>
+    <url>/2023/10/08/algorithms-part-1-week-2%E4%B9%8Bstacks%E7%AD%86%E8%A8%98/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p>Free online course presented by Robert Sedgewick and Kevin Wayne</p></blockquote><p>這篇將會概括PPT 1.3的stack以及resizing arrays:</p><h2 id="Stacks"><a href="#Stacks" class="headerlink" title="Stacks"></a>Stacks</h2><p>對就是那個Stack，LIFO的資料結構。這門課的老師很強調把Client, implementation, 還有interface分開，因為有以下優點</p><ul><li><p>Client不用知道實作細節，但可以完整使用</p></li><li><p>可以實做出modular, reusable libraries</p></li><li><p>效能上可以在需要的地方寫上optimized implementation</p></li></ul><p>有點離題了，拉回來。個人覺得PPT裡寫得非常詳細，這裡就補充一些可能看不懂或是複雜的地方吧。</p><p>一開始PPT給的是StackOfStrings，存放string的stack，裡面有實作，請參考PPT。用Linked-list實作stack</p><p>看到這個PPT我才想起Java有inner class，很久以前有用過，但後來就沒必要也就沒寫過了。</p><p><img src="https://cdn-images-1.medium.com/max/2000/1*k_ac_48JzLBrOs8ifJ8K_g.png" alt="Linked-list implementation"></p><p>如圖，而inner class的access modifier，也就是那個private無所謂，反正都存取得到。</p><p>而這個Stack會用到的Memory大約是40N，見下圖</p><p><img src="https://cdn-images-1.medium.com/max/2000/1*iZTj0XJ8QW_iOhZuF6MckQ.png" alt="Stack memeory"></p><p>注意實際String的內容都沒有算進來，只是算最少要多少，還加上了String的reference。</p><p>另外也可以用Array實作stack，code也在PPT裡面了。但目前需要傳入capacity，否則array最終會超出範圍。</p><h2 id="Stack的隱憂與解法"><a href="#Stack的隱憂與解法" class="headerlink" title="Stack的隱憂與解法"></a>Stack的隱憂與解法</h2><ul><li><p>Underflow: 如果在空的stack pop的話，拋出exception</p></li><li><p>Overflow: 用可變大小數組</p></li><li><p>Null items: 允許null item插入</p></li><li><p>Loitering: Garbage collector不知道可以回收，所以浪費了空間，解決方法參照PPT P.14</p></li></ul><p>於是引出我們下一個主題</p><h2 id="Resizing-Arrays"><a href="#Resizing-Arrays" class="headerlink" title="Resizing Arrays"></a>Resizing Arrays</h2><p>如果每次超過array size就只增加到多出來的長度，那需要N²&#x2F;2的時間才能插入從第一個到N個items，因為每次都要再copy。因此我們每次增加都直接增加兩倍，這樣就可以把時間壓到剩3N(不考慮新建一個array的時間)，因為很少需要擴充。這個行為叫做amortize攤銷。</p><p>而如果太多空間的話，我們每次剩一半以下就直接砍掉一半空間就好了?</p><p>不對，這樣如果有case是在一半的前一個push又pop，push又pop，這樣反反覆覆那時間會很可觀，因為每次要增加兩倍空間，接著又要去掉一半空間，每次操作基本上要N次。</p><p>那該怎麼做?在剩25%的時候shrink就好，這樣不會跟擴充array衝突，也能解決那樣極端的例子。</p><h2 id="Stack的performance以及memory如何"><a href="#Stack的performance以及memory如何" class="headerlink" title="Stack的performance以及memory如何"></a>Stack的performance以及memory如何</h2><p><img src="https://cdn-images-1.medium.com/max/2000/1*2dvBnL9ItgZ03u0kGpnORA.png" alt="Stack performance table"></p><p><img src="https://cdn-images-1.medium.com/max/2000/1*rErG07xwEGZVwB6zbKu0TQ.png" alt="Stack memory usage"></p><p><em>這裡我不懂為何8N的時候是stack滿的時候，反而32N是只有25%滿…</em></p><blockquote><p>教授說array來實作stack使用的空間比Linked-list還少</p></blockquote><h2 id="用resizing-array還是Linked-list實作stack"><a href="#用resizing-array還是Linked-list實作stack" class="headerlink" title="用resizing array還是Linked list實作stack"></a>用resizing array還是Linked list實作stack</h2><p>有好有壞，看怎麼選擇</p><p><img src="https://cdn-images-1.medium.com/max/2000/1*rCsbQblDpy-qM_v8ex9RMg.png" alt="Linked-list vs Resizing array"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Algorithms</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Stack</tag>
+      
+      <tag>Algorithms</tag>
+      
+      <tag>筆記</tag>
+      
+      <tag>演算法</tag>
       
     </tags>
     
