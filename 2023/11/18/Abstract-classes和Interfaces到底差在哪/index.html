@@ -252,7 +252,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.9k 字
+          3.1k 字
         
       </span>
     
@@ -263,7 +263,7 @@
         
         
         
-          14 分鐘
+          15 分鐘
         
       </span>
     
@@ -440,7 +440,14 @@
 <td>Offers less flexibility with constant-like behavior.</td>
 </tr>
 </tbody></table>
-
+<script type="text/javascript">(function (document) {
+    [].forEach.call(document.getElementsByClassName('fold'), function(panel) {
+        panel.getElementsByClassName('fold-title')[0].onclick = function() {
+            panel.classList.toggle("collapsed");
+            panel.classList.toggle("expanded");
+        }
+    });
+})(document);</script>
                 
               </div>
             

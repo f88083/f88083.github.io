@@ -253,7 +253,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          1.4k 字
         
       </span>
     
@@ -264,7 +264,7 @@
         
         
         
-          6 分鐘
+          7 分鐘
         
       </span>
     
@@ -351,7 +351,14 @@
 <p><img src="https://cdn-images-1.medium.com/max/2000/1*usrHOQ_cBfG6bFXVd5V7QA.png" srcset="/img/loading.gif" lazyload alt="206. Solution"></p>
 <p>這個解釋我一看就懂了，最核心的部分就是，把每個Node的previous node放到Node的Next，沒了就這樣。遞迴也是一樣的道理，把next存下來，然後把node.next換成prev，如此一來就換邊了，然後再用原本的next call自己。</p>
 <p>感覺兩周後來看應該還是會卡住，不過沒關係，你會懂的😭</p>
-
+<script type="text/javascript">(function (document) {
+    [].forEach.call(document.getElementsByClassName('fold'), function(panel) {
+        panel.getElementsByClassName('fold-title')[0].onclick = function() {
+            panel.classList.toggle("collapsed");
+            panel.classList.toggle("expanded");
+        }
+    });
+})(document);</script>
                 
               </div>
             
