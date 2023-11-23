@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>如何修復Hexo Fluid主題Fold摺疊功能錯誤的問題</title>
+    <link href="/2023/11/23/%E5%A6%82%E4%BD%95%E4%BF%AE%E5%BE%A9Hexo-Fluid%E4%B8%BB%E9%A1%8CFold%E6%91%BA%E7%96%8A%E5%8A%9F%E8%83%BD%E9%8C%AF%E8%AA%A4%E7%9A%84%E5%95%8F%E9%A1%8C/"/>
+    <url>/2023/11/23/%E5%A6%82%E4%BD%95%E4%BF%AE%E5%BE%A9Hexo-Fluid%E4%B8%BB%E9%A1%8CFold%E6%91%BA%E7%96%8A%E5%8A%9F%E8%83%BD%E9%8C%AF%E8%AA%A4%E7%9A%84%E5%95%8F%E9%A1%8C/</url>
+    
+    <content type="html"><![CDATA[<h2 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h2><a class="btn" href="https://github.com/fluid-dev/hexo-theme-fluid/issues/1019"  title="使用Tag中的折叠功能报错" target="_blank">前往github issue</a><p>以上issue解釋了tag中fold的問題</p><h2 id="觀察"><a href="#觀察" class="headerlink" title="觀察"></a>觀察</h2><p>通過觀察，發現fluid的<a href="https://hexo.fluid-dev.com/docs/guide/#%E6%8A%98%E5%8F%A0%E5%9D%97">官方文件</a>裡面有提到可使用此功能，但使用最新版的<code>fluid v1.9.5</code>根本就沒有</p><p>Source裡也找不到相關的js檔案，代表應該根本就沒這個功能，於是在Fluid的repo搜尋了一下發現有善心人士三個月前提出了PR，但還在develop的branch裡。那我就不懂了，為何沒有的功能會在文件裡呢🤣</p><h2 id="解決方法"><a href="#解決方法" class="headerlink" title="解決方法"></a>解決方法</h2><p>也在我開頭給的issue裡面，下面有我的回答，只要把這個<a href="https://github.com/fluid-dev/hexo-theme-fluid/pull/993">PR</a>修改的內容添加進自己本地的Fluid就可以成功使用Fold功能了</p><script type="text/javascript">(function (document) {    [].forEach.call(document.getElementsByClassName('fold'), function(panel) {        panel.getElementsByClassName('fold-title')[0].onclick = function() {            panel.classList.toggle("collapsed");            panel.classList.toggle("expanded");        }    });})(document);</script>]]></content>
+    
+    
+    <categories>
+      
+      <category>綜合</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Fluid修復</tag>
+      
+      <tag>Github</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>844. Backspace String Compare - Easy</title>
     <link href="/2023/11/23/844-Backspace-String-Compare-Easy/"/>
     <url>/2023/11/23/844-Backspace-String-Compare-Easy/</url>
@@ -90,9 +117,9 @@
     
     <tags>
       
-      <tag>OOP</tag>
-      
       <tag>Java</tag>
+      
+      <tag>OOP</tag>
       
     </tags>
     
@@ -316,9 +343,9 @@
     
     <tags>
       
-      <tag>Algorithms</tag>
-      
       <tag>Stack</tag>
+      
+      <tag>Algorithms</tag>
       
       <tag>筆記</tag>
       
