@@ -4,6 +4,39 @@
   
   
   <entry>
+    <title>134. Gas Station - Medium</title>
+    <link href="/2023/11/24/134-Gas-Station-Medium/"/>
+    <url>/2023/11/24/134-Gas-Station-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/gas-station/description/"  title="134. Gas Station" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>沒什麼想法，甚至覺得是不是要用DP</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>一樣是Neetcode大大給的解法，也是我看到最好理解的</p><iframe width="100%" height="500" src="https://www.youtube.com/embed/lJwbPZGo05A" title="Gas Station - Greedy - Leetcode 134 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><ol><li>一開始先藉由兩個<code>array</code>的各自的總和比較，就可以看出是否沒有解，也就是<code>-1</code>。因為<code>gas</code>的<code>sum &lt; cost</code>的<code>sum</code>的時候代表就算從汽油最充足的地方開始一樣不可能抵達，因為起點也是終點</li><li>接著就知道一定會有解，那只要找到最靠左的<code>gas[i] - cost[i]</code>不為零的起始點就一定是答案，因為一定有解，且只有唯一解</li></ol><p>這時候八成會想，為什麼不會在中間變成負的，但其實有解，只是在後頭。這種情況應該會產生多種解，所以不可能有這種情況，題目已經保證有解的話就是唯一解。至於為什麼我說”應該”，因為我不會證明🤣寫一些測資的結果都是有多種解，所以不會出現有中間斷掉的情況</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">canCompleteCircuit</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> gas<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> cost<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token comment">// No solution</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span>gas<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span>cost<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// Guarantee a solution</span>        <span class="token keyword">int</span> total <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token comment">// Loop through the station</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> gas<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// Cal. the difference</span>            total <span class="token operator">+=</span> gas<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> cost<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>            <span class="token comment">// Skip the station that can't even start from</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>total <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                total <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>                res <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// Result will be the next station</span>            <span class="token punctuation">&#125;</span>                      <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> res<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure><script type="text/javascript">(function (document) {    [].forEach.call(document.getElementsByClassName('fold'), function(panel) {        panel.getElementsByClassName('fold-title')[0].onclick = function() {            panel.classList.toggle("collapsed");            panel.classList.toggle("expanded");        }    });})(document);</script>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Array</tag>
+      
+      <tag>Greedy</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>如何修復Hexo Fluid主題Fold摺疊功能錯誤的問題</title>
     <link href="/2023/11/23/%E5%A6%82%E4%BD%95%E4%BF%AE%E5%BE%A9Hexo-Fluid%E4%B8%BB%E9%A1%8CFold%E6%91%BA%E7%96%8A%E5%8A%9F%E8%83%BD%E9%8C%AF%E8%AA%A4%E7%9A%84%E5%95%8F%E9%A1%8C/"/>
     <url>/2023/11/23/%E5%A6%82%E4%BD%95%E4%BF%AE%E5%BE%A9Hexo-Fluid%E4%B8%BB%E9%A1%8CFold%E6%91%BA%E7%96%8A%E5%8A%9F%E8%83%BD%E9%8C%AF%E8%AA%A4%E7%9A%84%E5%95%8F%E9%A1%8C/</url>
