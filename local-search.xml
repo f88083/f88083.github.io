@@ -4,6 +4,60 @@
   
   
   <entry>
+    <title>CS1.6如何修復plugin插件都不見了之安裝了Half-Life之後</title>
+    <link href="/2023/11/25/CS1-6%E5%A6%82%E4%BD%95%E4%BF%AE%E5%BE%A9plugin%E6%8F%92%E4%BB%B6%E9%83%BD%E4%B8%8D%E8%A6%8B%E4%BA%86%E4%B9%8B%E5%AE%89%E8%A3%9D%E4%BA%86Half-Life%E4%B9%8B%E5%BE%8C/"/>
+    <url>/2023/11/25/CS1-6%E5%A6%82%E4%BD%95%E4%BF%AE%E5%BE%A9plugin%E6%8F%92%E4%BB%B6%E9%83%BD%E4%B8%8D%E8%A6%8B%E4%BA%86%E4%B9%8B%E5%AE%89%E8%A3%9D%E4%BA%86Half-Life%E4%B9%8B%E5%BE%8C/</url>
+    
+    <content type="html"><![CDATA[<h2 id="解決方法-未經測試"><a href="#解決方法-未經測試" class="headerlink" title="解決方法(未經測試)"></a>解決方法(未經測試)</h2><p>照著<a href="http://www.amxmodx.org/doc/index.html?page=source/installation/manual.htm">amxmodx官方文章</a>這裡面的<code>C</code>和<code>D</code>項修改</p><p><img src="https://i.imgur.com/8RKgkQS.png" alt="Amxmodx article"></p><script type="text/javascript">(function (document) {    [].forEach.call(document.getElementsByClassName('fold'), function(panel) {        panel.getElementsByClassName('fold-title')[0].onclick = function() {            panel.classList.toggle("collapsed");            panel.classList.toggle("expanded");        }    });})(document);</script>]]></content>
+    
+    
+    <categories>
+      
+      <category>遊戲</category>
+      
+      <category>CS1.6</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CS1.6</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>如何修復CS1.6 FatalError of cannot load client.dll after installed Half Life</title>
+    <link href="/2023/11/25/%E5%A6%82%E4%BD%95%E4%BF%AE%E5%BE%A9CS16-FatalError-of-cannot-load-client-dll-after-installed-Half-Life/"/>
+    <url>/2023/11/25/%E5%A6%82%E4%BD%95%E4%BF%AE%E5%BE%A9CS16-FatalError-of-cannot-load-client-dll-after-installed-Half-Life/</url>
+    
+    <content type="html"><![CDATA[<p>最近應該一堆人遇到這個問題，如果還有在玩CS1.6的話，最近因為Half-Life更新了所以導致CS1.6被弄壞了🤣</p><h2 id="解決方法"><a href="#解決方法" class="headerlink" title="解決方法"></a>解決方法</h2><p>把CS1.6調成Beta就好了</p><p><img src="https://i.imgur.com/QM6Ejmq.png" alt="Setting"></p><p>如果還是有問題的話那就把Half-Life也調成Beta</p><p><img src="https://i.imgur.com/b0LF6r5.png" alt="Image"></p><p>但有裝plugin,mod的朋友應該會發現怎麼都失效了，下一篇會提供可能的解法，但我自己還沒測試過</p><script type="text/javascript">(function (document) {    [].forEach.call(document.getElementsByClassName('fold'), function(panel) {        panel.getElementsByClassName('fold-title')[0].onclick = function() {            panel.classList.toggle("collapsed");            panel.classList.toggle("expanded");        }    });})(document);</script>]]></content>
+    
+    
+    <categories>
+      
+      <category>遊戲</category>
+      
+      <category>CS1.6</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CS1.6</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>134. Gas Station - Medium</title>
     <link href="/2023/11/24/134-Gas-Station-Medium/"/>
     <url>/2023/11/24/134-Gas-Station-Medium/</url>
@@ -473,9 +527,9 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Algorithms</tag>
+      
+      <tag>Stack</tag>
       
       <tag>筆記</tag>
       

@@ -16,25 +16,24 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前往題目  想法 沒什麼想法，甚至覺得是不是要用DP  思路一樣是Neetcode大大給的解法，也是我看到最好理解的    一開始先藉由兩個array的各自的總和比較，就可以看出是否沒有解，也就是-1。因為gas的sum &lt; cost的sum的時候代表就算從汽油最充足的地方開始一樣不可能抵達，因為起點也是終點 接著就知道一定會有解，那只要找到最靠左的gas[i] - cost[i]不為零的起">
+    <meta name="description" content="解決方法(未經測試)照著amxmodx官方文章這裡面的C和D項修改  (function (document) {     [].forEach.call(document.getElementsByClassName(&#39;fold&#39;), function(panel) {         panel.getElementsByClassName(&#39;fold-title&#39;)[0].onclick &#x3D;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="134. Gas Station - Medium">
-<meta property="og:url" content="https://f88083.github.io/2023/11/24/134-Gas-Station-Medium/index.html">
+<meta property="og:title" content="CS1.6如何修復plugin插件都不見了之安裝了Half-Life之後">
+<meta property="og:url" content="https://f88083.github.io/2023/11/25/CS1-6%E5%A6%82%E4%BD%95%E4%BF%AE%E5%BE%A9plugin%E6%8F%92%E4%BB%B6%E9%83%BD%E4%B8%8D%E8%A6%8B%E4%BA%86%E4%B9%8B%E5%AE%89%E8%A3%9D%E4%BA%86Half-Life%E4%B9%8B%E5%BE%8C/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="前往題目  想法 沒什麼想法，甚至覺得是不是要用DP  思路一樣是Neetcode大大給的解法，也是我看到最好理解的    一開始先藉由兩個array的各自的總和比較，就可以看出是否沒有解，也就是-1。因為gas的sum &lt; cost的sum的時候代表就算從汽油最充足的地方開始一樣不可能抵達，因為起點也是終點 接著就知道一定會有解，那只要找到最靠左的gas[i] - cost[i]不為零的起">
+<meta property="og:description" content="解決方法(未經測試)照著amxmodx官方文章這裡面的C和D項修改  (function (document) {     [].forEach.call(document.getElementsByClassName(&#39;fold&#39;), function(panel) {         panel.getElementsByClassName(&#39;fold-title&#39;)[0].onclick &#x3D;">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2023-11-24T10:45:44.000Z">
-<meta property="article:modified_time" content="2023-11-24T10:58:20.823Z">
+<meta property="og:image" content="https://i.imgur.com/8RKgkQS.png">
+<meta property="article:published_time" content="2023-11-25T16:27:45.000Z">
+<meta property="article:modified_time" content="2023-11-25T16:30:19.907Z">
 <meta property="article:author" content="Simon Lai">
-<meta property="article:tag" content="Leetcode">
-<meta property="article:tag" content="心得">
-<meta property="article:tag" content="Array">
-<meta property="article:tag" content="Greedy">
+<meta property="article:tag" content="CS1.6">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.imgur.com/8RKgkQS.png">
   
   
   
-  <title>134. Gas Station - Medium - Simon Lai&#39;s Blog</title>
+  <title>CS1.6如何修復plugin插件都不見了之安裝了Half-Life之後 - Simon Lai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -229,7 +228,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="134. Gas Station - Medium"></span>
+            <span id="subtitle" data-typed-text="CS1.6如何修復plugin插件都不見了之安裝了Half-Life之後"></span>
           
         </div>
 
@@ -240,8 +239,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-24 10:45" pubdate>
-          2023年11月24日 上午
+        <time datetime="2023-11-25 16:27" pubdate>
+          2023年11月25日 下午
         </time>
       </span>
     
@@ -252,7 +251,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k 字
+          278 字
         
       </span>
     
@@ -263,7 +262,7 @@
         
         
         
-          5 分鐘
+          2 分鐘
         
       </span>
     
@@ -300,51 +299,13 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">134. Gas Station - Medium</h1>
+            <h1 id="seo-header">CS1.6如何修復plugin插件都不見了之安裝了Half-Life之後</h1>
             
             
               <div class="markdown-body">
                 
-                <a class="btn" href="https://leetcode.com/problems/gas-station/description/"  title="134. Gas Station" target="_blank">前往題目</a>
-
-<h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul>
-<li>沒什麼想法，甚至覺得是不是要用DP</li>
-</ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>一樣是Neetcode大大給的解法，也是我看到最好理解的</p>
-<iframe width="100%" height="500" src="https://www.youtube.com/embed/lJwbPZGo05A" title="Gas Station - Greedy - Leetcode 134 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-<ol>
-<li>一開始先藉由兩個<code>array</code>的各自的總和比較，就可以看出是否沒有解，也就是<code>-1</code>。因為<code>gas</code>的<code>sum &lt; cost</code>的<code>sum</code>的時候代表就算從汽油最充足的地方開始一樣不可能抵達，因為起點也是終點</li>
-<li>接著就知道一定會有解，那只要找到最靠左的<code>gas[i] - cost[i]</code>不為零的起始點就一定是答案，因為一定有解，且只有唯一解</li>
-</ol>
-<p>這時候八成會想，為什麼不會在中間變成負的，但其實有解，只是在後頭。這種情況應該會產生多種解，所以不可能有這種情況，題目已經保證有解的話就是唯一解。至於為什麼我說”應該”，因為我不會證明🤣寫一些測資的結果都是有多種解，所以不會出現有中間斷掉的情況</p>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">canCompleteCircuit</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> gas<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> cost<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">// No solution</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span>gas<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span>cost<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-
-        <span class="token comment">// Guarantee a solution</span>
-        <span class="token keyword">int</span> total <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-
-        <span class="token comment">// Loop through the station</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> gas<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token comment">// Cal. the difference</span>
-            total <span class="token operator">+=</span> gas<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> cost<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-
-            <span class="token comment">// Skip the station that can't even start from</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>total <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                total <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-                res <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// Result will be the next station</span>
-            <span class="token punctuation">&#125;</span>  
-            
-        <span class="token punctuation">&#125;</span>
-
-        <span class="token keyword">return</span> res<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+                <h2 id="解決方法-未經測試"><a href="#解決方法-未經測試" class="headerlink" title="解決方法(未經測試)"></a>解決方法(未經測試)</h2><p>照著<a target="_blank" rel="noopener" href="http://www.amxmodx.org/doc/index.html?page=source/installation/manual.htm">amxmodx官方文章</a>這裡面的<code>C</code>和<code>D</code>項修改</p>
+<p><img src="https://i.imgur.com/8RKgkQS.png" srcset="/img/loading.gif" lazyload alt="Amxmodx article"></p>
 <script type="text/javascript">(function (document) {
     [].forEach.call(document.getElementsByClassName('fold'), function(panel) {
         panel.getElementsByClassName('fold-title')[0].onclick = function() {
@@ -370,12 +331,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  <a href="/categories/%E9%81%8A%E6%88%B2/" class="category-chain-item">遊戲</a>
   
   
     <span>></span>
     
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  <a href="/categories/%E9%81%8A%E6%88%B2/CS1-6/" class="category-chain-item">CS1.6</a>
   
   
 
@@ -392,13 +353,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Leetcode/" class="print-no-link">#Leetcode</a>
-      
-        <a href="/tags/%E5%BF%83%E5%BE%97/" class="print-no-link">#心得</a>
-      
-        <a href="/tags/Array/" class="print-no-link">#Array</a>
-      
-        <a href="/tags/Greedy/" class="print-no-link">#Greedy</a>
+        <a href="/tags/CS1-6/" class="print-no-link">#CS1.6</a>
       
     </div>
   
@@ -410,8 +365,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>134. Gas Station - Medium</div>
-      <div>https://f88083.github.io/2023/11/24/134-Gas-Station-Medium/</div>
+      <div>CS1.6如何修復plugin插件都不見了之安裝了Half-Life之後</div>
+      <div>https://f88083.github.io/2023/11/25/CS1-6如何修復plugin插件都不見了之安裝了Half-Life之後/</div>
     </div>
     <div class="license-meta">
       
@@ -423,7 +378,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>發布於</div>
-          <div>2023年11月24日</div>
+          <div>2023年11月25日</div>
         </div>
       
       
@@ -467,18 +422,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/25/%E5%A6%82%E4%BD%95%E4%BF%AE%E5%BE%A9CS16-FatalError-of-cannot-load-client-dll-after-installed-Half-Life/" title="如何修復CS1.6 FatalError of cannot load client.dll after installed Half Life">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">如何修復CS1.6 FatalError of cannot load client.dll after installed Half Life</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/11/23/%E5%A6%82%E4%BD%95%E4%BF%AE%E5%BE%A9Hexo-Fluid%E4%B8%BB%E9%A1%8CFold%E6%91%BA%E7%96%8A%E5%8A%9F%E8%83%BD%E9%8C%AF%E8%AA%A4%E7%9A%84%E5%95%8F%E9%A1%8C/" title="如何修復Hexo Fluid主題Fold摺疊功能錯誤的問題">
-                        <span class="hidden-mobile">如何修復Hexo Fluid主題Fold摺疊功能錯誤的問題</span>
+                      <a href="/2023/11/25/%E5%A6%82%E4%BD%95%E4%BF%AE%E5%BE%A9CS16-FatalError-of-cannot-load-client-dll-after-installed-Half-Life/" title="如何修復CS1.6 FatalError of cannot load client.dll after installed Half Life">
+                        <span class="hidden-mobile">如何修復CS1.6 FatalError of cannot load client.dll after installed Half Life</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
