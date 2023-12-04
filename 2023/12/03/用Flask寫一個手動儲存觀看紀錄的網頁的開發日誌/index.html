@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://i.imgur.com/p8nXvVH.png">
 <meta property="og:image" content="https://i.imgur.com/cVs0pjV.png">
 <meta property="article:published_time" content="2023-12-03T22:02:32.000Z">
-<meta property="article:modified_time" content="2023-12-03T22:10:10.550Z">
+<meta property="article:modified_time" content="2023-12-04T13:24:55.539Z">
 <meta property="article:author" content="Simon Lai">
 <meta property="article:tag" content="Flask">
 <meta property="article:tag" content="CRUD">
@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          15k 字
+          9.3k 字
         
       </span>
     
@@ -267,7 +267,7 @@
         
         
         
-          74 分鐘
+          45 分鐘
         
       </span>
     
@@ -325,267 +325,6 @@
 <li>數據庫方面使用sqlite，最輕量的就可以滿足我的需求的</li>
 </ul>
 <hr>
-<div class='fold collapsed'>
-        <div class='fold-title'>
-            打掉重來
-        </div>
-        <div class='fold-content'>
-            <h2 id="初始化…"><a href="#初始化…" class="headerlink" title="初始化…"></a>初始化…</h2><ul>
-<li>為了學得更快，我請教了ChatGPT老師，比起在茫茫網頁中搜尋到一堆不需要的資料，問問題和舉例的方式應該會更有效率一些。</li>
-<li>簡單概述了我想要的功能和使用甚麼工具，先讓gpt幫我寫一個最初的模板。</li>
-</ul>
-<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span> render_template<span class="token punctuation">,</span> request
-
-<span class="token comment"># Init. the Flask app</span>
-app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
-
-<span class="token comment"># List to store the viewing history</span>
-viewing_history <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-
-<span class="token comment"># Route to display the viewing history</span>
-<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
-<span class="token keyword">def</span> <span class="token function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'index.html'</span><span class="token punctuation">,</span> history<span class="token operator">=</span>viewing_history<span class="token punctuation">)</span>
-
-<span class="token comment"># Route to add a new entry to the viewing history</span>
-<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/add'</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'POST'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token keyword">def</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    title <span class="token operator">=</span> request<span class="token punctuation">.</span>form<span class="token punctuation">[</span><span class="token string">'title'</span><span class="token punctuation">]</span>
-    category <span class="token operator">=</span> request<span class="token punctuation">.</span>form<span class="token punctuation">[</span><span class="token string">'category'</span><span class="token punctuation">]</span>
-    progress <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>request<span class="token punctuation">.</span>form<span class="token punctuation">[</span><span class="token string">'progress'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-
-    new_entry <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">'title'</span><span class="token punctuation">:</span> title<span class="token punctuation">,</span> <span class="token string">'category'</span><span class="token punctuation">:</span> category<span class="token punctuation">,</span> <span class="token string">'progress'</span><span class="token punctuation">:</span> progress<span class="token punctuation">&#125;</span>
-    viewing_history<span class="token punctuation">.</span>append<span class="token punctuation">(</span>new_entry<span class="token punctuation">)</span>
-
-    <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'index.html'</span><span class="token punctuation">,</span> history<span class="token operator">=</span>viewing_history<span class="token punctuation">)</span>
-
-<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
-    app<span class="token punctuation">.</span>run<span class="token punctuation">(</span>debug<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
-
-<p>沒什麼問題，簡潔明瞭，html如下，唯一我目前看得到的缺點就是每次add都會重新render整個頁面，我也詢問了gpt此作法的妥當性。他說小網頁一定是沒問題的，但是有一定規模之後考量到速度問題，GPT建議了以下方法</p>
-<ul>
-<li>可以使用Ajax和伺服器溝通，更新及交換最少數據</li>
-<li>在後端設計一個RESTful API以供javascript呼叫及展示數據</li>
-<li>Websocket</li>
-<li>Frontend frameworks: React, Vue.js, or Angular</li>
-</ul>
-<figure><div class="code-wrapper"><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>X-UA-Compatible<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>IE=edge<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>viewport<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>width=device-width, initial-scale=1.0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>Viewing History<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>Viewing History<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span> <span class="token attr-name">border</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">></span></span>Title<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">></span></span>Category<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">></span></span>Progress<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>
-        &#123;% for entry in history %&#125;
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span>
-                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>&#123;&#123; entry.title &#125;&#125;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
-                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>&#123;&#123; entry.category &#125;&#125;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
-                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>&#123;&#123; entry.progress &#125;&#125;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>
-        &#123;% endfor %&#125;
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">></span></span>
-
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">></span></span>Add New Entry<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/add<span class="token punctuation">"</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>post<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>title<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Title:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>title<span class="token punctuation">"</span></span> <span class="token attr-name">required</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span>
-
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>category<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Category:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>category<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span>
-
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>progress<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Progress:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>number<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>progress<span class="token punctuation">"</span></span> <span class="token attr-name">required</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span>
-
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Add Entry<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
-
-<p>雖然想試試那些鼎鼎大名的React和Vue，但還是一切先從簡再說，不管怎麼說，直接reload整個頁面還是太蠢了，無法接受，所以暫時先用Ajax來寫。</p>
-<h2 id="嘗試使用AJAX"><a href="#嘗試使用AJAX" class="headerlink" title="嘗試使用AJAX"></a>嘗試使用AJAX</h2><p>一樣請教GPT老師，改為如下code(只附上片段)</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># Route to add a new entry to the viewing history</span>
-<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/add'</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'POST'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token keyword">def</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    title <span class="token operator">=</span> request<span class="token punctuation">.</span>form<span class="token punctuation">[</span><span class="token string">'title'</span><span class="token punctuation">]</span>
-    category <span class="token operator">=</span> request<span class="token punctuation">.</span>form<span class="token punctuation">[</span><span class="token string">'category'</span><span class="token punctuation">]</span>
-    progress <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>request<span class="token punctuation">.</span>form<span class="token punctuation">[</span><span class="token string">'progress'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-
-    new_entry <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">'title'</span><span class="token punctuation">:</span> title<span class="token punctuation">,</span> <span class="token string">'category'</span><span class="token punctuation">:</span> category<span class="token punctuation">,</span> <span class="token string">'progress'</span><span class="token punctuation">:</span> progress<span class="token punctuation">&#125;</span>
-    viewing_history<span class="token punctuation">.</span>append<span class="token punctuation">(</span>new_entry<span class="token punctuation">)</span>
-
-    <span class="token keyword">return</span> jsonify<span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">'success'</span><span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span> <span class="token string">'history'</span><span class="token punctuation">:</span> viewing_history<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
-
-<p>以及</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">></span></span>Add New Entry<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>addForm<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>title<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Title:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>title<span class="token punctuation">"</span></span> <span class="token attr-name">required</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span>
-
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>category<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Category:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>category<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span>
-
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>progress<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Progress:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>number<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>progress<span class="token punctuation">"</span></span> <span class="token attr-name">required</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span>
-
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value javascript language-javascript"><span class="token function">addEntry</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>Add Entry<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span>
-
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
-        <span class="token keyword">function</span> <span class="token function">addEntry</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">var</span> formData <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#addForm'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">serialize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            
-            $<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-                <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">'POST'</span><span class="token punctuation">,</span>
-                <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token string">'/add'</span><span class="token punctuation">,</span>
-                <span class="token literal-property property">data</span><span class="token operator">:</span> formData<span class="token punctuation">,</span>
-                <span class="token function-variable function">success</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                    <span class="token keyword">if</span> <span class="token punctuation">(</span>response<span class="token punctuation">.</span>success<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                        <span class="token function">updateTable</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>history<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                        <span class="token comment">// Clear form fields</span>
-                        <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#addForm'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-                        <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'Failed to add entry.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    <span class="token punctuation">&#125;</span>
-                <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-                <span class="token function-variable function">error</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'Failed to communicate with the server.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">&#125;</span>
-            <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-
-        <span class="token keyword">function</span> <span class="token function">updateTable</span><span class="token punctuation">(</span><span class="token parameter">history</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">var</span> tableBody <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> history<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                tableBody <span class="token operator">+=</span> <span class="token string">'&lt;tr>'</span><span class="token punctuation">;</span>
-                tableBody <span class="token operator">+=</span> <span class="token string">'&lt;td>'</span> <span class="token operator">+</span> history<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>title <span class="token operator">+</span> <span class="token string">'&lt;/td>'</span><span class="token punctuation">;</span>
-                tableBody <span class="token operator">+=</span> <span class="token string">'&lt;td>'</span> <span class="token operator">+</span> history<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>category <span class="token operator">+</span> <span class="token string">'&lt;/td>'</span><span class="token punctuation">;</span>
-                tableBody <span class="token operator">+=</span> <span class="token string">'&lt;td>'</span> <span class="token operator">+</span> history<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>progress <span class="token operator">+</span> <span class="token string">'&lt;/td>'</span><span class="token punctuation">;</span>
-                tableBody <span class="token operator">+=</span> <span class="token string">'&lt;/tr>'</span><span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>
-            <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'table tbody'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">html</span><span class="token punctuation">(</span>tableBody<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-    </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
-
-<p>總體的邏輯就是填好form點按鈕後就會觸發add()這個function，function執行完後會把資料準備好回傳，這時就到html這邊的javascript了。</p>
-<h2 id="資料儲存"><a href="#資料儲存" class="headerlink" title="資料儲存"></a>資料儲存</h2><p>為了方便初步開發，直接使用JSON存，然後也把viewing history都改成watching history，覺得比較順。</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># Path to the JSON file</span>
-JSON_FILE_PATH <span class="token operator">=</span> <span class="token string">'data/watching_history.json'</span>
-
-<span class="token comment"># Load initial watching history from the JSON file if it exists</span>
-<span class="token keyword">def</span> <span class="token function">load_watching_history</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">try</span><span class="token punctuation">:</span>
-        <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>JSON_FILE_PATH<span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token builtin">file</span><span class="token punctuation">:</span>
-            <span class="token keyword">return</span> json<span class="token punctuation">.</span>load<span class="token punctuation">(</span><span class="token builtin">file</span><span class="token punctuation">)</span>
-    <span class="token keyword">except</span> FileNotFoundError<span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-
-watching_history <span class="token operator">=</span> load_watching_history<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-<span class="token comment"># .....</span>
-
-<span class="token comment"># In add()</span>
-
-    <span class="token comment"># Save updated watching history to the JSON file</span>
-    <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>JSON_FILE_PATH<span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token builtin">file</span><span class="token punctuation">:</span>
-        json<span class="token punctuation">.</span>dump<span class="token punctuation">(</span>watching_history<span class="token punctuation">,</span> <span class="token builtin">file</span><span class="token punctuation">,</span> indent<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
-
-<p>2023&#x2F;11&#x2F;13</p>
-<hr>
-<h2 id="刪除功能"><a href="#刪除功能" class="headerlink" title="刪除功能"></a>刪除功能</h2><p>這兩天嘗試開發了刪除功能，昨天bug一直抓不出來是怎麼回事，最後發現我多加了一個引號，難怪每個刪除按鈕的index後面都跟著一個&amp;quot</p>
-<p>然後發現updateTable()有點bug，每次新增或刪除，頂端的title row都會不見，發現是因為function裡沒有包含title row，所以只要一更新就不見了。</p>
-<p>於是把updateTable()改為如下:</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">updateTable</span><span class="token punctuation">(</span><span class="token parameter">history</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">var</span> tableBody <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>
-    
-    <span class="token comment">// Add title row</span>
-    tableBody <span class="token operator">+=</span> <span class="token string">'&lt;tr>'</span><span class="token punctuation">;</span>
-    tableBody <span class="token operator">+=</span> <span class="token string">'&lt;th>Title&lt;/th>'</span><span class="token punctuation">;</span>
-    tableBody <span class="token operator">+=</span> <span class="token string">'&lt;th>Category&lt;/th>'</span><span class="token punctuation">;</span>
-    tableBody <span class="token operator">+=</span> <span class="token string">'&lt;th>Progress&lt;/th>'</span><span class="token punctuation">;</span>
-    tableBody <span class="token operator">+=</span> <span class="token string">'&lt;/tr>'</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> history<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        tableBody <span class="token operator">+=</span> <span class="token string">'&lt;tr>'</span><span class="token punctuation">;</span>
-        tableBody <span class="token operator">+=</span> <span class="token string">'&lt;td>'</span> <span class="token operator">+</span> history<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>title <span class="token operator">+</span> <span class="token string">'&lt;/td>'</span><span class="token punctuation">;</span>
-        tableBody <span class="token operator">+=</span> <span class="token string">'&lt;td>'</span> <span class="token operator">+</span> history<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>category <span class="token operator">+</span> <span class="token string">'&lt;/td>'</span><span class="token punctuation">;</span>
-        tableBody <span class="token operator">+=</span> <span class="token string">'&lt;td>'</span> <span class="token operator">+</span> history<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>progress <span class="token operator">+</span> <span class="token string">'&lt;/td>'</span><span class="token punctuation">;</span>
-        tableBody <span class="token operator">+=</span> <span class="token string">'&lt;td>&lt;button onclick="deleteRow('</span> <span class="token operator">+</span> i <span class="token operator">+</span> <span class="token string">')">Delete&lt;/button>&lt;/td>'</span><span class="token punctuation">;</span>
-        tableBody <span class="token operator">+=</span> <span class="token string">'&lt;/tr>'</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'table tbody'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">html</span><span class="token punctuation">(</span>tableBody<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
-
-<p>刪除列的方法如下:</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">deleteRow</span><span class="token punctuation">(</span><span class="token parameter">index</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// Confirm deletion with the user</span>
-    <span class="token keyword">var</span> confirmDelete <span class="token operator">=</span> <span class="token function">confirm</span><span class="token punctuation">(</span><span class="token string">'Are you sure you want to delete this history?'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>confirmDelete<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-
-        <span class="token comment">// Save updated watching history to the JSON file</span>
-        $<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-            <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">'POST'</span><span class="token punctuation">,</span>
-            <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token string">'/delete'</span><span class="token punctuation">,</span>
-            <span class="token literal-property property">data</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span> <span class="token literal-property property">index</span><span class="token operator">:</span> index <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-            <span class="token function-variable function">success</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>response<span class="token punctuation">.</span>success<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                    <span class="token comment">// Update the table with the modified history</span>
-                    <span class="token function">updateTable</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>history<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-                    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'Failed to delete entry.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">&#125;</span>
-            <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-            <span class="token function-variable function">error</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'Failed to communicate with the server.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
-
-<p>雖然目前醜醜的，每行後面都帶一個Delete，但管他的，功能先出來再說:D下一步是做下拉選單，例如Category是作品類型，可以下拉選擇集數、季數、話數、卷數等等。</p>
-<p>2023&#x2F;11&#x2F;15</p>
-<hr>
-<h2 id="下拉選擇季-卷-話etc"><a href="#下拉選擇季-卷-話etc" class="headerlink" title="下拉選擇季&#x2F;卷&#x2F;話etc"></a>下拉選擇季&#x2F;卷&#x2F;話etc</h2><p>例如<code>季</code>可以這樣寫，<code>value=</code>是實際會存到JSON裡的數值</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>season<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Season:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>select</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>season<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Spring<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Spring<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Summer<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Summer<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Autumn<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Autumn<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Winter<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Winter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
-
-<p>前端寫好後，就把後端接收資料的地方照著添加就行了</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># Route to add a new entry to the watching history</span>
-<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">"/add"</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">"POST"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token keyword">def</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    title <span class="token operator">=</span> request<span class="token punctuation">.</span>form<span class="token punctuation">[</span><span class="token string">"title"</span><span class="token punctuation">]</span>
-    season <span class="token operator">=</span> request<span class="token punctuation">.</span>form<span class="token punctuation">[</span><span class="token string">"season"</span><span class="token punctuation">]</span>
-    value <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>request<span class="token punctuation">.</span>form<span class="token punctuation">[</span><span class="token string">"value"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-    episode <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>request<span class="token punctuation">.</span>form<span class="token punctuation">[</span><span class="token string">"episode"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-    progress <span class="token operator">=</span> request<span class="token punctuation">.</span>form<span class="token punctuation">[</span><span class="token string">"progress"</span><span class="token punctuation">]</span>
-
-    new_entry <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
-        <span class="token string">"title"</span><span class="token punctuation">:</span> title<span class="token punctuation">,</span>
-        <span class="token string">"season"</span><span class="token punctuation">:</span> season<span class="token punctuation">,</span>
-        <span class="token string">"value"</span><span class="token punctuation">:</span> value<span class="token punctuation">,</span>
-        <span class="token string">"episode"</span><span class="token punctuation">:</span> episode<span class="token punctuation">,</span>
-        <span class="token string">"progress"</span><span class="token punctuation">:</span> progress<span class="token punctuation">,</span>
-    <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
-
-<p>2023&#x2F;11&#x2F;21</p>
-
-        </div>
-    </div>
-
 <p>GPT老師問一問GG了，ajax+flask+jinja，讓我整個卡在update功能，眼見不會的太多了，對於全部都不熟悉，我還是決定打掉重來比較快，於是參考了這個<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=Z1RJmh_OqeA&t=2491s">影片</a>做一遍，對於flask和jinja更熟悉了，就來試試看是否能改造為我自己的網頁</p>
 <blockquote>
 <p>Code都是參考那部影片裡去做修改的，在另一篇<a href="https://f88083.github.io/2023/11/27/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Flask%E5%92%8CSqlalchemy%E5%AF%A6%E4%BD%9C%E4%B8%80%E5%80%8B%E5%9F%BA%E6%9C%AC%E7%9A%84CRUD%E7%B6%B2%E9%A0%81/">文章</a>裡有詳細流程</p>
@@ -620,7 +359,8 @@ db <span class="token operator">=</span> SQLAlchemy<span class="token punctuatio
     <span class="token keyword">def</span> <span class="token function">__repr__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> <span class="token string">"&lt;Watching History %r>"</span> <span class="token operator">%</span> self<span class="token punctuation">.</span><span class="token builtin">id</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
-<p>不太懂最後這個<code>__repr__</code>到底return到哪去了</p>
+<p><code>__repr__</code>是一個自我描述的方法，repr(物件)就會回傳<code>__repr__</code>function裡的東西</p>
+<p>請參見: <a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10194593">repr與str雜談———暴風雨前的輕鬆小品技術文</a></p>
 <p>好奇心驅使下寫了一個簡短的python來印出sqlite的內容</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> sqlite3
 
@@ -635,7 +375,8 @@ cursor<span class="token punctuation">.</span>execute<span class="token punctuat
 
 <span class="token keyword">print</span><span class="token punctuation">(</span>cursor<span class="token punctuation">.</span>fetchall<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
-<p>不懂<code>id</code>是怎麼被創建的，可能是<code>primary_key</code>預設的行為</p>
+<p>不懂<code>id</code>是怎麼被創建的，可能是<code>primary_key</code>預設的行為，研究了一下，是<code>id</code>裡的<code>autoincrement</code> argument默認為<code>true</code></p>
+<p>請見第一個回答: <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/20848300/unable-to-create-autoincrementing-primary-key-with-flask-sqlalchemy">unable to create autoincrementing primary key with flask-sqlalchemy</a></p>
 <h2 id="Create開發"><a href="#Create開發" class="headerlink" title="Create開發"></a>Create開發</h2><figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># Route to display the watching history</span>
 <span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">"POST"</span><span class="token punctuation">,</span> <span class="token string">"GET"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 <span class="token keyword">def</span> <span class="token function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -1055,6 +796,12 @@ cursor<span class="token punctuation">.</span>execute<span class="token punctuat
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2023/12/04/417-Pacific-Atlantic-Water-Flow-Medium/" title="417. Pacific Atlantic Water Flow - Medium">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">417. Pacific Atlantic Water Flow - Medium</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
