@@ -27,9 +27,9 @@
 <meta property="article:modified_time" content="2023-11-23T17:29:04.493Z">
 <meta property="article:author" content="Simon Lai">
 <meta property="article:tag" content="Algorithms">
+<meta property="article:tag" content="Queue">
 <meta property="article:tag" content="筆記">
 <meta property="article:tag" content="演算法">
-<meta property="article:tag" content="Queue">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -74,7 +74,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"f88083.github.io","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":35,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":"G-HJLTHPCQMP"},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"f88083.github.io","root":"/","version":"1.9.6","typing":{"enable":true,"typeSpeed":35,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":"G-HJLTHPCQMP"},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -145,7 +145,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/">
+              <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
                 <span>首頁</span>
               </a>
@@ -157,7 +157,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/archives/">
+              <a class="nav-link" href="/archives/" target="_self">
                 <i class="iconfont icon-archive-fill"></i>
                 <span>歸檔</span>
               </a>
@@ -169,7 +169,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/">
+              <a class="nav-link" href="/categories/" target="_self">
                 <i class="iconfont icon-category-fill"></i>
                 <span>分類</span>
               </a>
@@ -181,7 +181,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/tags/">
+              <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>標籤</span>
               </a>
@@ -193,7 +193,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/about/">
+              <a class="nav-link" href="/about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
                 <span>關於</span>
               </a>
@@ -252,7 +252,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k 字
+          460 字
         
       </span>
     
@@ -263,7 +263,7 @@
         
         
         
-          7 分鐘
+          3 分鐘
         
       </span>
     
@@ -353,14 +353,7 @@
 </ul>
 <p>說實話聽到這些我很震驚，因為覺得發展這麼多年的Java，他的library應該是千錘百鍊，現在應該是最optimal的狀態，但沒想到有這些問題。這就是為何這門課，教授也是從頭自己打造API。</p>
 <p>就是這些簡單的資料結構，打造出千變萬化的功能與應用，PPT裡也舉了一些例子。演算法蓬勃發展的時期至今不到百年，教授說可能還有很多演算法還沒有被發現，真是激勵人心的一句話😄雖然知道自己不太可能找到新的演算法，但會讓人期待又會有哪些未知的演算法出現。</p>
-<script type="text/javascript">(function (document) {
-    [].forEach.call(document.getElementsByClassName('fold'), function(panel) {
-        panel.getElementsByClassName('fold-title')[0].onclick = function() {
-            panel.classList.toggle("collapsed");
-            panel.classList.toggle("expanded");
-        }
-    });
-})(document);</script>
+
                 
               </div>
             
@@ -395,11 +388,11 @@
       
         <a href="/tags/Algorithms/" class="print-no-link">#Algorithms</a>
       
+        <a href="/tags/Queue/" class="print-no-link">#Queue</a>
+      
         <a href="/tags/%E7%AD%86%E8%A8%98/" class="print-no-link">#筆記</a>
       
         <a href="/tags/%E6%BC%94%E7%AE%97%E6%B3%95/" class="print-no-link">#演算法</a>
-      
-        <a href="/tags/Queue/" class="print-no-link">#Queue</a>
       
     </div>
   
