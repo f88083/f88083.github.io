@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>57. Insert Interval - Medium</title>
+    <link href="/2023/12/06/57-Insert-Interval-Medium/"/>
+    <url>/2023/12/06/57-Insert-Interval-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/insert-interval/description/"  title="57. Insert Interval" target="_blank">前往題目</a><p>這題之前做過，所以照搬一下</p><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>這題卡在不知道如何處理interval重疊的問題</li><li>但其實很簡單，因為有重疊的部分只要取左值最小與右值最大就可以了，用以下兩個語句</li></ul><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">newInterval<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>currInterval<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> newInterval<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Merge the interval</span>newInterval<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>currInterval<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> newInterval<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure><ul><li>這題大家都是用新的arraylist來儲存，因為好像沒辦法預測array需要多大的空間</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>開新的arraylist</li><li>我們需要看過所有的array，因此遍歷所有intervals</li><li>關鍵是如何處理merge的問題</li><li>分成三個條件<ol><li>當newInterval小於currentInterval（因為sorted所以只要看currentInterval左邊那位是否小於newInterval右邊那位）</li><li>當newInterval大於currentInterval，直接加currentInterval到result array就好了</li><li>剩下的就只有相交的可能，Merge很簡單，但記得不要return，因為不知道有沒有和之後的interval相交</li></ol></li><li>Return前記得把最後的interval加上去</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Flask實作單用戶登入-擴展原有project</title>
     <link href="/2023/12/06/Flask%E5%AF%A6%E4%BD%9C%E5%96%AE%E7%94%A8%E6%88%B6%E7%99%BB%E5%85%A5-%E6%93%B4%E5%B1%95%E5%8E%9F%E6%9C%89project/"/>
     <url>/2023/12/06/Flask%E5%AF%A6%E4%BD%9C%E5%96%AE%E7%94%A8%E6%88%B6%E7%99%BB%E5%85%A5-%E6%93%B4%E5%B1%95%E5%8E%9F%E6%9C%89project/</url>
@@ -1092,9 +1119,9 @@
     
     <tags>
       
-      <tag>Algorithms</tag>
-      
       <tag>Stack</tag>
+      
+      <tag>Algorithms</tag>
       
       <tag>筆記</tag>
       
