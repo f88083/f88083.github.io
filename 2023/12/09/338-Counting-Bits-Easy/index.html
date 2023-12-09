@@ -16,24 +16,27 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前往題目  這題之前做過，所以照搬一下 想法 這題卡在不知道如何處理interval重疊的問題 但其實很簡單，因為有重疊的部分只要取左值最小與右值最大就可以了，用以下兩個語句  newInterval[0] &#x3D; Math.min(currInterval[0], newInterval[0]); &#x2F;&#x2F; Merge the interval newInterval[1] &#x3D; Math.max(cur">
+    <meta name="description" content="前往題目  想法 毫無想法，只想得到轉成binary然後直接疊代  思路 觀察0~8的binary會發現有一定規律，如下圖 Offset從0,1,4,8,16，兩倍成長 只要1加上最近的offset的值就是答案，那個1就是MSB(Most significant bit)  可能看解是有點模糊，但是看code應該就會清楚很多了 Code  class Solution &#123;     pub">
 <meta property="og:type" content="article">
-<meta property="og:title" content="57. Insert Interval - Medium">
-<meta property="og:url" content="https://f88083.github.io/2023/12/06/57-Insert-Interval-Medium/index.html">
+<meta property="og:title" content="338. Counting Bits - Easy">
+<meta property="og:url" content="https://f88083.github.io/2023/12/09/338-Counting-Bits-Easy/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="前往題目  這題之前做過，所以照搬一下 想法 這題卡在不知道如何處理interval重疊的問題 但其實很簡單，因為有重疊的部分只要取左值最小與右值最大就可以了，用以下兩個語句  newInterval[0] &#x3D; Math.min(currInterval[0], newInterval[0]); &#x2F;&#x2F; Merge the interval newInterval[1] &#x3D; Math.max(cur">
+<meta property="og:description" content="前往題目  想法 毫無想法，只想得到轉成binary然後直接疊代  思路 觀察0~8的binary會發現有一定規律，如下圖 Offset從0,1,4,8,16，兩倍成長 只要1加上最近的offset的值就是答案，那個1就是MSB(Most significant bit)  可能看解是有點模糊，但是看code應該就會清楚很多了 Code  class Solution &#123;     pub">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2023-12-06T15:58:46.000Z">
-<meta property="article:modified_time" content="2023-12-06T16:15:08.454Z">
+<meta property="og:image" content="https://i.imgur.com/FHZdNJ7.png">
+<meta property="article:published_time" content="2023-12-09T11:17:15.000Z">
+<meta property="article:modified_time" content="2023-12-09T11:36:02.282Z">
 <meta property="article:author" content="Simon Lai">
 <meta property="article:tag" content="Leetcode">
 <meta property="article:tag" content="心得">
-<meta property="article:tag" content="Array">
+<meta property="article:tag" content="Dynamic Programming">
+<meta property="article:tag" content="Bit Manipulation">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.imgur.com/FHZdNJ7.png">
   
   
   
-  <title>57. Insert Interval - Medium - Simon Lai&#39;s Blog</title>
+  <title>338. Counting Bits - Easy - Simon Lai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -228,7 +231,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="57. Insert Interval - Medium"></span>
+            <span id="subtitle" data-typed-text="338. Counting Bits - Easy"></span>
           
         </div>
 
@@ -239,8 +242,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-06 15:58" pubdate>
-          2023年12月6日 下午
+        <time datetime="2023-12-09 11:17" pubdate>
+          2023年12月9日 上午
         </time>
       </span>
     
@@ -251,7 +254,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          210 字
+          83 字
         
       </span>
     
@@ -262,7 +265,7 @@
         
         
         
-          2 分鐘
+          1 分鐘
         
       </span>
     
@@ -299,61 +302,43 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">57. Insert Interval - Medium</h1>
+            <h1 id="seo-header">338. Counting Bits - Easy</h1>
             
             
               <div class="markdown-body">
                 
-                <a class="btn" href="https://leetcode.com/problems/insert-interval/description/"  title="57. Insert Interval" target="_blank">前往題目</a>
+                <a class="btn" href="https://leetcode.com/problems/counting-bits/description/"  title="338. Counting Bits" target="_blank">前往題目</a>
 
-<p>這題之前做過，所以照搬一下</p>
 <h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul>
-<li>這題卡在不知道如何處理interval重疊的問題</li>
-<li>但其實很簡單，因為有重疊的部分只要取左值最小與右值最大就可以了，用以下兩個語句</li>
-</ul>
-<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">newInterval<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>currInterval<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> newInterval<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Merge the interval</span>
-newInterval<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>currInterval<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> newInterval<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
-
-<ul>
-<li>這題大家都是用新的arraylist來儲存，因為好像沒辦法預測array需要多大的空間</li>
+<li>毫無想法，只想得到轉成binary然後直接疊代</li>
 </ul>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
-<li>開新的arraylist</li>
-<li>我們需要看過所有的array，因此遍歷所有intervals</li>
-<li>關鍵是如何處理merge的問題</li>
-<li>分成三個條件<ol>
-<li>當newInterval小於currentInterval（因為sorted所以只要看currentInterval左邊那位是否小於newInterval右邊那位）</li>
-<li>當newInterval大於currentInterval，直接加currentInterval到result array就好了</li>
-<li>剩下的就只有相交的可能，Merge很簡單，但記得不要return，因為不知道有沒有和之後的interval相交</li>
+<li>觀察<code>0~8</code>的<code>binary</code>會發現有一定規律，如下圖<br><img src="https://i.imgur.com/FHZdNJ7.png" srcset="/img/loading.gif" lazyload alt="0~9 Binary"></li>
+<li><code>Offset</code>從<code>0,1,4,8,16</code>，兩倍成長</li>
+<li>只要<code>1</code>加上最近的<code>offset</code>的值就是答案，那個<code>1</code>就是<code>MSB(Most significant bit)</code></li>
 </ol>
-</li>
-<li>Return前記得把最後的interval加上去</li>
-</ol>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">insert</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> intervals<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> newInterval<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token class-name">List</span><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">></span> result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<p>可能看解是有點模糊，但是看<code>code</code>應該就會清楚很多了</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/RyBM56RIWrM" title="Counting Bits - Dynamic Programming - Leetcode 338 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-        <span class="token comment">// Check and iterate all the intervals</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> currInterval<span class="token operator">:</span> intervals<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-          <span class="token comment">// When newInterval is smaller than current interval</span>
-          <span class="token keyword">if</span><span class="token punctuation">(</span>newInterval<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span> currInterval<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-            result<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>newInterval<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Add to the result array</span>
-            newInterval <span class="token operator">=</span> currInterval<span class="token punctuation">;</span> <span class="token comment">// currInterval to be the next to insert</span>
-          <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>currInterval<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span> newInterval<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token comment">// When newInterval is larger</span>
-            result<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>currInterval<span class="token punctuation">)</span><span class="token punctuation">;</span>
-          <span class="token punctuation">&#125;</span> <span class="token keyword">else</span><span class="token punctuation">&#123;</span> <span class="token comment">// Intervals are overlapping</span>
-            newInterval<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>currInterval<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> newInterval<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Merge the interval</span>
-            newInterval<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>currInterval<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> newInterval<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-          <span class="token punctuation">&#125;</span>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">countBits</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> dp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> offset <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
 
+        dp<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// 更新offset</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>offset <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">==</span> i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                offset <span class="token operator">=</span> i<span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+
+            dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">+</span> dp<span class="token punctuation">[</span>i <span class="token operator">-</span> offset<span class="token punctuation">]</span><span class="token punctuation">;</span>
         <span class="token punctuation">&#125;</span>
 
-        <span class="token comment">// Insert the last interval</span>
-        result<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>newInterval<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">return</span> result<span class="token punctuation">.</span><span class="token function">toArray</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>result<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> dp<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
                 
               </div>
@@ -377,7 +362,7 @@ newInterval<span class="token punctuation">[</span><span class="token number">1<
   
     <span>></span>
     
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
   
   
 
@@ -398,7 +383,9 @@ newInterval<span class="token punctuation">[</span><span class="token number">1<
       
         <a href="/tags/%E5%BF%83%E5%BE%97/" class="print-no-link">#心得</a>
       
-        <a href="/tags/Array/" class="print-no-link">#Array</a>
+        <a href="/tags/Dynamic-Programming/" class="print-no-link">#Dynamic Programming</a>
+      
+        <a href="/tags/Bit-Manipulation/" class="print-no-link">#Bit Manipulation</a>
       
     </div>
   
@@ -410,8 +397,8 @@ newInterval<span class="token punctuation">[</span><span class="token number">1<
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>57. Insert Interval - Medium</div>
-      <div>https://f88083.github.io/2023/12/06/57-Insert-Interval-Medium/</div>
+      <div>338. Counting Bits - Easy</div>
+      <div>https://f88083.github.io/2023/12/09/338-Counting-Bits-Easy/</div>
     </div>
     <div class="license-meta">
       
@@ -423,7 +410,7 @@ newInterval<span class="token punctuation">[</span><span class="token number">1<
       
         <div class="license-meta-item license-meta-date">
           <div>發布於</div>
-          <div>2023年12月6日</div>
+          <div>2023年12月9日</div>
         </div>
       
       
@@ -467,18 +454,12 @@ newInterval<span class="token punctuation">[</span><span class="token number">1<
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/08/692-Top-K-Frequent-Words-Medium/" title="692. Top K Frequent Words - Medium">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">692. Top K Frequent Words - Medium</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/06/Flask%E5%AF%A6%E4%BD%9C%E5%96%AE%E7%94%A8%E6%88%B6%E7%99%BB%E5%85%A5-%E6%93%B4%E5%B1%95%E5%8E%9F%E6%9C%89project/" title="Flask實作單用戶登入-擴展原有project">
-                        <span class="hidden-mobile">Flask實作單用戶登入-擴展原有project</span>
+                      <a href="/2023/12/08/542-01-Matrix-Medium/" title="542. 01 Matrix - Medium">
+                        <span class="hidden-mobile">542. 01 Matrix - Medium</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
