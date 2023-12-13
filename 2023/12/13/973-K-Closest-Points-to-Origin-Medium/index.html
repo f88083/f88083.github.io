@@ -16,27 +16,26 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前往題目  想法 毫無想法，只想得到轉成binary然後直接疊代  思路 觀察0~8的binary會發現有一定規律，如下圖 Offset從0,1,4,8,16，兩倍成長 只要1加上最近的offset的值就是答案，那個1就是MSB(Most significant bit)  可能看解是有點模糊，但是看code應該就會清楚很多了 Code  class Solution &#123;     pub">
+    <meta name="description" content="前往題目  這題之前寫過心得，照搬一下 心得 這題非常妙，用到的資料結構也不一樣，只要知道如何使用就很簡單 使用MinHeap或是MaxHeap就可以完美解決 使用MaxHeap的時間複雜度更好一點 PriorityQueue會根據Comparator來排序，排序時間是logN(因為使用heap，樹結構)，N是項數  思路 (以MinHeap為例子) 新建一個MinHeap 把point都放入mi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="338. Counting Bits - Easy">
-<meta property="og:url" content="https://f88083.github.io/2023/12/09/338-Counting-Bits-Easy/index.html">
+<meta property="og:title" content="973. K Closest Points to Origin - Medium">
+<meta property="og:url" content="https://f88083.github.io/2023/12/13/973-K-Closest-Points-to-Origin-Medium/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="前往題目  想法 毫無想法，只想得到轉成binary然後直接疊代  思路 觀察0~8的binary會發現有一定規律，如下圖 Offset從0,1,4,8,16，兩倍成長 只要1加上最近的offset的值就是答案，那個1就是MSB(Most significant bit)  可能看解是有點模糊，但是看code應該就會清楚很多了 Code  class Solution &#123;     pub">
+<meta property="og:description" content="前往題目  這題之前寫過心得，照搬一下 心得 這題非常妙，用到的資料結構也不一樣，只要知道如何使用就很簡單 使用MinHeap或是MaxHeap就可以完美解決 使用MaxHeap的時間複雜度更好一點 PriorityQueue會根據Comparator來排序，排序時間是logN(因為使用heap，樹結構)，N是項數  思路 (以MinHeap為例子) 新建一個MinHeap 把point都放入mi">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://i.imgur.com/FHZdNJ7.png">
-<meta property="article:published_time" content="2023-12-09T11:17:15.000Z">
-<meta property="article:modified_time" content="2023-12-09T11:36:02.282Z">
+<meta property="article:published_time" content="2023-12-13T10:27:17.000Z">
+<meta property="article:modified_time" content="2023-12-13T10:31:44.082Z">
 <meta property="article:author" content="Simon Lai">
 <meta property="article:tag" content="Leetcode">
 <meta property="article:tag" content="心得">
-<meta property="article:tag" content="Dynamic Programming">
-<meta property="article:tag" content="Bit Manipulation">
+<meta property="article:tag" content="Array">
+<meta property="article:tag" content="Heap">
+<meta property="article:tag" content="Priority Queue">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://i.imgur.com/FHZdNJ7.png">
   
   
   
-  <title>338. Counting Bits - Easy - Simon Lai&#39;s Blog</title>
+  <title>973. K Closest Points to Origin - Medium - Simon Lai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -231,7 +230,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="338. Counting Bits - Easy"></span>
+            <span id="subtitle" data-typed-text="973. K Closest Points to Origin - Medium"></span>
           
         </div>
 
@@ -242,8 +241,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-09 11:17" pubdate>
-          2023年12月9日 上午
+        <time datetime="2023-12-13 10:27" pubdate>
+          2023年12月13日 上午
         </time>
       </span>
     
@@ -254,7 +253,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          83 字
+          182 字
         
       </span>
     
@@ -302,43 +301,79 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">338. Counting Bits - Easy</h1>
+            <h1 id="seo-header">973. K Closest Points to Origin - Medium</h1>
             
             
               <div class="markdown-body">
                 
-                <a class="btn" href="https://leetcode.com/problems/counting-bits/description/"  title="338. Counting Bits" target="_blank">前往題目</a>
+                <a class="btn" href="https://leetcode.com/problems/k-closest-points-to-origin/description/"  title="973. K Closest Points to Origin" target="_blank">前往題目</a>
 
-<h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul>
-<li>毫無想法，只想得到轉成binary然後直接疊代</li>
+<p>這題之前寫過心得，照搬一下</p>
+<h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><ul>
+<li>這題非常妙，用到的資料結構也不一樣，只要知道如何使用就很簡單</li>
+<li>使用<code>MinHeap</code>或是<code>MaxHeap</code>就可以完美解決</li>
+<li>使用<code>MaxHeap</code>的時間複雜度更好一點</li>
+<li><code>PriorityQueue</code>會根據<code>Comparator</code>來排序，排序時間是<code>logN</code>(因為使用<code>heap</code>，樹結構)，N是項數</li>
 </ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
-<li>觀察<code>0~8</code>的<code>binary</code>會發現有一定規律，如下圖<br><img src="https://i.imgur.com/FHZdNJ7.png" srcset="/img/loading.gif" lazyload alt="0~9 Binary"></li>
-<li><code>Offset</code>從<code>0,1,4,8,16</code>，兩倍成長</li>
-<li>只要<code>1</code>加上最近的<code>offset</code>的值就是答案，那個<code>1</code>就是<code>MSB(Most significant bit)</code></li>
+<h2 id="思路-以MinHeap為例子"><a href="#思路-以MinHeap為例子" class="headerlink" title="思路 (以MinHeap為例子)"></a>思路 (以MinHeap為例子)</h2><ol>
+<li>新建一個<code>MinHeap</code></li>
+<li>把<code>point</code>都放入<code>minHeap</code></li>
+<li>然後就取出<code>k</code>個回傳，因為<code>MinHeap</code>是由小到大排序，使用<code>Heap</code>的原因是可以在插入數值時可以<code>logN</code>插入，使用<code>Array</code>會是<code>N</code>次</li>
 </ol>
-<p>可能看解是有點模糊，但是看<code>code</code>應該就會清楚很多了</p>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/RyBM56RIWrM" title="Counting Bits - Dynamic Programming - Leetcode 338 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<div class="note note-info">
+            <p>以下使用<code>PriorityQueue</code>來模擬<code>MinHeap</code></p>
+          </div>
 
-<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">countBits</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> dp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> offset <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><h3 id="MinHeap做法-NlogN"><a href="#MinHeap做法-NlogN" class="headerlink" title="MinHeap做法(NlogN)"></a>MinHeap做法(NlogN)</h3><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">kClosest</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> points<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// Use min heap</span>
+    <span class="token class-name">PriorityQueue</span><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">></span> q <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PriorityQueue</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">-></span>
+        <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">compare</span><span class="token punctuation">(</span>
+            <span class="token punctuation">(</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> a<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">*</span> a<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token punctuation">(</span>b<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> b<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> b<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">*</span> b<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        dp<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token comment">// 更新offset</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>offset <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">==</span> i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                offset <span class="token operator">=</span> i<span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>
-
-            dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">+</span> dp<span class="token punctuation">[</span>i <span class="token operator">-</span> offset<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-
-        <span class="token keyword">return</span> dp<span class="token punctuation">;</span>
+    <span class="token comment">// Compare and add to form a min heap</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> point <span class="token operator">:</span> points<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        q<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>point<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+    <span class="token comment">// Storage for the result arrays</span>
+    <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> res <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Collect result until k elements</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> k<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> tmp <span class="token operator">=</span> q<span class="token punctuation">.</span><span class="token function">poll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Pop the head, which is the closest point to the origin</span>
+        res<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> tmp<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        res<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> tmp<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h3 id="MaxHeap作法-NlogK"><a href="#MaxHeap作法-NlogK" class="headerlink" title="MaxHeap作法(NlogK)"></a>MaxHeap作法(NlogK)</h3><p>只改了<code>compare</code>的順序，以及<code>q</code>超過<code>k size</code>就去掉<code>head</code>，因為<code>head</code>永遠是最大的，但我們不需要</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">kClosest</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> points<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">PriorityQueue</span><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">></span> q <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PriorityQueue</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">-></span>
+        <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">compare</span><span class="token punctuation">(</span>
+            <span class="token punctuation">(</span>b<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> b<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> b<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">*</span> b<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token punctuation">(</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> a<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">*</span> a<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//only this is changed (swapped)</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> point <span class="token operator">:</span> points<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        q<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>point<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//remove when size increase k</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>q<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            q<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> ans <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> k<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> cur <span class="token operator">=</span> q<span class="token punctuation">.</span><span class="token function">poll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ans<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> cur<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        ans<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> cur<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
                 
               </div>
@@ -362,7 +397,7 @@
   
     <span>></span>
     
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
   
   
 
@@ -383,9 +418,11 @@
       
         <a href="/tags/%E5%BF%83%E5%BE%97/" class="print-no-link">#心得</a>
       
-        <a href="/tags/Dynamic-Programming/" class="print-no-link">#Dynamic Programming</a>
+        <a href="/tags/Array/" class="print-no-link">#Array</a>
       
-        <a href="/tags/Bit-Manipulation/" class="print-no-link">#Bit Manipulation</a>
+        <a href="/tags/Heap/" class="print-no-link">#Heap</a>
+      
+        <a href="/tags/Priority-Queue/" class="print-no-link">#Priority Queue</a>
       
     </div>
   
@@ -397,8 +434,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>338. Counting Bits - Easy</div>
-      <div>https://f88083.github.io/2023/12/09/338-Counting-Bits-Easy/</div>
+      <div>973. K Closest Points to Origin - Medium</div>
+      <div>https://f88083.github.io/2023/12/13/973-K-Closest-Points-to-Origin-Medium/</div>
     </div>
     <div class="license-meta">
       
@@ -410,7 +447,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>發布於</div>
-          <div>2023年12月9日</div>
+          <div>2023年12月13日</div>
         </div>
       
       
@@ -454,9 +491,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/11/300-Longest-Increasing-Subsequence-Medium/" title="300. Longest Increasing Subsequence - Medium">
+                      <a href="/2023/12/13/110-Balanced-Binary-Tree-Easy/" title="110. Balanced Binary Tree - Easy">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">300. Longest Increasing Subsequence - Medium</span>
+                        <span class="hidden-mobile">110. Balanced Binary Tree - Easy</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -464,8 +501,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/08/542-01-Matrix-Medium/" title="542. 01 Matrix - Medium">
-                        <span class="hidden-mobile">542. 01 Matrix - Medium</span>
+                      <a href="/2023/12/11/300-Longest-Increasing-Subsequence-Medium/" title="300. Longest Increasing Subsequence - Medium">
+                        <span class="hidden-mobile">300. Longest Increasing Subsequence - Medium</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -16,27 +16,25 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前往題目  想法 毫無想法，只想得到轉成binary然後直接疊代  思路 觀察0~8的binary會發現有一定規律，如下圖 Offset從0,1,4,8,16，兩倍成長 只要1加上最近的offset的值就是答案，那個1就是MSB(Most significant bit)  可能看解是有點模糊，但是看code應該就會清楚很多了 Code  class Solution &#123;     pub">
+    <meta name="description" content="前往題目  想法 毫無頭緒因為不需要連續，中間可以斷掉…  思路有很多種作法:  DFS DFS with cache DP  採用DP，因為$O(n^2)$，相較於DFS $O(2^n)$  觀察規律，從後往前，因為最後一個一定是只有自己，也就是長度為1，以此往前推  影片中解釋得更清楚 Code  class Solution &#123;     public int lengthOfLIS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="338. Counting Bits - Easy">
-<meta property="og:url" content="https://f88083.github.io/2023/12/09/338-Counting-Bits-Easy/index.html">
+<meta property="og:title" content="300. Longest Increasing Subsequence - Medium">
+<meta property="og:url" content="https://f88083.github.io/2023/12/11/300-Longest-Increasing-Subsequence-Medium/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="前往題目  想法 毫無想法，只想得到轉成binary然後直接疊代  思路 觀察0~8的binary會發現有一定規律，如下圖 Offset從0,1,4,8,16，兩倍成長 只要1加上最近的offset的值就是答案，那個1就是MSB(Most significant bit)  可能看解是有點模糊，但是看code應該就會清楚很多了 Code  class Solution &#123;     pub">
+<meta property="og:description" content="前往題目  想法 毫無頭緒因為不需要連續，中間可以斷掉…  思路有很多種作法:  DFS DFS with cache DP  採用DP，因為$O(n^2)$，相較於DFS $O(2^n)$  觀察規律，從後往前，因為最後一個一定是只有自己，也就是長度為1，以此往前推  影片中解釋得更清楚 Code  class Solution &#123;     public int lengthOfLIS">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://i.imgur.com/FHZdNJ7.png">
-<meta property="article:published_time" content="2023-12-09T11:17:15.000Z">
-<meta property="article:modified_time" content="2023-12-09T11:36:02.282Z">
+<meta property="article:published_time" content="2023-12-11T11:29:03.000Z">
+<meta property="article:modified_time" content="2023-12-11T11:59:17.737Z">
 <meta property="article:author" content="Simon Lai">
 <meta property="article:tag" content="Leetcode">
 <meta property="article:tag" content="心得">
+<meta property="article:tag" content="Array">
 <meta property="article:tag" content="Dynamic Programming">
-<meta property="article:tag" content="Bit Manipulation">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://i.imgur.com/FHZdNJ7.png">
   
   
   
-  <title>338. Counting Bits - Easy - Simon Lai&#39;s Blog</title>
+  <title>300. Longest Increasing Subsequence - Medium - Simon Lai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -231,7 +229,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="338. Counting Bits - Easy"></span>
+            <span id="subtitle" data-typed-text="300. Longest Increasing Subsequence - Medium"></span>
           
         </div>
 
@@ -242,8 +240,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-09 11:17" pubdate>
-          2023年12月9日 上午
+        <time datetime="2023-12-11 11:29" pubdate>
+          2023年12月11日 上午
         </time>
       </span>
     
@@ -254,7 +252,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          83 字
+          79 字
         
       </span>
     
@@ -302,43 +300,54 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">338. Counting Bits - Easy</h1>
+            <h1 id="seo-header">300. Longest Increasing Subsequence - Medium</h1>
             
             
               <div class="markdown-body">
                 
-                <a class="btn" href="https://leetcode.com/problems/counting-bits/description/"  title="338. Counting Bits" target="_blank">前往題目</a>
+                <a class="btn" href="https://leetcode.com/problems/longest-increasing-subsequence/description/"  title="300. Longest Increasing Subsequence" target="_blank">前往題目</a>
 
 <h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul>
-<li>毫無想法，只想得到轉成binary然後直接疊代</li>
+<li>毫無頭緒因為不需要連續，中間可以斷掉…</li>
 </ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
-<li>觀察<code>0~8</code>的<code>binary</code>會發現有一定規律，如下圖<br><img src="https://i.imgur.com/FHZdNJ7.png" srcset="/img/loading.gif" lazyload alt="0~9 Binary"></li>
-<li><code>Offset</code>從<code>0,1,4,8,16</code>，兩倍成長</li>
-<li>只要<code>1</code>加上最近的<code>offset</code>的值就是答案，那個<code>1</code>就是<code>MSB(Most significant bit)</code></li>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>有很多種作法:</p>
+<ul>
+<li>DFS</li>
+<li>DFS with cache</li>
+<li>DP</li>
+</ul>
+<p>採用DP，因為$O(n^2)$，相較於DFS $O(2^n)$</p>
+<ol>
+<li>觀察規律，從後往前，因為最後一個一定是只有自己，也就是長度為1，以此往前推</li>
 </ol>
-<p>可能看解是有點模糊，但是看<code>code</code>應該就會清楚很多了</p>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/RyBM56RIWrM" title="Counting Bits - Dynamic Programming - Leetcode 338 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<p>影片中解釋得更清楚</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/cjWnW0hdF1Y" title="Longest Increasing Subsequence - Dynamic Programming - Leetcode 300" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 <figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">countBits</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> dp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> offset <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">lengthOfLIS</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> lis <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>nums<span class="token punctuation">.</span>length<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span>lis<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        dp<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token comment">// 更新offset</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>offset <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">==</span> i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                offset <span class="token operator">=</span> i<span class="token punctuation">;</span>
+        <span class="token comment">// Go from last index to the first</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> nums<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token operator">--</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// Check the following subsequence</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token comment">// Make sure increasing</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;</span> nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                    lis<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>lis<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">1</span> <span class="token operator">+</span> lis<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
             <span class="token punctuation">&#125;</span>
-
-            dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">+</span> dp<span class="token punctuation">[</span>i <span class="token operator">-</span> offset<span class="token punctuation">]</span><span class="token punctuation">;</span>
         <span class="token punctuation">&#125;</span>
 
-        <span class="token keyword">return</span> dp<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token constant">MIN_VALUE</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> num <span class="token operator">:</span> lis<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>res <span class="token operator">&lt;</span> num<span class="token punctuation">)</span> res <span class="token operator">=</span> num<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token keyword">return</span> res<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
                 
               </div>
@@ -360,13 +369,6 @@
   <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
   
   
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
-  
-  
-
-  
 
       </span>
     
@@ -383,9 +385,9 @@
       
         <a href="/tags/%E5%BF%83%E5%BE%97/" class="print-no-link">#心得</a>
       
-        <a href="/tags/Dynamic-Programming/" class="print-no-link">#Dynamic Programming</a>
+        <a href="/tags/Array/" class="print-no-link">#Array</a>
       
-        <a href="/tags/Bit-Manipulation/" class="print-no-link">#Bit Manipulation</a>
+        <a href="/tags/Dynamic-Programming/" class="print-no-link">#Dynamic Programming</a>
       
     </div>
   
@@ -397,8 +399,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>338. Counting Bits - Easy</div>
-      <div>https://f88083.github.io/2023/12/09/338-Counting-Bits-Easy/</div>
+      <div>300. Longest Increasing Subsequence - Medium</div>
+      <div>https://f88083.github.io/2023/12/11/300-Longest-Increasing-Subsequence-Medium/</div>
     </div>
     <div class="license-meta">
       
@@ -410,7 +412,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>發布於</div>
-          <div>2023年12月9日</div>
+          <div>2023年12月11日</div>
         </div>
       
       
@@ -454,9 +456,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/11/300-Longest-Increasing-Subsequence-Medium/" title="300. Longest Increasing Subsequence - Medium">
+                      <a href="/2023/12/13/973-K-Closest-Points-to-Origin-Medium/" title="973. K Closest Points to Origin - Medium">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">300. Longest Increasing Subsequence - Medium</span>
+                        <span class="hidden-mobile">973. K Closest Points to Origin - Medium</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -464,8 +466,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/08/542-01-Matrix-Medium/" title="542. 01 Matrix - Medium">
-                        <span class="hidden-mobile">542. 01 Matrix - Medium</span>
+                      <a href="/2023/12/09/338-Counting-Bits-Easy/" title="338. Counting Bits - Easy">
+                        <span class="hidden-mobile">338. Counting Bits - Easy</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
