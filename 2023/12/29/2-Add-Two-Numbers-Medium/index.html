@@ -16,31 +16,26 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Free online course presented by Robert Sedgewick and Kevin Wayne   20世紀十大演算法之一 廣泛運用在各個方面   來一件Quicksort T-shirt也蠻酷的🤣但這件寫得不是很優喔，居然用(left + right) &#x2F; 2，不怕overflow嗎😂  Quicksort基本想法 array洗牌 切開array，在ind">
+    <meta name="description" content="前往題目  想法 每個digit都用數學式運算成一個數字，有個儲存的總數  思路看了Neetcode大大的影片才意識到要回傳的是Linked list😂又是題目沒看清楚，而且也沒意識到數字由後往前，其實題目給很多方便了  兩個list，一對一對的看，也就是一位數一位數的看 每個位數都算出值和進位的數字，值加到list裡，carry繼續給下一輪  建議看code，比較清楚 Codeclass So">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Algorithms Part 1 - Week 3–4之Quicksort筆記">
-<meta property="og:url" content="https://f88083.github.io/2023/11/28/Algorithms-Part-1-Week-3%E2%80%934%E4%B9%8BQuicksort%E7%AD%86%E8%A8%98/index.html">
+<meta property="og:title" content="2. Add Two Numbers - Medium">
+<meta property="og:url" content="https://f88083.github.io/2023/12/29/2-Add-Two-Numbers-Medium/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="Free online course presented by Robert Sedgewick and Kevin Wayne   20世紀十大演算法之一 廣泛運用在各個方面   來一件Quicksort T-shirt也蠻酷的🤣但這件寫得不是很優喔，居然用(left + right) &#x2F; 2，不怕overflow嗎😂  Quicksort基本想法 array洗牌 切開array，在ind">
+<meta property="og:description" content="前往題目  想法 每個digit都用數學式運算成一個數字，有個儲存的總數  思路看了Neetcode大大的影片才意識到要回傳的是Linked list😂又是題目沒看清楚，而且也沒意識到數字由後往前，其實題目給很多方便了  兩個list，一對一對的看，也就是一位數一位數的看 每個位數都算出值和進位的數字，值加到list裡，carry繼續給下一輪  建議看code，比較清楚 Codeclass So">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://i.imgur.com/QdGpbc8.png">
-<meta property="og:image" content="https://i.imgur.com/DNBb91b.png">
-<meta property="og:image" content="https://i.imgur.com/nVSIwsb.png">
-<meta property="og:image" content="https://i.imgur.com/wRYAPpc.png">
-<meta property="og:image" content="https://i.imgur.com/SbQTDQ1.png">
-<meta property="article:published_time" content="2023-11-28T17:02:55.000Z">
-<meta property="article:modified_time" content="2023-12-28T16:09:46.193Z">
+<meta property="article:published_time" content="2023-12-29T14:35:40.000Z">
+<meta property="article:modified_time" content="2023-12-29T15:17:49.409Z">
 <meta property="article:author" content="Simon Lai">
-<meta property="article:tag" content="Algorithms">
-<meta property="article:tag" content="筆記">
-<meta property="article:tag" content="演算法">
-<meta property="article:tag" content="Quicksort">
+<meta property="article:tag" content="Leetcode">
+<meta property="article:tag" content="心得">
+<meta property="article:tag" content="Recursion">
+<meta property="article:tag" content="Math">
+<meta property="article:tag" content="Linked List">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://i.imgur.com/QdGpbc8.png">
   
   
   
-  <title>Algorithms Part 1 - Week 3–4之Quicksort筆記 - Simon Lai&#39;s Blog</title>
+  <title>2. Add Two Numbers - Medium - Simon Lai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -235,7 +230,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Algorithms Part 1 - Week 3–4之Quicksort筆記"></span>
+            <span id="subtitle" data-typed-text="2. Add Two Numbers - Medium"></span>
           
         </div>
 
@@ -246,8 +241,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-28 17:02" pubdate>
-          2023年11月28日 下午
+        <time datetime="2023-12-29 14:35" pubdate>
+          2023年12月29日 下午
         </time>
       </span>
     
@@ -258,7 +253,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          595 字
+          197 字
         
       </span>
     
@@ -269,7 +264,7 @@
         
         
         
-          3 分鐘
+          1 分鐘
         
       </span>
     
@@ -306,67 +301,50 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Algorithms Part 1 - Week 3–4之Quicksort筆記</h1>
+            <h1 id="seo-header">2. Add Two Numbers - Medium</h1>
             
             
               <div class="markdown-body">
                 
-                <blockquote>
-<p>Free online course presented by Robert Sedgewick and Kevin Wayne</p>
-</blockquote>
-<ul>
-<li>20世紀十大演算法之一</li>
-<li>廣泛運用在各個方面</li>
+                <a class="btn" href="https://leetcode.com/problems/add-two-numbers/description/"  title="2. Add Two Numbers" target="_blank">前往題目</a>
+
+<h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul>
+<li>每個digit都用數學式運算成一個數字，有個儲存的總數</li>
 </ul>
-<p><img src="https://i.imgur.com/QdGpbc8.png" srcset="/img/loading.gif" lazyload alt="Quicksort T-shirt"></p>
-<p>來一件Quicksort T-shirt也蠻酷的🤣但這件寫得不是很優喔，居然用<code>(left + right) / 2</code>，不怕overflow嗎😂</p>
-<hr>
-<h2 id="Quicksort基本想法"><a href="#Quicksort基本想法" class="headerlink" title="Quicksort基本想法"></a>Quicksort基本想法</h2><ol>
-<li>array洗牌</li>
-<li>切開array，在index j的左邊都比它小，index j的右邊都比它大</li>
-<li>遞迴再sort左邊和右邊subarray</li>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>看了<code>Neetcode</code>大大的影片才意識到要回傳的是<code>Linked list</code>😂又是題目沒看清楚，而且也沒意識到數字由後往前，其實題目給很多方便了</p>
+<ol>
+<li>兩個<code>list</code>，一對一對的看，也就是一位數一位數的看</li>
+<li>每個位數都算出值和進位的數字，值加到<code>list</code>裡，<code>carry</code>繼續給下一輪</li>
 </ol>
-<p>可<a target="_blank" rel="noopener" href="https://visualgo.net/en/sorting?slide=2-2">參考</a>此網站，視覺化演算法</p>
-<h2 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h2><p><img src="https://i.imgur.com/DNBb91b.png" srcset="/img/loading.gif" lazyload alt="Implementation1"></p>
-<p><img src="https://i.imgur.com/nVSIwsb.png" srcset="/img/loading.gif" lazyload alt="Implementation2"></p>
-<h2 id="細節注意"><a href="#細節注意" class="headerlink" title="細節注意"></a>細節注意</h2><ul>
-<li>extra space可以讓其partition操作更簡單，且stable，但為此犧牲效能不值得</li>
-<li>pointers交叉比想像中的還難測試與判斷</li>
-<li>j &#x3D;&#x3D; lo是冗餘的判斷，i &#x3D;&#x3D; hi不是</li>
-<li>Shuffling需要保證其性能以免拖累整個演算法</li>
-<li><em>When duplicates are present, it is (counter-intuitively) better<br>to stop on keys equal to the partitioning item’s key.</em> &lt;-這句我看不懂</li>
-</ul>
-<h2 id="Quicksort有多Quick"><a href="#Quicksort有多Quick" class="headerlink" title="Quicksort有多Quick?"></a>Quicksort有多Quick?</h2><p><img src="https://i.imgur.com/wRYAPpc.png" srcset="/img/loading.gif" lazyload alt="Image"></p>
-<p>還是那句話，好的演算法絕對比超級電腦更加實用</p>
-<h2 id="效能重點-其餘請見PPT"><a href="#效能重點-其餘請見PPT" class="headerlink" title="效能重點(其餘請見PPT)"></a>效能重點(其餘請見PPT)</h2><ul>
-<li>Worst case最多有$N^2$次比較</li>
-<li>平均是~$1.39N lg N$次比較，比mergesort快39%因為資料移動比較少次</li>
-<li>有很多教科書的實作其實是$O(N^2)$，因為<ul>
-<li>array sorted或是反sorted</li>
-<li>有太多重複的數</li>
-</ul>
-</li>
-</ul>
-<h2 id="性質"><a href="#性質" class="headerlink" title="性質"></a>性質</h2><ul>
-<li>in-place sorting algorithm</li>
-<li>Not stable，因為資料位置會被移動</li>
-</ul>
-<h2 id="實際的improvements"><a href="#實際的improvements" class="headerlink" title="實際的improvements"></a>實際的improvements</h2><ul>
-<li>很小的subarrays可以換使用insertion sort，因為Quicksort成本太高</li>
-<li>取中位數當Pivot</li>
-<li>Median-of-3 (random) items -&gt; 我的理解是隨機取樣本的三個Median?會小幅度的減少比較，並需要比較多的移動，不過可以減少10%的執行時間</li>
-</ul>
-<h2 id="重複的鍵"><a href="#重複的鍵" class="headerlink" title="重複的鍵"></a>重複的鍵</h2><p>當鍵的數量不多時，也就代表會有很多重複的鍵，此時<code>quicksort</code>就不快了，會需要<code>quadratic time</code>，除非在遇到相同key的時候就停止<code>partitioning</code></p>
-<p>原先的<code>quicksort</code>會把相同<code>key</code>都放到同一邊去，這樣如果有很多相同的，就會變成兩邊不平衡從而降低演算法的效率</p>
-<p>這個問題是在<code>1990</code>年代時被發現的，那時有人發現<code>C</code>語言的<code>library</code>中<code>qsort()</code>有這個缺陷，解決方法隨即被提出</p>
-<h3 id="解決方法-3-way-partitioning"><a href="#解決方法-3-way-partitioning" class="headerlink" title="解決方法-3 way partitioning"></a>解決方法-3 way partitioning</h3><ul>
-<li>切成三部分，左邊小於pivot，中間等於，右邊大於</li>
-</ul>
-<p><img src="https://i.imgur.com/SbQTDQ1.png" srcset="/img/loading.gif" lazyload alt="3-way partitioning"></p>
-<h2 id="系統預設的演算法"><a href="#系統預設的演算法" class="headerlink" title="系統預設的演算法"></a>系統預設的演算法</h2><ul>
-<li><code>Java</code>的<code>Arrays.sort()</code>會根據不同的資料型態使用不同演算法，例如遇到<code>primitive types</code>會使用<code>quicksort</code>，遇到物件(<code>reference types</code>)會使用<code>mergesort</code>，因為效率穩定又是<code>stable</code>(也就是排序時不會影響到彼此之間的相對順序)</li>
-<li>PPT中還有更多擴展內容請參閱</li>
-</ul>
+<p>建議看<code>code</code>，比較清楚</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token class-name">ListNode</span> <span class="token function">addTwoNumbers</span><span class="token punctuation">(</span><span class="token class-name">ListNode</span> l1<span class="token punctuation">,</span> <span class="token class-name">ListNode</span> l2<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">ListNode</span> dummy <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">ListNode</span> cur <span class="token operator">=</span> dummy<span class="token punctuation">;</span>
+
+        <span class="token keyword">int</span> carry <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// When there are numbers and carry left</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>l1 <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token punctuation">(</span>l2 <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token operator">||</span> carry <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// Extract number but careful with null</span>
+            <span class="token keyword">int</span> num1 <span class="token operator">=</span> <span class="token punctuation">(</span>l1 <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token number">0</span> <span class="token operator">:</span> l1<span class="token punctuation">.</span>val<span class="token punctuation">;</span>
+            <span class="token keyword">int</span> num2 <span class="token operator">=</span> <span class="token punctuation">(</span>l2 <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token number">0</span> <span class="token operator">:</span> l2<span class="token punctuation">.</span>val<span class="token punctuation">;</span>
+
+            <span class="token comment">// New number</span>
+            <span class="token keyword">int</span> val <span class="token operator">=</span> num1 <span class="token operator">+</span> num2 <span class="token operator">+</span> carry<span class="token punctuation">;</span>
+            <span class="token comment">// Get the digit and carry for the next round</span>
+            carry <span class="token operator">=</span> val <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">;</span>
+            val <span class="token operator">=</span> val <span class="token operator">%</span> <span class="token number">10</span><span class="token punctuation">;</span>
+            cur<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment">// Move pointers</span>
+            cur <span class="token operator">=</span> cur<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+            l1 <span class="token operator">=</span> <span class="token punctuation">(</span>l1 <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token operator">?</span> l1<span class="token punctuation">.</span>next <span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+            l2 <span class="token operator">=</span> <span class="token punctuation">(</span>l2 <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token operator">?</span> l2<span class="token punctuation">.</span>next <span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> dummy<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
                 
               </div>
@@ -385,8 +363,15 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Algorithms/" class="category-chain-item">Algorithms</a>
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
   
 
       </span>
@@ -400,13 +385,15 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Algorithms/" class="print-no-link">#Algorithms</a>
+        <a href="/tags/Leetcode/" class="print-no-link">#Leetcode</a>
       
-        <a href="/tags/%E7%AD%86%E8%A8%98/" class="print-no-link">#筆記</a>
+        <a href="/tags/%E5%BF%83%E5%BE%97/" class="print-no-link">#心得</a>
       
-        <a href="/tags/%E6%BC%94%E7%AE%97%E6%B3%95/" class="print-no-link">#演算法</a>
+        <a href="/tags/Recursion/" class="print-no-link">#Recursion</a>
       
-        <a href="/tags/Quicksort/" class="print-no-link">#Quicksort</a>
+        <a href="/tags/Math/" class="print-no-link">#Math</a>
+      
+        <a href="/tags/Linked-List/" class="print-no-link">#Linked List</a>
       
     </div>
   
@@ -418,8 +405,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Algorithms Part 1 - Week 3–4之Quicksort筆記</div>
-      <div>https://f88083.github.io/2023/11/28/Algorithms-Part-1-Week-3–4之Quicksort筆記/</div>
+      <div>2. Add Two Numbers - Medium</div>
+      <div>https://f88083.github.io/2023/12/29/2-Add-Two-Numbers-Medium/</div>
     </div>
     <div class="license-meta">
       
@@ -431,7 +418,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>發布於</div>
-          <div>2023年11月28日</div>
+          <div>2023年12月29日</div>
         </div>
       
       
@@ -475,9 +462,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/28/Algorithms-Part-1-Week-3%E2%80%935%E4%B9%8BQuick-select%E7%AD%86%E8%A8%98/" title="Algorithms Part 1 - Week 3–5之Quick-select筆記">
+                      <a href="/2023/12/29/22-Generate-Parentheses-Medium/" title="22. Generate Parentheses - Medium">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Algorithms Part 1 - Week 3–5之Quick-select筆記</span>
+                        <span class="hidden-mobile">22. Generate Parentheses - Medium</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -485,8 +472,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/11/28/31-Next-Permutation-Medium/" title="31. Next Permutation - Medium">
-                        <span class="hidden-mobile">31. Next Permutation - Medium</span>
+                      <a href="/2023/12/28/55-Jump-Game-Medium/" title="55. Jump Game - Medium">
+                        <span class="hidden-mobile">55. Jump Game - Medium</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
