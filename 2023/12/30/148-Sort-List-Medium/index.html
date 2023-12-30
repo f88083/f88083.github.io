@@ -16,26 +16,28 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前往題目  想法 一樣想說要用stack，但是如何使用想不出來  思路 使用backtracking，才能得到所有組合 每次backtrack都檢查(的數量是否小於n，是的話就加上 只有當)的數量小於(的時候才加上) 當)和(的數量等於n的時候才加入到結果裡  backtracking依然很難在腦袋裡運轉… Code  使用stack的寫法 class Solution &#123;     Li">
+    <meta name="description" content="前往題目  想法 全部存下來，然後排序完再重新連接，但這樣就至少O(2n + nlogn)也是挺暴力了的😂  思路這題的思路很簡單，但是指針操作一樣很容易搞混😂  把list分成左半部和右半部 利用mergesort把左半和右半排序好 最後再把左右合併  Linked List找中心點的方法 private ListNode getMid(ListNode head) &#123;     &#x2F;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="22. Generate Parentheses - Medium">
-<meta property="og:url" content="https://f88083.github.io/2023/12/29/22-Generate-Parentheses-Medium/index.html">
+<meta property="og:title" content="148. Sort List - Medium">
+<meta property="og:url" content="https://f88083.github.io/2023/12/30/148-Sort-List-Medium/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="前往題目  想法 一樣想說要用stack，但是如何使用想不出來  思路 使用backtracking，才能得到所有組合 每次backtrack都檢查(的數量是否小於n，是的話就加上 只有當)的數量小於(的時候才加上) 當)和(的數量等於n的時候才加入到結果裡  backtracking依然很難在腦袋裡運轉… Code  使用stack的寫法 class Solution &#123;     Li">
+<meta property="og:description" content="前往題目  想法 全部存下來，然後排序完再重新連接，但這樣就至少O(2n + nlogn)也是挺暴力了的😂  思路這題的思路很簡單，但是指針操作一樣很容易搞混😂  把list分成左半部和右半部 利用mergesort把左半和右半排序好 最後再把左右合併  Linked List找中心點的方法 private ListNode getMid(ListNode head) &#123;     &#x2F;">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2023-12-29T15:57:42.000Z">
-<meta property="article:modified_time" content="2023-12-29T16:27:47.036Z">
+<meta property="article:published_time" content="2023-12-30T10:40:49.000Z">
+<meta property="article:modified_time" content="2023-12-30T12:04:09.971Z">
 <meta property="article:author" content="Simon Lai">
 <meta property="article:tag" content="Leetcode">
 <meta property="article:tag" content="心得">
-<meta property="article:tag" content="String">
-<meta property="article:tag" content="Dynamic Programming">
-<meta property="article:tag" content="Backtracking">
+<meta property="article:tag" content="Two Pointers">
+<meta property="article:tag" content="Sorting">
+<meta property="article:tag" content="Linked List">
+<meta property="article:tag" content="Merge Sort">
+<meta property="article:tag" content="Divide and Conquer">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>22. Generate Parentheses - Medium - Simon Lai&#39;s Blog</title>
+  <title>148. Sort List - Medium - Simon Lai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -230,7 +232,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="22. Generate Parentheses - Medium"></span>
+            <span id="subtitle" data-typed-text="148. Sort List - Medium"></span>
           
         </div>
 
@@ -241,8 +243,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-29 15:57" pubdate>
-          2023年12月29日 下午
+        <time datetime="2023-12-30 10:40" pubdate>
+          2023年12月30日 上午
         </time>
       </span>
     
@@ -253,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          184 字
+          252 字
         
       </span>
     
@@ -264,7 +266,7 @@
         
         
         
-          1 分鐘
+          2 分鐘
         
       </span>
     
@@ -301,63 +303,96 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">22. Generate Parentheses - Medium</h1>
+            <h1 id="seo-header">148. Sort List - Medium</h1>
             
             
               <div class="markdown-body">
                 
-                <a class="btn" href="https://leetcode.com/problems/generate-parentheses/description/"  title="22. Generate Parentheses" target="_blank">前往題目</a>
+                <a class="btn" href="https://leetcode.com/problems/sort-list/description/"  title="148. Sort List" target="_blank">前往題目</a>
 
 <h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul>
-<li>一樣想說要用<code>stack</code>，但是如何使用想不出來</li>
+<li>全部存下來，然後排序完再重新連接，但這樣就至少<code>O(2n + nlogn)</code>也是挺暴力了的😂</li>
 </ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
-<li>使用<code>backtracking</code>，才能得到所有組合</li>
-<li>每次<code>backtrack</code>都檢查<code>(</code>的數量是否小於<code>n</code>，是的話就加上</li>
-<li>只有當<code>)</code>的數量小於<code>(</code>的時候才加上<code>)</code></li>
-<li>當<code>)和(</code>的數量等於<code>n</code>的時候才加入到結果裡</li>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>這題的思路很簡單，但是指針操作一樣很容易搞混😂</p>
+<ol>
+<li>把<code>list</code>分成左半部和右半部</li>
+<li>利用<code>mergesort</code>把左半和右半排序好</li>
+<li>最後再把左右合併</li>
 </ol>
-<p><code>backtracking</code>依然很難在腦袋裡運轉…</p>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/s9fokUqJ76A" title="Generate Parentheses - Stack - Leetcode 22" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<p><strong>Linked List找中心點的方法</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">private</span> <span class="token class-name">ListNode</span> <span class="token function">getMid</span><span class="token punctuation">(</span><span class="token class-name">ListNode</span> head<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// Slow fast pointer to determine the middle node</span>
+    <span class="token class-name">ListNode</span> slow <span class="token operator">=</span> head<span class="token punctuation">,</span> fast <span class="token operator">=</span> head<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+    <span class="token comment">// When the fast pointer is still valid</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>fast <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> fast<span class="token punctuation">.</span>next <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        slow <span class="token operator">=</span> slow<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+        fast <span class="token operator">=</span> fast<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next<span class="token punctuation">;</span> <span class="token comment">// Shift twice</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> slow<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
-<p><a target="_blank" rel="noopener" href="https://github.com/neetcode-gh/leetcode/blob/main/java/0022-generate-parentheses.java">使用stack的寫法</a></p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/TGveA1oFhrc" title="Sort List - Merge Sort - Leetcode 148" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 <figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-    <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> res<span class="token punctuation">;</span>
-    <span class="token class-name">StringBuilder</span> s<span class="token punctuation">;</span>
-    <span class="token keyword">int</span> n<span class="token punctuation">;</span>
-    
-    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> <span class="token function">generateParenthesis</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        res <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        s <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringBuilder</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>n <span class="token operator">=</span> n<span class="token punctuation">;</span>
-        <span class="token function">backtracking</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> res<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-
-    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">backtracking</span><span class="token punctuation">(</span><span class="token keyword">int</span> closeN<span class="token punctuation">,</span> <span class="token keyword">int</span> openN<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">// Used all the parentheses</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>closeN <span class="token operator">==</span> n <span class="token operator">&amp;&amp;</span> openN <span class="token operator">==</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            res<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token class-name">ListNode</span> <span class="token function">sortList</span><span class="token punctuation">(</span><span class="token class-name">ListNode</span> head<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// Base case</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>head <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> head<span class="token punctuation">.</span>next <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> head<span class="token punctuation">;</span>
         <span class="token punctuation">&#125;</span>
 
-        <span class="token comment">// Can still add open parentheses</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>openN <span class="token operator">&lt;</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            s<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">"("</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token function">backtracking</span><span class="token punctuation">(</span>closeN<span class="token punctuation">,</span> openN <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            s<span class="token punctuation">.</span><span class="token function">deleteCharAt</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-        
-        <span class="token comment">// When close is smaller than open parentheses</span>
-        <span class="token comment">// add close parentheses</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>closeN <span class="token operator">&lt;</span> openN<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            s<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">")"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token function">backtracking</span><span class="token punctuation">(</span>closeN <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> openN<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token comment">// Pop for next backtracking</span>
-            s<span class="token punctuation">.</span><span class="token function">deleteCharAt</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
+        <span class="token comment">// Split the list</span>
+        <span class="token class-name">ListNode</span> left <span class="token operator">=</span> head<span class="token punctuation">;</span>
+        <span class="token class-name">ListNode</span> right <span class="token operator">=</span> <span class="token function">getMid</span><span class="token punctuation">(</span>head<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// Hold the initial right pointer</span>
+        <span class="token class-name">ListNode</span> tmp <span class="token operator">=</span> right<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+        right<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        right <span class="token operator">=</span> tmp<span class="token punctuation">;</span> <span class="token comment">// Move pointer</span>
+
+        left <span class="token operator">=</span> <span class="token function">sortList</span><span class="token punctuation">(</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        right <span class="token operator">=</span> <span class="token function">sortList</span><span class="token punctuation">(</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> <span class="token function">merge</span><span class="token punctuation">(</span>left<span class="token punctuation">,</span> right<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+    <span class="token keyword">private</span> <span class="token class-name">ListNode</span> <span class="token function">getMid</span><span class="token punctuation">(</span><span class="token class-name">ListNode</span> head<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// Slow fast pointer to determine the middle node</span>
+        <span class="token class-name">ListNode</span> slow <span class="token operator">=</span> head<span class="token punctuation">,</span> fast <span class="token operator">=</span> head<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+        <span class="token comment">// When the fast pointer is still valid</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>fast <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> fast<span class="token punctuation">.</span>next <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            slow <span class="token operator">=</span> slow<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+            fast <span class="token operator">=</span> fast<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next<span class="token punctuation">;</span> <span class="token comment">// Shift twice</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> slow<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">ListNode</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token class-name">ListNode</span> left<span class="token punctuation">,</span> <span class="token class-name">ListNode</span> right<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// Store the beginning</span>
+        <span class="token class-name">ListNode</span> dummy <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">ListNode</span> tail <span class="token operator">=</span> dummy<span class="token punctuation">;</span>
+        <span class="token comment">// traverse the nodes</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>left <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> right <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>left<span class="token punctuation">.</span>val <span class="token operator">&lt;</span> right<span class="token punctuation">.</span>val<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                tail<span class="token punctuation">.</span>next <span class="token operator">=</span> left<span class="token punctuation">;</span>
+                left <span class="token operator">=</span> left<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span> <span class="token comment">// left equal or larger than right</span>
+                tail<span class="token punctuation">.</span>next <span class="token operator">=</span> right<span class="token punctuation">;</span>
+                right <span class="token operator">=</span> right<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+
+            tail <span class="token operator">=</span> tail<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token comment">// Merge all the remaining nodes</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>left <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            tail<span class="token punctuation">.</span>next <span class="token operator">=</span> left<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>right <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            tail<span class="token punctuation">.</span>next <span class="token operator">=</span> right<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token keyword">return</span> dummy<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
                 
               </div>
@@ -402,11 +437,15 @@
       
         <a href="/tags/%E5%BF%83%E5%BE%97/" class="print-no-link">#心得</a>
       
-        <a href="/tags/String/" class="print-no-link">#String</a>
+        <a href="/tags/Two-Pointers/" class="print-no-link">#Two Pointers</a>
       
-        <a href="/tags/Dynamic-Programming/" class="print-no-link">#Dynamic Programming</a>
+        <a href="/tags/Sorting/" class="print-no-link">#Sorting</a>
       
-        <a href="/tags/Backtracking/" class="print-no-link">#Backtracking</a>
+        <a href="/tags/Linked-List/" class="print-no-link">#Linked List</a>
+      
+        <a href="/tags/Merge-Sort/" class="print-no-link">#Merge Sort</a>
+      
+        <a href="/tags/Divide-and-Conquer/" class="print-no-link">#Divide and Conquer</a>
       
     </div>
   
@@ -418,8 +457,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>22. Generate Parentheses - Medium</div>
-      <div>https://f88083.github.io/2023/12/29/22-Generate-Parentheses-Medium/</div>
+      <div>148. Sort List - Medium</div>
+      <div>https://f88083.github.io/2023/12/30/148-Sort-List-Medium/</div>
     </div>
     <div class="license-meta">
       
@@ -431,7 +470,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>發布於</div>
-          <div>2023年12月29日</div>
+          <div>2023年12月30日</div>
         </div>
       
       
@@ -475,9 +514,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/30/148-Sort-List-Medium/" title="148. Sort List - Medium">
+                      <a href="/2023/12/30/Java%E5%B8%B8%E7%94%A8%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E5%92%8C%E7%94%A8%E6%B3%95%E9%9B%86%E5%90%88/" title="Java常用資料結構和用法集合">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">148. Sort List - Medium</span>
+                        <span class="hidden-mobile">Java常用資料結構和用法集合</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -485,8 +524,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/29/2-Add-Two-Numbers-Medium/" title="2. Add Two Numbers - Medium">
-                        <span class="hidden-mobile">2. Add Two Numbers - Medium</span>
+                      <a href="/2023/12/29/22-Generate-Parentheses-Medium/" title="22. Generate Parentheses - Medium">
+                        <span class="hidden-mobile">22. Generate Parentheses - Medium</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
