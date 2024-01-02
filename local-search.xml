@@ -4,11 +4,46 @@
   
   
   <entry>
+    <title>560. Subarray Sum Equals K - Medium</title>
+    <link href="/2024/01/01/560-Subarray-Sum-Equals-K-Medium/"/>
+    <url>/2024/01/01/560-Subarray-Sum-Equals-K-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/subarray-sum-equals-k/description/"  title="560. Subarray Sum Equals K" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li><code>Subarray</code>的話應該還是需要<code>backtracking</code></li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>一個<code>prefix sum</code>表，紀錄每個<code>sum</code>出現的次數</li><li>每次都看當前需要多少才能達到<code>k</code>，檢查表中有沒有該<code>sum</code></li><li>出現新的<code>sum</code>就放到表中</li></ol><p>這部分照著例子，操作一遍演算法就可以理解了，但是腦袋一樣需要轉彎…</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/fFVZt-6sgyo" title="Subarray Sum Equals K - Prefix Sums - Leetcode 560 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">subarraySum</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> curSum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span></span> prefixSums <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        prefixSums<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> num <span class="token operator">:</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// Increase by num</span>            curSum <span class="token operator">+=</span> num<span class="token punctuation">;</span>            <span class="token comment">// Difference to the k</span>            <span class="token keyword">int</span> diff <span class="token operator">=</span> curSum <span class="token operator">-</span> k<span class="token punctuation">;</span>            <span class="token comment">// Add to the result</span>            res <span class="token operator">+=</span> prefixSums<span class="token punctuation">.</span><span class="token function">getOrDefault</span><span class="token punctuation">(</span>diff<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment">// Add to the prefix sum</span>            prefixSums<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>curSum<span class="token punctuation">,</span> <span class="token number">1</span> <span class="token operator">+</span> prefixSums<span class="token punctuation">.</span><span class="token function">getOrDefault</span><span class="token punctuation">(</span>curSum<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> res<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Array</tag>
+      
+      <tag>Hash Table</tag>
+      
+      <tag>Prefix Sum</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>用hexo建置網站以及日常操作筆記</title>
     <link href="/2023/12/30/%E7%94%A8hexo%E5%BB%BA%E7%BD%AE%E7%B6%B2%E7%AB%99%E4%BB%A5%E5%8F%8A%E6%97%A5%E5%B8%B8%E6%93%8D%E4%BD%9C%E7%AD%86%E8%A8%98/"/>
     <url>/2023/12/30/%E7%94%A8hexo%E5%BB%BA%E7%BD%AE%E7%B6%B2%E7%AB%99%E4%BB%A5%E5%8F%8A%E6%97%A5%E5%B8%B8%E6%93%8D%E4%BD%9C%E7%AD%86%E8%A8%98/</url>
     
-    <content type="html"><![CDATA[<blockquote><p>建站好一陣子了，現在才回來寫筆記，可能有遺漏，歡迎留言</p></blockquote><h2 id="安裝hexo"><a href="#安裝hexo" class="headerlink" title="安裝hexo"></a>安裝hexo</h2><ol><li>安裝<code>Nodejs</code>和<code>git</code>(方便上傳<code>github</code>並建置網站)</li><li>terminal裡執行安裝<ul><li><code>npm install hexo-cli -g</code></li></ul></li><li>在想安裝的資料夾底下初始化<code>hexo blog</code>，等於直接在該資料夾下新建網站了<ul><li><code>hexo init blog</code></li><li><code>cd blog</code> 進入網站資料夾</li></ul></li><li><code>hexo server</code>在本機執行網站</li><li><code>hexo new &quot;Hello there&quot;</code>建立第一個文章</li></ol><h2 id="用github-io建置網站"><a href="#用github-io建置網站" class="headerlink" title="用github.io建置網站"></a>用github.io建置網站</h2><ol><li><p>首先註冊一個<code>github</code>並建立一個<code>repository</code>，如果想要<code>[github帳號].github.io</code>作為網址開頭那<code>repo</code>的名子就取<code>[github帳號].github.io</code></p><ul><li>想用其他名子也可以，但配置比較麻煩，會有一些地方需要調整</li></ul></li><li><p>記得選<code>public repo</code></p></li><li><p>安裝<code>hexo</code>部署套件</p><ul><li><code>npm install --save hexo-deployer-git</code></li></ul></li><li><p>然後在<code>hexo/_config.yml</code>檔案裡加入以下(<code>branch</code>名可以隨意取)</p> <figure><div class="code-wrapper"><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">deploy</span><span class="token punctuation">:</span><span class="token key atrule">type</span><span class="token punctuation">:</span> git<span class="token key atrule">repo</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//github.com/你的帳號/你的帳號.github.io.git<span class="token key atrule">branch</span><span class="token punctuation">:</span> gh<span class="token punctuation">-</span>pages<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure></li><li><p><code>_config.yml</code>裡的</p><ul><li><code>url</code>也要加上自己的網址</li><li><code>url: https://你的帳號.github.io</code></li></ul></li><li><p>最後就是部署到<code>github</code>上了</p><ul><li><code>hexo g</code> (generate靜態檔案)</li><li><code>hexo d</code> (deploy部署檔案)</li></ul></li></ol><h2 id="安裝主題"><a href="#安裝主題" class="headerlink" title="安裝主題"></a>安裝主題</h2><p>例如我用的<a href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid主題</a></p><p>安裝非常簡單，進入網站資料夾目錄後執行<code>npm install --save hexo-theme-fluid</code></p><p>其餘就不贅述了，官方<code>github</code>裡都有說明</p><ul><li>盡量安裝常維護的主題，否則有機率遇到棘手問題</li></ul><h2 id="日常操作"><a href="#日常操作" class="headerlink" title="日常操作"></a>日常操作</h2><p>清除靜態檔案(我通常都會在generate之前先清理，這樣可以防止一些可能的錯誤): <code>hexo clean</code><br>建立靜態網站檔案: <code>hexo g</code><br>部署: <code>hexo d</code><br>建立文章: <code>hexo new [模板如果有話] &quot;標題&quot;</code><br>建立草稿: <code>hexo new draft &quot;標題&quot;</code></p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>建站好一陣子了，現在才回來寫筆記，可能有遺漏，歡迎留言</p></blockquote><h2 id="安裝hexo"><a href="#安裝hexo" class="headerlink" title="安裝hexo"></a>安裝hexo</h2><ol><li>安裝<code>Nodejs</code>和<code>git</code>(方便上傳<code>github</code>並建置網站)</li><li>terminal裡執行安裝<ul><li><code>npm install hexo-cli -g</code></li></ul></li><li>在想安裝的資料夾底下初始化<code>hexo blog</code>，等於直接在該資料夾下新建網站了<ul><li><code>hexo init blog</code></li><li><code>cd blog</code> 進入網站資料夾</li></ul></li><li><code>hexo server</code>在本機執行網站</li><li><code>hexo new &quot;Hello there&quot;</code>建立第一個文章</li></ol><h2 id="用github-io建置網站"><a href="#用github-io建置網站" class="headerlink" title="用github.io建置網站"></a>用github.io建置網站</h2><ol><li><p>首先註冊一個<code>github</code>並建立一個<code>repository</code>，如果想要<code>[github帳號].github.io</code>作為網址開頭那<code>repo</code>的名子就取<code>[github帳號].github.io</code></p><ul><li>想用其他名子也可以，但配置比較麻煩，會有一些地方需要調整</li></ul></li><li><p>記得選<code>public repo</code></p></li><li><p>安裝<code>hexo</code>部署套件</p><ul><li><code>npm install --save hexo-deployer-git</code></li></ul></li><li><p>然後在<code>hexo/_config.yml</code>檔案裡加入以下(<code>branch</code>名可以隨意取)</p> <figure><div class="code-wrapper"><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">deploy</span><span class="token punctuation">:</span>    <span class="token key atrule">type</span><span class="token punctuation">:</span> git    <span class="token key atrule">repo</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//github.com/你的帳號/你的帳號.github.io.git    <span class="token key atrule">branch</span><span class="token punctuation">:</span> gh<span class="token punctuation">-</span>pages<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure></li><li><p><code>_config.yml</code>裡的</p><ul><li><code>url</code>也要加上自己的網址</li><li><code>url: https://你的帳號.github.io</code></li></ul></li><li><p>最後就是部署到<code>github</code>上了</p><ul><li><code>hexo g</code> (generate靜態檔案)</li><li><code>hexo d</code> (deploy部署檔案)</li></ul></li></ol><h2 id="安裝主題"><a href="#安裝主題" class="headerlink" title="安裝主題"></a>安裝主題</h2><p>例如我用的<a href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid主題</a></p><p>安裝非常簡單，進入網站資料夾目錄後執行<code>npm install --save hexo-theme-fluid</code></p><p>其餘就不贅述了，官方<code>github</code>裡都有說明</p><ul><li>盡量安裝常維護的主題，否則有機率遇到棘手問題</li></ul><h2 id="日常操作"><a href="#日常操作" class="headerlink" title="日常操作"></a>日常操作</h2><ul><li>清除靜態檔案(我通常都會在generate之前先清理，這樣可以防止一些可能的錯誤): <code>hexo clean</code></li><li>建立靜態網站檔案: <code>hexo g</code></li><li>部署: <code>hexo d</code>或<code>hexo d -g</code>建立並部署</li><li>建立文章: <code>hexo new [模板如果有話] &quot;標題&quot;</code></li><li>建立草稿: <code>hexo new draft &quot;標題&quot;</code></li></ul>]]></content>
     
     
     <categories>
@@ -362,9 +397,9 @@
       
       <tag>Two Pointers</tag>
       
-      <tag>Binary Search</tag>
-      
       <tag>Sliding Window</tag>
+      
+      <tag>Binary Search</tag>
       
     </tags>
     
@@ -970,9 +1005,9 @@
       
       <tag>Array</tag>
       
-      <tag>Matrix</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Matrix</tag>
       
     </tags>
     
@@ -1203,11 +1238,11 @@
       
       <tag>心得</tag>
       
-      <tag>Matrix</tag>
-      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
+      
+      <tag>Matrix</tag>
       
     </tags>
     
@@ -1604,7 +1639,7 @@
     <link href="/2023/11/23/%E5%A6%82%E4%BD%95%E4%BF%AE%E5%BE%A9Hexo-Fluid%E4%B8%BB%E9%A1%8CFold%E6%91%BA%E7%96%8A%E5%8A%9F%E8%83%BD%E9%8C%AF%E8%AA%A4%E7%9A%84%E5%95%8F%E9%A1%8C/"/>
     <url>/2023/11/23/%E5%A6%82%E4%BD%95%E4%BF%AE%E5%BE%A9Hexo-Fluid%E4%B8%BB%E9%A1%8CFold%E6%91%BA%E7%96%8A%E5%8A%9F%E8%83%BD%E9%8C%AF%E8%AA%A4%E7%9A%84%E5%95%8F%E9%A1%8C/</url>
     
-    <content type="html"><![CDATA[<h2 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h2><a class="btn" href="https://github.com/fluid-dev/hexo-theme-fluid/issues/1019"  title="使用Tag中的折叠功能报错" target="_blank">前往github issue</a><p>以上issue解釋了tag中fold的問題</p><h2 id="觀察"><a href="#觀察" class="headerlink" title="觀察"></a>觀察</h2><p>通過觀察，發現fluid的<a href="https://hexo.fluid-dev.com/docs/guide/#%E6%8A%98%E5%8F%A0%E5%9D%97">官方文件</a>裡面有提到可使用此功能，但使用最新版的<code>fluid v1.9.5</code>根本就沒有</p><p>Source裡也找不到相關的js檔案，代表應該根本就沒這個功能，於是在Fluid的repo搜尋了一下發現有善心人士三個月前提出了PR，但還在develop的branch裡。那我就不懂了，為何沒有的功能會在文件裡呢🤣</p><h2 id="解決方法"><a href="#解決方法" class="headerlink" title="解決方法"></a>解決方法</h2><p>也在我開頭給的issue裡面，下面有我的回答，只要把這個<a href="https://github.com/fluid-dev/hexo-theme-fluid/pull/993">PR</a>修改的內容添加進自己本地的Fluid就可以成功使用Fold功能了</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h2><a class="btn" href="https://github.com/fluid-dev/hexo-theme-fluid/issues/1019"  title="使用Tag中的折叠功能报错" target="_blank">前往github issue</a><p>以上issue解釋了tag中fold的問題</p><h2 id="觀察"><a href="#觀察" class="headerlink" title="觀察"></a>觀察</h2><p>通過觀察，發現fluid的<a href="https://hexo.fluid-dev.com/docs/guide/#%E6%8A%98%E5%8F%A0%E5%9D%97">官方文件</a>裡面有提到可使用此功能，但使用最新版的<code>fluid v1.9.5</code>根本就沒有</p><p>Source裡也找不到相關的js檔案，代表應該根本就沒這個功能，於是在Fluid的repo搜尋了一下發現有善心人士三個月前提出了PR，但還在develop的branch裡。那我就不懂了，為何沒有的功能會在文件裡呢🤣</p><h2 id="解決方法"><a href="#解決方法" class="headerlink" title="解決方法"></a>解決方法</h2><p>也在我開頭給的issue裡面，下面有我的回答，只要把這個<a href="https://github.com/fluid-dev/hexo-theme-fluid/pull/993">PR</a>修改的內容添加進自己本地的Fluid就可以成功使用Fold功能了</p><h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><div class="note note-success">            <p>最新版本<code>Fluid</code>已修復此問題</p>          </div>]]></content>
     
     
     <categories>
@@ -2135,9 +2170,9 @@
     
     <tags>
       
-      <tag>Algorithms</tag>
-      
       <tag>Stack</tag>
+      
+      <tag>Algorithms</tag>
       
       <tag>筆記</tag>
       
