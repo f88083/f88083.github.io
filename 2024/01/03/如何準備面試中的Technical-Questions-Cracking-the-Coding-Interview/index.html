@@ -16,27 +16,23 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前往題目  想法 因為是sorted，所以應該可以用binary search快速定位  思路這題有sliding window和結合了binary search的sliding window兩種解法，但我在評論區看到的binary search解法，無法理解其中一兩行code，所以選擇sliding window  左右兩個指針，頭與尾 每次計算左邊以及右邊到x的距離 相等或右邊比較大的時候就往">
+    <meta name="description" content="如何準備 P.60 記答案沒有用，練習如何解題目才是重中之重  四大步驟  盡量自己解決問題(但這裡我私心覺得如果沒寫過甚麼leetcode的話還是不要糾結太久，因為很多演算法是自己想破頭腦都想不出來的，不如趕快看解答，認識解法，知道怎麼解，等到累積了一定的解法之後再嘗試自己解決問題。不過當然不是一開始就看答案，而是思考個五分鐘十分鐘，沒想法再看)，要考慮空間和時間複雜度 把code寫在紙上 在紙">
 <meta property="og:type" content="article">
-<meta property="og:title" content="658. Find K Closest Elements - Medium">
-<meta property="og:url" content="https://f88083.github.io/2023/12/23/658-Find-K-Closest-Elements-Medium/index.html">
+<meta property="og:title" content="如何準備面試中的Technical Questions - Cracking the Coding Interview">
+<meta property="og:url" content="https://f88083.github.io/2024/01/03/%E5%A6%82%E4%BD%95%E6%BA%96%E5%82%99%E9%9D%A2%E8%A9%A6%E4%B8%AD%E7%9A%84Technical-Questions-Cracking-the-Coding-Interview/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="前往題目  想法 因為是sorted，所以應該可以用binary search快速定位  思路這題有sliding window和結合了binary search的sliding window兩種解法，但我在評論區看到的binary search解法，無法理解其中一兩行code，所以選擇sliding window  左右兩個指針，頭與尾 每次計算左邊以及右邊到x的距離 相等或右邊比較大的時候就往">
+<meta property="og:description" content="如何準備 P.60 記答案沒有用，練習如何解題目才是重中之重  四大步驟  盡量自己解決問題(但這裡我私心覺得如果沒寫過甚麼leetcode的話還是不要糾結太久，因為很多演算法是自己想破頭腦都想不出來的，不如趕快看解答，認識解法，知道怎麼解，等到累積了一定的解法之後再嘗試自己解決問題。不過當然不是一開始就看答案，而是思考個五分鐘十分鐘，沒想法再看)，要考慮空間和時間複雜度 把code寫在紙上 在紙">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2023-12-23T12:48:27.000Z">
-<meta property="article:modified_time" content="2023-12-23T13:31:30.302Z">
+<meta property="article:published_time" content="2024-01-03T11:14:23.000Z">
+<meta property="article:modified_time" content="2024-01-03T11:14:54.628Z">
 <meta property="article:author" content="Simon Lai">
-<meta property="article:tag" content="Leetcode">
-<meta property="article:tag" content="心得">
-<meta property="article:tag" content="Array">
-<meta property="article:tag" content="Two Pointers">
-<meta property="article:tag" content="Binary Search">
-<meta property="article:tag" content="Sliding Window">
+<meta property="article:tag" content="筆記">
+<meta property="article:tag" content="Interview">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>658. Find K Closest Elements - Medium - Simon Lai&#39;s Blog</title>
+  <title>如何準備面試中的Technical Questions - Cracking the Coding Interview - Simon Lai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -231,7 +227,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="658. Find K Closest Elements - Medium"></span>
+            <span id="subtitle" data-typed-text="如何準備面試中的Technical Questions - Cracking the Coding Interview"></span>
           
         </div>
 
@@ -242,8 +238,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-23 12:48" pubdate>
-          2023年12月23日 下午
+        <time datetime="2024-01-03 11:14" pubdate>
+          2024年1月3日 上午
         </time>
       </span>
     
@@ -254,7 +250,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          209 字
+          1.2k 字
         
       </span>
     
@@ -265,7 +261,7 @@
         
         
         
-          1 分鐘
+          6 分鐘
         
       </span>
     
@@ -302,52 +298,197 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">658. Find K Closest Elements - Medium</h1>
+            <h1 id="seo-header">如何準備面試中的Technical Questions - Cracking the Coding Interview</h1>
             
             
               <div class="markdown-body">
                 
-                <a class="btn" href="https://leetcode.com/problems/find-k-closest-elements/description/"  title="658. Find K Closest Elements" target="_blank">前往題目</a>
-
-<h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul>
-<li>因為是<code>sorted</code>，所以應該可以用<code>binary search</code>快速定位</li>
-</ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>這題有sliding window和結合了binary search的sliding window兩種解法，但我在評論區看到的binary search解法，無法理解其中一兩行code，所以選擇sliding window</p>
+                <h2 id="如何準備-P-60"><a href="#如何準備-P-60" class="headerlink" title="如何準備 P.60"></a>如何準備 P.60</h2><blockquote>
+<p>記答案沒有用，練習如何解題目才是重中之重</p>
+</blockquote>
+<p>四大步驟</p>
 <ol>
-<li>左右兩個指針，頭與尾</li>
-<li>每次計算左邊以及右邊到x的距離</li>
-<li>相等或右邊比較大的時候就往左移(因為距離相同是取<code>index</code>較小的那一方)，直到這個<code>window</code>小於<code>k</code>了</li>
-<li>取得<code>sliding window</code>裡所有的數字就是答案</li>
+<li><strong>盡量自己解決問題</strong>(但這裡我私心覺得如果沒寫過甚麼leetcode的話還是不要糾結太久，因為很多演算法是自己想破頭腦都想不出來的，不如趕快看解答，認識解法，知道怎麼解，等到累積了一定的解法之後再嘗試自己解決問題。不過當然不是一開始就看答案，而是思考個五分鐘十分鐘，沒想法再看)，要考慮<strong>空間</strong>和<strong>時間</strong>複雜度</li>
+<li><strong>把code寫在紙上</strong></li>
+<li><strong>在紙上測試code</strong>，要測試general cases, base cases, error cases, and so on.</li>
+<li><strong>照著自己寫的code輸進電腦</strong>把寫錯的部分記錄下來，面試前當作提醒自己的材料</li>
 </ol>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/find-k-closest-elements/solutions/1316003/java-o-n-solution-two-pointers-97-faster/">Sliding window解答</a></p>
-<p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/find-k-closest-elements/solutions/2636647/java-explained-in-detail-binary-search-two-pointers-priority-queue/">綜合Binary search解答</a></p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> <span class="token function">findClosestElements</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">,</span> <span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">int</span> left <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> right <span class="token operator">=</span> arr<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<p>做越多模擬面試越好，和朋友和家人，都行!</p>
+<h2 id="必須具備的知識-P-60"><a href="#必須具備的知識-P-60" class="headerlink" title="必須具備的知識 P.60"></a>必須具備的知識 P.60</h2><p>儘管面試不是考驗你的記憶力，但還是會需要有基本知識(不然主考官還要跟你解釋什麼是int也太奇怪了吧)</p>
+<div class="note note-success">
+            <p>以下是必備知識!必須要會使用會實作還要會分析時間和空間複雜度</p>
+          </div>
 
-        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> res <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        
-        <span class="token comment">// Keep shrinking the size</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>right <span class="token operator">-</span> left <span class="token operator">>=</span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">int</span> distLeft <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span>left<span class="token punctuation">]</span> <span class="token operator">-</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">int</span> distRight <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span>right<span class="token punctuation">]</span> <span class="token operator">-</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<table>
+<thead>
+<tr>
+<th align="center">Data Structures</th>
+<th align="center">Alogrithms</th>
+<th align="center">Concepts</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Linked Lists</td>
+<td align="center">Breadth-First Search</td>
+<td align="center">Bit Manipulation</td>
+</tr>
+<tr>
+<td align="center">Tree, Tries, &amp;Graphs</td>
+<td align="center">Depth-First Search</td>
+<td align="center">Memory (Stack vs. Heap)</td>
+</tr>
+<tr>
+<td align="center">Stacks &amp; Queues</td>
+<td align="center">Binary Search</td>
+<td align="center">Recursion</td>
+</tr>
+<tr>
+<td align="center">Heaps</td>
+<td align="center">Merge Sort</td>
+<td align="center">Dynamic Programming</td>
+</tr>
+<tr>
+<td align="center">Vectors&#x2F;ArrayLists</td>
+<td align="center">Quick Sort</td>
+<td align="center">Big O Time &amp; Space</td>
+</tr>
+<tr>
+<td align="center">Hash Tables</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h2 id="二次方表-P-61"><a href="#二次方表-P-61" class="headerlink" title="二次方表 P.61"></a>二次方表 P.61</h2><p>有用的表!當然不用去背</p>
+<table>
+<thead>
+<tr>
+<th align="center">Power of 2</th>
+<th align="center">Exact Value (X)</th>
+<th align="center">Approx. Value</th>
+<th align="center">X Bytes into MB, GB, etc.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">7</td>
+<td align="center">128</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">256</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">1024</td>
+<td align="center">1 thousand</td>
+<td align="center">1KB</td>
+</tr>
+<tr>
+<td align="center">16</td>
+<td align="center">65,536</td>
+<td align="center"></td>
+<td align="center">64KB</td>
+</tr>
+<tr>
+<td align="center">20</td>
+<td align="center">1,048,576</td>
+<td align="center">1 million</td>
+<td align="center">1MB</td>
+</tr>
+<tr>
+<td align="center">30</td>
+<td align="center">1,073,741,824</td>
+<td align="center">1 billion</td>
+<td align="center">1GB</td>
+</tr>
+<tr>
+<td align="center">32</td>
+<td align="center">4,294,967,296</td>
+<td align="center"></td>
+<td align="center">4GB</td>
+</tr>
+<tr>
+<td align="center">40</td>
+<td align="center">1,099,511,627,776</td>
+<td align="center">1 trillion</td>
+<td align="center">1TB</td>
+</tr>
+</tbody></table>
+<h2 id="解決問題的流程-P-62"><a href="#解決問題的流程-P-62" class="headerlink" title="解決問題的流程 P.62"></a>解決問題的流程 P.62</h2><p><strong>BUD Optimization</strong></p>
+<p><strong>B</strong>ottlenecks<br><strong>U</strong>nnecessary Work<br><strong>D</strong>uplicated Work</p>
+<ol>
+<li><p><strong>聽</strong>: 注意每個資訊，每一個都可能是想出最優解的關鍵</p>
+</li>
+<li><p><strong>例子</strong>: 大多例子都太小或太特殊，審慎選擇例子</p>
+</li>
+<li><p><strong>暴力解</strong>: 以最快速度想出暴力解，但不需要實作，然後從這基礎上優化</p>
+</li>
+<li><p><strong>優化</strong>:使用上述的<code>BUD</code>方法來優化，或試試以下方法</p>
+<ul>
+<li>找尋未使用的資訊，通常需要題目所有的資訊來達到最優解</li>
+<li>手動解決問題，然後反向工程看看是怎麼解的</li>
+<li><strong>寫錯</strong>，然後去想為什麼會行不通，能不能修好</li>
+<li>要在時間和空間上面做取捨，通常Hash table會很有用</li>
+</ul>
+</li>
+<li><p><strong>再過一次solution</strong>: 有了最優解之後就可以詳細走一遍流程，一定要了解所有細節後再開始Coding</p>
+</li>
+<li><p><strong>實作</strong>: 寫出好看的code</p>
+</li>
+<li><p><strong>測試</strong>: 照以下流程</p>
+<ol>
+<li>概念測試: 徹底走一遍流程</li>
+<li>不尋常或不標準的程式碼</li>
+<li>Hot spots，例如運算或null nodes</li>
+<li>小的測資，比大的來得更有效率</li>
+<li>Special cases and edge cases</li>
+</ol>
+<p> 找到Bug也要謹慎修復</p>
+</li>
+</ol>
+<div class="note note-warning">
+            <p><strong>不要忘了講話</strong>面試官想聽你怎麼解的</p>
+          </div>
 
-            <span class="token comment">// When equals, use the smaller index</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>distLeft <span class="token operator">&lt;=</span> distRight<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                <span class="token operator">--</span>right<span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-                <span class="token operator">++</span>left<span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span>
-
-        <span class="token comment">// Add all the numbers within the range</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>left <span class="token operator">&lt;=</span> right<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            res<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span>left<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token operator">++</span>left<span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">return</span> res<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<h2 id="解決問題的流程之詳細解析-P-63"><a href="#解決問題的流程之詳細解析-P-63" class="headerlink" title="解決問題的流程之詳細解析 P.63"></a>解決問題的流程之詳細解析 P.63</h2><h3 id="Listen-Carefully"><a href="#Listen-Carefully" class="headerlink" title="Listen Carefully"></a>Listen Carefully</h3><p><strong>抓重點</strong>例如:</p>
+<p>“Given two arrays that are sorted, find …”</p>
+<p>這時候就要記得有兩個陣列然後是已經排序好的</p>
+<ul>
+<li>一開始聽到就寫在白板上就不怕忘記了，不然想十分鐘條件就全忘了</li>
+<li>通常面試官給的資訊都是有用的，所以一定要認真聽，記下來</li>
+</ul>
+<h3 id="Draw-an-Example-P-64"><a href="#Draw-an-Example-P-64" class="headerlink" title="Draw an Example P.64"></a>Draw an Example P.64</h3><ul>
+<li>畫出例子會有極大的幫助，不要硬在腦海裡解決問題</li>
+<li>切忌例子太小，例如一棵樹，只有三個<code>node</code>就太小了，用該小例子來想解法容易忽略細節，也可能會找不到規律</li>
+<li>不要用<code>special case</code>來當例子，應該要general的</li>
+</ul>
+<h3 id="State-a-Brute-Force-P-64"><a href="#State-a-Brute-Force-P-64" class="headerlink" title="State a Brute Force P.64"></a>State a Brute Force P.64</h3><ul>
+<li>暴力解也是一個解，一定要說出來讓面試官知道，因為說不定有些面試者連暴力解都沒想出來呢。不說出來反而面試官會懷疑你連最簡單的解都想不出來</li>
+<li>初始解效能不重要，解釋完空間和時間複雜度後就可以著手優化了</li>
+</ul>
+<h3 id="Optimize-P-64"><a href="#Optimize-P-64" class="headerlink" title="Optimize P.64"></a>Optimize P.64</h3><p>以下幾個技巧可以幫助更快找到優化</p>
+<ul>
+<li>找尋任何未使用的資訊，任何題目的設定都可能是最憂解的突破口</li>
+<li>用新的例子!</li>
+<li>解錯也無所謂，可以想想怎麼處理那些錯誤</li>
+<li>在時間和空間之間做取捨，有時多一點空間可以幫助優化整個演算法</li>
+<li>預先計算一些需要的資訊可能可以節省一些運算時間</li>
+<li>用Hash table!</li>
+<li>想想看可能的最佳運算時間</li>
+</ul>
+<h3 id="Walk-Through-P-65"><a href="#Walk-Through-P-65" class="headerlink" title="Walk Through P.65"></a>Walk Through P.65</h3><p>有了優化之後，不要急著寫code</p>
+<ul>
+<li>確保沒有問題再寫，因為板上書寫很慢，所以想法越接近完美越好</li>
+<li>Psedocode不要寫得像偷懶版的code，如果是那樣那就直接寫code就好了😂</li>
+</ul>
+<h3 id="Implement-P-65"><a href="#Implement-P-65" class="headerlink" title="Implement P.65"></a>Implement P.65</h3><p>確保想法OK後，進入實作環節</p>
+<ul>
+<li>盡量把code寫得越整齊越好，不然也會造成自己debug困難</li>
+<li>有一些繁雜的工作例如生成一個&#96;</li>
+</ul>
 
                 
               </div>
@@ -366,15 +507,8 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  <a href="/categories/%E9%9D%A2%E8%A9%A6/" class="category-chain-item">面試</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
   
 
       </span>
@@ -388,17 +522,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Leetcode/" class="print-no-link">#Leetcode</a>
+        <a href="/tags/%E7%AD%86%E8%A8%98/" class="print-no-link">#筆記</a>
       
-        <a href="/tags/%E5%BF%83%E5%BE%97/" class="print-no-link">#心得</a>
-      
-        <a href="/tags/Array/" class="print-no-link">#Array</a>
-      
-        <a href="/tags/Two-Pointers/" class="print-no-link">#Two Pointers</a>
-      
-        <a href="/tags/Binary-Search/" class="print-no-link">#Binary Search</a>
-      
-        <a href="/tags/Sliding-Window/" class="print-no-link">#Sliding Window</a>
+        <a href="/tags/Interview/" class="print-no-link">#Interview</a>
       
     </div>
   
@@ -410,8 +536,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>658. Find K Closest Elements - Medium</div>
-      <div>https://f88083.github.io/2023/12/23/658-Find-K-Closest-Elements-Medium/</div>
+      <div>如何準備面試中的Technical Questions - Cracking the Coding Interview</div>
+      <div>https://f88083.github.io/2024/01/03/如何準備面試中的Technical-Questions-Cracking-the-Coding-Interview/</div>
     </div>
     <div class="license-meta">
       
@@ -423,7 +549,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>發布於</div>
-          <div>2023年12月23日</div>
+          <div>2024年1月3日</div>
         </div>
       
       
@@ -467,18 +593,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/24/424-Longest-Repeating-Character-Replacement-Medium/" title="424. Longest Repeating Character Replacement - Medium">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">424. Longest Repeating Character Replacement - Medium</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/23/662-Maximum-Width-of-Binary-Tree-Medium/" title="662. Maximum Width of Binary Tree - Medium">
-                        <span class="hidden-mobile">662. Maximum Width of Binary Tree - Medium</span>
+                      <a href="/2024/01/03/735-Asteroid-Collision-Medium/" title="735. Asteroid Collision - Medium">
+                        <span class="hidden-mobile">735. Asteroid Collision - Medium</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
