@@ -16,25 +16,28 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Free online course presented by Robert Sedgewick and Kevin Wayne  這篇將會概括PPT 1.3的以下內容:  Queues Generics Iterators  Queues 跟排隊一樣，先進先出FIFO 可以用Linked-list實作，前後兩指針 也可以用Resizing array實作  Generics當我們想要把同一個資">
+    <meta name="description" content="前往題目  想法 題目要求每次pickIndex的時候都根據機率return數值，例如[1,3]那return 1的機率就是$1 &#x2F; (1 + 3)$，return 3的機率是$3 &#x2F; (1 + 3)$ 但是讓我困惑的是要怎麼根據機率return。算機率很簡單，只要弄個hashmap把每個機率存下來就好了；或是存sum，然後直接算也很快  思路這題很妙…解法也有些不懂的地方 大">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Algorithms Part 1 — Week 2之Queues筆記">
-<meta property="og:url" content="https://f88083.github.io/2023/10/09/algorithms-part-1-week-2%E4%B9%8Bqueues%E7%AD%86%E8%A8%98-5551b1a59a37/index.html">
+<meta property="og:title" content="528. Random Pick with Weight - Medium">
+<meta property="og:url" content="https://f88083.github.io/2024/01/04/528-Random-Pick-with-Weight-Medium/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="Free online course presented by Robert Sedgewick and Kevin Wayne  這篇將會概括PPT 1.3的以下內容:  Queues Generics Iterators  Queues 跟排隊一樣，先進先出FIFO 可以用Linked-list實作，前後兩指針 也可以用Resizing array實作  Generics當我們想要把同一個資">
+<meta property="og:description" content="前往題目  想法 題目要求每次pickIndex的時候都根據機率return數值，例如[1,3]那return 1的機率就是$1 &#x2F; (1 + 3)$，return 3的機率是$3 &#x2F; (1 + 3)$ 但是讓我困惑的是要怎麼根據機率return。算機率很簡單，只要弄個hashmap把每個機率存下來就好了；或是存sum，然後直接算也很快  思路這題很妙…解法也有些不懂的地方 大">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2023-10-09T20:21:46.000Z">
-<meta property="article:modified_time" content="2023-11-23T17:29:04.493Z">
+<meta property="article:published_time" content="2024-01-04T10:39:30.000Z">
+<meta property="article:modified_time" content="2024-01-04T12:34:03.123Z">
 <meta property="article:author" content="Simon Lai">
-<meta property="article:tag" content="Algorithms">
-<meta property="article:tag" content="Queue">
-<meta property="article:tag" content="筆記">
-<meta property="article:tag" content="演算法">
+<meta property="article:tag" content="Leetcode">
+<meta property="article:tag" content="心得">
+<meta property="article:tag" content="Array">
+<meta property="article:tag" content="Math">
+<meta property="article:tag" content="Binary Search">
+<meta property="article:tag" content="Prefix Sum">
+<meta property="article:tag" content="Randomized">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Algorithms Part 1 — Week 2之Queues筆記 - Simon Lai&#39;s Blog</title>
+  <title>528. Random Pick with Weight - Medium - Simon Lai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -229,7 +232,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Algorithms Part 1 — Week 2之Queues筆記"></span>
+            <span id="subtitle" data-typed-text="528. Random Pick with Weight - Medium"></span>
           
         </div>
 
@@ -240,8 +243,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-09 21:21" pubdate>
-          2023年10月9日 晚上
+        <time datetime="2024-01-04 10:39" pubdate>
+          2024年1月4日 上午
         </time>
       </span>
     
@@ -252,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          516 字
+          398 字
         
       </span>
     
@@ -263,7 +266,7 @@
         
         
         
-          3 分鐘
+          2 分鐘
         
       </span>
     
@@ -300,59 +303,66 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Algorithms Part 1 — Week 2之Queues筆記</h1>
+            <h1 id="seo-header">528. Random Pick with Weight - Medium</h1>
             
             
               <div class="markdown-body">
                 
-                <blockquote>
-<p>Free online course presented by Robert Sedgewick and Kevin Wayne</p>
-</blockquote>
-<p>這篇將會概括PPT 1.3的以下內容:</p>
-<ul>
-<li>Queues</li>
-<li>Generics</li>
-<li>Iterators</li>
-</ul>
-<h2 id="Queues"><a href="#Queues" class="headerlink" title="Queues"></a>Queues</h2><ul>
-<li>跟排隊一樣，先進先出FIFO</li>
-<li>可以用Linked-list實作，前後兩指針</li>
-<li>也可以用Resizing array實作</li>
-</ul>
-<h2 id="Generics"><a href="#Generics" class="headerlink" title="Generics"></a>Generics</h2><p>當我們想要把同一個資料結構套用到不同類型上，就需要使用generics的概念，這樣就不用每個類型都要再重寫一次相同功能了，不僅容易出錯也非常的低效。</p>
-<p>Casting也不是一個好方法，因為Cast必須要Client來操作，而且有錯的話會是runtime error，這非常不利於debug。</p>
-<blockquote>
-<p>Welcome compile-time errors; avoid run-time errors. </p>
-</blockquote>
-<p>因此我們使用Generics</p>
-<ul>
-<li>Client無須操作Casting</li>
-<li>Type mismatch可以在compile-time被發現，而不是run-time了</li>
-</ul>
-<p>但在Java麻煩的一點是，雖然可以用，但是遇到array，我們必須這樣做(Item是泛型)</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">FixedCapacityStack</span><span class="token punctuation">(</span><span class="token keyword">int</span> capacity<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> 
-  s <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Item</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">[</span>capacity<span class="token punctuation">]</span><span class="token punctuation">;</span> 
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
+                <a class="btn" href="https://leetcode.com/problems/random-pick-with-weight/description/"  title="528. Random Pick with Weight" target="_blank">前往題目</a>
 
-<p>而不是漂亮的</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">FixedCapacityStack</span><span class="token punctuation">(</span><span class="token keyword">int</span> capacity<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  s <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Item</span><span class="token punctuation">[</span>capacity<span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
+<h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul>
+<li>題目要求每次<code>pickIndex</code>的時候都根據機率<code>return</code>數值，例如<code>[1,3]</code>那<code>return 1</code>的機率就是$1 &#x2F; (1 + 3)$，<code>return 3</code>的機率是$3 &#x2F; (1 + 3)$</li>
+<li>但是讓我困惑的是要怎麼根據機率return。算機率很簡單，只要弄個hashmap把每個機率存下來就好了；或是存sum，然後直接算也很快</li>
+</ul>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>這題很妙…解法也有些不懂的地方</p>
+<p>大致上就是把每個數字之間的區間拉成他們的數字比例，例如<code>123</code>會變成<code>136</code>，這樣<code>1~3</code>之間就有<code>2</code>，<code>3~6</code>之間就有<code>3</code>，也就是說彼此之間的距離就是原本的數字，因為根據題目的公式，數字越大代表權重大被選到的機率也就越大</p>
+<ol>
+<li>紀錄每個<code>index</code>的<code>prefix sum</code></li>
+<li>選定一個隨機數，<code>Binary search</code>直到找到最接近隨機數的數字(但是要大於隨機數，如果等於那就直接是答案了)</li>
+</ol>
+<p>這個演算法用想的實在是很反直覺，跟一般<code>binary search</code>有一點點的差異，<code>r = mid</code>而不是<code>mid - 1</code>因為<code>mid</code>有可能是答案，而且最後是回傳<code>l</code>而不是<code>mid</code>，但如果多加一句<code>if (randNum == prefixSum[mid]) return mid</code>其實也是<code>accept</code>的</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/7x7Ydq2Wfvw" title="RANDOM PICK WITH WEIGHT | LEETCODE # 528 | PYTHON BINARY SEARCH SOLUTION" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-<p>這是Java天生的限制，我們只能服從😢</p>
-<h2 id="Iterators"><a href="#Iterators" class="headerlink" title="Iterators"></a>Iterators</h2><p>讓我們可以疊代一坨東西的好工具，Client也無須知道內部的結構。<br>想讓自己的Class可以Iterate，那就要實作 <code>java.lang.Iterable</code> 介面。</p>
-<p>其餘細節參照PPT</p>
-<ul>
-<li>一樣可以用Linked-list實作</li>
-<li>Array也可以</li>
-</ul>
-<h2 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h2><p>Java collections library其實不好用</p>
-<ul>
-<li><code>java.util.ArrayList</code> 和 <code>java.util.LinkedList</code> 只有一些operations是efficient的</li>
-<li><code>java.util.Stack</code> 也是過度開發，導致這些庫都變得臃腫低效</li>
-</ul>
-<p>說實話聽到這些我很震驚，因為覺得發展這麼多年的Java，他的library應該是千錘百鍊，現在應該是最optimal的狀態，但沒想到有這些問題。這就是為何這門課，教授也是從頭自己打造API。</p>
-<p>就是這些簡單的資料結構，打造出千變萬化的功能與應用，PPT裡也舉了一些例子。演算法蓬勃發展的時期至今不到百年，教授說可能還有很多演算法還沒有被發現，真是激勵人心的一句話😄雖然知道自己不太可能找到新的演算法，但會讓人期待又會有哪些未知的演算法出現。</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">int</span> total<span class="token punctuation">;</span> <span class="token comment">// total sum of w[]</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> prefixSum<span class="token punctuation">;</span> <span class="token comment">// Prefix sum of every index</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">Solution</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> w<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        total <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        prefixSum <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>w<span class="token punctuation">.</span>length<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">int</span> tempTotal <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token comment">// Calculate prefixsum</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> w<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            tempTotal <span class="token operator">+=</span> w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            prefixSum<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> tempTotal<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        total <span class="token operator">=</span> tempTotal<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">pickIndex</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// The random number</span>
+        <span class="token keyword">int</span> randNum <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">nextInt</span><span class="token punctuation">(</span>total<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token comment">// left and right pointer</span>
+        <span class="token keyword">int</span> l <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> r <span class="token operator">=</span> prefixSum<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> mid <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// The answer found when they meet</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>l <span class="token operator">&lt;</span> r<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            mid <span class="token operator">=</span> l <span class="token operator">+</span> <span class="token punctuation">(</span>r <span class="token operator">-</span> l<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>randNum <span class="token operator">></span> prefixSum<span class="token punctuation">[</span>mid<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                l <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+                r <span class="token operator">=</span> mid<span class="token punctuation">;</span> <span class="token comment">// Since mid might be the answer</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token comment">// Return left pointer</span>
+        <span class="token keyword">return</span> l<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
                 
               </div>
@@ -371,8 +381,15 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Algorithms/" class="category-chain-item">Algorithms</a>
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
   
 
       </span>
@@ -386,13 +403,19 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Algorithms/" class="print-no-link">#Algorithms</a>
+        <a href="/tags/Leetcode/" class="print-no-link">#Leetcode</a>
       
-        <a href="/tags/Queue/" class="print-no-link">#Queue</a>
+        <a href="/tags/%E5%BF%83%E5%BE%97/" class="print-no-link">#心得</a>
       
-        <a href="/tags/%E7%AD%86%E8%A8%98/" class="print-no-link">#筆記</a>
+        <a href="/tags/Array/" class="print-no-link">#Array</a>
       
-        <a href="/tags/%E6%BC%94%E7%AE%97%E6%B3%95/" class="print-no-link">#演算法</a>
+        <a href="/tags/Math/" class="print-no-link">#Math</a>
+      
+        <a href="/tags/Binary-Search/" class="print-no-link">#Binary Search</a>
+      
+        <a href="/tags/Prefix-Sum/" class="print-no-link">#Prefix Sum</a>
+      
+        <a href="/tags/Randomized/" class="print-no-link">#Randomized</a>
       
     </div>
   
@@ -404,8 +427,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Algorithms Part 1 — Week 2之Queues筆記</div>
-      <div>https://f88083.github.io/2023/10/09/algorithms-part-1-week-2之queues筆記-5551b1a59a37/</div>
+      <div>528. Random Pick with Weight - Medium</div>
+      <div>https://f88083.github.io/2024/01/04/528-Random-Pick-with-Weight-Medium/</div>
     </div>
     <div class="license-meta">
       
@@ -417,7 +440,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>發布於</div>
-          <div>2023年10月9日</div>
+          <div>2024年1月4日</div>
         </div>
       
       
@@ -461,18 +484,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/10/200-number-of-islands-ef5e7e166205/" title="200. Number of Islands - Medium">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">200. Number of Islands - Medium</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/09/98-validate-binary-search-tree-e8710d9d2616/" title="98. Validate Binary Search Tree - Medium">
-                        <span class="hidden-mobile">98. Validate Binary Search Tree - Medium</span>
+                      <a href="/2024/01/03/%E5%A6%82%E4%BD%95%E6%BA%96%E5%82%99%E9%9D%A2%E8%A9%A6%E4%B8%AD%E7%9A%84Technical-Questions-Cracking-the-Coding-Interview/" title="如何準備面試中的Technical Questions - Cracking the Coding Interview">
+                        <span class="hidden-mobile">如何準備面試中的Technical Questions - Cracking the Coding Interview</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
