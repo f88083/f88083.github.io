@@ -4,6 +4,80 @@
   
   
   <entry>
+    <title>136. Single Number - Easy</title>
+    <link href="/2024/01/05/136-Single-Number-Easy/"/>
+    <url>/2024/01/05/136-Single-Number-Easy/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/single-number/description/"  title="136. Single Number" target="_blank">前往題目</a><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li><code>XOR</code>最後就會剩下單獨的元素</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/qMPX1AOa83k" title="Single Number - Leetcode 136 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">singleNumber</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> num <span class="token operator">:</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            res <span class="token operator">^=</span> num<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>                <span class="token keyword">return</span> res<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Easy</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Array</tag>
+      
+      <tag>Bit Manipulation</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>215. Kth Largest Element in an Array - Medium</title>
+    <link href="/2024/01/05/215-Kth-Largest-Element-in-an-Array-Medium/"/>
+    <url>/2024/01/05/215-Kth-Largest-Element-in-an-Array-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/kth-largest-element-in-an-array/description/"  title="215. Kth Largest Element in an Array" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>只想得到用<code>sort</code>之後🤣</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>用<code>Priority queue</code>，默認是從小到大，所以超過<code>k</code>個數字的時候把<code>top</code>去掉就好，最後會剩下最小到第<code>k</code>大的元素</li></ol><p>或是<code>QuickSelect</code>: 平均<code>O(N)</code>，但是最差情況是$O(N^2)$</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/XEmy13g1Qxc" title="Kth Largest Element in an Array - Quick Select - Leetcode 215 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">findKthLargest</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token class-name">PriorityQueue</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> pq <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PriorityQueue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// Check all the numbers</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> num <span class="token operator">:</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// Add to the pq</span>            pq<span class="token punctuation">.</span><span class="token function">offer</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment">// Remove the top element</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>pq<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                pq<span class="token punctuation">.</span><span class="token function">poll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// Return the top</span>        <span class="token keyword">return</span> pq<span class="token punctuation">.</span><span class="token function">peek</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Array</tag>
+      
+      <tag>Sorting</tag>
+      
+      <tag>Heap</tag>
+      
+      <tag>Priority Queue</tag>
+      
+      <tag>Divide and Conquer</tag>
+      
+      <tag>Quickselect</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>528. Random Pick with Weight - Medium</title>
     <link href="/2024/01/04/528-Random-Pick-with-Weight-Medium/"/>
     <url>/2024/01/04/528-Random-Pick-with-Weight-Medium/</url>
@@ -222,9 +296,9 @@
       
       <tag>Linked List</tag>
       
-      <tag>Merge Sort</tag>
-      
       <tag>Divide and Conquer</tag>
+      
+      <tag>Merge Sort</tag>
       
     </tags>
     
@@ -799,9 +873,9 @@
       
       <tag>心得</tag>
       
-      <tag>Queue</tag>
-      
       <tag>Stack</tag>
+      
+      <tag>Queue</tag>
       
     </tags>
     
@@ -2178,11 +2252,11 @@
       
       <tag>Algorithms</tag>
       
-      <tag>Queue</tag>
-      
       <tag>筆記</tag>
       
       <tag>演算法</tag>
+      
+      <tag>Queue</tag>
       
     </tags>
     
@@ -2271,13 +2345,13 @@
     
     <tags>
       
+      <tag>Stack</tag>
+      
       <tag>Algorithms</tag>
       
       <tag>筆記</tag>
       
       <tag>演算法</tag>
-      
-      <tag>Stack</tag>
       
     </tags>
     
