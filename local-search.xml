@@ -4,6 +4,76 @@
   
   
   <entry>
+    <title>283. Move Zeroes - Easy</title>
+    <link href="/2024/01/09/283-Move-Zeroes-Easy/"/>
+    <url>/2024/01/09/283-Move-Zeroes-Easy/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/move-zeroes/description/"  title="283. Move Zeroes" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>只想得到用一個額外的陣列儲存非零項，這樣空間和時間都是<code>O(N)</code></li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>題目很詐，說<code>move all 0&#39;s to the end of it</code>，這樣第一眼就在想要怎麼把<code>0</code>移到後面，但其實只要反過來想，把非零項移到前面就好了，最後再補上零即可…</p><ol><li>把非零項移到前面</li><li>補上所需的零</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">moveZeroes</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span> index <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token comment">// Move non-zero elements to the front</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> num <span class="token operator">:</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>num <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                nums<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">=</span> num<span class="token punctuation">;</span>                <span class="token operator">++</span>index<span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// Add all the zeros</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>index <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            nums<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>            <span class="token operator">++</span>index<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Easy</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Array</tag>
+      
+      <tag>Two Pointers</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>234. Palindrome Linked List - Easy</title>
+    <link href="/2024/01/09/234-Palindrome-Linked-List-Easy/"/>
+    <url>/2024/01/09/234-Palindrome-Linked-List-Easy/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/palindrome-linked-list/description/"  title="234. Palindrome Linked List" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>因為是單鏈，所以只能先找中間點，不然沒有基準</li><li>找到中間點後就可以知道左半部和右半部的分水嶺</li><li>沒想到可以<code>Reverse</code></li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>找到中間點</li><li>反轉右半邊</li><li>檢查<code>palindrome</code></li></ol><p>反轉那邊有點繞，但基本上就是</p><ol><li>定義一個<code>previous</code>指針，然後會從<code>slow</code>指針開始反轉(因為他一定在<code>mid+1</code>)</li><li>存<code>slow.next</code>，也就是原來的下一個</li><li><code>slow.next</code>換成<code>previous</code>，這裡就反轉了順序</li><li>然後<code>previous</code>變成<code>slow</code>，因為要繼續往右反轉</li><li>而<code>slow</code>變成他原來的下一個，也是為了要往右反轉，等於說每輪的最後<code>slow</code>和<code>previous</code>都要往右一個位置，因為要換下一組反轉</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/yOzXms1J6Nk" title="Palindrome Linked List - Leetcode 234 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isPalindrome</span><span class="token punctuation">(</span><span class="token class-name">ListNode</span> head<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token class-name">ListNode</span> slow<span class="token punctuation">,</span> fast<span class="token punctuation">;</span>        slow <span class="token operator">=</span> fast <span class="token operator">=</span> head<span class="token punctuation">;</span>        <span class="token comment">// Find mid point</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>fast <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> fast<span class="token punctuation">.</span>next <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            slow <span class="token operator">=</span> slow<span class="token punctuation">.</span>next<span class="token punctuation">;</span>            fast <span class="token operator">=</span> fast<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>                <span class="token comment">// Odd length of the list</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>fast <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> slow <span class="token operator">=</span> slow<span class="token punctuation">.</span>next<span class="token punctuation">;</span>        <span class="token comment">// Reverse the second part of the list</span>        <span class="token class-name">ListNode</span> prev <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>slow <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// Store the next</span>            <span class="token class-name">ListNode</span> next <span class="token operator">=</span> slow<span class="token punctuation">.</span>next<span class="token punctuation">;</span>            <span class="token comment">// Reverse the next of the slow pointer to point the prev</span>            slow<span class="token punctuation">.</span>next <span class="token operator">=</span> prev<span class="token punctuation">;</span>            <span class="token comment">// Previous becomes the slow</span>            prev <span class="token operator">=</span> slow<span class="token punctuation">;</span>            <span class="token comment">// Move slow pointer to reverse other nodes</span>            slow <span class="token operator">=</span> next<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token class-name">ListNode</span> left <span class="token operator">=</span> head<span class="token punctuation">,</span> right <span class="token operator">=</span> prev<span class="token punctuation">;</span>        <span class="token comment">// Check palindrome</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>right <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// Mismatch</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>right<span class="token punctuation">.</span>val <span class="token operator">!=</span> left<span class="token punctuation">.</span>val<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>            <span class="token comment">// Move pointers</span>            left <span class="token operator">=</span> left<span class="token punctuation">.</span>next<span class="token punctuation">;</span>            right <span class="token operator">=</span> right<span class="token punctuation">.</span>next<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Easy</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Stack</tag>
+      
+      <tag>Recursion</tag>
+      
+      <tag>Two Pointers</tag>
+      
+      <tag>Linked List</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>150. Evaluate Reverse Polish Notation - Medium</title>
     <link href="/2024/01/07/150-Evaluate-Reverse-Polish-Notation-Medium/"/>
     <url>/2024/01/07/150-Evaluate-Reverse-Polish-Notation-Medium/</url>
@@ -749,9 +819,9 @@
       
       <tag>Two Pointers</tag>
       
-      <tag>Binary Search</tag>
-      
       <tag>Sliding Window</tag>
+      
+      <tag>Binary Search</tag>
       
     </tags>
     
@@ -2522,9 +2592,9 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Algorithms</tag>
+      
+      <tag>Stack</tag>
       
       <tag>筆記</tag>
       
