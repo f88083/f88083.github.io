@@ -16,27 +16,30 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前往題目  想法 因為是sorted，所以應該可以用binary search快速定位  思路這題有sliding window和結合了binary search的sliding window兩種解法，但我在評論區看到的binary search解法，無法理解其中一兩行code，所以選擇sliding window  左右兩個指針，頭與尾 每次計算左邊以及右邊到x的距離 相等或右邊比較大的時候就往">
+    <meta name="description" content="雖然初步開發的時候可以不用管結構，全部程式碼都塞在一起就好，但是遇到要擴展或是測試的時候問題就出現了，很多潛在的問題在程式擴展的路上會出現，增加很多時間成本。而我自己也想練習一下寫測試，有好的結構才能快速切換測試和開發的環境，剛好藉由自己的這個小project來玩玩看 結構參考《Flask Web開發》  以下是重構後的資料結構    code都拆開放在專屬的py檔案裡了  app資料夾是放Fla">
 <meta property="og:type" content="article">
-<meta property="og:title" content="658. Find K Closest Elements - Medium">
-<meta property="og:url" content="https://f88083.github.io/2023/12/23/658-Find-K-Closest-Elements-Medium/index.html">
+<meta property="og:title" content="Flask重構-使用工廠方法和藍圖">
+<meta property="og:url" content="https://f88083.github.io/2024/01/09/Flask%E9%87%8D%E6%A7%8B-%E4%BD%BF%E7%94%A8%E5%B7%A5%E5%BB%A0%E6%96%B9%E6%B3%95%E5%92%8C%E8%97%8D%E5%9C%96/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="前往題目  想法 因為是sorted，所以應該可以用binary search快速定位  思路這題有sliding window和結合了binary search的sliding window兩種解法，但我在評論區看到的binary search解法，無法理解其中一兩行code，所以選擇sliding window  左右兩個指針，頭與尾 每次計算左邊以及右邊到x的距離 相等或右邊比較大的時候就往">
+<meta property="og:description" content="雖然初步開發的時候可以不用管結構，全部程式碼都塞在一起就好，但是遇到要擴展或是測試的時候問題就出現了，很多潛在的問題在程式擴展的路上會出現，增加很多時間成本。而我自己也想練習一下寫測試，有好的結構才能快速切換測試和開發的環境，剛好藉由自己的這個小project來玩玩看 結構參考《Flask Web開發》  以下是重構後的資料結構    code都拆開放在專屬的py檔案裡了  app資料夾是放Fla">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2023-12-23T12:48:27.000Z">
-<meta property="article:modified_time" content="2023-12-23T13:31:30.302Z">
+<meta property="og:image" content="https://i.imgur.com/RUB2kN8.png">
+<meta property="og:image" content="https://i.imgur.com/S3W8FvX.png">
+<meta property="og:image" content="https://i.imgur.com/o2Psgy0.png">
+<meta property="og:image" content="https://i.imgur.com/uwvuxZi.png">
+<meta property="article:published_time" content="2024-01-09T14:30:12.000Z">
+<meta property="article:modified_time" content="2024-01-09T14:32:33.817Z">
 <meta property="article:author" content="Simon Lai">
-<meta property="article:tag" content="Leetcode">
-<meta property="article:tag" content="心得">
-<meta property="article:tag" content="Array">
-<meta property="article:tag" content="Two Pointers">
-<meta property="article:tag" content="Binary Search">
-<meta property="article:tag" content="Sliding Window">
+<meta property="article:tag" content="Flask">
+<meta property="article:tag" content="Factory Pattern">
+<meta property="article:tag" content="Blueprint">
+<meta property="article:tag" content="Configuration">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.imgur.com/RUB2kN8.png">
   
   
   
-  <title>658. Find K Closest Elements - Medium - Simon Lai&#39;s Blog</title>
+  <title>Flask重構-使用工廠方法和藍圖 - Simon Lai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -231,7 +234,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="658. Find K Closest Elements - Medium"></span>
+            <span id="subtitle" data-typed-text="Flask重構-使用工廠方法和藍圖"></span>
           
         </div>
 
@@ -242,8 +245,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-23 12:48" pubdate>
-          2023年12月23日 下午
+        <time datetime="2024-01-09 14:30" pubdate>
+          2024年1月9日 下午
         </time>
       </span>
     
@@ -254,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          209 字
+          1.1k 字
         
       </span>
     
@@ -265,7 +268,7 @@
         
         
         
-          1 分鐘
+          6 分鐘
         
       </span>
     
@@ -302,52 +305,142 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">658. Find K Closest Elements - Medium</h1>
+            <h1 id="seo-header">Flask重構-使用工廠方法和藍圖</h1>
             
             
               <div class="markdown-body">
                 
-                <a class="btn" href="https://leetcode.com/problems/find-k-closest-elements/description/"  title="658. Find K Closest Elements" target="_blank">前往題目</a>
-
-<h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul>
-<li>因為是<code>sorted</code>，所以應該可以用<code>binary search</code>快速定位</li>
+                <p>雖然初步開發的時候可以不用管結構，全部程式碼都塞在一起就好，但是遇到要擴展或是測試的時候問題就出現了，很多潛在的問題在程式擴展的路上會出現，增加很多時間成本。而我自己也想練習一下寫測試，有好的結構才能快速切換測試和開發的環境，剛好藉由自己的這個小project來玩玩看</p>
+<h2 id="結構"><a href="#結構" class="headerlink" title="結構"></a>結構</h2><p>參考<a target="_blank" rel="noopener" href="https://www.books.com.tw/products/CN11202194">《Flask Web開發》</a></p>
+<p><img src="https://i.imgur.com/RUB2kN8.png" srcset="/img/loading.gif" lazyload alt="書中範例結構"></p>
+<p>以下是重構後的資料結構</p>
+<p><img src="https://i.imgur.com/S3W8FvX.png" srcset="/img/loading.gif" lazyload alt="主資料夾(/)"></p>
+<p><img src="https://i.imgur.com/o2Psgy0.png" srcset="/img/loading.gif" lazyload alt="APP資料夾(/app)"></p>
+<p><img src="https://i.imgur.com/uwvuxZi.png" srcset="/img/loading.gif" lazyload alt="APP資料夾的檔案"></p>
+<p><code>code</code>都拆開放在專屬的<code>py</code>檔案裡了</p>
+<ul>
+<li><code>app</code>資料夾是放<code>Flask</code>主程式，也可以換成其他名子</li>
+<li><code>app/main</code>底下放的是<code>views</code>(<code>update</code>, <code>delete</code>, <code>add</code>之類的<code>url</code>)</li>
+<li><code>app/templates</code>存放各個頁面的<code>html</code></li>
+<li><code>app/tests</code>放測試</li>
+<li><code>app</code>底下放<code>command</code>(建資料庫，新增帳號密碼之類的)以及<code>models</code>(放資料庫的<code>models</code>)</li>
+<li><code>/</code>根目錄放<code>main.py</code>用來呼叫<code>app</code>裡的<code>create_app()</code>來建立<code>app</code>，這個是工廠方法，下面會提到</li>
 </ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>這題有sliding window和結合了binary search的sliding window兩種解法，但我在評論區看到的binary search解法，無法理解其中一兩行code，所以選擇sliding window</p>
-<ol>
-<li>左右兩個指針，頭與尾</li>
-<li>每次計算左邊以及右邊到x的距離</li>
-<li>相等或右邊比較大的時候就往左移(因為距離相同是取<code>index</code>較小的那一方)，直到這個<code>window</code>小於<code>k</code>了</li>
-<li>取得<code>sliding window</code>裡所有的數字就是答案</li>
-</ol>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/find-k-closest-elements/solutions/1316003/java-o-n-solution-two-pointers-97-faster/">Sliding window解答</a></p>
-<p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/find-k-closest-elements/solutions/2636647/java-explained-in-detail-binary-search-two-pointers-priority-queue/">綜合Binary search解答</a></p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> <span class="token function">findClosestElements</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">,</span> <span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">int</span> left <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> right <span class="token operator">=</span> arr<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<h2 id="工廠方法-Factory-pattern"><a href="#工廠方法-Factory-pattern" class="headerlink" title="工廠方法(Factory pattern)"></a>工廠方法(Factory pattern)</h2><p>為了讓程式可以建立多個<code>instance</code>，以便<code>Unit test</code>(因為為了提高測試覆蓋度，有時候必須在不同的的設定下執行程式)。單<code>instance</code>建立後沒辦法再修改設定，所以需要多個<code>instance</code></p>
+<p>解決方法是<strong>延遲建立instance</strong>，建立過程移至工廠方法，這裡放在<code>app/__init__.py</code>(官方文件寫得超簡短…用處有限🤦‍♂️只知道<code>db</code>要放在<code>create_app()</code>)</p>
+<blockquote>
+<p>工廠方法要配合藍圖(blueprint)才能建立路由和自訂<code>404</code>頁面</p>
+</blockquote>
+<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> os
+<span class="token keyword">import</span> sys
+<span class="token keyword">from</span> flask <span class="token keyword">import</span> Blueprint<span class="token punctuation">,</span> Flask
+<span class="token keyword">from</span> flask_sqlalchemy <span class="token keyword">import</span> SQLAlchemy
+<span class="token keyword">from</span> flask_login <span class="token keyword">import</span> LoginManager
+<span class="token keyword">from</span> <span class="token punctuation">.</span>config <span class="token keyword">import</span> config
 
-        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> res <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        
-        <span class="token comment">// Keep shrinking the size</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>right <span class="token operator">-</span> left <span class="token operator">>=</span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">int</span> distLeft <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span>left<span class="token punctuation">]</span> <span class="token operator">-</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">int</span> distRight <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span>right<span class="token punctuation">]</span> <span class="token operator">-</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment"># SQLite URI compatible</span>
+WIN <span class="token operator">=</span> sys<span class="token punctuation">.</span>platform<span class="token punctuation">.</span>startswith<span class="token punctuation">(</span><span class="token string">'win'</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> WIN<span class="token punctuation">:</span>
+    prefix <span class="token operator">=</span> <span class="token string">'sqlite:///'</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    prefix <span class="token operator">=</span> <span class="token string">'sqlite:////'</span>
 
-            <span class="token comment">// When equals, use the smaller index</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>distLeft <span class="token operator">&lt;=</span> distRight<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                <span class="token operator">--</span>right<span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-                <span class="token operator">++</span>left<span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span>
+<span class="token keyword">def</span> <span class="token function">create_app</span><span class="token punctuation">(</span>config_name<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+    app<span class="token punctuation">.</span>config<span class="token punctuation">.</span>from_object<span class="token punctuation">(</span>config<span class="token punctuation">[</span>config_name<span class="token punctuation">]</span><span class="token punctuation">)</span>
 
-        <span class="token comment">// Add all the numbers within the range</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>left <span class="token operator">&lt;=</span> right<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            res<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span>left<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token operator">++</span>left<span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">return</span> res<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+    <span class="token keyword">from</span> <span class="token punctuation">.</span>models <span class="token keyword">import</span> db
+    db<span class="token punctuation">.</span>init_app<span class="token punctuation">(</span>app<span class="token punctuation">)</span>
+    login_manager <span class="token operator">=</span> LoginManager<span class="token punctuation">(</span>app<span class="token punctuation">)</span>
+    login_manager<span class="token punctuation">.</span>init_app<span class="token punctuation">(</span>app<span class="token punctuation">)</span>
+
+    <span class="token decorator annotation punctuation">@login_manager<span class="token punctuation">.</span>user_loader</span>
+    <span class="token keyword">def</span> <span class="token function">load_user</span><span class="token punctuation">(</span>user_id<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">from</span> <span class="token punctuation">.</span>models <span class="token keyword">import</span> User
+        user <span class="token operator">=</span> User<span class="token punctuation">.</span>query<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">(</span>user_id<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> user
+
+    login_manager<span class="token punctuation">.</span>login_view <span class="token operator">=</span> <span class="token string">'main.login'</span>
+
+    <span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>context_processor</span>
+    <span class="token keyword">def</span> <span class="token function">inject_user</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">from</span> <span class="token punctuation">.</span>models <span class="token keyword">import</span> User
+        user <span class="token operator">=</span> User<span class="token punctuation">.</span>query<span class="token punctuation">.</span>first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token builtin">dict</span><span class="token punctuation">(</span>user<span class="token operator">=</span>user<span class="token punctuation">)</span>
+    
+    <span class="token comment"># 註冊藍圖</span>
+    <span class="token keyword">from</span> <span class="token punctuation">.</span>main <span class="token keyword">import</span> main <span class="token keyword">as</span> main_blueprint
+    app<span class="token punctuation">.</span>register_blueprint<span class="token punctuation">(</span>main_blueprint<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> app<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h2 id="藍圖"><a href="#藍圖" class="headerlink" title="藍圖"></a>藍圖</h2><ul>
+<li>藍圖: 放在<code>app/main/__init__.py</code></li>
+<li>由於換成工廠模式來建立<code>instance</code>，建立後才能使用<code>app.route</code>，但已經無法定義路由了，也就是在<code>create_app()</code>裡定義藍圖好定義路由</li>
+<li>藍圖中定義路由和錯誤處理程式處於休眠狀態，只有註冊(<code>register</code>)到應用程式上才成為他的一部分</li>
+<li>可以在單個檔案中定義，也可以用結構化方式在多個<code>module</code>裡建立，為了方便直接在<code>app/main</code>裡建立一個<code>blueprint</code>，包含<code>views</code>和<code>errors</code></li>
+<li>定義路由的時候要寫上藍圖的名稱，因為是由藍圖提供，而非<code>app.route</code>，這裡是<code>@main.route()</code></li>
+<li>使用藍圖時，<code>url_for()</code>裡的參數不再是直接寫上路由路徑的名子，例如<code>url_for(&#39;index&#39;)</code>。而是要加上藍圖的名稱變為<code>url_for(&#39;main.index&#39;)</code>這是為了在不同藍圖中使用同樣的路徑名</li>
+<li>當同一個藍圖重定向(<code>redirect</code>)的時候可以簡化寫法變為<code>url_for(&#39;.index&#39;)</code>，跨藍圖的時候就得加上藍圖名</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> flask <span class="token keyword">import</span> Blueprint
+
+<span class="token comment"># Main blueprint</span>
+<span class="token comment"># 兩個必要的參數: 藍圖名稱和所在的包或模塊</span>
+main <span class="token operator">=</span> Blueprint<span class="token punctuation">(</span><span class="token string">'main'</span><span class="token punctuation">,</span> __name__<span class="token punctuation">)</span>
+
+<span class="token comment"># 避免循環依賴</span>
+<span class="token comment"># 因為兩個script都會導入main</span>
+<span class="token keyword">from</span> <span class="token punctuation">.</span> <span class="token keyword">import</span> views<span class="token punctuation">,</span> errors<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h2 id="設定檔"><a href="#設定檔" class="headerlink" title="設定檔"></a>設定檔</h2><p>由於不同的階段會有不同的設定以及參數，所以需要設定檔來定義每個階段需要的設定，以便快速切換。例如開發、測試、和部署，都需要不同的設定以及參數，這時有設定檔就可以隨意切換，不須手動調整(自動就是爽)</p>
+<p>這裡我是放在<code>app/config.py</code>，簡單設定一下不同環境的參數</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> os
+<span class="token keyword">import</span> sys
+
+<span class="token comment"># SQLite URI compatible</span>
+WIN <span class="token operator">=</span> sys<span class="token punctuation">.</span>platform<span class="token punctuation">.</span>startswith<span class="token punctuation">(</span><span class="token string">'win'</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> WIN<span class="token punctuation">:</span>
+    prefix <span class="token operator">=</span> <span class="token string">'sqlite:///'</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    prefix <span class="token operator">=</span> <span class="token string">'sqlite:////'</span>
+
+<span class="token keyword">def</span> <span class="token function">create_sqlite_uri</span><span class="token punctuation">(</span>db_name<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> prefix <span class="token operator">+</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>dirname<span class="token punctuation">(</span>__file__<span class="token punctuation">)</span><span class="token punctuation">,</span> db_name<span class="token punctuation">)</span>
+
+<span class="token keyword">class</span> <span class="token class-name">BaseConfig</span><span class="token punctuation">(</span><span class="token builtin">object</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    SECRET_KEY <span class="token operator">=</span> <span class="token string">'你的密碼'</span>
+
+<span class="token keyword">class</span> <span class="token class-name">DevelopmentConfig</span><span class="token punctuation">(</span>BaseConfig<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    DEBUG <span class="token operator">=</span> <span class="token boolean">False</span>
+    SQLALCHEMY_DATABASE_URI <span class="token operator">=</span> create_sqlite_uri<span class="token punctuation">(</span><span class="token string">'watching-history.db'</span><span class="token punctuation">)</span>
+    SQLALCHEMY_TRACK_MODIFICATIONS <span class="token operator">=</span> <span class="token boolean">False</span>
+
+<span class="token keyword">class</span> <span class="token class-name">TestingConfig</span><span class="token punctuation">(</span>BaseConfig<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    TESTING <span class="token operator">=</span> <span class="token boolean">True</span>
+    SQLALCHEMY_DATABASE_URI <span class="token operator">=</span> create_sqlite_uri<span class="token punctuation">(</span><span class="token string">'test.db'</span><span class="token punctuation">)</span>
+    SQLALCHEMY_TRACK_MODIFICATIONS <span class="token operator">=</span> <span class="token boolean">False</span>
+
+config <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+    <span class="token string">'development'</span><span class="token punctuation">:</span> DevelopmentConfig<span class="token punctuation">,</span>
+    <span class="token string">'testing'</span><span class="token punctuation">:</span> TestingConfig
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p><code>SECRET_KEY</code>等一些機密資訊可以用環境變數導入，更安全，為了方便，而且沒有機密，所以就直接寫入</p>
+<blockquote>
+<p><em><strong>切記不要把密碼以及機密資訊寫在版本控制的設定檔中</strong></em></p>
+</blockquote>
+<p>上面程式碼中也可以看到<code>SQLALCHEMY_DATABASE_URI</code>在<code>development</code>和<code>testing</code>中是不同的值，這樣可以在不同環境中使用不同的資料庫，以免原本的資料庫被覆寫</p>
+<h2 id="啟動"><a href="#啟動" class="headerlink" title="啟動"></a>啟動</h2><ul>
+<li>重構後在根目錄建立<code>.flaskenv</code>讓<code>flask</code>知道哪個是啟動的<code>py</code>檔案</li>
+</ul>
+<blockquote>
+<p><code>FLASK_APP=main.py</code></p>
+</blockquote>
+<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># main.py</span>
+<span class="token keyword">from</span> app <span class="token keyword">import</span> create_app
+ 
+app <span class="token operator">=</span> create_app<span class="token punctuation">(</span>config_name<span class="token operator">=</span><span class="token string">'development'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
                 
               </div>
@@ -366,15 +459,8 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  <a href="/categories/Project/" class="category-chain-item">Project</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
   
 
       </span>
@@ -388,17 +474,13 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Leetcode/" class="print-no-link">#Leetcode</a>
+        <a href="/tags/Flask/" class="print-no-link">#Flask</a>
       
-        <a href="/tags/%E5%BF%83%E5%BE%97/" class="print-no-link">#心得</a>
+        <a href="/tags/Factory-Pattern/" class="print-no-link">#Factory Pattern</a>
       
-        <a href="/tags/Array/" class="print-no-link">#Array</a>
+        <a href="/tags/Blueprint/" class="print-no-link">#Blueprint</a>
       
-        <a href="/tags/Two-Pointers/" class="print-no-link">#Two Pointers</a>
-      
-        <a href="/tags/Binary-Search/" class="print-no-link">#Binary Search</a>
-      
-        <a href="/tags/Sliding-Window/" class="print-no-link">#Sliding Window</a>
+        <a href="/tags/Configuration/" class="print-no-link">#Configuration</a>
       
     </div>
   
@@ -410,8 +492,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>658. Find K Closest Elements - Medium</div>
-      <div>https://f88083.github.io/2023/12/23/658-Find-K-Closest-Elements-Medium/</div>
+      <div>Flask重構-使用工廠方法和藍圖</div>
+      <div>https://f88083.github.io/2024/01/09/Flask重構-使用工廠方法和藍圖/</div>
     </div>
     <div class="license-meta">
       
@@ -423,7 +505,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>發布於</div>
-          <div>2023年12月23日</div>
+          <div>2024年1月9日</div>
         </div>
       
       
@@ -467,18 +549,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/24/424-Longest-Repeating-Character-Replacement-Medium/" title="424. Longest Repeating Character Replacement - Medium">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">424. Longest Repeating Character Replacement - Medium</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/23/662-Maximum-Width-of-Binary-Tree-Medium/" title="662. Maximum Width of Binary Tree - Medium">
-                        <span class="hidden-mobile">662. Maximum Width of Binary Tree - Medium</span>
+                      <a href="/2024/01/09/283-Move-Zeroes-Easy/" title="283. Move Zeroes - Easy">
+                        <span class="hidden-mobile">283. Move Zeroes - Easy</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
