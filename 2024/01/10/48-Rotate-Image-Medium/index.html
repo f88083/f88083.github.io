@@ -16,31 +16,26 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Free online course presented by Robert Sedgewick and Kevin Wayne  這篇將會概括PPT 1.3的stack以及resizing arrays: Stacks對就是那個Stack，LIFO的資料結構。這門課的老師很強調把Client, implementation, 還有interface分開，因為有以下優點  Client不用知道實">
+    <meta name="description" content="前往題目  想法 快速找了一下規律，沒有找到  思路 每個cell都反轉其row和column，也就是(1, 0)變為(0, 1)，兩個cell互換 然後每行前後對調  Time: $O(N^2)$Space: O(1) Code討論區解答 class Solution &#123;     public void rotate(int[][] matrix) &#123;         &#x2F;&#x2F;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Algorithms Part 1 — Week 2之Stacks筆記">
-<meta property="og:url" content="https://f88083.github.io/2023/10/08/algorithms-part-1-week-2%E4%B9%8Bstacks%E7%AD%86%E8%A8%98/index.html">
+<meta property="og:title" content="48. Rotate Image - Medium">
+<meta property="og:url" content="https://f88083.github.io/2024/01/10/48-Rotate-Image-Medium/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="Free online course presented by Robert Sedgewick and Kevin Wayne  這篇將會概括PPT 1.3的stack以及resizing arrays: Stacks對就是那個Stack，LIFO的資料結構。這門課的老師很強調把Client, implementation, 還有interface分開，因為有以下優點  Client不用知道實">
+<meta property="og:description" content="前往題目  想法 快速找了一下規律，沒有找到  思路 每個cell都反轉其row和column，也就是(1, 0)變為(0, 1)，兩個cell互換 然後每行前後對調  Time: $O(N^2)$Space: O(1) Code討論區解答 class Solution &#123;     public void rotate(int[][] matrix) &#123;         &#x2F;&#x2F;">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/1*k_ac_48JzLBrOs8ifJ8K_g.png">
-<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/1*iZTj0XJ8QW_iOhZuF6MckQ.png">
-<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/1*2dvBnL9ItgZ03u0kGpnORA.png">
-<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/1*rErG07xwEGZVwB6zbKu0TQ.png">
-<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/1*rCsbQblDpy-qM_v8ex9RMg.png">
-<meta property="article:published_time" content="2023-10-08T19:42:55.000Z">
-<meta property="article:modified_time" content="2023-11-22T14:07:36.010Z">
+<meta property="article:published_time" content="2024-01-10T14:23:21.000Z">
+<meta property="article:modified_time" content="2024-01-10T14:33:37.668Z">
 <meta property="article:author" content="Simon Lai">
-<meta property="article:tag" content="Stack">
-<meta property="article:tag" content="Algorithms">
-<meta property="article:tag" content="筆記">
-<meta property="article:tag" content="演算法">
+<meta property="article:tag" content="Leetcode">
+<meta property="article:tag" content="心得">
+<meta property="article:tag" content="Array">
+<meta property="article:tag" content="Math">
+<meta property="article:tag" content="Matrix">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn-images-1.medium.com/max/2000/1*k_ac_48JzLBrOs8ifJ8K_g.png">
   
   
   
-  <title>Algorithms Part 1 — Week 2之Stacks筆記 - Simon Lai&#39;s Blog</title>
+  <title>48. Rotate Image - Medium - Simon Lai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -235,7 +230,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Algorithms Part 1 — Week 2之Stacks筆記"></span>
+            <span id="subtitle" data-typed-text="48. Rotate Image - Medium"></span>
           
         </div>
 
@@ -246,8 +241,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-08 20:42" pubdate>
-          2023年10月8日 晚上
+        <time datetime="2024-01-10 14:23" pubdate>
+          2024年1月10日 下午
         </time>
       </span>
     
@@ -258,7 +253,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          623 字
+          156 字
         
       </span>
     
@@ -269,7 +264,7 @@
         
         
         
-          3 分鐘
+          1 分鐘
         
       </span>
     
@@ -306,56 +301,44 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Algorithms Part 1 — Week 2之Stacks筆記</h1>
+            <h1 id="seo-header">48. Rotate Image - Medium</h1>
             
             
               <div class="markdown-body">
                 
-                <blockquote>
-<p>Free online course presented by Robert Sedgewick and Kevin Wayne</p>
-</blockquote>
-<p>這篇將會概括PPT 1.3的stack以及resizing arrays:</p>
-<h2 id="Stacks"><a href="#Stacks" class="headerlink" title="Stacks"></a>Stacks</h2><p>對就是那個Stack，LIFO的資料結構。這門課的老師很強調把Client, implementation, 還有interface分開，因為有以下優點</p>
-<ul>
-<li><p>Client不用知道實作細節，但可以完整使用</p>
-</li>
-<li><p>可以實做出modular, reusable libraries</p>
-</li>
-<li><p>效能上可以在需要的地方寫上optimized implementation</p>
-</li>
+                <a class="btn" href="https://leetcode.com/problems/rotate-image/description/"  title="48. Rotate Image" target="_blank">前往題目</a>
+
+<h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul>
+<li>快速找了一下規律，沒有找到</li>
 </ul>
-<p>有點離題了，拉回來。個人覺得PPT裡寫得非常詳細，這裡就補充一些可能看不懂或是複雜的地方吧。</p>
-<p>一開始PPT給的是StackOfStrings，存放string的stack，裡面有實作，請參考PPT。用Linked-list實作stack</p>
-<p>看到這個PPT我才想起Java有inner class，很久以前有用過，但後來就沒必要也就沒寫過了。</p>
-<p><img src="https://cdn-images-1.medium.com/max/2000/1*k_ac_48JzLBrOs8ifJ8K_g.png" srcset="/img/loading.gif" lazyload alt="Linked-list implementation"></p>
-<p>如圖，而inner class的access modifier，也就是那個private無所謂，反正都存取得到。</p>
-<p>而這個Stack會用到的Memory大約是40N，見下圖</p>
-<p><img src="https://cdn-images-1.medium.com/max/2000/1*iZTj0XJ8QW_iOhZuF6MckQ.png" srcset="/img/loading.gif" lazyload alt="Stack memeory"></p>
-<p>注意實際String的內容都沒有算進來，只是算最少要多少，還加上了String的reference。</p>
-<p>另外也可以用Array實作stack，code也在PPT裡面了。但目前需要傳入capacity，否則array最終會超出範圍。</p>
-<h2 id="Stack的隱憂與解法"><a href="#Stack的隱憂與解法" class="headerlink" title="Stack的隱憂與解法"></a>Stack的隱憂與解法</h2><ul>
-<li><p>Underflow: 如果在空的stack pop的話，拋出exception</p>
-</li>
-<li><p>Overflow: 用可變大小數組</p>
-</li>
-<li><p>Null items: 允許null item插入</p>
-</li>
-<li><p>Loitering: Garbage collector不知道可以回收，所以浪費了空間，解決方法參照PPT P.14</p>
-</li>
-</ul>
-<p>於是引出我們下一個主題</p>
-<h2 id="Resizing-Arrays"><a href="#Resizing-Arrays" class="headerlink" title="Resizing Arrays"></a>Resizing Arrays</h2><p>如果每次超過array size就只增加到多出來的長度，那需要N²&#x2F;2的時間才能插入從第一個到N個items，因為每次都要再copy。因此我們每次增加都直接增加兩倍，這樣就可以把時間壓到剩3N(不考慮新建一個array的時間)，因為很少需要擴充。這個行為叫做amortize攤銷。</p>
-<p>而如果太多空間的話，我們每次剩一半以下就直接砍掉一半空間就好了?</p>
-<p>不對，這樣如果有case是在一半的前一個push又pop，push又pop，這樣反反覆覆那時間會很可觀，因為每次要增加兩倍空間，接著又要去掉一半空間，每次操作基本上要N次。</p>
-<p>那該怎麼做?在剩25%的時候shrink就好，這樣不會跟擴充array衝突，也能解決那樣極端的例子。</p>
-<h2 id="Stack的performance以及memory如何"><a href="#Stack的performance以及memory如何" class="headerlink" title="Stack的performance以及memory如何"></a>Stack的performance以及memory如何</h2><p><img src="https://cdn-images-1.medium.com/max/2000/1*2dvBnL9ItgZ03u0kGpnORA.png" srcset="/img/loading.gif" lazyload alt="Stack performance table"></p>
-<p><img src="https://cdn-images-1.medium.com/max/2000/1*rErG07xwEGZVwB6zbKu0TQ.png" srcset="/img/loading.gif" lazyload alt="Stack memory usage"></p>
-<p><em>這裡我不懂為何8N的時候是stack滿的時候，反而32N是只有25%滿…</em></p>
-<blockquote>
-<p>教授說array來實作stack使用的空間比Linked-list還少</p>
-</blockquote>
-<h2 id="用resizing-array還是Linked-list實作stack"><a href="#用resizing-array還是Linked-list實作stack" class="headerlink" title="用resizing array還是Linked list實作stack"></a>用resizing array還是Linked list實作stack</h2><p>有好有壞，看怎麼選擇</p>
-<p><img src="https://cdn-images-1.medium.com/max/2000/1*rCsbQblDpy-qM_v8ex9RMg.png" srcset="/img/loading.gif" lazyload alt="Linked-list vs Resizing array"></p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
+<li>每個<code>cell</code>都反轉其<code>row</code>和<code>column</code>，也就是<code>(1, 0)</code>變為<code>(0, 1)</code>，兩個<code>cell</code>互換</li>
+<li>然後每行前後對調</li>
+</ol>
+<p>Time: $O(N^2)$<br>Space: <code>O(1)</code></p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/rotate-image/solutions/18879/ac-java-in-place-solution-with-explanation-easy-to-understand/">討論區解答</a></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">rotate</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> matrix<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// Swap rows and columns</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> row <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> row <span class="token operator">&lt;</span> matrix<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>row<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// 注意是col=row，不是從零開始</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> col <span class="token operator">=</span> row<span class="token punctuation">;</span> col <span class="token operator">&lt;</span> matrix<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>col<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">int</span> temp <span class="token operator">=</span> matrix<span class="token punctuation">[</span>row<span class="token punctuation">]</span><span class="token punctuation">[</span>col<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                matrix<span class="token punctuation">[</span>row<span class="token punctuation">]</span><span class="token punctuation">[</span>col<span class="token punctuation">]</span> <span class="token operator">=</span> matrix<span class="token punctuation">[</span>col<span class="token punctuation">]</span><span class="token punctuation">[</span>row<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                matrix<span class="token punctuation">[</span>col<span class="token punctuation">]</span><span class="token punctuation">[</span>row<span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token comment">// Swap each line horizontally</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> row <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> row <span class="token operator">&lt;</span> matrix<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>row<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> col <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> col <span class="token operator">&lt;</span> matrix<span class="token punctuation">.</span>length <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token operator">++</span>col<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">int</span> temp <span class="token operator">=</span> matrix<span class="token punctuation">[</span>row<span class="token punctuation">]</span><span class="token punctuation">[</span>col<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                matrix<span class="token punctuation">[</span>row<span class="token punctuation">]</span><span class="token punctuation">[</span>col<span class="token punctuation">]</span> <span class="token operator">=</span> matrix<span class="token punctuation">[</span>row<span class="token punctuation">]</span><span class="token punctuation">[</span>matrix<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> col<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                matrix<span class="token punctuation">[</span>row<span class="token punctuation">]</span><span class="token punctuation">[</span>matrix<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> col<span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
                 
               </div>
@@ -374,8 +357,15 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Algorithms/" class="category-chain-item">Algorithms</a>
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
   
 
       </span>
@@ -389,13 +379,15 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Stack/" class="print-no-link">#Stack</a>
+        <a href="/tags/Leetcode/" class="print-no-link">#Leetcode</a>
       
-        <a href="/tags/Algorithms/" class="print-no-link">#Algorithms</a>
+        <a href="/tags/%E5%BF%83%E5%BE%97/" class="print-no-link">#心得</a>
       
-        <a href="/tags/%E7%AD%86%E8%A8%98/" class="print-no-link">#筆記</a>
+        <a href="/tags/Array/" class="print-no-link">#Array</a>
       
-        <a href="/tags/%E6%BC%94%E7%AE%97%E6%B3%95/" class="print-no-link">#演算法</a>
+        <a href="/tags/Math/" class="print-no-link">#Math</a>
+      
+        <a href="/tags/Matrix/" class="print-no-link">#Matrix</a>
       
     </div>
   
@@ -407,8 +399,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Algorithms Part 1 — Week 2之Stacks筆記</div>
-      <div>https://f88083.github.io/2023/10/08/algorithms-part-1-week-2之stacks筆記/</div>
+      <div>48. Rotate Image - Medium</div>
+      <div>https://f88083.github.io/2024/01/10/48-Rotate-Image-Medium/</div>
     </div>
     <div class="license-meta">
       
@@ -420,7 +412,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>發布於</div>
-          <div>2023年10月8日</div>
+          <div>2024年1月10日</div>
         </div>
       
       
@@ -464,18 +456,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/09/206-reverse-linked-list-%E9%82%8F%E8%BC%AF%E8%BD%89%E6%8F%9B%E6%9C%89%E9%BB%9E%E9%9A%9C%E7%A4%99/" title="206. Reverse Linked List - 邏輯轉換有點障礙">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">206. Reverse Linked List - 邏輯轉換有點障礙</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/08/20-valid-parentheses-%E4%B8%80%E6%A8%A3%E6%98%AF%E5%85%A9%E5%91%A8%E5%89%8D%E7%9A%84%E9%A1%8C%E7%9B%AE-%E9%82%84%E6%98%AFwa/" title="20. Valid Parentheses — 一樣是兩周前的題目，還是WA">
-                        <span class="hidden-mobile">20. Valid Parentheses — 一樣是兩周前的題目，還是WA</span>
+                      <a href="/2024/01/10/221-Maximal-Square-Medium/" title="221. Maximal Square - Medium">
+                        <span class="hidden-mobile">221. Maximal Square - Medium</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
