@@ -16,15 +16,15 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="擴展之前做的project，加上單用戶登入認證才能看到網頁內容以及登出功能，並參考教程開發  目標 網頁供單人使用 輸入帳號密碼驗證後才能進入並使用網頁  前置作業             只要是python程式碼就寫在app.py             首先定義一下Model class以儲存帳號密碼，這裡取名為User  密碼要存哈希值，因為存明文在資料庫非常危險 User class繼承">
+    <meta name="description" content="擴展之前做的project，加上單用戶登入認證才能看到網頁內容以及登出功能，並參考教程開發  最新教程在這裡: Flask 入门教程3.0 (2022&#x2F;07&#x2F;16發布) 目標 網頁供單人使用 輸入帳號密碼驗證後才能進入並使用網頁  前置作業             只要是python程式碼就寫在app.py             首先定義一下Model class以儲存帳號">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Flask實作單用戶登入-擴展原有project">
 <meta property="og:url" content="https://f88083.github.io/2023/12/06/Flask%E5%AF%A6%E4%BD%9C%E5%96%AE%E7%94%A8%E6%88%B6%E7%99%BB%E5%85%A5-%E6%93%B4%E5%B1%95%E5%8E%9F%E6%9C%89project/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="擴展之前做的project，加上單用戶登入認證才能看到網頁內容以及登出功能，並參考教程開發  目標 網頁供單人使用 輸入帳號密碼驗證後才能進入並使用網頁  前置作業             只要是python程式碼就寫在app.py             首先定義一下Model class以儲存帳號密碼，這裡取名為User  密碼要存哈希值，因為存明文在資料庫非常危險 User class繼承">
+<meta property="og:description" content="擴展之前做的project，加上單用戶登入認證才能看到網頁內容以及登出功能，並參考教程開發  最新教程在這裡: Flask 入门教程3.0 (2022&#x2F;07&#x2F;16發布) 目標 網頁供單人使用 輸入帳號密碼驗證後才能進入並使用網頁  前置作業             只要是python程式碼就寫在app.py             首先定義一下Model class以儲存帳號">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2023-12-06T14:59:57.000Z">
-<meta property="article:modified_time" content="2023-12-06T15:00:37.735Z">
+<meta property="article:modified_time" content="2024-01-10T17:19:47.079Z">
 <meta property="article:author" content="Simon Lai">
 <meta property="article:tag" content="Flask">
 <meta property="article:tag" content="HTML">
@@ -254,7 +254,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.2k 字
+          2.3k 字
         
       </span>
     
@@ -310,6 +310,7 @@
                 <blockquote>
 <p>擴展之前做的<a href="https://f88083.github.io/2023/12/03/%E7%94%A8Flask%E5%AF%AB%E4%B8%80%E5%80%8B%E6%89%8B%E5%8B%95%E5%84%B2%E5%AD%98%E8%A7%80%E7%9C%8B%E7%B4%80%E9%8C%84%E7%9A%84%E7%B6%B2%E9%A0%81%E7%9A%84%E9%96%8B%E7%99%BC%E6%97%A5%E8%AA%8C/">project</a>，加上單用戶登入認證才能看到網頁內容以及登出功能，並參考<a target="_blank" rel="noopener" href="https://helloflask.com/downloads/flask-tutorial-2.0.pdf">教程</a>開發</p>
 </blockquote>
+<p>最新教程在這裡: <a target="_blank" rel="noopener" href="https://tutorial.helloflask.com/">Flask 入门教程3.0 (2022&#x2F;07&#x2F;16發布)</a></p>
 <h2 id="目標"><a href="#目標" class="headerlink" title="目標"></a>目標</h2><ul>
 <li>網頁供單人使用</li>
 <li>輸入帳號密碼驗證後才能進入並使用網頁</li>
