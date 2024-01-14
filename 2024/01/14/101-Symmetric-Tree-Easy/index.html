@@ -16,26 +16,27 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前往題目  想法 之前做過，題目要求O(log(m * n))以為不能疊代整個矩陣，於是先用binary search尋找target可能在哪一行，然後再搜尋特定那一行 看了之前我的submission才發現其實可以，因為都用binary search所以每行都檢查的話就符合題目要求的time complexity  思路 疊代每行 在每行binary search target  Codecla">
+    <meta name="description" content="前往題目  想法 嘗試用了BFS但沒有成功，本來想說要用size來判斷然後分左右邊 看了discussion才知道直接用left和right就好，跟DFS一樣  思路DFS  每輪都比較left和right node的值 繼續用left的子樹還有right的子樹呼叫DFS  BFS解法 Code  class Solution &#123;     public boolean isSymmetr">
 <meta property="og:type" content="article">
-<meta property="og:title" content="74. Search a 2D Matrix - Medium">
-<meta property="og:url" content="https://f88083.github.io/2024/01/12/74-Search-a-2D-Matrix-Medium/index.html">
+<meta property="og:title" content="101. Symmetric Tree - Easy">
+<meta property="og:url" content="https://f88083.github.io/2024/01/14/101-Symmetric-Tree-Easy/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="前往題目  想法 之前做過，題目要求O(log(m * n))以為不能疊代整個矩陣，於是先用binary search尋找target可能在哪一行，然後再搜尋特定那一行 看了之前我的submission才發現其實可以，因為都用binary search所以每行都檢查的話就符合題目要求的time complexity  思路 疊代每行 在每行binary search target  Codecla">
+<meta property="og:description" content="前往題目  想法 嘗試用了BFS但沒有成功，本來想說要用size來判斷然後分左右邊 看了discussion才知道直接用left和right就好，跟DFS一樣  思路DFS  每輪都比較left和right node的值 繼續用left的子樹還有right的子樹呼叫DFS  BFS解法 Code  class Solution &#123;     public boolean isSymmetr">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2024-01-12T11:41:23.000Z">
-<meta property="article:modified_time" content="2024-01-12T11:46:27.955Z">
+<meta property="article:published_time" content="2024-01-14T14:23:20.000Z">
+<meta property="article:modified_time" content="2024-01-14T14:35:27.920Z">
 <meta property="article:author" content="Simon Lai">
 <meta property="article:tag" content="Leetcode">
 <meta property="article:tag" content="心得">
-<meta property="article:tag" content="Array">
-<meta property="article:tag" content="Matrix">
-<meta property="article:tag" content="Binary Search">
+<meta property="article:tag" content="Binary Tree">
+<meta property="article:tag" content="Depth-First Search">
+<meta property="article:tag" content="Breadth-First Search">
+<meta property="article:tag" content="Tree">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>74. Search a 2D Matrix - Medium - Simon Lai&#39;s Blog</title>
+  <title>101. Symmetric Tree - Easy - Simon Lai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -230,7 +231,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="74. Search a 2D Matrix - Medium"></span>
+            <span id="subtitle" data-typed-text="101. Symmetric Tree - Easy"></span>
           
         </div>
 
@@ -241,8 +242,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-12 11:41" pubdate>
-          2024年1月12日 中午
+        <time datetime="2024-01-14 14:23" pubdate>
+          2024年1月14日 下午
         </time>
       </span>
     
@@ -253,7 +254,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          162 字
+          125 字
         
       </span>
     
@@ -301,45 +302,46 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">74. Search a 2D Matrix - Medium</h1>
+            <h1 id="seo-header">101. Symmetric Tree - Easy</h1>
             
             
               <div class="markdown-body">
                 
-                <a class="btn" href="https://leetcode.com/problems/search-a-2d-matrix/description/"  title="74. Search a 2D Matrix" target="_blank">前往題目</a>
+                <a class="btn" href="https://leetcode.com/problems/symmetric-tree/description/"  title="101. Symmetric Tree" target="_blank">前往題目</a>
 
 <h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul>
-<li>之前做過，題目要求<code>O(log(m * n))</code>以為不能疊代整個矩陣，於是先用<code>binary search</code>尋找<code>target</code>可能在哪一行，然後再搜尋特定那一行</li>
-<li>看了之前我的<code>submission</code>才發現其實可以，因為都用<code>binary search</code>所以每行都檢查的話就符合題目要求的<code>time complexity</code></li>
+<li>嘗試用了<code>BFS</code>但沒有成功，本來想說要用<code>size</code>來判斷然後分左右邊</li>
+<li>看了<code>discussion</code>才知道直接用<code>left</code>和<code>right</code>就好，跟<code>DFS</code>一樣</li>
 </ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
-<li>疊代每行</li>
-<li>在每行binary search target</li>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>DFS</p>
+<ol>
+<li>每輪都比較<code>left</code>和<code>right node</code>的值</li>
+<li>繼續用<code>left</code>的子樹還有<code>right</code>的子樹呼叫<code>DFS</code></li>
 </ol>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">searchMatrix</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> matrix<span class="token punctuation">,</span> <span class="token keyword">int</span> target<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">final</span> <span class="token keyword">int</span> <span class="token class-name">M</span> <span class="token operator">=</span> matrix<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
-        <span class="token keyword">final</span> <span class="token keyword">int</span> <span class="token class-name">N</span> <span class="token operator">=</span> matrix<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+<p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/symmetric-tree/solutions/433170/ismirror-dfs-recursion-one-two-stacks-bfs-queue-solution-in-java/">BFS解法</a></p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/Mao9uzxwvmc" title="Symmetric Tree - Leetcode 101 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> row <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> row <span class="token operator">&lt;</span> <span class="token class-name">M</span><span class="token punctuation">;</span> <span class="token operator">++</span>row<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">int</span> l <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> r <span class="token operator">=</span> <span class="token class-name">N</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isSymmetric</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> root<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token function">dfs</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">,</span> root<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-            <span class="token keyword">while</span> <span class="token punctuation">(</span>l <span class="token operator">&lt;=</span> r<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                <span class="token keyword">int</span> mid <span class="token operator">=</span> l <span class="token operator">+</span> <span class="token punctuation">(</span>r <span class="token operator">-</span> l<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
-
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>matrix<span class="token punctuation">[</span>row<span class="token punctuation">]</span><span class="token punctuation">[</span>mid<span class="token punctuation">]</span> <span class="token operator">==</span> target<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-                <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>matrix<span class="token punctuation">[</span>row<span class="token punctuation">]</span><span class="token punctuation">[</span>mid<span class="token punctuation">]</span> <span class="token operator">&lt;</span> target<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                    l <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
-                <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-                    r <span class="token operator">=</span> mid <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
-                <span class="token punctuation">&#125;</span>
-            <span class="token punctuation">&#125;</span>
+    <span class="token keyword">private</span> <span class="token keyword">boolean</span> <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> left<span class="token punctuation">,</span> <span class="token class-name">TreeNode</span> right<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// Reach the end</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>left <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> right <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">// One of them reach the end but other one hasnt</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>left <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> right <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
         <span class="token punctuation">&#125;</span>
 
-        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token comment">// Check their values, check left and right sub node values</span>
+        <span class="token keyword">return</span> left<span class="token punctuation">.</span>val <span class="token operator">==</span> right<span class="token punctuation">.</span>val <span class="token operator">&amp;&amp;</span>
+               <span class="token function">dfs</span><span class="token punctuation">(</span>left<span class="token punctuation">.</span>left<span class="token punctuation">,</span> right<span class="token punctuation">.</span>right<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>
+               <span class="token function">dfs</span><span class="token punctuation">(</span>left<span class="token punctuation">.</span>right<span class="token punctuation">,</span> right<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
                 
               </div>
@@ -363,7 +365,7 @@
   
     <span>></span>
     
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
   
   
 
@@ -384,11 +386,13 @@
       
         <a href="/tags/%E5%BF%83%E5%BE%97/" class="print-no-link">#心得</a>
       
-        <a href="/tags/Array/" class="print-no-link">#Array</a>
+        <a href="/tags/Binary-Tree/" class="print-no-link">#Binary Tree</a>
       
-        <a href="/tags/Matrix/" class="print-no-link">#Matrix</a>
+        <a href="/tags/Depth-First-Search/" class="print-no-link">#Depth-First Search</a>
       
-        <a href="/tags/Binary-Search/" class="print-no-link">#Binary Search</a>
+        <a href="/tags/Breadth-First-Search/" class="print-no-link">#Breadth-First Search</a>
+      
+        <a href="/tags/Tree/" class="print-no-link">#Tree</a>
       
     </div>
   
@@ -400,8 +404,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>74. Search a 2D Matrix - Medium</div>
-      <div>https://f88083.github.io/2024/01/12/74-Search-a-2D-Matrix-Medium/</div>
+      <div>101. Symmetric Tree - Easy</div>
+      <div>https://f88083.github.io/2024/01/14/101-Symmetric-Tree-Easy/</div>
     </div>
     <div class="license-meta">
       
@@ -413,7 +417,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>發布於</div>
-          <div>2024年1月12日</div>
+          <div>2024年1月14日</div>
         </div>
       
       
@@ -457,9 +461,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/14/101-Symmetric-Tree-Easy/" title="101. Symmetric Tree - Easy">
+                      <a href="/2024/01/14/268-Missing-Number-Easy/" title="268. Missing Number - Easy">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">101. Symmetric Tree - Easy</span>
+                        <span class="hidden-mobile">268. Missing Number - Easy</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -467,8 +471,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/12/50-Pow-x-n-Medium/" title="50. Pow(x, n) - Medium">
-                        <span class="hidden-mobile">50. Pow(x, n) - Medium</span>
+                      <a href="/2024/01/12/74-Search-a-2D-Matrix-Medium/" title="74. Search a 2D Matrix - Medium">
+                        <span class="hidden-mobile">74. Search a 2D Matrix - Medium</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

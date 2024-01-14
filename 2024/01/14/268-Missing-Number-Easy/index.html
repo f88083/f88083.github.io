@@ -16,26 +16,29 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前往題目  想法 之前做過，題目要求O(log(m * n))以為不能疊代整個矩陣，於是先用binary search尋找target可能在哪一行，然後再搜尋特定那一行 看了之前我的submission才發現其實可以，因為都用binary search所以每行都檢查的話就符合題目要求的time complexity  思路 疊代每行 在每行binary search target  Codecla">
+    <meta name="description" content="前往題目  想法 只想到了用HashSet存，然後比較，雖然是時間是O(N)但空間也是，不符合題目要求  思路這題大致有兩種做法，Bit manipulation和Sum Bit manipulation  算0~n的XOR應該是多少 再用上面的結果去XOR實際的nums陣列 因為XOR的特性是與自己相同的XOR完會是0，所以全部XOR一遍的結果就是答案，也就是缺失的那個  Sum  可以用公式直">
 <meta property="og:type" content="article">
-<meta property="og:title" content="74. Search a 2D Matrix - Medium">
-<meta property="og:url" content="https://f88083.github.io/2024/01/12/74-Search-a-2D-Matrix-Medium/index.html">
+<meta property="og:title" content="268. Missing Number - Easy">
+<meta property="og:url" content="https://f88083.github.io/2024/01/14/268-Missing-Number-Easy/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="前往題目  想法 之前做過，題目要求O(log(m * n))以為不能疊代整個矩陣，於是先用binary search尋找target可能在哪一行，然後再搜尋特定那一行 看了之前我的submission才發現其實可以，因為都用binary search所以每行都檢查的話就符合題目要求的time complexity  思路 疊代每行 在每行binary search target  Codecla">
+<meta property="og:description" content="前往題目  想法 只想到了用HashSet存，然後比較，雖然是時間是O(N)但空間也是，不符合題目要求  思路這題大致有兩種做法，Bit manipulation和Sum Bit manipulation  算0~n的XOR應該是多少 再用上面的結果去XOR實際的nums陣列 因為XOR的特性是與自己相同的XOR完會是0，所以全部XOR一遍的結果就是答案，也就是缺失的那個  Sum  可以用公式直">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2024-01-12T11:41:23.000Z">
-<meta property="article:modified_time" content="2024-01-12T11:46:27.955Z">
+<meta property="article:published_time" content="2024-01-14T15:20:33.000Z">
+<meta property="article:modified_time" content="2024-01-14T15:33:42.411Z">
 <meta property="article:author" content="Simon Lai">
 <meta property="article:tag" content="Leetcode">
 <meta property="article:tag" content="心得">
 <meta property="article:tag" content="Array">
-<meta property="article:tag" content="Matrix">
+<meta property="article:tag" content="Math">
+<meta property="article:tag" content="Hash Table">
+<meta property="article:tag" content="Sorting">
+<meta property="article:tag" content="Bit Manipulation">
 <meta property="article:tag" content="Binary Search">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>74. Search a 2D Matrix - Medium - Simon Lai&#39;s Blog</title>
+  <title>268. Missing Number - Easy - Simon Lai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -230,7 +233,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="74. Search a 2D Matrix - Medium"></span>
+            <span id="subtitle" data-typed-text="268. Missing Number - Easy"></span>
           
         </div>
 
@@ -241,8 +244,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-12 11:41" pubdate>
-          2024年1月12日 中午
+        <time datetime="2024-01-14 15:20" pubdate>
+          2024年1月14日 下午
         </time>
       </span>
     
@@ -253,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          162 字
+          222 字
         
       </span>
     
@@ -264,7 +267,7 @@
         
         
         
-          1 分鐘
+          2 分鐘
         
       </span>
     
@@ -301,45 +304,65 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">74. Search a 2D Matrix - Medium</h1>
+            <h1 id="seo-header">268. Missing Number - Easy</h1>
             
             
               <div class="markdown-body">
                 
-                <a class="btn" href="https://leetcode.com/problems/search-a-2d-matrix/description/"  title="74. Search a 2D Matrix" target="_blank">前往題目</a>
+                <a class="btn" href="https://leetcode.com/problems/missing-number/description/"  title="268. Missing Number" target="_blank">前往題目</a>
 
 <h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul>
-<li>之前做過，題目要求<code>O(log(m * n))</code>以為不能疊代整個矩陣，於是先用<code>binary search</code>尋找<code>target</code>可能在哪一行，然後再搜尋特定那一行</li>
-<li>看了之前我的<code>submission</code>才發現其實可以，因為都用<code>binary search</code>所以每行都檢查的話就符合題目要求的<code>time complexity</code></li>
+<li>只想到了用<code>HashSet</code>存，然後比較，雖然是時間是<code>O(N)</code>但空間也是，不符合題目要求</li>
 </ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
-<li>疊代每行</li>
-<li>在每行binary search target</li>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>這題大致有兩種做法，<code>Bit manipulation</code>和<code>Sum</code></p>
+<p>Bit manipulation</p>
+<ol>
+<li>算<code>0~n</code>的<code>XOR</code>應該是多少</li>
+<li>再用上面的結果去<code>XOR</code>實際的<code>nums</code>陣列</li>
+<li>因為<code>XOR</code>的特性是與自己相同的<code>XOR</code>完會是<code>0</code>，所以全部<code>XOR</code>一遍的結果就是答案，也就是缺失的那個</li>
 </ol>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">searchMatrix</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> matrix<span class="token punctuation">,</span> <span class="token keyword">int</span> target<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">final</span> <span class="token keyword">int</span> <span class="token class-name">M</span> <span class="token operator">=</span> matrix<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
-        <span class="token keyword">final</span> <span class="token keyword">int</span> <span class="token class-name">N</span> <span class="token operator">=</span> matrix<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+<p>Sum</p>
+<ol>
+<li>可以用公式直接算出<code>0~n</code>的總和</li>
+<li>然後再算<code>nums</code>的總和，互減之後就是答案</li>
+</ol>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p>自己寫的，Time<code>O(N)</code>，Space<code>O(N)</code></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">missingNumber</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> exist <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashSet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> row <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> row <span class="token operator">&lt;</span> <span class="token class-name">M</span><span class="token punctuation">;</span> <span class="token operator">++</span>row<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">int</span> l <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> r <span class="token operator">=</span> <span class="token class-name">N</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
-
-            <span class="token keyword">while</span> <span class="token punctuation">(</span>l <span class="token operator">&lt;=</span> r<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                <span class="token keyword">int</span> mid <span class="token operator">=</span> l <span class="token operator">+</span> <span class="token punctuation">(</span>r <span class="token operator">-</span> l<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
-
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>matrix<span class="token punctuation">[</span>row<span class="token punctuation">]</span><span class="token punctuation">[</span>mid<span class="token punctuation">]</span> <span class="token operator">==</span> target<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-                <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>matrix<span class="token punctuation">[</span>row<span class="token punctuation">]</span><span class="token punctuation">[</span>mid<span class="token punctuation">]</span> <span class="token operator">&lt;</span> target<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                    l <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
-                <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-                    r <span class="token operator">=</span> mid <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
-                <span class="token punctuation">&#125;</span>
-            <span class="token punctuation">&#125;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            exist<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">&#125;</span>
 
-        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>exist<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">return</span> i<span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<iframe width="100%" height="500" src="https://www.youtube.com/embed/WnPLSRLSANE" title="Missing Number - Blind 75 - Leetcode 268 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/missing-number/solutions/69786/3-different-ideas-xor-sum-binary-search-java-code/">Bit manipulation</a></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">missingNumber</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// Because we can iterate until nums[nums.length]</span>
+        <span class="token comment">// So we put its length first</span>
+        <span class="token keyword">int</span> res <span class="token operator">=</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// XOR theoretically number</span>
+            res <span class="token operator">^=</span> i<span class="token punctuation">;</span>
+            <span class="token comment">// XOR the number in the array</span>
+            res <span class="token operator">^=</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
                 
               </div>
@@ -363,7 +386,7 @@
   
     <span>></span>
     
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
   
   
 
@@ -386,7 +409,13 @@
       
         <a href="/tags/Array/" class="print-no-link">#Array</a>
       
-        <a href="/tags/Matrix/" class="print-no-link">#Matrix</a>
+        <a href="/tags/Math/" class="print-no-link">#Math</a>
+      
+        <a href="/tags/Hash-Table/" class="print-no-link">#Hash Table</a>
+      
+        <a href="/tags/Sorting/" class="print-no-link">#Sorting</a>
+      
+        <a href="/tags/Bit-Manipulation/" class="print-no-link">#Bit Manipulation</a>
       
         <a href="/tags/Binary-Search/" class="print-no-link">#Binary Search</a>
       
@@ -400,8 +429,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>74. Search a 2D Matrix - Medium</div>
-      <div>https://f88083.github.io/2024/01/12/74-Search-a-2D-Matrix-Medium/</div>
+      <div>268. Missing Number - Easy</div>
+      <div>https://f88083.github.io/2024/01/14/268-Missing-Number-Easy/</div>
     </div>
     <div class="license-meta">
       
@@ -413,7 +442,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>發布於</div>
-          <div>2024年1月12日</div>
+          <div>2024年1月14日</div>
         </div>
       
       
@@ -457,18 +486,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/14/101-Symmetric-Tree-Easy/" title="101. Symmetric Tree - Easy">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">101. Symmetric Tree - Easy</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/12/50-Pow-x-n-Medium/" title="50. Pow(x, n) - Medium">
-                        <span class="hidden-mobile">50. Pow(x, n) - Medium</span>
+                      <a href="/2024/01/14/101-Symmetric-Tree-Easy/" title="101. Symmetric Tree - Easy">
+                        <span class="hidden-mobile">101. Symmetric Tree - Easy</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
