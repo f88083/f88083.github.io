@@ -16,27 +16,24 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前往題目  想法 因為是sorted，所以應該可以用binary search快速定位  思路這題有sliding window和結合了binary search的sliding window兩種解法，但我在評論區看到的binary search解法，無法理解其中一兩行code，所以選擇sliding window  左右兩個指針，頭與尾 每次計算左邊以及右邊到x的距離 相等或右邊比較大的時候就往">
+    <meta name="description" content="本篇筆記搬運以及修改WadeHuang大大的部分文章:Git Commit Message 這樣寫會更好，替專案引入規範與範例 寫好commit訊息，造福同行，也為自己積陰德 怎麼寫比較好? 註解紀錄在commit裡面可以保持程式碼的整潔和可讀性 獨立commit每個不同意義的異動才不會混在一起 Commit只包含: Why和What Commit加上issue編號方便追蹤異動原因  規範範例 詳">
 <meta property="og:type" content="article">
-<meta property="og:title" content="658. Find K Closest Elements - Medium">
-<meta property="og:url" content="https://f88083.github.io/2023/12/23/658-Find-K-Closest-Elements-Medium/index.html">
+<meta property="og:title" content="如何寫好git commit message">
+<meta property="og:url" content="https://f88083.github.io/2024/01/19/%E5%A6%82%E4%BD%95%E5%AF%AB%E5%A5%BDgit-commit-message/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="前往題目  想法 因為是sorted，所以應該可以用binary search快速定位  思路這題有sliding window和結合了binary search的sliding window兩種解法，但我在評論區看到的binary search解法，無法理解其中一兩行code，所以選擇sliding window  左右兩個指針，頭與尾 每次計算左邊以及右邊到x的距離 相等或右邊比較大的時候就往">
+<meta property="og:description" content="本篇筆記搬運以及修改WadeHuang大大的部分文章:Git Commit Message 這樣寫會更好，替專案引入規範與範例 寫好commit訊息，造福同行，也為自己積陰德 怎麼寫比較好? 註解紀錄在commit裡面可以保持程式碼的整潔和可讀性 獨立commit每個不同意義的異動才不會混在一起 Commit只包含: Why和What Commit加上issue編號方便追蹤異動原因  規範範例 詳">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2023-12-23T12:48:27.000Z">
-<meta property="article:modified_time" content="2023-12-23T13:31:30.302Z">
+<meta property="og:image" content="https://4.bp.blogspot.com/-HdNhJQb0D94/XMvqErOYGLI/AAAAAAAAAQ8/FQiuZsG7TT0WcQ8Q4zcccHCsuBOEDrouACLcBGAs/s1600/222.png">
+<meta property="article:published_time" content="2024-01-19T16:00:40.000Z">
+<meta property="article:modified_time" content="2024-01-19T16:01:10.015Z">
 <meta property="article:author" content="Simon Lai">
-<meta property="article:tag" content="Leetcode">
-<meta property="article:tag" content="心得">
-<meta property="article:tag" content="Array">
-<meta property="article:tag" content="Two Pointers">
-<meta property="article:tag" content="Binary Search">
-<meta property="article:tag" content="Sliding Window">
+<meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://4.bp.blogspot.com/-HdNhJQb0D94/XMvqErOYGLI/AAAAAAAAAQ8/FQiuZsG7TT0WcQ8Q4zcccHCsuBOEDrouACLcBGAs/s1600/222.png">
   
   
   
-  <title>658. Find K Closest Elements - Medium - Simon Lai&#39;s Blog</title>
+  <title>如何寫好git commit message - Simon Lai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -231,7 +228,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="658. Find K Closest Elements - Medium"></span>
+            <span id="subtitle" data-typed-text="如何寫好git commit message"></span>
           
         </div>
 
@@ -242,8 +239,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-23 12:48" pubdate>
-          2023年12月23日 下午
+        <time datetime="2024-01-19 16:00" pubdate>
+          2024年1月19日 下午
         </time>
       </span>
     
@@ -254,7 +251,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          209 字
+          429 字
         
       </span>
     
@@ -265,7 +262,7 @@
         
         
         
-          1 分鐘
+          3 分鐘
         
       </span>
     
@@ -302,52 +299,47 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">658. Find K Closest Elements - Medium</h1>
+            <h1 id="seo-header">如何寫好git commit message</h1>
             
             
               <div class="markdown-body">
                 
-                <a class="btn" href="https://leetcode.com/problems/find-k-closest-elements/description/"  title="658. Find K Closest Elements" target="_blank">前往題目</a>
-
-<h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul>
-<li>因為是<code>sorted</code>，所以應該可以用<code>binary search</code>快速定位</li>
+                <p>本篇筆記搬運以及修改<code>WadeHuang</code>大大的部分文章:<br><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10228738">Git Commit Message 這樣寫會更好，替專案引入規範與範例</a></p>
+<p>寫好<code>commit</code>訊息，造福同行，也為自己積陰德</p>
+<h2 id="怎麼寫比較好"><a href="#怎麼寫比較好" class="headerlink" title="怎麼寫比較好?"></a>怎麼寫比較好?</h2><ul>
+<li>註解紀錄在<code>commit</code>裡面可以保持程式碼的整潔和可讀性</li>
+<li>獨立<code>commit</code>每個不同意義的異動才不會混在一起</li>
+<li><code>Commit</code>只包含: <code>Why</code>和<code>What</code></li>
+<li><code>Commit</code>加上<code>issue</code>編號方便追蹤異動原因</li>
 </ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>這題有sliding window和結合了binary search的sliding window兩種解法，但我在評論區看到的binary search解法，無法理解其中一兩行code，所以選擇sliding window</p>
-<ol>
-<li>左右兩個指針，頭與尾</li>
-<li>每次計算左邊以及右邊到x的距離</li>
-<li>相等或右邊比較大的時候就往左移(因為距離相同是取<code>index</code>較小的那一方)，直到這個<code>window</code>小於<code>k</code>了</li>
-<li>取得<code>sliding window</code>裡所有的數字就是答案</li>
-</ol>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/find-k-closest-elements/solutions/1316003/java-o-n-solution-two-pointers-97-faster/">Sliding window解答</a></p>
-<p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/find-k-closest-elements/solutions/2636647/java-explained-in-detail-binary-search-two-pointers-priority-queue/">綜合Binary search解答</a></p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> <span class="token function">findClosestElements</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">,</span> <span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">int</span> left <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> right <span class="token operator">=</span> arr<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<h2 id="規範範例"><a href="#規範範例" class="headerlink" title="規範範例"></a>規範範例</h2><p><img src="https://4.bp.blogspot.com/-HdNhJQb0D94/XMvqErOYGLI/AAAAAAAAAQ8/FQiuZsG7TT0WcQ8Q4zcccHCsuBOEDrouACLcBGAs/s1600/222.png" srcset="/img/loading.gif" lazyload alt="範例By WadeHuang"></p>
+<h2 id="詳細規範"><a href="#詳細規範" class="headerlink" title="詳細規範"></a>詳細規範</h2><figure><div class="code-wrapper"><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># By WadeHuang</span>
+<span class="token key atrule">Header</span><span class="token punctuation">:</span> <span class="token key atrule">&lt;type>(&lt;scope>)</span><span class="token punctuation">:</span> &lt;subject<span class="token punctuation">></span>
+ <span class="token punctuation">-</span> <span class="token key atrule">type</span><span class="token punctuation">:</span> 代表 commit 的類別：feat<span class="token punctuation">,</span> fix<span class="token punctuation">,</span> docs<span class="token punctuation">,</span> style<span class="token punctuation">,</span> refactor<span class="token punctuation">,</span> test<span class="token punctuation">,</span> chore，必要欄位。
+ <span class="token punctuation">-</span> scope 代表 commit 影響的範圍，例如資料庫、控制層、模板層等等，視專案不同而不同，為可選欄位。
+ <span class="token punctuation">-</span> subject 代表此 commit 的簡短描述，不要超過 50 個字元，結尾不要加句號，為必要欄位。
 
-        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> res <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        
-        <span class="token comment">// Keep shrinking the size</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>right <span class="token operator">-</span> left <span class="token operator">>=</span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">int</span> distLeft <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span>left<span class="token punctuation">]</span> <span class="token operator">-</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">int</span> distRight <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span>right<span class="token punctuation">]</span> <span class="token operator">-</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token key atrule">Body</span><span class="token punctuation">:</span> <span class="token key atrule">72-character wrapped. This should answer</span><span class="token punctuation">:</span>
+ * Body 部份是對本次 Commit 的詳細描述，可以分成多行，每一行不要超過 72 個字元。
+ * 說明程式碼變動的項目與原因，還有與先前行為的對比。
 
-            <span class="token comment">// When equals, use the smaller index</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>distLeft <span class="token operator">&lt;=</span> distRight<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                <span class="token operator">--</span>right<span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-                <span class="token operator">++</span>left<span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span>
+<span class="token key atrule">Footer</span><span class="token punctuation">:</span> 
+ <span class="token punctuation">-</span> 填寫任務編號（如果有的話）.
+ <span class="token punctuation">-</span> BREAKING CHANGE（可忽略），記錄不兼容的變動，
+   <span class="token key atrule">以 BREAKING CHANGE</span><span class="token punctuation">:</span> 開頭，後面是對變動的描述、以及變動原因和遷移方法。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
-        <span class="token comment">// Add all the numbers within the range</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>left <span class="token operator">&lt;=</span> right<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            res<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span>left<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token operator">++</span>left<span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">return</span> res<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>type 只允許使用以下類別：</p>
+<ul>
+<li>feat: 新增&#x2F;修改功能 (feature)。</li>
+<li>fix: 修補 bug (bug fix)。</li>
+<li>docs: 文件 (documentation)。</li>
+<li>style: 格式 (不影響程式碼運行的變動 white-space, formatting, missing semi colons, etc)。</li>
+<li>refactor: 重構 (既不是新增功能，也不是修補 bug 的程式碼變動)。</li>
+<li>perf: 改善效能 (A code change that improves performance)。</li>
+<li>test: 增加測試 (when adding missing tests)。</li>
+<li>chore: 建構程序或輔助工具的變動 (maintain)。</li>
+<li>revert: 撤銷回覆先前的 commit 例如：revert: type(scope): subject (回覆版本：xxxx)。</li>
+</ul>
 
                 
               </div>
@@ -366,15 +358,8 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  <a href="/categories/%E7%B6%9C%E5%90%88/" class="category-chain-item">綜合</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
   
 
       </span>
@@ -388,17 +373,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Leetcode/" class="print-no-link">#Leetcode</a>
-      
-        <a href="/tags/%E5%BF%83%E5%BE%97/" class="print-no-link">#心得</a>
-      
-        <a href="/tags/Array/" class="print-no-link">#Array</a>
-      
-        <a href="/tags/Two-Pointers/" class="print-no-link">#Two Pointers</a>
-      
-        <a href="/tags/Binary-Search/" class="print-no-link">#Binary Search</a>
-      
-        <a href="/tags/Sliding-Window/" class="print-no-link">#Sliding Window</a>
+        <a href="/tags/git/" class="print-no-link">#git</a>
       
     </div>
   
@@ -410,8 +385,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>658. Find K Closest Elements - Medium</div>
-      <div>https://f88083.github.io/2023/12/23/658-Find-K-Closest-Elements-Medium/</div>
+      <div>如何寫好git commit message</div>
+      <div>https://f88083.github.io/2024/01/19/如何寫好git-commit-message/</div>
     </div>
     <div class="license-meta">
       
@@ -423,7 +398,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>發布於</div>
-          <div>2023年12月23日</div>
+          <div>2024年1月19日</div>
         </div>
       
       
@@ -467,18 +442,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/24/424-Longest-Repeating-Character-Replacement-Medium/" title="424. Longest Repeating Character Replacement - Medium">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">424. Longest Repeating Character Replacement - Medium</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/23/662-Maximum-Width-of-Binary-Tree-Medium/" title="662. Maximum Width of Binary Tree - Medium">
-                        <span class="hidden-mobile">662. Maximum Width of Binary Tree - Medium</span>
+                      <a href="/2024/01/19/%E8%8F%AF%E7%A2%A9%E6%99%BA%E6%85%A7%E8%BC%B8%E5%85%A5%E6%B3%95-%E7%B9%BC%E5%8D%81%E5%B9%B4%E5%89%8D%E7%9A%84%E5%A5%BD%E6%89%93%E6%B3%A8%E9%9F%B3%E5%BE%8C%E5%8F%88%E4%B8%80%E5%BC%B7%E5%A4%A7%E5%A5%BD%E7%94%A8%E7%9A%84%E8%BC%B8%E5%85%A5%E6%B3%95/" title="華碩智慧輸入法-繼十年前的好打注音後又一強大好用的輸入法">
+                        <span class="hidden-mobile">華碩智慧輸入法-繼十年前的好打注音後又一強大好用的輸入法</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

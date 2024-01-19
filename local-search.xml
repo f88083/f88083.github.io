@@ -4,6 +4,56 @@
   
   
   <entry>
+    <title>如何寫好git commit message</title>
+    <link href="/2024/01/19/%E5%A6%82%E4%BD%95%E5%AF%AB%E5%A5%BDgit-commit-message/"/>
+    <url>/2024/01/19/%E5%A6%82%E4%BD%95%E5%AF%AB%E5%A5%BDgit-commit-message/</url>
+    
+    <content type="html"><![CDATA[<p>本篇筆記搬運以及修改<code>WadeHuang</code>大大的部分文章:<br><a href="https://ithelp.ithome.com.tw/articles/10228738">Git Commit Message 這樣寫會更好，替專案引入規範與範例</a></p><p>寫好<code>commit</code>訊息，造福同行，也為自己積陰德</p><h2 id="怎麼寫比較好"><a href="#怎麼寫比較好" class="headerlink" title="怎麼寫比較好?"></a>怎麼寫比較好?</h2><ul><li>註解紀錄在<code>commit</code>裡面可以保持程式碼的整潔和可讀性</li><li>獨立<code>commit</code>每個不同意義的異動才不會混在一起</li><li><code>Commit</code>只包含: <code>Why</code>和<code>What</code></li><li><code>Commit</code>加上<code>issue</code>編號方便追蹤異動原因</li></ul><h2 id="規範範例"><a href="#規範範例" class="headerlink" title="規範範例"></a>規範範例</h2><p><img src="https://4.bp.blogspot.com/-HdNhJQb0D94/XMvqErOYGLI/AAAAAAAAAQ8/FQiuZsG7TT0WcQ8Q4zcccHCsuBOEDrouACLcBGAs/s1600/222.png" alt="範例By WadeHuang"></p><h2 id="詳細規範"><a href="#詳細規範" class="headerlink" title="詳細規範"></a>詳細規範</h2><figure><div class="code-wrapper"><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># By WadeHuang</span><span class="token key atrule">Header</span><span class="token punctuation">:</span> <span class="token key atrule">&lt;type>(&lt;scope>)</span><span class="token punctuation">:</span> &lt;subject<span class="token punctuation">></span> <span class="token punctuation">-</span> <span class="token key atrule">type</span><span class="token punctuation">:</span> 代表 commit 的類別：feat<span class="token punctuation">,</span> fix<span class="token punctuation">,</span> docs<span class="token punctuation">,</span> style<span class="token punctuation">,</span> refactor<span class="token punctuation">,</span> test<span class="token punctuation">,</span> chore，必要欄位。 <span class="token punctuation">-</span> scope 代表 commit 影響的範圍，例如資料庫、控制層、模板層等等，視專案不同而不同，為可選欄位。 <span class="token punctuation">-</span> subject 代表此 commit 的簡短描述，不要超過 50 個字元，結尾不要加句號，為必要欄位。<span class="token key atrule">Body</span><span class="token punctuation">:</span> <span class="token key atrule">72-character wrapped. This should answer</span><span class="token punctuation">:</span> * Body 部份是對本次 Commit 的詳細描述，可以分成多行，每一行不要超過 72 個字元。 * 說明程式碼變動的項目與原因，還有與先前行為的對比。<span class="token key atrule">Footer</span><span class="token punctuation">:</span>  <span class="token punctuation">-</span> 填寫任務編號（如果有的話）. <span class="token punctuation">-</span> BREAKING CHANGE（可忽略），記錄不兼容的變動，   <span class="token key atrule">以 BREAKING CHANGE</span><span class="token punctuation">:</span> 開頭，後面是對變動的描述、以及變動原因和遷移方法。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure><p>type 只允許使用以下類別：</p><ul><li>feat: 新增&#x2F;修改功能 (feature)。</li><li>fix: 修補 bug (bug fix)。</li><li>docs: 文件 (documentation)。</li><li>style: 格式 (不影響程式碼運行的變動 white-space, formatting, missing semi colons, etc)。</li><li>refactor: 重構 (既不是新增功能，也不是修補 bug 的程式碼變動)。</li><li>perf: 改善效能 (A code change that improves performance)。</li><li>test: 增加測試 (when adding missing tests)。</li><li>chore: 建構程序或輔助工具的變動 (maintain)。</li><li>revert: 撤銷回覆先前的 commit 例如：revert: type(scope): subject (回覆版本：xxxx)。</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>綜合</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>git</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>華碩智慧輸入法-繼十年前的好打注音後又一強大好用的輸入法</title>
+    <link href="/2024/01/19/%E8%8F%AF%E7%A2%A9%E6%99%BA%E6%85%A7%E8%BC%B8%E5%85%A5%E6%B3%95-%E7%B9%BC%E5%8D%81%E5%B9%B4%E5%89%8D%E7%9A%84%E5%A5%BD%E6%89%93%E6%B3%A8%E9%9F%B3%E5%BE%8C%E5%8F%88%E4%B8%80%E5%BC%B7%E5%A4%A7%E5%A5%BD%E7%94%A8%E7%9A%84%E8%BC%B8%E5%85%A5%E6%B3%95/"/>
+    <url>/2024/01/19/%E8%8F%AF%E7%A2%A9%E6%99%BA%E6%85%A7%E8%BC%B8%E5%85%A5%E6%B3%95-%E7%B9%BC%E5%8D%81%E5%B9%B4%E5%89%8D%E7%9A%84%E5%A5%BD%E6%89%93%E6%B3%A8%E9%9F%B3%E5%BE%8C%E5%8F%88%E4%B8%80%E5%BC%B7%E5%A4%A7%E5%A5%BD%E7%94%A8%E7%9A%84%E8%BC%B8%E5%85%A5%E6%B3%95/</url>
+    
+    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/ajXmNNB.png" alt="Microsoft商店頁面"></p><p><a href="https://www.asus.com/tw/content/smartinput/">官網</a></p><p>原本只限華碩電腦可使用，現在已開放在<a href="https://apps.microsoft.com/detail/9MT4L79Z1G0N?hl=zh-tw&gl=tw">microsoft store</a>下載</p><p>特點:</p><ul><li>注音&#x2F;英文混合輸入(無需切換中英)</li><li>選詞演算法優化</li><li>自動預測字詞</li><li>快速輸入各式各樣的標點和特殊符號</li><li>框選查詢(可直接英翻中)</li><li>刪除贅字(自動刪除多打的字)</li><li>自訂詞彙</li><li>快捷文字本，快速輸入地址、姓名等自訂義字詞</li></ul><p>實測兩個禮拜覺得很好用，直接把微軟內建的注音刪掉了，雖然偶爾會出現要打英文卻跑出中文，但無傷大雅，它帶給我的便利性遠遠大於他的缺點。未來不知道會不會更新更強大的功能，例如打首注音就可以預測常用字詞，或是更聰明的選字等等</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>綜合</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>注音輸入法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>190. Reverse Bits - Easy</title>
     <link href="/2024/01/19/190-Reverse-Bits-Easy/"/>
     <url>/2024/01/19/190-Reverse-Bits-Easy/</url>
@@ -166,11 +216,11 @@
       
       <tag>心得</tag>
       
+      <tag>Dynamic Programming</tag>
+      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
-      
-      <tag>Dynamic Programming</tag>
       
       <tag>Graph</tag>
       
@@ -633,9 +683,9 @@
       
       <tag>Array</tag>
       
-      <tag>Matrix</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Matrix</tag>
       
     </tags>
     
@@ -1490,9 +1540,9 @@
       
       <tag>Two Pointers</tag>
       
-      <tag>Sliding Window</tag>
-      
       <tag>Binary Search</tag>
+      
+      <tag>Sliding Window</tag>
       
     </tags>
     
@@ -2098,9 +2148,9 @@
       
       <tag>Array</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Matrix</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -2331,11 +2381,11 @@
       
       <tag>心得</tag>
       
+      <tag>Matrix</tag>
+      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
-      
-      <tag>Matrix</tag>
       
     </tags>
     
@@ -3044,9 +3094,9 @@
       
       <tag>Array</tag>
       
-      <tag>Java</tag>
-      
       <tag>kadanes Algorithm</tag>
+      
+      <tag>Java</tag>
       
     </tags>
     
@@ -3263,9 +3313,9 @@
     
     <tags>
       
-      <tag>Algorithms</tag>
-      
       <tag>Stack</tag>
+      
+      <tag>Algorithms</tag>
       
       <tag>筆記</tag>
       
