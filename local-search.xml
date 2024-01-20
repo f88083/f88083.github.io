@@ -4,6 +4,78 @@
   
   
   <entry>
+    <title>322. Coin Change - Medium</title>
+    <link href="/2024/01/20/322-Coin-Change-Medium/"/>
+    <url>/2024/01/20/322-Coin-Change-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/coin-change/description/"  title="322. Coin Change" target="_blank">前往題目</a><p>搬運~</p><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>這應該算是我第一個正式想過的dynamic programming題目了</li><li>難到爆</li><li>期待融會貫通的那天</li><li>答案幾乎只能用抄的</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>用<code>DP</code></li><li><code>bottom up</code>的方式從<code>amount</code>是<code>0</code>的時候開始，因為<code>amount</code>為<code>0</code>一定是用<code>0</code>個硬幣</li><li>從<code>amount</code>為<code>1</code>循環到<code>amount</code>本身</li><li>每個循環都檢查每個<code>coin</code>是否能被納入考量，<code>amount - coin</code>為正整數時就代表可能可以被當作答案</li><li>於是<code>dp[amount]</code>和<code>1 + dp[amount - coin]</code>取兩數最小值(加一是加<code>coin</code>的意思)</li><li>如此就能從<code>0</code>建立，一步步推出<code>amount</code>的答案</li></ol><p>下次應該依然還是不會:D</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">coinChange</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> coins<span class="token punctuation">,</span> <span class="token keyword">int</span> amount<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>amount <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">||</span> coins<span class="token punctuation">.</span>length <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">||</span> coins <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> dp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>amount <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span>dp<span class="token punctuation">,</span> amount <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Fill with MAX value</span>        dp<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// amount 0 needs 0 coin denomination</span>        <span class="token comment">// Go through every possible amount(bottom up)</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> a <span class="token operator">&lt;=</span> amount<span class="token punctuation">;</span> <span class="token operator">++</span>a<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// Check every coin to see if possible</span>            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> coin <span class="token operator">:</span> coins<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token comment">// If not negative, then it's possible</span>                <span class="token keyword">if</span> <span class="token punctuation">(</span>a <span class="token operator">-</span> coin <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                    <span class="token comment">// +1 is this coin, remember we are counting coins number</span>                    dp<span class="token punctuation">[</span>a<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>a<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">1</span> <span class="token operator">+</span> dp<span class="token punctuation">[</span>a <span class="token operator">-</span> coin<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token punctuation">&#125;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> dp<span class="token punctuation">[</span>amount<span class="token punctuation">]</span> <span class="token operator">!=</span> amount <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">?</span> dp<span class="token punctuation">[</span>amount<span class="token punctuation">]</span> <span class="token operator">:</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure><h2 id="2024-01-20"><a href="#2024-01-20" class="headerlink" title="2024&#x2F;01&#x2F;20"></a>2024&#x2F;01&#x2F;20</h2><ul><li>果然寫不出來，不過比起第一次寫，就算看了答案還是不懂，這次有看懂了</li><li>只是下次應該大機率還是想不出來…</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Array</tag>
+      
+      <tag>Breadth-First Search</tag>
+      
+      <tag>Dynamic Programming</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>208. Implement Trie (Prefix Tree) - Medium</title>
+    <link href="/2024/01/20/208-Implement-Trie-Prefix-Tree-Medium/"/>
+    <url>/2024/01/20/208-Implement-Trie-Prefix-Tree-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/implement-trie-prefix-tree/description/"  title="208. Implement Trie (Prefix Tree) - Medium" target="_blank">前往題目</a><p>之前寫過，搬運一下</p><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>大概念是看影片才得來</li><li>一半是自己照著概念寫出來的</li><li>但<code>class</code>之間<code>attribute</code>的操作不熟練</li><li>而且原來<code>inner class</code>的<code>private</code>，包含他的<code>class</code>是可以存取的</li><li>本來想說要寫<code>get set</code>，但根本不用</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>新建<code>TrieNode class</code>，用以表示<code>Trie</code>的節點</li><li>每個<code>node</code>都有自己的<code>children</code></li><li><code>Trie</code>物件裡新增<code>instance variable</code>作為<code>root</code></li><li>每個<code>function</code>都從<code>root</code>開始一個一個<code>char</code>看</li><li>對有或沒有該<code>char</code>做處理</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="400" src="https://www.youtube.com/embed/5fntVoXeW_A" title="【每日一题】207. Course Schedule, 7/20/2020" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><iframe width="100%" height="400" src="https://www.youtube.com/embed/oobqoCJlHA0" title="Implement Trie (Prefix Tree) - Leetcode 208" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Trie</span> <span class="token punctuation">&#123;</span>    <span class="token class-name">TrieNode</span> root<span class="token punctuation">;</span>    <span class="token keyword">public</span> <span class="token class-name">Trie</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        root <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TrieNode</span><span class="token punctuation">(</span><span class="token char">'\0'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Insert dummy node as root</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">insert</span><span class="token punctuation">(</span><span class="token class-name">String</span> word<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token class-name">TrieNode</span> currNode <span class="token operator">=</span> root<span class="token punctuation">;</span>                <span class="token comment">// Iterate each character of the words</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">char</span> c <span class="token operator">:</span> word<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// Check if not exist</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>currNode<span class="token punctuation">.</span>children<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token comment">// Insert if the char is not present</span>                currNode<span class="token punctuation">.</span>children<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TrieNode</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>            <span class="token comment">// When exist switch to it and go on</span>            currNode <span class="token operator">=</span> currNode<span class="token punctuation">.</span>children<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// Mark the last as the end of the word</span>        currNode<span class="token punctuation">.</span>isWord <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">search</span><span class="token punctuation">(</span><span class="token class-name">String</span> word<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token class-name">TrieNode</span> currNode <span class="token operator">=</span> root<span class="token punctuation">;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">char</span> c <span class="token operator">:</span> word<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// Check if not exist</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>currNode<span class="token punctuation">.</span>children<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>            <span class="token comment">// Switch to the character and keep searching the next</span>            currNode <span class="token operator">=</span> currNode<span class="token punctuation">.</span>children<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// Check the last character is the end of the word</span>        <span class="token keyword">return</span> currNode<span class="token punctuation">.</span>isWord <span class="token operator">==</span> <span class="token boolean">true</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token class-name">String</span> prefix<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token class-name">TrieNode</span> currNode <span class="token operator">=</span> root<span class="token punctuation">;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">char</span> c <span class="token operator">:</span> prefix<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// Check if not exist</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>currNode<span class="token punctuation">.</span>children<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>            <span class="token comment">// Switch to the character and keep searching the next</span>            currNode <span class="token operator">=</span> currNode<span class="token punctuation">.</span>children<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">class</span> <span class="token class-name">TrieNode</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">private</span> <span class="token keyword">char</span> value<span class="token punctuation">;</span>        <span class="token keyword">private</span> <span class="token keyword">boolean</span> isWord<span class="token punctuation">;</span>        <span class="token keyword">private</span> <span class="token class-name">TrieNode</span><span class="token punctuation">[</span><span class="token punctuation">]</span> children<span class="token punctuation">;</span>        <span class="token keyword">public</span> <span class="token class-name">TrieNode</span><span class="token punctuation">(</span><span class="token keyword">char</span> val<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">this</span><span class="token punctuation">.</span>value <span class="token operator">=</span> val<span class="token punctuation">;</span>            <span class="token keyword">this</span><span class="token punctuation">.</span>isWord <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>            <span class="token keyword">this</span><span class="token punctuation">.</span>children <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TrieNode</span><span class="token punctuation">[</span><span class="token number">26</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure><h2 id="2024-01-20"><a href="#2024-01-20" class="headerlink" title="2024&#x2F;01&#x2F;20"></a>2024&#x2F;01&#x2F;20</h2><ul><li>大致上自己寫出來了，還是參考了一點之前寫的</li><li>決定用哪種資料結構的時候還是有些掙扎</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>String</tag>
+      
+      <tag>Hash Table</tag>
+      
+      <tag>Trie</tag>
+      
+      <tag>Design</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>如何寫好git commit message</title>
     <link href="/2024/01/19/%E5%A6%82%E4%BD%95%E5%AF%AB%E5%A5%BDgit-commit-message/"/>
     <url>/2024/01/19/%E5%A6%82%E4%BD%95%E5%AF%AB%E5%A5%BDgit-commit-message/</url>
@@ -216,11 +288,11 @@
       
       <tag>心得</tag>
       
-      <tag>Dynamic Programming</tag>
-      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
+      
+      <tag>Dynamic Programming</tag>
       
       <tag>Graph</tag>
       
@@ -683,9 +755,9 @@
       
       <tag>Array</tag>
       
-      <tag>Dynamic Programming</tag>
-      
       <tag>Matrix</tag>
+      
+      <tag>Dynamic Programming</tag>
       
     </tags>
     
@@ -2148,9 +2220,9 @@
       
       <tag>Array</tag>
       
-      <tag>Matrix</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Matrix</tag>
       
     </tags>
     
@@ -2381,11 +2453,11 @@
       
       <tag>心得</tag>
       
-      <tag>Matrix</tag>
-      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
+      
+      <tag>Matrix</tag>
       
     </tags>
     
@@ -3094,9 +3166,9 @@
       
       <tag>Array</tag>
       
-      <tag>kadanes Algorithm</tag>
-      
       <tag>Java</tag>
+      
+      <tag>kadanes Algorithm</tag>
       
     </tags>
     
@@ -3220,11 +3292,11 @@
       
       <tag>Algorithms</tag>
       
+      <tag>Queue</tag>
+      
       <tag>筆記</tag>
       
       <tag>演算法</tag>
-      
-      <tag>Queue</tag>
       
     </tags>
     
