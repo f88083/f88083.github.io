@@ -4,6 +4,74 @@
   
   
   <entry>
+    <title>227. Basic Calculator II - Medium</title>
+    <link href="/2024/01/24/227-Basic-Calculator-II-Medium/"/>
+    <url>/2024/01/24/227-Basic-Calculator-II-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/basic-calculator-ii/description/"  title="227. Basic Calculator II" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>用<code>stack</code>，只壓入數字和<code>+-</code>，乘除直接用<code>stack</code>最上層的數字計算就可以</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>沒看到數字不一定是一個<code>digit</code></p><ol><li>疊代整個<code>string</code></li><li>每次判斷是否為數字，如果是則看有多少位，把整串擷取，然後看是什麼<code>operator</code>做相應的計算(如果是整個運算式的第一個數字那就會剛好直接加入)</li><li>如果不是數字，也不是空格，那就一定是<code>operator</code>，紀錄</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p>這個解法沒有用到<code>stack</code>，空間只要<code>O(1)</code>，理解起來也很簡單，只是有非常多細節的地方需要注意…</p><iframe width="100%" height="500" src="https://www.youtube.com/embed/W3Rg4HVSZ9k" title="BASIC CALCULATOR II | LEETCODE 227 | PYTHON SOLUTION" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">calculate</span><span class="token punctuation">(</span><span class="token class-name">String</span> s<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> cur <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> prev <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> res <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">char</span> operator <span class="token operator">=</span> <span class="token char">'+'</span><span class="token punctuation">;</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">char</span> curChar <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token class-name">Character</span><span class="token punctuation">.</span><span class="token function">isDigit</span><span class="token punctuation">(</span>curChar<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token comment">// Assemble numbers</span>                <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>                         <span class="token class-name">Character</span><span class="token punctuation">.</span><span class="token function">isDigit</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                    cur <span class="token operator">=</span> cur <span class="token operator">*</span> <span class="token number">10</span> <span class="token operator">+</span> <span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token char">'0'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                    <span class="token operator">++</span>i<span class="token punctuation">;</span>                <span class="token punctuation">&#125;</span>                <span class="token operator">--</span>i<span class="token punctuation">;</span> <span class="token comment">// Prevent out of bound</span>                <span class="token keyword">if</span> <span class="token punctuation">(</span>operator <span class="token operator">==</span> <span class="token char">'+'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                    res <span class="token operator">+=</span> cur<span class="token punctuation">;</span> <span class="token comment">// Add to result</span>                    prev <span class="token operator">=</span> cur<span class="token punctuation">;</span> <span class="token comment">// Update previous number</span>                <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>operator <span class="token operator">==</span> <span class="token char">'-'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                    res <span class="token operator">-=</span> cur<span class="token punctuation">;</span>                    prev <span class="token operator">=</span> <span class="token operator">-</span>cur<span class="token punctuation">;</span> <span class="token comment">// Update</span>                <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>operator <span class="token operator">==</span> <span class="token char">'*'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                    res <span class="token operator">-=</span> prev<span class="token punctuation">;</span> <span class="token comment">// Undo</span>                    res <span class="token operator">+=</span> prev <span class="token operator">*</span> cur<span class="token punctuation">;</span>                    prev <span class="token operator">=</span> prev <span class="token operator">*</span> cur<span class="token punctuation">;</span>                <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>                    res <span class="token operator">-=</span> prev<span class="token punctuation">;</span>                    res <span class="token operator">+=</span> prev <span class="token operator">/</span> cur<span class="token punctuation">;</span>                    prev <span class="token operator">=</span> prev <span class="token operator">/</span> cur<span class="token punctuation">;</span>                <span class="token punctuation">&#125;</span>                cur <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// reset current number</span>            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>curChar <span class="token operator">!=</span> <span class="token char">' '</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                operator <span class="token operator">=</span> curChar<span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>                        <span class="token operator">++</span>i<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> res<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Stack</tag>
+      
+      <tag>String</tag>
+      
+      <tag>Math</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>153. Find Minimum in Rotated Sorted Array - Medium</title>
+    <link href="/2024/01/24/153-Find-Minimum-in-Rotated-Sorted-Array-Medium/"/>
+    <url>/2024/01/24/153-Find-Minimum-in-Rotated-Sorted-Array-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/"  title="153. Find Minimum in Rotated Sorted Array" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li><code>binary search</code>找到第一組大變小的就是最小的數字了</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li><code>binary search</code></li><li>如果中間比右指針小那代表是在正常的順序上，所以往左找</li><li>不然就是往右找了</li></ol><p>這題我一開始嘗試用<code>recursion</code>來寫<code>binary search</code>失敗了😂</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">findMin</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span> l <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> r <span class="token operator">=</span> nums<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>l <span class="token operator">&lt;</span> r<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">int</span> mid <span class="token operator">=</span> l <span class="token operator">+</span> <span class="token punctuation">(</span>r <span class="token operator">-</span> l<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">[</span>mid<span class="token punctuation">]</span> <span class="token operator">&lt;</span> nums<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                r <span class="token operator">=</span> mid<span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>                l <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> nums<span class="token punctuation">[</span>l<span class="token punctuation">]</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Array</tag>
+      
+      <tag>Binary Search</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>61. Rotate List - Medium</title>
     <link href="/2024/01/23/61-Rotate-List-Medium/"/>
     <url>/2024/01/23/61-Rotate-List-Medium/</url>
@@ -230,9 +298,9 @@
       
       <tag>Array</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -490,11 +558,11 @@
       
       <tag>心得</tag>
       
+      <tag>Dynamic Programming</tag>
+      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
-      
-      <tag>Dynamic Programming</tag>
       
       <tag>Graph</tag>
       
@@ -712,9 +780,9 @@
       
       <tag>Sorting</tag>
       
-      <tag>Binary Search</tag>
-      
       <tag>Bit Manipulation</tag>
+      
+      <tag>Binary Search</tag>
       
     </tags>
     
@@ -1538,9 +1606,9 @@
       
       <tag>Linked List</tag>
       
-      <tag>Divide and Conquer</tag>
-      
       <tag>Merge Sort</tag>
+      
+      <tag>Divide and Conquer</tag>
       
     </tags>
     
@@ -3587,9 +3655,9 @@
     
     <tags>
       
-      <tag>Algorithms</tag>
-      
       <tag>Stack</tag>
+      
+      <tag>Algorithms</tag>
       
       <tag>筆記</tag>
       
