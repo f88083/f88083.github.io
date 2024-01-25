@@ -4,6 +4,78 @@
   
   
   <entry>
+    <title>380. Insert Delete GetRandom O(1) - Medium</title>
+    <link href="/2024/01/25/380-Insert-Delete-GetRandom-O-1-Medium/"/>
+    <url>/2024/01/25/380-Insert-Delete-GetRandom-O-1-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/insert-delete-getrandom-o1/description/"  title="380. Insert Delete GetRandom O(1)" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><p>經過這麼多演算法的洗禮還有自修的演算法課程，總算沒讓自己失望:D以下是分析</p><ol><li>如果使用<code>array</code>，<code>insert</code>和<code>remove</code>都需要<code>index</code>，但是傳入的值是<code>value</code>，每次都要花時間搜尋。如果使用<code>Map</code>來儲存映射關係那還要處理<code>array</code>擴增的問題，所以不選這個</li><li>如果用<code>LinkedList</code>，<code>insert</code>可以<code>O(1)</code>，但是<code>remove</code>和<code>getRandom</code>都要<code>O(n)</code>，也不方便；就算是<code>double LinkedList</code>也沒用，都沒辦法瞬間定位到<code>value</code>的地方</li><li>如果使用<code>HashMap</code>，雖然<code>insert</code>和<code>remove</code>都是<code>O(1)</code>時間，但<code>getRandom</code>就沒有這麼方便了，最差需要<code>O(n)</code>，因為<code>HashMap</code>沒有<code>index</code>，這方面可以用<code>ArrayList</code>來補足，一方面解決了<code>array</code>擴增的問題，還能提供<code>insert</code>以及<code>remove</code>的<code>O(1)</code>甚至<code>getRandom</code>的時候也可以直接用隨機數在<code>O(1)</code>的時間找到該隨機<code>index</code>的值並回傳</li></ol><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>差了一點點，<code>remove</code>那邊原來是需要補足空位的，不然<code>arraylist</code>擴充或縮減的時候會打亂<code>index</code>。和尾巴調換就可以完美又簡單的解決這個問題</p><ol><li>使用<code>hashmap</code>和<code>arraylist</code>，<code>hashmap</code>儲存<code>value</code>和<code>index</code>的映射關係，<code>arraylist</code>儲存所有數值方便快速存取</li><li><code>insert</code>只要簡單的放到<code>arraylist</code>最後面，<code>map</code>更新一下映射就可以</li><li><code>remove</code>需要特別注意不能有空位，所以把要<code>remove</code>的那位先跟尾巴調換，再進行移除</li><li><code>getRandom</code>非常簡單，用<code>java</code>自帶的<code>Random()</code>，範圍就是<code>arraylist</code>的<code>size</code>，才不會出界</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">RandomizedSet</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> valList<span class="token punctuation">;</span>    <span class="token comment">// &lt;value, index> mapping</span>    <span class="token keyword">private</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span></span> map<span class="token punctuation">;</span>    <span class="token class-name">Random</span> random<span class="token punctuation">;</span>    <span class="token keyword">public</span> <span class="token class-name">RandomizedSet</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">this</span><span class="token punctuation">.</span>valList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">this</span><span class="token punctuation">.</span>map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">this</span><span class="token punctuation">.</span>random <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">insert</span><span class="token punctuation">(</span><span class="token keyword">int</span> val<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token comment">// Check present</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isPresent</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>        valList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>val<span class="token punctuation">,</span> valList<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">remove</span><span class="token punctuation">(</span><span class="token keyword">int</span> val<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token comment">// Check absence</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isPresent</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>        <span class="token comment">// index of the value</span>        <span class="token keyword">int</span> index <span class="token operator">=</span> map<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> lastIndex <span class="token operator">=</span> valList<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>        <span class="token comment">// When removing non-tail element</span>        <span class="token comment">// Swap target value and the tail</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>index <span class="token operator">!=</span> lastIndex<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">int</span> lastVal <span class="token operator">=</span> valList<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>lastIndex<span class="token punctuation">)</span><span class="token punctuation">;</span>            valList<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span> lastVal<span class="token punctuation">)</span><span class="token punctuation">;</span>            map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>lastVal<span class="token punctuation">,</span> index<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>                <span class="token comment">// Remove from list and map</span>        <span class="token comment">// val has been swapped to the end</span>        valList<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>lastIndex<span class="token punctuation">)</span><span class="token punctuation">;</span>        map<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getRandom</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token comment">// guaranteed that at least one element exists when this method is called</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>valList<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">return</span> valList<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// Obtain random number</span>        <span class="token keyword">return</span> valList<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>random<span class="token punctuation">.</span><span class="token function">nextInt</span><span class="token punctuation">(</span>valList<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token keyword">boolean</span> <span class="token function">isPresent</span><span class="token punctuation">(</span><span class="token keyword">int</span> val<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">return</span> map<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Array</tag>
+      
+      <tag>Math</tag>
+      
+      <tag>Hash Table</tag>
+      
+      <tag>Randomized</tag>
+      
+      <tag>Design</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>377. Combination Sum IV - Medium</title>
+    <link href="/2024/01/25/377-Combination-Sum-IV-Medium/"/>
+    <url>/2024/01/25/377-Combination-Sum-IV-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/combination-sum-iv/description/"  title="377. Combination Sum IV" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>會不會是用<code>backtracking</code>?</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>利用<code>array</code>當作<code>cache</code></li><li><code>base case</code>是<code>0</code>，因為只有一種組合是<code>0</code></li><li>接著疊代<code>1~target</code>，逐步建立<code>cache</code></li><li>每個循環裡面要再看一次所有的<code>nums</code>並相加，因為先前的加起來才是當前的組合總數</li></ol><p>可以看這個<a href="https://leetcode.com/problems/combination-sum-iv/solutions/4020218/98-22-dynamic-programming-recursion-with-memoization/">discussion</a>的解釋，非常清楚</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/dw2nMCxG0ik" title="Combination Sum IV - Dynamic Programming - Leetcode 377 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">combinationSum4</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">,</span> <span class="token keyword">int</span> target<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> dp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>target <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token comment">// 1 way to form 0</span>        dp<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>        <span class="token comment">// 1 ~ target</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> target<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// Add up previous combinations</span>            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> num <span class="token operator">:</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">-</span> num <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                    dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+=</span> dp<span class="token punctuation">[</span>i <span class="token operator">-</span> num<span class="token punctuation">]</span><span class="token punctuation">;</span>                <span class="token punctuation">&#125;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> dp<span class="token punctuation">[</span>target<span class="token punctuation">]</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Array</tag>
+      
+      <tag>Dynamic Programming</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>227. Basic Calculator II - Medium</title>
     <link href="/2024/01/24/227-Basic-Calculator-II-Medium/"/>
     <url>/2024/01/24/227-Basic-Calculator-II-Medium/</url>
@@ -191,9 +263,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Depth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Depth-First Search</tag>
       
       <tag>String Matching</tag>
       
@@ -523,11 +595,11 @@
       
       <tag>Binary Tree</tag>
       
+      <tag>Tree</tag>
+      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
-      
-      <tag>Tree</tag>
       
     </tags>
     
@@ -735,9 +807,9 @@
       
       <tag>心得</tag>
       
-      <tag>String</tag>
-      
       <tag>Array</tag>
+      
+      <tag>String</tag>
       
       <tag>Greedy</tag>
       
@@ -815,11 +887,11 @@
       
       <tag>Binary Tree</tag>
       
+      <tag>Tree</tag>
+      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
-      
-      <tag>Tree</tag>
       
     </tags>
     
@@ -920,9 +992,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Depth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Depth-First Search</tag>
       
     </tags>
     
@@ -955,9 +1027,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -1025,9 +1097,9 @@
       
       <tag>Array</tag>
       
-      <tag>Matrix</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Matrix</tag>
       
     </tags>
     
@@ -1233,9 +1305,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -1606,9 +1678,9 @@
       
       <tag>Linked List</tag>
       
-      <tag>Merge Sort</tag>
-      
       <tag>Divide and Conquer</tag>
+      
+      <tag>Merge Sort</tag>
       
     </tags>
     
@@ -1810,9 +1882,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Depth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Depth-First Search</tag>
       
     </tags>
     
@@ -1917,9 +1989,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -2117,9 +2189,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Depth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Depth-First Search</tag>
       
       <tag>Backtracking</tag>
       
@@ -2354,9 +2426,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Depth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Depth-First Search</tag>
       
     </tags>
     
@@ -2490,9 +2562,9 @@
       
       <tag>Array</tag>
       
-      <tag>Matrix</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Matrix</tag>
       
     </tags>
     
@@ -2723,11 +2795,11 @@
       
       <tag>心得</tag>
       
-      <tag>Matrix</tag>
-      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
+      
+      <tag>Matrix</tag>
       
     </tags>
     
@@ -2859,9 +2931,9 @@
       
       <tag>心得</tag>
       
-      <tag>String</tag>
-      
       <tag>Array</tag>
+      
+      <tag>String</tag>
       
       <tag>Hash Table</tag>
       
@@ -3655,9 +3727,9 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Algorithms</tag>
+      
+      <tag>Stack</tag>
       
       <tag>筆記</tag>
       
