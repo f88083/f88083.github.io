@@ -16,26 +16,27 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前往題目  想法 毫無想法，說不定是要用什麼bottom-up之類的  思路暴力解  DFS 每個node都向下遞迴找尋符合sum的 每次發現都紀錄，最後直接回傳counter就好  優化解 突然有個小小的領悟，DFS方法第一次被呼叫的時候最後一行return的就是最終的結果，可以想像成一開始只有一個點，然後這個點還會再呼叫dfs，每次呼叫dfs方法就會拓展一個子節點，最後遇到base case例">
+    <meta name="description" content="前往題目  想法 用掃描線，但實作卡住了  思路 用每個array的第一項排序 以第一項為基準開始疊代確認是否相交 如果不相交就更新區間的尾端 如果相交，多一個需要移除，並且取比較小的尾端，這樣可以減低之後再相交的機率  Code  &#x2F;&#x2F; T: O(nlogn) &#x2F;&#x2F; S: O(1) class Solution &#123;     public int eraseOverlapInterval">
 <meta property="og:type" content="article">
-<meta property="og:title" content="437. Path Sum III - Medium">
-<meta property="og:url" content="https://f88083.github.io/2024/01/11/437-Path-Sum-III-Medium/index.html">
+<meta property="og:title" content="435. Non-overlapping Intervals - Medium">
+<meta property="og:url" content="https://f88083.github.io/2024/01/26/435-Non-overlapping-Intervals-Medium/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="前往題目  想法 毫無想法，說不定是要用什麼bottom-up之類的  思路暴力解  DFS 每個node都向下遞迴找尋符合sum的 每次發現都紀錄，最後直接回傳counter就好  優化解 突然有個小小的領悟，DFS方法第一次被呼叫的時候最後一行return的就是最終的結果，可以想像成一開始只有一個點，然後這個點還會再呼叫dfs，每次呼叫dfs方法就會拓展一個子節點，最後遇到base case例">
+<meta property="og:description" content="前往題目  想法 用掃描線，但實作卡住了  思路 用每個array的第一項排序 以第一項為基準開始疊代確認是否相交 如果不相交就更新區間的尾端 如果相交，多一個需要移除，並且取比較小的尾端，這樣可以減低之後再相交的機率  Code  &#x2F;&#x2F; T: O(nlogn) &#x2F;&#x2F; S: O(1) class Solution &#123;     public int eraseOverlapInterval">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2024-01-11T11:46:57.000Z">
-<meta property="article:modified_time" content="2024-01-14T17:56:39.747Z">
+<meta property="article:published_time" content="2024-01-26T11:38:53.000Z">
+<meta property="article:modified_time" content="2024-01-26T11:57:34.694Z">
 <meta property="article:author" content="Simon Lai">
 <meta property="article:tag" content="Leetcode">
 <meta property="article:tag" content="心得">
-<meta property="article:tag" content="Binary Tree">
-<meta property="article:tag" content="Depth-First Search">
-<meta property="article:tag" content="Tree">
+<meta property="article:tag" content="Array">
+<meta property="article:tag" content="Greedy">
+<meta property="article:tag" content="Dynamic Programming">
+<meta property="article:tag" content="Sorting">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>437. Path Sum III - Medium - Simon Lai&#39;s Blog</title>
+  <title>435. Non-overlapping Intervals - Medium - Simon Lai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -230,7 +231,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="437. Path Sum III - Medium"></span>
+            <span id="subtitle" data-typed-text="435. Non-overlapping Intervals - Medium"></span>
           
         </div>
 
@@ -241,8 +242,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-11 11:46" pubdate>
-          2024年1月11日 中午
+        <time datetime="2024-01-26 11:38" pubdate>
+          2024年1月26日 中午
         </time>
       </span>
     
@@ -253,7 +254,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          353 字
+          164 字
         
       </span>
     
@@ -264,7 +265,7 @@
         
         
         
-          2 分鐘
+          1 分鐘
         
       </span>
     
@@ -301,86 +302,51 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">437. Path Sum III - Medium</h1>
+            <h1 id="seo-header">435. Non-overlapping Intervals - Medium</h1>
             
             
               <div class="markdown-body">
                 
-                <a class="btn" href="https://leetcode.com/problems/path-sum-iii/description/"  title="437. Path Sum III" target="_blank">前往題目</a>
+                <a class="btn" href="https://leetcode.com/problems/non-overlapping-intervals/description/"  title="435. Non-overlapping Intervals" target="_blank">前往題目</a>
 
 <h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul>
-<li>毫無想法，說不定是要用什麼<code>bottom-up</code>之類的</li>
+<li>用掃描線，但實作卡住了</li>
 </ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>暴力解</p>
-<ol>
-<li><code>DFS</code></li>
-<li>每個<code>node</code>都向下遞迴找尋符合<code>sum</code>的</li>
-<li>每次發現都紀錄，最後直接回傳<code>counter</code>就好</li>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
+<li>用每個<code>array</code>的第一項排序</li>
+<li>以第一項為基準開始疊代確認是否相交</li>
+<li>如果不相交就更新區間的尾端</li>
+<li>如果相交，多一個需要移除，並且取比較小的尾端，這樣可以減低之後再相交的機率</li>
 </ol>
-<p>優化解</p>
-<p>突然有個小小的領悟，<code>DFS</code>方法第一次被呼叫的時候最後一行<code>return</code>的就是最終的結果，可以想像成一開始只有一個點，然後這個點還會再呼叫<code>dfs</code>，每次呼叫<code>dfs</code>方法就會拓展一個子節點，最後遇到<code>base case</code>例如<code>node == null</code>後一個一個節點收回來最終變回一個點，然後<code>return</code>給一開始呼叫這個方法的地方</p>
-<ol>
-<li>用<code>map</code>紀錄<code>prefix sum</code></li>
-<li><code>DFS</code>走遍所有<code>nodes</code></li>
-<li>每到一個<code>node</code>都檢查<code>map</code>是否有對應的<code>preSum</code>，例如<code>target</code>是<code>10</code>，當前<code>node</code>是<code>6</code>，那需要<code>preSum</code>有<code>4</code>才能達到目標</li>
-</ol>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><div class="note note-info">
-            <p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/path-sum-iii/solutions/780231/java-dfs-easy-to-understand/">暴力解</a></p>
-          </div>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/nONCGxWoUfM" title="Non-Overlapping Intervals - Leetcode 435 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 暴力解</span>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// T: O(nlogn)</span>
+<span class="token comment">// S: O(1)</span>
 <span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">int</span> counter <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">pathSum</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> root<span class="token punctuation">,</span> <span class="token keyword">int</span> targetSum<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        
-        <span class="token comment">// Check current node</span>
-        <span class="token function">helper</span><span class="token punctuation">(</span>root<span class="token punctuation">,</span> targetSum<span class="token punctuation">,</span> <span class="token number">0L</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment">// Go through all the nodes</span>
-        <span class="token function">pathSum</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">,</span> targetSum<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">pathSum</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">,</span> targetSum<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        
-        <span class="token keyword">return</span> counter<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">eraseOverlapIntervals</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> intervals<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>intervals<span class="token punctuation">.</span>length <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">helper</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> node<span class="token punctuation">,</span> <span class="token keyword">int</span> targetSum<span class="token punctuation">,</span> <span class="token keyword">long</span> curSum<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>node <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
-        <span class="token comment">// Obtain current sum</span>
-        curSum <span class="token operator">+=</span> <span class="token punctuation">(</span><span class="token keyword">long</span><span class="token punctuation">)</span> node<span class="token punctuation">.</span>val<span class="token punctuation">;</span>
-        <span class="token comment">// Found</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>curSum <span class="token operator">==</span> targetSum<span class="token punctuation">)</span> <span class="token operator">++</span>counter<span class="token punctuation">;</span>
+        <span class="token comment">// Sort by the first element</span>
+        <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>intervals<span class="token punctuation">,</span> <span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">compare</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> b<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> prevEnd <span class="token operator">=</span> intervals<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-        <span class="token function">helper</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>left<span class="token punctuation">,</span> targetSum<span class="token punctuation">,</span> curSum<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">helper</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>right<span class="token punctuation">,</span> targetSum<span class="token punctuation">,</span> curSum<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+        <span class="token comment">// Start from the second item</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> intervals<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// Not overlapping</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>prevEnd <span class="token operator">&lt;=</span> intervals<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                prevEnd <span class="token operator">=</span> intervals<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span> <span class="token comment">// Overlapping</span>
+                <span class="token operator">++</span>res<span class="token punctuation">;</span>
+                <span class="token comment">// Pick the smaller end to minimize the overlapping possibility</span>
+                prevEnd <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>prevEnd<span class="token punctuation">,</span> intervals<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
 
-<div class="note note-info">
-            <p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/path-sum-iii/solutions/2658840/java-pass-new-test-case-with-dfs-map-o-n/">優化解</a></p>
-          </div>
-
-<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">pathSum</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> root<span class="token punctuation">,</span> <span class="token keyword">int</span> targetSum<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">// Store prefix sum</span>
-        <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Long</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span></span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token number">0L</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> <span class="token function">traverse</span><span class="token punctuation">(</span>root<span class="token punctuation">,</span> targetSum<span class="token punctuation">,</span> <span class="token number">0L</span><span class="token punctuation">,</span> map<span class="token punctuation">)</span><span class="token punctuation">;</span> 
-    <span class="token punctuation">&#125;</span>
-
-    <span class="token keyword">private</span> <span class="token keyword">int</span> <span class="token function">traverse</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> node<span class="token punctuation">,</span> <span class="token keyword">int</span> targetSum<span class="token punctuation">,</span> <span class="token keyword">long</span> preSum<span class="token punctuation">,</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Long</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span></span> map<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>node <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token comment">// Get current prefix sum</span>
-        preSum <span class="token operator">+=</span> node<span class="token punctuation">.</span>val<span class="token punctuation">;</span>
-        <span class="token comment">// Check if preSum has the required value</span>
-        <span class="token keyword">int</span> res <span class="token operator">=</span> map<span class="token punctuation">.</span><span class="token function">getOrDefault</span><span class="token punctuation">(</span>preSum <span class="token operator">-</span> targetSum<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment">// Update prefix sum</span>
-        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>preSum<span class="token punctuation">,</span> map<span class="token punctuation">.</span><span class="token function">getOrDefault</span><span class="token punctuation">(</span>preSum<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        res <span class="token operator">+=</span> <span class="token function">traverse</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>left<span class="token punctuation">,</span> targetSum<span class="token punctuation">,</span> preSum<span class="token punctuation">,</span> map<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">traverse</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>right<span class="token punctuation">,</span> targetSum<span class="token punctuation">,</span> preSum<span class="token punctuation">,</span> map<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment">// Backtracking, because fall back to other nodes</span>
-        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>preSum<span class="token punctuation">,</span> map<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>preSum<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">return</span> res<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
                 
               </div>
@@ -425,11 +391,13 @@
       
         <a href="/tags/%E5%BF%83%E5%BE%97/" class="print-no-link">#心得</a>
       
-        <a href="/tags/Binary-Tree/" class="print-no-link">#Binary Tree</a>
+        <a href="/tags/Array/" class="print-no-link">#Array</a>
       
-        <a href="/tags/Depth-First-Search/" class="print-no-link">#Depth-First Search</a>
+        <a href="/tags/Greedy/" class="print-no-link">#Greedy</a>
       
-        <a href="/tags/Tree/" class="print-no-link">#Tree</a>
+        <a href="/tags/Dynamic-Programming/" class="print-no-link">#Dynamic Programming</a>
+      
+        <a href="/tags/Sorting/" class="print-no-link">#Sorting</a>
       
     </div>
   
@@ -441,8 +409,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>437. Path Sum III - Medium</div>
-      <div>https://f88083.github.io/2024/01/11/437-Path-Sum-III-Medium/</div>
+      <div>435. Non-overlapping Intervals - Medium</div>
+      <div>https://f88083.github.io/2024/01/26/435-Non-overlapping-Intervals-Medium/</div>
     </div>
     <div class="license-meta">
       
@@ -454,7 +422,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>發布於</div>
-          <div>2024年1月11日</div>
+          <div>2024年1月26日</div>
         </div>
       
       
@@ -498,18 +466,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/12/50-Pow-x-n-Medium/" title="50. Pow(x, n) - Medium">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">50. Pow(x, n) - Medium</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/11/103-Binary-Tree-Zigzag-Level-Order-Traversal-Medium/" title="103. Binary Tree Zigzag Level Order Traversal - Medium">
-                        <span class="hidden-mobile">103. Binary Tree Zigzag Level Order Traversal - Medium</span>
+                      <a href="/2024/01/25/380-Insert-Delete-GetRandom-O-1-Medium/" title="380. Insert Delete GetRandom O(1) - Medium">
+                        <span class="hidden-mobile">380. Insert Delete GetRandom O(1) - Medium</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
