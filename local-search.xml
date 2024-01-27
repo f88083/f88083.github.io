@@ -4,6 +4,74 @@
   
   
   <entry>
+    <title>155. Min Stack - Medium</title>
+    <link href="/2024/01/27/155-Min-Stack-Medium/"/>
+    <url>/2024/01/27/155-Min-Stack-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/min-stack/description/"  title="155. Min Stack" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>題目要求每個方法都要<code>O(1)</code>時間，如果用一般的<code>stack</code>來做的話那<code>push</code>，<code>pop</code>，和<code>top</code>都可以輕易做到。但是還有一個<code>getMin</code>，他要回傳<code>stack</code>中最小的數，如果只用一個<code>int</code>來追蹤的話那萬一這個最小值被<code>pop</code>了，就不知道下一個最小值是多少了，在哪裡都有可能。所以這裡應該需要一個<code>PriorityQueue</code>來儲存</li><li>但是這樣又有一個問題，<code>pop</code>的時候中間值可能不見了，那就還要再花<code>O(n)</code>時間在<code>priorityQueue</code>裡面搜尋這個東西然後刪掉…</li></ul><p>搬運一下前幾個月做這題的想法</p><ul><li>這題普通，有想到，但沒實作</li><li>這題有個關鍵點是第二個<code>stack</code>，紀錄最小值的那個，每次有新的值要<code>push</code>的時候都要檢查是否<code>top element</code>比較小，是的話就再<code>push</code>一次<code>top element</code>。這是因為那個值會先被<code>pop</code>掉，因為他比較大，而不會影響到<code>getMin</code>，所以再<code>push</code>一個，這樣<code>pop</code>的時候就不會出現誤差了。<code>Pop</code>的部分兩個<code>stack</code>都是同時<code>Pop</code></li><li>有個更好的解釋，直接畫兩個<code>stack</code>，你就可以看到兩個對應的層數就是<code>pop</code>到該數時，該<code>stack</code>的<code>min</code></li><li>看不懂的話直接丟<code>debugger</code>看</li><li>簡單的<code>push -2 0 -</code>3就可以看出來</li><li>還有一個更省空間的解法，只需一個<code>stack</code>，算差值的</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>兩個<code>stack</code>，一個紀錄最小值，一個就是主要的<code>stack</code></li><li>每次<code>push</code>的時候，主要的<code>stack</code>直接<code>push</code>就好，最小值<code>stack</code>看看最上層是否比新的值還要小，如果比較小再<code>push</code>一個舊的值，否則新的值。這代表的是每個值所對應的最小值</li><li>其他就是直覺的操作</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p><a href="https://github.com/wisdompeak/LeetCode/tree/master/Stack/155.Min-Stack">官神解答</a></p><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">MinStack</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">private</span> <span class="token class-name">Stack</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> stack<span class="token punctuation">;</span>    <span class="token keyword">private</span> <span class="token class-name">Stack</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> minStack<span class="token punctuation">;</span>    <span class="token keyword">public</span> <span class="token class-name">MinStack</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        stack <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Stack</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        minStack <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Stack</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">push</span><span class="token punctuation">(</span><span class="token keyword">int</span> val<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>minStack<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            minStack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>            minStack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>val<span class="token punctuation">,</span> minStack<span class="token punctuation">.</span><span class="token function">peek</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        minStack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">return</span> stack<span class="token punctuation">.</span><span class="token function">peek</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getMin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">return</span> minStack<span class="token punctuation">.</span><span class="token function">peek</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Stack</tag>
+      
+      <tag>Design</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>409. Longest Palindrome - Easy</title>
+    <link href="/2024/01/27/409-Longest-Palindrome-Easy/"/>
+    <url>/2024/01/27/409-Longest-Palindrome-Easy/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/longest-palindrome/description/"  title="409. Longest Palindrome" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>存每個字母的數量，最後疊代取出所有偶數還有一個奇數</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>想法對了，實作有些情況沒考慮到</p><ol><li>儲存所有字母的<code>counts</code></li><li>疊代這些<code>counts</code>，如果是奇數，<strong>注意</strong>要把他<code>-1</code>加到結果裡，因為偶數<code>counts</code>是需要的</li><li>遇到偶數就直接把<code>count</code>加進去答案</li><li>最後回傳的時候如果有一個奇數項，就把他加進去</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">longestPalindrome</span><span class="token punctuation">(</span><span class="token class-name">String</span> s<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> alpha <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">256</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span>alpha<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// Est. alphabets and their counts</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">char</span> currChar <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>             alpha<span class="token punctuation">[</span>currChar<span class="token punctuation">]</span> <span class="token operator">=</span> alpha<span class="token punctuation">[</span>currChar<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">int</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> flag <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> count <span class="token operator">:</span> alpha<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// Odd count</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>count <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                sum <span class="token operator">+=</span> count <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// add even count</span>                flag <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// Only need one odd</span>            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span> <span class="token comment">// Even count</span>                sum <span class="token operator">+=</span> count<span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> sum <span class="token operator">+</span> flag<span class="token punctuation">;</span> <span class="token comment">// Plus the one odd</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>String</tag>
+      
+      <tag>Greedy</tag>
+      
+      <tag>Hash Table</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>435. Non-overlapping Intervals - Medium</title>
     <link href="/2024/01/26/435-Non-overlapping-Intervals-Medium/"/>
     <url>/2024/01/26/435-Non-overlapping-Intervals-Medium/</url>
@@ -30,9 +98,9 @@
       
       <tag>Greedy</tag>
       
-      <tag>Dynamic Programming</tag>
-      
       <tag>Sorting</tag>
+      
+      <tag>Dynamic Programming</tag>
       
     </tags>
     
@@ -407,9 +475,9 @@
       
       <tag>Array</tag>
       
-      <tag>Dynamic Programming</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Dynamic Programming</tag>
       
     </tags>
     
@@ -634,9 +702,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -667,11 +735,11 @@
       
       <tag>心得</tag>
       
-      <tag>Dynamic Programming</tag>
-      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
+      
+      <tag>Dynamic Programming</tag>
       
       <tag>Graph</tag>
       
@@ -926,9 +994,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -1064,9 +1132,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -1342,9 +1410,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -1711,9 +1779,9 @@
       
       <tag>Two Pointers</tag>
       
-      <tag>Sorting</tag>
-      
       <tag>Linked List</tag>
+      
+      <tag>Sorting</tag>
       
       <tag>Merge Sort</tag>
       
@@ -1991,9 +2059,9 @@
       
       <tag>Two Pointers</tag>
       
-      <tag>Binary Search</tag>
-      
       <tag>Sliding Window</tag>
+      
+      <tag>Binary Search</tag>
       
     </tags>
     
@@ -2026,9 +2094,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -2158,9 +2226,9 @@
       
       <tag>Array</tag>
       
-      <tag>Math</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Math</tag>
       
     </tags>
     
@@ -3671,11 +3739,11 @@
       
       <tag>Algorithms</tag>
       
+      <tag>Queue</tag>
+      
       <tag>筆記</tag>
       
       <tag>演算法</tag>
-      
-      <tag>Queue</tag>
       
     </tags>
     
