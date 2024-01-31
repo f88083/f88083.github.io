@@ -253,6 +253,390 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/01/27/409-Longest-Palindrome-Easy/" target="_self">
+          409. Longest Palindrome - Easy
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/27/409-Longest-Palindrome-Easy/" target="_self">
+        <div>
+          前往題目  想法 存每個字母的數量，最後疊代取出所有偶數還有一個奇數  思路想法對了，實作有些情況沒考慮到  儲存所有字母的counts 疊代這些counts，如果是奇數，注意要把他-1加到結果裡，因為偶數counts是需要的 遇到偶數就直接把count加進去答案 最後回傳的時候如果有一個奇數項，就把他加進去  Codeclass Solution &#123;     public int lo
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-27 10:15" pubdate>
+              2024-01-27
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/String/">#String</a>
+            
+              <a href="/tags/Greedy/">#Greedy</a>
+            
+              <a href="/tags/Hash-Table/">#Hash Table</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/26/435-Non-overlapping-Intervals-Medium/" target="_self">
+          435. Non-overlapping Intervals - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/26/435-Non-overlapping-Intervals-Medium/" target="_self">
+        <div>
+          前往題目  想法 用掃描線，但實作卡住了  思路 用每個array的第一項排序 以第一項為基準開始疊代確認是否相交 如果不相交就更新區間的尾端 如果相交，多一個需要移除，並且取比較小的尾端，這樣可以減低之後再相交的機率  Code  // T: O(nlogn) // S: O(1) class Solution &#123;     public int eraseOverlapInterval
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-26 11:38" pubdate>
+              2024-01-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Greedy/">#Greedy</a>
+            
+              <a href="/tags/Dynamic-Programming/">#Dynamic Programming</a>
+            
+              <a href="/tags/Sorting/">#Sorting</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/25/380-Insert-Delete-GetRandom-O-1-Medium/" target="_self">
+          380. Insert Delete GetRandom O(1) - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/25/380-Insert-Delete-GetRandom-O-1-Medium/" target="_self">
+        <div>
+          前往題目  想法經過這麼多演算法的洗禮還有自修的演算法課程，總算沒讓自己失望:D以下是分析  如果使用array，insert和remove都需要index，但是傳入的值是value，每次都要花時間搜尋。如果使用Map來儲存映射關係那還要處理array擴增的問題，所以不選這個 如果用LinkedList，insert可以O(1)，但是remove和getRandom都要O(n)，也不方便；就算是d
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-25 11:36" pubdate>
+              2024-01-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Math/">#Math</a>
+            
+              <a href="/tags/Hash-Table/">#Hash Table</a>
+            
+              <a href="/tags/Randomized/">#Randomized</a>
+            
+              <a href="/tags/Design/">#Design</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/25/377-Combination-Sum-IV-Medium/" target="_self">
+          377. Combination Sum IV - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/25/377-Combination-Sum-IV-Medium/" target="_self">
+        <div>
+          前往題目  想法 會不會是用backtracking?  思路 利用array當作cache base case是0，因為只有一種組合是0 接著疊代1~target，逐步建立cache 每個循環裡面要再看一次所有的nums並相加，因為先前的加起來才是當前的組合總數  可以看這個discussion的解釋，非常清楚 Code  class Solution &#123;     public int
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-25 10:46" pubdate>
+              2024-01-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Dynamic-Programming/">#Dynamic Programming</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/24/227-Basic-Calculator-II-Medium/" target="_self">
+          227. Basic Calculator II - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/24/227-Basic-Calculator-II-Medium/" target="_self">
+        <div>
+          前往題目  想法 用stack，只壓入數字和+-，乘除直接用stack最上層的數字計算就可以  思路沒看到數字不一定是一個digit  疊代整個string 每次判斷是否為數字，如果是則看有多少位，把整串擷取，然後看是什麼operator做相應的計算(如果是整個運算式的第一個數字那就會剛好直接加入) 如果不是數字，也不是空格，那就一定是operator，紀錄  Code這個解法沒有用到stack，
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-24 11:35" pubdate>
+              2024-01-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Stack/">#Stack</a>
+            
+              <a href="/tags/String/">#String</a>
+            
+              <a href="/tags/Math/">#Math</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2024/01/24/153-Find-Minimum-in-Rotated-Sorted-Array-Medium/" target="_self">
           153. Find Minimum in Rotated Sorted Array - Medium
         </a>
@@ -600,378 +984,13 @@
             
               <a href="/tags/Binary-Tree/">#Binary Tree</a>
             
-              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
-            
               <a href="/tags/Tree/">#Tree</a>
+            
+              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
             
               <a href="/tags/String-Matching/">#String Matching</a>
             
               <a href="/tags/Hash-Function/">#Hash Function</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/21/70-Climbing-Stairs-Easy/" target="_self">
-          70. Climbing Stairs - Easy
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/21/70-Climbing-Stairs-Easy/" target="_self">
-        <div>
-          前往題目  想法 在想要用dp，但是關係式想不出來  思路 最後兩個一定都是1種方法能走到 以他們為基準向前就能推出答案  下面i還是從0開始因為沒有差別，沒有用到i Code  class Solution &#123;     public int climbStairs(int n) &#123;         // Pointer         int one = 1, two = 1
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-21 16:25" pubdate>
-              2024-01-21
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Math/">#Math</a>
-            
-              <a href="/tags/Dynamic-Programming/">#Dynamic Programming</a>
-            
-              <a href="/tags/Memoization/">#Memoization</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/21/238-Product-of-Array-Except-Self-Medium/" target="_self">
-          238. Product of Array Except Self - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/21/238-Product-of-Array-Except-Self-Medium/" target="_self">
-        <div>
-          前往題目  想法 想不出不用除法怎麼解  思路 利用prefix和postfix sum 先疊代一次建構prefix sum 再由後往前直接建構答案  看不懂的話可以把postfix sum和prefix sum各列出來，就可以發現只要把任何一個位置的postfix以及同位置的prefix sum乘起來就是答案 Code  class Solution &#123;     public int[
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-21 16:03" pubdate>
-              2024-01-21
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Prefix-Sum/">#Prefix Sum</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/20/322-Coin-Change-Medium/" target="_self">
-          322. Coin Change - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/20/322-Coin-Change-Medium/" target="_self">
-        <div>
-          前往題目  搬運~ 想法 這應該算是我第一個正式想過的dynamic programming題目了 難到爆 期待融會貫通的那天 答案幾乎只能用抄的  思路 用DP bottom up的方式從amount是0的時候開始，因為amount為0一定是用0個硬幣 從amount為1循環到amount本身 每個循環都檢查每個coin是否能被納入考量，amount - coin為正整數時就代表可能可以被當作答
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-20 11:33" pubdate>
-              2024-01-20
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Dynamic-Programming/">#Dynamic Programming</a>
-            
-              <a href="/tags/Breadth-First-Search/">#Breadth-First Search</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/20/208-Implement-Trie-Prefix-Tree-Medium/" target="_self">
-          208. Implement Trie (Prefix Tree) - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/20/208-Implement-Trie-Prefix-Tree-Medium/" target="_self">
-        <div>
-          前往題目  之前寫過，搬運一下 想法 大概念是看影片才得來 一半是自己照著概念寫出來的 但class之間attribute的操作不熟練 而且原來inner class的private，包含他的class是可以存取的 本來想說要寫get set，但根本不用  思路 新建TrieNode class，用以表示Trie的節點 每個node都有自己的children Trie物件裡新增instance v
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-20 10:49" pubdate>
-              2024-01-20
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/String/">#String</a>
-            
-              <a href="/tags/Hash-Table/">#Hash Table</a>
-            
-              <a href="/tags/Trie/">#Trie</a>
-            
-              <a href="/tags/Design/">#Design</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/19/%E5%A6%82%E4%BD%95%E5%AF%AB%E5%A5%BDgit-commit-message/" target="_self">
-          如何寫好git commit message
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/19/%E5%A6%82%E4%BD%95%E5%AF%AB%E5%A5%BDgit-commit-message/" target="_self">
-        <div>
-          本篇筆記搬運以及修改WadeHuang大大的部分文章:Git Commit Message 這樣寫會更好，替專案引入規範與範例 寫好commit訊息，造福同行，也為自己積陰德 怎麼寫比較好? 註解紀錄在commit裡面可以保持程式碼的整潔和可讀性 獨立commit每個不同意義的異動才不會混在一起 Commit只包含: Why和What Commit加上issue編號方便追蹤異動原因  規範範例 詳
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-19 16:00" pubdate>
-              2024-01-19
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%B6%9C%E5%90%88/" class="category-chain-item">綜合</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/git/">#git</a>
             
           </div>
         

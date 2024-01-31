@@ -253,6 +253,377 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/01/11/437-Path-Sum-III-Medium/" target="_self">
+          437. Path Sum III - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/11/437-Path-Sum-III-Medium/" target="_self">
+        <div>
+          前往題目  想法 毫無想法，說不定是要用什麼bottom-up之類的  思路暴力解  DFS 每個node都向下遞迴找尋符合sum的 每次發現都紀錄，最後直接回傳counter就好  優化解 突然有個小小的領悟，DFS方法第一次被呼叫的時候最後一行return的就是最終的結果，可以想像成一開始只有一個點，然後這個點還會再呼叫dfs，每次呼叫dfs方法就會拓展一個子節點，最後遇到base case例
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-11 11:46" pubdate>
+              2024-01-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Binary-Tree/">#Binary Tree</a>
+            
+              <a href="/tags/Tree/">#Tree</a>
+            
+              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/11/103-Binary-Tree-Zigzag-Level-Order-Traversal-Medium/" target="_self">
+          103. Binary Tree Zigzag Level Order Traversal - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/11/103-Binary-Tree-Zigzag-Level-Order-Traversal-Medium/" target="_self">
+        <div>
+          前往題目  想法 BFS，但不小心寫錯了🤣導致有奇怪的bug  思路 BFS 判斷奇數行還是偶數行決定是否反轉(不能直接判斷然後加入，這樣會造成queue裡的順序也不一樣，就沒辦法在下一個level把順序倒轉回來)  Code  class Solution &#123;     public List&lt;List&lt;Integer>> zigzagLevelOrder(TreeNode
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-11 11:02" pubdate>
+              2024-01-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Binary-Tree/">#Binary Tree</a>
+            
+              <a href="/tags/Tree/">#Tree</a>
+            
+              <a href="/tags/Breadth-First-Search/">#Breadth-First Search</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/10/48-Rotate-Image-Medium/" target="_self">
+          48. Rotate Image - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/10/48-Rotate-Image-Medium/" target="_self">
+        <div>
+          前往題目  想法 快速找了一下規律，沒有找到  思路 每個cell都反轉其row和column，也就是(1, 0)變為(0, 1)，兩個cell互換 然後每行前後對調  Time: $O(N^2)$Space: O(1) Code討論區解答 class Solution &#123;     public void rotate(int[][] matrix) &#123;         //
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-10 14:23" pubdate>
+              2024-01-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Math/">#Math</a>
+            
+              <a href="/tags/Matrix/">#Matrix</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/10/221-Maximal-Square-Medium/" target="_self">
+          221. Maximal Square - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/10/221-Maximal-Square-Medium/" target="_self">
+        <div>
+          前往題目  想法 只想得到暴力解 覺得優化應該是從側邊開始，根據以往經驗，因為這樣才能memorize同時確保每次只有一種狀況，往內推進的時候也都能用到cache  思路Top down  從左上開始 每個cell都檢查其右、下，斜右下，藉以更新當前cell 直到最後就會得到一個紀錄每個格子最大square的表格  Time: O(M * N)Space: O(M * N) Bottom up(D
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-10 11:14" pubdate>
+              2024-01-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Dynamic-Programming/">#Dynamic Programming</a>
+            
+              <a href="/tags/Matrix/">#Matrix</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/09/Flask%E9%87%8D%E6%A7%8B-%E4%BD%BF%E7%94%A8%E5%B7%A5%E5%BB%A0%E6%96%B9%E6%B3%95%E5%92%8C%E8%97%8D%E5%9C%96/" target="_self">
+          Flask重構-使用工廠方法和藍圖
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/09/Flask%E9%87%8D%E6%A7%8B-%E4%BD%BF%E7%94%A8%E5%B7%A5%E5%BB%A0%E6%96%B9%E6%B3%95%E5%92%8C%E8%97%8D%E5%9C%96/" target="_self">
+        <div>
+          雖然初步開發的時候可以不用管結構，全部程式碼都塞在一起就好，但是遇到要擴展或是測試的時候問題就出現了，很多潛在的問題在程式擴展的路上會出現，增加很多時間成本。而我自己也想練習一下寫測試，有好的結構才能快速切換測試和開發的環境，剛好藉由自己的這個小project來玩玩看 結構參考《Flask Web開發》  以下是重構後的資料結構    code都拆開放在專屬的py檔案裡了  app資料夾是放Fla
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-09 14:30" pubdate>
+              2024-01-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Project/" class="category-chain-item">Project</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Flask/">#Flask</a>
+            
+              <a href="/tags/Factory-Pattern/">#Factory Pattern</a>
+            
+              <a href="/tags/Blueprint/">#Blueprint</a>
+            
+              <a href="/tags/Configuration/">#Configuration</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2024/01/09/283-Move-Zeroes-Easy/" target="_self">
           283. Move Zeroes - Easy
         </a>
@@ -622,394 +993,6 @@
               <a href="/tags/Tree/">#Tree</a>
             
               <a href="/tags/Breadth-First-Search/">#Breadth-First Search</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/07/15-3Sum-Medium/" target="_self">
-          15. 3Sum - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/07/15-3Sum-Medium/" target="_self">
-        <div>
-          前往題目  照搬一下之前寫的 想法 這題很難，覺得應該要是hard 解法不複雜，但想法很有挑戰性 先排序是因為這樣l和r pointer的位置就很清楚了，l往右一定是維持或是sum變大，r往左一定是維持或是sum變小 這個解法是$O(N^2)$  思路 Sort it  iterate the nums  Check if duplicate to the previous number (To
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-07 11:26" pubdate>
-              2024-01-07
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Two-Pointers/">#Two Pointers</a>
-            
-              <a href="/tags/Sorting/">#Sorting</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/06/3-Longest-Substring-Without-Repeating-Characters-Medium/" target="_self">
-          3. Longest Substring Without Repeating Characters - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/06/3-Longest-Substring-Without-Repeating-Characters-Medium/" target="_self">
-        <div>
-          前往題目  搬運一下之前的心得 想法 這題也沒寫出來，有嘗試用2 pointers和hashmap做，但失敗了 解法看了半小時才懂，卡在為甚麼要remove那個character，當發現有同樣的時候 原因是因為那整個substring都不能要了，也記錄了長度，所以會逐漸remove  思路 Set儲存substring Sliding window char沒在set裡面的話就加進去，然後看看有沒
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-06 12:47" pubdate>
-              2024-01-06
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/String/">#String</a>
-            
-              <a href="/tags/Hash-Table/">#Hash Table</a>
-            
-              <a href="/tags/Sliding-Window/">#Sliding Window</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/05/136-Single-Number-Easy/" target="_self">
-          136. Single Number - Easy
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/05/136-Single-Number-Easy/" target="_self">
-        <div>
-          前往題目  思路 XOR最後就會剩下單獨的元素  Code  class Solution &#123;     public int singleNumber(int[] nums) &#123;         int res = 0;          for (int num : nums) &#123;             res ^= num;         &#125;
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-05 10:47" pubdate>
-              2024-01-05
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Bit-Manipulation/">#Bit Manipulation</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/05/215-Kth-Largest-Element-in-an-Array-Medium/" target="_self">
-          215. Kth Largest Element in an Array - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/05/215-Kth-Largest-Element-in-an-Array-Medium/" target="_self">
-        <div>
-          前往題目  想法 只想得到用sort之後🤣  思路 用Priority queue，默認是從小到大，所以超過k個數字的時候把top去掉就好，最後會剩下最小到第k大的元素  或是QuickSelect: 平均O(N)，但是最差情況是$O(N^2)$ Code  class Solution &#123;     public int findKthLargest(int[] nums, int k
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-05 10:32" pubdate>
-              2024-01-05
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Sorting/">#Sorting</a>
-            
-              <a href="/tags/Heap/">#Heap</a>
-            
-              <a href="/tags/Priority-Queue/">#Priority Queue</a>
-            
-              <a href="/tags/Divide-and-Conquer/">#Divide and Conquer</a>
-            
-              <a href="/tags/Quickselect/">#Quickselect</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/04/528-Random-Pick-with-Weight-Medium/" target="_self">
-          528. Random Pick with Weight - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/04/528-Random-Pick-with-Weight-Medium/" target="_self">
-        <div>
-          前往題目  想法 題目要求每次pickIndex的時候都根據機率return數值，例如[1,3]那return 1的機率就是$1 &#x2F; (1 + 3)$，return 3的機率是$3 &#x2F; (1 + 3)$ 但是讓我困惑的是要怎麼根據機率return。算機率很簡單，只要弄個hashmap把每個機率存下來就好了；或是存sum，然後直接算也很快  思路這題很妙…解法也有些不懂的地方 大
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-04 10:39" pubdate>
-              2024-01-04
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Math/">#Math</a>
-            
-              <a href="/tags/Binary-Search/">#Binary Search</a>
-            
-              <a href="/tags/Prefix-Sum/">#Prefix Sum</a>
-            
-              <a href="/tags/Randomized/">#Randomized</a>
             
           </div>
         
