@@ -4,6 +4,80 @@
   
   
   <entry>
+    <title>2024. Maximize the Confusion of an Exam - Medium</title>
+    <link href="/2024/02/01/2024-Maximize-the-Confusion-of-an-Exam-Medium/"/>
+    <url>/2024/02/01/2024-Maximize-the-Confusion-of-an-Exam-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/maximize-the-confusion-of-an-exam/description/"  title="2024. Maximize the Confusion of an Exam" target="_blank">前往題目</a><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p><code>1004</code>題的進階</p><ol><li><code>sliding window</code></li><li>重複兩遍循環，一次是把<code>T</code>當作基準，也就是翻轉成<code>T</code>，一次是把<code>F</code>當作基準</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/iStGBdbXkLY" title="【每日一题】LeetCode 2024. Maximize the Confusion of an Exam 10/5/2021" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">maxConsecutiveAnswers</span><span class="token punctuation">(</span><span class="token class-name">String</span> answerKey<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token comment">// If flip to T</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> answerKey<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>answerKey<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>j<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token char">'T'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                res <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>res<span class="token punctuation">,</span> j <span class="token operator">-</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>                <span class="token operator">++</span>count<span class="token punctuation">;</span>                <span class="token keyword">while</span> <span class="token punctuation">(</span>count <span class="token operator">></span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                    <span class="token keyword">if</span> <span class="token punctuation">(</span>answerKey<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token char">'F'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                        <span class="token operator">--</span>count<span class="token punctuation">;</span>                    <span class="token punctuation">&#125;</span>                    <span class="token operator">++</span>i<span class="token punctuation">;</span>                <span class="token punctuation">&#125;</span>                res <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>res<span class="token punctuation">,</span> j <span class="token operator">-</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token comment">// If flip to F</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> answerKey<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>answerKey<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>j<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token char">'F'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                res <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>res<span class="token punctuation">,</span> j <span class="token operator">-</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>                <span class="token operator">++</span>count<span class="token punctuation">;</span>                <span class="token keyword">while</span> <span class="token punctuation">(</span>count <span class="token operator">></span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                    <span class="token keyword">if</span> <span class="token punctuation">(</span>answerKey<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token char">'T'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                        <span class="token operator">--</span>count<span class="token punctuation">;</span>                    <span class="token punctuation">&#125;</span>                    <span class="token operator">++</span>i<span class="token punctuation">;</span>                <span class="token punctuation">&#125;</span>                res <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>res<span class="token punctuation">,</span> j <span class="token operator">-</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> res<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>String</tag>
+      
+      <tag>Binary Search</tag>
+      
+      <tag>Sliding Window</tag>
+      
+      <tag>Prefix Sum</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>1004. Max Consecutive Ones III - Medium</title>
+    <link href="/2024/02/01/1004-Max-Consecutive-Ones-III-Medium/"/>
+    <url>/2024/02/01/1004-Max-Consecutive-Ones-III-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/max-consecutive-ones-iii/description/"  title="1004. Max Consecutive Ones III" target="_blank">前往題目</a><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ul><li>看到<code>subarray</code>基本上是用<code>sliding window</code></li><li>看到可以翻轉<code>k</code>個，基本上可以用<code>dp</code></li></ul><ol><li><code>sliding window</code></li><li>如果遇到<code>1</code>，就紀錄長度</li><li>如果遇到<code>0</code>，就紀錄當前幾個<code>0</code>，超過<code>k</code>的話把左邊指針右移直到<code>0</code>的個數小於等於<code>k</code>，然後再紀錄一下長度</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p>官神影片同時講了<code>dp</code>和<code>sliding window</code>，<code>dp</code>在這題不太可行是因為需要用到二維陣列，這樣<code>nums.length</code>如果是$10^5$，就需要$10^5 * 10^5$的陣列，空間上太不划算。使用<code>sliding window</code>只需要<code>O(1)</code>空間以及<code>O(n)</code>時間</p><iframe width="100%" height="500" src="https://www.youtube.com/embed/Ti9_4NVDzdg" title="【每日一题】1004. Max Consecutive Ones III, 9/17/2020" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">longestOnes</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token comment">// 右指針持續向右</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// 遇到1</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                res <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>res<span class="token punctuation">,</span> j <span class="token operator">-</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>  <span class="token comment">// 遇到0</span>                <span class="token operator">++</span>count<span class="token punctuation">;</span>                <span class="token comment">// 移動左指針直到count小於等於k</span>                <span class="token keyword">while</span> <span class="token punctuation">(</span>count <span class="token operator">></span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                    <span class="token comment">// 刪掉0的話count也要減1</span>                    <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                        <span class="token operator">--</span>count<span class="token punctuation">;</span>                    <span class="token punctuation">&#125;</span>                    <span class="token operator">++</span>i<span class="token punctuation">;</span>                <span class="token punctuation">&#125;</span>                res <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>res<span class="token punctuation">,</span> j <span class="token operator">-</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> res<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Array</tag>
+      
+      <tag>Binary Search</tag>
+      
+      <tag>Sliding Window</tag>
+      
+      <tag>Prefix Sum</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>3. Longest Substring Without Repeating Characters - Medium</title>
     <link href="/2024/01/31/3-Longest-Substring-Without-Repeating-Characters-Medium/"/>
     <url>/2024/01/31/3-Longest-Substring-Without-Repeating-Characters-Medium/</url>
@@ -337,11 +411,11 @@
     
     <tags>
       
+      <tag>Stack</tag>
+      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
-      
-      <tag>Stack</tag>
       
       <tag>Design</tag>
       
@@ -514,11 +588,11 @@
     
     <tags>
       
+      <tag>Stack</tag>
+      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
-      
-      <tag>Stack</tag>
       
       <tag>String</tag>
       
@@ -1087,11 +1161,11 @@
     
     <tags>
       
+      <tag>Stack</tag>
+      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
-      
-      <tag>Stack</tag>
       
       <tag>Recursion</tag>
       
@@ -1227,9 +1301,9 @@
       
       <tag>心得</tag>
       
-      <tag>String</tag>
-      
       <tag>Array</tag>
+      
+      <tag>String</tag>
       
       <tag>Greedy</tag>
       
@@ -1517,9 +1591,9 @@
       
       <tag>Array</tag>
       
-      <tag>Matrix</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Matrix</tag>
       
     </tags>
     
@@ -1610,11 +1684,11 @@
     
     <tags>
       
+      <tag>Stack</tag>
+      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
-      
-      <tag>Stack</tag>
       
       <tag>Recursion</tag>
       
@@ -1647,11 +1721,11 @@
     
     <tags>
       
+      <tag>Stack</tag>
+      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
-      
-      <tag>Stack</tag>
       
       <tag>Array</tag>
       
@@ -1964,11 +2038,11 @@
     
     <tags>
       
+      <tag>Stack</tag>
+      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
-      
-      <tag>Stack</tag>
       
       <tag>Array</tag>
       
@@ -2317,7 +2391,7 @@
     <link href="/2023/12/24/424-Longest-Repeating-Character-Replacement-Medium/"/>
     <url>/2023/12/24/424-Longest-Repeating-Character-Replacement-Medium/</url>
     
-    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/longest-repeating-character-replacement/description/"  title="424. Longest Repeating Character Replacement" target="_blank">前往題目</a><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>關鍵是window長度減掉該window下最多字母的數量，剩下的字母就是必須替換的，所以最多只能<code>k</code>個</p><ol><li><code>Sliding window</code>，檢查每個字母，紀錄出現次數</li><li>當<code>window</code>的長度減掉最多<code>count</code>的字母，大於k的時候就超出規範了，因此要移動左指針</li><li>每次循環都更新一次最大長度，也就是<code>window</code>的長度</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/gqXU1UyA8pk" title="Longest Repeating Character Replacement - Leetcode 424 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">characterReplacement</span><span class="token punctuation">(</span><span class="token class-name">String</span> s<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Character</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span></span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> l <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// Left pointer</span>        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> r <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> r <span class="token operator">&lt;</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>r<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// Count the alphabets</span>            map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span> <span class="token operator">+</span> map<span class="token punctuation">.</span><span class="token function">getOrDefault</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment">// Max count</span>            <span class="token keyword">int</span> maxCount <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>            <span class="token comment">// Find the maxCount</span>            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> count <span class="token operator">:</span> map<span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                maxCount <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>maxCount<span class="token punctuation">,</span> count<span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>                        <span class="token comment">// Exceeded the k</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span>r <span class="token operator">-</span> l <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">-</span> maxCount<span class="token punctuation">)</span> <span class="token operator">></span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token comment">// Decrease the count</span>                map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span><span class="token punctuation">,</span> map<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                l <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// Move the left pointer (Move the window)</span>            <span class="token punctuation">&#125;</span>            res <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>res<span class="token punctuation">,</span> r <span class="token operator">-</span> l <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> res<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/longest-repeating-character-replacement/description/"  title="424. Longest Repeating Character Replacement" target="_blank">前往題目</a><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>關鍵是window長度減掉該window下最多字母的數量，剩下的字母就是必須替換的，所以最多只能<code>k</code>個</p><ol><li><code>Sliding window</code>，檢查每個字母，紀錄出現次數</li><li>當<code>window</code>的長度減掉最多<code>count</code>的字母，大於k的時候就超出規範了，因此要移動左指針</li><li>每次循環都更新一次最大長度，也就是<code>window</code>的長度</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/gqXU1UyA8pk" title="Longest Repeating Character Replacement - Leetcode 424 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">characterReplacement</span><span class="token punctuation">(</span><span class="token class-name">String</span> s<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Character</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span></span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> l <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// Left pointer</span>        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> r <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> r <span class="token operator">&lt;</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>r<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// Count the alphabets</span>            map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span> <span class="token operator">+</span> map<span class="token punctuation">.</span><span class="token function">getOrDefault</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment">// Max count</span>            <span class="token keyword">int</span> maxCount <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>            <span class="token comment">// Find the maxCount</span>            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> count <span class="token operator">:</span> map<span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                maxCount <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>maxCount<span class="token punctuation">,</span> count<span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>                        <span class="token comment">// Exceeded the k</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span>r <span class="token operator">-</span> l <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">-</span> maxCount<span class="token punctuation">)</span> <span class="token operator">></span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token comment">// Decrease the count</span>                map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span><span class="token punctuation">,</span> map<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                l <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// Move the left pointer (Move the window)</span>            <span class="token punctuation">&#125;</span>            res <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>res<span class="token punctuation">,</span> r <span class="token operator">-</span> l <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> res<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure><h2 id="2024-02-02"><a href="#2024-02-02" class="headerlink" title="2024&#x2F;02&#x2F;02"></a>2024&#x2F;02&#x2F;02</h2><iframe width="100%" height="300" src="https://www.youtube.com/embed/wXicFFUVdd0" title="【每日一题】LeetCode 424. Longest Repeating Character Replacement 10/6 2021" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><ul><li>沒寫出來，寫了前置題<code>1004</code>與<code>2024</code></li><li>其實這題也可以用前置題的方法，直接疊代<code>26</code>次就好，每次都取一個字母為基準，這樣時間也只有<code>O(26N)</code>非常划算</li><li>以下方法和上面的方法一樣，只是使用<code>array</code>而不是<code>hashmap</code>，其實這題用<code>array</code>更好，因為一定知道<code>index</code></li></ul><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// T: O(26N)</span><span class="token comment">// S: O(1)</span><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">characterReplacement</span><span class="token punctuation">(</span><span class="token class-name">String</span> s<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> res <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token comment">// Counts of the alphabets</span>        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> count <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">26</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token comment">// 固定j，左指針i移動</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// 循環開始時會多一位，所以加上1</span>            count<span class="token punctuation">[</span>s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>j<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token char">'A'</span><span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">;</span>            <span class="token comment">// 判斷當前的區間減去count陣列裡最大值是否大於k</span>            <span class="token comment">// 大於k就代表當前需替換字母個數已超出k</span>            <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>j <span class="token operator">-</span> i <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">-</span> <span class="token function">maxVal</span><span class="token punctuation">(</span>count<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">></span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token comment">// 退掉i</span>                count<span class="token punctuation">[</span>s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token char">'A'</span><span class="token punctuation">]</span> <span class="token operator">-=</span> <span class="token number">1</span><span class="token punctuation">;</span>                <span class="token comment">// 右移左指針</span>                <span class="token operator">++</span>i<span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>            res <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>res<span class="token punctuation">,</span> j <span class="token operator">-</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> res<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token comment">// 找最大值</span>    <span class="token keyword">private</span> <span class="token keyword">int</span> <span class="token function">maxVal</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> count<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span> max <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> num <span class="token operator">:</span> count<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            max <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>max<span class="token punctuation">,</span> num<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> max<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
     
     
     <categories>
@@ -2471,11 +2545,11 @@
     
     <tags>
       
+      <tag>Stack</tag>
+      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
-      
-      <tag>Stack</tag>
       
       <tag>String</tag>
       
@@ -2671,11 +2745,11 @@
     
     <tags>
       
+      <tag>Stack</tag>
+      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
-      
-      <tag>Stack</tag>
       
       <tag>Queue</tag>
       
@@ -3351,9 +3425,9 @@
       
       <tag>心得</tag>
       
-      <tag>String</tag>
-      
       <tag>Array</tag>
+      
+      <tag>String</tag>
       
       <tag>Hash Table</tag>
       
@@ -3657,11 +3731,11 @@
     
     <tags>
       
+      <tag>Stack</tag>
+      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
-      
-      <tag>Stack</tag>
       
       <tag>String</tag>
       
@@ -3887,11 +3961,11 @@
     
     <tags>
       
+      <tag>Stack</tag>
+      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
-      
-      <tag>Stack</tag>
       
       <tag>Array</tag>
       
@@ -4147,9 +4221,9 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Algorithms</tag>
+      
+      <tag>Stack</tag>
       
       <tag>筆記</tag>
       
@@ -4180,11 +4254,11 @@
     
     <tags>
       
+      <tag>Stack</tag>
+      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
-      
-      <tag>Stack</tag>
       
       <tag>String</tag>
       
