@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://miro.medium.com/v2/resize:fit:720/format:webp/1*M0unfGIBtBhMdE74jH7GNg.png">
 <meta property="og:image" content="https://miro.medium.com/v2/resize:fit:720/format:webp/1*4UjON_Dlh-p__UX7A2QYIQ.png">
 <meta property="article:published_time" content="2023-10-10T13:00:49.000Z">
-<meta property="article:modified_time" content="2023-11-23T17:34:32.322Z">
+<meta property="article:modified_time" content="2024-02-03T11:14:37.329Z">
 <meta property="article:author" content="Simon Lai">
 <meta property="article:tag" content="Leetcode">
 <meta property="article:tag" content="心得">
@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          633 字
+          660 字
         
       </span>
     
@@ -415,6 +415,9 @@
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
 <p>但是呢，再看了別人DFS的寫法，赫然發現，這根本就是DFS阿. . .難怪是用Recursion，用白話說就是，死命往下找，找不到才return，return的路上有更深的又會再往深處去。應該沒想錯，因為BFS之所以要用queue的原因就是這樣才有先後順序，先看完左邊再看看右邊，然後再回到左邊的children，這樣慢慢從左往右從上往下。看來討論區的那位答案應該是抄來的吧🤣幸好有發現，不然以為BFS也能Recursion做。</p>
+<h2 id="2024-02-03"><a href="#2024-02-03" class="headerlink" title="2024&#x2F;02&#x2F;03"></a>2024&#x2F;02&#x2F;03</h2><ul>
+<li>有看出要用<code>BFS</code>或是<code>DFS</code>，實作卡住了，沒想到要檢查上下左右</li>
+</ul>
 
                 
               </div>
