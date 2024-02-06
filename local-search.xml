@@ -4,6 +4,76 @@
   
   
   <entry>
+    <title>875. Koko Eating Bananas - Medium</title>
+    <link href="/2024/02/06/875-Koko-Eating-Bananas-Medium/"/>
+    <url>/2024/02/06/875-Koko-Eating-Bananas-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/koko-eating-bananas/description/"  title="875. Koko Eating Bananas" target="_blank">前往題目</a><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>利用<code>binary search</code>(不是搜尋<code>piles array</code>，而是最小數與最大數的區間)</li><li>最少的可能是每小時<code>1</code>根香蕉，最大就是<code>piles</code>裡面最大的，因為<code>piles.length &lt;= h</code>，所以最大值一定可以在時限內吃完</li><li><code>binary search</code>搜尋，每次計算<code>piles</code>能不能只需要每小時<code>mid</code>根香蕉吃完，如果不行，小指針指向<code>mid + 1</code>，如果可以，那大指針就變為<code>mid</code>，繼續搜尋有沒有可能k更小</li></ol><p>沒想到不是<code>search piles</code>，而是區間</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/yfWVWbi9pts" title="【每日一题】875. Koko Eating Bananas, 11/04/2019" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">minEatingSpeed</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> piles<span class="token punctuation">,</span> <span class="token keyword">int</span> h<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span> l <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// Possible minimum is 1</span>        <span class="token keyword">int</span> r <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token comment">// Maximum is the largest pile</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> pile <span class="token operator">:</span> piles<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            r <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>r<span class="token punctuation">,</span> pile<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>                <span class="token comment">// Until converge</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>l <span class="token operator">&lt;</span> r<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">int</span> mid <span class="token operator">=</span> l <span class="token operator">+</span> <span class="token punctuation">(</span>r <span class="token operator">-</span> l<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>            <span class="token comment">// 無法以每小時mid根吃完</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">eat</span><span class="token punctuation">(</span>piles<span class="token punctuation">,</span> mid<span class="token punctuation">)</span> <span class="token operator">></span> h<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                l <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>                r <span class="token operator">=</span> mid<span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// l和r相交就一定是解，因為題目一定有解</span>        <span class="token keyword">return</span> l<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token keyword">int</span> <span class="token function">eat</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> piles<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span> h <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> pile <span class="token operator">:</span> piles<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// 剛好整除</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>pile <span class="token operator">%</span> k <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                h <span class="token operator">+=</span> pile <span class="token operator">/</span> k<span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 非整除要再多一小時把剩下的吃完</span>                h <span class="token operator">+=</span> pile <span class="token operator">/</span> k <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> h<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Array</tag>
+      
+      <tag>Binary Search</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>853. Car Fleet - Medium</title>
+    <link href="/2024/02/06/853-Car-Fleet-Medium/"/>
+    <url>/2024/02/06/853-Car-Fleet-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/car-fleet/description/"  title="853. Car Fleet" target="_blank">前往題目</a><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>排序好以後，從最後面開始往前看，如果前車比後車快就會<code>catch up</code>，然後位置靠左也就是前車會放慢速度跟後車並行，這時兩車視為一體了</li><li>繼續往前看，以此類推</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/_ZF2MATyGog" title="【每日一题】LeetCode 853. Car Fleet" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><iframe width="100%" height="500" src="https://www.youtube.com/embed/Pr6T-3yB9RM" title="Car Fleet - Leetcode 853 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><p>其實可以不用再弄個<code>class</code>的😂</p><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">class</span> <span class="token class-name">Car</span><span class="token punctuation">&#123;</span>        <span class="token keyword">private</span> <span class="token keyword">int</span> position<span class="token punctuation">;</span>        <span class="token keyword">private</span> <span class="token keyword">int</span> speed<span class="token punctuation">;</span>        <span class="token keyword">public</span> <span class="token class-name">Car</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token class-name">Car</span><span class="token punctuation">(</span><span class="token keyword">int</span> position<span class="token punctuation">,</span> <span class="token keyword">int</span> speed<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">this</span><span class="token punctuation">.</span>position <span class="token operator">=</span> position<span class="token punctuation">;</span>            <span class="token keyword">this</span><span class="token punctuation">.</span>speed <span class="token operator">=</span> speed<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getPosition</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">return</span> position<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getSpeed</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">return</span> speed<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">carFleet</span><span class="token punctuation">(</span><span class="token keyword">int</span> target<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> position<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> speed<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span> n <span class="token operator">=</span> position<span class="token punctuation">.</span>length<span class="token punctuation">;</span>        <span class="token class-name">Car</span><span class="token punctuation">[</span><span class="token punctuation">]</span> cars <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Car</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token comment">// 把每部車的資料放進去</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            cars<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Car</span><span class="token punctuation">(</span>position<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> speed<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// 根據位置排序，由小到大</span>        <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>cars<span class="token punctuation">,</span> <span class="token class-name">Comparator</span><span class="token punctuation">.</span><span class="token function">comparingInt</span><span class="token punctuation">(</span><span class="token class-name">Car</span><span class="token operator">::</span><span class="token function">getPosition</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// 結果</span>        <span class="token comment">// 從後往前</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token operator">--</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// 算出當前車輛到達終點的時間，乘1.0是為了int轉double</span>            <span class="token keyword">final</span> <span class="token keyword">double</span> <span class="token class-name">T</span> <span class="token operator">=</span> <span class="token punctuation">(</span>target <span class="token operator">-</span> cars<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">getPosition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">1.0</span> <span class="token operator">/</span>                             cars<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">getSpeed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token keyword">int</span> j <span class="token operator">=</span> i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// 前車</span>            <span class="token comment">// 如果前車追得上</span>            <span class="token keyword">while</span> <span class="token punctuation">(</span>j <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>target <span class="token operator">-</span> cars<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">getPosition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">1.0</span> <span class="token operator">/</span>                             cars<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">getSpeed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token class-name">T</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token operator">--</span>j<span class="token punctuation">;</span> <span class="token comment">//檢查再前一部車</span>            <span class="token punctuation">&#125;</span>            <span class="token operator">++</span>res<span class="token punctuation">;</span>            i <span class="token operator">=</span> j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// 其實是指到新的車，因為下個循環i會再減一</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> res<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Stack</tag>
+      
+      <tag>Array</tag>
+      
+      <tag>Monotonic Stack</tag>
+      
+      <tag>Sorting</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>347. Top K Frequent Elements - Medium</title>
     <link href="/2024/02/05/347-Top-K-Frequent-Elements-Medium/"/>
     <url>/2024/02/05/347-Top-K-Frequent-Elements-Medium/</url>
@@ -390,9 +460,9 @@
       
       <tag>Array</tag>
       
-      <tag>Backtracking</tag>
-      
       <tag>Bit Manipulation</tag>
+      
+      <tag>Backtracking</tag>
       
     </tags>
     
@@ -604,9 +674,9 @@
       
       <tag>Greedy</tag>
       
-      <tag>Dynamic Programming</tag>
-      
       <tag>Sorting</tag>
+      
+      <tag>Dynamic Programming</tag>
       
     </tags>
     
@@ -981,9 +1051,9 @@
       
       <tag>Array</tag>
       
-      <tag>Dynamic Programming</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Dynamic Programming</tag>
       
     </tags>
     
@@ -1016,9 +1086,9 @@
       
       <tag>String</tag>
       
-      <tag>Trie</tag>
-      
       <tag>Hash Table</tag>
+      
+      <tag>Trie</tag>
       
       <tag>Design</tag>
       
@@ -1241,11 +1311,11 @@
       
       <tag>心得</tag>
       
-      <tag>Dynamic Programming</tag>
-      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
+      
+      <tag>Dynamic Programming</tag>
       
       <tag>Graph</tag>
       
@@ -1321,9 +1391,9 @@
       
       <tag>Array</tag>
       
-      <tag>Matrix</tag>
-      
       <tag>Hash Table</tag>
+      
+      <tag>Matrix</tag>
       
     </tags>
     
@@ -1463,9 +1533,9 @@
       
       <tag>Sorting</tag>
       
-      <tag>Binary Search</tag>
-      
       <tag>Bit Manipulation</tag>
+      
+      <tag>Binary Search</tag>
       
     </tags>
     
@@ -1708,9 +1778,9 @@
       
       <tag>Array</tag>
       
-      <tag>Dynamic Programming</tag>
-      
       <tag>Matrix</tag>
+      
+      <tag>Dynamic Programming</tag>
       
     </tags>
     
@@ -1877,11 +1947,11 @@
       
       <tag>心得</tag>
       
+      <tag>Hash Table</tag>
+      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
-      
-      <tag>Hash Table</tag>
       
       <tag>Graph</tag>
       
@@ -2285,13 +2355,13 @@
       
       <tag>Two Pointers</tag>
       
-      <tag>Linked List</tag>
-      
       <tag>Sorting</tag>
       
-      <tag>Divide and Conquer</tag>
+      <tag>Linked List</tag>
       
       <tag>Merge Sort</tag>
+      
+      <tag>Divide and Conquer</tag>
       
     </tags>
     
@@ -3268,15 +3338,15 @@
       
       <tag>Flask</tag>
       
-      <tag>Flask-Login</tag>
-      
       <tag>HTML</tag>
       
       <tag>CSS</tag>
       
-      <tag>Jinja2</tag>
-      
       <tag>網頁開發</tag>
+      
+      <tag>Flask-Login</tag>
+      
+      <tag>Jinja2</tag>
       
     </tags>
     
@@ -3581,9 +3651,9 @@
       
       <tag>Array</tag>
       
-      <tag>Matrix</tag>
-      
       <tag>Hash Table</tag>
+      
+      <tag>Matrix</tag>
       
     </tags>
     
@@ -4338,9 +4408,9 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Algorithms</tag>
+      
+      <tag>Stack</tag>
       
       <tag>筆記</tag>
       
