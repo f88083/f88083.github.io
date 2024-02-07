@@ -4,6 +4,76 @@
   
   
   <entry>
+    <title>1448. Count Good Nodes in Binary Tree - Medium</title>
+    <link href="/2024/02/07/1448-Count-Good-Nodes-in-Binary-Tree-Medium/"/>
+    <url>/2024/02/07/1448-Count-Good-Nodes-in-Binary-Tree-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/count-good-nodes-in-binary-tree/description/"  title="1448. Count Good Nodes in Binary Tree" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>搜尋的時候維護最大值</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>難得自己寫出來<code>DFS</code></p><ol><li><code>DFS</code></li><li>搜尋時維護最大值</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">private</span> <span class="token keyword">int</span> res<span class="token punctuation">;</span> <span class="token comment">// Result</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">goodNodes</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> root<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        res <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token comment">// Start DFS</span>        <span class="token function">dfs</span><span class="token punctuation">(</span>root<span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token constant">MIN_VALUE</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">return</span> res<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> node<span class="token punctuation">,</span> <span class="token keyword">int</span> max<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token comment">// Reached the leaf</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>node <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>        <span class="token comment">// Decide if it's a good node</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">.</span>val <span class="token operator">>=</span> max<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token operator">++</span>res<span class="token punctuation">;</span>            max <span class="token operator">=</span> node<span class="token punctuation">.</span>val<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// Keep searching</span>        <span class="token function">dfs</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>left<span class="token punctuation">,</span> max<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token function">dfs</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>right<span class="token punctuation">,</span> max<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">return</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Binary Tree</tag>
+      
+      <tag>Depth-First Search</tag>
+      
+      <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>138. Copy List with Random Pointer - Medium</title>
+    <link href="/2024/02/07/138-Copy-List-with-Random-Pointer-Medium/"/>
+    <url>/2024/02/07/138-Copy-List-with-Random-Pointer-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/copy-list-with-random-pointer/"  title="138. Copy List with Random Pointer" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>關鍵應該是<code>random</code>要怎麼接上，一個想法是先疊代整個<code>list deepcopy</code>出沒有<code>random</code>的<code>list</code>，過程中建立<code>hashmap</code>映射值和其對應的<code>node</code>，這樣時間上是<code>O(2N)</code>，但空間需要<code>O(N)</code></li><li>只想得到用<code>map</code>儲存<code>node</code>和值的對應關係，但是值不是唯一所以不能當作<code>key</code>，有了<code>node</code>的時候值又是多餘的。可能可以用<code>array</code>，但是最大的<code>array</code>會需要$10^4$的空間</li><li>寫了快半小時，看解答</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>和想法差不多，有兩個點我沒有思考到</p><ul><li>第一次疊代應該要建立所有<code>node</code>就好，先不要連接</li><li>同時建立<code>Map</code>，它應該要映射舊<code>node</code>和新<code>node</code></li></ul><ol><li>第一次循環，建立新的<code>nodes</code>，先不連接，並儲存舊的<code>node</code>和新的<code>node</code>之間的映射</li><li>第二次循環利用<code>map</code>把新的<code>node</code>的<code>next</code>以及<code>random</code>都連接起來</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/5Y2EiZST97Y" title="Copy List with Random Pointer - Linked List - Leetcode 138" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token class-name">Node</span> <span class="token function">copyRandomList</span><span class="token punctuation">(</span><span class="token class-name">Node</span> head<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Node</span><span class="token punctuation">,</span> <span class="token class-name">Node</span><span class="token punctuation">></span></span> oldToNew <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        oldToNew<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token class-name">Node</span> curNode <span class="token operator">=</span> head<span class="token punctuation">;</span>        <span class="token comment">// Build new nodes</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>curNode <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// New node</span>            <span class="token class-name">Node</span> copy <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span>curNode<span class="token punctuation">.</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>            oldToNew<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>curNode<span class="token punctuation">,</span> copy<span class="token punctuation">)</span><span class="token punctuation">;</span>            curNode <span class="token operator">=</span> curNode<span class="token punctuation">.</span>next<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// Reset</span>        curNode <span class="token operator">=</span> head<span class="token punctuation">;</span>                <span class="token keyword">while</span> <span class="token punctuation">(</span>curNode <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// Obtain new node</span>            <span class="token class-name">Node</span> copy <span class="token operator">=</span> oldToNew<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>curNode<span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment">// Assign corresponding nodes</span>            copy<span class="token punctuation">.</span>next <span class="token operator">=</span> oldToNew<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>curNode<span class="token punctuation">.</span>next<span class="token punctuation">)</span><span class="token punctuation">;</span>            copy<span class="token punctuation">.</span>random <span class="token operator">=</span> oldToNew<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>curNode<span class="token punctuation">.</span>random<span class="token punctuation">)</span><span class="token punctuation">;</span>            curNode <span class="token operator">=</span> curNode<span class="token punctuation">.</span>next<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> oldToNew<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>head<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 寫到一半廢棄code</span><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token class-name">Node</span> <span class="token function">copyRandomList</span><span class="token punctuation">(</span><span class="token class-name">Node</span> head<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token comment">// Base case</span>                <span class="token class-name">Node</span> originHead <span class="token operator">=</span> head<span class="token punctuation">;</span>        <span class="token comment">// Store val to nodes</span>        <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Node</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span></span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token class-name">Node</span> dummyHead <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">node</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token class-name">Node</span> newHead <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">node</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        dummyHead<span class="token punctuation">.</span>next <span class="token operator">=</span> newHead<span class="token punctuation">;</span>        <span class="token comment">// Deepcopy the list</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span>head <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            newHead<span class="token punctuation">.</span>val <span class="token operator">=</span> head<span class="token punctuation">.</span>val<span class="token punctuation">;</span>            map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token punctuation">)</span>            head <span class="token operator">=</span> head<span class="token punctuation">.</span>next<span class="token punctuation">;</span> <span class="token comment">// Move pointer</span>            newHead<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            newHead <span class="token operator">=</span> newHead<span class="token punctuation">.</span>next<span class="token punctuation">;</span> <span class="token comment">// Move pointer</span>        <span class="token punctuation">&#125;</span>                <span class="token comment">// Attach null node</span>        newHead<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>        <span class="token keyword">return</span> newHead<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Hash Table</tag>
+      
+      <tag>Linked List</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>875. Koko Eating Bananas - Medium</title>
     <link href="/2024/02/06/875-Koko-Eating-Bananas-Medium/"/>
     <url>/2024/02/06/875-Koko-Eating-Bananas-Medium/</url>
@@ -460,9 +530,9 @@
       
       <tag>Array</tag>
       
-      <tag>Bit Manipulation</tag>
-      
       <tag>Backtracking</tag>
+      
+      <tag>Bit Manipulation</tag>
       
     </tags>
     
@@ -1051,9 +1121,9 @@
       
       <tag>Array</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -1313,9 +1383,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Breadth-First Search</tag>
       
       <tag>Graph</tag>
       
@@ -1533,9 +1603,9 @@
       
       <tag>Sorting</tag>
       
-      <tag>Bit Manipulation</tag>
-      
       <tag>Binary Search</tag>
+      
+      <tag>Bit Manipulation</tag>
       
     </tags>
     
@@ -1778,9 +1848,9 @@
       
       <tag>Array</tag>
       
-      <tag>Matrix</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Matrix</tag>
       
     </tags>
     
@@ -2359,9 +2429,9 @@
       
       <tag>Linked List</tag>
       
-      <tag>Merge Sort</tag>
-      
       <tag>Divide and Conquer</tag>
+      
+      <tag>Merge Sort</tag>
       
     </tags>
     
@@ -4408,9 +4478,9 @@
     
     <tags>
       
-      <tag>Algorithms</tag>
-      
       <tag>Stack</tag>
+      
+      <tag>Algorithms</tag>
       
       <tag>筆記</tag>
       
