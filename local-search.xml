@@ -4,6 +4,80 @@
   
   
   <entry>
+    <title>1046. Last Stone Weight - Easy</title>
+    <link href="/2024/02/08/1046-Last-Stone-Weight-Easy/"/>
+    <url>/2024/02/08/1046-Last-Stone-Weight-Easy/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/last-stone-weight/description/"  title="1046. Last Stone Weight" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>用<code>priority queue</code></li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>這題無需考慮位置，因為最終回傳的也是剩下的<code>weight</code>，而不是哪顆石頭，所以非常簡單</p><ol><li>利用<code>priority queue</code>把<code>stones</code>存為<code>descending order</code>(降冪)</li><li>然後把前兩項相減後的結果再加入<code>pq</code>(兩數都要<code>poll</code>)</li><li>直到<code>pq.size</code>只剩<code>1</code>，直接回傳<code>pq.poll()</code></li></ol><p>題目說如果沒有石頭那就回傳<code>0</code>，而我沒判斷也<code>AC</code>，應該是因為我是用直接每個都兩兩相減，所以如果出現沒有石頭的局面那一定是最後兩顆石頭重量相等。因此最後<code>pq</code>裡的那個絕對是<code>0</code>，所以不用額外判斷。這個算是賽到的，一開始沒考慮到卻過了才發現</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">lastStoneWeight</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> stones<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token class-name">PriorityQueue</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> pq <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PriorityQueue</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span><span class="token punctuation">(</span>            <span class="token class-name">Collections</span><span class="token punctuation">.</span><span class="token function">reverseOrder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>        <span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// Add stone and sort</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> stones<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            pq<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>stones<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>pq<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            pq<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span>pq<span class="token punctuation">.</span><span class="token function">poll</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> pq<span class="token punctuation">.</span><span class="token function">poll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> pq<span class="token punctuation">.</span><span class="token function">poll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Easy</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Array</tag>
+      
+      <tag>Heap (Priority Queue)</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>703. Kth Largest Element in a Stream - Easy</title>
+    <link href="/2024/02/08/703-Kth-Largest-Element-in-a-Stream-Easy/"/>
+    <url>/2024/02/08/703-Kth-Largest-Element-in-a-Stream-Easy/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/kth-largest-element-in-a-stream/description/"  title="703. Kth Largest Element in a Stream" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>用<code>priority queue</code></li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>把初始<code>array</code>放進<code>priority queue</code>裡面</li><li>每次加入的時候都先加入新的數字，然後再把<code>pq</code>刪減到剩下<code>k</code>項(因為這題只有<code>add</code>方法所以只要維持<code>k</code>個就好，因為<code>k</code>值固定所以更小的數字永遠不會用到)</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">KthLargest</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">private</span> <span class="token keyword">int</span> k<span class="token punctuation">;</span>    <span class="token keyword">private</span> <span class="token class-name">PriorityQueue</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> pq<span class="token punctuation">;</span>    <span class="token keyword">private</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">;</span>        <span class="token keyword">public</span> <span class="token class-name">KthLargest</span><span class="token punctuation">(</span><span class="token keyword">int</span> k<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">this</span><span class="token punctuation">.</span>k <span class="token operator">=</span> k<span class="token punctuation">;</span>        <span class="token keyword">this</span><span class="token punctuation">.</span>nums <span class="token operator">=</span> nums<span class="token punctuation">;</span>        pq <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PriorityQueue</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token comment">// 加入pq</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            pq<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">int</span> val<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        pq<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// Remove elements until only k left</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>pq<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            pq<span class="token punctuation">.</span><span class="token function">poll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> pq<span class="token punctuation">.</span><span class="token function">peek</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Binary Search Tree</tag>
+      
+      <tag>Binary Tree</tag>
+      
+      <tag>Tree</tag>
+      
+      <tag>Heap (Priority Queue)</tag>
+      
+      <tag>Design</tag>
+      
+      <tag>Data Stream</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>1448. Count Good Nodes in Binary Tree - Medium</title>
     <link href="/2024/02/07/1448-Count-Good-Nodes-in-Binary-Tree-Medium/"/>
     <url>/2024/02/07/1448-Count-Good-Nodes-in-Binary-Tree-Medium/</url>
@@ -1121,9 +1195,9 @@
       
       <tag>Array</tag>
       
-      <tag>Dynamic Programming</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Dynamic Programming</tag>
       
     </tags>
     
@@ -1383,9 +1457,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Dynamic Programming</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Dynamic Programming</tag>
       
       <tag>Graph</tag>
       
@@ -1848,9 +1922,9 @@
       
       <tag>Array</tag>
       
-      <tag>Dynamic Programming</tag>
-      
       <tag>Matrix</tag>
+      
+      <tag>Dynamic Programming</tag>
       
     </tags>
     
@@ -2429,9 +2503,9 @@
       
       <tag>Linked List</tag>
       
-      <tag>Divide and Conquer</tag>
-      
       <tag>Merge Sort</tag>
+      
+      <tag>Divide and Conquer</tag>
       
     </tags>
     
@@ -2872,9 +2946,9 @@
       
       <tag>Array</tag>
       
-      <tag>Math</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Math</tag>
       
     </tags>
     
