@@ -4,6 +4,140 @@
   
   
   <entry>
+    <title>40. Combination Sum II - Medium</title>
+    <link href="/2024/02/12/40-Combination-Sum-II-Medium/"/>
+    <url>/2024/02/12/40-Combination-Sum-II-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/combination-sum-ii/description/"  title="40. Combination Sum II" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>和今天稍早寫的另一題(90)一樣的套路</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>先<code>sort</code>，這樣才好跳過取過的數字</li><li>正常<code>backtrack</code></li><li>唯一需要注意的是追蹤<code>index</code>，如果循環中的<code>index</code>已經比傳入的<code>index</code>還大的時候就要判斷是否和前一個數字一樣，要跳過，代表前一個已經被取過了</li></ol><p>這題很妙的是和第<code>90</code>一樣的做法，但<code>90</code>是不能取同一個<code>subset</code>即便順序不同，這個是不能取到取過的數字</p><p>總之這個技巧的核心就是相同的元素不要跳著選取</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p><a href="https://github.com/wisdompeak/LeetCode/tree/master/DFS/040.Combination-Sum-II">技巧解析</a></p><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">List</span><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span><span class="token punctuation">></span></span> res<span class="token punctuation">;</span>    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">List</span><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span><span class="token punctuation">></span></span> <span class="token function">combinationSum2</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> candidates<span class="token punctuation">,</span> <span class="token keyword">int</span> target<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>candidates<span class="token punctuation">)</span><span class="token punctuation">;</span>        res <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">List</span><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token function">backtrack</span><span class="token punctuation">(</span>candidates<span class="token punctuation">,</span> target<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">return</span> res<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">backtrack</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> candidates<span class="token punctuation">,</span> <span class="token keyword">int</span> target<span class="token punctuation">,</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> comb<span class="token punctuation">,</span> <span class="token keyword">int</span> sum<span class="token punctuation">,</span> <span class="token keyword">int</span> idx<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>sum <span class="token operator">==</span> target<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            res<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span><span class="token punctuation">(</span>comb<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token keyword">return</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>                <span class="token keyword">if</span> <span class="token punctuation">(</span>sum <span class="token operator">></span> target<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> idx<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> candidates<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// 不允許相同元素跳著選取，只能照著順序選取</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>i<span class="token operator">></span>idx <span class="token operator">&amp;&amp;</span> candidates<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">==</span>candidates<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>                <span class="token keyword">continue</span><span class="token punctuation">;</span>            comb<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>candidates<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token function">backtrack</span><span class="token punctuation">(</span>candidates<span class="token punctuation">,</span> target<span class="token punctuation">,</span> comb<span class="token punctuation">,</span> sum <span class="token operator">+</span> candidates<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            comb<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>comb<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Array</tag>
+      
+      <tag>Backtracking</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>90. Subsets II - Medium</title>
+    <link href="/2024/02/12/90-Subsets-II-Medium/"/>
+    <url>/2024/02/12/90-Subsets-II-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/subsets-ii/description/"  title="90. Subsets II" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>以為是簡單的<code>backtrack</code>，但是需要考慮如何防止加入重複的<code>subset</code></li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>先<code>sort</code>，這樣才好判斷相同的數字</li><li>正常<code>backtrack</code></li><li>唯一需要注意的是追蹤<code>index</code>，如果循環中的<code>index</code>已經比傳入的<code>index</code>還大的時候就要判斷是否和前一個數字一樣，要跳過</li></ol><p>判斷的邏輯很妙，尤其是<code>i &gt; idx</code>，後來想了想應該是<code>i == idx</code>的時候不用判斷，因為還沒加入，加入後下一個循環就要看是否和上一個循環的數字一樣了</p><p>T: $O(n * 2^n)$，因為每一個可能都要列出來，只是把重複的跳過而已，有<code>n</code>個數字，每個都要決定加入或不加入，也就是兩個選擇</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/Vn2v6ajA7U0" title="Subsets II - Backtracking - Leetcode 90 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">List</span><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span><span class="token punctuation">></span></span> res<span class="token punctuation">;</span>    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">List</span><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span><span class="token punctuation">></span></span> <span class="token function">subsetsWithDup</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>nums<span class="token punctuation">)</span><span class="token punctuation">;</span>        res <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">List</span><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token function">backtrack</span><span class="token punctuation">(</span>nums<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">return</span> res<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">backtrack</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">,</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> comb<span class="token punctuation">,</span> <span class="token keyword">int</span> idx<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        res<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span><span class="token punctuation">(</span>comb<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> idx<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// skip duplicate number</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">></span> idx <span class="token operator">&amp;&amp;</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> nums<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token keyword">continue</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>            comb<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token function">backtrack</span><span class="token punctuation">(</span>nums<span class="token punctuation">,</span> comb<span class="token punctuation">,</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            comb<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>comb<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Array</tag>
+      
+      <tag>Bit Manipulation</tag>
+      
+      <tag>Backtracking</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>46. Permutations - Medium</title>
+    <link href="/2024/02/11/46-Permutations-Medium/"/>
+    <url>/2024/02/11/46-Permutations-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/permutations/description/"  title="46. Permutations" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li><a href="https://medium.com/@f88083/46-permutations-%E7%B0%A1%E5%96%AE%E7%9A%84backtracking-057d3c42f9d3">之前</a>做過的簡單backtracking</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li><code>backtracking</code></li><li><code>check</code>是否數字已存在，以免重複加入</li></ol><p>暫存的<code>list</code>可能可以用其他實作方式，可以<code>removeLast in O(1)</code>，不然<code>arraylist</code>要移除最後一項需要<code>N</code>次操作</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">List</span><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span><span class="token punctuation">></span></span> res<span class="token punctuation">;</span>    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">List</span><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span><span class="token punctuation">></span></span> <span class="token function">permute</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        res <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">List</span><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token function">backtrack</span><span class="token punctuation">(</span>nums<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">return</span> res<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">backtrack</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">,</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> comb<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>comb<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            res<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span><span class="token punctuation">(</span>comb<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token keyword">return</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>comb<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>                 <span class="token keyword">continue</span><span class="token punctuation">;</span>            comb<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token function">backtrack</span><span class="token punctuation">(</span>nums<span class="token punctuation">,</span> comb<span class="token punctuation">)</span><span class="token punctuation">;</span>            comb<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>comb<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Array</tag>
+      
+      <tag>Backtracking</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>33. Search in Rotated Sorted Array - Medium</title>
+    <link href="/2024/02/11/33-Search-in-Rotated-Sorted-Array-Medium/"/>
+    <url>/2024/02/11/33-Search-in-Rotated-Sorted-Array-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/search-in-rotated-sorted-array/description/"  title="33. Search in Rotated Sorted Array" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li><a href="https://medium.com/@f88083/33-search-in-rotated-sorted-array-%E6%80%9D%E8%80%83%E8%A6%81%E4%B8%80%E7%9B%B4%E8%BD%89%E5%BD%8E-905aede38554">之前</a>寫過，條件實在不好想</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li><code>Binary search</code>整個<code>nums</code></li><li>如果<code>mid</code>不是答案，看左指針的值是否小於等於<code>mid</code>的值，代表順序正常，再接著判斷，是否左邊的<code>portion</code>被<code>rotate</code>到右邊了</li><li>如果都不是那判斷右邊<code>portion</code>是否被<code>rotate</code>到左邊去了，並移動指針</li></ol><p>這次第二次做，覺得可以思考的方向是: <code>mid</code>和<code>l</code>指針的值正常的情況(<code>l &lt;= mid</code>)如何判斷要移動哪個指針，而遇到不正常(<code>l &gt; mid</code>)該怎麼判斷</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">search</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">,</span> <span class="token keyword">int</span> target<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token keyword">int</span> l <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> r <span class="token operator">=</span> nums<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>        <span class="token comment">// Binary search</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>l <span class="token operator">&lt;=</span> r<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">int</span> mid <span class="token operator">=</span> l <span class="token operator">+</span> <span class="token punctuation">(</span>r <span class="token operator">-</span> l<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>            <span class="token comment">// Found the ans</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">[</span>mid<span class="token punctuation">]</span> <span class="token operator">==</span> target<span class="token punctuation">)</span>                <span class="token keyword">return</span> mid<span class="token punctuation">;</span>            <span class="token comment">// 遇到正常排序</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">[</span>l<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> nums<span class="token punctuation">[</span>mid<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token keyword">if</span> <span class="token punctuation">(</span>target <span class="token operator">></span> nums<span class="token punctuation">[</span>mid<span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token comment">// 檢查是否大於mid</span>                    target <span class="token operator">&lt;</span> nums<span class="token punctuation">[</span>l<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 檢查是否小於l(這樣的話就一定在右邊，因為左邊被交換過去右邊了)</span>                    l <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>                <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>                    r <span class="token operator">=</span> mid <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>                <span class="token punctuation">&#125;</span>            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 不正常排序</span>                <span class="token keyword">if</span> <span class="token punctuation">(</span>target <span class="token operator">&lt;</span> nums<span class="token punctuation">[</span>mid<span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token comment">// 檢查是否小於mid</span>                    target <span class="token operator">></span> nums<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 檢查是否大於r</span>                    r <span class="token operator">=</span> mid <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>                <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>                    l <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>                <span class="token punctuation">&#125;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Array</tag>
+      
+      <tag>Binary Search</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>39. Combination Sum - Medium</title>
     <link href="/2024/02/10/39-Combination-Sum-Medium/"/>
     <url>/2024/02/10/39-Combination-Sum-Medium/</url>
@@ -394,9 +528,9 @@
       
       <tag>Array</tag>
       
-      <tag>Matrix</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Matrix</tag>
       
     </tags>
     
@@ -429,9 +563,9 @@
       
       <tag>String</tag>
       
-      <tag>Binary Search</tag>
-      
       <tag>Sliding Window</tag>
+      
+      <tag>Binary Search</tag>
       
       <tag>Prefix Sum</tag>
       
@@ -466,9 +600,9 @@
       
       <tag>Array</tag>
       
-      <tag>Binary Search</tag>
-      
       <tag>Sliding Window</tag>
+      
+      <tag>Binary Search</tag>
       
       <tag>Prefix Sum</tag>
       
@@ -1265,9 +1399,9 @@
       
       <tag>Array</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -1418,11 +1552,11 @@
       
       <tag>心得</tag>
       
-      <tag>Array</tag>
-      
       <tag>Binary Search Tree</tag>
       
       <tag>Binary Tree</tag>
+      
+      <tag>Array</tag>
       
       <tag>Tree</tag>
       
@@ -1525,11 +1659,11 @@
       
       <tag>心得</tag>
       
+      <tag>Dynamic Programming</tag>
+      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
-      
-      <tag>Dynamic Programming</tag>
       
       <tag>Graph</tag>
       
@@ -1992,9 +2126,9 @@
       
       <tag>Array</tag>
       
-      <tag>Matrix</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Matrix</tag>
       
     </tags>
     
@@ -2573,9 +2707,9 @@
       
       <tag>Linked List</tag>
       
-      <tag>Divide and Conquer</tag>
-      
       <tag>Merge Sort</tag>
+      
+      <tag>Divide and Conquer</tag>
       
     </tags>
     
@@ -2849,9 +2983,9 @@
       
       <tag>Two Pointers</tag>
       
-      <tag>Binary Search</tag>
-      
       <tag>Sliding Window</tag>
+      
+      <tag>Binary Search</tag>
       
     </tags>
     
@@ -3457,9 +3591,9 @@
       
       <tag>Array</tag>
       
-      <tag>Matrix</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Matrix</tag>
       
     </tags>
     
@@ -3690,11 +3824,11 @@
       
       <tag>心得</tag>
       
-      <tag>Matrix</tag>
-      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
+      
+      <tag>Matrix</tag>
       
     </tags>
     
