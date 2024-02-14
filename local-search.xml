@@ -4,6 +4,45 @@
   
   
   <entry>
+    <title>130. Surrounded Regions - Medium</title>
+    <link href="/2024/02/14/130-Surrounded-Regions-Medium/"/>
+    <url>/2024/02/14/130-Surrounded-Regions-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/surrounded-regions/description/"  title="130. Surrounded Regions" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>用<code>DFS</code>看每個島嶼在哪，然後翻轉，但是要注意外圈的<code>O</code>會使得比鄰的<code>O</code>不能被反轉，這部分不知道怎麼做，得另外再搜尋哪些有比鄰</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>用<code>BFS</code>從<code>border</code>開始更好理解</li><li>從外圈開始遇到<code>O</code>就<code>BFS</code>搜尋比鄰它的<code>O</code>，感染的概念，一個接著一個感染，並先標記為<code>#</code></li><li>最後搜尋完了之後再疊代整個<code>board</code>，遇到<code>O</code>就是沒有比鄰的，直接翻轉為<code>X</code>，遇到<code>#</code>就是比鄰的<code>O</code>，翻轉回<code>O</code></li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p><a href="https://github.com/wisdompeak/LeetCode/tree/master/Union_Find/130.Surrounded-Regions">文字解析</a></p><iframe width="100%" height="500" src="https://www.youtube.com/embed/mUEQ52NfCxU" title="【每日一题】130. Surrounded Regions, 08/28/2019" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">private</span> <span class="token keyword">int</span> <span class="token constant">ROWS</span><span class="token punctuation">;</span>    <span class="token keyword">private</span> <span class="token keyword">int</span> <span class="token constant">COLS</span><span class="token punctuation">;</span>    <span class="token keyword">private</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> dir <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">&#123;</span>            <span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>             <span class="token punctuation">&#123;</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>             <span class="token punctuation">&#123;</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>             <span class="token punctuation">&#123;</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">solve</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> board<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token constant">ROWS</span> <span class="token operator">=</span> board<span class="token punctuation">.</span>length<span class="token punctuation">;</span>        <span class="token constant">COLS</span> <span class="token operator">=</span> board<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span>        <span class="token comment">// Check border</span>        <span class="token comment">// 1 col. and last col.</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token constant">ROWS</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>board<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token char">'O'</span><span class="token punctuation">)</span> <span class="token function">bfs</span><span class="token punctuation">(</span>board<span class="token punctuation">,</span> i<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>board<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token constant">COLS</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token char">'O'</span><span class="token punctuation">)</span> <span class="token function">bfs</span><span class="token punctuation">(</span>board<span class="token punctuation">,</span> i<span class="token punctuation">,</span> <span class="token constant">COLS</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// Check 1 row and last row</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> <span class="token constant">COLS</span><span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>board<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token char">'O'</span><span class="token punctuation">)</span> <span class="token function">bfs</span><span class="token punctuation">(</span>board<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>board<span class="token punctuation">[</span><span class="token constant">ROWS</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token char">'O'</span><span class="token punctuation">)</span> <span class="token function">bfs</span><span class="token punctuation">(</span>board<span class="token punctuation">,</span> <span class="token constant">ROWS</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// Flip</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> row <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> row <span class="token operator">&lt;</span> <span class="token constant">ROWS</span><span class="token punctuation">;</span> <span class="token operator">++</span>row<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> col <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> col <span class="token operator">&lt;</span> <span class="token constant">COLS</span><span class="token punctuation">;</span> <span class="token operator">++</span>col<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token keyword">if</span> <span class="token punctuation">(</span>board<span class="token punctuation">[</span>row<span class="token punctuation">]</span><span class="token punctuation">[</span>col<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token char">'O'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                    board<span class="token punctuation">[</span>row<span class="token punctuation">]</span><span class="token punctuation">[</span>col<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token char">'X'</span><span class="token punctuation">;</span>                <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>board<span class="token punctuation">[</span>row<span class="token punctuation">]</span><span class="token punctuation">[</span>col<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token char">'#'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                    board<span class="token punctuation">[</span>row<span class="token punctuation">]</span><span class="token punctuation">[</span>col<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token char">'O'</span><span class="token punctuation">;</span>                <span class="token punctuation">&#125;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">bfs</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> board<span class="token punctuation">,</span> <span class="token keyword">int</span> r<span class="token punctuation">,</span> <span class="token keyword">int</span> c<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token class-name">Queue</span><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">></span> q <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// Add the starting position</span>        q<span class="token punctuation">.</span><span class="token function">offer</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">&#123;</span>r<span class="token punctuation">,</span> c<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// Flip to # to mark 'O'</span>        board<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">[</span>c<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token char">'#'</span><span class="token punctuation">;</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span>q<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">int</span> row <span class="token operator">=</span> q<span class="token punctuation">.</span><span class="token function">peek</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>            <span class="token keyword">int</span> col <span class="token operator">=</span> q<span class="token punctuation">.</span><span class="token function">peek</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>            q<span class="token punctuation">.</span><span class="token function">poll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">4</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token keyword">int</span> adjX <span class="token operator">=</span> row <span class="token operator">+</span> dir<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>                <span class="token keyword">int</span> adjY <span class="token operator">=</span> col <span class="token operator">+</span> dir<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>                <span class="token comment">// Check out of bound</span>                <span class="token keyword">if</span> <span class="token punctuation">(</span>adjX <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">||</span> adjX <span class="token operator">>=</span> <span class="token constant">ROWS</span> <span class="token operator">||</span> adjY <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">||</span> adjY <span class="token operator">>=</span> <span class="token constant">COLS</span><span class="token punctuation">)</span>                     <span class="token keyword">continue</span><span class="token punctuation">;</span>                <span class="token comment">// Only care 'O'</span>                <span class="token keyword">if</span> <span class="token punctuation">(</span>board<span class="token punctuation">[</span>adjX<span class="token punctuation">]</span><span class="token punctuation">[</span>adjY<span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token char">'O'</span><span class="token punctuation">)</span>                    <span class="token keyword">continue</span><span class="token punctuation">;</span>                <span class="token comment">// Mark as '#'</span>                board<span class="token punctuation">[</span>adjX<span class="token punctuation">]</span><span class="token punctuation">[</span>adjY<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token char">'#'</span><span class="token punctuation">;</span>                <span class="token comment">// Add to queue</span>                q<span class="token punctuation">.</span><span class="token function">offer</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">&#123;</span>adjX<span class="token punctuation">,</span> adjY<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Array</tag>
+      
+      <tag>Depth-First Search</tag>
+      
+      <tag>Breadth-First Search</tag>
+      
+      <tag>Matrix</tag>
+      
+      <tag>Union Find</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>695. Max Area of Island - Medium</title>
     <link href="/2024/02/13/695-Max-Area-of-Island-Medium/"/>
     <url>/2024/02/13/695-Max-Area-of-Island-Medium/</url>
@@ -28,11 +67,11 @@
       
       <tag>Array</tag>
       
-      <tag>Matrix</tag>
-      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
+      
+      <tag>Matrix</tag>
       
       <tag>Union Find</tag>
       
@@ -602,9 +641,9 @@
       
       <tag>Array</tag>
       
-      <tag>Matrix</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Matrix</tag>
       
     </tags>
     
@@ -1096,9 +1135,9 @@
       
       <tag>Greedy</tag>
       
-      <tag>Dynamic Programming</tag>
-      
       <tag>Sorting</tag>
+      
+      <tag>Dynamic Programming</tag>
       
     </tags>
     
@@ -1910,9 +1949,9 @@
       
       <tag>心得</tag>
       
-      <tag>String</tag>
-      
       <tag>Array</tag>
+      
+      <tag>String</tag>
       
       <tag>Greedy</tag>
       
@@ -2200,9 +2239,9 @@
       
       <tag>Array</tag>
       
-      <tag>Matrix</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Matrix</tag>
       
     </tags>
     
@@ -3665,9 +3704,9 @@
       
       <tag>Array</tag>
       
-      <tag>Matrix</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Matrix</tag>
       
     </tags>
     
@@ -3898,11 +3937,11 @@
       
       <tag>心得</tag>
       
-      <tag>Matrix</tag>
-      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
+      
+      <tag>Matrix</tag>
       
     </tags>
     
@@ -4034,9 +4073,9 @@
       
       <tag>心得</tag>
       
-      <tag>String</tag>
-      
       <tag>Array</tag>
+      
+      <tag>String</tag>
       
       <tag>Hash Table</tag>
       
@@ -4611,9 +4650,9 @@
       
       <tag>Array</tag>
       
-      <tag>kadanes Algorithm</tag>
-      
       <tag>Java</tag>
+      
+      <tag>kadanes Algorithm</tag>
       
     </tags>
     
@@ -4830,9 +4869,9 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Algorithms</tag>
+      
+      <tag>Stack</tag>
       
       <tag>筆記</tag>
       
