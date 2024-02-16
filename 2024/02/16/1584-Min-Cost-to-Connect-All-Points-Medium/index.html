@@ -24,7 +24,7 @@
 <meta property="og:description" content="前往題目  思路有兩種主要做法:  prim’s Kruskal’s  Prim’s(使用PQ) 循環直到全部的點都走過 在循環裡，每次都從pq取出並查看是否已經走過，否則加入走過的點並把當前weight加入結果 每次都把該點所有的邊(與尚未走過的點)都加入pq  因為一開始起始點是0，保證最小值，接下來加入pq時會自動由小到大排序，所以保證永遠都取到最小的邊 Kruskal’s(使用Union-">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2024-02-16T10:57:13.000Z">
-<meta property="article:modified_time" content="2024-02-16T11:08:57.762Z">
+<meta property="article:modified_time" content="2024-02-16T11:54:02.062Z">
 <meta property="article:author" content="Simon Lai">
 <meta property="article:tag" content="Leetcode">
 <meta property="article:tag" content="心得">
@@ -327,6 +327,8 @@
 <li>每次循環都判斷兩點是否已經連通，沒有的話連上並且加入結果</li>
 </ol>
 <h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p>Prim’s</p>
+<iframe width="100%" height="500" src="https://www.youtube.com/embed/f7JOBJIC-NA" title="Prim&#39;s Algorithm - Minimum Spanning Tree - Min Cost to Connect all Points - Leetcode 1584 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 <figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">minCostConnectPoints</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> points<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token comment">// &#123;weight, index&#125;</span>
@@ -364,6 +366,8 @@
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
 <p>Kruskal’s</p>
+<iframe width="100%" height="500" src="https://www.youtube.com/embed/ZVh2WTcE8EY" title="【每日一题】1584. Min Cost to Connect All Points, 9/13/2020" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 <figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> father <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">1000</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
