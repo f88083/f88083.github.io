@@ -4,6 +4,80 @@
   
   
   <entry>
+    <title>67. Add Binary - Easy</title>
+    <link href="/2024/02/18/67-Add-Binary-Easy/"/>
+    <url>/2024/02/18/67-Add-Binary-Easy/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/add-binary/submissions/1178797197/"  title="67. Add Binary" target="_blank">前往題目</a><p>之前寫的<a href="https://medium.com/@f88083/67-add-binary-f07da35ce095">文章</a></p><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>從後面開始運算，但運算過程卡住</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>兩個指針都從後面開始</li><li>每次循環都執行<code>carry + aPointer + bPointer</code></li><li>根據當前的<code>sum</code>計算新的<code>carry</code></li><li><code>sum % 2</code>加入到要回傳的<code>String</code>裡面</li><li>移動指針</li><li>當兩個指針都已經小於<code>0</code>的時候跳出</li><li>如果還有<code>carry</code>就加上</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">addBinary</span><span class="token punctuation">(</span><span class="token class-name">String</span> a<span class="token punctuation">,</span> <span class="token class-name">String</span> b<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token class-name">StringBuilder</span> res <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token keyword">int</span> carry <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> aP <span class="token operator">=</span> a<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> bP <span class="token operator">=</span> b<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>        <span class="token comment">// 直到a和b都全部走過</span>        <span class="token keyword">while</span><span class="token punctuation">(</span>aP <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">||</span> bP <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">int</span> sum <span class="token operator">=</span> carry<span class="token punctuation">;</span>            <span class="token comment">// 加上a和b pointer的值，但要小心出界</span>            sum <span class="token operator">+=</span> aP <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">?</span> a<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>aP<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token char">'0'</span> <span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">;</span>            sum <span class="token operator">+=</span> bP <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">?</span> b<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>bP<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token char">'0'</span> <span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">;</span>            <span class="token comment">// Compute new carry</span>            carry <span class="token operator">=</span> sum <span class="token operator">></span> <span class="token number">1</span> <span class="token operator">?</span> <span class="token number">1</span> <span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">;</span>            res<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>sum <span class="token operator">%</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token operator">--</span>aP<span class="token punctuation">;</span>            <span class="token operator">--</span>bP<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>                <span class="token comment">// Add the last</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>carry <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> res<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>carry<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">reverse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Easy</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>String</tag>
+      
+      <tag>Math</tag>
+      
+      <tag>Bit Manipulation</tag>
+      
+      <tag>Simulation</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>981. Time Based Key-Value Store - Medium</title>
+    <link href="/2024/02/18/981-Time-Based-Key-Value-Store-Medium/"/>
+    <url>/2024/02/18/981-Time-Based-Key-Value-Store-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/time-based-key-value-store/"  title="981. Time Based Key-Value Store" target="_blank">前往題目</a><p>之前的<a href="https://medium.com/@f88083/981-time-based-key-value-store-84666b630af9">文章</a></p><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li><code>Hashmap</code>儲存鍵值對，重點是如何根據<code>timestamp</code>取得同一個或是最相近<code>timestamp</code>的<code>key</code>呢</li><li>題目說<code>timestamp</code>和<code>set</code>都是嚴格遞增的，所以不會出現重複的時間戳，那是不是可以組<code>timestamp -&gt; value</code></li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>大致上有兩種做法</p><ul><li>使用<code>Pair</code></li><li>使用<code>TreeMap</code></li></ul><p>這裡使用<code>pair</code>，舊的<a href="https://medium.com/@f88083/981-time-based-key-value-store-84666b630af9">那篇</a>兩個方法都有寫</p><ol><li>利用<code>Hashmap</code>儲存<code>key</code>與<code>value</code>的關係，其中<code>value</code>要使用<code>list&lt;pair&lt;&gt;&gt;</code>來儲存，也就是<code>pair</code>裡面儲存的是<code>value</code>與<code>timestamp</code>的組合，至於會有幾種組合不知道所以用<code>list</code>，<code>ArrayList</code>實作</li><li><code>set</code>方法很簡單，把資料放進<code>map</code>就好</li><li><code>get</code>則是利用<code>binary search</code>在<code>key</code>的<code>list</code>裡面搜尋，因為<code>timestamp</code>是照順序的，所以所有的<code>pair</code>預設就已經照著<code>timestamp</code>排序完成了</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p>這次寫的又和以前的不太一樣，<code>search</code>那邊的邏輯有變更，額外使用了<code>cand(candidate)</code>變數來儲存可能的結果</p><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">TimeMap</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">private</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">List</span><span class="token punctuation">&lt;</span><span class="token class-name">Pair</span><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span><span class="token punctuation">></span><span class="token punctuation">></span></span> map<span class="token punctuation">;</span>    <span class="token keyword">public</span> <span class="token class-name">TimeMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">set</span><span class="token punctuation">(</span><span class="token class-name">String</span> key<span class="token punctuation">,</span> <span class="token class-name">String</span> value<span class="token punctuation">,</span> <span class="token keyword">int</span> timestamp<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token comment">// Init.</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>map<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span> map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// Add the new value and timestamp</span>        map<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Pair</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span> timestamp<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token class-name">String</span> key<span class="token punctuation">,</span> <span class="token keyword">int</span> timestamp<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>map<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">""</span><span class="token punctuation">;</span>        <span class="token comment">// Find the pair base on timestamp</span>        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Pair</span><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span><span class="token punctuation">></span></span> list <span class="token operator">=</span> map<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">return</span> <span class="token function">search</span><span class="token punctuation">(</span>list<span class="token punctuation">,</span> timestamp<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token class-name">String</span> <span class="token function">search</span><span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Pair</span><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span><span class="token punctuation">></span></span> list<span class="token punctuation">,</span> <span class="token keyword">int</span> timestamp<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span> l <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> r <span class="token operator">=</span> list<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>        <span class="token class-name">String</span> cand <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>        <span class="token comment">// &lt;=是為了把r指向的值也看過</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>l <span class="token operator">&lt;=</span> r<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">int</span> mid <span class="token operator">=</span> l <span class="token operator">+</span> <span class="token punctuation">(</span>r <span class="token operator">-</span> l<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>            <span class="token keyword">int</span> midTime <span class="token operator">=</span> list<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>mid<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>midTime <span class="token operator">==</span> timestamp<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token keyword">return</span> list<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>mid<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>midTime <span class="token operator">&lt;</span> timestamp<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token comment">// 也可能相同timestamp不存在，所以這邊要儲存最接近的值</span>                cand <span class="token operator">=</span> list<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                l <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>                r <span class="token operator">=</span> mid <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> cand<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token comment">/** * Your TimeMap object will be instantiated and called as such: * TimeMap obj = new TimeMap(); * obj.set(key,value,timestamp); * String param_2 = obj.get(key,timestamp); */</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>String</tag>
+      
+      <tag>Hash Table</tag>
+      
+      <tag>Binary Search</tag>
+      
+      <tag>Design</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>169. Majority Element - Easy</title>
     <link href="/2024/02/17/169-Majority-Element-Easy/"/>
     <url>/2024/02/17/169-Majority-Element-Easy/</url>
@@ -1339,9 +1413,9 @@
       
       <tag>Greedy</tag>
       
-      <tag>Sorting</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Sorting</tag>
       
     </tags>
     
@@ -1716,9 +1790,9 @@
       
       <tag>Array</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -1976,11 +2050,11 @@
       
       <tag>心得</tag>
       
+      <tag>Dynamic Programming</tag>
+      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
-      
-      <tag>Dynamic Programming</tag>
       
       <tag>Graph</tag>
       
@@ -3024,9 +3098,9 @@
       
       <tag>Linked List</tag>
       
-      <tag>Divide and Conquer</tag>
-      
       <tag>Merge Sort</tag>
+      
+      <tag>Divide and Conquer</tag>
       
     </tags>
     
@@ -3467,9 +3541,9 @@
       
       <tag>Array</tag>
       
-      <tag>Math</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Math</tag>
       
     </tags>
     
@@ -4854,9 +4928,9 @@
       
       <tag>Array</tag>
       
-      <tag>kadanes Algorithm</tag>
-      
       <tag>Java</tag>
+      
+      <tag>kadanes Algorithm</tag>
       
     </tags>
     
@@ -4980,11 +5054,11 @@
       
       <tag>Algorithms</tag>
       
-      <tag>Queue</tag>
-      
       <tag>筆記</tag>
       
       <tag>演算法</tag>
+      
+      <tag>Queue</tag>
       
     </tags>
     
