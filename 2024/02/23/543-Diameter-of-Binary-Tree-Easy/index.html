@@ -16,29 +16,26 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前往題目  思路Bellman-ford  用額外的array儲存從source到dest.的距離 執行k+1次，因為題目的k是指幾個stop 每輪都走一遍所有的flights，有更短的距離就更新，最後回傳，如果是MAX_VALUE就回傳-1  比較難理解的是用tempPrices儲存當前暫時的prices，走完flights後再給prices，這部分是因為如果不用temprices的話會不知道當">
+    <meta name="description" content="前往題目  之前寫的文章 思路 DFS 每個點的左子樹與右子樹的長度加起來再加1(本身)  這題的關鍵是每個點都有可能是拐彎的點 Codeclass Solution &#123;     int ret &#x3D; 0;          public int diameterOfBinaryTree(TreeNode root) &#123;         findDepth(root);">
 <meta property="og:type" content="article">
-<meta property="og:title" content="787. Cheapest Flights Within K Stops - Medium">
-<meta property="og:url" content="https://f88083.github.io/2024/01/18/787-Cheapest-Flights-Within-K-Stops-Medium/index.html">
+<meta property="og:title" content="543. Diameter of Binary Tree - Easy">
+<meta property="og:url" content="https://f88083.github.io/2024/02/23/543-Diameter-of-Binary-Tree-Easy/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="前往題目  思路Bellman-ford  用額外的array儲存從source到dest.的距離 執行k+1次，因為題目的k是指幾個stop 每輪都走一遍所有的flights，有更短的距離就更新，最後回傳，如果是MAX_VALUE就回傳-1  比較難理解的是用tempPrices儲存當前暫時的prices，走完flights後再給prices，這部分是因為如果不用temprices的話會不知道當">
+<meta property="og:description" content="前往題目  之前寫的文章 思路 DFS 每個點的左子樹與右子樹的長度加起來再加1(本身)  這題的關鍵是每個點都有可能是拐彎的點 Codeclass Solution &#123;     int ret &#x3D; 0;          public int diameterOfBinaryTree(TreeNode root) &#123;         findDepth(root);">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2024-01-18T10:58:34.000Z">
-<meta property="article:modified_time" content="2024-01-18T14:12:18.321Z">
+<meta property="article:published_time" content="2024-02-23T17:32:04.000Z">
+<meta property="article:modified_time" content="2024-02-23T17:45:22.620Z">
 <meta property="article:author" content="Simon Lai">
 <meta property="article:tag" content="Leetcode">
 <meta property="article:tag" content="心得">
+<meta property="article:tag" content="Binary Tree">
 <meta property="article:tag" content="Depth-First Search">
-<meta property="article:tag" content="Breadth-First Search">
-<meta property="article:tag" content="Dynamic Programming">
-<meta property="article:tag" content="Graph">
-<meta property="article:tag" content="Heap (Priority Queue)">
-<meta property="article:tag" content="Shortest Path">
+<meta property="article:tag" content="Tree">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>787. Cheapest Flights Within K Stops - Medium - Simon Lai&#39;s Blog</title>
+  <title>543. Diameter of Binary Tree - Easy - Simon Lai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -233,7 +230,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="787. Cheapest Flights Within K Stops - Medium"></span>
+            <span id="subtitle" data-typed-text="543. Diameter of Binary Tree - Easy"></span>
           
         </div>
 
@@ -244,8 +241,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-18 10:58" pubdate>
-          2024年1月18日 上午
+        <time datetime="2024-02-23 17:32" pubdate>
+          2024年2月23日 下午
         </time>
       </span>
     
@@ -256,7 +253,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          213 字
+          95 字
         
       </span>
     
@@ -267,7 +264,7 @@
         
         
         
-          2 分鐘
+          1 分鐘
         
       </span>
     
@@ -304,53 +301,42 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">787. Cheapest Flights Within K Stops - Medium</h1>
+            <h1 id="seo-header">543. Diameter of Binary Tree - Easy</h1>
             
             
               <div class="markdown-body">
                 
-                <a class="btn" href="https://leetcode.com/problems/cheapest-flights-within-k-stops/description/"  title="787. Cheapest Flights Within K Stops" target="_blank">前往題目</a>
+                <a class="btn" href="https://leetcode.com/problems/diameter-of-binary-tree/description/"  title="543. Diameter of Binary Tree" target="_blank">前往題目</a>
 
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>Bellman-ford</p>
-<ol>
-<li>用額外的<code>array</code>儲存從<code>source</code>到<code>dest.</code>的距離</li>
-<li>執行<code>k+1</code>次，因為題目的k是指幾個<code>stop</code></li>
-<li>每輪都走一遍所有的<code>flights</code>，有更短的距離就更新，最後回傳，如果是<code>MAX_VALUE</code>就回傳<code>-1</code></li>
+<p>之前寫的<a target="_blank" rel="noopener" href="https://medium.com/@f88083/543-diameter-of-binary-tree-a0920b50934d">文章</a></p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
+<li><code>DFS</code></li>
+<li>每個點的左子樹與右子樹的長度加起來再加<code>1</code>(本身)</li>
 </ol>
-<p>比較難理解的是用<code>tempPrices</code>儲存當前暫時的<code>prices</code>，走完<code>flights</code>後再給<code>prices</code>，這部分是因為如果不用<code>temprices</code>的話會不知道當前的<code>source</code>是<code>MAX_VALUE</code>，也就是<code>unreachable</code>，需要跳過</p>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/5eIK3zUdYmE" title="Bellman-Ford - Cheapest Flights within K Stops - Leetcode 787 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">findCheapestPrice</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> flights<span class="token punctuation">,</span> <span class="token keyword">int</span> src<span class="token punctuation">,</span> <span class="token keyword">int</span> dst<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">// Prices from source to the specific dst</span>
-        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> prices <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span>prices<span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token constant">MAX_VALUE</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        prices<span class="token punctuation">[</span>src<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> k <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token comment">// Copy the prices into temp prices</span>
-            <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> tmpPrices <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>prices<span class="token punctuation">.</span>length<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> prices<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                tmpPrices<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> prices<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>
-
-            <span class="token comment">// source, dest., price</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> flight <span class="token operator">:</span> flights<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                <span class="token keyword">int</span> s <span class="token operator">=</span> flight<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-                <span class="token keyword">int</span> d <span class="token operator">=</span> flight<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-                <span class="token keyword">int</span> p <span class="token operator">=</span> flight<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-                
-                <span class="token comment">// Not reachable</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>prices<span class="token punctuation">[</span>s<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token constant">MAX_VALUE</span><span class="token punctuation">)</span> <span class="token keyword">continue</span><span class="token punctuation">;</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>prices<span class="token punctuation">[</span>s<span class="token punctuation">]</span> <span class="token operator">+</span> p <span class="token operator">&lt;</span> tmpPrices<span class="token punctuation">[</span>d<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                    tmpPrices<span class="token punctuation">[</span>d<span class="token punctuation">]</span> <span class="token operator">=</span> prices<span class="token punctuation">[</span>s<span class="token punctuation">]</span> <span class="token operator">+</span> p<span class="token punctuation">;</span>
-                <span class="token punctuation">&#125;</span>
-            <span class="token punctuation">&#125;</span>
-            prices <span class="token operator">=</span> tmpPrices<span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">return</span> prices<span class="token punctuation">[</span>dst<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token constant">MAX_VALUE</span> <span class="token operator">?</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token operator">:</span> prices<span class="token punctuation">[</span>dst<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<p>這題的關鍵是每個點都有可能是拐彎的點</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> ret <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">diameterOfBinaryTree</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> root<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">findDepth</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> ret <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// Need edges count only</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+    <span class="token comment">// DFS</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> <span class="token function">findDepth</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> root<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        
+        <span class="token comment">// node counts</span>
+        <span class="token keyword">int</span> leftPath <span class="token operator">=</span> <span class="token function">findDepth</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> rightPath <span class="token operator">=</span> <span class="token function">findDepth</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// Current node as turning node</span>
+        ret <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>ret<span class="token punctuation">,</span> leftPath <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">+</span> rightPath<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// return node count, so add 1 as current node</span>
+        <span class="token keyword">return</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>leftPath<span class="token punctuation">,</span> rightPath<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
                 
               </div>
@@ -374,7 +360,7 @@
   
     <span>></span>
     
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
   
   
 
@@ -395,17 +381,11 @@
       
         <a href="/tags/%E5%BF%83%E5%BE%97/" class="print-no-link">#心得</a>
       
+        <a href="/tags/Binary-Tree/" class="print-no-link">#Binary Tree</a>
+      
         <a href="/tags/Depth-First-Search/" class="print-no-link">#Depth-First Search</a>
       
-        <a href="/tags/Breadth-First-Search/" class="print-no-link">#Breadth-First Search</a>
-      
-        <a href="/tags/Dynamic-Programming/" class="print-no-link">#Dynamic Programming</a>
-      
-        <a href="/tags/Graph/" class="print-no-link">#Graph</a>
-      
-        <a href="/tags/Heap-Priority-Queue/" class="print-no-link">#Heap (Priority Queue)</a>
-      
-        <a href="/tags/Shortest-Path/" class="print-no-link">#Shortest Path</a>
+        <a href="/tags/Tree/" class="print-no-link">#Tree</a>
       
     </div>
   
@@ -417,8 +397,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>787. Cheapest Flights Within K Stops - Medium</div>
-      <div>https://f88083.github.io/2024/01/18/787-Cheapest-Flights-Within-K-Stops-Medium/</div>
+      <div>543. Diameter of Binary Tree - Easy</div>
+      <div>https://f88083.github.io/2024/02/23/543-Diameter-of-Binary-Tree-Easy/</div>
     </div>
     <div class="license-meta">
       
@@ -430,7 +410,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>發布於</div>
-          <div>2024年1月18日</div>
+          <div>2024年2月23日</div>
         </div>
       
       
@@ -474,9 +454,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/18/863-All-Nodes-Distance-K-in-Binary-Tree-Medium/" title="863. All Nodes Distance K in Binary Tree - Medium">
+                      <a href="/2024/02/23/876-Middle-of-the-Linked-List-Easy/" title="876. Middle of the Linked List - Easy">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">863. All Nodes Distance K in Binary Tree - Medium</span>
+                        <span class="hidden-mobile">876. Middle of the Linked List - Easy</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -484,8 +464,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/16/143-Reorder-List-Medium/" title="143. Reorder List - Medium">
-                        <span class="hidden-mobile">143. Reorder List - Medium</span>
+                      <a href="/2024/02/18/67-Add-Binary-Easy/" title="67. Add Binary - Easy">
+                        <span class="hidden-mobile">67. Add Binary - Easy</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
