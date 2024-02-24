@@ -253,6 +253,154 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2023/12/16/141-Linked-List-Cycle-Easy/" target="_self">
+          141. Linked List Cycle - Easy
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/16/141-Linked-List-Cycle-Easy/" target="_self">
+        <div>
+          前往題目  之前寫過，照搬一下 想法 這題之前寫過，這次還是看提示才能想起來 沒什麼困難點，只要知道用快慢指針就行  思路 新建快慢指針 慢指針一次走一個node，快指針一次走兩個node 如果有cycle一定會碰在一起  Codepublic boolean hasCycle(ListNode head) &#123;     // When only 1 node of the list
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-16 11:40" pubdate>
+              2023-12-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Two-Pointers/">#Two Pointers</a>
+            
+              <a href="/tags/Linked-List/">#Linked List</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/12/16/24-Swap-Nodes-in-Pairs-Medium/" target="_self">
+          24. Swap Nodes in Pairs - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/16/24-Swap-Nodes-in-Pairs-Medium/" target="_self">
+        <div>
+          前往題目  想法 每個node重新指向就好 要從最後面開始，不然會指到錯的  思路 兩個指針 照著規律交換，然後謹慎處理pointer  Code和我想的不太一樣，是可以直接從頭開始，謹慎處理指針和條件就不會null pointer 最有可能出錯的地方就是要存nextPair的時候，但while的條件使得curr.next.next頂多就是null而已，不會出錯   class Solution
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-16 10:19" pubdate>
+              2023-12-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Recursion/">#Recursion</a>
+            
+              <a href="/tags/Linked-List/">#Linked List</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2023/12/15/207-Course-Schedule-Medium/" target="_self">
           207. Course Schedule - Medium
         </a>
@@ -844,149 +992,6 @@
               <a href="/tags/Hash-Table/">#Hash Table</a>
             
               <a href="/tags/Sorting/">#Sorting</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/12/06/57-Insert-Interval-Medium/" target="_self">
-          57. Insert Interval - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/06/57-Insert-Interval-Medium/" target="_self">
-        <div>
-          前往題目  這題之前做過，所以照搬一下 想法 這題卡在不知道如何處理interval重疊的問題 但其實很簡單，因為有重疊的部分只要取左值最小與右值最大就可以了，用以下兩個語句  newInterval[0] = Math.min(currInterval[0], newInterval[0]); // Merge the interval newInterval[1] = Math.max(cur
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-06 15:58" pubdate>
-              2023-12-06
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/12/06/Flask%E5%AF%A6%E4%BD%9C%E5%96%AE%E7%94%A8%E6%88%B6%E7%99%BB%E5%85%A5-%E6%93%B4%E5%B1%95%E5%8E%9F%E6%9C%89project/" target="_self">
-          Flask實作單用戶登入-擴展原有project
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/06/Flask%E5%AF%A6%E4%BD%9C%E5%96%AE%E7%94%A8%E6%88%B6%E7%99%BB%E5%85%A5-%E6%93%B4%E5%B1%95%E5%8E%9F%E6%9C%89project/" target="_self">
-        <div>
-          擴展之前做的project，加上單用戶登入認證才能看到網頁內容以及登出功能，並參考教程開發  最新教程在這裡: Flask 入门教程3.0 (2022&#x2F;07&#x2F;16發布) 目標 網頁供單人使用 輸入帳號密碼驗證後才能進入並使用網頁  前置作業             只要是python程式碼就寫在app.py             首先定義一下Model class以儲存帳號
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-06 14:59" pubdate>
-              2023-12-06
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Project/" class="category-chain-item">Project</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Flask/">#Flask</a>
-            
-              <a href="/tags/HTML/">#HTML</a>
-            
-              <a href="/tags/CSS/">#CSS</a>
-            
-              <a href="/tags/%E7%B6%B2%E9%A0%81%E9%96%8B%E7%99%BC/">#網頁開發</a>
-            
-              <a href="/tags/Flask-Login/">#Flask-Login</a>
-            
-              <a href="/tags/Jinja2/">#Jinja2</a>
             
           </div>
         
