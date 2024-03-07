@@ -253,6 +253,160 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/01/07/150-Evaluate-Reverse-Polish-Notation-Medium/" target="_self">
+          150. Evaluate Reverse Polish Notation - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/07/150-Evaluate-Reverse-Polish-Notation-Medium/" target="_self">
+        <div>
+          前往題目  之前寫過，搬運一下 想法 這題應該算是easy才對，五分鐘就想出來了，但也有可能是因為有先備知識 這題的先備知識就是Stack，不熟練以及不熟悉Stack的特性有可能會想不出來 少數自己想出來的medium，開心😆  思路 建立stack 疊代所有token 遇到symbol就pop兩個數字然後做運算 結果push回stack裡 直到token都用完 回傳stack.pop，因為這時
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-07 15:15" pubdate>
+              2024-01-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Stack/">#Stack</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Math/">#Math</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/07/133-Clone-Graph-Medium/" target="_self">
+          133. Clone Graph - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/07/133-Clone-Graph-Medium/" target="_self">
+        <div>
+          前往題目  寫過了，搬運一下~ 想法 這題依舊沒發現可以用BFS，但是有想過484可以 DFS也可以!反正就是疊代樹 基本上就是使用hashmap來儲存對應關係，用來判斷clone了沒 然後DFS或BFS所有節點  思路 A hashmap for old node to new node dfs if the node already in the map, return it Otherwis
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-07 14:45" pubdate>
+              2024-01-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Hash-Table/">#Hash Table</a>
+            
+              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
+            
+              <a href="/tags/Breadth-First-Search/">#Breadth-First Search</a>
+            
+              <a href="/tags/Graph/">#Graph</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2024/01/07/102-Binary-Tree-Level-Order-Traversal-Medium/" target="_self">
           102. Binary Tree Level Order Traversal - Medium
         </a>
@@ -843,143 +997,6 @@
               <a href="/tags/Array/">#Array</a>
             
               <a href="/tags/Simulation/">#Simulation</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/01/560-Subarray-Sum-Equals-K-Medium/" target="_self">
-          560. Subarray Sum Equals K - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/01/560-Subarray-Sum-Equals-K-Medium/" target="_self">
-        <div>
-          前往題目  想法 Subarray的話應該還是需要backtracking  思路這題反而不用backtracking，而是用prefix sum  一個prefix sum表，紀錄每個sum出現的次數 每次都看當前需要多少才能達到k，檢查表中有沒有該sum，有的話就可以直接加到result了因為代表前面的這個sum再加上當前index的數值就等於我們要的k 出現新的sum就放到表中  這部分照著
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-01 15:56" pubdate>
-              2024-01-01
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Hash-Table/">#Hash Table</a>
-            
-              <a href="/tags/Prefix-Sum/">#Prefix Sum</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/12/30/%E7%94%A8hexo%E5%BB%BA%E7%BD%AE%E7%B6%B2%E7%AB%99%E4%BB%A5%E5%8F%8A%E6%97%A5%E5%B8%B8%E6%93%8D%E4%BD%9C%E7%AD%86%E8%A8%98/" target="_self">
-          用hexo建置網站以及日常操作筆記
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/30/%E7%94%A8hexo%E5%BB%BA%E7%BD%AE%E7%B6%B2%E7%AB%99%E4%BB%A5%E5%8F%8A%E6%97%A5%E5%B8%B8%E6%93%8D%E4%BD%9C%E7%AD%86%E8%A8%98/" target="_self">
-        <div>
-          建站好一陣子了，現在才回來寫筆記，可能有遺漏，歡迎留言  安裝hexo 安裝Nodejs和git(方便上傳github並建置網站) terminal裡執行安裝 npm install hexo-cli -g   在想安裝的資料夾底下初始化hexo blog，等於直接在該資料夾下新建網站了 hexo init blog cd blog 進入網站資料夾   hexo server在本機執行網站 he
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-30 16:40" pubdate>
-              2023-12-30
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%B6%9C%E5%90%88/" class="category-chain-item">綜合</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/hexo/">#hexo</a>
             
           </div>
         

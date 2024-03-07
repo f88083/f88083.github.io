@@ -4,6 +4,74 @@
   
   
   <entry>
+    <title>45. Jump Game II - Medium</title>
+    <link href="/2024/03/07/45-Jump-Game-II-Medium/"/>
+    <url>/2024/03/07/45-Jump-Game-II-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/jump-game-ii/description/"  title="45. Jump Game II" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>從後往前，但不知道怎麼判斷最小跳幾次</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>這種題目無非就是窮舉，優化就是記憶法，但是這題只需要判斷哪個選擇最有潛力，也就是貪心思想</p><ol><li>從前往後</li><li>每次紀錄最遠可以跳到哪</li><li>如果來到剛剛著陸的地方就再跳一次，跳到目前最遠的位置</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">jump</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span> farthest <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// 目前最遠距離</span>        <span class="token keyword">int</span> jump <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// 跳了幾次</span>        <span class="token keyword">int</span> end <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// 目前跳到的位置</span>                <span class="token comment">// 最後一位要skip，因為是終點，否則會再跳一次</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// 最遠可以到哪裡</span>            farthest <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> i<span class="token punctuation">,</span> farthest<span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment">// 如果已經到了剛剛跳過來的位置</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>end <span class="token operator">==</span> i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token comment">// 再跳一次</span>                <span class="token operator">++</span>jump<span class="token punctuation">;</span>                <span class="token comment">// 跳到目前可跳的最遠位置</span>                end <span class="token operator">=</span> farthest<span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> jump<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Array</tag>
+      
+      <tag>Greedy</tag>
+      
+      <tag>Dynamic Programming</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>72. Edit Distance - Medium</title>
+    <link href="/2024/03/07/72-Edit-Distance-Medium/"/>
+    <url>/2024/03/07/72-Edit-Distance-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/edit-distance/"  title="72. Edit Distance" target="_blank">前往題目</a><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>二維<code>dp</code>，分別是<code>i</code>和<code>j</code>，<code>word1</code>與<code>word2</code>的指針</li><li><code>i, j</code>代表取<code>word1</code>和<code>word2</code>的前<code>i</code>和前<code>j</code>個</li><li>如此一來，<code>base case</code>就是<code>word1</code>取了前幾個，<code>word2</code>取<code>0</code>個，那每次都會等於<code>i</code>；相同的，<code>word1</code>取<code>0</code>個，<code>word2</code>取了前幾個，每次都等於<code>j</code></li><li>從左到右一個一個看，當前的字母都一樣的話那代表什麼都不用做，所以就等於上次(<code>i - 1, j - 1</code>)的操作數</li><li>如果不一樣，有三種操作</li></ol><p>也是腦筋急轉彎的一題</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">minDistance</span><span class="token punctuation">(</span><span class="token class-name">String</span> word1<span class="token punctuation">,</span> <span class="token class-name">String</span> word2<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">final</span> <span class="token keyword">int</span> m <span class="token operator">=</span> word1<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">final</span> <span class="token keyword">int</span> n <span class="token operator">=</span> word2<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> dp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>m <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token comment">// For easier pointer operation</span>        word1 <span class="token operator">=</span> <span class="token string">"#"</span> <span class="token operator">+</span> word1<span class="token punctuation">;</span>        word2 <span class="token operator">=</span> <span class="token string">"#"</span> <span class="token operator">+</span> word2<span class="token punctuation">;</span>        <span class="token comment">// Base case</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> m<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// 加入i個相應字符</span>            dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> i<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// 加入j個相應字符</span>            dp<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> j<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// 因為0, 0是base case所以從1開始</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> m<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token comment">// 遇到相同字符，那就無需任何操作，直接等於上次的</span>                <span class="token keyword">if</span> <span class="token punctuation">(</span>word1<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">==</span> word2<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                    dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> dp<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>                <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>                    <span class="token comment">// +1是因為操作了一次</span>                    dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token comment">// 替換</span>                               <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token comment">// 刪除</span>                                        dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 插入</span>                <span class="token punctuation">&#125;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> dp<span class="token punctuation">[</span>m<span class="token punctuation">]</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 兩個指針都抵達終點的操作數</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>String</tag>
+      
+      <tag>Dynamic Programming</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>97. Interleaving String - Medium</title>
     <link href="/2024/03/06/97-Interleaving-String-Medium/"/>
     <url>/2024/03/06/97-Interleaving-String-Medium/</url>
@@ -292,9 +360,9 @@
       
       <tag>Hash Table</tag>
       
-      <tag>Dynamic Programming</tag>
-      
       <tag>Trie</tag>
+      
+      <tag>Dynamic Programming</tag>
       
       <tag>Memoization</tag>
       
@@ -753,11 +821,11 @@
       
       <tag>Array</tag>
       
+      <tag>Matrix</tag>
+      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
-      
-      <tag>Matrix</tag>
       
       <tag>Union Find</tag>
       
@@ -792,11 +860,11 @@
       
       <tag>Array</tag>
       
+      <tag>Matrix</tag>
+      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
-      
-      <tag>Matrix</tag>
       
       <tag>Union Find</tag>
       
@@ -1366,9 +1434,9 @@
       
       <tag>Array</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Matrix</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -1543,9 +1611,9 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Greedy</tag>
       
     </tags>
     
@@ -2237,9 +2305,9 @@
       
       <tag>Array</tag>
       
-      <tag>Dynamic Programming</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Dynamic Programming</tag>
       
     </tags>
     
@@ -2390,11 +2458,11 @@
       
       <tag>心得</tag>
       
-      <tag>Array</tag>
-      
       <tag>Binary Search Tree</tag>
       
       <tag>Binary Tree</tag>
+      
+      <tag>Array</tag>
       
       <tag>Tree</tag>
       
@@ -2497,11 +2565,11 @@
       
       <tag>心得</tag>
       
-      <tag>Dynamic Programming</tag>
-      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
+      
+      <tag>Dynamic Programming</tag>
       
       <tag>Graph</tag>
       
@@ -2964,9 +3032,9 @@
       
       <tag>Array</tag>
       
-      <tag>Dynamic Programming</tag>
-      
       <tag>Matrix</tag>
+      
+      <tag>Dynamic Programming</tag>
       
     </tags>
     
@@ -4429,9 +4497,9 @@
       
       <tag>Array</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Matrix</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -4522,9 +4590,9 @@
     
     <tags>
       
-      <tag>HTML</tag>
-      
       <tag>Flask</tag>
+      
+      <tag>HTML</tag>
       
       <tag>CSS</tag>
       
@@ -4662,11 +4730,11 @@
       
       <tag>心得</tag>
       
+      <tag>Matrix</tag>
+      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
-      
-      <tag>Matrix</tag>
       
     </tags>
     
@@ -4691,15 +4759,15 @@
     
     <tags>
       
-      <tag>HTML</tag>
-      
       <tag>Flask</tag>
+      
+      <tag>CRUD</tag>
+      
+      <tag>HTML</tag>
       
       <tag>CSS</tag>
       
       <tag>網頁開發</tag>
-      
-      <tag>CRUD</tag>
       
     </tags>
     
@@ -4961,9 +5029,9 @@
       
       <tag>Flask</tag>
       
-      <tag>CRUD</tag>
-      
       <tag>Sqlalchemy</tag>
+      
+      <tag>CRUD</tag>
       
     </tags>
     
@@ -5501,11 +5569,11 @@
       
       <tag>Algorithms</tag>
       
+      <tag>Queue</tag>
+      
       <tag>筆記</tag>
       
       <tag>演算法</tag>
-      
-      <tag>Queue</tag>
       
     </tags>
     
