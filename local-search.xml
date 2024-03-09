@@ -4,6 +4,107 @@
   
   
   <entry>
+    <title>8. String to Integer (atoi) - Medium</title>
+    <link href="/2024/03/09/8-String-to-Integer-atoi-Medium/"/>
+    <url>/2024/03/09/8-String-to-Integer-atoi-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/string-to-integer-atoi/description/"  title="8. String to Integer (atoi)" target="_blank">前往題目</a><p>之前的<a href="https://medium.com/@f88083/8-string-to-integer-atoi-e3cb3bdd6226">文章</a></p><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>有寫出來但是一些<code>test case</code>沒過，找<code>bug</code>找到瘋掉</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>忽略空白</li><li>決定正數還是負數</li><li>拼出數字，要防止溢出</li><li>回傳前確認要負數或正數</li></ol><p>這題很容易條件沒考慮好…</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">myAtoi</span><span class="token punctuation">(</span><span class="token class-name">String</span> s<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">final</span> <span class="token keyword">int</span> len <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> index <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token comment">// No digits</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>len <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token comment">// Ignore white spaces</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>index <span class="token operator">&lt;</span> len <span class="token operator">&amp;&amp;</span> s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token char">' '</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token operator">++</span>index<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// Prevent overflow</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>index <span class="token operator">>=</span> len<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token comment">// Determine sign</span>        <span class="token keyword">char</span> ch <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">boolean</span> isNegative <span class="token operator">=</span> ch <span class="token operator">==</span> <span class="token char">'-'</span><span class="token punctuation">;</span>        <span class="token comment">// If sign appears, move index</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>isNegative <span class="token operator">||</span> ch <span class="token operator">==</span> <span class="token char">'+'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token operator">++</span>index<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>                <span class="token comment">// -2147483648 to 2147483647</span>        <span class="token keyword">final</span> <span class="token keyword">int</span> maxLimit <span class="token operator">=</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token constant">MAX_VALUE</span> <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> result <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token comment">// Iterate until the end or non digit shows</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>index <span class="token operator">&lt;</span> len <span class="token operator">&amp;&amp;</span> <span class="token function">isDigit</span><span class="token punctuation">(</span>ch <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">int</span> digit <span class="token operator">=</span> ch <span class="token operator">-</span> <span class="token char">'0'</span><span class="token punctuation">;</span> <span class="token comment">// Get current digit</span>                        <span class="token comment">// Out of bound, especially check Integer overflow</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>result <span class="token operator">></span> maxLimit <span class="token operator">||</span> <span class="token punctuation">(</span>result <span class="token operator">==</span> maxLimit <span class="token operator">&amp;&amp;</span> digit <span class="token operator">></span> <span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token keyword">return</span> isNegative <span class="token operator">?</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token constant">MIN_VALUE</span> <span class="token operator">:</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token constant">MAX_VALUE</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>            <span class="token comment">// Update the result</span>            result <span class="token operator">=</span> <span class="token punctuation">(</span>result <span class="token operator">*</span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token operator">+</span> digit<span class="token punctuation">;</span>            <span class="token operator">++</span>index<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> isNegative <span class="token operator">?</span> <span class="token operator">-</span>result <span class="token operator">:</span> result<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token comment">// Determine if a character is a digit</span>    <span class="token keyword">private</span> <span class="token keyword">boolean</span> <span class="token function">isDigit</span><span class="token punctuation">(</span><span class="token keyword">char</span> c<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">return</span> c <span class="token operator">>=</span> <span class="token char">'0'</span> <span class="token operator">&amp;&amp;</span> c <span class="token operator">&lt;=</span> <span class="token char">'9'</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>String</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>416. Partition Equal Subset Sum - Medium</title>
+    <link href="/2024/03/09/416-Partition-Equal-Subset-Sum-Medium/"/>
+    <url>/2024/03/09/416-Partition-Equal-Subset-Sum-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/partition-equal-subset-sum/description/"  title="416. Partition Equal Subset Sum" target="_blank">前往題目</a><p>之前的<a href="https://medium.com/@f88083/416-partition-equal-subset-sum-c350355202f5">文章</a></p><p>這次看到一樣想不出來，連<code>code</code>都花了一點時間才懂</p><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>先知道總和，就可以知道有沒有辦法被分成兩個<code>subset</code>了(因為要能被<code>2</code>整除才能分配成兩個<code>subsets</code>)</li><li>目標<code>target</code>直接<code>sum / 2</code>，因為兩個<code>subset</code>總和相等</li><li>疊代<code>nums</code>所有的<code>element</code></li><li>每個疊代中都使用新的一個<code>hashset</code>來儲存可能的數值(不然會導致還沒疊代完，<code>dp</code>就會被更新，這樣會更改到同一輪的數字)</li><li>每個疊代中再疊代<code>dp</code>所有的<code>element</code>，每次都再加上當前的數字，有看到目標數字馬上回傳<code>true</code>，並記得附上原本<code>dp</code>中的<code>element</code>，因為要把疊代完後要把新的<code>hashset</code>賦給<code>dp</code></li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">canPartition</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token comment">// Obtain sum</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> num <span class="token operator">:</span> nums<span class="token punctuation">)</span> sum <span class="token operator">+=</span> num<span class="token punctuation">;</span>        <span class="token comment">// Check if possible to half</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>sum <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>        <span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> dp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashSet</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        dp<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// At least 0</span>        <span class="token comment">// Get the target</span>        <span class="token keyword">int</span> target <span class="token operator">=</span> sum <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>        <span class="token comment">// Iterate all the num in nums</span>        <span class="token comment">// 從前往後，從後往前都可以</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> nums<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token operator">--</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// For preventing changing "dp" while iterating</span>            <span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> nextDP <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashSet</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> t <span class="token operator">:</span> dp<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token comment">// Return immed. when found the sol.</span>                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>t <span class="token operator">+</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">==</span> target<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>                nextDP<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>t <span class="token operator">+</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Add possible value</span>                nextDP<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Add origin</span>            <span class="token punctuation">&#125;</span>            <span class="token comment">// Reassign the dp</span>            dp <span class="token operator">=</span> nextDP<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Array</tag>
+      
+      <tag>Dynamic Programming</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>846. Hand of Straights - Medium</title>
+    <link href="/2024/03/08/846-Hand-of-Straights-Medium/"/>
+    <url>/2024/03/08/846-Hand-of-Straights-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/hand-of-straights/"  title="846. Hand of Straights" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>用dp?</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>使用<code>hashmap</code>來儲存每個數字的個數，還有<code>min heap</code>來儲存最小值</li><li>循環直到<code>minheap</code>的數字都被取光</li><li>每次循環都先把最小的數字當基準點，然後再檢查這個數字的<code>group</code>能不能被建立</li><li>能不能被建立需要以下判斷<ul><li><code>hashmap</code>中有我們要的數字</li><li>取了之後，如果當前數字已經沒得取了，就看是否當前數字跟<code>minheap</code>的數字一樣，不一樣的話就代表沒辦法建立群組，因為缺了數字</li></ul></li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/amnrMCVd2YI" title="Hand of Straights - Leetcode 846 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isNStraightHand</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> hand<span class="token punctuation">,</span> <span class="token keyword">int</span> groupSize<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token comment">// Check if divisible</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>hand<span class="token punctuation">.</span>length <span class="token operator">%</span> groupSize <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>                <span class="token comment">// Count the amount of each number</span>        <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span></span> count <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> hand<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            count<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>hand<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> count<span class="token punctuation">.</span><span class="token function">getOrDefault</span><span class="token punctuation">(</span>hand<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// Use min heap</span>        <span class="token class-name">PriorityQueue</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> minH <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PriorityQueue</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">(</span>a <span class="token operator">-</span> b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> key <span class="token operator">:</span> count<span class="token punctuation">.</span><span class="token function">keySet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            minH<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// Until all the numbers are picked</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span>minH<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// First number of a group</span>            <span class="token keyword">int</span> first <span class="token operator">=</span> minH<span class="token punctuation">.</span><span class="token function">peek</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment">// Try to make the group complete</span>            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> first<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> first <span class="token operator">+</span> groupSize<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token comment">// Must contain the number we need</span>                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>count<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>                <span class="token comment">// Decrease the amount of number i</span>                count<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> count<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token comment">// Check if the amount of number i reached 0</span>                <span class="token comment">// meaning the number should be removed from the minH</span>                <span class="token keyword">if</span> <span class="token punctuation">(</span>count<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                    <span class="token comment">// Current number should be identical to the minimum num</span>                    <span class="token comment">// of the minH, to prevent missing middle number in the group</span>                    <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">!=</span> minH<span class="token punctuation">.</span><span class="token function">peek</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>                    minH<span class="token punctuation">.</span><span class="token function">poll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token punctuation">&#125;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Array</tag>
+      
+      <tag>Greedy</tag>
+      
+      <tag>Hash Table</tag>
+      
+      <tag>Sorting</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>45. Jump Game II - Medium</title>
     <link href="/2024/03/07/45-Jump-Game-II-Medium/"/>
     <url>/2024/03/07/45-Jump-Game-II-Medium/</url>
@@ -360,9 +461,9 @@
       
       <tag>Hash Table</tag>
       
-      <tag>Trie</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Trie</tag>
       
       <tag>Memoization</tag>
       
@@ -1611,9 +1712,9 @@
       
       <tag>Array</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Greedy</tag>
+      
+      <tag>Two Pointers</tag>
       
     </tags>
     
@@ -2305,9 +2406,9 @@
       
       <tag>Array</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -2565,11 +2666,11 @@
       
       <tag>心得</tag>
       
+      <tag>Dynamic Programming</tag>
+      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
-      
-      <tag>Dynamic Programming</tag>
       
       <tag>Graph</tag>
       
@@ -5569,11 +5670,11 @@
       
       <tag>Algorithms</tag>
       
-      <tag>Queue</tag>
-      
       <tag>筆記</tag>
       
       <tag>演算法</tag>
+      
+      <tag>Queue</tag>
       
     </tags>
     
