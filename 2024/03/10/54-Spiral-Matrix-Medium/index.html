@@ -16,26 +16,26 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前往題目  之前寫的文章 思路 2 pointers 只移動短的那邊，才有機會有更大的值  Codeclass Solution &#123;     public int maxArea(int[] height) &#123;         int l &#x3D; 0, r &#x3D; height.length - 1;          int res &#x3D; Integer.MIN_VALUE;">
+    <meta name="description" content="前往題目  之前寫的文章 想法 初始的變數沒有想出來，有了left right top和bottom就簡單了  思路 定義上下左右邊界，以下的code要注意out of boundary 先取top elements 再取right elements 注意left要小於right，top要小於bottom以防special case 再取bottom elements 再取left element">
 <meta property="og:type" content="article">
-<meta property="og:title" content="11. Container With Most Water - Medium">
-<meta property="og:url" content="https://f88083.github.io/2024/01/31/11-Container-With-Most-Water-Medium/index.html">
+<meta property="og:title" content="54. Spiral Matrix - Medium">
+<meta property="og:url" content="https://f88083.github.io/2024/03/10/54-Spiral-Matrix-Medium/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="前往題目  之前寫的文章 思路 2 pointers 只移動短的那邊，才有機會有更大的值  Codeclass Solution &#123;     public int maxArea(int[] height) &#123;         int l &#x3D; 0, r &#x3D; height.length - 1;          int res &#x3D; Integer.MIN_VALUE;">
+<meta property="og:description" content="前往題目  之前寫的文章 想法 初始的變數沒有想出來，有了left right top和bottom就簡單了  思路 定義上下左右邊界，以下的code要注意out of boundary 先取top elements 再取right elements 注意left要小於right，top要小於bottom以防special case 再取bottom elements 再取left element">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2024-01-31T10:28:51.000Z">
-<meta property="article:modified_time" content="2024-01-31T10:31:31.320Z">
+<meta property="article:published_time" content="2024-03-10T14:34:21.000Z">
+<meta property="article:modified_time" content="2024-03-10T14:36:38.262Z">
 <meta property="article:author" content="Simon Lai">
 <meta property="article:tag" content="Leetcode">
 <meta property="article:tag" content="心得">
 <meta property="article:tag" content="Array">
-<meta property="article:tag" content="Two Pointers">
-<meta property="article:tag" content="Greedy">
+<meta property="article:tag" content="Matrix">
+<meta property="article:tag" content="Simulation">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>11. Container With Most Water - Medium - Simon Lai&#39;s Blog</title>
+  <title>54. Spiral Matrix - Medium - Simon Lai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -230,7 +230,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="11. Container With Most Water - Medium"></span>
+            <span id="subtitle" data-typed-text="54. Spiral Matrix - Medium"></span>
           
         </div>
 
@@ -241,8 +241,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-31 10:28" pubdate>
-          2024年1月31日 上午
+        <time datetime="2024-03-10 14:34" pubdate>
+          2024年3月10日 下午
         </time>
       </span>
     
@@ -253,7 +253,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          83 字
+          198 字
         
       </span>
     
@@ -301,46 +301,70 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">11. Container With Most Water - Medium</h1>
+            <h1 id="seo-header">54. Spiral Matrix - Medium</h1>
             
             
               <div class="markdown-body">
                 
-                <a class="btn" href="https://leetcode.com/problems/container-with-most-water/description/"  title="11. Container With Most Water" target="_blank">前往題目</a>
+                <a class="btn" href="https://leetcode.com/problems/spiral-matrix/description/"  title="54. Spiral Matrix" target="_blank">前往題目</a>
 
-<p>之前寫的<a target="_blank" rel="noopener" href="https://medium.com/@f88083/11-container-with-most-water-medium-c33cfe5d161f">文章</a></p>
+<p>之前寫的<a target="_blank" rel="noopener" href="https://medium.com/@f88083/54-spiral-matrix-06c7668c87b4">文章</a></p>
+<h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul>
+<li>初始的變數沒有想出來，有了<code>left right top</code>和<code>bottom</code>就簡單了</li>
+</ul>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
-<li><code>2 pointers</code></li>
-<li>只移動短的那邊，才有機會有更大的值</li>
+<li>定義上下左右邊界，以下的<code>code</code>要注意<code>out of boundary</code></li>
+<li>先取<code>top elements</code></li>
+<li>再取<code>right elements</code></li>
+<li>注意<code>left</code>要小於<code>right</code>，<code>top</code>要小於<code>bottom</code>以防<code>special case</code></li>
+<li>再取<code>bottom elements</code></li>
+<li>再取<code>left elements</code></li>
+<li>反覆直到全部都取到</li>
 </ol>
 <h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">maxArea</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> height<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">int</span> l <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> r <span class="token operator">=</span> height<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> <span class="token function">spiralOrder</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> matrix<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> res <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token comment">// Defining boundaries</span>
+        <span class="token keyword">int</span> left <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> right <span class="token operator">=</span> matrix<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> top <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> bottom <span class="token operator">=</span> matrix<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
 
-        <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token constant">MIN_VALUE</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>l <span class="token operator">&lt;</span> r<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token comment">// Current square height</span>
-            <span class="token keyword">int</span> h <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>height<span class="token punctuation">[</span>l<span class="token punctuation">]</span><span class="token punctuation">,</span> height<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token comment">// Area</span>
-            <span class="token keyword">int</span> area <span class="token operator">=</span> h <span class="token operator">*</span> <span class="token punctuation">(</span>r <span class="token operator">-</span> l<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            <span class="token comment">// Store larger area</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>area <span class="token operator">></span> res<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                res <span class="token operator">=</span> area<span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>left <span class="token operator">&lt;</span> right <span class="token operator">&amp;&amp;</span> top <span class="token operator">&lt;</span> bottom<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// Get top row elements</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> left<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> right<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                res<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>matrix<span class="token punctuation">[</span>top<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             <span class="token punctuation">&#125;</span>
+            <span class="token comment">// Shrink the area</span>
+            top <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">;</span>
 
-            <span class="token comment">// Move pointers</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>height<span class="token punctuation">[</span>l<span class="token punctuation">]</span> <span class="token operator">></span> height<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                <span class="token operator">--</span>r<span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-                <span class="token operator">++</span>l<span class="token punctuation">;</span>
+            <span class="token comment">// Get the right col elements</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> top<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> bottom<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token comment">// Aware out of bound, so right - 1</span>
+                res<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>matrix<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>right <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             <span class="token punctuation">&#125;</span>
+            right <span class="token operator">-=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+            <span class="token comment">// Check for special case</span>
+            <span class="token comment">// Such as, [[1],[2],[3]]</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>left <span class="token operator">&lt;</span> right <span class="token operator">&amp;&amp;</span> top <span class="token operator">&lt;</span> bottom<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+
+            <span class="token comment">// Get the bottom row elements</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> right <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">></span> left <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token operator">--</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                res<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>matrix<span class="token punctuation">[</span>bottom <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            bottom <span class="token operator">-=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+            <span class="token comment">// Get the left col elements</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> bottom <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">></span> top <span class="token operator">-</span> <span class="token number">1</span> <span class="token punctuation">;</span> <span class="token operator">--</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                res<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>matrix<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>left<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            left <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">;</span>
         <span class="token punctuation">&#125;</span>
 
         <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+        
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
                 
               </div>
@@ -387,9 +411,9 @@
       
         <a href="/tags/Array/" class="print-no-link">#Array</a>
       
-        <a href="/tags/Two-Pointers/" class="print-no-link">#Two Pointers</a>
+        <a href="/tags/Matrix/" class="print-no-link">#Matrix</a>
       
-        <a href="/tags/Greedy/" class="print-no-link">#Greedy</a>
+        <a href="/tags/Simulation/" class="print-no-link">#Simulation</a>
       
     </div>
   
@@ -401,8 +425,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>11. Container With Most Water - Medium</div>
-      <div>https://f88083.github.io/2024/01/31/11-Container-With-Most-Water-Medium/</div>
+      <div>54. Spiral Matrix - Medium</div>
+      <div>https://f88083.github.io/2024/03/10/54-Spiral-Matrix-Medium/</div>
     </div>
     <div class="license-meta">
       
@@ -414,7 +438,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>發布於</div>
-          <div>2024年1月31日</div>
+          <div>2024年3月10日</div>
         </div>
       
       
@@ -458,18 +482,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/31/121-Best-Time-to-Buy-and-Sell-Stock-Easy/" title="121. Best Time to Buy and Sell Stock - Easy">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">121. Best Time to Buy and Sell Stock - Easy</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/30/125-Valid-Palindrome-Easy/" title="125. Valid Palindrome - Easy">
-                        <span class="hidden-mobile">125. Valid Palindrome - Easy</span>
+                      <a href="/2024/03/09/8-String-to-Integer-atoi-Medium/" title="8. String to Integer (atoi) - Medium">
+                        <span class="hidden-mobile">8. String to Integer (atoi) - Medium</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

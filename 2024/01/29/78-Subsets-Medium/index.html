@@ -16,15 +16,15 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前往題目  之前寫過了，這次一看到就知道要用backtracking但是細節漏了一點 想法 用backtracking  思路 每次疊代加入當前array到答案裡 並且用下一個num繼續呼叫backtrack 循環結束前把最後一位去掉  Codeclass Solution &#123;     List&lt;List&lt;Integer&gt;&gt; res;          public List">
+    <meta name="description" content="前往題目  之前寫過了，這次一看到就知道要用backtracking但是細節漏了一點 想法 用backtracking  思路 每次疊代加入當前array到答案裡 並且用下一個num繼續呼叫backtrack 循環結束前把最後一位去掉  傳i + 1的原因是讓演算法不要取到同一個數字 Codeclass Solution &#123;     List&lt;List&lt;Integer&gt;&gt; r">
 <meta property="og:type" content="article">
 <meta property="og:title" content="78. Subsets - Medium">
 <meta property="og:url" content="https://f88083.github.io/2024/01/29/78-Subsets-Medium/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="前往題目  之前寫過了，這次一看到就知道要用backtracking但是細節漏了一點 想法 用backtracking  思路 每次疊代加入當前array到答案裡 並且用下一個num繼續呼叫backtrack 循環結束前把最後一位去掉  Codeclass Solution &#123;     List&lt;List&lt;Integer&gt;&gt; res;          public List">
+<meta property="og:description" content="前往題目  之前寫過了，這次一看到就知道要用backtracking但是細節漏了一點 想法 用backtracking  思路 每次疊代加入當前array到答案裡 並且用下一個num繼續呼叫backtrack 循環結束前把最後一位去掉  傳i + 1的原因是讓演算法不要取到同一個數字 Codeclass Solution &#123;     List&lt;List&lt;Integer&gt;&gt; r">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2024-01-29T15:49:02.000Z">
-<meta property="article:modified_time" content="2024-01-29T15:55:57.480Z">
+<meta property="article:modified_time" content="2024-03-10T14:51:11.516Z">
 <meta property="article:author" content="Simon Lai">
 <meta property="article:tag" content="Leetcode">
 <meta property="article:tag" content="心得">
@@ -253,7 +253,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          137 字
+          185 字
         
       </span>
     
@@ -317,6 +317,7 @@
 <li>並且用下一個<code>num</code>繼續呼叫<code>backtrack</code></li>
 <li>循環結束前把最後一位去掉</li>
 </ol>
+<p>傳<code>i + 1</code>的原因是讓演算法不要取到同一個數字</p>
 <h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
     <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">List</span><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span><span class="token punctuation">></span></span> res<span class="token punctuation">;</span>
     
@@ -338,6 +339,10 @@
         <span class="token punctuation">&#125;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h2 id="2024-03-10"><a href="#2024-03-10" class="headerlink" title="2024&#x2F;03&#x2F;10"></a>2024&#x2F;03&#x2F;10</h2><ul>
+<li>有寫出來，一個小<code>bug</code>，應該要是<code>i</code>的地方寫成<code>index</code>造成無限迴圈</li>
+</ul>
 
                 
               </div>
