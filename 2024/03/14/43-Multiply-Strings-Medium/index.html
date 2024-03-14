@@ -16,27 +16,26 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前往題目  想法 用掃描線，但實作卡住了  思路 用每個array的第一項排序 以第一項為基準開始疊代確認是否相交 如果不相交就更新區間的尾端 如果相交，多一個需要移除，並且取比較小的尾端，這樣可以減低之後再相交的機率  Code  &#x2F;&#x2F; T: O(nlogn) &#x2F;&#x2F; S: O(1) class Solution &#123;     public int eraseOverlapInterval">
+    <meta name="description" content="前往題目  思路總之就是模擬乘法過程，不過其中的中繼的數字要放法怎麼放，要加上原本的還是不加…  反轉兩個數字字符串 以直式乘法來看的話，是動下面，再動上面，例如23 * 45，是先3 * 5再3 * 4。和平常反過來 把結果放入陣列，兩個數字的位數加起來就是最多會有幾位 反轉陣列，去掉leading zeros 回傳答案  Code  class Solution &#123;     publ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="435. Non-overlapping Intervals - Medium">
-<meta property="og:url" content="https://f88083.github.io/2024/01/26/435-Non-overlapping-Intervals-Medium/index.html">
+<meta property="og:title" content="43. Multiply Strings - Medium">
+<meta property="og:url" content="https://f88083.github.io/2024/03/14/43-Multiply-Strings-Medium/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="前往題目  想法 用掃描線，但實作卡住了  思路 用每個array的第一項排序 以第一項為基準開始疊代確認是否相交 如果不相交就更新區間的尾端 如果相交，多一個需要移除，並且取比較小的尾端，這樣可以減低之後再相交的機率  Code  &#x2F;&#x2F; T: O(nlogn) &#x2F;&#x2F; S: O(1) class Solution &#123;     public int eraseOverlapInterval">
+<meta property="og:description" content="前往題目  思路總之就是模擬乘法過程，不過其中的中繼的數字要放法怎麼放，要加上原本的還是不加…  反轉兩個數字字符串 以直式乘法來看的話，是動下面，再動上面，例如23 * 45，是先3 * 5再3 * 4。和平常反過來 把結果放入陣列，兩個數字的位數加起來就是最多會有幾位 反轉陣列，去掉leading zeros 回傳答案  Code  class Solution &#123;     publ">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2024-01-26T11:38:53.000Z">
-<meta property="article:modified_time" content="2024-01-26T11:57:34.694Z">
+<meta property="article:published_time" content="2024-03-14T17:00:45.000Z">
+<meta property="article:modified_time" content="2024-03-14T17:17:07.096Z">
 <meta property="article:author" content="Simon Lai">
 <meta property="article:tag" content="Leetcode">
 <meta property="article:tag" content="心得">
-<meta property="article:tag" content="Array">
-<meta property="article:tag" content="Greedy">
-<meta property="article:tag" content="Dynamic Programming">
-<meta property="article:tag" content="Sorting">
+<meta property="article:tag" content="String">
+<meta property="article:tag" content="Math">
+<meta property="article:tag" content="Simulation">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>435. Non-overlapping Intervals - Medium - Simon Lai&#39;s Blog</title>
+  <title>43. Multiply Strings - Medium - Simon Lai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -231,7 +230,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="435. Non-overlapping Intervals - Medium"></span>
+            <span id="subtitle" data-typed-text="43. Multiply Strings - Medium"></span>
           
         </div>
 
@@ -242,8 +241,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-26 11:38" pubdate>
-          2024年1月26日 中午
+        <time datetime="2024-03-14 17:00" pubdate>
+          2024年3月14日 下午
         </time>
       </span>
     
@@ -254,7 +253,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          164 字
+          337 字
         
       </span>
     
@@ -265,7 +264,7 @@
         
         
         
-          1 分鐘
+          2 分鐘
         
       </span>
     
@@ -302,51 +301,86 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">435. Non-overlapping Intervals - Medium</h1>
+            <h1 id="seo-header">43. Multiply Strings - Medium</h1>
             
             
               <div class="markdown-body">
                 
-                <a class="btn" href="https://leetcode.com/problems/non-overlapping-intervals/description/"  title="435. Non-overlapping Intervals" target="_blank">前往題目</a>
+                <a class="btn" href="https://leetcode.com/problems/multiply-strings/description/"  title="43. Multiply Strings" target="_blank">前往題目</a>
 
-<h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul>
-<li>用掃描線，但實作卡住了</li>
-</ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
-<li>用每個<code>array</code>的第一項排序</li>
-<li>以第一項為基準開始疊代確認是否相交</li>
-<li>如果不相交就更新區間的尾端</li>
-<li>如果相交，多一個需要移除，並且取比較小的尾端，這樣可以減低之後再相交的機率</li>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>總之就是模擬乘法過程，不過其中的中繼的數字要放法怎麼放，要加上原本的還是不加…</p>
+<ol>
+<li>反轉兩個數字字符串</li>
+<li>以直式乘法來看的話，是動下面，再動上面，例如<code>23 * 45</code>，是先<code>3 * 5</code>再<code>3 * 4</code>。和平常反過來</li>
+<li>把結果放入陣列，兩個數字的位數加起來就是最多會有幾位</li>
+<li>反轉陣列，去掉<code>leading zeros</code></li>
+<li>回傳答案</li>
 </ol>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/nONCGxWoUfM" title="Non-Overlapping Intervals - Leetcode 435 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/1vZswirL8Y8" title="Multiply Strings - Leetcode 43 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// T: O(nlogn)</span>
-<span class="token comment">// S: O(1)</span>
-<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">eraseOverlapIntervals</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> intervals<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>intervals<span class="token punctuation">.</span>length <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span>
-            <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">multiply</span><span class="token punctuation">(</span><span class="token class-name">String</span> num1<span class="token punctuation">,</span> <span class="token class-name">String</span> num2<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// Base case</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">"0"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>num1<span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token string">"0"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>num2<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token string">"0"</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        
+        <span class="token comment">// 暫存陣列</span>
+        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> res <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>num1<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> num2<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-        <span class="token comment">// Sort by the first element</span>
-        <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>intervals<span class="token punctuation">,</span> <span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">compare</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> b<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> prevEnd <span class="token operator">=</span> intervals<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token comment">// 反轉字串</span>
+        num1 <span class="token operator">=</span> <span class="token function">reverseString</span><span class="token punctuation">(</span>num1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        num2 <span class="token operator">=</span> <span class="token function">reverseString</span><span class="token punctuation">(</span>num2<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="token comment">// Start from the second item</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> intervals<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token comment">// Not overlapping</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>prevEnd <span class="token operator">&lt;=</span> intervals<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                prevEnd <span class="token operator">=</span> intervals<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span> <span class="token comment">// Overlapping</span>
-                <span class="token operator">++</span>res<span class="token punctuation">;</span>
-                <span class="token comment">// Pick the smaller end to minimize the overlapping possibility</span>
-                prevEnd <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>prevEnd<span class="token punctuation">,</span> intervals<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 走過每位數字</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> num1<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> num2<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token comment">// 位數相乘</span>
+                <span class="token keyword">int</span> digit <span class="token operator">=</span> 
+                    <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>num1<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span>
+                    <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>num2<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment">// 加入當前位置</span>
+                res<span class="token punctuation">[</span>i <span class="token operator">+</span> j<span class="token punctuation">]</span> <span class="token operator">+=</span> digit<span class="token punctuation">;</span>
+                <span class="token comment">// 下一位放上當前數字的十位數</span>
+                res<span class="token punctuation">[</span>i <span class="token operator">+</span> j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+=</span> res<span class="token punctuation">[</span>i <span class="token operator">+</span> j<span class="token punctuation">]</span> <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">;</span>
+                <span class="token comment">// 當前位數只剩個位數</span>
+                res<span class="token punctuation">[</span>i <span class="token operator">+</span> j<span class="token punctuation">]</span> <span class="token operator">=</span> res<span class="token punctuation">[</span>i <span class="token operator">+</span> j<span class="token punctuation">]</span> <span class="token operator">%</span> <span class="token number">10</span><span class="token punctuation">;</span>
             <span class="token punctuation">&#125;</span>
         <span class="token punctuation">&#125;</span>
 
-        <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+        <span class="token comment">// 反轉陣列</span>
+        <span class="token function">reverseArrayInPlace</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// Avoid leading zeros</span>
+        <span class="token keyword">int</span> startIndex <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>startIndex <span class="token operator">&lt;</span> res<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>res<span class="token punctuation">[</span>startIndex<span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token operator">++</span>startIndex<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token comment">// 產生答案</span>
+        <span class="token class-name">StringBuilder</span> buildResponse <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> startIndex<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> res<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            buildResponse<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>res<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token keyword">return</span> buildResponse<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+    <span class="token keyword">private</span> <span class="token class-name">String</span> <span class="token function">reverseString</span><span class="token punctuation">(</span><span class="token class-name">String</span> s<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">StringBuilder</span> reversedS <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringBuilder</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        reversedS<span class="token punctuation">.</span><span class="token function">reverse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> reversedS<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">reverseArrayInPlace</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> arr<span class="token punctuation">.</span>length <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">int</span> temp <span class="token operator">=</span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span>arr<span class="token punctuation">.</span>length <span class="token operator">-</span> i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            arr<span class="token punctuation">[</span>arr<span class="token punctuation">.</span>length <span class="token operator">-</span> i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
                 
               </div>
@@ -391,13 +425,11 @@
       
         <a href="/tags/%E5%BF%83%E5%BE%97/" class="print-no-link">#心得</a>
       
-        <a href="/tags/Array/" class="print-no-link">#Array</a>
+        <a href="/tags/String/" class="print-no-link">#String</a>
       
-        <a href="/tags/Greedy/" class="print-no-link">#Greedy</a>
+        <a href="/tags/Math/" class="print-no-link">#Math</a>
       
-        <a href="/tags/Dynamic-Programming/" class="print-no-link">#Dynamic Programming</a>
-      
-        <a href="/tags/Sorting/" class="print-no-link">#Sorting</a>
+        <a href="/tags/Simulation/" class="print-no-link">#Simulation</a>
       
     </div>
   
@@ -409,8 +441,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>435. Non-overlapping Intervals - Medium</div>
-      <div>https://f88083.github.io/2024/01/26/435-Non-overlapping-Intervals-Medium/</div>
+      <div>43. Multiply Strings - Medium</div>
+      <div>https://f88083.github.io/2024/03/14/43-Multiply-Strings-Medium/</div>
     </div>
     <div class="license-meta">
       
@@ -422,7 +454,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>發布於</div>
-          <div>2024年1月26日</div>
+          <div>2024年3月14日</div>
         </div>
       
       
@@ -466,18 +498,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/27/409-Longest-Palindrome-Easy/" title="409. Longest Palindrome - Easy">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">409. Longest Palindrome - Easy</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/25/380-Insert-Delete-GetRandom-O-1-Medium/" title="380. Insert Delete GetRandom O(1) - Medium">
-                        <span class="hidden-mobile">380. Insert Delete GetRandom O(1) - Medium</span>
+                      <a href="/2024/03/13/202-Happy-Number-Easy/" title="202. Happy Number - Easy">
+                        <span class="hidden-mobile">202. Happy Number - Easy</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
