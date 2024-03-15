@@ -16,26 +16,27 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前往題目  思路總之就是模擬乘法過程，不過其中的中繼的數字要放法怎麼放，要加上原本的還是不加…  反轉兩個數字字符串 以直式乘法來看的話，是動下面，再動上面，例如23 * 45，是先3 * 5再3 * 4。和平常反過來 把結果放入陣列，兩個數字的位數加起來就是最多會有幾位 反轉陣列，去掉leading zeros 回傳答案  Code  class Solution &#123;     publ">
+    <meta name="description" content="前往題目  想法 確定對角線 四邊等長 四個角90°  思路沒想到對角線就可以確定另外兩個點😭 Add  加入列表，並且紀錄個數  Count  疊代列表中所有的點，根據傳入的點算x1 - x2 &#x3D;&#x3D; y1 - y2，如果是的話就代表這兩點可以繪製出正方形 確認另外兩點是否在列表中 存在就把個數相乘，因為重複的點可再和其他點組成正方形，即便位置一模一樣(題目設定)  Code  class De">
 <meta property="og:type" content="article">
-<meta property="og:title" content="43. Multiply Strings - Medium">
-<meta property="og:url" content="https://f88083.github.io/2024/03/14/43-Multiply-Strings-Medium/index.html">
+<meta property="og:title" content="2013. Detect Squares - Medium">
+<meta property="og:url" content="https://f88083.github.io/2024/03/15/2013-Detect-Squares-Medium/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="前往題目  思路總之就是模擬乘法過程，不過其中的中繼的數字要放法怎麼放，要加上原本的還是不加…  反轉兩個數字字符串 以直式乘法來看的話，是動下面，再動上面，例如23 * 45，是先3 * 5再3 * 4。和平常反過來 把結果放入陣列，兩個數字的位數加起來就是最多會有幾位 反轉陣列，去掉leading zeros 回傳答案  Code  class Solution &#123;     publ">
+<meta property="og:description" content="前往題目  想法 確定對角線 四邊等長 四個角90°  思路沒想到對角線就可以確定另外兩個點😭 Add  加入列表，並且紀錄個數  Count  疊代列表中所有的點，根據傳入的點算x1 - x2 &#x3D;&#x3D; y1 - y2，如果是的話就代表這兩點可以繪製出正方形 確認另外兩點是否在列表中 存在就把個數相乘，因為重複的點可再和其他點組成正方形，即便位置一模一樣(題目設定)  Code  class De">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2024-03-14T17:00:45.000Z">
-<meta property="article:modified_time" content="2024-03-14T17:17:07.096Z">
+<meta property="article:published_time" content="2024-03-15T13:35:37.000Z">
+<meta property="article:modified_time" content="2024-03-15T13:44:53.685Z">
 <meta property="article:author" content="Simon Lai">
 <meta property="article:tag" content="Leetcode">
 <meta property="article:tag" content="心得">
-<meta property="article:tag" content="String">
-<meta property="article:tag" content="Math">
-<meta property="article:tag" content="Simulation">
+<meta property="article:tag" content="Array">
+<meta property="article:tag" content="Hash Table">
+<meta property="article:tag" content="Design">
+<meta property="article:tag" content="Counting">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>43. Multiply Strings - Medium - Simon Lai&#39;s Blog</title>
+  <title>2013. Detect Squares - Medium - Simon Lai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -230,7 +231,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="43. Multiply Strings - Medium"></span>
+            <span id="subtitle" data-typed-text="2013. Detect Squares - Medium"></span>
           
         </div>
 
@@ -241,8 +242,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-03-14 17:00" pubdate>
-          2024年3月14日 下午
+        <time datetime="2024-03-15 13:35" pubdate>
+          2024年3月15日 下午
         </time>
       </span>
     
@@ -253,7 +254,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          337 字
+          328 字
         
       </span>
     
@@ -301,86 +302,72 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">43. Multiply Strings - Medium</h1>
+            <h1 id="seo-header">2013. Detect Squares - Medium</h1>
             
             
               <div class="markdown-body">
                 
-                <a class="btn" href="https://leetcode.com/problems/multiply-strings/description/"  title="43. Multiply Strings" target="_blank">前往題目</a>
+                <a class="btn" href="https://leetcode.com/problems/detect-squares/description/"  title="2013. Detect Squares" target="_blank">前往題目</a>
 
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>總之就是模擬乘法過程，不過其中的中繼的數字要放法怎麼放，要加上原本的還是不加…</p>
+<h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul>
+<li>確定對角線</li>
+<li>四邊等長</li>
+<li>四個角<code>90°</code></li>
+</ul>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>沒想到對角線就可以確定另外兩個點😭</p>
+<p>Add</p>
 <ol>
-<li>反轉兩個數字字符串</li>
-<li>以直式乘法來看的話，是動下面，再動上面，例如<code>23 * 45</code>，是先<code>3 * 5</code>再<code>3 * 4</code>。和平常反過來</li>
-<li>把結果放入陣列，兩個數字的位數加起來就是最多會有幾位</li>
-<li>反轉陣列，去掉<code>leading zeros</code></li>
-<li>回傳答案</li>
+<li>加入列表，並且紀錄個數</li>
 </ol>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/1vZswirL8Y8" title="Multiply Strings - Leetcode 43 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<p>Count</p>
+<ol>
+<li>疊代列表中所有的點，根據傳入的點算<code>x1 - x2 == y1 - y2</code>，如果是的話就代表這兩點可以繪製出正方形</li>
+<li>確認另外兩點是否在列表中</li>
+<li>存在就把個數相乘，因為重複的點可再和其他點組成正方形，即便位置一模一樣(題目設定)</li>
+</ol>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/bahebearrDc" title="Detect Squares - Leetcode Weekly Contest - Problem 2013 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">multiply</span><span class="token punctuation">(</span><span class="token class-name">String</span> num1<span class="token punctuation">,</span> <span class="token class-name">String</span> num2<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">// Base case</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">"0"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>num1<span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token string">"0"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>num2<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">return</span> <span class="token string">"0"</span><span class="token punctuation">;</span>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">DetectSquares</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">></span> pointList<span class="token punctuation">;</span> <span class="token comment">// 紀錄點</span>
+    <span class="token keyword">private</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span></span> pointCount<span class="token punctuation">;</span> <span class="token comment">// 紀錄每個點的個數</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">DetectSquares</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        pointList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        pointCount <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> point<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">String</span> s <span class="token operator">=</span> point<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">","</span> <span class="token operator">+</span> point<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>pointCount<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// 有的話直接個數+1</span>
+            pointCount<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> pointCount<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// 沒有的話初始化個數以及加入列表</span>
+            pointCount<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            pointList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>point<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">&#125;</span>
-        
-        <span class="token comment">// 暫存陣列</span>
-        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> res <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>num1<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> num2<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-        <span class="token comment">// 反轉字串</span>
-        num1 <span class="token operator">=</span> <span class="token function">reverseString</span><span class="token punctuation">(</span>num1<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        num2 <span class="token operator">=</span> <span class="token function">reverseString</span><span class="token punctuation">(</span>num2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> point<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">int</span> curX <span class="token operator">=</span> point<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> curY <span class="token operator">=</span> point<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
 
-        <span class="token comment">// 走過每位數字</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> num1<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> num2<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                <span class="token comment">// 位數相乘</span>
-                <span class="token keyword">int</span> digit <span class="token operator">=</span> 
-                    <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>num1<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span>
-                    <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>num2<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token comment">// 加入當前位置</span>
-                res<span class="token punctuation">[</span>i <span class="token operator">+</span> j<span class="token punctuation">]</span> <span class="token operator">+=</span> digit<span class="token punctuation">;</span>
-                <span class="token comment">// 下一位放上當前數字的十位數</span>
-                res<span class="token punctuation">[</span>i <span class="token operator">+</span> j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+=</span> res<span class="token punctuation">[</span>i <span class="token operator">+</span> j<span class="token punctuation">]</span> <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">;</span>
-                <span class="token comment">// 當前位數只剩個位數</span>
-                res<span class="token punctuation">[</span>i <span class="token operator">+</span> j<span class="token punctuation">]</span> <span class="token operator">=</span> res<span class="token punctuation">[</span>i <span class="token operator">+</span> j<span class="token punctuation">]</span> <span class="token operator">%</span> <span class="token number">10</span><span class="token punctuation">;</span>
+        <span class="token comment">// Iterate all the points</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> p <span class="token operator">:</span> pointList<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// 確認與點p可以形成正方形，以及面積非0</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span>p<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">-</span> curX<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span>p<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> curY<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> p<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">!=</span> curX <span class="token operator">&amp;&amp;</span> p<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">!=</span> curY<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token comment">// 推算出另外兩個點</span>
+                <span class="token class-name">String</span> point1 <span class="token operator">=</span> curX <span class="token operator">+</span> <span class="token string">","</span> <span class="token operator">+</span> p<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token class-name">String</span> point2 <span class="token operator">=</span> p<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">","</span> <span class="token operator">+</span> curY<span class="token punctuation">;</span>
+                <span class="token comment">// 有的話就相乘，沒有的時候就為0</span>
+                res <span class="token operator">+=</span> pointCount<span class="token punctuation">.</span><span class="token function">getOrDefault</span><span class="token punctuation">(</span>point1<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">*</span> pointCount<span class="token punctuation">.</span><span class="token function">getOrDefault</span><span class="token punctuation">(</span>point2<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">*</span> pointCount<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>p<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">","</span> <span class="token operator">+</span> p<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             <span class="token punctuation">&#125;</span>
         <span class="token punctuation">&#125;</span>
-
-        <span class="token comment">// 反轉陣列</span>
-        <span class="token function">reverseArrayInPlace</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token comment">// Avoid leading zeros</span>
-        <span class="token keyword">int</span> startIndex <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>startIndex <span class="token operator">&lt;</span> res<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>res<span class="token punctuation">[</span>startIndex<span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
-            <span class="token operator">++</span>startIndex<span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-
-        <span class="token comment">// 產生答案</span>
-        <span class="token class-name">StringBuilder</span> buildResponse <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> startIndex<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> res<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            buildResponse<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>res<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-
-        <span class="token keyword">return</span> buildResponse<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> res<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-
-    <span class="token keyword">private</span> <span class="token class-name">String</span> <span class="token function">reverseString</span><span class="token punctuation">(</span><span class="token class-name">String</span> s<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token class-name">StringBuilder</span> reversedS <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringBuilder</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        reversedS<span class="token punctuation">.</span><span class="token function">reverse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> reversedS<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-
-    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">reverseArrayInPlace</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> arr<span class="token punctuation">.</span>length <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">int</span> temp <span class="token operator">=</span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span>arr<span class="token punctuation">.</span>length <span class="token operator">-</span> i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-            arr<span class="token punctuation">[</span>arr<span class="token punctuation">.</span>length <span class="token operator">-</span> i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
                 
               </div>
@@ -425,11 +412,13 @@
       
         <a href="/tags/%E5%BF%83%E5%BE%97/" class="print-no-link">#心得</a>
       
-        <a href="/tags/String/" class="print-no-link">#String</a>
+        <a href="/tags/Array/" class="print-no-link">#Array</a>
       
-        <a href="/tags/Math/" class="print-no-link">#Math</a>
+        <a href="/tags/Hash-Table/" class="print-no-link">#Hash Table</a>
       
-        <a href="/tags/Simulation/" class="print-no-link">#Simulation</a>
+        <a href="/tags/Design/" class="print-no-link">#Design</a>
+      
+        <a href="/tags/Counting/" class="print-no-link">#Counting</a>
       
     </div>
   
@@ -441,8 +430,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>43. Multiply Strings - Medium</div>
-      <div>https://f88083.github.io/2024/03/14/43-Multiply-Strings-Medium/</div>
+      <div>2013. Detect Squares - Medium</div>
+      <div>https://f88083.github.io/2024/03/15/2013-Detect-Squares-Medium/</div>
     </div>
     <div class="license-meta">
       
@@ -454,7 +443,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>發布於</div>
-          <div>2024年3月14日</div>
+          <div>2024年3月15日</div>
         </div>
       
       
@@ -498,18 +487,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/03/15/2013-Detect-Squares-Medium/" title="2013. Detect Squares - Medium">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2013. Detect Squares - Medium</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/03/13/202-Happy-Number-Easy/" title="202. Happy Number - Easy">
-                        <span class="hidden-mobile">202. Happy Number - Easy</span>
+                      <a href="/2024/03/14/43-Multiply-Strings-Medium/" title="43. Multiply Strings - Medium">
+                        <span class="hidden-mobile">43. Multiply Strings - Medium</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
