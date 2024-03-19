@@ -16,29 +16,26 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前往題目  想法 只想到了用HashSet存，然後比較，雖然是時間是O(N)但空間也是，不符合題目要求  思路這題大致有兩種做法，Bit manipulation和Sum Bit manipulation  算0~n的XOR應該是多少 再用上面的結果去XOR實際的nums陣列 因為XOR的特性是與自己相同的XOR完會是0，所以全部XOR一遍的結果就是答案，也就是缺失的那個  Sum  可以用公式直">
+    <meta name="description" content="前往題目  想法 用DP然後分買與不買  思路可以用複雜的dp但也可以藉由觀察找到最簡單又最優的解  從第二個開始疊代，每次都和前一個比較 如果比上一個大就加到profit裡  因為都在高點賣出，而且可以當天買進，不需要冷卻時間 Code  class Solution &#123;     public int maxProfit(int[] prices) &#123;          in">
 <meta property="og:type" content="article">
-<meta property="og:title" content="268. Missing Number - Easy">
-<meta property="og:url" content="https://f88083.github.io/2024/01/14/268-Missing-Number-Easy/index.html">
+<meta property="og:title" content="122. Best Time to Buy and Sell Stock II - Medium">
+<meta property="og:url" content="https://f88083.github.io/2024/03/19/122-Best-Time-to-Buy-and-Sell-Stock-II-Medium/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="前往題目  想法 只想到了用HashSet存，然後比較，雖然是時間是O(N)但空間也是，不符合題目要求  思路這題大致有兩種做法，Bit manipulation和Sum Bit manipulation  算0~n的XOR應該是多少 再用上面的結果去XOR實際的nums陣列 因為XOR的特性是與自己相同的XOR完會是0，所以全部XOR一遍的結果就是答案，也就是缺失的那個  Sum  可以用公式直">
+<meta property="og:description" content="前往題目  想法 用DP然後分買與不買  思路可以用複雜的dp但也可以藉由觀察找到最簡單又最優的解  從第二個開始疊代，每次都和前一個比較 如果比上一個大就加到profit裡  因為都在高點賣出，而且可以當天買進，不需要冷卻時間 Code  class Solution &#123;     public int maxProfit(int[] prices) &#123;          in">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2024-01-14T15:20:33.000Z">
-<meta property="article:modified_time" content="2024-01-14T15:33:42.411Z">
+<meta property="article:published_time" content="2024-03-19T10:54:40.000Z">
+<meta property="article:modified_time" content="2024-03-19T10:58:00.588Z">
 <meta property="article:author" content="Simon Lai">
 <meta property="article:tag" content="Leetcode">
 <meta property="article:tag" content="心得">
 <meta property="article:tag" content="Array">
-<meta property="article:tag" content="Hash Table">
-<meta property="article:tag" content="Math">
-<meta property="article:tag" content="Sorting">
-<meta property="article:tag" content="Bit Manipulation">
-<meta property="article:tag" content="Binary Search">
+<meta property="article:tag" content="Greedy">
+<meta property="article:tag" content="Dynamic Programming">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>268. Missing Number - Easy - Simon Lai&#39;s Blog</title>
+  <title>122. Best Time to Buy and Sell Stock II - Medium - Simon Lai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -233,7 +230,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="268. Missing Number - Easy"></span>
+            <span id="subtitle" data-typed-text="122. Best Time to Buy and Sell Stock II - Medium"></span>
           
         </div>
 
@@ -244,8 +241,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-14 15:20" pubdate>
-          2024年1月14日 下午
+        <time datetime="2024-03-19 10:54" pubdate>
+          2024年3月19日 上午
         </time>
       </span>
     
@@ -256,7 +253,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          222 字
+          141 字
         
       </span>
     
@@ -267,7 +264,7 @@
         
         
         
-          2 分鐘
+          1 分鐘
         
       </span>
     
@@ -304,60 +301,35 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">268. Missing Number - Easy</h1>
+            <h1 id="seo-header">122. Best Time to Buy and Sell Stock II - Medium</h1>
             
             
               <div class="markdown-body">
                 
-                <a class="btn" href="https://leetcode.com/problems/missing-number/description/"  title="268. Missing Number" target="_blank">前往題目</a>
+                <a class="btn" href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/description/"  title="122. Best Time to Buy and Sell Stock II" target="_blank">前往題目</a>
 
 <h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul>
-<li>只想到了用<code>HashSet</code>存，然後比較，雖然是時間是<code>O(N)</code>但空間也是，不符合題目要求</li>
+<li>用<code>DP</code>然後分買與不買</li>
 </ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>這題大致有兩種做法，<code>Bit manipulation</code>和<code>Sum</code></p>
-<p>Bit manipulation</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>可以用複雜的<code>dp</code>但也可以藉由觀察找到最簡單又最優的解</p>
 <ol>
-<li>算<code>0~n</code>的<code>XOR</code>應該是多少</li>
-<li>再用上面的結果去<code>XOR</code>實際的<code>nums</code>陣列</li>
-<li>因為<code>XOR</code>的特性是與自己相同的<code>XOR</code>完會是<code>0</code>，所以全部<code>XOR</code>一遍的結果就是答案，也就是缺失的那個</li>
+<li>從第二個開始疊代，每次都和前一個比較</li>
+<li>如果比上一個大就加到<code>profit</code>裡</li>
 </ol>
-<p>Sum</p>
-<ol>
-<li>可以用公式直接算出<code>0~n</code>的總和</li>
-<li>然後再算<code>nums</code>的總和，互減之後就是答案</li>
-</ol>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p>自己寫的，Time<code>O(N)</code>，Space<code>O(N)</code></p>
+<p>因為都在高點賣出，而且可以當天買進，不需要冷卻時間</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/3SJ3pUkPQMc" title="Best Time to Buy and Sell a Stock II - Leetcode 122 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 <figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">missingNumber</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> exist <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashSet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">maxProfit</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> prices<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
 
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            exist<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
 
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>exist<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                <span class="token keyword">return</span> i<span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> prices<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// 與前一個比較</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>prices<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> prices<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token comment">// 比較大就加到profit裡</span>
+                res <span class="token operator">+=</span> <span class="token punctuation">(</span>prices<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> prices<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">return</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
-
-<iframe width="100%" height="500" src="https://www.youtube.com/embed/WnPLSRLSANE" title="Missing Number - Blind 75 - Leetcode 268 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-<p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/missing-number/solutions/69786/3-different-ideas-xor-sum-binary-search-java-code/">Bit manipulation</a></p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">missingNumber</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">// Because we can iterate until nums[nums.length]</span>
-        <span class="token comment">// So we put its length first</span>
-        <span class="token keyword">int</span> res <span class="token operator">=</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
-
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token comment">// XOR theoretically number</span>
-            res <span class="token operator">^=</span> i<span class="token punctuation">;</span>
-            <span class="token comment">// XOR the number in the array</span>
-            res <span class="token operator">^=</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
         <span class="token punctuation">&#125;</span>
 
         <span class="token keyword">return</span> res<span class="token punctuation">;</span>
@@ -386,7 +358,7 @@
   
     <span>></span>
     
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
   
   
 
@@ -409,15 +381,9 @@
       
         <a href="/tags/Array/" class="print-no-link">#Array</a>
       
-        <a href="/tags/Hash-Table/" class="print-no-link">#Hash Table</a>
+        <a href="/tags/Greedy/" class="print-no-link">#Greedy</a>
       
-        <a href="/tags/Math/" class="print-no-link">#Math</a>
-      
-        <a href="/tags/Sorting/" class="print-no-link">#Sorting</a>
-      
-        <a href="/tags/Bit-Manipulation/" class="print-no-link">#Bit Manipulation</a>
-      
-        <a href="/tags/Binary-Search/" class="print-no-link">#Binary Search</a>
+        <a href="/tags/Dynamic-Programming/" class="print-no-link">#Dynamic Programming</a>
       
     </div>
   
@@ -429,8 +395,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>268. Missing Number - Easy</div>
-      <div>https://f88083.github.io/2024/01/14/268-Missing-Number-Easy/</div>
+      <div>122. Best Time to Buy and Sell Stock II - Medium</div>
+      <div>https://f88083.github.io/2024/03/19/122-Best-Time-to-Buy-and-Sell-Stock-II-Medium/</div>
     </div>
     <div class="license-meta">
       
@@ -442,7 +408,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>發布於</div>
-          <div>2024年1月14日</div>
+          <div>2024年3月19日</div>
         </div>
       
       
@@ -486,9 +452,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/14/179-Largest-Number-Medium/" title="179. Largest Number - Medium">
+                      <a href="/2024/03/19/554-Brick-Wall-Medium/" title="554. Brick Wall - Medium">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">179. Largest Number - Medium</span>
+                        <span class="hidden-mobile">554. Brick Wall - Medium</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -496,8 +462,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/14/101-Symmetric-Tree-Easy/" title="101. Symmetric Tree - Easy">
-                        <span class="hidden-mobile">101. Symmetric Tree - Easy</span>
+                      <a href="/2024/03/18/199-Binary-Tree-Right-Side-View-Medium/" title="199. Binary Tree Right Side View - Medium">
+                        <span class="hidden-mobile">199. Binary Tree Right Side View - Medium</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

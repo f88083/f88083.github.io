@@ -16,29 +16,25 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前往題目  想法 只想到了用HashSet存，然後比較，雖然是時間是O(N)但空間也是，不符合題目要求  思路這題大致有兩種做法，Bit manipulation和Sum Bit manipulation  算0~n的XOR應該是多少 再用上面的結果去XOR實際的nums陣列 因為XOR的特性是與自己相同的XOR完會是0，所以全部XOR一遍的結果就是答案，也就是缺失的那個  Sum  可以用公式直">
+    <meta name="description" content="前往題目  想法 如何找出gap?  思路找出Gap很簡單，直接給他們index代表他們就好  HashMap儲存gap編號以及數量 疊代每道牆，但忽略最後一個磚塊，不然會算到最右邊的cut(穿過0個磚塊) 更新gap的數量以及紀錄最大值 回傳牆的大小減去最大值，就是穿過的磚塊數  Code  class Solution &#123;     public int leastBricks(Lis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="268. Missing Number - Easy">
-<meta property="og:url" content="https://f88083.github.io/2024/01/14/268-Missing-Number-Easy/index.html">
+<meta property="og:title" content="554. Brick Wall - Medium">
+<meta property="og:url" content="https://f88083.github.io/2024/03/19/554-Brick-Wall-Medium/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="前往題目  想法 只想到了用HashSet存，然後比較，雖然是時間是O(N)但空間也是，不符合題目要求  思路這題大致有兩種做法，Bit manipulation和Sum Bit manipulation  算0~n的XOR應該是多少 再用上面的結果去XOR實際的nums陣列 因為XOR的特性是與自己相同的XOR完會是0，所以全部XOR一遍的結果就是答案，也就是缺失的那個  Sum  可以用公式直">
+<meta property="og:description" content="前往題目  想法 如何找出gap?  思路找出Gap很簡單，直接給他們index代表他們就好  HashMap儲存gap編號以及數量 疊代每道牆，但忽略最後一個磚塊，不然會算到最右邊的cut(穿過0個磚塊) 更新gap的數量以及紀錄最大值 回傳牆的大小減去最大值，就是穿過的磚塊數  Code  class Solution &#123;     public int leastBricks(Lis">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2024-01-14T15:20:33.000Z">
-<meta property="article:modified_time" content="2024-01-14T15:33:42.411Z">
+<meta property="article:published_time" content="2024-03-19T11:15:46.000Z">
+<meta property="article:modified_time" content="2024-03-19T11:44:38.032Z">
 <meta property="article:author" content="Simon Lai">
 <meta property="article:tag" content="Leetcode">
 <meta property="article:tag" content="心得">
 <meta property="article:tag" content="Array">
 <meta property="article:tag" content="Hash Table">
-<meta property="article:tag" content="Math">
-<meta property="article:tag" content="Sorting">
-<meta property="article:tag" content="Bit Manipulation">
-<meta property="article:tag" content="Binary Search">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>268. Missing Number - Easy - Simon Lai&#39;s Blog</title>
+  <title>554. Brick Wall - Medium - Simon Lai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -233,7 +229,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="268. Missing Number - Easy"></span>
+            <span id="subtitle" data-typed-text="554. Brick Wall - Medium"></span>
           
         </div>
 
@@ -244,8 +240,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-14 15:20" pubdate>
-          2024年1月14日 下午
+        <time datetime="2024-03-19 11:15" pubdate>
+          2024年3月19日 上午
         </time>
       </span>
     
@@ -256,7 +252,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          222 字
+          170 字
         
       </span>
     
@@ -267,7 +263,7 @@
         
         
         
-          2 分鐘
+          1 分鐘
         
       </span>
     
@@ -304,65 +300,50 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">268. Missing Number - Easy</h1>
+            <h1 id="seo-header">554. Brick Wall - Medium</h1>
             
             
               <div class="markdown-body">
                 
-                <a class="btn" href="https://leetcode.com/problems/missing-number/description/"  title="268. Missing Number" target="_blank">前往題目</a>
+                <a class="btn" href="https://leetcode.com/problems/brick-wall/description/"  title="554. Brick Wall" target="_blank">前往題目</a>
 
 <h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul>
-<li>只想到了用<code>HashSet</code>存，然後比較，雖然是時間是<code>O(N)</code>但空間也是，不符合題目要求</li>
+<li>如何找出<code>gap</code>?</li>
 </ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>這題大致有兩種做法，<code>Bit manipulation</code>和<code>Sum</code></p>
-<p>Bit manipulation</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>找出<code>Gap</code>很簡單，直接給他們<code>index</code>代表他們就好</p>
 <ol>
-<li>算<code>0~n</code>的<code>XOR</code>應該是多少</li>
-<li>再用上面的結果去<code>XOR</code>實際的<code>nums</code>陣列</li>
-<li>因為<code>XOR</code>的特性是與自己相同的<code>XOR</code>完會是<code>0</code>，所以全部<code>XOR</code>一遍的結果就是答案，也就是缺失的那個</li>
+<li><code>HashMap</code>儲存<code>gap</code>編號以及數量</li>
+<li>疊代每道牆，但忽略最後一個磚塊，不然會算到最右邊的<code>cut</code>(穿過0個磚塊)</li>
+<li>更新<code>gap</code>的數量以及紀錄最大值</li>
+<li>回傳牆的大小減去最大值，就是穿過的磚塊數</li>
 </ol>
-<p>Sum</p>
-<ol>
-<li>可以用公式直接算出<code>0~n</code>的總和</li>
-<li>然後再算<code>nums</code>的總和，互減之後就是答案</li>
-</ol>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p>自己寫的，Time<code>O(N)</code>，Space<code>O(N)</code></p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/Kkmv2h48ekw" title="Brick Wall - Leetcode 554 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 <figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">missingNumber</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> exist <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashSet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            exist<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>exist<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                <span class="token keyword">return</span> i<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">leastBricks</span><span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">List</span><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span><span class="token punctuation">></span></span> wall<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// gap index -> count</span>
+        <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span></span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        
+        <span class="token comment">// Go through all the walls</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> r <span class="token operator">:</span> wall<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// gap index</span>
+            <span class="token keyword">int</span> total <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            
+            <span class="token comment">// Ignore the last brick, can't include the right most cut</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> r<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token comment">// Calculate the gap index</span>
+                total <span class="token operator">+=</span> r<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment">// Record the maximum</span>
+                res <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>res<span class="token punctuation">,</span> map<span class="token punctuation">.</span><span class="token function">getOrDefault</span><span class="token punctuation">(</span>total<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment">// Update the count</span>
+                map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>total<span class="token punctuation">,</span> map<span class="token punctuation">.</span><span class="token function">getOrDefault</span><span class="token punctuation">(</span>total<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             <span class="token punctuation">&#125;</span>
         <span class="token punctuation">&#125;</span>
-        <span class="token keyword">return</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> wall<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> res<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
-
-<iframe width="100%" height="500" src="https://www.youtube.com/embed/WnPLSRLSANE" title="Missing Number - Blind 75 - Leetcode 268 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-<p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/missing-number/solutions/69786/3-different-ideas-xor-sum-binary-search-java-code/">Bit manipulation</a></p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">missingNumber</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">// Because we can iterate until nums[nums.length]</span>
-        <span class="token comment">// So we put its length first</span>
-        <span class="token keyword">int</span> res <span class="token operator">=</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
-
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token comment">// XOR theoretically number</span>
-            res <span class="token operator">^=</span> i<span class="token punctuation">;</span>
-            <span class="token comment">// XOR the number in the array</span>
-            res <span class="token operator">^=</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-
-        <span class="token keyword">return</span> res<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
                 
               </div>
@@ -386,7 +367,7 @@
   
     <span>></span>
     
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
   
   
 
@@ -411,14 +392,6 @@
       
         <a href="/tags/Hash-Table/" class="print-no-link">#Hash Table</a>
       
-        <a href="/tags/Math/" class="print-no-link">#Math</a>
-      
-        <a href="/tags/Sorting/" class="print-no-link">#Sorting</a>
-      
-        <a href="/tags/Bit-Manipulation/" class="print-no-link">#Bit Manipulation</a>
-      
-        <a href="/tags/Binary-Search/" class="print-no-link">#Binary Search</a>
-      
     </div>
   
 </div>
@@ -429,8 +402,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>268. Missing Number - Easy</div>
-      <div>https://f88083.github.io/2024/01/14/268-Missing-Number-Easy/</div>
+      <div>554. Brick Wall - Medium</div>
+      <div>https://f88083.github.io/2024/03/19/554-Brick-Wall-Medium/</div>
     </div>
     <div class="license-meta">
       
@@ -442,7 +415,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>發布於</div>
-          <div>2024年1月14日</div>
+          <div>2024年3月19日</div>
         </div>
       
       
@@ -486,18 +459,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/14/179-Largest-Number-Medium/" title="179. Largest Number - Medium">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">179. Largest Number - Medium</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/14/101-Symmetric-Tree-Easy/" title="101. Symmetric Tree - Easy">
-                        <span class="hidden-mobile">101. Symmetric Tree - Easy</span>
+                      <a href="/2024/03/19/122-Best-Time-to-Buy-and-Sell-Stock-II-Medium/" title="122. Best Time to Buy and Sell Stock II - Medium">
+                        <span class="hidden-mobile">122. Best Time to Buy and Sell Stock II - Medium</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
