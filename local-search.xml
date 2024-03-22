@@ -4,6 +4,185 @@
   
   
   <entry>
+    <title>705. Design HashSet - Easy</title>
+    <link href="/2024/03/22/705-Design-HashSet-Easy/"/>
+    <url>/2024/03/22/705-Design-HashSet-Easy/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/design-hashset/description/"  title="705. Design HashSet" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>和<code>hashmap</code>異曲同工之妙</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>簡單版:和<code>hashmap</code>那題一樣用同樣大小的<code>array</code></p><p>進階版:也和<code>hashmap</code>那題一樣，用<code>ListNode</code>和<code>chaining</code></p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><span class="label label-info">簡單版</span><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">MyHashSet</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">boolean</span><span class="token punctuation">[</span><span class="token punctuation">]</span> set<span class="token punctuation">;</span>    <span class="token keyword">public</span> <span class="token class-name">MyHashSet</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        set <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">boolean</span><span class="token punctuation">[</span><span class="token number">1000001</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span>set<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">int</span> key<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        set<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">remove</span><span class="token punctuation">(</span><span class="token keyword">int</span> key<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        set<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">contains</span><span class="token punctuation">(</span><span class="token keyword">int</span> key<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">return</span> set<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure><span class="label label-warning">TLE</span><p>不懂為何<code>TLE</code>，題目不是就要求這種解法嗎</p><iframe width="100%" height="500" src="https://www.youtube.com/embed/VymjPQUXjL8" title="Design HashSet - Leetcode 705 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">MyHashSet</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">private</span> <span class="token keyword">class</span> <span class="token class-name">ListNode</span><span class="token punctuation">&#123;</span>        <span class="token keyword">int</span> key<span class="token punctuation">;</span>        <span class="token class-name">ListNode</span> next<span class="token punctuation">;</span>        <span class="token keyword">public</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span><span class="token keyword">int</span> key<span class="token punctuation">,</span> <span class="token class-name">ListNode</span> next<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">this</span><span class="token punctuation">.</span>key <span class="token operator">=</span> key<span class="token punctuation">;</span>            <span class="token keyword">this</span><span class="token punctuation">.</span>next <span class="token operator">=</span> next<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>    <span class="token punctuation">&#125;</span>    <span class="token class-name">ListNode</span><span class="token punctuation">[</span><span class="token punctuation">]</span> set<span class="token punctuation">;</span>    <span class="token keyword">public</span> <span class="token class-name">MyHashSet</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        set <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">[</span><span class="token number">1000</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span>set<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token keyword">int</span> <span class="token function">hash</span><span class="token punctuation">(</span><span class="token keyword">int</span> key<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">return</span> key <span class="token operator">%</span> set<span class="token punctuation">.</span>length<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">int</span> key<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token class-name">ListNode</span> cur <span class="token operator">=</span> set<span class="token punctuation">[</span><span class="token function">hash</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>cur <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> cur<span class="token punctuation">.</span>next <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>cur<span class="token punctuation">.</span>next<span class="token punctuation">.</span>key <span class="token operator">==</span> key<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token keyword">return</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>            <span class="token comment">// Update pointer</span>            cur <span class="token operator">=</span> cur<span class="token punctuation">.</span>next<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// Not found, adding</span>        cur<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">remove</span><span class="token punctuation">(</span><span class="token keyword">int</span> key<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token class-name">ListNode</span> cur <span class="token operator">=</span> set<span class="token punctuation">[</span><span class="token function">hash</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>cur <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> cur<span class="token punctuation">.</span>next <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// Found, removing</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>cur<span class="token punctuation">.</span>next<span class="token punctuation">.</span>key <span class="token operator">==</span> key<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                cur<span class="token punctuation">.</span>next <span class="token operator">=</span> cur<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next<span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>            cur <span class="token operator">=</span> cur<span class="token punctuation">.</span>next<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">contains</span><span class="token punctuation">(</span><span class="token keyword">int</span> key<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token class-name">ListNode</span> cur <span class="token operator">=</span> set<span class="token punctuation">[</span><span class="token function">hash</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">.</span>next<span class="token punctuation">;</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>cur <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// Found</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>cur<span class="token punctuation">.</span>key <span class="token operator">==</span> key<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// Not found</span>        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Easy</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Array</tag>
+      
+      <tag>Hash Table</tag>
+      
+      <tag>Linked List</tag>
+      
+      <tag>Design</tag>
+      
+      <tag>Hash Function</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>706. Design HashMap - Easy</title>
+    <link href="/2024/03/22/706-Design-HashMap-Easy/"/>
+    <url>/2024/03/22/706-Design-HashMap-Easy/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/design-hashmap/description/"  title="706. Design HashMap" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li><code>key-value</code>，<code>key</code>是唯一的，那能用<code>hashset</code>嗎?題目說不能用<code>built-in hash table</code>，<code>hashset</code>算<code>hash table</code>嗎?維基:<code>In computing, a hash table, also known as a hash map or a hash set</code>，所以不能用<code>hash set</code></li><li>那是要手動運算<code>hashcode</code>?</li><li>不用<code>hash table</code>又想要<code>get</code>可以<code>O(1)</code>時間完成，只能透過index直接取，如果是陣列的話</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>簡單版:直接初始化陣列大小為題目的數字範圍</p><p>進階版:應用<code>hashmap</code>概念，<code>hash</code>與<code>chaining</code></p><p><code>ListNode</code>:每個<code>hashcode</code>的位置都使用鏈表來儲存多個不同的<code>key</code><br>初始化:一個大小適合的陣列，放好<code>ListNode</code><br><code>hash</code>:<code>key</code>取餘<code>map</code>的大小，這樣就能保證每個<code>key</code>都映射到<code>map</code>裡不會出界<br><code>put</code>:算出<code>hash</code>，根據<code>hash</code>定位，疊代<code>ListNode</code>，有找到相同<code>key</code>就更新值，沒有的話就在鏈表尾巴加入<br><code>get</code>:算出<code>hash</code>，定位，疊代，沒找到就回傳<code>-1</code><br><code>remove</code>:算出<code>hash</code>，定位，找到就刪除並且拼接鏈表，沒找到無所謂</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><span class="label label-info">簡單版</span><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">MyHashMap</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> map<span class="token punctuation">;</span>    <span class="token keyword">public</span> <span class="token class-name">MyHashMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">1000001</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span>map<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">put</span><span class="token punctuation">(</span><span class="token keyword">int</span> key<span class="token punctuation">,</span> <span class="token keyword">int</span> value<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        map<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> value<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token keyword">int</span> key<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">return</span> map<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">remove</span><span class="token punctuation">(</span><span class="token keyword">int</span> key<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        map<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure><span class="label label-info">進階版</span><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">MyHashMap</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">class</span> <span class="token class-name">ListNode</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span> key<span class="token punctuation">;</span>        <span class="token keyword">int</span> val<span class="token punctuation">;</span>        <span class="token class-name">ListNode</span> next<span class="token punctuation">;</span>        <span class="token keyword">public</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span><span class="token keyword">int</span> key<span class="token punctuation">,</span> <span class="token keyword">int</span> val<span class="token punctuation">,</span> <span class="token class-name">ListNode</span> next<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">this</span><span class="token punctuation">.</span>key <span class="token operator">=</span> key<span class="token punctuation">;</span>            <span class="token keyword">this</span><span class="token punctuation">.</span>val <span class="token operator">=</span> val<span class="token punctuation">;</span>            <span class="token keyword">this</span><span class="token punctuation">.</span>next <span class="token operator">=</span> next<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>    <span class="token punctuation">&#125;</span>    <span class="token class-name">ListNode</span><span class="token punctuation">[</span><span class="token punctuation">]</span> map<span class="token punctuation">;</span>    <span class="token keyword">public</span> <span class="token class-name">MyHashMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">[</span><span class="token number">1000</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span>map<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token keyword">int</span> <span class="token function">hash</span><span class="token punctuation">(</span><span class="token keyword">int</span> key<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">return</span> key <span class="token operator">%</span> map<span class="token punctuation">.</span>length<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">put</span><span class="token punctuation">(</span><span class="token keyword">int</span> key<span class="token punctuation">,</span> <span class="token keyword">int</span> value<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token comment">// 從dummy node開始</span>        <span class="token class-name">ListNode</span> cur <span class="token operator">=</span> map<span class="token punctuation">[</span><span class="token function">hash</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token comment">// 不要走到最後的null，這樣才能加入新的key</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>cur<span class="token punctuation">.</span>next <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// 找到相同key</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>cur<span class="token punctuation">.</span>next<span class="token punctuation">.</span>key <span class="token operator">==</span> key<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                cur<span class="token punctuation">.</span>next<span class="token punctuation">.</span>val <span class="token operator">=</span> value<span class="token punctuation">;</span>                <span class="token keyword">return</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>            <span class="token comment">// 換下一個</span>            cur <span class="token operator">=</span> cur<span class="token punctuation">.</span>next<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// 沒找到，加入新的key-value</span>        cur<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token keyword">int</span> key<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token comment">// 從第一個node開始，不是dummynode</span>        <span class="token class-name">ListNode</span> cur <span class="token operator">=</span> map<span class="token punctuation">[</span><span class="token function">hash</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">.</span>next<span class="token punctuation">;</span>        <span class="token comment">// 直到到null</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>cur <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>cur<span class="token punctuation">.</span>key <span class="token operator">==</span> key<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token keyword">return</span> cur<span class="token punctuation">.</span>val<span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>            cur <span class="token operator">=</span> cur<span class="token punctuation">.</span>next<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">remove</span><span class="token punctuation">(</span><span class="token keyword">int</span> key<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token comment">// 從dummynode開始</span>        <span class="token class-name">ListNode</span> cur <span class="token operator">=</span> map<span class="token punctuation">[</span><span class="token function">hash</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token comment">// 確保當前以及下一個不是null，這樣找到的時候要remove才方便</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>cur <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> cur<span class="token punctuation">.</span>next <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>cur<span class="token punctuation">.</span>next<span class="token punctuation">.</span>key <span class="token operator">==</span> key<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                cur<span class="token punctuation">.</span>next <span class="token operator">=</span> cur<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next<span class="token punctuation">;</span>                <span class="token keyword">return</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>            cur <span class="token operator">=</span> cur<span class="token punctuation">.</span>next<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Easy</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Array</tag>
+      
+      <tag>Hash Table</tag>
+      
+      <tag>Linked List</tag>
+      
+      <tag>Design</tag>
+      
+      <tag>Hash Function</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>523. Continuous Subarray Sum - Medium</title>
+    <link href="/2024/03/21/523-Continuous-Subarray-Sum-Medium/"/>
+    <url>/2024/03/21/523-Continuous-Subarray-Sum-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/continuous-subarray-sum/"  title="523. Continuous Subarray Sum" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li><code>the sum of the elements of the subarray is a multiple of k</code>: 判斷是否整除就好</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>又是一題大家都說沒寫過怎麼可能在面試寫出來的題目😂</p><p>關鍵是建立<code>prefixSum map</code>，<code>prefix sum -&gt; index</code></p><ol><li>先加入<code>0, -1</code>到<code>map</code>裡，防止遇到<code>0</code>就以為是答案的<code>edge case</code>，因為至少要<code>2</code>個數字組合起來</li><li>疊代給定的陣列，每次加上當前數字，並且計算當前總和<code>mod k</code></li><li>如果<code>map</code>裡沒有這個<code>prefix sum</code>就加入</li><li>有的話看看當前的指針是否和<code>map</code>裡紀錄的<code>index</code>相差超過<code>1</code>，有就代表找到了</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/OKcrLfR-8mE" title="Continuous Subarray Sum - Leetcode 523 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">checkSubarraySum</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span></span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> total <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// 更新prefix sum</span>            total <span class="token operator">+=</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>            <span class="token comment">// 算餘數</span>            <span class="token keyword">int</span> r <span class="token operator">=</span> total <span class="token operator">%</span> k<span class="token punctuation">;</span>            <span class="token comment">// 如果沒找到餘數</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>map<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>r<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">-</span> map<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 找到餘數並且與當前相差超過1個位置</span>                <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Array</tag>
+      
+      <tag>Math</tag>
+      
+      <tag>Hash Table</tag>
+      
+      <tag>Prefix Sum</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>1929. Concatenation of Array - Easy</title>
+    <link href="/2024/03/21/1929-Concatenation-of-Array-Easy/"/>
+    <url>/2024/03/21/1929-Concatenation-of-Array-Easy/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/concatenation-of-array/description/"  title="1929. Concatenation of Array" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>串接起來就好</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>疊代新的陣列(原始的兩倍)，並使用<code>index</code>變數來紀錄目前循環到哪個</li><li>每次判斷<code>index</code>是否出界了，出界後歸<code>0</code></li><li>否則<code>+1</code></li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">getConcatenation</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> res <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>nums<span class="token punctuation">.</span>length <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token comment">// nums的指針</span>        <span class="token keyword">int</span> index <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token comment">// 疊代新的兩倍陣列</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> res<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// 出界就歸0</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>index <span class="token operator">==</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">)</span> index <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>            res<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> nums<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">;</span>            <span class="token operator">++</span>index<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> res<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Easy</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Array</tag>
+      
+      <tag>Simulation</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>第一次開發VSCode Extension之流程與心得</title>
+    <link href="/2024/03/20/%E7%AC%AC%E4%B8%80%E6%AC%A1%E9%96%8B%E7%99%BCVSCode-Extension%E4%B9%8B%E6%B5%81%E7%A8%8B%E8%88%87%E5%BF%83%E5%BE%97/"/>
+    <url>/2024/03/20/%E7%AC%AC%E4%B8%80%E6%AC%A1%E9%96%8B%E7%99%BCVSCode-Extension%E4%B9%8B%E6%B5%81%E7%A8%8B%E8%88%87%E5%BF%83%E5%BE%97/</url>
+    
+    <content type="html"><![CDATA[<h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><ul><li><code>VSCode</code></li><li><code>Nodejs</code>，可安裝<code>nvm</code>隨意切換與安裝不同版本</li><li><code>Git</code></li></ul><h2 id="初始化專案"><a href="#初始化專案" class="headerlink" title="初始化專案"></a>初始化專案</h2><p>使用<code>Yeoman</code>來初始化擴展專案</p><ol><li><code>npm install --global yo generator-code</code></li><li><code>yo code</code></li></ol><p><code>Yeoman</code>導覽會帶你一步一步建立專案</p><p>設定好一些專案的詳細資訊後就可以開始寫<code>code</code>了!</p><h2 id="一些基本文件介紹"><a href="#一些基本文件介紹" class="headerlink" title="一些基本文件介紹"></a>一些基本文件介紹</h2><ul><li><code>F5</code>可以進入<code>debug</code>模式，測試擴展</li><li><code>.vscode</code>資料夾存放程式執行和<code>debug</code>的命令</li><li><code>vsc-extension-quickstart.md</code>簡單介紹了擴展的入門知識</li><li><code>src</code>就是放原始碼的地方</li><li><code>package.json</code>是擴展設定的檔案</li></ul><h2 id="Package-json"><a href="#Package-json" class="headerlink" title="Package.json"></a>Package.json</h2><ul><li><code>main</code>為擴展入口，也就是程式的<code>root</code></li><li><code>contributes</code>中的<code>commands</code>是設定命令的地方，該命令需與原始碼中的命令一致才能呼叫</li></ul><h2 id="實際開發"><a href="#實際開發" class="headerlink" title="實際開發"></a>實際開發</h2><ul><li><code>vscode.commands.registerCommand</code>可以設定<code>command</code></li><li>使用<code>context.subscriptions.push</code>把命令註冊到<code>context</code>中，這樣擴展關閉的時候會自動釋出</li></ul><figure><div class="code-wrapper"><pre class="line-numbers language-typescript" data-language="typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> vscode <span class="token keyword">from</span> <span class="token string">"vscode"</span><span class="token punctuation">;</span><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">activate</span><span class="token punctuation">(</span>context<span class="token operator">:</span> vscode<span class="token punctuation">.</span>ExtensionContext<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Congratulations, your extension "test" is now active!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token keyword">let</span> disposable <span class="token operator">=</span> vscode<span class="token punctuation">.</span>commands<span class="token punctuation">.</span><span class="token function">registerCommand</span><span class="token punctuation">(</span><span class="token string">"test.helloWorld"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>    vscode<span class="token punctuation">.</span>window<span class="token punctuation">.</span><span class="token function">showInformationMessage</span><span class="token punctuation">(</span><span class="token string">"Hello World from test!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  context<span class="token punctuation">.</span>subscriptions<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>disposable<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">deactivate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure><p>本次的目標是開發一個能夠透過<code>commands</code>自動貼入程式碼片段的擴展</p><p><img src="https://i.imgur.com/ZIKMjoZ.png" alt="原始碼結構"></p><p>我把<code>extension.ts</code>當作程式入口，並且根據不同<code>command</code>呼叫對應的功能(放在<code>util</code>裡面)</p><figure><div class="code-wrapper"><pre class="line-numbers language-typescript" data-language="typescript"><code class="language-typescript"><span class="token comment">// extension.ts</span><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> vscode <span class="token keyword">from</span> <span class="token string">'vscode'</span><span class="token punctuation">;</span><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> youtubeEmbedPaste <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'./util/youtubeEmbed'</span><span class="token punctuation">;</span><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> foldBlock <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'./util/foldBlock'</span><span class="token punctuation">;</span><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> note <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'./util/note'</span><span class="token punctuation">;</span><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> label <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'./util/label'</span><span class="token punctuation">;</span><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> checkBox <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'./util/checkBox'</span><span class="token punctuation">;</span><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> button <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'./util/button'</span><span class="token punctuation">;</span><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> groupImages <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'./util/groupImages'</span><span class="token punctuation">;</span><span class="token keyword">import</span> <span class="token punctuation">&#123;</span> mermaid <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'./util/mermaid'</span><span class="token punctuation">;</span><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">activate</span><span class="token punctuation">(</span>context<span class="token operator">:</span> vscode<span class="token punctuation">.</span>ExtensionContext<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token comment">// Register multiple commands</span><span class="token keyword">let</span> youtubeEmbedCommand <span class="token operator">=</span> vscode<span class="token punctuation">.</span>commands<span class="token punctuation">.</span><span class="token function">registerCommand</span><span class="token punctuation">(</span><span class="token string">'hexo-snippet-paste-tool-for-fluid.pasteYoutubeEmbed'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span><span class="token function">youtubeEmbedPaste</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">let</span> foldBlockCommand <span class="token operator">=</span> vscode<span class="token punctuation">.</span>commands<span class="token punctuation">.</span><span class="token function">registerCommand</span><span class="token punctuation">(</span><span class="token string">'hexo-snippet-paste-tool-for-fluid.pasteFoldBlock'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span><span class="token function">foldBlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">let</span> noteCommand <span class="token operator">=</span> vscode<span class="token punctuation">.</span>commands<span class="token punctuation">.</span><span class="token function">registerCommand</span><span class="token punctuation">(</span><span class="token string">'hexo-snippet-paste-tool-for-fluid.pasteNote'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span><span class="token function">note</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">let</span> labelCommand <span class="token operator">=</span> vscode<span class="token punctuation">.</span>commands<span class="token punctuation">.</span><span class="token function">registerCommand</span><span class="token punctuation">(</span><span class="token string">'hexo-snippet-paste-tool-for-fluid.pasteLabel'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span><span class="token function">label</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">let</span> checkBoxCommand <span class="token operator">=</span> vscode<span class="token punctuation">.</span>commands<span class="token punctuation">.</span><span class="token function">registerCommand</span><span class="token punctuation">(</span><span class="token string">'hexo-snippet-paste-tool-for-fluid.pasteCheckBox'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span><span class="token function">checkBox</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">let</span> buttonCommand <span class="token operator">=</span> vscode<span class="token punctuation">.</span>commands<span class="token punctuation">.</span><span class="token function">registerCommand</span><span class="token punctuation">(</span><span class="token string">'hexo-snippet-paste-tool-for-fluid.pasteButton'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span><span class="token function">button</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">let</span> groupImagesCommand <span class="token operator">=</span> vscode<span class="token punctuation">.</span>commands<span class="token punctuation">.</span><span class="token function">registerCommand</span><span class="token punctuation">(</span><span class="token string">'hexo-snippet-paste-tool-for-fluid.pasteGroupImages'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span><span class="token function">groupImages</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">let</span> mermaidCommand <span class="token operator">=</span> vscode<span class="token punctuation">.</span>commands<span class="token punctuation">.</span><span class="token function">registerCommand</span><span class="token punctuation">(</span><span class="token string">'hexo-snippet-paste-tool-for-fluid.pasteMermaid'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span><span class="token function">mermaid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// Add the commands to the context</span>context<span class="token punctuation">.</span>subscriptions<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>youtubeEmbedCommand<span class="token punctuation">)</span><span class="token punctuation">;</span>context<span class="token punctuation">.</span>subscriptions<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>foldBlockCommand<span class="token punctuation">)</span><span class="token punctuation">;</span>context<span class="token punctuation">.</span>subscriptions<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>noteCommand<span class="token punctuation">)</span><span class="token punctuation">;</span>context<span class="token punctuation">.</span>subscriptions<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>labelCommand<span class="token punctuation">)</span><span class="token punctuation">;</span>context<span class="token punctuation">.</span>subscriptions<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>checkBoxCommand<span class="token punctuation">)</span><span class="token punctuation">;</span>context<span class="token punctuation">.</span>subscriptions<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>buttonCommand<span class="token punctuation">)</span><span class="token punctuation">;</span>context<span class="token punctuation">.</span>subscriptions<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>groupImagesCommand<span class="token punctuation">)</span><span class="token punctuation">;</span>context<span class="token punctuation">.</span>subscriptions<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>mermaidCommand<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token comment">// This method is called when your extension is deactivated</span><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">deactivate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure><p><code>Note</code>功能範例</p><figure><div class="code-wrapper"><pre class="line-numbers language-typescript" data-language="typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> vscode <span class="token keyword">from</span> <span class="token string">'vscode'</span><span class="token punctuation">;</span><span class="token keyword">export</span> <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">note</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>    <span class="token comment">// Obtain the active text editor</span>    <span class="token keyword">const</span> editor <span class="token operator">=</span> vscode<span class="token punctuation">.</span>window<span class="token punctuation">.</span>activeTextEditor<span class="token punctuation">;</span>    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>editor<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token keyword">return</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span>    <span class="token comment">// UI for Width and Height Input</span>    vscode<span class="token punctuation">.</span>window<span class="token punctuation">.</span><span class="token function">showInputBox</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>        value<span class="token operator">:</span> <span class="token string">'info'</span><span class="token punctuation">,</span>        prompt<span class="token operator">:</span> <span class="token string">'Type in the type of the note (e.g., primary, default, info, success, warning, danger)'</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>input <span class="token operator">=></span> <span class="token punctuation">&#123;</span>        <span class="token comment">// When user provide any input</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>input<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// Prepare the fold block content</span>            <span class="token keyword">const</span> content <span class="token operator">=</span> <span class="token function">prepareNote</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment">// Inserting the content to the editor</span>            editor<span class="token punctuation">.</span><span class="token function">edit</span><span class="token punctuation">(</span>editBuilder <span class="token operator">=></span> <span class="token punctuation">&#123;</span>                editBuilder<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span>editor<span class="token punctuation">.</span>selection<span class="token punctuation">.</span>active<span class="token punctuation">,</span> content<span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token keyword">function</span> <span class="token function">prepareNote</span><span class="token punctuation">(</span>type<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">string</span> <span class="token punctuation">&#123;</span>    <span class="token comment">// Modify the fold block content with the specified type and title</span>    <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&#123;% note </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span><span class="token keyword">type</span><span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string"> %&#125;\n\n&#123;% endnote %&#125;</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure><p>這個擴展功能很好開發，剩下的就是準備好各式文件，並上架marketplace</p><p>我主要動到的有以下</p><ul><li><code>package.json</code>: 整個擴展的詳細資訊與各種設定(官方手冊有說明文件)</li><li><code>pacakge-lock.json</code>: 各種依賴的版本號</li><li><code>README.md</code>: 擴展的說明與手冊</li><li><code>CHANGELOG.md</code>: 版本的修改紀錄，<a href="https://keepachangelog.com/zh-TW/1.1.0/">撰寫手冊</a></li><li><code>LICENSE</code>: MIT, GPL-3等，上架會需要用到</li></ul><h2 id="發布與上架"><a href="#發布與上架" class="headerlink" title="發布與上架"></a>發布與上架</h2><p>測試完成後就準備發布</p><p>安裝擴展封裝與發布工具<code>npm install -g @vscode/vsce</code></p><p><code>vsce package</code>命令可以把擴展封裝，並且在<code>vscode</code>本地安裝測試<br><code>vsce publish</code>命令發布擴展</p><p>但是在發布前需要到<code>azure</code>註冊與建立用戶，請<a href="https://code.visualstudio.com/api/working-with-extensions/publishing-extension">參閱</a></p><p>註冊好了之後就可以使用<code>token</code>進行發布了!過幾分鐘後會在marketplace看到</p><p><img src="https://i.imgur.com/PEzdmlE.png" alt="marketplace"></p><h2 id="一些參考網站"><a href="#一些參考網站" class="headerlink" title="一些參考網站"></a>一些參考網站</h2><ul><li><a href="https://marketplace.visualstudio.com/items?itemName=Shih-Che-Lai-Simon.hexo-snippet-paste-tool-for-fluid">Hexo Snippet Paste Tool for Fluid</a></li><li><a href="https://code.visualstudio.com/api/get-started/your-first-extension">官方文件</a>也有詳細的介紹</li><li><a href="https://zhuanlan.zhihu.com/p/386196218">如何開發一款vscode插件</a>: 這個網站寫得很詳細，從頭到發布的walkthrough，值得一看</li><li><a href="https://liiked.github.io/VS-Code-Extension-Doc-ZH/#/">VSCode中文開發文件</a>: 中文版的官方文件，還有TypeScript的介紹</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Project</category>
+      
+      <category>VSCode</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>VSCode Extension</tag>
+      
+      <tag>TypeScript</tag>
+      
+      <tag>Npm</tag>
+      
+      <tag>Git</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>1461. Check If a String Contains All Binary Codes of Size K - Medium</title>
     <link href="/2024/03/20/1461-Check-If-a-String-Contains-All-Binary-Codes-of-Size-K-Medium/"/>
     <url>/2024/03/20/1461-Check-If-a-String-Contains-All-Binary-Codes-of-Size-K-Medium/</url>
@@ -170,9 +349,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -308,9 +487,9 @@
       
       <tag>心得</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Math</tag>
+      
+      <tag>Two Pointers</tag>
       
       <tag>Hash Table</tag>
       
@@ -1381,11 +1560,11 @@
       
       <tag>Array</tag>
       
-      <tag>Matrix</tag>
-      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
+      
+      <tag>Matrix</tag>
       
       <tag>Union Find</tag>
       
@@ -1420,11 +1599,11 @@
       
       <tag>Array</tag>
       
-      <tag>Matrix</tag>
-      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
+      
+      <tag>Matrix</tag>
       
       <tag>Union Find</tag>
       
@@ -1774,9 +1953,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -1994,9 +2173,9 @@
       
       <tag>Array</tag>
       
-      <tag>Matrix</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Matrix</tag>
       
     </tags>
     
@@ -3092,9 +3271,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -3384,9 +3563,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -3522,9 +3701,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -3592,9 +3771,9 @@
       
       <tag>Array</tag>
       
-      <tag>Matrix</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Matrix</tag>
       
     </tags>
     
@@ -3800,9 +3979,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -4484,9 +4663,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -4616,9 +4795,9 @@
       
       <tag>Array</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Math</tag>
+      
+      <tag>Two Pointers</tag>
       
     </tags>
     
@@ -5057,9 +5236,9 @@
       
       <tag>Array</tag>
       
-      <tag>Matrix</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Matrix</tag>
       
     </tags>
     
@@ -5290,11 +5469,11 @@
       
       <tag>心得</tag>
       
-      <tag>Matrix</tag>
-      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
+      
+      <tag>Matrix</tag>
       
     </tags>
     
