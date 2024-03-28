@@ -4,6 +4,74 @@
   
   
   <entry>
+    <title>1396. Design Underground System - Medium</title>
+    <link href="/2024/03/28/1396-Design-Underground-System-Medium/"/>
+    <url>/2024/03/28/1396-Design-Underground-System-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/design-underground-system/description/"  title="1396. Design Underground System" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>用<code>OOP</code>解</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>乘客<code>class</code>，紀錄<code>checkin</code>和<code>checkout</code>時間地點</li><li>路線<code>class</code>, 紀錄起站終站以及總共花費時間和次數</li><li>用<code>Map</code>把<code>id</code>和乘客連接起來，路線和路線<code>class</code>連接起來</li></ol><p><code>checkin</code>:把乘客資訊加入即可</p><p><code>checkout</code>:把乘客<code>checkout</code>，更新或加入路徑，最後移除乘客資訊，因為<code>checkout</code>了</p><p><code>average</code>:直接找到該路徑，然後調用路徑<code>class</code>的<code>average</code>就可以算出來</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><a class="btn" href="https://leetcode.com/problems/design-underground-system/solutions/672744/java-solution-for-easy-understanding-using-oops/"  title="Discussion" target="_blank">留言區解答</a><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">UndergroundSystem</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">class</span> <span class="token class-name">Passenger</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span> checkInTime<span class="token punctuation">;</span>        <span class="token keyword">int</span> checkOutTime<span class="token punctuation">;</span>        <span class="token class-name">String</span> checkInStation<span class="token punctuation">;</span>        <span class="token class-name">String</span> checkOutStation<span class="token punctuation">;</span>        <span class="token keyword">public</span> <span class="token class-name">Passenger</span><span class="token punctuation">(</span><span class="token class-name">String</span> checkInStation<span class="token punctuation">,</span> <span class="token keyword">int</span> checkInTime<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">this</span><span class="token punctuation">.</span>checkInStation <span class="token operator">=</span> checkInStation<span class="token punctuation">;</span>            <span class="token keyword">this</span><span class="token punctuation">.</span>checkInTime <span class="token operator">=</span> checkInTime<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">checkOut</span><span class="token punctuation">(</span><span class="token class-name">String</span> checkOutStation<span class="token punctuation">,</span> <span class="token keyword">int</span> checkOutTime<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">this</span><span class="token punctuation">.</span>checkOutStation <span class="token operator">=</span> checkOutStation<span class="token punctuation">;</span>            <span class="token keyword">this</span><span class="token punctuation">.</span>checkOutTime <span class="token operator">=</span> checkOutTime<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">class</span> <span class="token class-name">Route</span> <span class="token punctuation">&#123;</span>        <span class="token class-name">String</span> startStation<span class="token punctuation">;</span>        <span class="token class-name">String</span> endStation<span class="token punctuation">;</span>        <span class="token keyword">int</span> totalTrips<span class="token punctuation">;</span>        <span class="token keyword">long</span> totalTimeSpentInTrips<span class="token punctuation">;</span>        <span class="token keyword">public</span> <span class="token class-name">Route</span><span class="token punctuation">(</span><span class="token class-name">String</span> startStation<span class="token punctuation">,</span> <span class="token class-name">String</span> endStation<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">this</span><span class="token punctuation">.</span>startStation <span class="token operator">=</span> startStation<span class="token punctuation">;</span>            <span class="token keyword">this</span><span class="token punctuation">.</span>endStation <span class="token operator">=</span> endStation<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">addTrip</span><span class="token punctuation">(</span><span class="token keyword">int</span> startTime<span class="token punctuation">,</span> <span class="token keyword">int</span> endTime<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            totalTimeSpentInTrips <span class="token operator">+=</span> endTime <span class="token operator">-</span> startTime<span class="token punctuation">;</span>            totalTrips <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">double</span> <span class="token function">getAverage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">)</span> totalTimeSpentInTrips <span class="token operator">/</span> totalTrips<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>    <span class="token punctuation">&#125;</span>    <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">,</span> <span class="token class-name">Passenger</span><span class="token punctuation">></span></span> passengerMap<span class="token punctuation">;</span>    <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Route</span><span class="token punctuation">></span></span> routeMap<span class="token punctuation">;</span>    <span class="token keyword">public</span> <span class="token class-name">UndergroundSystem</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        passengerMap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        routeMap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">checkIn</span><span class="token punctuation">(</span><span class="token keyword">int</span> id<span class="token punctuation">,</span> <span class="token class-name">String</span> stationName<span class="token punctuation">,</span> <span class="token keyword">int</span> t<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>passengerMap<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// CheckIn</span>            passengerMap<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>id<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Passenger</span><span class="token punctuation">(</span>stationName<span class="token punctuation">,</span> t<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">checkOut</span><span class="token punctuation">(</span><span class="token keyword">int</span> id<span class="token punctuation">,</span> <span class="token class-name">String</span> stationName<span class="token punctuation">,</span> <span class="token keyword">int</span> t<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>passengerMap<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// Check out</span>            <span class="token class-name">Passenger</span> p <span class="token operator">=</span> passengerMap<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>            p<span class="token punctuation">.</span><span class="token function">checkOut</span><span class="token punctuation">(</span>stationName<span class="token punctuation">,</span> t<span class="token punctuation">)</span><span class="token punctuation">;</span>                        <span class="token comment">// Adding or update route</span>            <span class="token class-name">String</span> routeKey <span class="token operator">=</span> p<span class="token punctuation">.</span>checkInStation <span class="token operator">+</span> <span class="token string">","</span> <span class="token operator">+</span> p<span class="token punctuation">.</span>checkOutStation<span class="token punctuation">;</span>            <span class="token class-name">Route</span> route <span class="token operator">=</span> routeMap<span class="token punctuation">.</span><span class="token function">getOrDefault</span><span class="token punctuation">(</span>routeKey<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Route</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>checkInStation<span class="token punctuation">,</span> p<span class="token punctuation">.</span>checkOutStation<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            route<span class="token punctuation">.</span><span class="token function">addTrip</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>checkInTime<span class="token punctuation">,</span> p<span class="token punctuation">.</span>checkOutTime<span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment">// Update route</span>            routeMap<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>routeKey<span class="token punctuation">,</span> route<span class="token punctuation">)</span><span class="token punctuation">;</span>                        <span class="token comment">// Remove the passenger since checkout already</span>            passengerMap<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">double</span> <span class="token function">getAverageTime</span><span class="token punctuation">(</span><span class="token class-name">String</span> startStation<span class="token punctuation">,</span> <span class="token class-name">String</span> endStation<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">return</span> routeMap<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>startStation <span class="token operator">+</span> <span class="token string">","</span> <span class="token operator">+</span> endStation<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getAverage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>String</tag>
+      
+      <tag>Hash Table</tag>
+      
+      <tag>Design</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>1603. Design Parking System  - Easy</title>
+    <link href="/2024/03/28/1603-Design-Parking-System-Easy/"/>
+    <url>/2024/03/28/1603-Design-Parking-System-Easy/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/design-parking-system/"  title="1603. Design Parking System" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>直接陣列存</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>定義一個陣列，放上每個<code>size</code>的車格剩多少</li><li>加入車輛的時候如果遇到該車格已經沒了就直接回傳<code>false</code></li><li>否則就加入車輛，此時要把對應車格減<code>1</code></li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">ParkingSystem</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> park<span class="token punctuation">;</span>    <span class="token keyword">public</span> <span class="token class-name">ParkingSystem</span><span class="token punctuation">(</span><span class="token keyword">int</span> big<span class="token punctuation">,</span> <span class="token keyword">int</span> medium<span class="token punctuation">,</span> <span class="token keyword">int</span> small<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        park <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">&#123;</span>big<span class="token punctuation">,</span> medium<span class="token punctuation">,</span> small<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">addCar</span><span class="token punctuation">(</span><span class="token keyword">int</span> carType<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token comment">// Exceeding the limit</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>park<span class="token punctuation">[</span>carType <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>        <span class="token comment">// 加入車輛</span>        park<span class="token punctuation">[</span>carType <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-=</span> <span class="token number">1</span><span class="token punctuation">;</span>        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode, Medium]</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Simulation</tag>
+      
+      <tag>Design</tag>
+      
+      <tag>Counting</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>104. Maximum Depth of Binary Tree - Easy</title>
     <link href="/2024/03/23/104-Maximum-Depth-of-Binary-Tree-Easy/"/>
     <url>/2024/03/23/104-Maximum-Depth-of-Binary-Tree-Easy/</url>
@@ -631,9 +699,9 @@
       
       <tag>String</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Greedy</tag>
+      
+      <tag>Two Pointers</tag>
       
       <tag>Hash Table</tag>
       
@@ -2420,9 +2488,9 @@
       
       <tag>Array</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Greedy</tag>
+      
+      <tag>Two Pointers</tag>
       
     </tags>
     
@@ -6471,9 +6539,9 @@
     
     <tags>
       
-      <tag>Algorithms</tag>
-      
       <tag>Stack</tag>
+      
+      <tag>Algorithms</tag>
       
       <tag>筆記</tag>
       
