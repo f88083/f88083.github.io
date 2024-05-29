@@ -1,0 +1,1175 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/logo.png">
+  <link rel="icon" href="/images/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Simon Lai">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="相關資源尚品甄選教程 官方資料(百度網盤) SSM教程 網友整理的完整程式碼 後端程式碼 前端程式碼 前置作業使用開源模板  vue3 和 element-plus UI 框架，vite 建構工具、pinia 狀態管理、vue-router 路由管理、mockjs 數據模擬，並整合了 typescript，功能由 Vue Element Admin 移植而来。   使用node 16.9.0  R">
+<meta property="og:type" content="article">
+<meta property="og:title" content="尚品甄選電商SpringBoot-Web開發之用戶登入與角色管理">
+<meta property="og:url" content="https://f88083.github.io/2024/04/17/%E5%B0%9A%E5%93%81%E7%94%84%E9%81%B8%E9%9B%BB%E5%95%86SpringBoot-Web%E9%96%8B%E7%99%BC%E4%B9%8B%E7%94%A8%E6%88%B6%E7%99%BB%E5%85%A5%E8%88%87%E8%A7%92%E8%89%B2%E7%AE%A1%E7%90%86/index.html">
+<meta property="og:site_name" content="Simon Lai&#39;s Blog">
+<meta property="og:description" content="相關資源尚品甄選教程 官方資料(百度網盤) SSM教程 網友整理的完整程式碼 後端程式碼 前端程式碼 前置作業使用開源模板  vue3 和 element-plus UI 框架，vite 建構工具、pinia 狀態管理、vue-router 路由管理、mockjs 數據模擬，並整合了 typescript，功能由 Vue Element Admin 移植而来。   使用node 16.9.0  R">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/5dCpyge.png">
+<meta property="og:image" content="https://i.imgur.com/KmAWcZd.png">
+<meta property="og:image" content="https://i.imgur.com/zg2y5cC.png">
+<meta property="og:image" content="https://i.imgur.com/1UScwVx.png">
+<meta property="og:image" content="https://i.imgur.com/mrFc41U.png">
+<meta property="article:published_time" content="2024-04-17T12:47:52.000Z">
+<meta property="article:modified_time" content="2024-05-29T16:47:04.971Z">
+<meta property="article:author" content="Simon Lai">
+<meta property="article:tag" content="SpringBoot">
+<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="MyBatis">
+<meta property="article:tag" content="Element-plus">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.imgur.com/5dCpyge.png">
+  
+  
+  
+  <title>尚品甄選電商SpringBoot-Web開發之用戶登入與角色管理 - Simon Lai&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"f88083.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":35,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":"G-HJLTHPCQMP"},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=G-HJLTHPCQMP", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', 'G-HJLTHPCQMP');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Simon Lai&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首頁</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>歸檔</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分類</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>標籤</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>關於</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/images/bg.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="尚品甄選電商SpringBoot-Web開發之用戶登入與角色管理"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-04-17 13:47" pubdate>
+          2024年4月17日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          14 分鐘
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">尚品甄選電商SpringBoot-Web開發之用戶登入與角色管理</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="相關資源"><a href="#相關資源" class="headerlink" title="相關資源"></a>相關資源</h2><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1NF411S7DS/?p=2&spm_id_from=pageDriver&vd_source=6278f0a8a0339b7cf526ba0944fc6bec">尚品甄選教程</a></p>
+<p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1HIbJ06nZWtbyXWrfOBqJbg?pwd=yyds">官方資料(百度網盤)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq598535550/article/details/51703190">SSM教程</a></p>
+<p>網友整理的完整<a target="_blank" rel="noopener" href="https://gitee.com/mumangguo/spzx-parent">程式碼</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/galie/SPZX-Backend">後端程式碼</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/galie/SPZX-Frontend">前端程式碼</a></p>
+<h2 id="前置作業"><a href="#前置作業" class="headerlink" title="前置作業"></a>前置作業</h2><p>使用<a target="_blank" rel="noopener" href="https://github.com/midfar/vue3-element-admin">開源模板</a></p>
+<blockquote>
+<p>vue3 和 element-plus UI 框架，vite 建構工具、pinia 狀態管理、vue-router 路由管理、mockjs 數據模擬，並整合了 typescript，功能由 Vue Element Admin 移植而来。</p>
+</blockquote>
+<ul>
+<li>使用<code>node 16.9.0</code></li>
+</ul>
+<h3 id="Redis建立"><a href="#Redis建立" class="headerlink" title="Redis建立"></a>Redis建立</h3><p>原文是有一個虛擬機來放置docker，而我是直接使用windows的docker，所以在設定的時候和原文不太一樣</p>
+<p>原文命令</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> run <span class="token parameter variable">-d</span> <span class="token parameter variable">-p</span> <span class="token number">6379</span>:6379 <span class="token parameter variable">--restart</span><span class="token operator">=</span>always <span class="token parameter variable">-v</span> redis-config:/etc/redis/config <span class="token parameter variable">-v</span> redis-data:/data <span class="token parameter variable">--name</span> redis redis redis-server /etc/redis/config/redis.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<p>各命令的解釋(來源chatgpt)</p>
+<p><code>docker run</code>: This command is used to run a Docker container.<br><code>-d</code>: It stands for “detached” mode, which means the container runs in the background.<br><code>-p 6379:6379</code>: This option maps port 6379 on the host to port 6379 in the container. This allows external processes to communicate with Redis through port 6379.<br><code>--restart=always</code>: This option specifies that the container should always restart automatically if it stops for any reason.<br><code>-v redis-config:/etc/redis/config</code>: This option creates a volume named “redis-config” and mounts it to the “&#x2F;etc&#x2F;redis&#x2F;config” directory inside the container. This allows you to provide custom Redis configuration files.<br><code>-v redis-data:/data</code>: This option creates a volume named “redis-data” and mounts it to the “&#x2F;data” directory inside the container. This is used to persist Redis data, allowing it to survive container restarts or deletion.<br><code>--name redis</code>: This option assigns the name “redis” to the container.<br><code>redis</code>: This is the name of the Docker image used to create the container. In this case, it’s the official Redis image from Docker Hub.<br><code>redis-server /etc/redis/config/redis.conf</code>: This command instructs the Redis server to use the configuration file located at “&#x2F;etc&#x2F;redis&#x2F;config&#x2F;redis.conf” inside the container.</p>
+<p>唯一有問題的就是<code>redis.config</code>不知道要放哪，根據<code>-v redis-config:/etc/redis/config</code>，是映射關係，也就是<code>redis-config</code>這個<code>volume</code>映射到後面那個路徑，於是我建立了一個資料夾，然後照樣建立<code>redis.conf</code>，然後映射過去變為以下指令</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> run <span class="token parameter variable">-d</span> <span class="token parameter variable">-p</span> <span class="token number">6379</span>:6379 <span class="token parameter variable">--restart</span><span class="token operator">=</span>always <span class="token parameter variable">-v</span> D:/SimonLai/shangpinzhenxuan/spzx-parent/redis:/etc/redis/config <span class="token parameter variable">-v</span> redis-data:/data <span class="token parameter variable">--name</span> redis redis:7.0.10 redis-server /etc/redis/config/redis.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<p>應該要弄一個<code>linux</code>系統的虛擬機，這樣會比較方便，不過教程沒有細講，所以就直接用了<code>win10</code>，之後太麻煩的話就考慮全部搬到虛擬機去了</p>
+<h3 id="啟動的問題"><a href="#啟動的問題" class="headerlink" title="啟動的問題"></a>啟動的問題</h3><p>直接執行會出現<code>Getting java.lang.IllegalStateException: Logback configuration error detected error...</code></p>
+<p>原因是<code>logback</code>的設定檔案<code>logback-spring.xml</code>裡面輸出路徑要改成自己的</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>log.path<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>D:\SimonLai\shangpinzhenxuan\log<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<h2 id="用戶登入-異常處理"><a href="#用戶登入-異常處理" class="headerlink" title="用戶登入-異常處理"></a>用戶登入-異常處理</h2><p>為了統一遇到異常(錯誤)時回傳的資訊，定義新的異常，並且建立<code>global</code>異常處理器來統一管理</p>
+<p>於是新增了<code>GlobalExceptionHandler</code>裡面目前定義了異常的部分就是回傳<code>enum</code>的<code>LOGIN_ERROR</code>這些是原先定義好的部分</p>
+<p>以及自訂<code>SimonException</code>，定義好其<code>constructor</code>，這樣被<code>throw</code>的時候就可以傳入指定的值，<code>exception</code>就會被拋出，因為<code>GlobalExceptionHandler</code>裡已經定義好，如下</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@ExceptionHandler</span><span class="token punctuation">(</span><span class="token class-name">SimonException</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@ResponseBody</span>
+<span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">error</span><span class="token punctuation">(</span><span class="token class-name">SimonException</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> e<span class="token punctuation">.</span><span class="token function">getResultCodeEnum</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h2 id="用戶登入-前端接入"><a href="#用戶登入-前端接入" class="headerlink" title="用戶登入(前端接入)"></a>用戶登入(前端接入)</h2><p>直接在<code>vscode</code>的<code>cmd</code>輸入<code>npm start</code>可能會看到以下錯誤</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> ERR<span class="token operator">!</span> enoent Could not <span class="token builtin class-name">read</span> package.json: Error: ENOENT: no such <span class="token function">file</span> or directory, <span class="token function">open</span> <span class="token string">'D:\SimonLai\shangpinzhenxuan\spzx-admin\package.json'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<p>實際上只是因為在<code>workspace</code>，<code>cmd</code>的初始位置是在上一層的資料夾，而我們需要到程式的前端資料夾內執行</p>
+<p><img src="https://i.imgur.com/5dCpyge.png" srcset="/img/loading.gif" lazyload alt="切換路徑"></p>
+<div class="note note-info">
+            <p>使用前端記得先執行後端，這樣才能調用後端資料庫</p>
+          </div>
+
+<h3 id="跨域問題"><a href="#跨域問題" class="headerlink" title="跨域問題"></a>跨域問題</h3><p>前端程式，目前把請求導向<code>port 8501</code>(也就是後端的<code>port</code>)，但是這樣會出現跨域請求的問題</p>
+<p><img src="https://i.imgur.com/KmAWcZd.png" srcset="/img/loading.gif" lazyload alt="請求8501"></p>
+<p><img src="https://i.imgur.com/zg2y5cC.png" srcset="/img/loading.gif" lazyload alt="跨域請求錯誤"></p>
+<p>解決方法: 在後端設定開啟跨域(前端也可以設定代理等等解決，不過此教程為後端導向)</p>
+<p>先前有登入過的話可能再次開啟<code>port 3001</code>會是空白的，因為沒有設定跳轉頁面，可以使用這個<a target="_blank" rel="noopener" href="http://localhost:3001/#/login?redirect=/home">網址</a>進到登入頁面</p>
+<p>使用帳號<code>admin</code>，密碼<code>111111</code>登入，此時如果按照步驟來，會在控制台看到<code>404 not found</code>因為還沒有設定拉取<code>userinfo</code>資料的路徑</p>
+<h3 id="圖片驗證碼產生"><a href="#圖片驗證碼產生" class="headerlink" title="圖片驗證碼產生"></a>圖片驗證碼產生</h3><p>這部分沒什麼問題，照著做就可以成功了，步驟如下</p>
+<ol>
+<li>編寫後端邏輯，建立<code>API</code></li>
+<li>調用<code>hutool</code>的功能建立驗證碼圖片，使用<code>Base64</code>編碼</li>
+<li>前端調用後端<code>API</code>，並且修改<code>html</code>，<code>Ajax</code>調用<code>API</code>顯示圖片</li>
+</ol>
+<h3 id="圖片驗證碼驗證"><a href="#圖片驗證碼驗證" class="headerlink" title="圖片驗證碼驗證"></a>圖片驗證碼驗證</h3><p>在<code>SysUserServiceImpl.java</code>中</p>
+<ol>
+<li>驗證帳號密碼之前先驗證圖片驗證碼是否正確</li>
+</ol>
+<h3 id="取得當前登入用戶的資料"><a href="#取得當前登入用戶的資料" class="headerlink" title="取得當前登入用戶的資料"></a>取得當前登入用戶的資料</h3><p>有兩種從<code>request</code>拿到<code>token</code>的方式:</p>
+<span class="label label-info">第一種</span>
+
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 取得當前登入用戶資料</span>
+<span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"/getUserInfo"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">getUserInfo</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span> request<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 取得token</span>
+    <span class="token class-name">String</span> token <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getHeader</span><span class="token punctuation">(</span><span class="token string">"token"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 根據token查詢redis以取得用戶資料</span>
+    <span class="token class-name">SysUser</span> sysUser <span class="token operator">=</span> sysUserService<span class="token punctuation">.</span><span class="token function">getUserInfo</span><span class="token punctuation">(</span>token<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token keyword">return</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span>sysUser<span class="token punctuation">,</span> <span class="token class-name">ResultCodeEnum</span><span class="token punctuation">.</span><span class="token constant">SUCCESS</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<span class="label label-info">第二種</span>
+
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 取得當前登入用戶資料</span>
+<span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"/getUserInfo"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">getUserInfo</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestHeader</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"token"</span><span class="token punctuation">)</span> <span class="token class-name">String</span> token <span class="token comment">/* 取得token */</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 根據token查詢redis以取得用戶資料</span>
+    <span class="token class-name">SysUser</span> sysUser <span class="token operator">=</span> sysUserService<span class="token punctuation">.</span><span class="token function">getUserInfo</span><span class="token punctuation">(</span>token<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span>sysUser<span class="token punctuation">,</span> <span class="token class-name">ResultCodeEnum</span><span class="token punctuation">.</span><span class="token constant">SUCCESS</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p>同時這部分也改了好幾個前端的<code>code</code>，一直出錯，最後找到原因是前端接後端的<code>getUserInfo</code>API沒有寫對</p>
+<p>這裡主要就是後端邏輯寫好，前端連一下<code>API</code>就搞定</p>
+<h2 id="用戶登出"><a href="#用戶登出" class="headerlink" title="用戶登出"></a>用戶登出</h2><ol>
+<li>點退出登入</li>
+<li>根據<code>header</code>的<code>token</code>呼叫<code>service</code>中的<code>logout</code>方法</li>
+<li><code>logout</code>方法直接依照<code>token</code>查詢，登出時直接把<code>token</code>也刪除，完成登出</li>
+<li>前端的部分就是呼叫後端方法</li>
+</ol>
+<h2 id="登入驗證"><a href="#登入驗證" class="headerlink" title="登入驗證"></a>登入驗證</h2><p>如何做到?</p>
+
+<pre>
+<code class="mermaid" >
+flowchart TD
+
+A[攔截器Interceptors] --> B{當前路徑需要驗證登入}
+B -->|是| C[從header嘗試取得token,並查詢redis]
+B -->|否| 通過
+C --> D[redis是否有用戶資訊]
+D --> |是| E[取得用戶資訊,存到ThreadLocal]
+D --> |否| F[不是登入狀態,回傳提示訊息]
+E --> 更新redis資料過期時間
+</code>
+</pre>
+
+<ul>
+<li>需要把攔截器加入到<code>Spring MVC</code>中，設定攔截的路徑</li>
+</ul>
+<p>延伸文章: <a target="_blank" rel="noopener" href="https://kucw.io/blog/2018/7/java-thread-local/">Java - ThreadLocal 類的使用</a></p>
+<h3 id="優化"><a href="#優化" class="headerlink" title="優化"></a>優化</h3><ol>
+<li>把排除的路徑寫入<code>configuration</code>，減少冗長<code>code</code></li>
+<li>因為上面把用戶資料放入<code>threadLocal</code>，所以不需要從資料庫去撈，直接取<code>threadLocal</code>的即可</li>
+<li>前端: 判斷如果狀態碼是<code>208</code>(表示未登入)，直接跳轉到登入頁面</li>
+</ol>
+<h4 id="把排除的路徑寫入configuration"><a href="#把排除的路徑寫入configuration" class="headerlink" title="把排除的路徑寫入configuration"></a>把排除的路徑寫入<code>configuration</code></h4><ul>
+<li>寫一個<code>configurationProperty</code>並且加入到<code>Spring</code>啟動檔案</li>
+<li>把路徑寫入設定檔案</li>
+</ul>
+<h4 id="從threadLocal取得用戶資料"><a href="#從threadLocal取得用戶資料" class="headerlink" title="從threadLocal取得用戶資料"></a>從threadLocal取得用戶資料</h4><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 取得當前登入用戶資料</span>
+<span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"/getUserInfo"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">getUserInfo</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestHeader</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"token"</span><span class="token punctuation">)</span> <span class="token class-name">String</span> token <span class="token comment">/* 取得token */</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 根據token查詢redis以取得用戶資料</span>
+    <span class="token class-name">SysUser</span> sysUser <span class="token operator">=</span> sysUserService<span class="token punctuation">.</span><span class="token function">getUserInfo</span><span class="token punctuation">(</span>token<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span>sysUser<span class="token punctuation">,</span> <span class="token class-name">ResultCodeEnum</span><span class="token punctuation">.</span><span class="token constant">SUCCESS</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 變為</span>
+<span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">getUserInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token class-name">AuthContextUtil</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token class-name">ResultCodeEnum</span><span class="token punctuation">.</span><span class="token constant">SUCCESS</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h4 id="狀態碼208跳轉登入頁面"><a href="#狀態碼208跳轉登入頁面" class="headerlink" title="狀態碼208跳轉登入頁面"></a>狀態碼208跳轉登入頁面</h4><figure><div class="code-wrapper"><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token parameter">response</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span> <span class="token comment">// service.interceptors.response.use第一个参数</span>
+    <span class="token keyword">const</span> res <span class="token operator">=</span> response<span class="token punctuation">.</span>data
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>res<span class="token punctuation">.</span>code <span class="token operator">==</span> <span class="token number">208</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">const</span> redirect <span class="token operator">=</span> <span class="token function">encodeURIComponent</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>location<span class="token punctuation">.</span>href<span class="token punctuation">)</span>  <span class="token comment">// 当前地址栏的url</span>
+        router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">/login?redirect=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>redirect<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>message <span class="token operator">||</span> <span class="token string">'Error'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> res 
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h2 id="權限管理"><a href="#權限管理" class="headerlink" title="權限管理"></a>權限管理</h2><p>例如:</p>
+<p>Lucy是總經理，可以使用menu所有tabs<br>Mary是Sales，僅可使用商品管理menu</p>
+<p>大致有三張表:</p>
+<ul>
+<li>用戶表</li>
+<li>角色表</li>
+<li>選單表</li>
+</ul>
+<p>用戶與角色是多對多關係，為了實做這個部分，需要一張角色用戶關係表(類似<code>map</code>)<br>角色與選單也是多對多關係</p>
+<p><img src="https://i.imgur.com/1UScwVx.png" srcset="/img/loading.gif" lazyload alt="關係表"></p>
+<p><img src="https://i.imgur.com/mrFc41U.png" srcset="/img/loading.gif" lazyload alt="Project資料庫表格關係"></p>
+<p>小練習:</p>
+<ul>
+<li>查詢<code>id</code>為<code>1</code>的用戶的角色資料</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> sr<span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword">FROM</span>
+sys_role sr <span class="token keyword">inner</span> <span class="token keyword">join</span> sys_user_role sur
+<span class="token keyword">on</span> sr<span class="token punctuation">.</span>id <span class="token operator">=</span> sur<span class="token punctuation">.</span>role_id 
+<span class="token keyword">WHERE</span> sur<span class="token punctuation">.</span>user_id <span class="token operator">=</span> <span class="token number">5</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<ul>
+<li>查詢<code>id</code>為<code>1</code>的用戶的<code>menu</code>資料</li>
+</ul>
+<p>這個比較複雜一點因為需要關聯三張表，把他們的<code>id</code>透過關係表連接起來</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span> m<span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword">FROM</span> sys_menu m
+<span class="token keyword">INNER</span> <span class="token keyword">JOIN</span> sys_role_menu rm <span class="token keyword">ON</span> rm<span class="token punctuation">.</span>menu_id <span class="token operator">=</span> m<span class="token punctuation">.</span>id
+<span class="token keyword">INNER</span> <span class="token keyword">JOIN</span> sys_user_role ur <span class="token keyword">ON</span> ur<span class="token punctuation">.</span>role_id <span class="token operator">=</span> rm<span class="token punctuation">.</span>role_id
+<span class="token keyword">WHERE</span> ur<span class="token punctuation">.</span>user_id<span class="token operator">=</span><span class="token number">5</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h3 id="準備工作"><a href="#準備工作" class="headerlink" title="準備工作"></a>準備工作</h3><ul>
+<li>前端新增角色定向<ul>
+<li><code>router</code>中新增定向</li>
+</ul>
+</li>
+<li>建立角色頁面<ul>
+<li><code>views</code>中新增介面給<code>menu</code>, <code>role</code>以及<code>user</code></li>
+</ul>
+</li>
+<li>後端角色相關<code>controller</code>, <code>service</code>, <code>mapper</code>建立</li>
+</ul>
+<p>需要實作的功能:</p>
+<ol>
+<li>根據角色名稱條件搜尋</li>
+<li>分頁顯示</li>
+</ol>
+<h3 id="後端介面"><a href="#後端介面" class="headerlink" title="後端介面"></a>後端介面</h3><blockquote>
+<p>使用pagehelper plugin</p>
+</blockquote>
+<ul>
+<li><code>SysRoleController</code>: 加入<code>findByPage</code>方法，並傳入三個參數(<code>current</code>, <code>limit</code>, <code>sysRoleDto</code>)，調用<code>sysRoleService</code>中的<code>findByPage</code></li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@PostMapping</span><span class="token punctuation">(</span><span class="token string">"/findByPage/&#123;current&#125;/&#123;limit&#125;"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">findByPage</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span><span class="token punctuation">(</span><span class="token string">"current"</span><span class="token punctuation">)</span> <span class="token class-name">Integer</span> current<span class="token punctuation">,</span>
+                            <span class="token annotation punctuation">@PathVariable</span><span class="token punctuation">(</span><span class="token string">"limit"</span><span class="token punctuation">)</span> <span class="token class-name">Integer</span> limit<span class="token punctuation">,</span>
+                            <span class="token annotation punctuation">@RequestBody</span> <span class="token class-name">SysRoleDto</span> sysRoleDto<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// pageHelper plugin實作分頁</span>
+    <span class="token class-name">PageInfo</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">SysRole</span><span class="token punctuation">></span></span> pageInfo <span class="token operator">=</span> sysRoleService<span class="token punctuation">.</span><span class="token function">findByPage</span><span class="token punctuation">(</span>sysRoleDto<span class="token punctuation">,</span> current<span class="token punctuation">,</span> limit<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span>pageInfo<span class="token punctuation">,</span> <span class="token class-name">ResultCodeEnum</span><span class="token punctuation">.</span><span class="token constant">SUCCESS</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<ul>
+<li><code>SysRoleServiceImpl</code>: 加入<code>findByPage</code>方法，也是同樣的三個參數，設定分頁參數(起始分頁)以及根據條件搜尋資料並且封裝成<code>pageInfo</code>物件並回傳</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token class-name">PageInfo</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">SysRole</span><span class="token punctuation">></span></span> <span class="token function">findByPage</span><span class="token punctuation">(</span><span class="token class-name">SysRoleDto</span> sysRoleDto<span class="token punctuation">,</span> <span class="token class-name">Integer</span> current<span class="token punctuation">,</span> <span class="token class-name">Integer</span> limit<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 設定分頁參數(因為使用了pagehelper plugin)</span>
+    <span class="token class-name">PageHelper</span><span class="token punctuation">.</span><span class="token function">startPage</span><span class="token punctuation">(</span>current<span class="token punctuation">,</span> limit<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 根據條件查詢所有資料</span>
+    <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">SysRole</span><span class="token punctuation">></span></span> list <span class="token operator">=</span> sysRoleMapper<span class="token punctuation">.</span><span class="token function">findByPage</span><span class="token punctuation">(</span>sysRoleDto<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 封裝pageInfo物件</span>
+    <span class="token class-name">PageInfo</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">SysRole</span><span class="token punctuation">></span></span> pageInfo <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PageInfo</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span>list<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> pageInfo<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<ul>
+<li><code>SysRoleMapper.xml</code>(<code>SysRoleMapper</code>調用): 加入<code>sql</code>語句，根據條件搜尋，如果<code>roleName</code>為空就代表無條件搜尋</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token comment">--  映射搜尋到的 --></span>
+<span class="token operator">&lt;</span>resultMap id<span class="token operator">=</span><span class="token string">"sysRoleMap"</span> <span class="token keyword">type</span><span class="token operator">=</span><span class="token string">"com.simonlai.spzx.model.entity.system.SysRole"</span> autoMapping<span class="token operator">=</span><span class="token string">"true"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>resultMap<span class="token operator">></span>
+
+<span class="token operator">&lt;</span><span class="token operator">!</span><span class="token comment">-- 用於select --></span>
+<span class="token operator">&lt;</span><span class="token keyword">sql</span> id<span class="token operator">=</span><span class="token string">"columns"</span><span class="token operator">></span>
+    id<span class="token punctuation">,</span>role_name<span class="token punctuation">,</span>role_code<span class="token punctuation">,</span>description<span class="token punctuation">,</span>create_time<span class="token punctuation">,</span>update_time<span class="token punctuation">,</span>is_deleted
+<span class="token operator">&lt;</span><span class="token operator">/</span><span class="token keyword">sql</span><span class="token operator">></span>
+
+<span class="token operator">&lt;</span><span class="token keyword">select</span> id<span class="token operator">=</span><span class="token string">"findByPage"</span> resultMap<span class="token operator">=</span><span class="token string">"sysRoleMap"</span><span class="token operator">></span>
+    <span class="token keyword">select</span> <span class="token operator">&lt;</span>include refid<span class="token operator">=</span><span class="token string">"columns"</span><span class="token operator">/</span><span class="token operator">></span>
+    <span class="token keyword">from</span> sys_role
+    <span class="token operator">&lt;</span><span class="token keyword">where</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token keyword">if</span> test<span class="token operator">=</span><span class="token string">"roleName != null and roleName != ''"</span><span class="token operator">></span>
+            <span class="token operator">and</span> role_name <span class="token operator">like</span> concat<span class="token punctuation">(</span><span class="token string">'%'</span><span class="token punctuation">,</span> <span class="token comment">#&#123;roleName&#125;, '%')</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span><span class="token keyword">if</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span><span class="token keyword">where</span><span class="token operator">></span>
+    <span class="token keyword">order</span> <span class="token keyword">by</span> id <span class="token keyword">desc</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span><span class="token keyword">select</span><span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h3 id="前端介面"><a href="#前端介面" class="headerlink" title="前端介面"></a>前端介面</h3><p>修改並完善<code>sysRole</code>頁面</p>
+<ul>
+<li><code>sysRole.js</code>: 介面<code>Post</code>請求後端資料</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 角色列表</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">GetSysRoleListByPage</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">current<span class="token punctuation">,</span> limit<span class="token punctuation">,</span> queryDto</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+        <span class="token comment">// ``模板字串</span>
+        <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>base_api<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string">/findByPage/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>current<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string">/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>limit<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token comment">// 路徑</span>
+        <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">'post'</span><span class="token punctuation">,</span> <span class="token comment">// 提交方式</span>
+        <span class="token comment">// 接口@RequestBody 前端 data:名稱，以JSON格式傳遞</span>
+        <span class="token comment">// 接口沒有註解，前端 params:名稱，以URL格式傳遞</span>
+        <span class="token literal-property property">data</span><span class="token operator">:</span> queryDto<span class="token punctuation">,</span> <span class="token comment">// 其他參數</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<ul>
+<li><code>sysRole.vue</code>頁面: 修改按鈕觸發<code>method</code>，並且顯示資料</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script setup<span class="token operator">></span>
+<span class="token keyword">import</span> <span class="token punctuation">&#123;</span>ref<span class="token punctuation">,</span> onMounted<span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
+<span class="token keyword">import</span> <span class="token punctuation">&#123;</span>GetSysRoleListByPage<span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'@/api/sysRole'</span>
+
+<span class="token comment">// 定義資料模型</span>
+<span class="token keyword">let</span> list <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// 角色列表</span>
+
+<span class="token keyword">let</span> total <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token comment">// 紀錄總數</span>
+
+<span class="token keyword">const</span> pageParamsForm <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+  <span class="token literal-property property">page</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token comment">// 當前頁</span>
+  <span class="token literal-property property">limit</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token comment">// 每頁紀錄量</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">const</span> pageParams <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span>pageParamsForm<span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> queryDto <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string-property property">"roleName"</span><span class="token operator">:</span><span class="token string">""</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span> <span class="token comment">// 條件封裝資料</span>
+
+<span class="token comment">// 鉤子函數</span>
+<span class="token function">onMounted</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  <span class="token function">fetchData</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 操作方法: 列表方法和搜尋方法</span>
+<span class="token comment">// 列表方法: axios請求後端數據</span>
+<span class="token keyword">const</span> <span class="token function-variable function">fetchData</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">const</span> <span class="token punctuation">&#123;</span>data<span class="token punctuation">,</span> code<span class="token punctuation">,</span> message<span class="token punctuation">&#125;</span> <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">GetSysRoleListByPage</span><span class="token punctuation">(</span>pageParams<span class="token punctuation">.</span>value<span class="token punctuation">.</span>page<span class="token punctuation">,</span> pageParams<span class="token punctuation">.</span>value<span class="token punctuation">.</span>limit<span class="token punctuation">,</span> queryDto<span class="token punctuation">.</span>value<span class="token punctuation">)</span>
+  list<span class="token punctuation">.</span>value <span class="token operator">=</span> data<span class="token punctuation">.</span>list
+  total<span class="token punctuation">.</span>value <span class="token operator">=</span> data<span class="token punctuation">.</span>total
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 搜尋方法</span>
+<span class="token keyword">const</span> <span class="token function-variable function">searchSysRole</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  <span class="token function">fetchData</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p>總結一下上述這兩個前端與後端的操作，大致上的步驟如下:</p>
+<ol>
+<li>用戶在頁面上輸入角色條件點<code>搜索</code></li>
+<li>會觸發<code>sysRole.vue</code>的按鈕，這個按鈕會調用<code>searchSysRole</code>方法(在<code>script</code>裡)</li>
+<li><code>searchSysRole</code>方法會調用<code>fetchData</code></li>
+<li><code>fetchData</code>會調用<code>sysRole.js</code>中的<code>GetSysRoleListByPage</code>方法嘗試取得資料</li>
+<li>而<code>GetSysRoleListByPage</code>方法會透過<code>api</code>請求後端資料</li>
+<li>後端<code>SysRoleController</code>接收到請求，調用<code>SysRoleService</code>的<code>findByPage</code></li>
+<li><code>SysRoleService</code>再調用<code>SysRoleMapper</code>進行資料庫請求，執行<code>sql</code>語句</li>
+<li>資料取得後<code>SysRoleController</code>再把資料傳給前端</li>
+<li>前端收到資料後顯示</li>
+</ol>
+<h3 id="角色新增介面"><a href="#角色新增介面" class="headerlink" title="角色新增介面"></a>角色新增介面</h3><p>前端的部分利用<code>element-plus</code>快速構建一個彈出提示框，可以輸入角色名稱、角色<code>Code</code>，並且提交</p>
+<p>提交後通過<code>js</code>請求後端，後端再通過<code>controller-&gt;service-&gt;mapper</code>加入資料並回傳，如果加入成功，<code>code</code>是<code>200</code>，就關掉提示框，顯示添加成功並且重新載入數據以顯示更新後的</p>
+<h3 id="角色修改界面"><a href="#角色修改界面" class="headerlink" title="角色修改界面"></a>角色修改界面</h3><p>基本上是和新增大同小異，以下幾點需特別注意</p>
+<ul>
+<li>修改時彈框中顯示的數據可以使用<code>&#123;...row&#125;</code>，否則直接使用<code>row</code>會造成邊修改，介面上的資料也會跟著修改，即便還沒提交</li>
+<li>修改與添加同樣都是透過<code>submit</code>函式處理，所以可以藉由判斷<code>sysRole</code>是否有<code>id</code>來判斷要呼叫哪個<code>api</code></li>
+<li>後端部分也是比較簡單的controller-&gt;service-&gt;mapper</li>
+<li>更新時要判斷每個值是否存在，否則就不更新</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token comment">-- 角色修改方法 --></span>
+<span class="token operator">&lt;</span><span class="token keyword">update</span> id<span class="token operator">=</span><span class="token string">"update"</span><span class="token operator">></span>
+    <span class="token keyword">update</span> sys_role <span class="token keyword">set</span>
+    <span class="token operator">&lt;</span><span class="token keyword">if</span> test<span class="token operator">=</span><span class="token string">"roleName != null and roleName != ''"</span><span class="token operator">></span>
+        role_name <span class="token operator">=</span> <span class="token comment">#&#123;roleName&#125;,</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span><span class="token keyword">if</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token keyword">if</span> test<span class="token operator">=</span><span class="token string">"roleCode != null and roleCode != ''"</span><span class="token operator">></span>
+        role_code <span class="token operator">=</span> <span class="token comment">#&#123;roleCode&#125;,</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span><span class="token keyword">if</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token keyword">if</span> test<span class="token operator">=</span><span class="token string">"description != null and description != ''"</span><span class="token operator">></span>
+        description <span class="token operator">=</span> <span class="token comment">#&#123;description&#125;,</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span><span class="token keyword">if</span><span class="token operator">></span>
+    update_time <span class="token operator">=</span> <span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">where</span>
+    id <span class="token operator">=</span> <span class="token comment">#&#123;id&#125;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span><span class="token keyword">update</span><span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h3 id="角色刪除功能"><a href="#角色刪除功能" class="headerlink" title="角色刪除功能"></a>角色刪除功能</h3><ul>
+<li>根據<code>id</code>刪除角色</li>
+<li>使用邏輯刪除而非物理刪除，也就是利用<code>is_deleted</code>這個參數，刪除時把該筆資料標記為<code>1</code>，代表已刪除，查詢時查找<code>is_deleted</code>為<code>0</code>的所有數據</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token comment">-- 角色刪除方法 --></span>
+<span class="token operator">&lt;</span><span class="token keyword">update</span> id<span class="token operator">=</span><span class="token string">"delete"</span><span class="token operator">></span>
+    <span class="token keyword">update</span> sys_role <span class="token keyword">set</span> is_deleted<span class="token operator">=</span><span class="token number">1</span> <span class="token keyword">where</span> id<span class="token operator">=</span><span class="token comment">#&#123;roleId&#125;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span><span class="token keyword">update</span><span class="token operator">></span>
+
+<span class="token operator">&lt;</span><span class="token operator">!</span><span class="token comment">-- 角色列表方法 --></span>
+<span class="token operator">&lt;</span><span class="token keyword">select</span> id<span class="token operator">=</span><span class="token string">"findByPage"</span> resultMap<span class="token operator">=</span><span class="token string">"sysRoleMap"</span><span class="token operator">></span>
+    <span class="token keyword">select</span> <span class="token operator">&lt;</span>include refid<span class="token operator">=</span><span class="token string">"columns"</span><span class="token operator">/</span><span class="token operator">></span>
+    <span class="token keyword">from</span> sys_role
+    <span class="token operator">&lt;</span><span class="token keyword">where</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token keyword">if</span> test<span class="token operator">=</span><span class="token string">"roleName != null and roleName != ''"</span><span class="token operator">></span>
+            <span class="token operator">and</span> role_name <span class="token operator">like</span> concat<span class="token punctuation">(</span><span class="token string">'%'</span><span class="token punctuation">,</span> <span class="token comment">#&#123;roleName&#125;, '%')</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span><span class="token keyword">if</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token comment">-- 查找尚未被刪除的 --></span>
+        <span class="token operator">and</span> is_deleted<span class="token operator">=</span><span class="token number">0</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span><span class="token keyword">where</span><span class="token operator">></span>
+    <span class="token keyword">order</span> <span class="token keyword">by</span> id <span class="token keyword">desc</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span><span class="token keyword">select</span><span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Project/" class="category-chain-item">Project</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Project/SpringBoot/" class="category-chain-item">SpringBoot</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/SpringBoot/" class="print-no-link">#SpringBoot</a>
+      
+        <a href="/tags/Vue/" class="print-no-link">#Vue</a>
+      
+        <a href="/tags/MyBatis/" class="print-no-link">#MyBatis</a>
+      
+        <a href="/tags/Element-plus/" class="print-no-link">#Element-plus</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>尚品甄選電商SpringBoot-Web開發之用戶登入與角色管理</div>
+      <div>https://f88083.github.io/2024/04/17/尚品甄選電商SpringBoot-Web開發之用戶登入與角色管理/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Simon Lai</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>發布於</div>
+          <div>2024年4月17日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>許可協議</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="NC - 非商業性使用">
+                    <i class="iconfont icon-nc"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                    <i class="iconfont icon-sa"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/04/22/%E5%B0%9A%E5%93%81%E7%94%84%E9%81%B8%E9%9B%BB%E5%95%86SpringBoot-Web%E9%96%8B%E7%99%BC2%E7%94%A8%E6%88%B6%E6%AC%8A%E9%99%90%E7%AE%A1%E7%90%86/" title="尚品甄選電商SpringBoot-Web開發2用戶權限管理">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">尚品甄選電商SpringBoot-Web開發2用戶權限管理</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/04/12/230-Kth-Smallest-Element-in-a-BST-Medium/" title="230. Kth Smallest Element in a BST - Medium">
+                        <span class="hidden-mobile">230. Kth Smallest Element in a BST - Medium</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"f88083/blog-comments","repo-id":"R_kgDOKvLNrw","category":"Announcements","category-id":"DIC_kwDOKvLNr84CbPZE","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-TW"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目錄</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">關鍵字</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允許 JavaScript 運行的環境下瀏覽效果更佳</div>
+  </noscript>
+</body>
+</html>

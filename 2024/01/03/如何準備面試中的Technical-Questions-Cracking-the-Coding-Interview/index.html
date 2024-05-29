@@ -1,0 +1,1158 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/logo.png">
+  <link rel="icon" href="/images/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Simon Lai">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="如何準備 P.60 記答案沒有用，練習如何解題目才是重中之重  四大步驟  盡量自己解決問題(但這裡我私心覺得如果沒寫過甚麼leetcode的話還是不要糾結太久，因為很多演算法是自己想破頭腦都想不出來的，不如趕快看解答，認識解法，知道怎麼解，等到累積了一定的解法之後再嘗試自己解決問題。不過當然不是一開始就看答案，而是思考個五分鐘十分鐘，沒想法再看)，要考慮空間和時間複雜度 把code寫在紙上 在紙">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何準備面試中的Technical Questions - Cracking the Coding Interview">
+<meta property="og:url" content="https://f88083.github.io/2024/01/03/%E5%A6%82%E4%BD%95%E6%BA%96%E5%82%99%E9%9D%A2%E8%A9%A6%E4%B8%AD%E7%9A%84Technical-Questions-Cracking-the-Coding-Interview/index.html">
+<meta property="og:site_name" content="Simon Lai&#39;s Blog">
+<meta property="og:description" content="如何準備 P.60 記答案沒有用，練習如何解題目才是重中之重  四大步驟  盡量自己解決問題(但這裡我私心覺得如果沒寫過甚麼leetcode的話還是不要糾結太久，因為很多演算法是自己想破頭腦都想不出來的，不如趕快看解答，認識解法，知道怎麼解，等到累積了一定的解法之後再嘗試自己解決問題。不過當然不是一開始就看答案，而是思考個五分鐘十分鐘，沒想法再看)，要考慮空間和時間複雜度 把code寫在紙上 在紙">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/3ZjgeU9.png">
+<meta property="og:image" content="https://i.imgur.com/mVpDKck.png">
+<meta property="og:image" content="https://i.imgur.com/4pxh1t4.png">
+<meta property="og:image" content="https://i.imgur.com/xLCZzI7.png">
+<meta property="article:published_time" content="2024-01-03T11:14:23.000Z">
+<meta property="article:modified_time" content="2024-05-29T16:47:04.956Z">
+<meta property="article:author" content="Simon Lai">
+<meta property="article:tag" content="筆記">
+<meta property="article:tag" content="Interview">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.imgur.com/3ZjgeU9.png">
+  
+  
+  
+  <title>如何準備面試中的Technical Questions - Cracking the Coding Interview - Simon Lai&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"f88083.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":35,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":"G-HJLTHPCQMP"},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=G-HJLTHPCQMP", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', 'G-HJLTHPCQMP');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Simon Lai&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首頁</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>歸檔</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分類</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>標籤</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>關於</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/images/bg.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="如何準備面試中的Technical Questions - Cracking the Coding Interview"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-01-03 11:14" pubdate>
+          2024年1月3日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          16 分鐘
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">如何準備面試中的Technical Questions - Cracking the Coding Interview</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="如何準備-P-60"><a href="#如何準備-P-60" class="headerlink" title="如何準備 P.60"></a>如何準備 P.60</h2><blockquote>
+<p>記答案沒有用，練習如何解題目才是重中之重</p>
+</blockquote>
+<p>四大步驟</p>
+<ol>
+<li><strong>盡量自己解決問題</strong>(但這裡我私心覺得如果沒寫過甚麼leetcode的話還是不要糾結太久，因為很多演算法是自己想破頭腦都想不出來的，不如趕快看解答，認識解法，知道怎麼解，等到累積了一定的解法之後再嘗試自己解決問題。不過當然不是一開始就看答案，而是思考個五分鐘十分鐘，沒想法再看)，要考慮<strong>空間</strong>和<strong>時間</strong>複雜度</li>
+<li><strong>把code寫在紙上</strong></li>
+<li><strong>在紙上測試code</strong>，要測試general cases, base cases, error cases, and so on.</li>
+<li><strong>照著自己寫的code輸進電腦</strong>把寫錯的部分記錄下來，面試前當作提醒自己的材料</li>
+</ol>
+<p>做越多模擬面試越好，和朋友和家人，都行!</p>
+<h2 id="必須具備的知識-P-60"><a href="#必須具備的知識-P-60" class="headerlink" title="必須具備的知識 P.60"></a>必須具備的知識 P.60</h2><p>儘管面試不是考驗你的記憶力，但還是會需要有基本知識(不然主考官還要跟你解釋什麼是int也太奇怪了吧)</p>
+<div class="note note-success">
+            <p>以下是必備知識!必須要會使用會實作還要會分析時間和空間複雜度</p>
+          </div>
+
+<table>
+<thead>
+<tr>
+<th align="center">Data Structures</th>
+<th align="center">Alogrithms</th>
+<th align="center">Concepts</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Linked Lists</td>
+<td align="center">Breadth-First Search</td>
+<td align="center">Bit Manipulation</td>
+</tr>
+<tr>
+<td align="center">Tree, Tries, &amp;Graphs</td>
+<td align="center">Depth-First Search</td>
+<td align="center">Memory (Stack vs. Heap)</td>
+</tr>
+<tr>
+<td align="center">Stacks &amp; Queues</td>
+<td align="center">Binary Search</td>
+<td align="center">Recursion</td>
+</tr>
+<tr>
+<td align="center">Heaps</td>
+<td align="center">Merge Sort</td>
+<td align="center">Dynamic Programming</td>
+</tr>
+<tr>
+<td align="center">Vectors&#x2F;ArrayLists</td>
+<td align="center">Quick Sort</td>
+<td align="center">Big O Time &amp; Space</td>
+</tr>
+<tr>
+<td align="center">Hash Tables</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h2 id="二次方表-P-61"><a href="#二次方表-P-61" class="headerlink" title="二次方表 P.61"></a>二次方表 P.61</h2><p>有用的表!當然不用去背</p>
+<table>
+<thead>
+<tr>
+<th align="center">Power of 2</th>
+<th align="center">Exact Value (X)</th>
+<th align="center">Approx. Value</th>
+<th align="center">X Bytes into MB, GB, etc.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">7</td>
+<td align="center">128</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">256</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">1024</td>
+<td align="center">1 thousand</td>
+<td align="center">1KB</td>
+</tr>
+<tr>
+<td align="center">16</td>
+<td align="center">65,536</td>
+<td align="center"></td>
+<td align="center">64KB</td>
+</tr>
+<tr>
+<td align="center">20</td>
+<td align="center">1,048,576</td>
+<td align="center">1 million</td>
+<td align="center">1MB</td>
+</tr>
+<tr>
+<td align="center">30</td>
+<td align="center">1,073,741,824</td>
+<td align="center">1 billion</td>
+<td align="center">1GB</td>
+</tr>
+<tr>
+<td align="center">32</td>
+<td align="center">4,294,967,296</td>
+<td align="center"></td>
+<td align="center">4GB</td>
+</tr>
+<tr>
+<td align="center">40</td>
+<td align="center">1,099,511,627,776</td>
+<td align="center">1 trillion</td>
+<td align="center">1TB</td>
+</tr>
+</tbody></table>
+<h2 id="解決問題的流程-P-62"><a href="#解決問題的流程-P-62" class="headerlink" title="解決問題的流程 P.62"></a>解決問題的流程 P.62</h2><p><strong>BUD Optimization</strong></p>
+<p><strong>B</strong>ottlenecks<br><strong>U</strong>nnecessary Work<br><strong>D</strong>uplicated Work</p>
+<ol>
+<li><p><strong>聽</strong>: 注意每個資訊，每一個都可能是想出最優解的關鍵</p>
+</li>
+<li><p><strong>例子</strong>: 大多例子都太小或太特殊，審慎選擇例子</p>
+</li>
+<li><p><strong>暴力解</strong>: 以最快速度想出暴力解，但不需要實作，然後從這基礎上優化</p>
+</li>
+<li><p><strong>優化</strong>:使用上述的<code>BUD</code>方法來優化，或試試以下方法</p>
+<ul>
+<li>找尋未使用的資訊，通常需要題目所有的資訊來達到最優解</li>
+<li>手動解決問題，然後反向工程看看是怎麼解的</li>
+<li><strong>寫錯</strong>，然後去想為什麼會行不通，能不能修好</li>
+<li>要在時間和空間上面做取捨，通常Hash table會很有用</li>
+</ul>
+</li>
+<li><p><strong>再過一次solution</strong>: 有了最優解之後就可以詳細走一遍流程，一定要了解所有細節後再開始Coding</p>
+</li>
+<li><p><strong>實作</strong>: 寫出好看的code</p>
+</li>
+<li><p><strong>測試</strong>: 照以下流程</p>
+<ol>
+<li>概念測試: 徹底走一遍流程</li>
+<li>不尋常或不標準的程式碼</li>
+<li>Hot spots，例如運算或null nodes</li>
+<li>小的測資，比大的來得更有效率</li>
+<li>Special cases and edge cases</li>
+</ol>
+<p> 找到Bug也要謹慎修復</p>
+</li>
+</ol>
+<div class="note note-warning">
+            <p><strong>不要忘了講話</strong>面試官想聽你怎麼解的</p>
+          </div>
+
+<h2 id="解決問題的流程之詳細解析-P-63"><a href="#解決問題的流程之詳細解析-P-63" class="headerlink" title="解決問題的流程之詳細解析 P.63"></a>解決問題的流程之詳細解析 P.63</h2><h3 id="Listen-Carefully"><a href="#Listen-Carefully" class="headerlink" title="Listen Carefully"></a>Listen Carefully</h3><p><strong>抓重點</strong>例如:</p>
+<p>“Given two arrays that are sorted, find …”</p>
+<p>這時候就要記得有兩個陣列然後是已經排序好的</p>
+<ul>
+<li>一開始聽到就寫在白板上就不怕忘記了，不然想十分鐘條件就全忘了</li>
+<li>通常面試官給的資訊都是有用的，所以一定要認真聽，記下來</li>
+</ul>
+<h3 id="Draw-an-Example-P-64"><a href="#Draw-an-Example-P-64" class="headerlink" title="Draw an Example P.64"></a>Draw an Example P.64</h3><ul>
+<li>畫出例子會有極大的幫助，不要硬在腦海裡解決問題</li>
+<li>切忌例子太小，例如一棵樹，只有三個<code>node</code>就太小了，用該小例子來想解法容易忽略細節，也可能會找不到規律</li>
+<li>不要用<code>special case</code>來當例子，應該要general的</li>
+</ul>
+<h3 id="State-a-Brute-Force-P-64"><a href="#State-a-Brute-Force-P-64" class="headerlink" title="State a Brute Force P.64"></a>State a Brute Force P.64</h3><ul>
+<li>暴力解也是一個解，一定要說出來讓面試官知道，因為說不定有些面試者連暴力解都沒想出來呢。不說出來反而面試官會懷疑你連最簡單的解都想不出來</li>
+<li>初始解效能不重要，解釋完空間和時間複雜度後就可以著手優化了</li>
+</ul>
+<h3 id="Optimize-P-64"><a href="#Optimize-P-64" class="headerlink" title="Optimize P.64"></a>Optimize P.64</h3><p>以下幾個技巧可以幫助更快找到優化</p>
+<ul>
+<li>找尋任何未使用的資訊，任何題目的設定都可能是最憂解的突破口</li>
+<li>用新的例子!</li>
+<li>解錯也無所謂，可以想想怎麼處理那些錯誤</li>
+<li>在時間和空間之間做取捨，有時多一點空間可以幫助優化整個演算法</li>
+<li>預先計算一些需要的資訊可能可以節省一些運算時間</li>
+<li>用Hash table!</li>
+<li>想想看可能的最佳運算時間</li>
+</ul>
+<h3 id="Walk-Through-P-65"><a href="#Walk-Through-P-65" class="headerlink" title="Walk Through P.65"></a>Walk Through P.65</h3><p>有了優化之後，不要急著寫code</p>
+<ul>
+<li>確保沒有問題再寫，因為板上書寫很慢，所以想法越接近完美越好</li>
+<li>Psedocode不要寫得像偷懶版的code，如果是那樣那就直接寫code就好了😂</li>
+</ul>
+<h3 id="Implement-P-65"><a href="#Implement-P-65" class="headerlink" title="Implement P.65"></a>Implement P.65</h3><p>確保想法OK後，進入實作環節</p>
+<ul>
+<li>盡量把<code>code</code>寫得越整齊越好，不然也會造成自己<code>debug</code>困難</li>
+<li>有一些繁雜的工作例如生成一個 <code>&#123;\&#123;1, 2, 3&#125;, &#123;4, 5, 6&#125;, ...&#125;</code> 的陣列，不用浪費時間，直接假設有一個method <code>initIncrementalMatrix(int size)</code>就好了</li>
+<li>有些面試官很在意檢查錯誤，可以寫個<code>todo</code>然後解釋要測試什麼</li>
+<li>必要時可以假設有額外的<code>classes</code>來輔助，最後有時間再把輔助<code>class</code>的實作部分填上</li>
+<li>變數名要取好，不要寫無意義的字母</li>
+<li>變數名太長的話可以在第二次出現時放上縮寫，並告知面試官</li>
+<li>如果卡住了，回去再看一次例子然後再過一遍</li>
+</ul>
+<h3 id="Test-P-66"><a href="#Test-P-66" class="headerlink" title="Test P.66"></a>Test P.66</h3><p>手動測試是很緩慢的，與其直接拿最一開始想的測資來測試，不如嘗試以下方法:</p>
+<ol>
+<li>從概念開始，意思是再看一遍和分析一遍code，像是解釋給面試官聽一樣，想想程式是否按照自己想的那樣執行</li>
+<li>檢查認為理所當然或是奇怪的地方，例如<code>x = length - 2</code>和從<code>i = 1</code>開始的迴圈</li>
+<li>檢查容易錯的地方，例如:<ul>
+<li>遞迴的base case</li>
+<li>Integer division</li>
+<li>Null nodes in binary trees</li>
+<li>Linked list的起始和終點</li>
+</ul>
+</li>
+<li>Special cases:<ul>
+<li>null</li>
+<li>single element values</li>
+<li>extreme cases</li>
+<li>etc.</li>
+</ul>
+</li>
+</ol>
+<p>發現<code>bug</code>的時候不要急著修，先想想為何，檢查是否是整個邏輯上的問題</p>
+<h2 id="優化的技巧1-Look-for-BUD-P-67"><a href="#優化的技巧1-Look-for-BUD-P-67" class="headerlink" title="優化的技巧1: Look for BUD P.67"></a>優化的技巧1: Look for BUD P.67</h2><ul>
+<li><strong>B</strong>ottlenecks</li>
+<li><strong>U</strong>nnecessary work</li>
+<li><strong>D</strong>uplicated word</li>
+</ul>
+<h3 id="Bottlenecks"><a href="#Bottlenecks" class="headerlink" title="Bottlenecks"></a>Bottlenecks</h3><p>有兩種常見的情況:</p>
+<ol>
+<li>例如先sort一個<code>array</code>，然後再找其中的<code>element</code>，這樣第一步需要<code>O(n log n)</code>而第二步需要<code>O(N)</code>。此時就算能夠優化第二步為<code>O(log n)</code>甚至是<code>O(1)</code>，都是沒有太大意義的，因為第一步是瓶頸，演算法依然需要<code>O(n log n)</code>的時間</li>
+<li>很多重複的作業</li>
+</ol>
+<p>例如:</p>
+<p><img src="https://i.imgur.com/3ZjgeU9.png" srcset="/img/loading.gif" lazyload alt="Bottlenecks Example"></p>
+<p>這題可以直接暴力解，或是先排序再用binary search找到答案，但這樣的話勢必會需要至少$O(n log n)$，此時sorting就是瓶頸，除非優化sorting的部分，不然沒什麼幫助。除非不排序，那要怎麼快速搜尋沒排序的陣列呢?答案就是用<strong>Hash Table</strong></p>
+<h3 id="Unncessary-Work-P-68"><a href="#Unncessary-Work-P-68" class="headerlink" title="Unncessary Work P.68"></a>Unncessary Work P.68</h3><p>例如下題:</p>
+<p><img src="https://i.imgur.com/mVpDKck.png" srcset="/img/loading.gif" lazyload alt="Unncessary Work example"></p>
+<p>暴力解就是四個嵌套循環</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">int</span> n <span class="token operator">=</span> <span class="token number">1000</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> a <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> a<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> b <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> b <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> b<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> c <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> c <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> c<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> d <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> d <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> d<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span>d<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a <span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">+</span> b <span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">+</span> c <span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">+</span> d<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p>可以簡單優化一下，print了之後就可以break了</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">int</span> n <span class="token operator">=</span> <span class="token number">1000</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> a <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> a<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> b <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> b <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> b<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> c <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> c <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> c<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> d <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> d <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> d<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span>d<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a <span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">+</span> b <span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">+</span> c <span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">+</span> d<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p>但演算法依舊是$O(N^4)$</p>
+<p>此外可以用數學公式優化一下，因為<code>d</code>可以藉由<code>a,b,c</code>算出來: $d &#x3D; \sqrt[3] {a^3 + b^3 - c^3}$</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">int</span> n <span class="token operator">=</span> <span class="token number">1000</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> a <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> a<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> b <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> b <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> b<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> c <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> c <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> c<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">int</span> temp <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span>a <span class="token operator">*</span> a <span class="token operator">*</span> a <span class="token operator">+</span> b <span class="token operator">*</span> b <span class="token operator">*</span> b <span class="token operator">-</span> c <span class="token operator">*</span> c <span class="token operator">*</span> c<span class="token punctuation">,</span> <span class="token number">1.0</span> <span class="token operator">/</span> <span class="token number">3.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> d <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">round</span><span class="token punctuation">(</span><span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span>temp<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Round to int</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>a <span class="token operator">*</span> a <span class="token operator">*</span> a <span class="token operator">+</span> b <span class="token operator">*</span> b <span class="token operator">*</span> b <span class="token operator">==</span> c <span class="token operator">*</span> c <span class="token operator">*</span> c <span class="token operator">+</span> d <span class="token operator">*</span> d <span class="token operator">*</span> d<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// Validate that the value works</span>
+                <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a <span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">+</span> b <span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">+</span> c <span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">+</span> d<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p>此時就縮減為$O(N^3)$</p>
+<h3 id="Duplicated-Work-P-68"><a href="#Duplicated-Work-P-68" class="headerlink" title="Duplicated Work P.68"></a>Duplicated Work P.68</h3><p>此外可以注意到一直重複為(a, b)計算(c, d)，所以直接建立(c, d)陣列一次就可以了</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python">n <span class="token operator">=</span> <span class="token number">1000</span>
+<span class="token keyword">for</span> c <span class="token keyword">from</span> <span class="token number">1</span> to n
+    <span class="token keyword">for</span> d <span class="token keyword">from</span> <span class="token number">1</span> to n
+        result <span class="token operator">=</span> c<span class="token operator">^</span><span class="token number">3</span> <span class="token operator">+</span> d<span class="token operator">^</span><span class="token number">3</span>
+        append <span class="token punctuation">(</span>c<span class="token punctuation">,</span> d<span class="token punctuation">)</span> to <span class="token builtin">list</span> at value <span class="token builtin">map</span><span class="token punctuation">[</span>result<span class="token punctuation">]</span>
+
+<span class="token keyword">for</span> each result<span class="token punctuation">,</span> <span class="token builtin">list</span> <span class="token keyword">in</span> <span class="token builtin">map</span>
+    <span class="token keyword">for</span> each pair1 <span class="token keyword">in</span> <span class="token builtin">list</span>
+        <span class="token keyword">for</span> each pair2 <span class="token keyword">in</span> <span class="token builtin">list</span>
+            <span class="token keyword">print</span> pair1<span class="token punctuation">,</span> pair2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p>此時就可以只算(a, b)，因此降為$O(N^2)$</p>
+<h2 id="優化的技巧2-DIY-P-69"><a href="#優化的技巧2-DIY-P-69" class="headerlink" title="優化的技巧2: DIY P.69"></a>優化的技巧2: DIY P.69</h2><p>當題目說設計一個演算法的時候，腦袋就很可能會打結，想不出什麼好方法。但如果給的是一個實際的工作，那就反而有可能想出很好的演算法。例如給一疊紙，每張紙上都有人名，從A排到Z，如果這時候要找Peter，那幾乎無庸置疑的任誰都會從中間隨便抽一張看離P有多近，而不會從頭開始找。</p>
+<p>所以說有時把問題轉換為實際的問題，並嘗試解決的時候就有可能優化了解法</p>
+<p>例如:</p>
+<blockquote>
+<p>Example: Given a smaller strings and a bigger string b, design an algorithm to find all permutations of the shorter string within the longer one.Print the location of each permutation</p>
+</blockquote>
+<p>給定:</p>
+<p>s: abbc<br>b: cbabadcbbabbcbabaabccbabc</p>
+<p>最暴力解的方法就是窮舉出所有permutation，但這樣會至少需要$O(S! * B)$，極其慢的演算法</p>
+<p>但其實如果手動來檢查的話，通常都會抓四個然後看看有沒有都在s裡面，這樣就降到$O(B * S)$</p>
+<h2 id="優化的技巧3-簡化與泛化-P-71"><a href="#優化的技巧3-簡化與泛化-P-71" class="headerlink" title="優化的技巧3: 簡化與泛化 P.71"></a>優化的技巧3: 簡化與泛化 P.71</h2><p>例如:</p>
+<blockquote>
+<p>Example: A ransom note can be formed by cutting words out of a magazine to form a new sentence. How would you figure out if a ransom note (represented as a string) can be formed from a given magazine (string)?</p>
+</blockquote>
+<p>這時可以把問題簡化為cutting characters out of a magazine而非整個詞，很明顯這時就可以建立一個陣列然後數characters，每個陣列中的元素就是一個字母然後數ransom note中各個字母的出現次數</p>
+<p>而泛化就是轉化為原本題目的要求，這時也不用array，而是用hash table來映射word和其頻率</p>
+<p>總而言之就是從簡化後的題目開始想，可能對於原題就會有頭緒了</p>
+<h2 id="優化的技巧4-Base-case與建立-P-71"><a href="#優化的技巧4-Base-case與建立-P-71" class="headerlink" title="優化的技巧4: Base case與建立 P.71"></a>優化的技巧4: Base case與建立 P.71</h2><p>從最基本的case開始，一步一步往更複雜的case，藉以剖析步驟，通常到最後會生出遞迴演算法</p>
+<p><img src="https://i.imgur.com/4pxh1t4.png" srcset="/img/loading.gif" lazyload alt="Optimize &amp; Solve Tech. #4"></p>
+<h2 id="優化的技巧5-資料結構Brainstorm-P-72"><a href="#優化的技巧5-資料結構Brainstorm-P-72" class="headerlink" title="優化的技巧5: 資料結構Brainstorm P.72"></a>優化的技巧5: 資料結構Brainstorm P.72</h2><p>簡單來說就是列出所有資料結構然後一個一個看是否能在題目中使用</p>
+<p><img src="https://i.imgur.com/xLCZzI7.png" srcset="/img/loading.gif" lazyload alt="Optimize &amp; Solve Tech. #5"></p>
+<p>題目做越多越會有該用甚麼演算法的直覺</p>
+<h2 id="Best-Conceivable-Runtime-BCR"><a href="#Best-Conceivable-Runtime-BCR" class="headerlink" title="Best Conceivable Runtime (BCR)"></a>Best Conceivable Runtime (BCR)</h2><ul>
+<li>基本上指的是演算法在特定的題目中最快的可能執行速度</li>
+<li>例如找出兩個陣列相同的數字，那就不可能比<code>O(A + B)</code>更快，因為一定要看過這兩個陣列</li>
+</ul>
+<h2 id="處理錯誤的答案"><a href="#處理錯誤的答案" class="headerlink" title="處理錯誤的答案"></a>處理錯誤的答案</h2><ul>
+<li>小錯誤是正常的，面試官不會把誰做對的題數當作評判標準，而是答案的優化度、花了多久時間、需要多少幫助、<code>code</code>的乾淨程度等等的</li>
+<li>重要的是怎麼解，解題的邏輯是否合理</li>
+</ul>
+<h2 id="如果遇到寫過的題目"><a href="#如果遇到寫過的題目" class="headerlink" title="如果遇到寫過的題目"></a>如果遇到寫過的題目</h2><ul>
+<li>要和面試官說，因為題目是拿來測試<code>problem-solving skills</code>，如果遇到已經做過的題目就沒辦法評估了</li>
+<li>告訴面試官反而會讓自己加分，如果被發現沒有主動告知很可能誠信會扣分</li>
+</ul>
+<h2 id="最適合面試的語言"><a href="#最適合面試的語言" class="headerlink" title="最適合面試的語言"></a>最適合面試的語言</h2><ul>
+<li>選擇自己最熟悉的</li>
+<li>選擇熱門語言，這樣面試官也比較有可能知道</li>
+<li>選擇可讀性佳的語言，例如Java和Python，此外Scala和Objectives C可能就不是那麼適合因為語句比較不同</li>
+<li>有些語言會增加潛在的問題，例如C++，除了會有一般程式的bug，還會有記憶體管理以及指針的問題</li>
+<li>選擇易用的語言</li>
+<li>個人覺得選擇自己最熟悉的語言就對了，除非太冷門</li>
+</ul>
+<h2 id="好的程式長什麼樣子"><a href="#好的程式長什麼樣子" class="headerlink" title="好的程式長什麼樣子"></a>好的程式長什麼樣子</h2><ul>
+<li>正確: 在正常以及非正常的inputs都可以正確執行</li>
+<li>效率: 程式越高效率越好</li>
+<li>簡單: 十行能解決的問題就不要用一百行來解決</li>
+<li>可讀性: 其他工程師也能輕易看懂</li>
+<li>易維護: 讓其他工程師方便維護，也方便自己以後維護；犧牲一點效能增加易維護性是值得的</li>
+</ul>
+<h2 id="大方使用資料結構"><a href="#大方使用資料結構" class="headerlink" title="大方使用資料結構"></a>大方使用資料結構</h2><p>例如寫一個相加方法，$Ax^a + Bx^b + …$，</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//  Bad implementation</span>
+<span class="token comment">// 這種寫法幾次方就array就要都大</span>
+<span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">sum</span><span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> expr1<span class="token punctuation">,</span> <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> expr2<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>  
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 稍微差一點的寫法</span>
+<span class="token comment">// 會需要傳很多數值</span>
+<span class="token operator">?</span><span class="token operator">?</span><span class="token operator">?</span> <span class="token function">sum</span><span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> coeffsl<span class="token punctuation">,</span> <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> expon1<span class="token punctuation">,</span> <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> coeffs2<span class="token punctuation">,</span> <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> expon2<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 好的寫法，直接定義一個新的資料結構，方便提取與儲存</span>
+<span class="token keyword">class</span> <span class="token class-name">ExprTerm</span> <span class="token punctuation">&#123;</span>
+ <span class="token keyword">double</span> coefficient<span class="token punctuation">;</span>
+ <span class="token keyword">double</span> exponent<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token class-name">ExprTerm</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">sum</span><span class="token punctuation">(</span><span class="token class-name">ExprTerm</span><span class="token punctuation">[</span><span class="token punctuation">]</span> exprl<span class="token punctuation">,</span> <span class="token class-name">ExprTerm</span><span class="token punctuation">[</span><span class="token punctuation">]</span> expr2<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h2 id="適當重用code以及模組化"><a href="#適當重用code以及模組化" class="headerlink" title="適當重用code以及模組化"></a>適當重用code以及模組化</h2><ul>
+<li>把演算法不同功能的部分包裝到不同的方法裡有助於提升程式整潔度和易讀性也易於測試</li>
+<li>面試官樂見</li>
+</ul>
+<h2 id="不要放棄"><a href="#不要放棄" class="headerlink" title="不要放棄"></a>不要放棄</h2><ul>
+<li>要保持積極的態度解決問題，即便題目非常困難，畢竟過程更重要</li>
+</ul>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
+<li>Gayle Laakmann McDowell - Cracking the Coding Interview</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%9D%A2%E8%A9%A6/" class="category-chain-item">面試</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%AD%86%E8%A8%98/" class="print-no-link">#筆記</a>
+      
+        <a href="/tags/Interview/" class="print-no-link">#Interview</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>如何準備面試中的Technical Questions - Cracking the Coding Interview</div>
+      <div>https://f88083.github.io/2024/01/03/如何準備面試中的Technical-Questions-Cracking-the-Coding-Interview/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Simon Lai</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>發布於</div>
+          <div>2024年1月3日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>許可協議</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="NC - 非商業性使用">
+                    <i class="iconfont icon-nc"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                    <i class="iconfont icon-sa"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/01/04/528-Random-Pick-with-Weight-Medium/" title="528. Random Pick with Weight - Medium">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">528. Random Pick with Weight - Medium</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/01/03/735-Asteroid-Collision-Medium/" title="735. Asteroid Collision - Medium">
+                        <span class="hidden-mobile">735. Asteroid Collision - Medium</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"f88083/blog-comments","repo-id":"R_kgDOKvLNrw","category":"Announcements","category-id":"DIC_kwDOKvLNr84CbPZE","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-TW"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目錄</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">關鍵字</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允許 JavaScript 運行的環境下瀏覽效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,1086 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/logo.png">
+  <link rel="icon" href="/images/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Simon Lai">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="目標 選單管理 選單需求和表結構 選單管理CRUD操作介面 選單管理CRUD前端   為角色分配選單 需求分析 介面 搜尋所有選單和角色分配選單id列表 儲存角色分配的選單數據   前端   動態選單 需求分析 介面 搜尋當前登入用戶可以操作的選單   前端    選單管理選單需求和表結構選單中的數據會有層級關係例如:  權限管理 用戶管理 角色管理 選單管理   訂單管理 訂單列表    那在資">
+<meta property="og:type" content="article">
+<meta property="og:title" content="尚品甄選電商SpringBoot-Web開發3權限管理之選單管理">
+<meta property="og:url" content="https://f88083.github.io/2024/05/01/%E5%B0%9A%E5%93%81%E7%94%84%E9%81%B8%E9%9B%BB%E5%95%86SpringBoot-Web%E9%96%8B%E7%99%BC3%E6%AC%8A%E9%99%90%E7%AE%A1%E7%90%86%E4%B9%8B%E9%81%B8%E5%96%AE%E7%AE%A1%E7%90%86/index.html">
+<meta property="og:site_name" content="Simon Lai&#39;s Blog">
+<meta property="og:description" content="目標 選單管理 選單需求和表結構 選單管理CRUD操作介面 選單管理CRUD前端   為角色分配選單 需求分析 介面 搜尋所有選單和角色分配選單id列表 儲存角色分配的選單數據   前端   動態選單 需求分析 介面 搜尋當前登入用戶可以操作的選單   前端    選單管理選單需求和表結構選單中的數據會有層級關係例如:  權限管理 用戶管理 角色管理 選單管理   訂單管理 訂單列表    那在資">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/ygYjaAG.png">
+<meta property="og:image" content="https://i.imgur.com/7ZbHtUT.png">
+<meta property="article:published_time" content="2024-05-01T10:31:50.000Z">
+<meta property="article:modified_time" content="2024-05-29T16:47:04.972Z">
+<meta property="article:author" content="Simon Lai">
+<meta property="article:tag" content="SpringBoot">
+<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="MyBatis">
+<meta property="article:tag" content="Element-plus">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.imgur.com/ygYjaAG.png">
+  
+  
+  
+  <title>尚品甄選電商SpringBoot-Web開發3權限管理之選單管理 - Simon Lai&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"f88083.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":35,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":"G-HJLTHPCQMP"},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=G-HJLTHPCQMP", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', 'G-HJLTHPCQMP');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Simon Lai&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首頁</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>歸檔</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分類</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>標籤</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>關於</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/images/bg.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="尚品甄選電商SpringBoot-Web開發3權限管理之選單管理"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-05-01 11:31" pubdate>
+          2024年5月1日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          8 分鐘
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">尚品甄選電商SpringBoot-Web開發3權限管理之選單管理</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="目標"><a href="#目標" class="headerlink" title="目標"></a>目標</h2><ul>
+<li>選單管理<ul>
+<li>選單需求和表結構</li>
+<li>選單管理<code>CRUD</code>操作介面</li>
+<li>選單管理<code>CRUD</code>前端</li>
+</ul>
+</li>
+<li>為角色分配選單<ul>
+<li>需求分析</li>
+<li>介面<ul>
+<li>搜尋所有選單和角色分配選單<code>id</code>列表</li>
+<li>儲存角色分配的選單數據</li>
+</ul>
+</li>
+<li>前端</li>
+</ul>
+</li>
+<li>動態選單<ul>
+<li>需求分析</li>
+<li>介面<ul>
+<li>搜尋當前登入用戶可以操作的選單</li>
+</ul>
+</li>
+<li>前端</li>
+</ul>
+</li>
+</ul>
+<h2 id="選單管理"><a href="#選單管理" class="headerlink" title="選單管理"></a>選單管理</h2><h3 id="選單需求和表結構"><a href="#選單需求和表結構" class="headerlink" title="選單需求和表結構"></a>選單需求和表結構</h3><p>選單中的數據會有層級關係例如:</p>
+<ul>
+<li>權限管理<ul>
+<li>用戶管理</li>
+<li>角色管理</li>
+<li>選單管理</li>
+</ul>
+</li>
+<li>訂單管理<ul>
+<li>訂單列表</li>
+</ul>
+</li>
+</ul>
+<p><em><strong>那在資料庫中應該如何儲存這樣的層級關係呢?</strong></em></p>
+<p>可以使用<code>id</code>和<code>parentId</code>來表示，例如</p>
+<p><img src="https://i.imgur.com/ygYjaAG.png" srcset="/img/loading.gif" lazyload alt="id與parentId"></p>
+<p>如此一來就可以連結</p>
+<p>新增相關檔案，完成準備工作</p>
+<p><img src="https://i.imgur.com/7ZbHtUT.png" srcset="/img/loading.gif" lazyload alt="新增menu相關MSCM"></p>
+<h3 id="列出選單"><a href="#列出選單" class="headerlink" title="列出選單"></a>列出選單</h3><p>一樣是<code>controller -&gt; service -&gt; mapper</code>，不過<code>service</code>的邏輯稍微複雜了一點</p>
+<p>為了列出所有的選單，以及子選單，新增以下介面以供使用</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// SysMenuController.java</span>
+<span class="token comment">// 選單列表</span>
+<span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/findNodes"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">findNodes</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">SysMenu</span><span class="token punctuation">></span></span> list <span class="token operator">=</span> sysMenuService<span class="token punctuation">.</span><span class="token function">findNodes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span>list<span class="token punctuation">,</span> <span class="token class-name">ResultCodeEnum</span><span class="token punctuation">.</span><span class="token constant">SUCCESS</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p><code>service</code>的部分則是分為兩個主要操作</p>
+<ol>
+<li>調用<code>mapper</code>尋找所有存在於數據庫中的選單</li>
+<li>依照層級關係封裝所有的選單，使前端的<code>element-plus</code>可以直接使用數據</li>
+</ol>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// SysMenuServiceImpl.java</span>
+<span class="token comment">// 選單列表</span>
+<span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">SysMenu</span><span class="token punctuation">></span></span> <span class="token function">findNodes</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 尋找所有選單，回傳list</span>
+    <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">SysMenu</span><span class="token punctuation">></span></span> sysMenuList <span class="token operator">=</span> sysMenuMapper<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token class-name">CollectionUtils</span><span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>sysMenuList<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token comment">// 使用工具，把回傳的list封裝成前端element-plus要求的格式</span>
+    <span class="token keyword">return</span> <span class="token class-name">MenuHelper</span><span class="token punctuation">.</span><span class="token function">buildTree</span><span class="token punctuation">(</span>sysMenuList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p>核心的部分是工具，利用遞迴一層一層封裝數據</p>
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-e064c6af" role="button" aria-expanded="false" aria-controls="collapse-e064c6af">
+        <div class="fold-arrow">▶</div>MenuHelper工具
+      </div>
+      <div class="fold-collapse collapse" id="collapse-e064c6af">
+        <div class="fold-content">
+          <figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 封裝樹狀選單</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MenuHelper</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">SysMenu</span><span class="token punctuation">></span></span> <span class="token function">buildTree</span><span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">SysMenu</span><span class="token punctuation">></span></span> sysMenuList<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 封裝數據</span>
+        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">SysMenu</span><span class="token punctuation">></span></span> trees <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 疊代sysMenu列表</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">SysMenu</span> sysMenu <span class="token operator">:</span> sysMenuList<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>sysMenu<span class="token punctuation">.</span><span class="token function">getParentId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            trees<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token function">findChildren</span><span class="token punctuation">(</span>sysMenu<span class="token punctuation">,</span> sysMenuList<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token keyword">return</span> trees<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token comment">// 搜尋menu的子menu</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">SysMenu</span> <span class="token function">findChildren</span><span class="token punctuation">(</span><span class="token class-name">SysMenu</span> sysMenu<span class="token punctuation">,</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">SysMenu</span><span class="token punctuation">></span></span> sysMenuList<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        sysMenu<span class="token punctuation">.</span><span class="token function">setChildren</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">SysMenu</span> ele <span class="token operator">:</span> sysMenuList<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// 找到對應的子menu</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>sysMenu<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">longValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> ele<span class="token punctuation">.</span><span class="token function">getParentId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">longValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token comment">// 加入parent的小孩們，但可能有更下層的小孩，所以繼續呼叫findChildren</span>
+                sysMenu<span class="token punctuation">.</span><span class="token function">getChildren</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token function">findChildren</span><span class="token punctuation">(</span>ele<span class="token punctuation">,</span> sysMenuList<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token keyword">return</span> sysMenu<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+        </div>
+      </div>
+    </div>
+
+<h3 id="新增與修改選單"><a href="#新增與修改選單" class="headerlink" title="新增與修改選單"></a>新增與修改選單</h3><ul>
+<li>這部分就是簡單的<code>controller -&gt; service -&gt; mapper</code>搞定，沒有額外的邏輯了</li>
+</ul>
+<h3 id="刪除選單"><a href="#刪除選單" class="headerlink" title="刪除選單"></a>刪除選單</h3><p>刪除選單時會有個問題，如果刪除高層選單，會需要考慮子選單是否一併刪除。這裡採取的方案是，如果刪除的選單包含子選單，那就不能刪除，所以步驟如下</p>
+<ol>
+<li>判斷當前要刪除的選單是否包含子選單</li>
+<li>包含:不能刪除；不包含:可以刪除</li>
+</ol>
+<p>主要邏輯如下</p>
+<span class="label label-info">SysMenuServiceImpl.java</span>
+
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 選單刪除</span>
+<span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">removeById</span><span class="token punctuation">(</span><span class="token class-name">Long</span> id<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 取得當前選單的子選單個數</span>
+    <span class="token keyword">int</span> count <span class="token operator">=</span> sysMenuMapper<span class="token punctuation">.</span><span class="token function">selectCountById</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 是否包含子選單，如包含，不可刪</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>count <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">SimonException</span><span class="token punctuation">(</span><span class="token class-name">ResultCodeEnum</span><span class="token punctuation">.</span><span class="token constant">NODE_ERROR</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 不包含子選單，刪除</span>
+    sysMenuMapper<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h3 id="前端整合"><a href="#前端整合" class="headerlink" title="前端整合"></a>前端整合</h3><p>前端的<code>code</code>直接貼上，重點是後端的程式</p>
+<h2 id="為角色分配選單"><a href="#為角色分配選單" class="headerlink" title="為角色分配選單"></a>為角色分配選單</h2><h3 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h3><p>需要兩個介面:</p>
+<ol>
+<li>查詢所有選單和角色分配過選單<code>id</code>的列表用以在前端顯示</li>
+<li>儲存角色和選單之間的關係</li>
+</ol>
+<h3 id="查詢所有選單和角色分配過選單id的列表"><a href="#查詢所有選單和角色分配過選單id的列表" class="headerlink" title="查詢所有選單和角色分配過選單id的列表"></a>查詢所有選單和角色分配過選單<code>id</code>的列表</h3><p>也是簡單的<code>controller -&gt; service -&gt; mapper</code></p>
+<span class="label label-info">SysRoleMenuController.java</span>
+
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 搜尋所有選單以及搜尋角色分配過的選單id列表</span>
+<span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/findSysRoleMenuByRoleId/&#123;roleId&#125;"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">findSysRoleMenuByRoleId</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span><span class="token punctuation">(</span><span class="token string">"roleId"</span><span class="token punctuation">)</span> <span class="token class-name">Long</span> roleId<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span> map <span class="token operator">=</span> sysRoleMenuService<span class="token punctuation">.</span><span class="token function">findSysRoleMenuByRoleId</span><span class="token punctuation">(</span>roleId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span>map<span class="token punctuation">,</span> <span class="token class-name">ResultCodeEnum</span><span class="token punctuation">.</span><span class="token constant">SUCCESS</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<span class="label label-info">SysRoleMenuServiceImpl.java</span>
+
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 搜尋所有選單以及搜尋角色分配過的選單id列表</span>
+<span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span> <span class="token function">findSysRoleMenuByRoleId</span><span class="token punctuation">(</span><span class="token class-name">Long</span> roleId<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 搜尋所有選單</span>
+    <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">SysMenu</span><span class="token punctuation">></span></span> sysMenuList <span class="token operator">=</span> sysMenuService<span class="token punctuation">.</span><span class="token function">findNodes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 根據id搜尋角色分配過的選單id列表</span>
+    <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Long</span><span class="token punctuation">></span></span> roleMenuIds <span class="token operator">=</span> sysRoleMenuMapper<span class="token punctuation">.</span><span class="token function">findSysRoleMenuByRoleId</span><span class="token punctuation">(</span>roleId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"sysMenuList"</span><span class="token punctuation">,</span> sysMenuList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"roleMenuIds"</span><span class="token punctuation">,</span> roleMenuIds<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> map<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<span class="label label-info">SysRoleMenuMapper.xml</span>
+
+<figure><div class="code-wrapper"><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token operator">&lt;</span><span class="token keyword">select</span> id<span class="token operator">=</span><span class="token string">"findSysRoleMenuByRoleId"</span> resultType<span class="token operator">=</span><span class="token string">"long"</span><span class="token operator">></span>
+  <span class="token keyword">select</span> menu_id
+  <span class="token keyword">from</span> sys_role_menu
+  <span class="token keyword">where</span> role_id <span class="token operator">=</span> <span class="token comment">#&#123;roleId&#125; and is_deleted = 0</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span><span class="token keyword">select</span><span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p>其實可以在搜尋的時候去掉<code>is_deleted = 0</code>這個條件，因為後面實作重新分配角色選單的時候是直接把<code>role&lt;-&gt;menu</code>關係刪除，只是<code>tutorial</code>中還是包含了這個條件所以我就保留了</p>
+<h3 id="儲存角色分配選單之數據"><a href="#儲存角色分配選單之數據" class="headerlink" title="儲存角色分配選單之數據"></a>儲存角色分配選單之數據</h3><p>和<a href="https://f88083.github.io/2024/04/22/%E5%B0%9A%E5%93%81%E7%94%84%E9%81%B8%E9%9B%BB%E5%95%86SpringBoot-Web%E9%96%8B%E7%99%BC2%E7%94%A8%E6%88%B6%E6%AC%8A%E9%99%90%E7%AE%A1%E7%90%86/#%E8%A7%92%E8%89%B2%E5%88%86%E9%85%8D">上一篇</a>分配角色時的邏輯大致相同</p>
+<span class="label label-info">SysRoleMenuServiceImpl.java</span>
+
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 儲存角色分配選單數據</span>
+<span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">doAssign</span><span class="token punctuation">(</span><span class="token class-name">AssignMenuDto</span> assignMenuDto<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 刪除原本角色分配的選單數據</span>
+    sysRoleMenuMapper<span class="token punctuation">.</span><span class="token function">deleteByRoleId</span><span class="token punctuation">(</span>assignMenuDto<span class="token punctuation">.</span><span class="token function">getRoleId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 為角色重新分配選單數據</span>
+    <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Map</span><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Number</span><span class="token punctuation">></span><span class="token punctuation">></span></span> menuInfo <span class="token operator">=</span> assignMenuDto<span class="token punctuation">.</span><span class="token function">getMenuIdList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>menuInfo <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>menuInfo<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        sysRoleMenuMapper<span class="token punctuation">.</span><span class="token function">doAssign</span><span class="token punctuation">(</span>assignMenuDto<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<span class="label label-info">SysRoleMenuMapper.xml</span>
+
+<figure><div class="code-wrapper"><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token comment">--刪除原本角色分配的選單數據--></span>
+<span class="token operator">&lt;</span><span class="token keyword">delete</span> id<span class="token operator">=</span><span class="token string">"deleteByRoleId"</span><span class="token operator">></span>
+    <span class="token keyword">delete</span> <span class="token keyword">from</span> sys_role_menu <span class="token keyword">where</span> role_id <span class="token operator">=</span> <span class="token comment">#&#123;roleId&#125;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span><span class="token keyword">delete</span><span class="token operator">></span>
+
+<span class="token operator">&lt;</span><span class="token operator">!</span><span class="token comment">--為角色分配選單數據--></span>
+<span class="token operator">&lt;</span><span class="token keyword">insert</span> id<span class="token operator">=</span><span class="token string">"doAssign"</span><span class="token operator">></span>
+    <span class="token keyword">insert</span> <span class="token keyword">into</span> sys_role_menu <span class="token punctuation">(</span>role_id<span class="token punctuation">,</span>
+                                menu_id<span class="token punctuation">,</span>
+                                create_time<span class="token punctuation">,</span>
+                                update_time<span class="token punctuation">,</span>
+                                is_deleted<span class="token punctuation">,</span>
+                                is_half<span class="token punctuation">)</span>
+    <span class="token keyword">values</span>
+        <span class="token operator">&lt;</span>foreach collection<span class="token operator">=</span><span class="token string">"menuIdList"</span> item<span class="token operator">=</span><span class="token string">"menuInfo"</span> separator<span class="token operator">=</span><span class="token string">","</span><span class="token operator">></span>
+            <span class="token punctuation">(</span><span class="token comment">#&#123;roleId&#125;, #&#123;menuInfo.id&#125;, now(), now(), 0, #&#123;menuInfo.isHalf&#125;)</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>foreach<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span><span class="token keyword">insert</span><span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h3 id="前端整合-1"><a href="#前端整合-1" class="headerlink" title="前端整合"></a>前端整合</h3><p>這邊前端也是大同小異，直接照教程貼上理解即可</p>
+<h2 id="動態選單"><a href="#動態選單" class="headerlink" title="動態選單"></a>動態選單</h2><p>後端的部分主要的邏輯在<code>service</code></p>
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-a8163d0f" role="button" aria-expanded="false" aria-controls="collapse-a8163d0f">
+        <div class="fold-arrow">▶</div>SysMenuServiceImpl.java
+      </div>
+      <div class="fold-collapse collapse" id="collapse-a8163d0f">
+        <div class="fold-content">
+          <figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">SysMenuVo</span><span class="token punctuation">></span></span> <span class="token function">findMenusByUserId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 取得當前登入用戶之用戶id</span>
+    <span class="token class-name">Long</span> userId <span class="token operator">=</span> <span class="token class-name">AuthContextUtil</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 根據id搜尋其可使用之選單</span>
+    <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">SysMenu</span><span class="token punctuation">></span></span> menuList <span class="token operator">=</span> sysMenuMapper<span class="token punctuation">.</span><span class="token function">findMenusByUserId</span><span class="token punctuation">(</span>userId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 封裝成選單樹</span>
+    <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">SysMenu</span><span class="token punctuation">></span></span> sysMenuList <span class="token operator">=</span> <span class="token class-name">MenuHelper</span><span class="token punctuation">.</span><span class="token function">buildTree</span><span class="token punctuation">(</span>menuList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 轉換選單為回傳格式並回傳</span>
+    <span class="token keyword">return</span> <span class="token function">buildMenus</span><span class="token punctuation">(</span>sysMenuList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">SysMenuVo</span><span class="token punctuation">></span></span> <span class="token function">buildMenus</span><span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">SysMenu</span><span class="token punctuation">></span></span> menuList<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">SysMenuVo</span><span class="token punctuation">></span></span> sysMenuVoList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">SysMenu</span> sysMenu <span class="token operator">:</span> menuList<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// Setup current menu</span>
+        <span class="token class-name">SysMenuVo</span> sysMenuVo <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SysMenuVo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        sysMenuVo<span class="token punctuation">.</span><span class="token function">setTitle</span><span class="token punctuation">(</span>sysMenu<span class="token punctuation">.</span><span class="token function">getTitle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        sysMenuVo<span class="token punctuation">.</span><span class="token function">setName</span><span class="token punctuation">(</span>sysMenu<span class="token punctuation">.</span><span class="token function">getComponent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// Get current menu's children</span>
+        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">SysMenu</span><span class="token punctuation">></span></span> children <span class="token operator">=</span> sysMenu<span class="token punctuation">.</span><span class="token function">getChildren</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// Build its children if necessary</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token class-name">CollectionUtils</span><span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>children<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            sysMenuVo<span class="token punctuation">.</span><span class="token function">setChildren</span><span class="token punctuation">(</span><span class="token function">buildMenus</span><span class="token punctuation">(</span>children<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">// Add to the list</span>
+        sysMenuVoList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>sysMenuVo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">return</span> sysMenuVoList<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+        </div>
+      </div>
+    </div>
+
+<p>以及最查詢資料庫，需要關聯三張表</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token comment">--根據用戶id搜尋可以操作的選單們--></span>
+<span class="token operator">&lt;</span><span class="token keyword">select</span> id<span class="token operator">=</span><span class="token string">"findMenusByUserId"</span> resultMap<span class="token operator">=</span><span class="token string">"sysMenuMap"</span><span class="token operator">></span>
+    <span class="token keyword">select</span> <span class="token keyword">distinct</span> sm<span class="token punctuation">.</span><span class="token operator">*</span>
+    <span class="token keyword">from</span> sys_menu sm
+              <span class="token keyword">inner</span> <span class="token keyword">join</span> sys_role_menu srm <span class="token keyword">on</span> sm<span class="token punctuation">.</span>id <span class="token operator">=</span> srm<span class="token punctuation">.</span>menu_id
+              <span class="token keyword">inner</span> <span class="token keyword">join</span> sys_user_role sur <span class="token keyword">on</span> srm<span class="token punctuation">.</span>role_id <span class="token operator">=</span> sur<span class="token punctuation">.</span>role_id
+    <span class="token keyword">where</span> sur<span class="token punctuation">.</span>user_id <span class="token operator">=</span> <span class="token comment">#&#123;userId&#125;</span>
+      <span class="token operator">and</span> sm<span class="token punctuation">.</span>is_deleted <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span><span class="token keyword">select</span><span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p>前端的部分把相關的<code>code</code>改成動態選單就好了</p>
+<h3 id="bug問題"><a href="#bug問題" class="headerlink" title="bug問題"></a>bug問題</h3><ol>
+<li>角色分配了某個選單以及其全部子選單，這時再添加一個新的子選單，該角色會自動被分配新的角色。</li>
+</ol>
+<ul>
+<li>例如:<code>測試人員</code>被分配<code>系統管理</code>選單下的所有子選單，這時再為<code>系統管理</code>新增一個子選單(例如<code>地區管理</code>)那<code>測試人員</code>就會被分配這個新的選單</li>
+</ul>
+<p>如何解決?</p>
+<ul>
+<li>新增選單時，把其父選單<code>isHalf</code>重新賦值為<code>1</code></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Project/" class="category-chain-item">Project</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Project/SpringBoot/" class="category-chain-item">SpringBoot</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/SpringBoot/" class="print-no-link">#SpringBoot</a>
+      
+        <a href="/tags/Vue/" class="print-no-link">#Vue</a>
+      
+        <a href="/tags/MyBatis/" class="print-no-link">#MyBatis</a>
+      
+        <a href="/tags/Element-plus/" class="print-no-link">#Element-plus</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>尚品甄選電商SpringBoot-Web開發3權限管理之選單管理</div>
+      <div>https://f88083.github.io/2024/05/01/尚品甄選電商SpringBoot-Web開發3權限管理之選單管理/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Simon Lai</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>發布於</div>
+          <div>2024年5月1日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>許可協議</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="NC - 非商業性使用">
+                    <i class="iconfont icon-nc"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                    <i class="iconfont icon-sa"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/05/08/392-Is-Subsequence-Easy/" title="392. Is Subsequence - Easy">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">392. Is Subsequence - Easy</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/04/27/9%E5%80%8B%E7%B5%A6%E5%B7%A5%E7%A8%8B%E5%B8%AB%E7%9A%84%E9%83%A8%E8%90%BD%E6%A0%BC/" title="9個給工程師的部落格">
+                        <span class="hidden-mobile">9個給工程師的部落格</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"f88083/blog-comments","repo-id":"R_kgDOKvLNrw","category":"Announcements","category-id":"DIC_kwDOKvLNr84CbPZE","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-TW"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目錄</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">關鍵字</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允許 JavaScript 運行的環境下瀏覽效果更佳</div>
+  </noscript>
+</body>
+</html>

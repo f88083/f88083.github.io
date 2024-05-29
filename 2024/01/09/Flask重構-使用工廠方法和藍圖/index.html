@@ -1,0 +1,926 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/logo.png">
+  <link rel="icon" href="/images/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Simon Lai">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="雖然初步開發的時候可以不用管結構，全部程式碼都塞在一起就好，但是遇到要擴展或是測試的時候問題就出現了，很多潛在的問題在程式擴展的路上會出現，增加很多時間成本。而我自己也想練習一下寫測試，有好的結構才能快速切換測試和開發的環境，剛好藉由自己的這個小project來玩玩看 結構參考《Flask Web開發》  以下是重構後的資料結構    code都拆開放在專屬的py檔案裡了  app資料夾是放Fla">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flask重構-使用工廠方法和藍圖">
+<meta property="og:url" content="https://f88083.github.io/2024/01/09/Flask%E9%87%8D%E6%A7%8B-%E4%BD%BF%E7%94%A8%E5%B7%A5%E5%BB%A0%E6%96%B9%E6%B3%95%E5%92%8C%E8%97%8D%E5%9C%96/index.html">
+<meta property="og:site_name" content="Simon Lai&#39;s Blog">
+<meta property="og:description" content="雖然初步開發的時候可以不用管結構，全部程式碼都塞在一起就好，但是遇到要擴展或是測試的時候問題就出現了，很多潛在的問題在程式擴展的路上會出現，增加很多時間成本。而我自己也想練習一下寫測試，有好的結構才能快速切換測試和開發的環境，剛好藉由自己的這個小project來玩玩看 結構參考《Flask Web開發》  以下是重構後的資料結構    code都拆開放在專屬的py檔案裡了  app資料夾是放Fla">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/RUB2kN8.png">
+<meta property="og:image" content="https://i.imgur.com/S3W8FvX.png">
+<meta property="og:image" content="https://i.imgur.com/o2Psgy0.png">
+<meta property="og:image" content="https://i.imgur.com/uwvuxZi.png">
+<meta property="article:published_time" content="2024-01-09T14:30:12.000Z">
+<meta property="article:modified_time" content="2024-05-29T16:47:04.957Z">
+<meta property="article:author" content="Simon Lai">
+<meta property="article:tag" content="Flask">
+<meta property="article:tag" content="Factory Pattern">
+<meta property="article:tag" content="Blueprint">
+<meta property="article:tag" content="Configuration">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.imgur.com/RUB2kN8.png">
+  
+  
+  
+  <title>Flask重構-使用工廠方法和藍圖 - Simon Lai&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"f88083.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":35,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":"G-HJLTHPCQMP"},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=G-HJLTHPCQMP", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', 'G-HJLTHPCQMP');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Simon Lai&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首頁</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>歸檔</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分類</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>標籤</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>關於</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/images/bg.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Flask重構-使用工廠方法和藍圖"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-01-09 14:30" pubdate>
+          2024年1月9日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          6 分鐘
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Flask重構-使用工廠方法和藍圖</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>雖然初步開發的時候可以不用管結構，全部程式碼都塞在一起就好，但是遇到要擴展或是測試的時候問題就出現了，很多潛在的問題在程式擴展的路上會出現，增加很多時間成本。而我自己也想練習一下寫測試，有好的結構才能快速切換測試和開發的環境，剛好藉由自己的這個小project來玩玩看</p>
+<h2 id="結構"><a href="#結構" class="headerlink" title="結構"></a>結構</h2><p>參考<a target="_blank" rel="noopener" href="https://www.books.com.tw/products/CN11202194">《Flask Web開發》</a></p>
+<p><img src="https://i.imgur.com/RUB2kN8.png" srcset="/img/loading.gif" lazyload alt="書中範例結構"></p>
+<p>以下是重構後的資料結構</p>
+<p><img src="https://i.imgur.com/S3W8FvX.png" srcset="/img/loading.gif" lazyload alt="主資料夾(/)"></p>
+<p><img src="https://i.imgur.com/o2Psgy0.png" srcset="/img/loading.gif" lazyload alt="APP資料夾(/app)"></p>
+<p><img src="https://i.imgur.com/uwvuxZi.png" srcset="/img/loading.gif" lazyload alt="APP資料夾的檔案"></p>
+<p><code>code</code>都拆開放在專屬的<code>py</code>檔案裡了</p>
+<ul>
+<li><code>app</code>資料夾是放<code>Flask</code>主程式，也可以換成其他名子</li>
+<li><code>app/main</code>底下放的是<code>views</code>(<code>update</code>, <code>delete</code>, <code>add</code>之類的<code>url</code>)</li>
+<li><code>app/templates</code>存放各個頁面的<code>html</code></li>
+<li><code>app/tests</code>放測試</li>
+<li><code>app</code>底下放<code>command</code>(建資料庫，新增帳號密碼之類的)以及<code>models</code>(放資料庫的<code>models</code>)</li>
+<li><code>/</code>根目錄放<code>main.py</code>用來呼叫<code>app</code>裡的<code>create_app()</code>來建立<code>app</code>，這個是工廠方法，下面會提到</li>
+</ul>
+<h2 id="工廠方法-Factory-pattern"><a href="#工廠方法-Factory-pattern" class="headerlink" title="工廠方法(Factory pattern)"></a>工廠方法(Factory pattern)</h2><p>為了讓程式可以建立多個<code>instance</code>，以便<code>Unit test</code>(因為為了提高測試覆蓋度，有時候必須在不同的的設定下執行程式)。單<code>instance</code>建立後沒辦法再修改設定，所以需要多個<code>instance</code></p>
+<p>解決方法是<strong>延遲建立instance</strong>，建立過程移至工廠方法，這裡放在<code>app/__init__.py</code>(官方文件寫得超簡短…用處有限🤦‍♂️只知道<code>db</code>要放在<code>create_app()</code>)</p>
+<blockquote>
+<p>工廠方法要配合藍圖(blueprint)才能建立路由和自訂<code>404</code>頁面</p>
+</blockquote>
+<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> os
+<span class="token keyword">import</span> sys
+<span class="token keyword">from</span> flask <span class="token keyword">import</span> Blueprint<span class="token punctuation">,</span> Flask
+<span class="token keyword">from</span> flask_sqlalchemy <span class="token keyword">import</span> SQLAlchemy
+<span class="token keyword">from</span> flask_login <span class="token keyword">import</span> LoginManager
+<span class="token keyword">from</span> <span class="token punctuation">.</span>config <span class="token keyword">import</span> config
+
+<span class="token comment"># SQLite URI compatible</span>
+WIN <span class="token operator">=</span> sys<span class="token punctuation">.</span>platform<span class="token punctuation">.</span>startswith<span class="token punctuation">(</span><span class="token string">'win'</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> WIN<span class="token punctuation">:</span>
+    prefix <span class="token operator">=</span> <span class="token string">'sqlite:///'</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    prefix <span class="token operator">=</span> <span class="token string">'sqlite:////'</span>
+
+<span class="token keyword">def</span> <span class="token function">create_app</span><span class="token punctuation">(</span>config_name<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+    app<span class="token punctuation">.</span>config<span class="token punctuation">.</span>from_object<span class="token punctuation">(</span>config<span class="token punctuation">[</span>config_name<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">from</span> <span class="token punctuation">.</span>models <span class="token keyword">import</span> db
+    db<span class="token punctuation">.</span>init_app<span class="token punctuation">(</span>app<span class="token punctuation">)</span>
+    login_manager <span class="token operator">=</span> LoginManager<span class="token punctuation">(</span>app<span class="token punctuation">)</span>
+    login_manager<span class="token punctuation">.</span>init_app<span class="token punctuation">(</span>app<span class="token punctuation">)</span>
+
+    <span class="token decorator annotation punctuation">@login_manager<span class="token punctuation">.</span>user_loader</span>
+    <span class="token keyword">def</span> <span class="token function">load_user</span><span class="token punctuation">(</span>user_id<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">from</span> <span class="token punctuation">.</span>models <span class="token keyword">import</span> User
+        user <span class="token operator">=</span> User<span class="token punctuation">.</span>query<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">(</span>user_id<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> user
+
+    login_manager<span class="token punctuation">.</span>login_view <span class="token operator">=</span> <span class="token string">'main.login'</span>
+
+    <span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>context_processor</span>
+    <span class="token keyword">def</span> <span class="token function">inject_user</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">from</span> <span class="token punctuation">.</span>models <span class="token keyword">import</span> User
+        user <span class="token operator">=</span> User<span class="token punctuation">.</span>query<span class="token punctuation">.</span>first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token builtin">dict</span><span class="token punctuation">(</span>user<span class="token operator">=</span>user<span class="token punctuation">)</span>
+    
+    <span class="token comment"># 註冊藍圖</span>
+    <span class="token keyword">from</span> <span class="token punctuation">.</span>main <span class="token keyword">import</span> main <span class="token keyword">as</span> main_blueprint
+    app<span class="token punctuation">.</span>register_blueprint<span class="token punctuation">(</span>main_blueprint<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> app<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h2 id="藍圖"><a href="#藍圖" class="headerlink" title="藍圖"></a>藍圖</h2><ul>
+<li>藍圖: 放在<code>app/main/__init__.py</code></li>
+<li>由於換成工廠模式來建立<code>instance</code>，建立後才能使用<code>app.route</code>，但已經無法定義路由了，也就是在<code>create_app()</code>裡定義藍圖好定義路由</li>
+<li>藍圖中定義路由和錯誤處理程式處於休眠狀態，只有註冊(<code>register</code>)到應用程式上才成為他的一部分</li>
+<li>可以在單個檔案中定義，也可以用結構化方式在多個<code>module</code>裡建立，為了方便直接在<code>app/main</code>裡建立一個<code>blueprint</code>，包含<code>views</code>和<code>errors</code></li>
+<li>定義路由的時候要寫上藍圖的名稱，因為是由藍圖提供，而非<code>app.route</code>，這裡是<code>@main.route()</code></li>
+<li>使用藍圖時，<code>url_for()</code>裡的參數不再是直接寫上路由路徑的名子，例如<code>url_for(&#39;index&#39;)</code>。而是要加上藍圖的名稱變為<code>url_for(&#39;main.index&#39;)</code>這是為了在不同藍圖中使用同樣的路徑名</li>
+<li>當同一個藍圖重定向(<code>redirect</code>)的時候可以簡化寫法變為<code>url_for(&#39;.index&#39;)</code>，跨藍圖的時候就得加上藍圖名</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> flask <span class="token keyword">import</span> Blueprint
+
+<span class="token comment"># Main blueprint</span>
+<span class="token comment"># 兩個必要的參數: 藍圖名稱和所在的包或模塊</span>
+main <span class="token operator">=</span> Blueprint<span class="token punctuation">(</span><span class="token string">'main'</span><span class="token punctuation">,</span> __name__<span class="token punctuation">)</span>
+
+<span class="token comment"># 避免循環依賴</span>
+<span class="token comment"># 因為兩個script都會導入main</span>
+<span class="token keyword">from</span> <span class="token punctuation">.</span> <span class="token keyword">import</span> views<span class="token punctuation">,</span> errors<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h2 id="設定檔"><a href="#設定檔" class="headerlink" title="設定檔"></a>設定檔</h2><p>由於不同的階段會有不同的設定以及參數，所以需要設定檔來定義每個階段需要的設定，以便快速切換。例如開發、測試、和部署，都需要不同的設定以及參數，這時有設定檔就可以隨意切換，不須手動調整(自動就是爽)</p>
+<p>這裡我是放在<code>app/config.py</code>，簡單設定一下不同環境的參數</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> os
+<span class="token keyword">import</span> sys
+
+<span class="token comment"># SQLite URI compatible</span>
+WIN <span class="token operator">=</span> sys<span class="token punctuation">.</span>platform<span class="token punctuation">.</span>startswith<span class="token punctuation">(</span><span class="token string">'win'</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> WIN<span class="token punctuation">:</span>
+    prefix <span class="token operator">=</span> <span class="token string">'sqlite:///'</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    prefix <span class="token operator">=</span> <span class="token string">'sqlite:////'</span>
+
+<span class="token keyword">def</span> <span class="token function">create_sqlite_uri</span><span class="token punctuation">(</span>db_name<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> prefix <span class="token operator">+</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>dirname<span class="token punctuation">(</span>__file__<span class="token punctuation">)</span><span class="token punctuation">,</span> db_name<span class="token punctuation">)</span>
+
+<span class="token keyword">class</span> <span class="token class-name">BaseConfig</span><span class="token punctuation">(</span><span class="token builtin">object</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    SECRET_KEY <span class="token operator">=</span> <span class="token string">'你的密碼'</span>
+
+<span class="token keyword">class</span> <span class="token class-name">DevelopmentConfig</span><span class="token punctuation">(</span>BaseConfig<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    DEBUG <span class="token operator">=</span> <span class="token boolean">False</span>
+    SQLALCHEMY_DATABASE_URI <span class="token operator">=</span> create_sqlite_uri<span class="token punctuation">(</span><span class="token string">'watching-history.db'</span><span class="token punctuation">)</span>
+    SQLALCHEMY_TRACK_MODIFICATIONS <span class="token operator">=</span> <span class="token boolean">False</span>
+
+<span class="token keyword">class</span> <span class="token class-name">TestingConfig</span><span class="token punctuation">(</span>BaseConfig<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    TESTING <span class="token operator">=</span> <span class="token boolean">True</span>
+    SQLALCHEMY_DATABASE_URI <span class="token operator">=</span> create_sqlite_uri<span class="token punctuation">(</span><span class="token string">'test.db'</span><span class="token punctuation">)</span>
+    SQLALCHEMY_TRACK_MODIFICATIONS <span class="token operator">=</span> <span class="token boolean">False</span>
+
+config <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+    <span class="token string">'development'</span><span class="token punctuation">:</span> DevelopmentConfig<span class="token punctuation">,</span>
+    <span class="token string">'testing'</span><span class="token punctuation">:</span> TestingConfig
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p><code>SECRET_KEY</code>等一些機密資訊可以用環境變數導入，更安全，為了方便，而且沒有機密，所以就直接寫入</p>
+<blockquote>
+<p><em><strong>切記不要把密碼以及機密資訊寫在版本控制的設定檔中</strong></em></p>
+</blockquote>
+<p>上面程式碼中也可以看到<code>SQLALCHEMY_DATABASE_URI</code>在<code>development</code>和<code>testing</code>中是不同的值，這樣可以在不同環境中使用不同的資料庫，以免原本的資料庫被覆寫</p>
+<h2 id="啟動"><a href="#啟動" class="headerlink" title="啟動"></a>啟動</h2><ul>
+<li>重構後在根目錄建立<code>.flaskenv</code>讓<code>flask</code>知道哪個是啟動的<code>py</code>檔案</li>
+</ul>
+<blockquote>
+<p><code>FLASK_APP=main.py</code></p>
+</blockquote>
+<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># main.py</span>
+<span class="token keyword">from</span> app <span class="token keyword">import</span> create_app
+ 
+app <span class="token operator">=</span> create_app<span class="token punctuation">(</span>config_name<span class="token operator">=</span><span class="token string">'development'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Project/" class="category-chain-item">Project</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Flask/" class="print-no-link">#Flask</a>
+      
+        <a href="/tags/Factory-Pattern/" class="print-no-link">#Factory Pattern</a>
+      
+        <a href="/tags/Blueprint/" class="print-no-link">#Blueprint</a>
+      
+        <a href="/tags/Configuration/" class="print-no-link">#Configuration</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Flask重構-使用工廠方法和藍圖</div>
+      <div>https://f88083.github.io/2024/01/09/Flask重構-使用工廠方法和藍圖/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Simon Lai</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>發布於</div>
+          <div>2024年1月9日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>許可協議</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="NC - 非商業性使用">
+                    <i class="iconfont icon-nc"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                    <i class="iconfont icon-sa"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/01/10/221-Maximal-Square-Medium/" title="221. Maximal Square - Medium">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">221. Maximal Square - Medium</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/01/09/283-Move-Zeroes-Easy/" title="283. Move Zeroes - Easy">
+                        <span class="hidden-mobile">283. Move Zeroes - Easy</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"f88083/blog-comments","repo-id":"R_kgDOKvLNrw","category":"Announcements","category-id":"DIC_kwDOKvLNr84CbPZE","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-TW"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目錄</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">關鍵字</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允許 JavaScript 運行的環境下瀏覽效果更佳</div>
+  </noscript>
+</body>
+</html>

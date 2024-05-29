@@ -1,0 +1,1325 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/logo.png">
+  <link rel="icon" href="/images/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Simon Lai">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="目標 用戶管理需求和準備 用戶管理api 添加 修改 刪除   用戶管理前端 用戶頭像 minIO伺服器 上傳檔案 上傳檔案前端   為用戶分配角色 需求 API 整合前端    用戶條件分頁查詢API 一樣是透過controller -&gt; service -&gt; mapper拿到資料list後再回傳給前端  &#x2F;&#x2F; 用戶條件分頁查詢介面 @GetMapping(value &#x3D; &quot;&#x2F;fin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="尚品甄選電商SpringBoot-Web開發2用戶權限管理">
+<meta property="og:url" content="https://f88083.github.io/2024/04/22/%E5%B0%9A%E5%93%81%E7%94%84%E9%81%B8%E9%9B%BB%E5%95%86SpringBoot-Web%E9%96%8B%E7%99%BC2%E7%94%A8%E6%88%B6%E6%AC%8A%E9%99%90%E7%AE%A1%E7%90%86/index.html">
+<meta property="og:site_name" content="Simon Lai&#39;s Blog">
+<meta property="og:description" content="目標 用戶管理需求和準備 用戶管理api 添加 修改 刪除   用戶管理前端 用戶頭像 minIO伺服器 上傳檔案 上傳檔案前端   為用戶分配角色 需求 API 整合前端    用戶條件分頁查詢API 一樣是透過controller -&gt; service -&gt; mapper拿到資料list後再回傳給前端  &#x2F;&#x2F; 用戶條件分頁查詢介面 @GetMapping(value &#x3D; &quot;&#x2F;fin">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/aPqtegk.png">
+<meta property="article:published_time" content="2024-04-22T09:37:57.000Z">
+<meta property="article:modified_time" content="2024-05-29T16:47:04.971Z">
+<meta property="article:author" content="Simon Lai">
+<meta property="article:tag" content="SpringBoot">
+<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="MyBatis">
+<meta property="article:tag" content="Element-plus">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.imgur.com/aPqtegk.png">
+  
+  
+  
+  <title>尚品甄選電商SpringBoot-Web開發2用戶權限管理 - Simon Lai&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"f88083.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":35,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":"G-HJLTHPCQMP"},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=G-HJLTHPCQMP", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', 'G-HJLTHPCQMP');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Simon Lai&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首頁</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>歸檔</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分類</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>標籤</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>關於</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/images/bg.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="尚品甄選電商SpringBoot-Web開發2用戶權限管理"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-04-22 10:37" pubdate>
+          2024年4月22日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          11 分鐘
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">尚品甄選電商SpringBoot-Web開發2用戶權限管理</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="目標"><a href="#目標" class="headerlink" title="目標"></a>目標</h2><ul>
+<li>用戶管理需求和準備</li>
+<li>用戶管理<code>api</code><ul>
+<li>添加</li>
+<li>修改</li>
+<li>刪除</li>
+</ul>
+</li>
+<li>用戶管理前端</li>
+<li>用戶頭像<ul>
+<li><code>minIO</code>伺服器</li>
+<li>上傳檔案</li>
+<li>上傳檔案前端</li>
+</ul>
+</li>
+<li>為用戶分配角色<ul>
+<li>需求</li>
+<li><code>API</code></li>
+<li>整合前端</li>
+</ul>
+</li>
+</ul>
+<h2 id="用戶條件分頁查詢API"><a href="#用戶條件分頁查詢API" class="headerlink" title="用戶條件分頁查詢API"></a>用戶條件分頁查詢API</h2><ul>
+<li>一樣是透過<code>controller -&gt; service -&gt; mapper</code>拿到資料<code>list</code>後再回傳給前端</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 用戶條件分頁查詢介面</span>
+<span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"/findByPage/&#123;pageNum&#125;/&#123;pageSize&#125;"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">findByPage</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span><span class="token punctuation">(</span><span class="token string">"pageNum"</span><span class="token punctuation">)</span> <span class="token class-name">Integer</span> pageNum<span class="token punctuation">,</span>
+                            <span class="token annotation punctuation">@PathVariable</span><span class="token punctuation">(</span><span class="token string">"pageSize"</span><span class="token punctuation">)</span> <span class="token class-name">Integer</span> pageSize<span class="token punctuation">,</span>
+                            <span class="token class-name">SysUserDto</span> sysUserDto<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">PageInfo</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">SysUser</span><span class="token punctuation">></span></span> pageInfo <span class="token operator">=</span> sysUserService<span class="token punctuation">.</span><span class="token function">findByPage</span><span class="token punctuation">(</span>pageNum<span class="token punctuation">,</span> pageSize<span class="token punctuation">,</span> sysUserDto<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span>pageInfo<span class="token punctuation">,</span> <span class="token class-name">ResultCodeEnum</span><span class="token punctuation">.</span><span class="token constant">SUCCESS</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h2 id="新增用戶"><a href="#新增用戶" class="headerlink" title="新增用戶"></a>新增用戶</h2><ul>
+<li>也是同樣的切割code</li>
+<li>用戶名不能重複</li>
+<li>只列出未被刪除(is_deleted&#x3D;0)的數據</li>
+</ul>
+<p>Controller</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 用戶新增</span>
+<span class="token annotation punctuation">@PostMapping</span><span class="token punctuation">(</span><span class="token string">"/saveSysUser"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">saveSysUser</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestBody</span> <span class="token class-name">SysUser</span> sysUser<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    sysUserService<span class="token punctuation">.</span><span class="token function">saveSysUser</span><span class="token punctuation">(</span>sysUser<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token class-name">ResultCodeEnum</span><span class="token punctuation">.</span><span class="token constant">SUCCESS</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p>Service</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">saveSysUser</span><span class="token punctuation">(</span><span class="token class-name">SysUser</span> sysUser<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 判斷用戶名不能重複</span>
+    <span class="token class-name">String</span> userName <span class="token operator">=</span> sysUser<span class="token punctuation">.</span><span class="token function">getUserName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">SysUser</span> dbSysUser <span class="token operator">=</span> sysUserMapper<span class="token punctuation">.</span><span class="token function">selectUserInfoByUserName</span><span class="token punctuation">(</span>userName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>dbSysUser <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">SimonException</span><span class="token punctuation">(</span><span class="token class-name">ResultCodeEnum</span><span class="token punctuation">.</span><span class="token constant">USER_NAME_IS_EXISTS</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token comment">// 加密密碼</span>
+    <span class="token class-name">String</span> md5_password <span class="token operator">=</span> <span class="token class-name">DigestUtils</span><span class="token punctuation">.</span><span class="token function">md5DigestAsHex</span><span class="token punctuation">(</span>sysUser<span class="token punctuation">.</span><span class="token function">getPassword</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    sysUser<span class="token punctuation">.</span><span class="token function">setPassword</span><span class="token punctuation">(</span>md5_password<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 新增用戶</span>
+    sysUserMapper<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span>sysUser<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p>剩餘的用戶修改以及刪除功能也都大同小異</p>
+<h2 id="用戶管理-前端"><a href="#用戶管理-前端" class="headerlink" title="用戶管理-前端"></a>用戶管理-前端</h2><p>前面已經寫好後端了，接下來前端一步一步完成，以下就直接放完成的<code>code</code>了，因為大同小異，調用方法、接收數據、傳送數據、顯示數據…</p>
+<ul>
+<li>新增用戶</li>
+<li>修改用戶</li>
+<li>刪除用戶</li>
+<li>搜尋用戶</li>
+</ul>
+<p>實作新增用戶的時候後端出現錯誤，通過在<code>globalException printStackTrace</code>找到原因，提示<code>status</code>不能為<code>null</code>，於是在<code>service</code>設定一下<code>sysUser.setStatus(1);</code>順利解決</p>
+<p>修改用戶時如果沒有修改用戶名，原本的後端邏輯會檢測到數據庫有重名，造成操作失敗，改為以下程式碼修復成功</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 用戶修改</span>
+<span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">updateSysUser</span><span class="token punctuation">(</span><span class="token class-name">SysUser</span> sysUser<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 用戶名不能重複</span>
+    <span class="token class-name">String</span> userName <span class="token operator">=</span> sysUser<span class="token punctuation">.</span><span class="token function">getUserName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">SysUser</span> dbSysUser <span class="token operator">=</span> sysUserMapper<span class="token punctuation">.</span><span class="token function">selectUserInfoByUserName</span><span class="token punctuation">(</span>userName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 當數據庫存在該名稱，且他們id相異時拋出</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>dbSysUser <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>sysUser<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>dbSysUser<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">SimonException</span><span class="token punctuation">(</span><span class="token class-name">ResultCodeEnum</span><span class="token punctuation">.</span><span class="token constant">USER_NAME_IS_EXISTS</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token comment">// 修改</span>
+    sysUserMapper<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>sysUser<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 全域異常處理</span>
+<span class="token annotation punctuation">@ExceptionHandler</span><span class="token punctuation">(</span><span class="token class-name">Exception</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@ResponseBody</span> <span class="token comment">// 回傳JSON</span>
+<span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">error</span><span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 除錯用</span>
+    e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token class-name">ResultCodeEnum</span><span class="token punctuation">.</span><span class="token constant">SYSTEM_ERROR</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-5b5bd572" role="button" aria-expanded="false" aria-controls="collapse-5b5bd572">
+        <div class="fold-arrow">▶</div>sysUser.js
+      </div>
+      <div class="fold-collapse collapse" id="collapse-5b5bd572">
+        <div class="fold-content">
+          <figure><div class="code-wrapper"><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">import</span> request <span class="token keyword">from</span> <span class="token string">'@/utils/request'</span>
+<span class="token keyword">import</span> SysUser <span class="token keyword">from</span> <span class="token string">'@/views/system/sysUser.vue'</span>
+
+<span class="token keyword">const</span> base_api <span class="token operator">=</span> <span class="token string">'/admin/system/sysUser'</span>
+
+<span class="token comment">// 用戶列表</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">GetSysUserListByPage</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">current<span class="token punctuation">,</span> limit<span class="token punctuation">,</span> queryDto</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">return</span> <span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+    <span class="token comment">// ``模板字串</span>
+    <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>base_api<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string">/findByPage/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>current<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string">/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>limit<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token comment">// 路徑</span>
+    <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">'get'</span><span class="token punctuation">,</span> <span class="token comment">// 提交方式</span>
+    <span class="token comment">// 接口@RequestBody 前端 data:名稱，以JSON格式傳遞</span>
+    <span class="token comment">// 接口沒有註解，前端 params:名稱，以URL格式傳遞</span>
+    <span class="token literal-property property">params</span><span class="token operator">:</span> queryDto<span class="token punctuation">,</span> <span class="token comment">// 其他參數</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 用戶新增</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">SaveSysUser</span> <span class="token operator">=</span> <span class="token parameter">sysUser</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">return</span> <span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+    <span class="token comment">// ``模板字串</span>
+    <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>base_api<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string">/saveSysUser</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token comment">// 路徑</span>
+    <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">'post'</span><span class="token punctuation">,</span> <span class="token comment">// 提交方式</span>
+    <span class="token literal-property property">data</span><span class="token operator">:</span> sysUser<span class="token punctuation">,</span> <span class="token comment">// 其他參數</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 用戶修改</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">UpdateSysUser</span> <span class="token operator">=</span> <span class="token parameter">sysUser</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">return</span> <span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+    <span class="token comment">// ``模板字串</span>
+    <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>base_api<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string">/updateSysUser</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token comment">// 路徑</span>
+    <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">'put'</span><span class="token punctuation">,</span> <span class="token comment">// 提交方式</span>
+    <span class="token literal-property property">data</span><span class="token operator">:</span> sysUser<span class="token punctuation">,</span> <span class="token comment">// 其他參數</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 用戶刪除</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">DeleteSysUser</span> <span class="token operator">=</span> <span class="token parameter">userId</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">return</span> <span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+    <span class="token comment">// ``模板字串</span>
+    <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>base_api<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string">/deleteById/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>userId<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token comment">// 路徑</span>
+    <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">'delete'</span><span class="token punctuation">,</span> <span class="token comment">// 提交方式</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-dc73f5fd" role="button" aria-expanded="false" aria-controls="collapse-dc73f5fd">
+        <div class="fold-arrow">▶</div>sysUser.vue
+      </div>
+      <div class="fold-collapse collapse" id="collapse-dc73f5fd">
+        <div class="fold-content">
+          <figure><div class="code-wrapper"><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script setup<span class="token operator">></span>
+<span class="token keyword">import</span> <span class="token punctuation">&#123;</span> ref<span class="token punctuation">,</span> onMounted <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
+<span class="token keyword">import</span> <span class="token punctuation">&#123;</span>
+  GetSysUserListByPage<span class="token punctuation">,</span>
+  SaveSysUser<span class="token punctuation">,</span>
+  UpdateSysUser<span class="token punctuation">,</span>
+  DeleteSysUser<span class="token punctuation">,</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'@/api/sysUser'</span>
+<span class="token keyword">import</span> <span class="token punctuation">&#123;</span> ElMessage<span class="token punctuation">,</span> ElMessageBox <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'element-plus'</span>
+
+<span class="token comment">// 用戶刪除</span>
+<span class="token keyword">const</span> <span class="token function-variable function">deleteById</span> <span class="token operator">=</span> <span class="token parameter">row</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  ElMessageBox<span class="token punctuation">.</span><span class="token function">confirm</span><span class="token punctuation">(</span><span class="token string">'此操作将永久删除该记录, 是否继续?'</span><span class="token punctuation">,</span> <span class="token string">'Warning'</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>
+    <span class="token literal-property property">confirmButtonText</span><span class="token operator">:</span> <span class="token string">'确定'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">cancelButtonText</span><span class="token operator">:</span> <span class="token string">'取消'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">'warning'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">const</span> <span class="token punctuation">&#123;</span> code <span class="token punctuation">&#125;</span> <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">DeleteSysUser</span><span class="token punctuation">(</span>row<span class="token punctuation">.</span>id<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>code <span class="token operator">==</span> <span class="token number">200</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      ElMessage<span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span><span class="token string">'操作成功'</span><span class="token punctuation">)</span>
+      <span class="token function">fetchData</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+      ElMessage<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'操作失败'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 用戶新增與修改</span>
+<span class="token keyword">const</span> dialogVisible <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 定义提交表单数据模型</span>
+<span class="token keyword">const</span> form <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+  <span class="token literal-property property">userName</span><span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">phone</span><span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">password</span><span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">description</span><span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">avatar</span><span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">const</span> sysUser <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span>form<span class="token punctuation">)</span>
+
+<span class="token comment">// 點修改，彈框</span>
+<span class="token keyword">const</span> <span class="token function-variable function">editSysUser</span> <span class="token operator">=</span> <span class="token parameter">row</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  sysUser<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token punctuation">&#123;</span> <span class="token operator">...</span>row <span class="token punctuation">&#125;</span>
+  dialogVisible<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token boolean">true</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 點添加，彈框</span>
+<span class="token keyword">const</span> <span class="token function-variable function">addShow</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  sysUser<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+  dialogVisible<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token boolean">true</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 提交方法</span>
+<span class="token keyword">const</span> <span class="token function-variable function">submit</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  <span class="token comment">// 無id，新增</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>sysUser<span class="token punctuation">.</span>value<span class="token punctuation">.</span>id<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">const</span> <span class="token punctuation">&#123;</span> code <span class="token punctuation">&#125;</span> <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">SaveSysUser</span><span class="token punctuation">(</span>sysUser<span class="token punctuation">.</span>value<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>code <span class="token operator">==</span> <span class="token number">200</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      dialogVisible<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token boolean">false</span>
+      ElMessage<span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span><span class="token string">'操作成功'</span><span class="token punctuation">)</span>
+      <span class="token function">fetchData</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+      ElMessage<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'操作失败'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">const</span> <span class="token punctuation">&#123;</span> code <span class="token punctuation">&#125;</span> <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">UpdateSysUser</span><span class="token punctuation">(</span>sysUser<span class="token punctuation">.</span>value<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>code <span class="token operator">==</span> <span class="token number">200</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      dialogVisible<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token boolean">false</span>
+      ElMessage<span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span><span class="token string">'操作成功'</span><span class="token punctuation">)</span>
+      <span class="token function">fetchData</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+      ElMessage<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'操作失败'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 表格数据模型</span>
+<span class="token keyword">const</span> list <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 分页条数据模型</span>
+<span class="token keyword">const</span> total <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 定义搜索表单数据模型</span>
+<span class="token keyword">const</span> queryDto <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+  <span class="token literal-property property">keyword</span><span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">createTimeBegin</span><span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">createTimeEnd</span><span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> createTimes <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token comment">//分页数据</span>
+<span class="token keyword">const</span> pageParamsForm <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+  <span class="token literal-property property">page</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token comment">// 页码</span>
+  <span class="token literal-property property">limit</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token comment">// 每页记录数</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">const</span> pageParams <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span>pageParamsForm<span class="token punctuation">)</span>
+
+<span class="token comment">// onMounted钩子函数</span>
+<span class="token function">onMounted</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  <span class="token function">fetchData</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 搜尋按钮点击事件处理函数</span>
+<span class="token keyword">const</span> <span class="token function-variable function">searchSysUser</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  <span class="token function">fetchData</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 重置按钮点击事件处理函数</span>
+<span class="token keyword">const</span> <span class="token function-variable function">resetData</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  queryDto<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+  createTimes<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 定义分页查询方法</span>
+<span class="token keyword">const</span> <span class="token function-variable function">fetchData</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>createTimes<span class="token punctuation">.</span>value<span class="token punctuation">.</span>length <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    queryDto<span class="token punctuation">.</span>value<span class="token punctuation">.</span>createTimeBegin <span class="token operator">=</span> createTimes<span class="token punctuation">.</span>value<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    queryDto<span class="token punctuation">.</span>value<span class="token punctuation">.</span>createTimeEnd <span class="token operator">=</span> createTimes<span class="token punctuation">.</span>value<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token comment">// 请求后端接口进行分页查询</span>
+  <span class="token keyword">const</span> <span class="token punctuation">&#123;</span> data <span class="token punctuation">&#125;</span> <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">GetSysUserListByPage</span><span class="token punctuation">(</span>
+    pageParams<span class="token punctuation">.</span>value<span class="token punctuation">.</span>page<span class="token punctuation">,</span>
+    pageParams<span class="token punctuation">.</span>value<span class="token punctuation">.</span>limit<span class="token punctuation">,</span>
+    queryDto<span class="token punctuation">.</span>value
+  <span class="token punctuation">)</span>
+  list<span class="token punctuation">.</span>value <span class="token operator">=</span> data<span class="token punctuation">.</span>list
+  total<span class="token punctuation">.</span>value <span class="token operator">=</span> data<span class="token punctuation">.</span>total
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+        </div>
+      </div>
+    </div>
+
+<h2 id="用戶頭像"><a href="#用戶頭像" class="headerlink" title="用戶頭像"></a>用戶頭像</h2><p>使用<code>minio</code></p>
+<blockquote>
+<p>一個使用Golang開發的雲端儲存的開源專案，專注於儲存大量的非結構化的數據，如圖片、影片、文字等任何非結構化的數據，類似於AWS S3的開源版本，可以在影像辨識、NLP模型的訓練及重新部署等情境發揮作用</p>
+</blockquote>
+<p>安裝後新增<code>bucket</code>並且設定<code>Access Policy</code>為<code>public</code></p>
+<h3 id="上傳頭像"><a href="#上傳頭像" class="headerlink" title="上傳頭像"></a>上傳頭像</h3><ul>
+<li>使用新的<code>controller</code>和<code>service</code>專門處理檔案上傳</li>
+<li>直接使用原始檔案名稱會有重複檔名出現的可能性</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@PostMapping</span><span class="token punctuation">(</span><span class="token string">"/fileUpload"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">fileUpload</span><span class="token punctuation">(</span><span class="token class-name">MultipartFile</span> file<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 取得上傳的檔案</span>
+    <span class="token comment">// 呼叫service的方法上傳，回傳miniox路徑</span>
+    <span class="token class-name">String</span> url <span class="token operator">=</span> fileUploadService<span class="token punctuation">.</span><span class="token function">upload</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> <span class="token class-name">ResultCodeEnum</span><span class="token punctuation">.</span><span class="token constant">SUCCESS</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">FileUploadServiceImpl</span> <span class="token keyword">implements</span> <span class="token class-name">FileUploadService</span> <span class="token punctuation">&#123;</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">upload</span><span class="token punctuation">(</span><span class="token class-name">MultipartFile</span> file<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">final</span> <span class="token class-name">String</span> <span class="token constant">BUCKET_NAME</span> <span class="token operator">=</span> <span class="token string">"spzx-bucket"</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// 建立Minio物件，使用帳號密碼</span>
+            <span class="token class-name">MinioClient</span> minioClient <span class="token operator">=</span>
+                    <span class="token class-name">MinioClient</span><span class="token punctuation">.</span><span class="token function">builder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                            <span class="token punctuation">.</span><span class="token function">endpoint</span><span class="token punctuation">(</span><span class="token string">"http://localhost:9000"</span><span class="token punctuation">)</span>
+                            <span class="token punctuation">.</span><span class="token function">credentials</span><span class="token punctuation">(</span><span class="token string">"minioadmin"</span><span class="token punctuation">,</span> <span class="token string">"minioadmin"</span><span class="token punctuation">)</span>
+                            <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment">// 建立spzx-bucket如果不存在的話</span>
+            <span class="token keyword">boolean</span> found <span class="token operator">=</span>
+                    minioClient<span class="token punctuation">.</span><span class="token function">bucketExists</span><span class="token punctuation">(</span><span class="token class-name">BucketExistsArgs</span><span class="token punctuation">.</span><span class="token function">builder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">bucket</span><span class="token punctuation">(</span><span class="token constant">BUCKET_NAME</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>found<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                minioClient<span class="token punctuation">.</span><span class="token function">makeBucket</span><span class="token punctuation">(</span><span class="token class-name">MakeBucketArgs</span><span class="token punctuation">.</span><span class="token function">builder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">bucket</span><span class="token punctuation">(</span><span class="token constant">BUCKET_NAME</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+                <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Bucket '"</span> <span class="token operator">+</span> <span class="token constant">BUCKET_NAME</span> <span class="token operator">+</span> <span class="token string">"' already exists."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+
+            <span class="token keyword">final</span> <span class="token class-name">String</span> <span class="token constant">FILENAME</span> <span class="token operator">=</span> file<span class="token punctuation">.</span><span class="token function">getOriginalFilename</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment">// 上傳</span>
+            minioClient<span class="token punctuation">.</span><span class="token function">putObject</span><span class="token punctuation">(</span>
+                    <span class="token class-name">PutObjectArgs</span><span class="token punctuation">.</span><span class="token function">builder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">bucket</span><span class="token punctuation">(</span><span class="token constant">BUCKET_NAME</span><span class="token punctuation">)</span>
+                            <span class="token punctuation">.</span><span class="token function">object</span><span class="token punctuation">(</span><span class="token constant">FILENAME</span><span class="token punctuation">)</span>
+                            <span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span>file<span class="token punctuation">.</span><span class="token function">getInputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> file<span class="token punctuation">.</span><span class="token function">getSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+                            <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment">// 取得上傳檔案在minio的路徑</span>
+            <span class="token comment">// http://127.0.0.1:9000/spzx-bucket/csmap.jpg</span>
+            <span class="token keyword">return</span> <span class="token string">"http://127.0.0.1:9000/spzx-bucket/"</span> <span class="token operator">+</span> <span class="token constant">FILENAME</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">SimonException</span><span class="token punctuation">(</span><span class="token class-name">ResultCodeEnum</span><span class="token punctuation">.</span><span class="token constant">SYSTEM_ERROR</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p>基礎的做完之後，接下來優化程式碼</p>
+<h4 id="使用設定檔案去除寫死的string"><a href="#使用設定檔案去除寫死的string" class="headerlink" title="使用設定檔案去除寫死的string"></a>使用設定檔案去除寫死的string</h4><p>設定檔案</p>
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-a8163d0f" role="button" aria-expanded="false" aria-controls="collapse-a8163d0f">
+        <div class="fold-arrow">▶</div>application-dev.yml
+      </div>
+      <div class="fold-collapse collapse" id="collapse-a8163d0f">
+        <div class="fold-content">
+          <figure><div class="code-wrapper"><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">spzx</span><span class="token punctuation">:</span>
+  <span class="token key atrule">auth</span><span class="token punctuation">:</span>
+    <span class="token key atrule">noAuthUrls</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> /admin/system/index/login
+      <span class="token punctuation">-</span> /admin/system/index/generateValidateCode
+
+  <span class="token key atrule">minio</span><span class="token punctuation">:</span>
+    <span class="token key atrule">endpointUrl</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//127.0.0.1<span class="token punctuation">:</span><span class="token number">9000</span>
+    <span class="token key atrule">accessKey</span><span class="token punctuation">:</span> minioadmin
+    <span class="token key atrule">secretKey</span><span class="token punctuation">:</span> minioadmin
+    <span class="token key atrule">bucketName</span><span class="token punctuation">:</span> spzx<span class="token punctuation">-</span>bucket<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+        </div>
+      </div>
+    </div>
+
+<p>定義設定檔案<code>class</code></p>
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-9a1c5b83" role="button" aria-expanded="false" aria-controls="collapse-9a1c5b83">
+        <div class="fold-arrow">▶</div>MinioProperties.java
+      </div>
+      <div class="fold-collapse collapse" id="collapse-9a1c5b83">
+        <div class="fold-content">
+          <figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Data</span>
+<span class="token annotation punctuation">@ConfigurationProperties</span><span class="token punctuation">(</span>prefix <span class="token operator">=</span> <span class="token string">"spzx.minio"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MinioProperties</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">String</span> endpointUrl<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> accessKey<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> secretKey<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> bucketName<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+        </div>
+      </div>
+    </div>
+
+<p>加入設定檔案至主程式</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@EnableConfigurationProperties</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token class-name">UserProperties</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token class-name">MinioProperties</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ManagerApplication</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">SpringApplication</span><span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token class-name">ManagerApplication</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h4 id="重複檔案名稱問題解決"><a href="#重複檔案名稱問題解決" class="headerlink" title="重複檔案名稱問題解決"></a>重複檔案名稱問題解決</h4><p>直接加上<code>uuid</code>隨機化名子以及加上日期分組</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 讓上傳的檔案名稱是唯一的，使用uuid</span>
+<span class="token comment">// 根據上傳日期對檔案進行分類，20240418</span>
+
+<span class="token comment">// e.g. 20240418/tu29iueo0-2csmap.jpg</span>
+<span class="token class-name">String</span> dateDir <span class="token operator">=</span> <span class="token class-name">DateUtil</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"yyyyMMdd"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">final</span> <span class="token class-name">String</span> uuid <span class="token operator">=</span> <span class="token constant">UUID</span><span class="token punctuation">.</span><span class="token function">randomUUID</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token string">"-"</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">final</span> <span class="token class-name">String</span> <span class="token constant">FILENAME</span> <span class="token operator">=</span> dateDir <span class="token operator">+</span> <span class="token string">"/"</span> <span class="token operator">+</span> uuid <span class="token operator">+</span> file<span class="token punctuation">.</span><span class="token function">getOriginalFilename</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<div class="note note-warning">
+            <p>修改用戶頭像時有<code>bug</code>，需要在<code>mapper</code>寫入資料庫</p>
+          </div>
+
+<figure><div class="code-wrapper"><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token operator">&lt;</span><span class="token keyword">if</span> test<span class="token operator">=</span><span class="token string">"avatar != null and avatar != ''"</span><span class="token operator">></span>
+    avatar <span class="token operator">=</span> <span class="token comment">#&#123;avatar&#125;,</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span><span class="token keyword">if</span><span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h2 id="角色分配"><a href="#角色分配" class="headerlink" title="角色分配"></a>角色分配</h2><p>為了讓每個用戶有自己的角色(多個角色)，需要更新用戶與角色之間的關係表，也就是做用戶與角色表之間的關聯</p>
+<p><img src="https://i.imgur.com/aPqtegk.png" srcset="/img/loading.gif" lazyload alt="為用戶分配角色"></p>
+<h3 id="查詢所有角色"><a href="#查詢所有角色" class="headerlink" title="查詢所有角色"></a>查詢所有角色</h3><p><code>SysRoleController.java</code></p>
+<p>使用<code>Map</code>的目的是我們最終要兩種資料</p>
+<ul>
+<li>全部角色的<code>list</code></li>
+<li>每個用戶被分配的角色<code>list</code></li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 查詢所有角色</span>
+<span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/findAllRoles"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">findAllRoles</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 資料名稱->資料內容</span>
+    <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span> map <span class="token operator">=</span> sysRoleService<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span>map<span class="token punctuation">,</span> <span class="token class-name">ResultCodeEnum</span><span class="token punctuation">.</span><span class="token constant">SUCCESS</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p><code>SysRoleServiceImpl.java</code></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 查詢所有角色</span>
+<span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span> <span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 查詢所有角色</span>
+    <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">SysRole</span><span class="token punctuation">></span></span> roleList <span class="token operator">=</span> sysRoleMapper<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 分配的角色列表</span>
+    <span class="token comment">// TODO</span>
+
+    <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"allRolesList"</span><span class="token punctuation">,</span> roleList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p><code>SysRoleMapper.xml</code></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token comment">&lt;!-- 查詢所有角色 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>select</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>findAll<span class="token punctuation">"</span></span> <span class="token attr-name">resultMap</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sysRoleMap<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    select <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>include</span> <span class="token attr-name">refid</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>columns<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+    from sys_role
+    where is_deleted=0
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p>前端一樣調用後端<code>API</code>然後顯示數據，<code>vue</code>內要記得引入<code>js</code>檔案</p>
+<h3 id="儲存用戶分配的角色"><a href="#儲存用戶分配的角色" class="headerlink" title="儲存用戶分配的角色"></a>儲存用戶分配的角色</h3><p><code>controller</code>從前端拿到請求後，呼叫<code>service</code>執行兩個動作</p>
+<ol>
+<li>根據<code>userId</code>刪除該用戶之前已經分配的所有角色</li>
+<li>重新插入用戶新分配之角色</li>
+</ol>
+<p>省去查詢與比對的麻煩</p>
+<p><code>SysUserServiceImpl.java</code></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 用戶分配角色</span>
+<span class="token annotation punctuation">@Transactional</span>
+<span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">doAssign</span><span class="token punctuation">(</span><span class="token class-name">AssignRoleDto</span> assignRoleDto<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 根據userId刪除之前分配的角色資料</span>
+    sysRoleUserMapper<span class="token punctuation">.</span><span class="token function">deleteByUserId</span><span class="token punctuation">(</span>assignRoleDto<span class="token punctuation">.</span><span class="token function">getUserId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 取得角色ID list</span>
+    <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Long</span><span class="token punctuation">></span></span> roleIdList <span class="token operator">=</span> assignRoleDto<span class="token punctuation">.</span><span class="token function">getRoleIdList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 疊代取得所有角色ID</span>
+    <span class="token comment">// 插入資料庫，關聯 userId &lt;-> roleId</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">Long</span> roleId <span class="token operator">:</span>
+            roleIdList<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        sysRoleUserMapper<span class="token punctuation">.</span><span class="token function">doAssign</span><span class="token punctuation">(</span>assignRoleDto<span class="token punctuation">.</span><span class="token function">getUserId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> roleId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h3 id="顯示用戶分配過的角色"><a href="#顯示用戶分配過的角色" class="headerlink" title="顯示用戶分配過的角色"></a>顯示用戶分配過的角色</h3><p>沿用前面搜尋所有角色的<code>api</code>，只需要多傳入<code>userId</code></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 查詢所有角色，以及每個用戶被分配的角色</span>
+<span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/findAllRoles/&#123;userId&#125;"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">findAllRoles</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span><span class="token punctuation">(</span><span class="token string">"userId"</span><span class="token punctuation">)</span> <span class="token class-name">Long</span> userId<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 資料名稱->資料內容</span>
+    <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span> map <span class="token operator">=</span> sysRoleService<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span>userId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span>map<span class="token punctuation">,</span> <span class="token class-name">ResultCodeEnum</span><span class="token punctuation">.</span><span class="token constant">SUCCESS</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p>然後再多寫一個方法利用<code>userId</code>查詢該<code>id</code>的所有<code>roleId</code></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span> <span class="token function">findAll</span><span class="token punctuation">(</span><span class="token class-name">Long</span> userId<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 查詢所有角色</span>
+    <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">SysRole</span><span class="token punctuation">></span></span> roleList <span class="token operator">=</span> sysRoleMapper<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 分配的角色列表</span>
+    <span class="token comment">// 根據userId搜尋用戶分配過的角色ids</span>
+    <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Long</span><span class="token punctuation">></span></span> roleIds <span class="token operator">=</span> sysRoleUserMapper<span class="token punctuation">.</span><span class="token function">selectRoleIdsByUserId</span><span class="token punctuation">(</span>userId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"allRolesList"</span><span class="token punctuation">,</span> roleList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"sysUserRoles"</span><span class="token punctuation">,</span> roleIds<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> map<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p>前端的部分也是改成呼叫時傳<code>userId</code>給後端</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">GetAllRoleList</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">userId</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">return</span> <span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+    <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">/admin/system/sysRole/findAllRoles/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>userId<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+    <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">'get'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p>結果拿到後<code>element-plus</code>就會依照<code>roleId</code>把每個用戶自己的<code>role</code>打勾，完成顯示</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Project/" class="category-chain-item">Project</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Project/SpringBoot/" class="category-chain-item">SpringBoot</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/SpringBoot/" class="print-no-link">#SpringBoot</a>
+      
+        <a href="/tags/Vue/" class="print-no-link">#Vue</a>
+      
+        <a href="/tags/MyBatis/" class="print-no-link">#MyBatis</a>
+      
+        <a href="/tags/Element-plus/" class="print-no-link">#Element-plus</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>尚品甄選電商SpringBoot-Web開發2用戶權限管理</div>
+      <div>https://f88083.github.io/2024/04/22/尚品甄選電商SpringBoot-Web開發2用戶權限管理/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Simon Lai</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>發布於</div>
+          <div>2024年4月22日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>許可協議</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="NC - 非商業性使用">
+                    <i class="iconfont icon-nc"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                    <i class="iconfont icon-sa"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/04/27/9%E5%80%8B%E7%B5%A6%E5%B7%A5%E7%A8%8B%E5%B8%AB%E7%9A%84%E9%83%A8%E8%90%BD%E6%A0%BC/" title="9個給工程師的部落格">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">9個給工程師的部落格</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/04/17/%E5%B0%9A%E5%93%81%E7%94%84%E9%81%B8%E9%9B%BB%E5%95%86SpringBoot-Web%E9%96%8B%E7%99%BC%E4%B9%8B%E7%94%A8%E6%88%B6%E7%99%BB%E5%85%A5%E8%88%87%E8%A7%92%E8%89%B2%E7%AE%A1%E7%90%86/" title="尚品甄選電商SpringBoot-Web開發之用戶登入與角色管理">
+                        <span class="hidden-mobile">尚品甄選電商SpringBoot-Web開發之用戶登入與角色管理</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"f88083/blog-comments","repo-id":"R_kgDOKvLNrw","category":"Announcements","category-id":"DIC_kwDOKvLNr84CbPZE","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-TW"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目錄</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">關鍵字</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允許 JavaScript 運行的環境下瀏覽效果更佳</div>
+  </noscript>
+</body>
+</html>
