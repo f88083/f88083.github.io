@@ -253,6 +253,156 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/03/11/1899-Merge-Triplets-to-Form-Target-Triplet-Medium/" target="_self">
+          1899. Merge Triplets to Form Target Triplet - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/03/11/1899-Merge-Triplets-to-Form-Target-Triplet-Medium/" target="_self">
+        <div>
+          前往題目  想法 題目根本沒看清楚😂以為只能選兩個，結果是可以每個都選，取max  思路 把不可能的去掉，也就是只要有比target大的那組就可以直接拋棄 剩下的全部取最大值看是否最終和target一樣，因為可以每個都取  Code主要參考了這個解答，因為比Neetcode大大的更直觀一點   class Solution &#123;     public boolean mergeTripl
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-03-11 10:36" pubdate>
+              2024-03-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Greedy/">#Greedy</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/03/10/54-Spiral-Matrix-Medium/" target="_self">
+          54. Spiral Matrix - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/03/10/54-Spiral-Matrix-Medium/" target="_self">
+        <div>
+          前往題目  之前寫的文章 想法 初始的變數沒有想出來，有了left right top和bottom就簡單了  思路 定義上下左右邊界，以下的code要注意out of boundary 先取top elements 再取right elements 注意left要小於right，top要小於bottom以防special case 再取bottom elements 再取left element
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-03-10 14:34" pubdate>
+              2024-03-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Matrix/">#Matrix</a>
+            
+              <a href="/tags/Simulation/">#Simulation</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2024/03/09/8-String-to-Integer-atoi-Medium/" target="_self">
           8. String to Integer (atoi) - Medium
         </a>
@@ -832,154 +982,6 @@
               <a href="/tags/Dynamic-Programming/">#Dynamic Programming</a>
             
               <a href="/tags/Backtracking/">#Backtracking</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/03/01/518-Coin-Change-II-Medium/" target="_self">
-          518. Coin Change II - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/03/01/518-Coin-Change-II-Medium/" target="_self">
-        <div>
-          前往題目  思路好多種解法，應該說有很多優化的方式，大致上遵循以下規則  bottom-up的方式，從最基礎的case(amount = 0無論是任何硬幣都有一種可能可以達成)開始 疊代不同的硬幣慢慢的加上所有可能性  這題畫二維陣列就會很清楚了 Code  只使用DFS會超時，因為每次都要重算 // TLE class Solution &#123;     private Map&lt;Pai
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-03-01 10:58" pubdate>
-              2024-03-01
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Dynamic-Programming/">#Dynamic Programming</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/02/29/309-Best-Time-to-Buy-and-Sell-Stock-with-Cooldown-Medium/" target="_self">
-          309. Best Time to Buy and Sell Stock with Cooldown - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/29/309-Best-Time-to-Buy-and-Sell-Stock-with-Cooldown-Medium/" target="_self">
-        <div>
-          前往題目  思路一如其他dp題目，轉換公式是最重要的  有三種狀況 持有 賣出 冷卻   如果當前選擇持有，那昨天只會有兩種可能 持有 冷卻，然後今天選擇持有所以要扣掉今天的價格   如果當前選擇賣出，那只有一種可能，昨天是持有的，而今天賣出，所以加上今天的賣出價 如果當前選擇冷卻，昨天就有兩種可能 同樣是冷卻(不可能持有，因為要賣出才會冷卻，所以昨天冷卻今天一樣可以選擇冷卻，即等待的意思) 賣出
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-29 10:58" pubdate>
-              2024-02-29
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Dynamic-Programming/">#Dynamic Programming</a>
             
           </div>
         
