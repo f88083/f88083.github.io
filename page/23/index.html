@@ -253,15 +253,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2023/11/20/%E4%BB%80%E9%BA%BC%E6%98%AFpolymorphism/" target="_self">
-          什麼是polymorphism?
+        <a href="/2023/12/05/19-Remove-Nth-Node-From-End-of-List-Medium/" target="_self">
+          19. Remove Nth Node From End of List - Medium
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/20/%E4%BB%80%E9%BA%BC%E6%98%AFpolymorphism/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/05/19-Remove-Nth-Node-From-End-of-List-Medium/" target="_self">
         <div>
-          定義 Polymorphism refers to the ability of different objects to be treated as objects of a common type. It allows a single interface to be used for entities of different types.  白話來說就是，允許同個名子的東西有不同行為。 例
+          前往題目  想法 第一個想法是從頭到尾看有幾個，然後maintain一個集合，紀錄順序，但這樣會需要O(n)空間複雜，但時間也是O(n) 還是先從頭到尾看幾個，然後一個新的linkedlist是反向連接的，這樣反過來要找的時候就可以直接找了，因為原始的linkedlist是正向的，但是這樣空間也是O(n)吧，好像不管如何就是需要O(n) 對了，還要remove，然後回傳原始的head  思路重點:
         </div>
       </a>
 
@@ -269,8 +269,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-20 20:32" pubdate>
-              2023-11-20
+            <time datetime="2023-12-05 10:50" pubdate>
+              2023-12-05
             </time>
           </div>
         
@@ -285,7 +285,157 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Java/" class="category-chain-item">Java</a>
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Two-Pointers/">#Two Pointers</a>
+            
+              <a href="/tags/Linked-List/">#Linked List</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/12/04/417-Pacific-Atlantic-Water-Flow-Medium/" target="_self">
+          417. Pacific Atlantic Water Flow - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/04/417-Pacific-Atlantic-Water-Flow-Medium/" target="_self">
+        <div>
+          前往題目  想法 用DFS但不知道該怎麼處理重複visit的部分，不處理的話就會變成$O(M*N)^2$  思路 從上下左右開始往內檢查，因為上下左右一定可以碰到其中一個海洋，或甚至兩個海洋都碰到 每個cell都檢查其是否比前一個cell大，是的話就標記為true，不是的話直接return。因為這代表當前cell沒辦法流過前一個cell 最後看哪些cell能碰到兩個海洋就是答案  這題我覺得蠻難的
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-04 10:48" pubdate>
+              2023-12-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Matrix/">#Matrix</a>
+            
+              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
+            
+              <a href="/tags/Breadth-First-Search/">#Breadth-First Search</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/12/03/%E7%94%A8Flask%E5%AF%AB%E4%B8%80%E5%80%8B%E6%89%8B%E5%8B%95%E5%84%B2%E5%AD%98%E8%A7%80%E7%9C%8B%E7%B4%80%E9%8C%84%E7%9A%84%E7%B6%B2%E9%A0%81%E7%9A%84%E9%96%8B%E7%99%BC%E6%97%A5%E8%AA%8C/" target="_self">
+          用Flask寫一個手動儲存觀看紀錄的網頁的開發日誌
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/03/%E7%94%A8Flask%E5%AF%AB%E4%B8%80%E5%80%8B%E6%89%8B%E5%8B%95%E5%84%B2%E5%AD%98%E8%A7%80%E7%9C%8B%E7%B4%80%E9%8C%84%E7%9A%84%E7%B6%B2%E9%A0%81%E7%9A%84%E9%96%8B%E7%99%BC%E6%97%A5%E8%AA%8C/" target="_self">
+        <div>
+          方便自己整理所有的觀看紀錄，無論是動漫、電影、還是劇  有什麼用? 純粹我自己會在各種網站上看電影、動漫等等的，但有些網頁會記錄，下次登入紀錄又沒了。又或者是例如有些漫畫網站，手機和電腦瀏覽的紀錄又不同，久了沒看，回來要再看的時候就又忘了看到哪，翻半天。總之呢，做這個project的目的，就是解決這個我一直想開發的工具，順便玩玩網頁。 網路上找不到相似的工具，可能有很多替代方案，例如純手寫就是一
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-03 22:02" pubdate>
+              2023-12-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Project/" class="category-chain-item">Project</a>
   
   
 
@@ -300,9 +450,15 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Java/">#Java</a>
+              <a href="/tags/Flask/">#Flask</a>
             
-              <a href="/tags/OOP/">#OOP</a>
+              <a href="/tags/CRUD/">#CRUD</a>
+            
+              <a href="/tags/HTML/">#HTML</a>
+            
+              <a href="/tags/CSS/">#CSS</a>
+            
+              <a href="/tags/%E7%B6%B2%E9%A0%81%E9%96%8B%E7%99%BC/">#網頁開發</a>
             
           </div>
         
@@ -316,15 +472,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2023/11/20/%E6%90%AC%E5%AE%B6%E5%88%B0%E8%87%AA%E5%B7%B1%E6%9E%B6%E8%A8%AD%E7%9A%84Blog-%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub-Pages/" target="_self">
-          搬家到自己架設的Blog-使用Hexo和Github Pages
+        <a href="/2023/12/02/211-Design-Add-and-Search-Words-Data-Structure-Medium/" target="_self">
+          211. Design Add and Search Words Data Structure - Medium
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/20/%E6%90%AC%E5%AE%B6%E5%88%B0%E8%87%AA%E5%B7%B1%E6%9E%B6%E8%A8%AD%E7%9A%84Blog-%E4%BD%BF%E7%94%A8Hexo%E5%92%8CGithub-Pages/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/02/211-Design-Add-and-Search-Words-Data-Structure-Medium/" target="_self">
         <div>
-          如題，但為什麼不在medium上po文了呢?原因有幾點  架設自己的Blog不僅有趣又美觀，高度自定義頁面，還有更多功能可以使用，例如我很喜歡的markdown寫作 現在架設自己的Blog無須任何費用，github自帶免費靜態頁面給你用，也就是github pages! Medium寫作只有兩層標題，很痛苦 Medium沒有目錄功能，無法快速切換 還有很多小細節，Medium真的太簡化了🤣
+          前往題目  想法 可搜尋字詞功能我第一個想法是建構一顆樹(Trie)，字母連著字母 這題是資料結構，比較好玩一點😆  思路 Trie的資料結構，用array儲存字母，因為固定最多26個 加入就直接判斷有沒有該字母，沒有的話init.有的話直接略過，看下一個 Search用Backtracking的方式加入帶有.的詞  比較妙的是backtracking的部分，參照以下的code可以看到，遇到.的
         </div>
       </a>
 
@@ -332,8 +488,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-20 20:18" pubdate>
-              2023-11-20
+            <time datetime="2023-12-02 10:41" pubdate>
+              2023-12-02
             </time>
           </div>
         
@@ -348,8 +504,15 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%B6%9C%E5%90%88/" class="category-chain-item">綜合</a>
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
   
 
       </span>
@@ -360,6 +523,21 @@
           </div>
         
         
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/String/">#String</a>
+            
+              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
+            
+              <a href="/tags/Trie/">#Trie</a>
+            
+          </div>
+        
       </div>
     </article>
   </div>
@@ -370,15 +548,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2023/11/20/%E7%B5%82%E6%96%BC%E4%BF%AE%E5%BE%A9hexo%E7%84%A1%E6%B3%95%E4%BD%BF%E7%94%A8prismjs%E7%9A%84%E5%95%8F%E9%A1%8C%E4%BA%86/" target="_self">
-          終於修復hexo無法使用prismjs的問題了!
+        <a href="/2023/12/01/152-Maximum-Product-Subarray-Medium/" target="_self">
+          152. Maximum Product Subarray - Medium
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/20/%E7%B5%82%E6%96%BC%E4%BF%AE%E5%BE%A9hexo%E7%84%A1%E6%B3%95%E4%BD%BF%E7%94%A8prismjs%E7%9A%84%E5%95%8F%E9%A1%8C%E4%BA%86/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/01/152-Maximum-Product-Subarray-Medium/" target="_self">
         <div>
-          使用環境hexo: 7.0.0 hexo-cli: 4.3.1 問題無論在_config.yml如何設置prismjs，就是無法使用，只能用highlightjs 原因無意間在hexo github repo找到解答，是因為升級到v7.0.0之後無法單純再使用hightlight以及prism底下的enable屬性來開關 解決方法要使用以下屬性來切換 syntax_highlighter: hig
+          前往題目  想法 毫無想法，每次看到這種subarray都覺得是不是backtracking🤣  思路這題的解法也很妙  使用min和max紀錄每個點的當前最小值和最大值，紀錄最小值的原因是有可能遇到負數，但如果再遇到一個就會變成正數，所以也要考慮進去 疊代nums，每個迴圈都判斷是否有更小和更大的值  這題蠻不像DP，但他的確是DP🥺 Codeclass Solution &#123;
         </div>
       </a>
 
@@ -386,8 +564,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-20 18:20" pubdate>
-              2023-11-20
+            <time datetime="2023-12-01 11:59" pubdate>
+              2023-12-01
             </time>
           </div>
         
@@ -402,7 +580,235 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%B6%9C%E5%90%88/" class="category-chain-item">綜合</a>
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Dynamic-Programming/">#Dynamic Programming</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/12/01/49-Group-Anagrams-Medium/" target="_self">
+          49. Group Anagrams - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/01/49-Group-Anagrams-Medium/" target="_self">
+        <div>
+          前往題目  想法 回傳包含arraylist的arraylist 用hashmap arraylist存放每個詞的hashmap，但這樣會有個問題，假設不是同個詞，那要怎麼新增，用一個temp hashmap嗎@@  思路兩種主要方式:  把string都sort過，同一個詞一定會排序相同，就可以成功分類，但執行時間是O(m * nlogn)，因為有m個string，sort要花nlogn時間
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-01 10:19" pubdate>
+              2023-12-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/String/">#String</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Hash-Table/">#Hash Table</a>
+            
+              <a href="/tags/Sorting/">#Sorting</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/11/30/36-Valid-Sudoku-Medium/" target="_self">
+          36. Valid Sudoku - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/30/36-Valid-Sudoku-Medium/" target="_self">
+        <div>
+          前往題目  想法 每行每列檢查 3 x 3的格子因為總數不變所以可以定位每個大格的中間格，藉此來判斷他周圍的格子  思路不知道會不會有更好的辦法，所以看了Neetcode大大的解法，差不多，但3 x 3判斷的部分我沒想到，非常簡潔明瞭    使用Set來儲存每個row、column和3 x 3格子裡 包含的數 檢查所有格子，每次檢查時都檢查其行和列還有所屬3 x 3格子中是否invalid  Co
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-11-30 14:59" pubdate>
+              2023-11-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Hash-Table/">#Hash Table</a>
+            
+              <a href="/tags/Matrix/">#Matrix</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/11/28/Algorithms-Part-1-Week-3%E2%80%935%E4%B9%8BQuick-select%E7%AD%86%E8%A8%98/" target="_self">
+          Algorithms Part 1 - Week 3–5之Quick-select筆記
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/28/Algorithms-Part-1-Week-3%E2%80%935%E4%B9%8BQuick-select%E7%AD%86%E8%A8%98/" target="_self">
+        <div>
+          功能: 從N個itmes中找到第k小的item  想法切開陣列a使其  a[j]左邊的items都比他小 a[j]右邊的items都比他大  在一個subarray裡重複select步驟直到j = k public static Comparable select(Comparable[] a, int k) &#123;     StdRandom.shuffle(a);     int lo
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-11-28 17:34" pubdate>
+              2023-11-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Algorithms/" class="category-chain-item">Algorithms</a>
   
   
 
@@ -416,9 +822,15 @@
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Algorithms/">#Algorithms</a>
             
               <a href="/tags/%E7%AD%86%E8%A8%98/">#筆記</a>
             
+              <a href="/tags/%E6%BC%94%E7%AE%97%E6%B3%95/">#演算法</a>
+            
+              <a href="/tags/Quick-select/">#Quick select</a>
+            
           </div>
         
       </div>
@@ -431,15 +843,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2023/11/19/%E5%A6%82%E4%BD%95%E7%B9%AA%E8%A3%BDUML/" target="_self">
-          如何繪製UML Diagram?
+        <a href="/2023/11/28/Algorithms-Part-1-Week-3%E2%80%934%E4%B9%8BQuicksort%E7%AD%86%E8%A8%98/" target="_self">
+          Algorithms Part 1 - Week 3–4之Quicksort筆記
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/19/%E5%A6%82%E4%BD%95%E7%B9%AA%E8%A3%BDUML/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/28/Algorithms-Part-1-Week-3%E2%80%934%E4%B9%8BQuicksort%E7%AD%86%E8%A8%98/" target="_self">
         <div>
-          為什麼要畫?方便快速理解整個系統的架構，與class之間的關係 UMLClass 如圖總共三格:  第一格Library Management System是Class的名稱(如是abstract class請使用斜體) 第二格是放Attributes的 第三格是methods Methods裡的parameters不一定要寫，也可以寫，增加細節  Visibility每個attributes或是
+          Free online course presented by Robert Sedgewick and Kevin Wayne   20世紀十大演算法之一 廣泛運用在各個方面   來一件Quicksort T-shirt也蠻酷的🤣但這件寫得不是很優喔，居然用(left + right) / 2，不怕overflow嗎😂  Quicksort基本想法 array洗牌 切開array，在ind
         </div>
       </a>
 
@@ -447,8 +859,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-19 17:56" pubdate>
-              2023-11-19
+            <time datetime="2023-11-28 17:02" pubdate>
+              2023-11-28
             </time>
           </div>
         
@@ -463,7 +875,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%B6%9C%E5%90%88/" class="category-chain-item">綜合</a>
+  <a href="/categories/Algorithms/" class="category-chain-item">Algorithms</a>
   
   
 
@@ -478,148 +890,13 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/UML/">#UML</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/19/198-House-Robber-Medium/" target="_self">
-          198. House Robber - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/19/198-House-Robber-Medium/" target="_self">
-        <div>
-          題目連結想法 看起來是選中一個初始的位置，然後往後隔一個取一次就好了，但這樣可能會有以下問題: 隔一個取反而取不到大的值 那要隔幾個取?    思路這題看了DP解答有看懂了，但這種題目到底要怎麼想才能想出答案😂  需要兩個變數，一個是紀錄搶當前的，一個是不搶當前的屋子 每一輪都看到底這間不搶比較高還是搶比較高 最後輸出max值  rob1是搶rob2是不搶 Code  class Solutio
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-19 09:34" pubdate>
-              2023-11-19
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Dynamic-programming/">#Dynamic programming</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/18/Abstract-classes%E5%92%8CInterfaces%E5%88%B0%E5%BA%95%E5%B7%AE%E5%9C%A8%E5%93%AA/" target="_self">
-          Abstract classes和Interfaces到底差在哪?
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/18/Abstract-classes%E5%92%8CInterfaces%E5%88%B0%E5%BA%95%E5%B7%AE%E5%9C%A8%E5%93%AA/" target="_self">
-        <div>
-          在比較他們之前，先來了解他們到底是什麼? 本篇是John影片的筆記   Abstract Classes定義該class不能被instantiate，他就像是繼承他的class的藍圖，提供相同的功能與特質。(An abstract class in Java is a class marked with the abstract keyword that cannot be instantiate
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-18 17:33" pubdate>
-              2023-11-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Java/" class="category-chain-item">Java</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
+              <a href="/tags/Algorithms/">#Algorithms</a>
             
               <a href="/tags/%E7%AD%86%E8%A8%98/">#筆記</a>
             
-              <a href="/tags/Java/">#Java</a>
+              <a href="/tags/%E6%BC%94%E7%AE%97%E6%B3%95/">#演算法</a>
             
-              <a href="/tags/Interface/">#Interface</a>
-            
-              <a href="/tags/Abstract/">#Abstract</a>
+              <a href="/tags/Quicksort/">#Quicksort</a>
             
           </div>
         
@@ -633,15 +910,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2023/11/18/739.%20Daily%20Temperatures%20-%20Medium/" target="_self">
-          739. Daily Temperatures - Medium
+        <a href="/2023/11/28/31-Next-Permutation-Medium/" target="_self">
+          31. Next Permutation - Medium
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/18/739.%20Daily%20Temperatures%20-%20Medium/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/28/31-Next-Permutation-Medium/" target="_self">
         <div>
-          題目連結 想法 暴力解法好像也不會到太差，每項都往後找到比自己大的，每項最多n次，總共m項，那就是$n^2$ 除此之外沒什麼想法  思路看了官神的影片發現這題又是一個新的技巧，Monotonic stack Github: 連結   Code這部分我參考Neetcode大大的，比較簡潔清楚 Neetcode原始程式碼: 連結   class Solution &#123;     public i
+          前往題目  想法 這題忙了兩三天才回來再研究，沒什麼想法  思路這題最優解實作不難，但原理難證明，也不想花時間看了  從後往前看遇到不是遞增的數，就是pivot，例如1543，那1就是pivot 如果都是遞增，那就直接reverse就是答案，例如54321，這就是最大的數了，下一個就是重新開始，變成12345 在Pivot之後的數列從後往前找尋第一個比pivot大的數，和他交換位置 最後反轉整個p
         </div>
       </a>
 
@@ -649,84 +926,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-18 14:42" pubdate>
-              2023-11-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Stack/">#Stack</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Monotonic-Stack/">#Monotonic Stack</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/16/53-maximum-subarray-medium-5971f881dd17/" target="_self">
-          53. Maximum Subarray -  Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/16/53-maximum-subarray-medium-5971f881dd17/" target="_self">
-        <div>
-          前往題目  想法 這題之前做過，但想不起來方法 在想是不是用Sliding window或是Backtracking 但中間不能有間隔所以Backtracking沒有意義，我目前做過的題目Backtracking都是因為有時候不需要取中間的items  思路這題大致有三種解法，最優解是Kadane Algorithm，再來是Divide and conquer和DP，最後是暴力解。 最簡單的是Ka
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-16 16:29" pubdate>
-              2023-11-16
+            <time datetime="2023-11-28 15:08" pubdate>
+              2023-11-28
             </time>
           </div>
         
@@ -769,150 +970,7 @@
             
               <a href="/tags/Array/">#Array</a>
             
-              <a href="/tags/kadanes-Algorithm/">#kadanes Algorithm</a>
-            
-              <a href="/tags/Java/">#Java</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/11/733-flood-fill-easy-f15af89213e8/" target="_self">
-          733. Flood Fill  —  Easy
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/11/733-flood-fill-easy-f15af89213e8/" target="_self">
-        <div>
-          前往題目  想法 這題之前做過，第一直覺是用BFS，寫到queue就卡住了，時間用得有點多，直接看答案  思路 檢查初始cell的顏色是否和要填充的顏色一樣 在每個cell確認沒有出界、和初始cell顏色一樣，就可以被填充 檢查及填充每個cell的上下左右的cell  Code實際上是DFS class Solution &#123;     public int[][] floodFill(in
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-11 12:05" pubdate>
-              2023-11-11
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/DFS/">#DFS</a>
-            
-              <a href="/tags/BFS/">#BFS</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/01/%E5%AF%A6%E7%94%A8-%E6%9C%89%E8%B6%A3%E7%B6%B2%E7%AB%99%E8%88%87%E5%B7%A5%E5%85%B7%E5%A4%A7%E9%9B%86%E5%90%88-8c2af1da93e1/" target="_self">
-          實用、有趣網站與工具大集合
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/01/%E5%AF%A6%E7%94%A8-%E6%9C%89%E8%B6%A3%E7%B6%B2%E7%AB%99%E8%88%87%E5%B7%A5%E5%85%B7%E5%A4%A7%E9%9B%86%E5%90%88-8c2af1da93e1/" target="_self">
-        <div>
-          雲端1. pCloud免費最高可達10GB(需做任務) 2. PikaPods 簡易自架伺服器，Kavita也可以用這個一鍵架設與部署 收費 Code server、Jupyter、shiori etc.  有趣類TypeRacer打字比賽中打有奇怪的全形引號，打不出來😥 AI Emoji Generator 透過prompt讓他產生自己想要的組合Emoji!  設計類VEED.IO一家英國新
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-01 14:51" pubdate>
-              2023-11-01
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%B6%9C%E5%90%88/" class="category-chain-item">綜合</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/tools/">#tools</a>
-            
-              <a href="/tags/%E5%B7%A5%E5%85%B7/">#工具</a>
-            
-              <a href="/tags/%E5%AF%A6%E7%94%A8%E7%B6%B2%E7%AB%99/">#實用網站</a>
+              <a href="/tags/Two-Pointers/">#Two Pointers</a>
             
           </div>
         
@@ -924,7 +982,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/22/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/#board">21</a><a class="page-number" href="/page/22/#board">22</a><span class="page-number current">23</span><a class="page-number" href="/page/24/#board">24</a><a class="extend next" rel="next" href="/page/24/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/22/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/#board">21</a><a class="page-number" href="/page/22/#board">22</a><span class="page-number current">23</span><a class="page-number" href="/page/24/#board">24</a><a class="page-number" href="/page/25/#board">25</a><a class="page-number" href="/page/26/#board">26</a><a class="extend next" rel="next" href="/page/24/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

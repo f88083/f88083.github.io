@@ -253,15 +253,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/07/12/219-Contains-Duplicate-II/" target="_self">
-          219. Contains Duplicate II
+        <a href="/2024/08/02/225-Implement-Stack-using-Queues/" target="_self">
+          225. Implement Stack using Queues
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/12/219-Contains-Duplicate-II/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/02/225-Implement-Stack-using-Queues/" target="_self">
         <div>
-          前往題目  想法 Sliding window  思路 走訪nums 使用sliding window，用hashset記錄數字 當window大於k，移除左指針數值，並且移動左指針 如果找到重複的數字，就回傳true  Code  class Solution &#123;     public boolean containsNearbyDuplicate(int[] nums, int k)
+          前往題目  想法 用兩個queue，雖然題目也有寫  思路這題很簡單，注意前後順序就好 push: 看哪個queue不是空的就放哪個pop: 看哪個是空的，把另一個queue的元素搬過來，最後剩一個直接回傳top: 一樣看哪個是空的，搬過去，剩下最後一個記錄下來回傳，也要辦過去另一個queueempty: 看兩個queue是否都為空 只用一個queue的反而更簡單，只要每次push的時候都反轉使其
         </div>
       </a>
 
@@ -269,8 +269,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-07-12 15:49" pubdate>
-              2024-07-12
+            <time datetime="2024-08-02 10:43" pubdate>
+              2024-08-02
             </time>
           </div>
         
@@ -291,6 +291,308 @@
     <span>></span>
     
   <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Stack/">#Stack</a>
+            
+              <a href="/tags/Queue/">#Queue</a>
+            
+              <a href="/tags/Design/">#Design</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/08/01/682-Baseball-Game/" target="_self">
+          682. Baseball Game
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/01/682-Baseball-Game/" target="_self">
+        <div>
+          前往題目  想法 Stack  思路 疊代所有操作 每次根據其操作來更新stack(遇到+直接退出前兩個加起來再重新入stack) 彈出所有數字算出總和  Codeclass Solution &#123;     public int calPoints(String[] operations) &#123;          Stack&lt;Integer> s = new Stack();
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-08-01 10:32" pubdate>
+              2024-08-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Stack/">#Stack</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Simulation/">#Simulation</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/07/30/Fluid-VSCode-Extension-%E4%B8%80%E6%AC%BE%E7%82%BAHexo%E6%A1%86%E6%9E%B6Fluid%E4%B8%BB%E9%A1%8C%E6%89%93%E9%80%A0%E7%9A%84%E6%93%B4%E5%B1%95/" target="_self">
+          Fluid VSCode Extension-一款為Hexo框架Fluid主題打造的擴展
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/30/Fluid-VSCode-Extension-%E4%B8%80%E6%AC%BE%E7%82%BAHexo%E6%A1%86%E6%9E%B6Fluid%E4%B8%BB%E9%A1%8C%E6%89%93%E9%80%A0%E7%9A%84%E6%93%B4%E5%B1%95/" target="_self">
+        <div>
+          介紹這個擴展是為使用Fluid主題的Hexo用戶量身定製的，提供自動語句片段貼上功能 功能透過輸入和選擇命令來貼上語句 使用方法 從market安裝，或是vscode裡面直接搜尋Hexo Snippet Paste Tool for Fluid安裝 F1打開命令面板 輸入Fluid Paste Tool，基本上不需要全部輸入就會顯示這個擴展的命令，輸入幾個字符後應該會看到如下所示的命令列表 所有可
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-07-30 14:52" pubdate>
+              2024-07-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Project/" class="category-chain-item">Project</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Project/VSCode/" class="category-chain-item">VSCode</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Fluid/">#Fluid</a>
+            
+              <a href="/tags/Hexo/">#Hexo</a>
+            
+              <a href="/tags/Plugin/">#Plugin</a>
+            
+              <a href="/tags/%E6%93%B4%E5%B1%95/">#擴展</a>
+            
+              <a href="/tags/VSCode/">#VSCode</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/07/30/1343-Number-of-Sub-arrays-of-Size-K-and-Average-Greater-than-or-Equal-to-Threshold/" target="_self">
+          1343. Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/30/1343-Number-of-Sub-arrays-of-Size-K-and-Average-Greater-than-or-Equal-to-Threshold/" target="_self">
+        <div>
+          前往題目  想法 Sliding window  思路簡單的那種固定window size的  每次循環都更新總和 檢查平均，如果滿足threshold加入結果 循環結束前都移動左指針並且從sum減去相對應的數字  Codeclass Solution &#123;     public int numOfSubarrays(int[] arr, int k, int threshold) &#1
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-07-30 11:29" pubdate>
+              2024-07-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Sliding-Window/">#Sliding Window</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/07/29/2958-Length-of-Longest-Subarray-With-at-Most-K-Frequency/" target="_self">
+          2958. Length of Longest Subarray With at Most K Frequency
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/29/2958-Length-of-Longest-Subarray-With-at-Most-K-Frequency/" target="_self">
+        <div>
+          前往題目  想法 經典Sliding window  思路 左右指針 每次循環移動右指針，更新右指針數字的數量 如果發現invalid window移動左指針直到window為valid 更新window的大小  這次完整的自己寫出來一次AC，而且花不到兩分鐘👍 Code  class Solution &#123;     public int maxSubarrayLength(int[]
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-07-29 15:00" pubdate>
+              2024-07-29
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
   
   
 
@@ -329,15 +631,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/07/10/1578-Minimum-Time-to-Make-Rope-Colorful/" target="_self">
-          1578. Minimum Time to Make Rope Colorful
+        <a href="/2024/07/26/713-Subarray-Product-Less-Than-K/" target="_self">
+          713. Subarray Product Less Than K
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/10/1578-Minimum-Time-to-Make-Rope-Colorful/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/26/713-Subarray-Product-Less-Than-K/" target="_self">
         <div>
-          前往題目  想法 雙指針  思路 雙指針，循環整個字串 每次循環檢查字符是否相同 相同時紀錄所需時間，移動左指針 不同時只移動指針  Code  class Solution &#123;     public int minCost(String colors, int[] neededTime) &#123;         int l = 0, r = 1;          int res
+          前往題目  想法 用標準的Sliding window會漏掉幾個沒算到  思路關鍵點只有在update的時候要取window size，這樣才是當前這個window的subarray總數 例如[5, 2, 6]，window size是3，也代表他有三個subarray -&gt; [5], [5, 2], [5, 2, 6]  標準sliding window，左右指針 每次循環更新當前prod
         </div>
       </a>
 
@@ -345,8 +647,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-07-10 10:26" pubdate>
-              2024-07-10
+            <time datetime="2024-07-26 10:32" pubdate>
+              2024-07-26
             </time>
           </div>
         
@@ -387,161 +689,7 @@
             
               <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
             
-              <a href="/tags/String/">#String</a>
-            
               <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Greedy/">#Greedy</a>
-            
-              <a href="/tags/Dynamic-Programming/">#Dynamic Programming</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/07/09/1750-Minimum-Length-of-String-After-Deleting-Similar-Ends/" target="_self">
-          1750. Minimum Length of String After Deleting Similar Ends
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/09/1750-Minimum-Length-of-String-After-Deleting-Similar-Ends/" target="_self">
-        <div>
-          前往題目  想法 雙指針  思路 雙指針，指向兩端 當l指針小於r，也都指向同樣的字符，持續循環 每個循環都盡可能的移動左指針和右指針 輸出剩下幾個字符  Codeclass Solution &#123;     public int minimumLength(String s) &#123;         int l = 0, r = s.length() - 1;          //
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-07-09 14:09" pubdate>
-              2024-07-09
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/String/">#String</a>
-            
-              <a href="/tags/Two-Pointers/">#Two Pointers</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/07/09/1984-Minimum-Difference-Between-Highest-and-Lowest-of-K-Scores/" target="_self">
-          1984. Minimum Difference Between Highest and Lowest of K Scores
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/09/1984-Minimum-Difference-Between-Highest-and-Lowest-of-K-Scores/" target="_self">
-        <div>
-          前往題目  想法 雙指針  思路 排序後，左右鄰居都是最靠近自己的 根據k定義sliding window雙指針 疊代整個陣列找出最小值  Codeclass Solution &#123;     public int minimumDifference(int[] nums, int k) &#123;          Arrays.sort(nums);
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-07-09 13:36" pubdate>
-              2024-07-09
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Sorting/">#Sorting</a>
             
               <a href="/tags/Sliding-Window/">#Sliding Window</a>
             
@@ -557,15 +705,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/07/04/7%E5%80%8B%E5%A5%BD%E7%9A%84API%E6%87%89%E8%A9%B2%E6%9C%89%E7%9A%84%E8%A8%AD%E8%A8%88/" target="_self">
-          7個好的API應該有的設計
+        <a href="/2024/07/24/930-Binary-Subarrays-With-Sum/" target="_self">
+          930. Binary Subarrays With Sum
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/04/7%E5%80%8B%E5%A5%BD%E7%9A%84API%E6%87%89%E8%A9%B2%E6%9C%89%E7%9A%84%E8%A8%AD%E8%A8%88/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/24/930-Binary-Subarrays-With-Sum/" target="_self">
         <div>
-          1. Use clear  naming例如: http://example.com/api/v1/carts/123  而不要 http://example.com/api/v1/cart/123  因為是一個集合的資料，而不是單個，這樣比較合乎邏輯 2. Ensure reliability through idempotent API無論執行多少次相同操作都要產生相同結果，避免問題產生
+          前往題目  想法 Sliding window 但是全0的case不知道該怎解  思路這題最重要的是找出&lt;= goal以及&lt;= goal - 1總共有幾個valid window相減，如此一來就能找出== goal的有幾個window了  helper方法回傳goal減去goal - 1的結果 helper就是標準的sliding window程式  Code  class Solut
         </div>
       </a>
 
@@ -573,50 +721,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-07-04 17:20" pubdate>
-              2024-07-04
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/API/">#API</a>
-            
-              <a href="/tags/System-Design/">#System Design</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/07/04/779-K-th-Symbol-in-Grammar/" target="_self">
-          779. K-th Symbol in Grammar
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/04/779-K-th-Symbol-in-Grammar/" target="_self">
-        <div>
-          前往題目  想法 Recursion?  思路把圖畫出來會發現是一個類似樹的結構，可以判斷是在左分支還是右分支每次都去除一半，直到k層  左右雙指針 疊代n-1次，因為第一次是起始點0，所以跳過 每次決定中點 並判斷k是否在中點的左邊或右邊 在左邊的話會和之前的數字一樣，而右邊會和之前的相反 最後直接輸出數字  /*  0 0 1 以及  1 1 0 可以看到左邊都和上面的數字一樣，右邊都和上面的
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-07-04 11:59" pubdate>
-              2024-07-04
+            <time datetime="2024-07-24 11:26" pubdate>
+              2024-07-24
             </time>
           </div>
         
@@ -657,13 +763,13 @@
             
               <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
             
-              <a href="/tags/Recursion/">#Recursion</a>
+              <a href="/tags/Array/">#Array</a>
             
-              <a href="/tags/Math/">#Math</a>
+              <a href="/tags/Hash-Table/">#Hash Table</a>
             
-              <a href="/tags/Two-Pointers/">#Two Pointers</a>
+              <a href="/tags/Sliding-Window/">#Sliding Window</a>
             
-              <a href="/tags/Bit-Manipulation/">#Bit Manipulation</a>
+              <a href="/tags/Prefix-Sum/">#Prefix Sum</a>
             
           </div>
         
@@ -677,15 +783,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/07/04/2108-Find-First-Palindromic-String-in-the-Array/" target="_self">
-          2108. Find First Palindromic String in the Array
+        <a href="/2024/07/24/1208-Get-Equal-Substrings-Within-Budget/" target="_self">
+          1208. Get Equal Substrings Within Budget
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/04/2108-Find-First-Palindromic-String-in-the-Array/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/24/1208-Get-Equal-Substrings-Within-Budget/" target="_self">
         <div>
-          前往題目  想法 雙指針，每個單字都檢查一遍  思路秒殺題  雙指針，每個單字都檢查一遍  Codeclass Solution &#123;     public String firstPalindrome(String[] words) &#123;         // 疊代每個單字         for (String word : words) &#123;
+          前往題目  想法 把string按照ascii排序 雙sliding window把結果找出來  思路我的想法太多餘了，其實就是簡單的sliding window  sliding window 每次循環更新當前總和 超過maxCost就移動左指針 更新結果  Code  class Solution &#123;     public int equalSubstring(String s, S
         </div>
       </a>
 
@@ -693,8 +799,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-07-04 11:13" pubdate>
-              2024-07-04
+            <time datetime="2024-07-24 10:29" pubdate>
+              2024-07-24
             </time>
           </div>
         
@@ -714,7 +820,7 @@
   
     <span>></span>
     
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
   
   
 
@@ -737,83 +843,11 @@
             
               <a href="/tags/String/">#String</a>
             
-              <a href="/tags/Array/">#Array</a>
+              <a href="/tags/Binary-Search/">#Binary Search</a>
             
-              <a href="/tags/Two-Pointers/">#Two Pointers</a>
+              <a href="/tags/Sliding-Window/">#Sliding Window</a>
             
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/07/04/1662-Check-If-Two-String-Arrays-are-Equivalent/" target="_self">
-          1662. Check If Two String Arrays are Equivalent
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/04/1662-Check-If-Two-String-Arrays-are-Equivalent/" target="_self">
-        <div>
-          前往題目  想法 雙指針，一對一對比較  思路自己寫出來了，不過應該可以再更簡潔一點，麻煩的就是出界問題而已  疊代所有word直到有一方或雙方都出界 每次都檢查是否為相同字母 相同就字母指針往前 檢查字母指針是否出界，如果出界就移動word指針，並且歸零字母指針  Codeclass Solution &#123;     public boolean arrayStringsAreEqual(
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-07-04 11:02" pubdate>
-              2024-07-04
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/String/">#String</a>
-            
-              <a href="/tags/Array/">#Array</a>
+              <a href="/tags/Prefix-Sum/">#Prefix Sum</a>
             
           </div>
         
@@ -827,15 +861,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/06/26/881-Boats-to-Save-People-Medium/" target="_self">
-          881. Boats to Save People - Medium
+        <a href="/2024/07/23/1658-Minimum-Operations-to-Reduce-X-to-Zero/" target="_self">
+          1658. Minimum Operations to Reduce X to Zero
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/26/881-Boats-to-Save-People-Medium/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/23/1658-Minimum-Operations-to-Reduce-X-to-Zero/" target="_self">
         <div>
-          前往題目  想法 雙指針，因為最多兩人，所以蠻簡單的  思路 排序，由小到大 雙指針，最左和最右，一開始都先取當前可能的最大值 然後再判斷能否再取一個當前最小值 移動指針  Codeclass Solution &#123;     public int numRescueBoats(int[] people, int limit) &#123;         Arrays.sort(peopl
+          前往題目  想法 Sliding window  思路這題要反著想，不要湊x，要湊sum(nums) - x -&gt; target  雙指針從左邊開始 每個循環更新當前總和 如果比target大，移動左指針 如果找到和target相等的和，紀錄window大小，找最大的window 最後回傳陣列大小減去最大window就是最少操作數  Code  class Solution &#123;
         </div>
       </a>
 
@@ -843,8 +877,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-06-26 10:58" pubdate>
-              2024-06-26
+            <time datetime="2024-07-23 10:29" pubdate>
+              2024-07-23
             </time>
           </div>
         
@@ -887,11 +921,13 @@
             
               <a href="/tags/Array/">#Array</a>
             
-              <a href="/tags/Two-Pointers/">#Two Pointers</a>
+              <a href="/tags/Hash-Table/">#Hash Table</a>
             
-              <a href="/tags/Greedy/">#Greedy</a>
+              <a href="/tags/Binary-Search/">#Binary Search</a>
             
-              <a href="/tags/Sorting/">#Sorting</a>
+              <a href="/tags/Sliding-Window/">#Sliding Window</a>
+            
+              <a href="/tags/Prefix-Sum/">#Prefix Sum</a>
             
           </div>
         
@@ -905,15 +941,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/06/26/948-Bag-of-Tokens-Medium/" target="_self">
-          948. Bag of Tokens - Medium
+        <a href="/2024/07/22/209-Minimum-Size-Subarray-Sum/" target="_self">
+          209. Minimum Size Subarray Sum
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/26/948-Bag-of-Tokens-Medium/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/22/209-Minimum-Size-Subarray-Sum/" target="_self">
         <div>
-          前往題目  想法 2 pointers，但怎麼利用這個規則是個問題  思路貪婪  排序，由小到大 雙指針，分別指向兩端 嘗試face up(因為可以增加score，也就是我們的最終目的，因此首選它)，不行的話face down(並且是選擇右指針，因為要最大化power，才能有本錢face down)，再不行直接回傳  Code  class Solution &#123;     public i
+          前往題目  想法 明顯是sliding window問題  思路 左右指針 從零開始，每次加上當前數字 如果大於或等於target，紀錄最小值，並且移動左指針直到當前總和小於target，才進入下一循環  Code  自己嘗試寫這題時移動左指針的時機沒有寫好，有小bug class Solution &#123;     public int minSubArrayLen(int target,
         </div>
       </a>
 
@@ -921,8 +957,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-06-26 10:13" pubdate>
-              2024-06-26
+            <time datetime="2024-07-22 11:54" pubdate>
+              2024-07-22
             </time>
           </div>
         
@@ -965,11 +1001,11 @@
             
               <a href="/tags/Array/">#Array</a>
             
-              <a href="/tags/Two-Pointers/">#Two Pointers</a>
+              <a href="/tags/Binary-Search/">#Binary Search</a>
             
-              <a href="/tags/Greedy/">#Greedy</a>
+              <a href="/tags/Sliding-Window/">#Sliding Window</a>
             
-              <a href="/tags/Sorting/">#Sorting</a>
+              <a href="/tags/Prefix-Sum/">#Prefix Sum</a>
             
           </div>
         
@@ -981,7 +1017,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/#board">24</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/#board">26</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

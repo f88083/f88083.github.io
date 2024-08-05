@@ -18,21 +18,25 @@
   
     <meta name="description" content="前往題目  之前寫的文章 思路其實是Hard題目  計算每個node有多少indegree，因為indegree為1的一定是最外圍的node從外圍到中間 計算每個Node的鄰居有誰 從最外圈的Node開始循環，一層一層剝掉，所以indegree要減1 然後如果所有的node都看過了，就把當前node加入到結果，因為他一定是中間的，也就是答案之一 接著看這個node的鄰居，indegree不是0的話">
 <meta property="og:type" content="article">
-<meta property="og:title" content="310. Minimum Height Trees - Medium">
+<meta property="og:title" content="310. Minimum Height Trees">
 <meta property="og:url" content="https://f88083.github.io/2024/04/09/310-Minimum-Height-Trees-Medium/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
 <meta property="og:description" content="前往題目  之前寫的文章 思路其實是Hard題目  計算每個node有多少indegree，因為indegree為1的一定是最外圍的node從外圍到中間 計算每個Node的鄰居有誰 從最外圈的Node開始循環，一層一層剝掉，所以indegree要減1 然後如果所有的node都看過了，就把當前node加入到結果，因為他一定是中間的，也就是答案之一 接著看這個node的鄰居，indegree不是0的話">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2024-04-09T03:11:28.000Z">
-<meta property="article:modified_time" content="2024-05-29T16:47:04.971Z">
+<meta property="article:modified_time" content="2024-08-05T10:34:50.160Z">
 <meta property="article:author" content="Simon Lai">
 <meta property="article:tag" content="Leetcode">
 <meta property="article:tag" content="心得">
+<meta property="article:tag" content="Depth-First Search">
+<meta property="article:tag" content="Breadth-First Search">
+<meta property="article:tag" content="Graph">
+<meta property="article:tag" content="Topological Sort">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>310. Minimum Height Trees - Medium - Simon Lai&#39;s Blog</title>
+  <title>310. Minimum Height Trees - Simon Lai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -227,7 +231,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="310. Minimum Height Trees - Medium"></span>
+            <span id="subtitle" data-typed-text="310. Minimum Height Trees"></span>
           
         </div>
 
@@ -298,7 +302,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">310. Minimum Height Trees - Medium</h1>
+            <h1 id="seo-header">310. Minimum Height Trees</h1>
             
             
               <div class="markdown-body">
@@ -386,6 +390,13 @@
   <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
   
   
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
 
       </span>
     
@@ -402,6 +413,14 @@
       
         <a href="/tags/%E5%BF%83%E5%BE%97/" class="print-no-link">#心得</a>
       
+        <a href="/tags/Depth-First-Search/" class="print-no-link">#Depth-First Search</a>
+      
+        <a href="/tags/Breadth-First-Search/" class="print-no-link">#Breadth-First Search</a>
+      
+        <a href="/tags/Graph/" class="print-no-link">#Graph</a>
+      
+        <a href="/tags/Topological-Sort/" class="print-no-link">#Topological Sort</a>
+      
     </div>
   
 </div>
@@ -412,7 +431,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>310. Minimum Height Trees - Medium</div>
+      <div>310. Minimum Height Trees</div>
       <div>https://f88083.github.io/2024/04/09/310-Minimum-Height-Trees-Medium/</div>
     </div>
     <div class="license-meta">
