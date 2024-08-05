@@ -23,8 +23,8 @@
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
 <meta property="og:description" content="前往題目  之前寫的文章，果然這題全忘了😂 想法 名子無法當key，因為可能重複 唯一能辨別不同帳號的就只有兩個帳號都有出現相同的email，但這個email會在第一個嗎，還是有可能在任意位置…  思路 利用union find疊代每一個帳號下的每一個email，如果發現當前帳號的某個email有和另一個帳號的一樣就union 接著把相同account的email組合在一起 最後把組合好的ema">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2024-02-24T10:20:19.000Z">
-<meta property="article:modified_time" content="2024-05-29T16:47:04.965Z">
+<meta property="article:published_time" content="2024-02-24T02:20:19.000Z">
+<meta property="article:modified_time" content="2024-07-09T05:08:00.333Z">
 <meta property="article:author" content="Simon Lai">
 <meta property="article:tag" content="Leetcode">
 <meta property="article:tag" content="心得">
@@ -257,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          419 字
+          455 字
         
       </span>
     
@@ -268,7 +268,7 @@
         
         
         
-          2 分鐘
+          3 分鐘
         
       </span>
     
@@ -423,12 +423,18 @@
         <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">find</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
             <span class="token keyword">while</span> <span class="token punctuation">(</span>a <span class="token operator">!=</span> parent<span class="token punctuation">[</span>a<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
                 <span class="token comment">// Path compression</span>
-                parent<span class="token punctuation">[</span>a<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">find</span><span class="token punctuation">(</span>parent<span class="token punctuation">[</span>a<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                parent<span class="token punctuation">[</span>a<span class="token punctuation">]</span> <span class="token operator">=</span> parent<span class="token punctuation">[</span>parent<span class="token punctuation">[</span>a<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                a <span class="token operator">=</span> parent<span class="token punctuation">[</span>a<span class="token punctuation">]</span><span class="token punctuation">;</span>
             <span class="token punctuation">&#125;</span>
-            <span class="token keyword">return</span> parent<span class="token punctuation">[</span>a<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> a<span class="token punctuation">;</span>
         <span class="token punctuation">&#125;</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h2 id="2024-06-24"><a href="#2024-06-24" class="headerlink" title="2024&#x2F;06&#x2F;24"></a>2024&#x2F;06&#x2F;24</h2><ul>
+<li>很難的一題，<code>unionfind</code>實作直接忘光</li>
+<li>意外發現原先的<code>code</code>是<code>TLE</code>，原因是<code>Path compression</code>那邊，已修正</li>
+</ul>
 
                 
               </div>

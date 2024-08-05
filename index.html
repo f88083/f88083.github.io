@@ -253,15 +253,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/06/02/455-Assign-Cookies-Easy/" target="_self">
-          455. Assign Cookies - Easy
+        <a href="/2024/07/12/219-Contains-Duplicate-II/" target="_self">
+          219. Contains Duplicate II
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/02/455-Assign-Cookies-Easy/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/12/219-Contains-Duplicate-II/" target="_self">
         <div>
-          前往題目  想法 排序後從最小餅乾開始匹配  思路想法對了，實作有點小bug，馬上修好  兩個陣列都排序 如果餅乾不夠滿足當前小孩，換下一個餅乾，直到餅乾沒了或是小孩都滿足了  Codeclass Solution &#123;     public int findContentChildren(int[] g, int[] s) &#123;         Arrays.sort(g);
+          前往題目  想法 Sliding window  思路 走訪nums 使用sliding window，用hashset記錄數字 當window大於k，移除左指針數值，並且移動左指針 如果找到重複的數字，就回傳true  Code  class Solution &#123;     public boolean containsNearbyDuplicate(int[] nums, int k)
         </div>
       </a>
 
@@ -269,8 +269,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-06-02 12:18" pubdate>
-              2024-06-02
+            <time datetime="2024-07-12 15:49" pubdate>
+              2024-07-12
             </time>
           </div>
         
@@ -313,317 +313,9 @@
             
               <a href="/tags/Array/">#Array</a>
             
-              <a href="/tags/Two-Pointers/">#Two Pointers</a>
-            
-              <a href="/tags/Greedy/">#Greedy</a>
-            
-              <a href="/tags/Sorting/">#Sorting</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/06/02/1968-Array-With-Elements-Not-Equal-to-Average-of-Neighbors-Medium/" target="_self">
-          1968. Array With Elements Not Equal to Average of Neighbors - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/02/1968-Array-With-Elements-Not-Equal-to-Average-of-Neighbors-Medium/" target="_self">
-        <div>
-          前往題目  想法 把數字小於等於中位數的都放到奇數位，其餘放到偶數位  思路 排序 小和大的數字交錯，這樣每個數字就會被比他自己大的兩個數字包圍或是兩個比他自己小的數字包圍，所以可以保證絕對不會等於兩數相加除二  Code  class Solution &#123;     public int[] rearrangeArray(int[] nums) &#123;         Arrays
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-06-02 11:27" pubdate>
-              2024-06-02
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Greedy/">#Greedy</a>
-            
-              <a href="/tags/Sorting/">#Sorting</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/06/01/18-4Sum-Medium/" target="_self">
-          18. 4Sum - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/01/18-4Sum-Medium/" target="_self">
-        <div>
-          前往題目  想法 3 sum是固定一個數字，然後就變成2 sum問題；那4 sum要固定兩個數字？  思路 先排序(這樣才能輕鬆跳過重複的數字) 當不確定的數字超過2個，就固定當前數字然後再次呼叫方法(Recursion) 當不確定的數字只剩2個，就變成2sum問題，找出哪兩個相加等於target就是答案之一並加入結果  Code  class Solution &#123;     List&l
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-06-01 10:37" pubdate>
-              2024-06-01
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Two-Pointers/">#Two Pointers</a>
-            
-              <a href="/tags/Sorting/">#Sorting</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/05/30/2348-Number-of-Zero-Filled-Subarrays-Medium/" target="_self">
-          2348. Number of Zero-Filled Subarrays - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/05/30/2348-Number-of-Zero-Filled-Subarrays-Medium/" target="_self">
-        <div>
-          前往題目  想法 想法大致和以下答案一樣，但有點複雜(例如n個連續零，就加上n + n - 1 + n - 2 + ... + 0)  思路 走過所有數字 每次遇到0，計數器+1，result直接加上當前zero的數量  因為如果00，subarray有1+2個;000，subarray有1+2+3個，以此類推 Code  class Solution &#123;     public long
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-05-30 13:47" pubdate>
-              2024-05-30
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Math/">#Math</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/05/30/2001-Number-of-Pairs-of-Interchangeable-Rectangles-Medium/" target="_self">
-          2001. Number of Pairs of Interchangeable Rectangles - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/05/30/2001-Number-of-Pairs-of-Interchangeable-Rectangles-Medium/" target="_self">
-        <div>
-          前往題目  想法 只能往後找相同ratio  思路關鍵點是遇到當前ratio，直接加上之前走過的相同ratio數量  走過所有num 計算當前ratio 加上這個ratio的數量(因為是往前搭配)，並且更新此ratio的數量  還有另一種做法是利用數學公式，但那樣就太specific的解法，所以選擇general的 Code  class Solution &#123;     public lo
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-05-30 13:32" pubdate>
-              2024-05-30
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Math/">#Math</a>
-            
               <a href="/tags/Hash-Table/">#Hash Table</a>
             
-              <a href="/tags/Counting/">#Counting</a>
-            
-              <a href="/tags/Number-Theory/">#Number Theory</a>
+              <a href="/tags/Sliding-Window/">#Sliding Window</a>
             
           </div>
         
@@ -637,15 +329,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/05/29/665-Non-decreasing-Array-Medium/" target="_self">
-          665. Non-decreasing Array - Medium
+        <a href="/2024/07/10/1578-Minimum-Time-to-Make-Rope-Colorful/" target="_self">
+          1578. Minimum Time to Make Rope Colorful
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/05/29/665-Non-decreasing-Array-Medium/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/10/1578-Minimum-Time-to-Make-Rope-Colorful/" target="_self">
         <div>
-          前往題目  想法沒想法的一題，看起來很簡單，不過有好多edge case要考慮 思路 走過所有num 兩兩一組看，non-decreasing的話就直接continue 如果已經用了一次change就回傳false 如果當前的下一個比當前的上一個還大，那當前的就變成和下一個一樣大就可以了，例如3, 5, 4 反之，下一個變得和當前一樣大就可以，例如4, 5, 3  Code  class Solu
+          前往題目  想法 雙指針  思路 雙指針，循環整個字串 每次循環檢查字符是否相同 相同時紀錄所需時間，移動左指針 不同時只移動指針  Code  class Solution &#123;     public int minCost(String colors, int[] neededTime) &#123;         int l = 0, r = 1;          int res
         </div>
       </a>
 
@@ -653,158 +345,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-05-29 17:58" pubdate>
-              2024-05-29
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/05/25/496-Next-Greater-Element-I-Easy/" target="_self">
-          496. Next Greater Element I - Easy
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/05/25/496-Next-Greater-Element-I-Easy/" target="_self">
-        <div>
-          前往題目  想法 暴力解，用hashmap然後在nums2一個一個看  思路 用hashmap儲存nums1中num和index的映射 疊代nums2 每次都檢查是否比stack的最上層還要大，如果是的話就pop，然後繼續比下一個上層，直到stack沒東西或是沒有比他大了，然後每次操作都要把該num放到相對應的index(藉助hashmap可以得知) 最後如果當前數字有在nums1裡面代表需要找尋
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-05-25 11:06" pubdate>
-              2024-05-25
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Stack/">#Stack</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Monotonic-Stack/">#Monotonic Stack</a>
-            
-              <a href="/tags/Hash-Table/">#Hash Table</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/05/24/2483-Minimum-Penalty-for-a-Shop-Medium/" target="_self">
-          2483. Minimum Penalty for a Shop - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/05/24/2483-Minimum-Penalty-for-a-Shop-Medium/" target="_self">
-        <div>
-          前往題目  想法 sliding windows? 要看有幾個n幾個y  思路實際上就是算出每個位置的prefix_n和postfix_y，因為沒有客人來沒有關店會penalty，相反的，有客人卻已經關店也要penalty  紀錄prefix_n，但不用包含當前 紀錄postfix_y，要包含當前 然後再疊代每個位置，把prefix和postfix加起來找出最小值，並回傳其index  Code
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-05-24 12:04" pubdate>
-              2024-05-24
+            <time datetime="2024-07-10 10:26" pubdate>
+              2024-07-10
             </time>
           </div>
         
@@ -847,165 +389,587 @@
             
               <a href="/tags/String/">#String</a>
             
-              <a href="/tags/Prefix-Sum/">#Prefix Sum</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/05/23/1963-Minimum-Number-of-Swaps-to-Make-the-String-Balanced-Medium/" target="_self">
-          1963. Minimum Number of Swaps to Make the String Balanced - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/05/23/1963-Minimum-Number-of-Swaps-to-Make-the-String-Balanced-Medium/" target="_self">
-        <div>
-          前往題目  想法 Stack?  思路這題可以一次換兩個，為一個swap  疊代所有字符 看到[就+1 看到]就判斷是否size大於0，-1  如此一來剩下的就換是錯位的括號有幾個了 Codeclass Solution &#123;     public int minSwaps(String s) &#123;         int sSize = 0;                  /
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-05-23 12:24" pubdate>
-              2024-05-23
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Stack/">#Stack</a>
-            
-              <a href="/tags/String/">#String</a>
-            
-              <a href="/tags/Two-Pointers/">#Two Pointers</a>
+              <a href="/tags/Array/">#Array</a>
             
               <a href="/tags/Greedy/">#Greedy</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/05/18/2002-Maximum-Product-of-the-Length-of-Two-Palindromic-Subsequences-Medium/" target="_self">
-          2002. Maximum Product of the Length of Two Palindromic Subsequences - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/05/18/2002-Maximum-Product-of-the-Length-of-Two-Palindromic-Subsequences-Medium/" target="_self">
-        <div>
-          前往題目  思路Brute force  循環把所有mask都走過一遍，有Match就保留 只留下是palindrome的 嵌套疊代，把兩個match的mask計算長度，放入結果，取最大值  這題用mask，比較難一下就看懂在幹麻 Code  class Solution &#123;     public int maxProduct(String s) &#123;         int n
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-05-18 11:21" pubdate>
-              2024-05-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/String/">#String</a>
             
               <a href="/tags/Dynamic-Programming/">#Dynamic Programming</a>
             
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/07/09/1750-Minimum-Length-of-String-After-Deleting-Similar-Ends/" target="_self">
+          1750. Minimum Length of String After Deleting Similar Ends
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/09/1750-Minimum-Length-of-String-After-Deleting-Similar-Ends/" target="_self">
+        <div>
+          前往題目  想法 雙指針  思路 雙指針，指向兩端 當l指針小於r，也都指向同樣的字符，持續循環 每個循環都盡可能的移動左指針和右指針 輸出剩下幾個字符  Codeclass Solution &#123;     public int minimumLength(String s) &#123;         int l = 0, r = s.length() - 1;          //
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-07-09 14:09" pubdate>
+              2024-07-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/String/">#String</a>
+            
+              <a href="/tags/Two-Pointers/">#Two Pointers</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/07/09/1984-Minimum-Difference-Between-Highest-and-Lowest-of-K-Scores/" target="_self">
+          1984. Minimum Difference Between Highest and Lowest of K Scores
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/09/1984-Minimum-Difference-Between-Highest-and-Lowest-of-K-Scores/" target="_self">
+        <div>
+          前往題目  想法 雙指針  思路 排序後，左右鄰居都是最靠近自己的 根據k定義sliding window雙指針 疊代整個陣列找出最小值  Codeclass Solution &#123;     public int minimumDifference(int[] nums, int k) &#123;          Arrays.sort(nums);
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-07-09 13:36" pubdate>
+              2024-07-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Sorting/">#Sorting</a>
+            
+              <a href="/tags/Sliding-Window/">#Sliding Window</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/07/04/7%E5%80%8B%E5%A5%BD%E7%9A%84API%E6%87%89%E8%A9%B2%E6%9C%89%E7%9A%84%E8%A8%AD%E8%A8%88/" target="_self">
+          7個好的API應該有的設計
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/04/7%E5%80%8B%E5%A5%BD%E7%9A%84API%E6%87%89%E8%A9%B2%E6%9C%89%E7%9A%84%E8%A8%AD%E8%A8%88/" target="_self">
+        <div>
+          1. Use clear  naming例如: http://example.com/api/v1/carts/123  而不要 http://example.com/api/v1/cart/123  因為是一個集合的資料，而不是單個，這樣比較合乎邏輯 2. Ensure reliability through idempotent API無論執行多少次相同操作都要產生相同結果，避免問題產生
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-07-04 17:20" pubdate>
+              2024-07-04
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/API/">#API</a>
+            
+              <a href="/tags/System-Design/">#System Design</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/07/04/779-K-th-Symbol-in-Grammar/" target="_self">
+          779. K-th Symbol in Grammar
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/04/779-K-th-Symbol-in-Grammar/" target="_self">
+        <div>
+          前往題目  想法 Recursion?  思路把圖畫出來會發現是一個類似樹的結構，可以判斷是在左分支還是右分支每次都去除一半，直到k層  左右雙指針 疊代n-1次，因為第一次是起始點0，所以跳過 每次決定中點 並判斷k是否在中點的左邊或右邊 在左邊的話會和之前的數字一樣，而右邊會和之前的相反 最後直接輸出數字  /*  0 0 1 以及  1 1 0 可以看到左邊都和上面的數字一樣，右邊都和上面的
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-07-04 11:59" pubdate>
+              2024-07-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Recursion/">#Recursion</a>
+            
+              <a href="/tags/Math/">#Math</a>
+            
+              <a href="/tags/Two-Pointers/">#Two Pointers</a>
+            
               <a href="/tags/Bit-Manipulation/">#Bit Manipulation</a>
             
-              <a href="/tags/Backtracking/">#Backtracking</a>
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/07/04/2108-Find-First-Palindromic-String-in-the-Array/" target="_self">
+          2108. Find First Palindromic String in the Array
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/04/2108-Find-First-Palindromic-String-in-the-Array/" target="_self">
+        <div>
+          前往題目  想法 雙指針，每個單字都檢查一遍  思路秒殺題  雙指針，每個單字都檢查一遍  Codeclass Solution &#123;     public String firstPalindrome(String[] words) &#123;         // 疊代每個單字         for (String word : words) &#123;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-07-04 11:13" pubdate>
+              2024-07-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
             
-              <a href="/tags/Bitmask/">#Bitmask</a>
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/String/">#String</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Two-Pointers/">#Two Pointers</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/07/04/1662-Check-If-Two-String-Arrays-are-Equivalent/" target="_self">
+          1662. Check If Two String Arrays are Equivalent
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/04/1662-Check-If-Two-String-Arrays-are-Equivalent/" target="_self">
+        <div>
+          前往題目  想法 雙指針，一對一對比較  思路自己寫出來了，不過應該可以再更簡潔一點，麻煩的就是出界問題而已  疊代所有word直到有一方或雙方都出界 每次都檢查是否為相同字母 相同就字母指針往前 檢查字母指針是否出界，如果出界就移動word指針，並且歸零字母指針  Codeclass Solution &#123;     public boolean arrayStringsAreEqual(
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-07-04 11:02" pubdate>
+              2024-07-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/String/">#String</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/06/26/881-Boats-to-Save-People-Medium/" target="_self">
+          881. Boats to Save People - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/26/881-Boats-to-Save-People-Medium/" target="_self">
+        <div>
+          前往題目  想法 雙指針，因為最多兩人，所以蠻簡單的  思路 排序，由小到大 雙指針，最左和最右，一開始都先取當前可能的最大值 然後再判斷能否再取一個當前最小值 移動指針  Codeclass Solution &#123;     public int numRescueBoats(int[] people, int limit) &#123;         Arrays.sort(peopl
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-06-26 10:58" pubdate>
+              2024-06-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Two-Pointers/">#Two Pointers</a>
+            
+              <a href="/tags/Greedy/">#Greedy</a>
+            
+              <a href="/tags/Sorting/">#Sorting</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/06/26/948-Bag-of-Tokens-Medium/" target="_self">
+          948. Bag of Tokens - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/26/948-Bag-of-Tokens-Medium/" target="_self">
+        <div>
+          前往題目  想法 2 pointers，但怎麼利用這個規則是個問題  思路貪婪  排序，由小到大 雙指針，分別指向兩端 嘗試face up(因為可以增加score，也就是我們的最終目的，因此首選它)，不行的話face down(並且是選擇右指針，因為要最大化power，才能有本錢face down)，再不行直接回傳  Code  class Solution &#123;     public i
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-06-26 10:13" pubdate>
+              2024-06-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Two-Pointers/">#Two Pointers</a>
+            
+              <a href="/tags/Greedy/">#Greedy</a>
+            
+              <a href="/tags/Sorting/">#Sorting</a>
             
           </div>
         
@@ -1017,7 +981,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/#board">23</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/#board">24</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

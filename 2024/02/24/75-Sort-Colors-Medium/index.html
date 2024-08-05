@@ -23,8 +23,8 @@
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
 <meta property="og:description" content="前往題目  之前寫的文章 想法 數0、1、2各有幾個，然後填回原本的陣列  思路上述想法可行，但以下方法更快速  三個指針，左中右 中間指針遇到2就與右指針數值交換，並且左移右指針 中間指針遇到0就與左指針數值交換，並且右移左指針與中間指針，因為初始狀態l和mid都是0，不移動會出現l大於mid的狀況  Code直覺做法，紀錄個數 class Solution &#123;     public">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2024-02-24T11:32:25.000Z">
-<meta property="article:modified_time" content="2024-05-29T16:47:04.965Z">
+<meta property="article:published_time" content="2024-02-24T03:32:25.000Z">
+<meta property="article:modified_time" content="2024-07-09T05:08:00.333Z">
 <meta property="article:author" content="Simon Lai">
 <meta property="article:tag" content="Leetcode">
 <meta property="article:tag" content="心得">
@@ -253,7 +253,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          276 字
+          302 字
         
       </span>
     
@@ -381,6 +381,10 @@
         <span class="token punctuation">&#125;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h2 id="2024-06-24"><a href="#2024-06-24" class="headerlink" title="2024&#x2F;06&#x2F;24"></a>2024&#x2F;06&#x2F;24</h2><ul>
+<li>小<code>bug</code>，遇到<code>2</code>的時候中指針不用動，不然可能會跳過<code>0</code></li>
+</ul>
 
                 
               </div>

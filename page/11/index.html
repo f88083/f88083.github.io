@@ -253,15 +253,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/02/01/1004-Max-Consecutive-Ones-III-Medium/" target="_self">
-          1004. Max Consecutive Ones III - Medium
+        <a href="/2024/02/08/1046-Last-Stone-Weight-Easy/" target="_self">
+          1046. Last Stone Weight - Easy
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/01/1004-Max-Consecutive-Ones-III-Medium/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/08/1046-Last-Stone-Weight-Easy/" target="_self">
         <div>
-          前往題目  思路 看到subarray基本上是用sliding window 看到可以翻轉k個，基本上可以用dp   sliding window 如果遇到1，就紀錄長度 如果遇到0，就紀錄當前幾個0，超過k的話把左邊指針右移直到0的個數小於等於k，然後再紀錄一下長度  Code官神影片同時講了dp和sliding window，dp在這題不太可行是因為需要用到二維陣列，這樣nums.length
+          前往題目  想法 用priority queue  思路這題無需考慮位置，因為最終回傳的也是剩下的weight，而不是哪顆石頭，所以非常簡單  利用priority queue把stones存為descending order(降冪) 然後把前兩項相減後的結果再加入pq(兩數都要poll) 直到pq.size只剩1，直接回傳pq.poll()  題目說如果沒有石頭那就回傳0，而我沒判斷也AC，應該
         </div>
       </a>
 
@@ -269,162 +269,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-01 11:15" pubdate>
-              2024-02-01
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Binary-Search/">#Binary Search</a>
-            
-              <a href="/tags/Sliding-Window/">#Sliding Window</a>
-            
-              <a href="/tags/Prefix-Sum/">#Prefix Sum</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/31/3-Longest-Substring-Without-Repeating-Characters-Medium/" target="_self">
-          3. Longest Substring Without Repeating Characters - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/31/3-Longest-Substring-Without-Repeating-Characters-Medium/" target="_self">
-        <div>
-          前往題目  搬運以前的文章 想法 這題也沒寫出來，有嘗試用2 pointers和hashmap做，但失敗了 解法也看了半小時才懂，卡在為甚麼要remove那個character，當發現有同樣的時候 原因是因為那整個substring都不能要了，也記錄了長度，所以會逐漸remove  思路 Set儲存substring Sliding window char沒在set裡面的話就加進去，然後看看有沒有
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-31 11:15" pubdate>
-              2024-01-31
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/String/">#String</a>
-            
-              <a href="/tags/Hash-Table/">#Hash Table</a>
-            
-              <a href="/tags/Sliding-Window/">#Sliding Window</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/31/121-Best-Time-to-Buy-and-Sell-Stock-Easy/" target="_self">
-          121. Best Time to Buy and Sell Stock - Easy
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/31/121-Best-Time-to-Buy-and-Sell-Stock-Easy/" target="_self">
-        <div>
-          前往題目  之前寫的文章 思路 sliding window high指針一直往右，遇到low指針的值比high還大就把low直接移過去high，代表找到更小值了  Codeclass Solution &#123;     public int maxProfit(int[] prices) &#123;         int low = 0, high = 0;         int re
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-31 10:50" pubdate>
-              2024-01-31
+            <time datetime="2024-02-08 10:43" pubdate>
+              2024-02-08
             </time>
           </div>
         
@@ -466,391 +312,9 @@
               <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
             
               <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Dynamic-Programming/">#Dynamic Programming</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/31/11-Container-With-Most-Water-Medium/" target="_self">
-          11. Container With Most Water - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/31/11-Container-With-Most-Water-Medium/" target="_self">
-        <div>
-          前往題目  之前寫的文章 思路 2 pointers 只移動短的那邊，才有機會有更大的值  Codeclass Solution &#123;     public int maxArea(int[] height) &#123;         int l = 0, r = height.length - 1;          int res = Integer.MIN_VALUE;
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-31 10:28" pubdate>
-              2024-01-31
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Two-Pointers/">#Two Pointers</a>
-            
-              <a href="/tags/Greedy/">#Greedy</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/30/125-Valid-Palindrome-Easy/" target="_self">
-          125. Valid Palindrome - Easy
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/30/125-Valid-Palindrome-Easy/" target="_self">
-        <div>
-          前往題目  之前寫的Medium文章 思路 2 pointers 遇到不是letter或digit的直接移動指針然後進到下一個循環 遇到是的話直接判斷是否相同，注意letter的話要轉成lowercase或uppercase  Codeclass Solution &#123;     public boolean isPalindrome(String s) &#123;         int
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-30 20:02" pubdate>
-              2024-01-30
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/String/">#String</a>
-            
-              <a href="/tags/Two-Pointers/">#Two Pointers</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/30/167-Two-Sum-II-Input-Array-Is-Sorted-Medium/" target="_self">
-          167. Two Sum II - Input Array Is Sorted - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/30/167-Two-Sum-II-Input-Array-Is-Sorted-Medium/" target="_self">
-        <div>
-          前往題目  想法 2 pointers 每種組合都試，但兩數之合一旦超過target直接跳過當前left pointer  思路 左右指針，一個指起點一個指終點 當左右指針之和小於target，代表要讓和變大才有可能符合target，所以要移動左邊的pointer往右，移動右邊的會出界 反之，移動右邊的往左，因為往右就算沒出界，和會變更大  題目保證了一定有解，所以往內縮到最後一定會找到解 Cod
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-30 16:20" pubdate>
-              2024-01-30
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Two-Pointers/">#Two Pointers</a>
-            
-              <a href="/tags/Binary-Search/">#Binary Search</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/29/78-Subsets-Medium/" target="_self">
-          78. Subsets - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/29/78-Subsets-Medium/" target="_self">
-        <div>
-          前往題目  之前寫過了，這次一看到就知道要用backtracking但是細節漏了一點 想法 用backtracking  思路 每次疊代加入當前array到答案裡 並且用下一個num繼續呼叫backtrack 循環結束前把最後一位去掉  傳i + 1的原因是讓演算法不要取到同一個數字 Codeclass Solution &#123;     List&lt;List&lt;Integer>> r
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-29 15:49" pubdate>
-              2024-01-29
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Bit-Manipulation/">#Bit Manipulation</a>
-            
-              <a href="/tags/Backtracking/">#Backtracking</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/29/743-Network-Delay-Time-Medium/" target="_self">
-          743. Network Delay Time - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/29/743-Network-Delay-Time-Medium/" target="_self">
-        <div>
-          前往題目  思路可用任意找最小路徑算法  建立鄰接表 利用BFS疊代起始點出發的每一層node並更新最短路徑 最後因為要知道所有node都接收到signal需要多少時間，所以取最大值  Code  以下是來自discussion的答案，比較好理解，沒有用到priority queue class Solution &#123;     /* Step 1: Create a Map of star
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-29 15:07" pubdate>
-              2024-01-29
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
-            
-              <a href="/tags/Breadth-First-Search/">#Breadth-First Search</a>
-            
-              <a href="/tags/Graph/">#Graph</a>
             
               <a href="/tags/Heap-Priority-Queue/">#Heap (Priority Queue)</a>
             
-              <a href="/tags/Shortest-Path/">#Shortest Path</a>
-            
           </div>
         
       </div>
@@ -863,15 +327,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/01/28/98-Validate-Binary-Search-Tree-Medium/" target="_self">
-          98. Validate Binary Search Tree - Medium
+        <a href="/2024/02/08/703-Kth-Largest-Element-in-a-Stream-Easy/" target="_self">
+          703. Kth Largest Element in a Stream - Easy
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/28/98-Validate-Binary-Search-Tree-Medium/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/08/703-Kth-Largest-Element-in-a-Stream-Easy/" target="_self">
         <div>
-          前往題目  搬運一下之前寫過的 想法 要檢查數值，還要檢查是否是BST 紀錄擁有子樹的node的數值，然後檢查左邊，比較數值，有錯就直接結束；右邊也是一樣 檢查是否是BST得用height，左右子樹的高度差不能超過1  思路 Recursion檢查每個node是否小於等於最小值，或是否大於等於最大值，如果有就是false  Code  嘗試寫了，但邏輯有誤，沒有考慮到左子樹有可能會比右子樹的某一項
+          前往題目  想法 用priority queue  思路 把初始array放進priority queue裡面 每次加入的時候都先加入新的數字，然後再把pq刪減到剩下k項(因為這題只有add方法所以只要維持k個就好，因為k值固定所以更小的數字永遠不會用到)  Codeclass KthLargest &#123;     private int k;     private PriorityQue
         </div>
       </a>
 
@@ -879,8 +343,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-28 21:27" pubdate>
-              2024-01-28
+            <time datetime="2024-02-08 10:23" pubdate>
+              2024-02-08
             </time>
           </div>
         
@@ -925,9 +389,13 @@
             
               <a href="/tags/Binary-Tree/">#Binary Tree</a>
             
-              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
-            
               <a href="/tags/Tree/">#Tree</a>
+            
+              <a href="/tags/Heap-Priority-Queue/">#Heap (Priority Queue)</a>
+            
+              <a href="/tags/Design/">#Design</a>
+            
+              <a href="/tags/Data-Stream/">#Data Stream</a>
             
           </div>
         
@@ -941,15 +409,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/01/28/206-Reverse-Linked-List-Easy/" target="_self">
-          206. Reverse Linked List - Easy
+        <a href="/2024/02/07/1448-Count-Good-Nodes-in-Binary-Tree-Medium/" target="_self">
+          1448. Count Good Nodes in Binary Tree - Medium
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/28/206-Reverse-Linked-List-Easy/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/07/1448-Count-Good-Nodes-in-Binary-Tree-Medium/" target="_self">
         <div>
-          前往題目  想法 之前做過，忘了要用一個prev存上一個node  思路 疊代所有node 每個node都紀錄一下前一個，然後切換當前的node  Code  class Solution &#123;     public ListNode reverseList(ListNode head) &#123;         if (head == null || head.next == nul
+          前往題目  想法 搜尋的時候維護最大值  思路難得自己寫出來DFS  DFS 搜尋時維護最大值  Codeclass Solution &#123;     private int res; // Result     public int goodNodes(TreeNode root) &#123;         res = 0;         // Start DFS         d
         </div>
       </a>
 
@@ -957,8 +425,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-28 21:02" pubdate>
-              2024-01-28
+            <time datetime="2024-02-07 11:08" pubdate>
+              2024-02-07
             </time>
           </div>
         
@@ -978,7 +446,7 @@
   
     <span>></span>
     
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
   
   
 
@@ -999,9 +467,557 @@
             
               <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
             
-              <a href="/tags/Recursion/">#Recursion</a>
+              <a href="/tags/Binary-Tree/">#Binary Tree</a>
+            
+              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
+            
+              <a href="/tags/Breadth-First-Search/">#Breadth-First Search</a>
+            
+              <a href="/tags/Tree/">#Tree</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/02/07/138-Copy-List-with-Random-Pointer-Medium/" target="_self">
+          138. Copy List with Random Pointer - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/07/138-Copy-List-with-Random-Pointer-Medium/" target="_self">
+        <div>
+          前往題目  想法 關鍵應該是random要怎麼接上，一個想法是先疊代整個list deepcopy出沒有random的list，過程中建立hashmap映射值和其對應的node，這樣時間上是O(2N)，但空間需要O(N) 只想得到用map儲存node和值的對應關係，但是值不是唯一所以不能當作key，有了node的時候值又是多餘的。可能可以用array，但是最大的array會需要$10^4$的空間
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-02-07 10:12" pubdate>
+              2024-02-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Hash-Table/">#Hash Table</a>
             
               <a href="/tags/Linked-List/">#Linked List</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/02/06/875-Koko-Eating-Bananas-Medium/" target="_self">
+          875. Koko Eating Bananas - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/06/875-Koko-Eating-Bananas-Medium/" target="_self">
+        <div>
+          前往題目  思路 利用binary search(不是搜尋piles array，而是最小數與最大數的區間) 最少的可能是每小時1根香蕉，最大就是piles裡面最大的，因為piles.length &lt;= h，所以最大值一定可以在時限內吃完 binary search搜尋，每次計算piles能不能只需要每小時mid根香蕉吃完，如果不行，小指針指向mid + 1，如果可以，那大指針就變為mid，
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-02-06 11:32" pubdate>
+              2024-02-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Binary-Search/">#Binary Search</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/02/06/853-Car-Fleet-Medium/" target="_self">
+          853. Car Fleet - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/06/853-Car-Fleet-Medium/" target="_self">
+        <div>
+          前往題目  思路 排序好以後，從最後面開始往前看，如果前車比後車快就會catch up，然後位置靠左也就是前車會放慢速度跟後車並行，這時兩車視為一體了 繼續往前看，以此類推  Code    其實可以不用再弄個class的😂 class Solution &#123;     class Car&#123;         private int position;         privat
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-02-06 10:57" pubdate>
+              2024-02-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Stack/">#Stack</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Monotonic-Stack/">#Monotonic Stack</a>
+            
+              <a href="/tags/Sorting/">#Sorting</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/02/05/347-Top-K-Frequent-Elements-Medium/" target="_self">
+          347. Top K Frequent Elements - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/05/347-Top-K-Frequent-Elements-Medium/" target="_self">
+        <div>
+          前往題目  想法 利用hashmap儲存數字個數以便快速存取 使用priority queue來比較並儲存比較關係  思路自己的思路  hashmap儲存數字個數 priority queue儲存比較關係，由小到大，每當pq size超過k的時候就把頭去掉，因為頭是當前最小值，而最終需要的是前k大的  時間複雜度: O(nums.length + nums.length * log (size o
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-02-05 11:38" pubdate>
+              2024-02-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Hash-Table/">#Hash Table</a>
+            
+              <a href="/tags/Sorting/">#Sorting</a>
+            
+              <a href="/tags/Divide-and-Conquer/">#Divide and Conquer</a>
+            
+              <a href="/tags/Quickselect/">#Quickselect</a>
+            
+              <a href="/tags/Heap-Priority-Queue/">#Heap (Priority Queue)</a>
+            
+              <a href="/tags/Bucket-Sort/">#Bucket Sort</a>
+            
+              <a href="/tags/Counting/">#Counting</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/02/05/567-Permutation-in-String-Medium/" target="_self">
+          567. Permutation in String - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/05/567-Permutation-in-String-Medium/" target="_self">
+        <div>
+          前往題目  想法 用hashmap，以及sliding window  思路 用array存字母個數 疊代整個s2，如果window&gt;=s1的大小的時候，就可以比較s1和s2 沒有的話把window的首字母數量-1，這樣才能保證window的大小和s1一致  Code  class Solution &#123;     public boolean checkInclusion(Strin
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-02-05 10:55" pubdate>
+              2024-02-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/String/">#String</a>
+            
+              <a href="/tags/Two-Pointers/">#Two Pointers</a>
+            
+              <a href="/tags/Hash-Table/">#Hash Table</a>
+            
+              <a href="/tags/Sliding-Window/">#Sliding Window</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/02/03/994-Rotting-Oranges-Medium/" target="_self">
+          994. Rotting Oranges - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/03/994-Rotting-Oranges-Medium/" target="_self">
+        <div>
+          前往題目  之前的文章 想法 BFS  思路實作的時候條件判斷卡住，一段時間沒寫生疏了  取得有幾個新鮮橘子(這樣才能知道要感染幾個)，以及初始的爛橘子在哪 BFS只關心腐爛橘子，感染其上下左右的橘子，直到感染所有橘子，或是觸碰不到剩餘的橘子 如果還有剩餘新鮮橘子就回傳-1，反之回傳過了幾分鐘  Codeclass Solution &#123;     public int orangesRot
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-02-03 11:05" pubdate>
+              2024-02-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Matrix/">#Matrix</a>
+            
+              <a href="/tags/Breadth-First-Search/">#Breadth-First Search</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/02/01/2024-Maximize-the-Confusion-of-an-Exam-Medium/" target="_self">
+          2024. Maximize the Confusion of an Exam - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/01/2024-Maximize-the-Confusion-of-an-Exam-Medium/" target="_self">
+        <div>
+          前往題目  思路1004題的進階  sliding window 重複兩遍循環，一次是把T當作基準，也就是翻轉成T，一次是把F當作基準  Code  class Solution &#123;     public int maxConsecutiveAnswers(String answerKey, int k) &#123;         int res = 0;         int i
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-02-01 12:12" pubdate>
+              2024-02-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/String/">#String</a>
+            
+              <a href="/tags/Binary-Search/">#Binary Search</a>
+            
+              <a href="/tags/Sliding-Window/">#Sliding Window</a>
+            
+              <a href="/tags/Prefix-Sum/">#Prefix Sum</a>
             
           </div>
         
@@ -1013,7 +1029,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/10/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/#board">9</a><a class="page-number" href="/page/10/#board">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/#board">12</a><a class="page-number" href="/page/13/#board">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/#board">23</a><a class="extend next" rel="next" href="/page/12/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/10/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/#board">9</a><a class="page-number" href="/page/10/#board">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/#board">12</a><a class="page-number" href="/page/13/#board">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/#board">24</a><a class="extend next" rel="next" href="/page/12/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

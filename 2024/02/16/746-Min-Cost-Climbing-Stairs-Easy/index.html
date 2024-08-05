@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
 <meta property="og:description" content="前往題目  思路 從尾端開始，頂端需要0，最後一個台階需要至少本身的cost 倒數第二個台階需要本身的cost，再加上最後一個台階和頂端的最小值 以此類推可以得出: dp[i] &#x3D; cost[i] + Math.min(dp[i + 1], dp[i + 2])  需要O(N)空間 其實也可以不用dp陣列，用原本的cost陣列就好，因為要不就是bottom up，要不就是top down，都是一步">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2024-02-16T11:38:36.000Z">
+<meta property="article:published_time" content="2024-02-16T03:38:36.000Z">
 <meta property="article:modified_time" content="2024-05-29T16:47:04.964Z">
 <meta property="article:author" content="Simon Lai">
 <meta property="article:tag" content="Leetcode">
