@@ -253,6 +253,379 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/01/09/Flask%E9%87%8D%E6%A7%8B-%E4%BD%BF%E7%94%A8%E5%B7%A5%E5%BB%A0%E6%96%B9%E6%B3%95%E5%92%8C%E8%97%8D%E5%9C%96/" target="_self">
+          Flask重構-使用工廠方法和藍圖
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/09/Flask%E9%87%8D%E6%A7%8B-%E4%BD%BF%E7%94%A8%E5%B7%A5%E5%BB%A0%E6%96%B9%E6%B3%95%E5%92%8C%E8%97%8D%E5%9C%96/" target="_self">
+        <div>
+          雖然初步開發的時候可以不用管結構，全部程式碼都塞在一起就好，但是遇到要擴展或是測試的時候問題就出現了，很多潛在的問題在程式擴展的路上會出現，增加很多時間成本。而我自己也想練習一下寫測試，有好的結構才能快速切換測試和開發的環境，剛好藉由自己的這個小project來玩玩看 結構參考《Flask Web開發》  以下是重構後的資料結構    code都拆開放在專屬的py檔案裡了  app資料夾是放Fla
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-09 14:30" pubdate>
+              2024-01-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Project/" class="category-chain-item">Project</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Flask/">#Flask</a>
+            
+              <a href="/tags/Factory-Pattern/">#Factory Pattern</a>
+            
+              <a href="/tags/Blueprint/">#Blueprint</a>
+            
+              <a href="/tags/Configuration/">#Configuration</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/09/283-Move-Zeroes-Easy/" target="_self">
+          283. Move Zeroes - Easy
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/09/283-Move-Zeroes-Easy/" target="_self">
+        <div>
+          前往題目  想法 只想得到用一個額外的陣列儲存非零項，這樣空間和時間都是O(N)  思路題目很詐，說move all 0&#39;s to the end of it，這樣第一眼就在想要怎麼把0移到後面，但其實只要反過來想，把非零項移到前面就好了，最後再補上零即可…  把非零項移到前面 補上所需的零  Codeclass Solution &#123;     public void moveZe
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-09 13:29" pubdate>
+              2024-01-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Two-Pointers/">#Two Pointers</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/09/234-Palindrome-Linked-List-Easy/" target="_self">
+          234. Palindrome Linked List - Easy
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/09/234-Palindrome-Linked-List-Easy/" target="_self">
+        <div>
+          前往題目  想法 因為是單鏈，所以只能先找中間點，不然沒有基準 找到中間點後就可以知道左半部和右半部的分水嶺 沒想到可以Reverse  思路 找到中間點 反轉右半邊 檢查palindrome  反轉那邊有點繞，但基本上就是  定義一個previous指針，然後會從slow指針開始反轉(因為他一定在mid+1) 存slow.next，也就是原來的下一個 slow.next換成previous，這裡
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-09 10:58" pubdate>
+              2024-01-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Stack/">#Stack</a>
+            
+              <a href="/tags/Recursion/">#Recursion</a>
+            
+              <a href="/tags/Two-Pointers/">#Two Pointers</a>
+            
+              <a href="/tags/Linked-List/">#Linked List</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/07/150-Evaluate-Reverse-Polish-Notation-Medium/" target="_self">
+          150. Evaluate Reverse Polish Notation - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/07/150-Evaluate-Reverse-Polish-Notation-Medium/" target="_self">
+        <div>
+          前往題目  之前寫過，搬運一下 想法 這題應該算是easy才對，五分鐘就想出來了，但也有可能是因為有先備知識 這題的先備知識就是Stack，不熟練以及不熟悉Stack的特性有可能會想不出來 少數自己想出來的medium，開心😆  思路 建立stack 疊代所有token 遇到symbol就pop兩個數字然後做運算 結果push回stack裡 直到token都用完 回傳stack.pop，因為這時
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-07 15:15" pubdate>
+              2024-01-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Stack/">#Stack</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Math/">#Math</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/07/133-Clone-Graph-Medium/" target="_self">
+          133. Clone Graph - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/07/133-Clone-Graph-Medium/" target="_self">
+        <div>
+          前往題目  寫過了，搬運一下~ 想法 這題依舊沒發現可以用BFS，但是有想過484可以 DFS也可以!反正就是疊代樹 基本上就是使用hashmap來儲存對應關係，用來判斷clone了沒 然後DFS或BFS所有節點  思路 A hashmap for old node to new node dfs if the node already in the map, return it Otherwis
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-07 14:45" pubdate>
+              2024-01-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Hash-Table/">#Hash Table</a>
+            
+              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
+            
+              <a href="/tags/Breadth-First-Search/">#Breadth-First Search</a>
+            
+              <a href="/tags/Graph/">#Graph</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2024/01/07/102-Binary-Tree-Level-Order-Traversal-Medium/" target="_self">
           102. Binary Tree Level Order Traversal - Medium
         </a>
@@ -631,367 +1004,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/04/528-Random-Pick-with-Weight-Medium/" target="_self">
-          528. Random Pick with Weight - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/04/528-Random-Pick-with-Weight-Medium/" target="_self">
-        <div>
-          前往題目  想法 題目要求每次pickIndex的時候都根據機率return數值，例如[1,3]那return 1的機率就是$1 &#x2F; (1 + 3)$，return 3的機率是$3 &#x2F; (1 + 3)$ 但是讓我困惑的是要怎麼根據機率return。算機率很簡單，只要弄個hashmap把每個機率存下來就好了；或是存sum，然後直接算也很快  思路這題很妙…解法也有些不懂的地方 大
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-04 10:39" pubdate>
-              2024-01-04
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Math/">#Math</a>
-            
-              <a href="/tags/Binary-Search/">#Binary Search</a>
-            
-              <a href="/tags/Prefix-Sum/">#Prefix Sum</a>
-            
-              <a href="/tags/Randomized/">#Randomized</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/03/%E5%A6%82%E4%BD%95%E6%BA%96%E5%82%99%E9%9D%A2%E8%A9%A6%E4%B8%AD%E7%9A%84Technical-Questions-Cracking-the-Coding-Interview/" target="_self">
-          如何準備面試中的Technical Questions - Cracking the Coding Interview
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/03/%E5%A6%82%E4%BD%95%E6%BA%96%E5%82%99%E9%9D%A2%E8%A9%A6%E4%B8%AD%E7%9A%84Technical-Questions-Cracking-the-Coding-Interview/" target="_self">
-        <div>
-          如何準備 P.60 記答案沒有用，練習如何解題目才是重中之重  四大步驟  盡量自己解決問題(但這裡我私心覺得如果沒寫過甚麼leetcode的話還是不要糾結太久，因為很多演算法是自己想破頭腦都想不出來的，不如趕快看解答，認識解法，知道怎麼解，等到累積了一定的解法之後再嘗試自己解決問題。不過當然不是一開始就看答案，而是思考個五分鐘十分鐘，沒想法再看)，要考慮空間和時間複雜度 把code寫在紙上 在紙
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-03 11:14" pubdate>
-              2024-01-03
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E9%9D%A2%E8%A9%A6/" class="category-chain-item">面試</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E7%AD%86%E8%A8%98/">#筆記</a>
-            
-              <a href="/tags/Interview/">#Interview</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/03/735-Asteroid-Collision-Medium/" target="_self">
-          735. Asteroid Collision - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/03/735-Asteroid-Collision-Medium/" target="_self">
-        <div>
-          前往題目  想法 小行星相撞有可能會消失，如果一方比較大；如果一樣大兩個都會消失。這樣來看的話可能需要一個額外的array，不然會有空位而且還要移動element  思路快解出來了，但時間用得有點久，還是看看neetcode大大怎麼寫的 其實蠻簡單的，只要列出判斷條件和使用stack就可以輕鬆解  疊代每個行星 每次疊代都檢查是否與最近一個行星相撞，把兩數加起來就可以很快判斷誰大誰小或是相等 相撞
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-03 11:01" pubdate>
-              2024-01-03
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Stack/">#Stack</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Simulation/">#Simulation</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/01/560-Subarray-Sum-Equals-K-Medium/" target="_self">
-          560. Subarray Sum Equals K - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/01/560-Subarray-Sum-Equals-K-Medium/" target="_self">
-        <div>
-          前往題目  想法 Subarray的話應該還是需要backtracking  思路這題反而不用backtracking，而是用prefix sum  一個prefix sum表，紀錄每個sum出現的次數 每次都看當前需要多少才能達到k，檢查表中有沒有該sum，有的話就可以直接加到result了因為代表前面的這個sum再加上當前index的數值就等於我們要的k 出現新的sum就放到表中  這部分照著
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-01 15:56" pubdate>
-              2024-01-01
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Hash-Table/">#Hash Table</a>
-            
-              <a href="/tags/Prefix-Sum/">#Prefix Sum</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/12/30/%E7%94%A8hexo%E5%BB%BA%E7%BD%AE%E7%B6%B2%E7%AB%99%E4%BB%A5%E5%8F%8A%E6%97%A5%E5%B8%B8%E6%93%8D%E4%BD%9C%E7%AD%86%E8%A8%98/" target="_self">
-          用hexo建置網站以及日常操作筆記
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/30/%E7%94%A8hexo%E5%BB%BA%E7%BD%AE%E7%B6%B2%E7%AB%99%E4%BB%A5%E5%8F%8A%E6%97%A5%E5%B8%B8%E6%93%8D%E4%BD%9C%E7%AD%86%E8%A8%98/" target="_self">
-        <div>
-          建站好一陣子了，現在才回來寫筆記，可能有遺漏，歡迎留言  安裝hexo 安裝Nodejs和git(方便上傳github並建置網站) terminal裡執行安裝 npm install hexo-cli -g   在想安裝的資料夾底下初始化hexo blog，等於直接在該資料夾下新建網站了 hexo init blog cd blog 進入網站資料夾   hexo server在本機執行網站 he
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-30 16:40" pubdate>
-              2023-12-30
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%B6%9C%E5%90%88/" class="category-chain-item">綜合</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/hexo/">#hexo</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/18/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/#board">17</a><a class="page-number" href="/page/18/#board">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/#board">20</a><a class="page-number" href="/page/21/#board">21</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/#board">26</a><a class="extend next" rel="next" href="/page/20/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/18/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/#board">17</a><a class="page-number" href="/page/18/#board">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/#board">20</a><a class="page-number" href="/page/21/#board">21</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/#board">27</a><a class="extend next" rel="next" href="/page/20/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
