@@ -4,6 +4,47 @@
   
   
   <entry>
+    <title>341. Flatten Nested List Iterator</title>
+    <link href="/2024/08/29/341-Flatten-Nested-List-Iterator/"/>
+    <url>/2024/08/29/341-Flatten-Nested-List-Iterator/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/flatten-nested-list-iterator/description/"  title="341. Flatten Nested List Iterator" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li><code>Queue</code> or <code>Stack</code></li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>用<code>dfs</code>，遇到數字就加入<code>queue</code>，遇到<code>list</code>就再呼叫<code>dfs</code></li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/4ILiBgLokM8" title="Flatten Nested List Iterator - Leetcode 341 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/** * // This is the interface that allows for creating nested lists. * // You should not implement it, or speculate about its implementation * public interface NestedInteger &#123; * *     // @return true if this NestedInteger holds a single integer, rather than a nested list. *     public boolean isInteger(); * *     // @return the single integer that this NestedInteger holds, if it holds a single integer *     // Return null if this NestedInteger holds a nested list *     public Integer getInteger(); * *     // @return the nested list that this NestedInteger holds, if it holds a nested list *     // Return empty list if this NestedInteger holds a single integer *     public List&lt;NestedInteger> getList(); * &#125; */</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">NestedIterator</span> <span class="token keyword">implements</span> <span class="token class-name">Iterator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> <span class="token punctuation">&#123;</span>    <span class="token class-name">Queue</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">NestedInteger</span><span class="token punctuation">></span></span> queue<span class="token punctuation">;</span>    <span class="token keyword">public</span> <span class="token class-name">NestedIterator</span><span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">NestedInteger</span><span class="token punctuation">></span></span> nestedList<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        queue <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token function">dfs</span><span class="token punctuation">(</span>nestedList<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Extract integers</span>    <span class="token punctuation">&#125;</span>    <span class="token annotation punctuation">@Override</span>    <span class="token keyword">public</span> <span class="token class-name">Integer</span> <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">return</span> queue<span class="token punctuation">.</span><span class="token function">poll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getInteger</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token annotation punctuation">@Override</span>    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">hasNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">return</span> <span class="token operator">!</span>queue<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">NestedInteger</span><span class="token punctuation">></span></span> nestedList<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">NestedInteger</span> ni <span class="token operator">:</span> nestedList<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>ni<span class="token punctuation">.</span><span class="token function">isInteger</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                queue<span class="token punctuation">.</span><span class="token function">offer</span><span class="token punctuation">(</span>ni<span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>                <span class="token function">dfs</span><span class="token punctuation">(</span>ni<span class="token punctuation">.</span><span class="token function">getList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token comment">/** * Your NestedIterator object will be instantiated and called as such: * NestedIterator i = new NestedIterator(nestedList); * while (i.hasNext()) v[f()] = i.next(); */</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Stack</tag>
+      
+      <tag>Queue</tag>
+      
+      <tag>Depth-First Search</tag>
+      
+      <tag>Tree</tag>
+      
+      <tag>Design</tag>
+      
+      <tag>Iterator</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>456. 132 Pattern - Medium</title>
     <link href="/2024/08/28/456-132-Pattern-Medium/"/>
     <url>/2024/08/28/456-132-Pattern-Medium/</url>
@@ -5197,9 +5238,9 @@
       
       <tag>Greedy</tag>
       
-      <tag>Dynamic Programming</tag>
-      
       <tag>Sorting</tag>
+      
+      <tag>Dynamic Programming</tag>
       
     </tags>
     
