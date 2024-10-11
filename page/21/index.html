@@ -253,15 +253,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2023/12/28/55-Jump-Game-Medium/" target="_self">
-          55. Jump Game - Medium
+        <a href="/2024/01/15/7-Reverse-Integer-Medium/" target="_self">
+          7. Reverse Integer - Medium
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/28/55-Jump-Game-Medium/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/15/7-Reverse-Integer-Medium/" target="_self">
         <div>
-          前往題目  想法 以前做過，但完全忘了😂  思路 貪心演算法，從最後面開始 在每個index檢查是否能到goal，如果可以的話就把當前index變為goal goal最後為0的話就是可以到最後，否則一定不行  Code  class Solution &#123;     public boolean canJump(int[] nums) &#123;         int goal = n
+          前往題目  想法 以為可以用bit manipulation  思路 每次取一位，並去除x一位 檢查溢出 沒問題就加入result  這題的關鍵是怎麼判斷溢出，沒有overflow的話就是easy到不行的題目 如何判斷overflow:  判斷result是否大於Integer.MAX_VALUE / 10，先不看最後一位，如果大於就不用看最後一位，因為確定他們位數相同；負數則判斷是否小於Inte
         </div>
       </a>
 
@@ -269,8 +269,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-28 12:07" pubdate>
-              2023-12-28
+            <time datetime="2024-01-15 12:07" pubdate>
+              2024-01-15
             </time>
           </div>
         
@@ -311,11 +311,7 @@
             
               <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
             
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Greedy/">#Greedy</a>
-            
-              <a href="/tags/Dynamic-Programming/">#Dynamic Programming</a>
+              <a href="/tags/Math/">#Math</a>
             
           </div>
         
@@ -329,15 +325,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2023/12/28/14-Longest-Common-Prefix-Easy/" target="_self">
-          14. Longest Common Prefix - Easy
+        <a href="/2024/01/15/91-Decode-Ways-Medium/" target="_self">
+          91. Decode Ways - Medium
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/28/14-Longest-Common-Prefix-Easy/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/15/91-Decode-Ways-Medium/" target="_self">
         <div>
-          前往題目  想法 找到最長的那個，全部記錄下來，用hashmap，或是26空位的陣列 接著檢查其餘所有的String，每次都紀錄最小值，也就是如果第一個可以匹配到4個，第二個只能2個，那結果還是2 但是這樣有個問題，因為每個都是從0個開始算，那完全沒有的話就變成0是答案了…  廢棄Code class Solution &#123;     public String longestCommonP
+          前往題目  想法 無，想說是不是可以用greedy  思路DFS  利用momization紀錄每個位置有幾種可能 檢查一位數與二位數，並將結果加入cache  Time: O(n)Space: O(n) code實際執行會一直呼叫DFS方法直到最後一位，會return 1，這時才會開始return然後答案會慢慢建立起來，有一種從根源開始蔓延到最遠處，到底之後再帶著結果回來，還是一樣的繞…光是理解
         </div>
       </a>
 
@@ -345,8 +341,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-28 10:49" pubdate>
-              2023-12-28
+            <time datetime="2024-01-15 11:17" pubdate>
+              2024-01-15
             </time>
           </div>
         
@@ -366,7 +362,7 @@
   
     <span>></span>
     
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
   
   
 
@@ -389,7 +385,7 @@
             
               <a href="/tags/String/">#String</a>
             
-              <a href="/tags/Trie/">#Trie</a>
+              <a href="/tags/Dynamic-Programming/">#Dynamic Programming</a>
             
           </div>
         
@@ -403,15 +399,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2023/12/27/191-Number-of-1-Bits-Easy/" target="_self">
-          191. Number of 1 Bits - Easy
+        <a href="/2024/01/14/179-Largest-Number-Medium/" target="_self">
+          179. Largest Number - Medium
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/27/191-Number-of-1-Bits-Easy/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/14/179-Largest-Number-Medium/" target="_self">
         <div>
-          前往題目  想法 直覺想法是轉成string然後一個一個看，但這樣肯定是暴力解🤣  思路 &amp;AND操作，或是%MOD操作，就可以判斷最後一位是不是1 判斷完後右移，直到n為0  這題真的簡單，但是需要Bit manipulation的概念 Code  public class Solution &#123;     // you need to treat n as an unsigne
+          前往題目  思路 利用string比較時會照數字先後排序(0, 1, 2, 3, ...) 排序完之後第一位是最小的(以第一個數字來看)，然後越來越大 檢查最後一個數字的第一位是不是0，如果是就直接回傳0，因為沒有其他可能了 最後把string array由後往前拼起來就是答案了  Code討論區解答 class Solution &#123;     public String largestN
         </div>
       </a>
 
@@ -419,8 +415,86 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-27 11:10" pubdate>
-              2023-12-27
+            <time datetime="2024-01-14 17:32" pubdate>
+              2024-01-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/String/">#String</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Greedy/">#Greedy</a>
+            
+              <a href="/tags/Sorting/">#Sorting</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/14/268-Missing-Number-Easy/" target="_self">
+          268. Missing Number - Easy
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/14/268-Missing-Number-Easy/" target="_self">
+        <div>
+          前往題目  想法 只想到了用HashSet存，然後比較，雖然是時間是O(N)但空間也是，不符合題目要求  思路這題大致有兩種做法，Bit manipulation和Sum Bit manipulation  算0~n的XOR應該是多少 再用上面的結果去XOR實際的nums陣列 因為XOR的特性是與自己相同的XOR完會是0，所以全部XOR一遍的結果就是答案，也就是缺失的那個  Sum  可以用公式直
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-14 15:20" pubdate>
+              2024-01-14
             </time>
           </div>
         
@@ -461,7 +535,17 @@
             
               <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
             
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Math/">#Math</a>
+            
+              <a href="/tags/Hash-Table/">#Hash Table</a>
+            
+              <a href="/tags/Sorting/">#Sorting</a>
+            
               <a href="/tags/Bit-Manipulation/">#Bit Manipulation</a>
+            
+              <a href="/tags/Binary-Search/">#Binary Search</a>
             
           </div>
         
@@ -475,15 +559,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2023/12/27/100-Same-Tree-Easy/" target="_self">
-          100. Same Tree - Easy
+        <a href="/2024/01/14/101-Symmetric-Tree-Easy/" target="_self">
+          101. Symmetric Tree - Easy
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/27/100-Same-Tree-Easy/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/14/101-Symmetric-Tree-Easy/" target="_self">
         <div>
-          前往題目  想法 這題幾個月前做過，這次看到的第一個想法是檢查兩個樹，遇到左子樹就+1，右子樹就-1  思路其實不用這麼麻煩，直接同時檢查兩個樹就好，因為每個位置都要對應，值也要對應 Codeclass Solution &#123;     public boolean isSameTree(TreeNode p, TreeNode q) &#123;         // Successful
+          前往題目  想法 嘗試用了BFS但沒有成功，本來想說要用size來判斷然後分左右邊 看了discussion才知道直接用left和right就好，跟DFS一樣  思路DFS  每輪都比較left和right node的值 繼續用left的子樹還有right的子樹呼叫DFS  BFS解法 Code  class Solution &#123;     public boolean isSymmetr
         </div>
       </a>
 
@@ -491,8 +575,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-27 10:43" pubdate>
-              2023-12-27
+            <time datetime="2024-01-14 14:23" pubdate>
+              2024-01-14
             </time>
           </div>
         
@@ -537,6 +621,8 @@
             
               <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
             
+              <a href="/tags/Breadth-First-Search/">#Breadth-First Search</a>
+            
               <a href="/tags/Tree/">#Tree</a>
             
           </div>
@@ -551,15 +637,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2023/12/24/424-Longest-Repeating-Character-Replacement-Medium/" target="_self">
-          424. Longest Repeating Character Replacement - Medium
+        <a href="/2024/01/12/74-Search-a-2D-Matrix-Medium/" target="_self">
+          74. Search a 2D Matrix - Medium
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/24/424-Longest-Repeating-Character-Replacement-Medium/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/12/74-Search-a-2D-Matrix-Medium/" target="_self">
         <div>
-          前往題目  思路關鍵是window長度減掉該window下最多字母的數量，剩下的字母就是必須替換的，所以最多只能k個  Sliding window，檢查每個字母，紀錄出現次數 當window的長度減掉最多count的字母，大於k的時候就超出規範了，因此要移動左指針 每次循環都更新一次最大長度，也就是window的長度  Code  class Solution &#123;     public
+          前往題目  想法 之前做過，題目要求O(log(m * n))以為不能疊代整個矩陣，於是先用binary search尋找target可能在哪一行，然後再搜尋特定那一行 看了之前我的submission才發現其實可以，因為都用binary search所以每行都檢查的話就符合題目要求的time complexity  思路 疊代每行 在每行binary search target  Codecla
         </div>
       </a>
 
@@ -567,84 +653,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-24 10:56" pubdate>
-              2023-12-24
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/String/">#String</a>
-            
-              <a href="/tags/Hash-Table/">#Hash Table</a>
-            
-              <a href="/tags/Sliding-Window/">#Sliding Window</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/12/23/658-Find-K-Closest-Elements-Medium/" target="_self">
-          658. Find K Closest Elements - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/23/658-Find-K-Closest-Elements-Medium/" target="_self">
-        <div>
-          前往題目  想法 因為是sorted，所以應該可以用binary search快速定位  思路這題有sliding window和結合了binary search的sliding window兩種解法，但我在評論區看到的binary search解法，無法理解其中一兩行code，所以選擇sliding window  左右兩個指針，頭與尾 每次計算左邊以及右邊到x的距離 相等或右邊比較大的時候就往
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-23 12:48" pubdate>
-              2023-12-23
+            <time datetime="2024-01-12 11:41" pubdate>
+              2024-01-12
             </time>
           </div>
         
@@ -687,11 +697,9 @@
             
               <a href="/tags/Array/">#Array</a>
             
-              <a href="/tags/Two-Pointers/">#Two Pointers</a>
+              <a href="/tags/Matrix/">#Matrix</a>
             
               <a href="/tags/Binary-Search/">#Binary Search</a>
-            
-              <a href="/tags/Sliding-Window/">#Sliding Window</a>
             
           </div>
         
@@ -705,15 +713,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2023/12/23/662-Maximum-Width-of-Binary-Tree-Medium/" target="_self">
-          662. Maximum Width of Binary Tree - Medium
+        <a href="/2024/01/12/50-Pow-x-n-Medium/" target="_self">
+          50. Pow(x, n) - Medium
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/23/662-Maximum-Width-of-Binary-Tree-Medium/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/12/50-Pow-x-n-Medium/" target="_self">
         <div>
-          前往題目  思路 每個node都記錄其數字，左node都是parent的兩倍，右node都是parent的兩倍再加1 利用BFS疊代所有node 每層疊代完之後利用最邊的數字與最右邊的數字相減+1就是該層的寬度，檢查完每層之後就是答案  Code  Java版本 class Solution &#123;     public int widthOfBinaryTree(TreeNode root
+          前往題目  想法 嘗試寫了recursion但失敗了，沒有考慮到第二種base case x == 0  思路 遞迴的方式，採用divide的方法，每次都把n/2，這樣直接把當前答案乘以自己就可以了，例如$2^{10}$就會被拆成$2^5和2^5$ 遇到奇數n要再多乘一次 遇到負數直接1/結果就可以，無需另外考慮  Code  class Solution &#123;     public do
         </div>
       </a>
 
@@ -721,8 +729,158 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-23 11:59" pubdate>
-              2023-12-23
+            <time datetime="2024-01-12 11:08" pubdate>
+              2024-01-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Recursion/">#Recursion</a>
+            
+              <a href="/tags/Math/">#Math</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/11/437-Path-Sum-III-Medium/" target="_self">
+          437. Path Sum III - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/11/437-Path-Sum-III-Medium/" target="_self">
+        <div>
+          前往題目  想法 毫無想法，說不定是要用什麼bottom-up之類的  思路暴力解  DFS 每個node都向下遞迴找尋符合sum的 每次發現都紀錄，最後直接回傳counter就好  優化解 突然有個小小的領悟，DFS方法第一次被呼叫的時候最後一行return的就是最終的結果，可以想像成一開始只有一個點，然後這個點還會再呼叫dfs，每次呼叫dfs方法就會拓展一個子節點，最後遇到base case例
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-11 11:46" pubdate>
+              2024-01-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Binary-Tree/">#Binary Tree</a>
+            
+              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
+            
+              <a href="/tags/Tree/">#Tree</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/11/103-Binary-Tree-Zigzag-Level-Order-Traversal-Medium/" target="_self">
+          103. Binary Tree Zigzag Level Order Traversal - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/11/103-Binary-Tree-Zigzag-Level-Order-Traversal-Medium/" target="_self">
+        <div>
+          前往題目  想法 BFS，但不小心寫錯了🤣導致有奇怪的bug  思路 BFS 判斷奇數行還是偶數行決定是否反轉(不能直接判斷然後加入，這樣會造成queue裡的順序也不一樣，就沒辦法在下一個level把順序倒轉回來)  Code  class Solution &#123;     public List&lt;List&lt;Integer>> zigzagLevelOrder(TreeNode
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-11 11:02" pubdate>
+              2024-01-11
             </time>
           </div>
         
@@ -781,15 +939,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2023/12/22/525-Contiguous-Array-Medium/" target="_self">
-          525. Contiguous Array - Medium
+        <a href="/2024/01/10/48-Rotate-Image-Medium/" target="_self">
+          48. Rotate Image - Medium
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/22/525-Contiguous-Array-Medium/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/10/48-Rotate-Image-Medium/" target="_self">
         <div>
-          前往題目  想法 沒什麼想法，看到subarray想到會不會是用sliding window，但貌似不是  思路 遇到0就-1，遇到1就+1，記錄每個index的sum 疊代的期間，遇到出現過的sum就更新最大subarray長度  簡單來說就是遇到同樣的sum的時候那兩個相同sum的index之間的0和1的數量一定是一樣的，可以參考以下影片所畫的圖 另外影片中分成0和其他總和來討論，但我覺得情況
+          前往題目  想法 快速找了一下規律，沒有找到  思路 每個cell都反轉其row和column，也就是(1, 0)變為(0, 1)，兩個cell互換 然後每行前後對調  Time: $O(N^2)$Space: O(1) Code討論區解答 class Solution &#123;     public void rotate(int[][] matrix) &#123;         //
         </div>
       </a>
 
@@ -797,8 +955,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-22 11:30" pubdate>
-              2023-12-22
+            <time datetime="2024-01-10 14:23" pubdate>
+              2024-01-10
             </time>
           </div>
         
@@ -841,153 +999,9 @@
             
               <a href="/tags/Array/">#Array</a>
             
-              <a href="/tags/Hash-Table/">#Hash Table</a>
+              <a href="/tags/Math/">#Math</a>
             
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/12/20/394-Decode-String-Medium/" target="_self">
-          394. Decode String - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/20/394-Decode-String-Medium/" target="_self">
-        <div>
-          前往題目  想法 看到括號第一直覺是用stack 可能可以用兩個stack，一個存數字，一個存符號  思路這道題看了解答還是花了我兩小時左右，都在處理資料，而不是邏輯😂Java處理資料之間的轉換真的是麻煩  遇到右括號以外的符號或數字的時候直接push到stack裡面就好 遇到右括號就把[]裡的字符都存起來，然後再把數字k也存起來 把字符複製k次存進結果 繼續疊代直到把每個字符都檢查完  Cod
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-20 10:40" pubdate>
-              2023-12-20
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Stack/">#Stack</a>
-            
-              <a href="/tags/String/">#String</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/12/19/328-Odd-Even-Linked-List-Medium/" target="_self">
-          328. Odd Even Linked List - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/19/328-Odd-Even-Linked-List-Medium/" target="_self">
-        <div>
-          前往題目  想法 這題要求把linkedlist，重新排成奇數項node在前，偶數項node在後，同時維持他們的相對順序  思路 odd和even指針分別指著奇數項和偶數項 藉由觀察可以看到odd的下一項一定是even指針的下一項，而even的下一項一定是even的下下項 拼接後再移動指針 最後odd拼上even  WA的code不難，但是指針操作還是有點問題 class Solution &#1
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-19 10:40" pubdate>
-              2023-12-19
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Linked-List/">#Linked List</a>
+              <a href="/tags/Matrix/">#Matrix</a>
             
           </div>
         
@@ -999,7 +1013,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/20/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/#board">19</a><a class="page-number" href="/page/20/#board">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/#board">22</a><a class="page-number" href="/page/23/#board">23</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/#board">27</a><a class="extend next" rel="next" href="/page/22/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/20/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/#board">19</a><a class="page-number" href="/page/20/#board">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/#board">22</a><a class="page-number" href="/page/23/#board">23</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/#board">30</a><a class="extend next" rel="next" href="/page/22/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

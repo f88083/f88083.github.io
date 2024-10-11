@@ -24,7 +24,7 @@
 <meta property="og:description" content="前往題目  想法 因為是單鏈，所以只能先找中間點，不然沒有基準 找到中間點後就可以知道左半部和右半部的分水嶺 沒想到可以Reverse  思路 找到中間點 反轉右半邊 檢查palindrome  反轉那邊有點繞，但基本上就是  定義一個previous指針，然後會從slow指針開始反轉(因為他一定在mid+1) 存slow.next，也就是原來的下一個 slow.next換成previous，這裡">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2024-01-09T02:58:51.000Z">
-<meta property="article:modified_time" content="2024-05-29T16:47:04.957Z">
+<meta property="article:modified_time" content="2024-10-11T03:07:01.988Z">
 <meta property="article:author" content="Simon Lai">
 <meta property="article:tag" content="Leetcode">
 <meta property="article:tag" content="心得">
@@ -254,7 +254,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          266 字
+          277 字
         
       </span>
     
@@ -369,6 +369,10 @@
         <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h2 id="2024-10-04"><a href="#2024-10-04" class="headerlink" title="2024&#x2F;10&#x2F;04"></a>2024&#x2F;10&#x2F;04</h2><ul>
+<li>Reverse的時候處理有bug</li>
+</ul>
 
                 
               </div>

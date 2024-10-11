@@ -253,15 +253,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/02/18/981-Time-Based-Key-Value-Store-Medium/" target="_self">
-          981. Time Based Key-Value Store - Medium
+        <a href="/2024/03/19/554-Brick-Wall-Medium/" target="_self">
+          554. Brick Wall - Medium
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/18/981-Time-Based-Key-Value-Store-Medium/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/03/19/554-Brick-Wall-Medium/" target="_self">
         <div>
-          前往題目  之前的文章 想法 Hashmap儲存鍵值對，重點是如何根據timestamp取得同一個或是最相近timestamp的key呢 題目說timestamp和set都是嚴格遞增的，所以不會出現重複的時間戳，那是不是可以組timestamp -&gt; value  思路大致上有兩種做法  使用Pair 使用TreeMap  這裡使用pair，舊的那篇兩個方法都有寫  利用Hashmap儲存k
+          前往題目  想法 如何找出gap?  思路找出Gap很簡單，直接給他們index代表他們就好  HashMap儲存gap編號以及數量 疊代每道牆，但忽略最後一個磚塊，不然會算到最右邊的cut(穿過0個磚塊) 更新gap的數量以及紀錄最大值 回傳牆的大小減去最大值，就是穿過的磚塊數  Code  class Solution &#123;     public int leastBricks(Lis
         </div>
       </a>
 
@@ -269,8 +269,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-18 10:17" pubdate>
-              2024-02-18
+            <time datetime="2024-03-19 11:15" pubdate>
+              2024-03-19
             </time>
           </div>
         
@@ -311,13 +311,9 @@
             
               <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
             
-              <a href="/tags/String/">#String</a>
+              <a href="/tags/Array/">#Array</a>
             
               <a href="/tags/Hash-Table/">#Hash Table</a>
-            
-              <a href="/tags/Binary-Search/">#Binary Search</a>
-            
-              <a href="/tags/Design/">#Design</a>
             
           </div>
         
@@ -331,15 +327,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/02/17/169-Majority-Element-Easy/" target="_self">
-          169. Majority Element - Easy
+        <a href="/2024/03/19/122-Best-Time-to-Buy-and-Sell-Stock-II-Medium/" target="_self">
+          122. Best Time to Buy and Sell Stock II - Medium
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/17/169-Majority-Element-Easy/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/03/19/122-Best-Time-to-Buy-and-Sell-Stock-II-Medium/" target="_self">
         <div>
-          前往題目  之前寫的文章 想法 排序後中間的一定是最多的 或是用hashmap存，然後每次都更新最大值，這樣比排序快一點，因為只要O(n)，但空間也需要O(n)  思路這題的關鍵是Boyer–Moore majority vote algorithm(摩爾投票算法)，這種人家研究出來發表的算法只能直接死背了，根本不可能自己想出來😂  疊代整個陣列，維護count和candidate 只要coun
+          前往題目  想法 用DP然後分買與不買  思路可以用複雜的dp但也可以藉由觀察找到最簡單又最優的解  從第二個開始疊代，每次都和前一個比較 如果比上一個大就加到profit裡  因為都在高點賣出，而且可以當天買進，不需要冷卻時間 Code  class Solution &#123;     public int maxProfit(int[] prices) &#123;          in
         </div>
       </a>
 
@@ -347,8 +343,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-17 12:05" pubdate>
-              2024-02-17
+            <time datetime="2024-03-19 10:54" pubdate>
+              2024-03-19
             </time>
           </div>
         
@@ -368,7 +364,7 @@
   
     <span>></span>
     
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
   
   
 
@@ -391,13 +387,9 @@
             
               <a href="/tags/Array/">#Array</a>
             
-              <a href="/tags/Hash-Table/">#Hash Table</a>
+              <a href="/tags/Greedy/">#Greedy</a>
             
-              <a href="/tags/Sorting/">#Sorting</a>
-            
-              <a href="/tags/Divide-and-Conquer/">#Divide and Conquer</a>
-            
-              <a href="/tags/Counting/">#Counting</a>
+              <a href="/tags/Dynamic-Programming/">#Dynamic Programming</a>
             
           </div>
         
@@ -411,15 +403,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/02/17/236-Lowest-Common-Ancestor-of-a-Binary-Tree-Medium/" target="_self">
-          236. Lowest Common Ancestor of a Binary Tree - Medium
+        <a href="/2024/03/18/199-Binary-Tree-Right-Side-View-Medium/" target="_self">
+          199. Binary Tree Right Side View - Medium
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/17/236-Lowest-Common-Ancestor-of-a-Binary-Tree-Medium/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/03/18/199-Binary-Tree-Right-Side-View-Medium/" target="_self">
         <div>
-          前往題目  之前寫的文章 想法 用DFS然後每個node回傳之前要判斷並帶值 沒有想出關鍵的判斷部分該怎麼寫  思路 DFS 當找到目標的a或b的時候就+1 這樣搜尋到底然後準備往回的時候就會經過各個可能的ancestor，只要發現該node包含ab就可以直接回傳了  Codeclass Solution &#123;     TreeNode res;     public TreeNode l
+          前往題目  之前有寫過 想法 一開始想法非常單純，只看右邊nodes 很快的寫出來發現如果左右不對稱(不等高)的話就行不通  思路 BFS 每層的最右邊就是答案  Code  class Solution &#123;     public List&lt;Integer> rightSideView(TreeNode root) &#123;         List&lt;Integer> r
         </div>
       </a>
 
@@ -427,8 +419,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-17 11:44" pubdate>
-              2024-02-17
+            <time datetime="2024-03-18 11:32" pubdate>
+              2024-03-18
             </time>
           </div>
         
@@ -473,6 +465,8 @@
             
               <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
             
+              <a href="/tags/Breadth-First-Search/">#Breadth-First Search</a>
+            
               <a href="/tags/Tree/">#Tree</a>
             
           </div>
@@ -487,15 +481,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/02/17/56-Merge-Intervals-Medium/" target="_self">
-          56. Merge Intervals - Medium
+        <a href="/2024/03/18/371-Sum-of-Two-Integers-Medium/" target="_self">
+          371. Sum of Two Integers - Medium
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/17/56-Merge-Intervals-Medium/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/03/18/371-Sum-of-Two-Integers-Medium/" target="_self">
         <div>
-          前往題目  之前寫的文章 想法 先sort再用掃描線加入 這次只差條件沒寫好  思路 先照start point由小到大排序，才能讓可以merge的排在一起 接著疊代所有區間，遇到起始點小於等於暫存區間的終點等於有重疊，先merge但還不要加入答案，因為有可能好幾個區間都重疊  Codeclass Solution &#123;     public int[][] merge(int[][] i
+          前往題目  思路 提取數字(用XOR) 提取carry  Code  class Solution &#123;     public int getSum(int a, int b) &#123;         // Until no carry         while (b != 0) &#123;             int temp = (a &amp; b) &lt;&lt;
         </div>
       </a>
 
@@ -503,8 +497,82 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-17 11:16" pubdate>
-              2024-02-17
+            <time datetime="2024-03-18 10:59" pubdate>
+              2024-03-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Math/">#Math</a>
+            
+              <a href="/tags/Bit-Manipulation/">#Bit Manipulation</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/03/15/2013-Detect-Squares-Medium/" target="_self">
+          2013. Detect Squares - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/03/15/2013-Detect-Squares-Medium/" target="_self">
+        <div>
+          前往題目  想法 確定對角線 四邊等長 四個角90°  思路沒想到對角線就可以確定另外兩個點😭 Add  加入列表，並且紀錄個數  Count  疊代列表中所有的點，根據傳入的點算x1 - x2 == y1 - y2，如果是的話就代表這兩點可以繪製出正方形 確認另外兩點是否在列表中 存在就把個數相乘，因為重複的點可再和其他點組成正方形，即便位置一模一樣(題目設定)  Code  class De
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-03-15 13:35" pubdate>
+              2024-03-15
             </time>
           </div>
         
@@ -547,7 +615,11 @@
             
               <a href="/tags/Array/">#Array</a>
             
-              <a href="/tags/Sorting/">#Sorting</a>
+              <a href="/tags/Hash-Table/">#Hash Table</a>
+            
+              <a href="/tags/Design/">#Design</a>
+            
+              <a href="/tags/Counting/">#Counting</a>
             
           </div>
         
@@ -561,15 +633,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/02/16/746-Min-Cost-Climbing-Stairs-Easy/" target="_self">
-          746. Min Cost Climbing Stairs - Easy
+        <a href="/2024/03/14/43-Multiply-Strings-Medium/" target="_self">
+          43. Multiply Strings - Medium
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/16/746-Min-Cost-Climbing-Stairs-Easy/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/03/14/43-Multiply-Strings-Medium/" target="_self">
         <div>
-          前往題目  思路 從尾端開始，頂端需要0，最後一個台階需要至少本身的cost 倒數第二個台階需要本身的cost，再加上最後一個台階和頂端的最小值 以此類推可以得出: dp[i] = cost[i] + Math.min(dp[i + 1], dp[i + 2])  需要O(N)空間 其實也可以不用dp陣列，用原本的cost陣列就好，因為要不就是bottom up，要不就是top down，都是一步
+          前往題目  思路總之就是模擬乘法過程，不過其中的中繼的數字要放法怎麼放，要加上原本的還是不加…  反轉兩個數字字符串 以直式乘法來看的話，是動下面，再動上面，例如23 * 45，是先3 * 5再3 * 4。和平常反過來 把結果放入陣列，兩個數字的位數加起來就是最多會有幾位 反轉陣列，去掉leading zeros 回傳答案  Code  class Solution &#123;     publ
         </div>
       </a>
 
@@ -577,388 +649,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-16 11:38" pubdate>
-              2024-02-16
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Dynamic-Programming/">#Dynamic Programming</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/02/16/1584-Min-Cost-to-Connect-All-Points-Medium/" target="_self">
-          1584. Min Cost to Connect All Points - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/16/1584-Min-Cost-to-Connect-All-Points-Medium/" target="_self">
-        <div>
-          前往題目  思路有兩種主要做法:  prim’s Kruskal’s  Prim’s(使用PQ) 循環直到全部的點都走過 在循環裡，每次都從pq取出並查看是否已經走過，否則加入走過的點並把當前weight加入結果 每次都把該點所有的邊(與尚未走過的點)都加入pq  因為一開始起始點是0，保證最小值，接下來加入pq時會自動由小到大排序，所以保證永遠都取到最小的邊 Kruskal’s(使用Union-
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-16 10:57" pubdate>
-              2024-02-16
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Graph/">#Graph</a>
-            
-              <a href="/tags/Union-Find/">#Union Find</a>
-            
-              <a href="/tags/Minimum-Spanning-Tree/">#Minimum Spanning Tree</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/02/14/CS-APP-%E9%9B%BB%E8%85%A6%E7%B3%BB%E7%B5%B1-%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%B8%AB%E7%9A%84%E8%A7%92%E5%BA%A6-%E7%AC%AC%E4%B8%80%E7%AB%A0%E7%AD%86%E8%A8%98/" target="_self">
-          CS:APP 電腦系統:程式設計師的角度 第一章筆記
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/14/CS-APP-%E9%9B%BB%E8%85%A6%E7%B3%BB%E7%B5%B1-%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%B8%AB%E7%9A%84%E8%A7%92%E5%BA%A6-%E7%AC%AC%E4%B8%80%E7%AB%A0%E7%AD%86%E8%A8%98/" target="_self">
-        <div>
-          這是來自卡內基梅隆大學的優質課程，對底層系統的理解越深，對程式設計師來說只有百利而無一害。雖然一時半刻看不到有什麼成效，但未來的某些日子一定會覺得當初學了這些真是太好了  電腦名詞譯名 首先從hello world開始以C語言來說，讓寫好的以下程式碼執行，需要經過如下步驟 #include &lt;stdio.h>  int main() &#123;   printf("hello, worl
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-14 12:17" pubdate>
-              2024-02-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E9%9B%BB%E8%85%A6%E7%A7%91%E5%AD%B8/" class="category-chain-item">電腦科學</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E9%9B%BB%E8%85%A6%E7%A7%91%E5%AD%B8/Computer-Systems-A-Programmer-s-Perspective/" class="category-chain-item">Computer Systems - A Programmer&#39;s Perspective</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Computer-System/">#Computer System</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/02/14/130-Surrounded-Regions-Medium/" target="_self">
-          130. Surrounded Regions - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/14/130-Surrounded-Regions-Medium/" target="_self">
-        <div>
-          前往題目  想法 用DFS看每個島嶼在哪，然後翻轉，但是要注意外圈的O會使得比鄰的O不能被反轉，這部分不知道怎麼做，得另外再搜尋哪些有比鄰  思路 用BFS從border開始更好理解 從外圈開始遇到O就BFS搜尋比鄰它的O，感染的概念，一個接著一個感染，並先標記為# 最後搜尋完了之後再疊代整個board，遇到O就是沒有比鄰的，直接翻轉為X，遇到#就是比鄰的O，翻轉回O  Code文字解析   cl
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-14 11:01" pubdate>
-              2024-02-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Matrix/">#Matrix</a>
-            
-              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
-            
-              <a href="/tags/Breadth-First-Search/">#Breadth-First Search</a>
-            
-              <a href="/tags/Union-Find/">#Union Find</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/02/13/695-Max-Area-of-Island-Medium/" target="_self">
-          695. Max Area of Island - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/13/695-Max-Area-of-Island-Medium/" target="_self">
-        <div>
-          前往題目  想法 和之前寫過的島嶼類似，但忘了怎麼開頭，只知道DFS會輕鬆一些  思路 利用DFS 從第一個cell開始，遇到水就跳過，遇到走過的cell也跳過，出界的也跳過 把每個區域的1都走過然後加起來，因為dfs遇到出界或是海水就會回傳，所以最終每個區域的面積都可以被單獨算出來，因為演算法不會越過水到另一片陸地。  Code  class Solution &#123;     privat
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-13 12:02" pubdate>
-              2024-02-13
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Matrix/">#Matrix</a>
-            
-              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
-            
-              <a href="/tags/Breadth-First-Search/">#Breadth-First Search</a>
-            
-              <a href="/tags/Union-Find/">#Union Find</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/02/13/131-Palindrome-Partitioning-Medium/" target="_self">
-          131. Palindrome Partitioning - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/13/131-Palindrome-Partitioning-Medium/" target="_self">
-        <div>
-          前往題目  想法 backtracking把所有組合都看過，每次要判斷是否是palindrome然後才加入  思路 平常的backtrack 要紀錄起始點，然後每個循環都要判斷是否為palindrome  Codeclass Solution &#123;     List&lt;List&lt;String>> res = new LinkedList&lt;>();     LinkedLis
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-13 10:11" pubdate>
-              2024-02-13
+            <time datetime="2024-03-14 17:00" pubdate>
+              2024-03-14
             </time>
           </div>
         
@@ -1001,9 +693,315 @@
             
               <a href="/tags/String/">#String</a>
             
+              <a href="/tags/Math/">#Math</a>
+            
+              <a href="/tags/Simulation/">#Simulation</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/03/13/202-Happy-Number-Easy/" target="_self">
+          202. Happy Number - Easy
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/03/13/202-Happy-Number-Easy/" target="_self">
+        <div>
+          前往題目  想法 一直算新的數字，然後每次都存到set裡面 檢查是否有一樣的，有的話就代表進入loop了，因為數字一樣，算出來的結果就一樣  思路 循環直到當前數字為1 每次循環都根據題目的公式算出新的值，然後檢查是否hashset裡面已經有了 有的話就代表無限迴圈 沒有的話就繼續  難得自己寫出來的題目:D Codeclass Solution &#123;     public boolean
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-03-13 11:07" pubdate>
+              2024-03-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Math/">#Math</a>
+            
+              <a href="/tags/Two-Pointers/">#Two Pointers</a>
+            
+              <a href="/tags/Hash-Table/">#Hash Table</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/03/12/678-Valid-Parenthesis-String-Medium/" target="_self">
+          678. Valid Parenthesis String - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/03/12/678-Valid-Parenthesis-String-Medium/" target="_self">
+        <div>
+          前往題目  想法 想從單純合法括號衍生出加了*的解，但是不知道該怎麼處理  思路 遇到左與右括號正常增減計數 當遇到星號，紀錄其當成左括號與右括號的情況 如果星號都當成左括號還是無法匹配右括號直接回傳false，因為右括號無法靠左括號與空白補救 如果星號都當成右括號當無法匹配的時候，把右括號再變為左括號，因為左括號可以補救右括號 最後回傳右括號計數器，如果是0就代表成功匹配，因為右括號計數器會盡可
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-03-12 10:40" pubdate>
+              2024-03-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Stack/">#Stack</a>
+            
+              <a href="/tags/String/">#String</a>
+            
+              <a href="/tags/Greedy/">#Greedy</a>
+            
               <a href="/tags/Dynamic-Programming/">#Dynamic Programming</a>
             
-              <a href="/tags/Backtracking/">#Backtracking</a>
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/03/11/763-Partition-Labels-Medium/" target="_self">
+          763. Partition Labels - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/03/11/763-Partition-Labels-Medium/" target="_self">
+        <div>
+          前往題目  想法 不知道如何判斷partition在何時結束  思路其實很簡單，疊代s的字符，每次都取最大的終點，這樣在一個partition結束時指針就會剛好等於end，因為此區間沒有更遠的字符了  紀錄每個字符(總共26個小寫字母)的終點 疊代s的所有字符，每次更新size和終點 指針等於終點的時候就是一個partition結束的時候 加入結果，並且歸零size  Code  class So
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-03-11 11:15" pubdate>
+              2024-03-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/String/">#String</a>
+            
+              <a href="/tags/Two-Pointers/">#Two Pointers</a>
+            
+              <a href="/tags/Greedy/">#Greedy</a>
+            
+              <a href="/tags/Hash-Table/">#Hash Table</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/03/11/1899-Merge-Triplets-to-Form-Target-Triplet-Medium/" target="_self">
+          1899. Merge Triplets to Form Target Triplet - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/03/11/1899-Merge-Triplets-to-Form-Target-Triplet-Medium/" target="_self">
+        <div>
+          前往題目  想法 題目根本沒看清楚😂以為只能選兩個，結果是可以每個都選，取max  思路 把不可能的去掉，也就是只要有比target大的那組就可以直接拋棄 剩下的全部取最大值看是否最終和target一樣，因為可以每個都取  Code主要參考了這個解答，因為比Neetcode大大的更直觀一點   class Solution &#123;     public boolean mergeTripl
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-03-11 10:36" pubdate>
+              2024-03-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Greedy/">#Greedy</a>
             
           </div>
         
@@ -1015,7 +1013,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/11/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/#board">10</a><a class="page-number" href="/page/11/#board">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/#board">13</a><a class="page-number" href="/page/14/#board">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/#board">27</a><a class="extend next" rel="next" href="/page/13/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/11/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/#board">10</a><a class="page-number" href="/page/11/#board">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/#board">13</a><a class="page-number" href="/page/14/#board">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/#board">30</a><a class="extend next" rel="next" href="/page/13/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

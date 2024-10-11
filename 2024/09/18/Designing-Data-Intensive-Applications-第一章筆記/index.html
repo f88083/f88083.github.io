@@ -1,0 +1,872 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/logo.png">
+  <link rel="icon" href="/images/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Simon Lai">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Reliable, Scalable, and Maintainable Applications 前面還有一些基礎內容略過  Describing Performance延遲(Latency)與回應時間(Response time)回應時間是客戶端看到的時間，包括處理請求的服務時間、網絡延遲和排隊延遲，而延遲則是指請求等待被處理的時間。即使是相同的請求，回應時間也會有變化，因此回應時間應被視為一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Designing Data-Intensive Applications - 第一章筆記">
+<meta property="og:url" content="https://f88083.github.io/2024/09/18/Designing-Data-Intensive-Applications-%E7%AC%AC%E4%B8%80%E7%AB%A0%E7%AD%86%E8%A8%98/index.html">
+<meta property="og:site_name" content="Simon Lai&#39;s Blog">
+<meta property="og:description" content="Reliable, Scalable, and Maintainable Applications 前面還有一些基礎內容略過  Describing Performance延遲(Latency)與回應時間(Response time)回應時間是客戶端看到的時間，包括處理請求的服務時間、網絡延遲和排隊延遲，而延遲則是指請求等待被處理的時間。即使是相同的請求，回應時間也會有變化，因此回應時間應被視為一">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2024-09-18T08:04:06.000Z">
+<meta property="article:modified_time" content="2024-10-11T03:07:01.991Z">
+<meta property="article:author" content="Simon Lai">
+<meta property="article:tag" content="Data">
+<meta property="article:tag" content="Reliability">
+<meta property="article:tag" content="Scalability">
+<meta property="article:tag" content="Maintainability">
+<meta property="article:tag" content="Fault-tolerance">
+<meta property="article:tag" content="Performance measurement">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Designing Data-Intensive Applications - 第一章筆記 - Simon Lai&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"f88083.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":35,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":"G-HJLTHPCQMP"},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=G-HJLTHPCQMP", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', 'G-HJLTHPCQMP');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Simon Lai&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首頁</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>歸檔</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分類</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>標籤</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>關於</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/images/bg.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Designing Data-Intensive Applications - 第一章筆記"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-09-18 16:04" pubdate>
+          2024年9月18日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          14 分鐘
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Designing Data-Intensive Applications - 第一章筆記</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="Reliable-Scalable-and-Maintainable-Applications"><a href="#Reliable-Scalable-and-Maintainable-Applications" class="headerlink" title="Reliable, Scalable, and Maintainable Applications"></a>Reliable, Scalable, and Maintainable Applications</h2><blockquote>
+<p>前面還有一些基礎內容略過</p>
+</blockquote>
+<h2 id="Describing-Performance"><a href="#Describing-Performance" class="headerlink" title="Describing Performance"></a>Describing Performance</h2><h3 id="延遲-Latency-與回應時間-Response-time"><a href="#延遲-Latency-與回應時間-Response-time" class="headerlink" title="延遲(Latency)與回應時間(Response time)"></a>延遲(Latency)與回應時間(Response time)</h3><p>回應時間是客戶端看到的時間，包括處理請求的服務時間、網絡延遲和排隊延遲，而延遲則是指請求等待被處理的時間。即使是相同的請求，回應時間也會有變化，因此回應時間應被視為一個分佈值，而非單一數字。</p>
+<h3 id="百分位數"><a href="#百分位數" class="headerlink" title="百分位數"></a>百分位數</h3><p>平均值往往不能反應普通的<code>Response time</code>，因此使用中位數（50百分位，p50）來更好地表達普通用戶的體驗。而為了瞭解效能的極端情況，可以看更高的百分位數，例如95百分位（p95）和99百分位（p99），這些數值有助於分析最慢的<code>request</code>。</p>
+<h3 id="高百分位數的重要性"><a href="#高百分位數的重要性" class="headerlink" title="高百分位數的重要性"></a>高百分位數的重要性</h3><p>例如，Amazon對內部服務的<code>Response time</code>要求集中在99.9百分位，因為這影響到最有價值的客戶。即使高百分位數的請求量很少，這些客戶體驗的效能卻至關重要。</p>
+<blockquote>
+<p>Amazon has also observed that a 100 ms increase in response time reduces sales by 1%</p>
+</blockquote>
+<p>此外，書中還提到了服務水平目標（SLO）和服務水平協議（SLA）的使用，這些指標有助於設定服務的性能期望並確保達到目標。當服務未達標，客戶可以要求退款。</p>
+<h4 id="高百分位數在實務上"><a href="#高百分位數在實務上" class="headerlink" title="高百分位數在實務上"></a>高百分位數在實務上</h4><p>在處理單個用戶請求時，往往需要多個後端服務的回應。即使這些後端調用是並行進行的，但只要有一個調用變慢，整個用戶請求的回應時間也會受到影響，這種現象被稱為<code>tail latency amplification</code>。</p>
+<p>書中還提到，為了將回應時間的百分位數添加到<code>monitoring dashboards</code>中，必須高效地計算這些百分位數。簡單的方法是每分鐘對過去10分鐘內的請求回應時間進行排序，計算中位數及其他百分位數，並將它們繪製成圖表。然而，這種方法可能效率不高，因此可以使用一些低CPU和內存需求的演算法來近似計算百分位數，如<code>forward decay</code>、<code>t-digest</code>或<code>HdrHistogram</code>。</p>
+<p>最後，作者提醒，百分位數不應通過簡單平均來合併數據，正確的做法是將直方圖數據相加來進行聚合。</p>
+<h2 id="Approaches-for-Coping-with-Load"><a href="#Approaches-for-Coping-with-Load" class="headerlink" title="Approaches for Coping with Load"></a>Approaches for Coping with Load</h2><p><strong>垂直擴展與水平擴展</strong>：垂直擴展（提升單一機器性能）和水平擴展（將負載分佈到多個較小機器上）的取捨是常見的討論話題。雖然垂直擴展較為簡單，但高端機器成本高，無法應對大量負載，因此水平擴展（即<code>shared-nothing architecture</code>）成為應對高負載的常見選擇。實際中，混合使用多台強大的機器可能既簡單又經濟。</p>
+<p><strong>彈性與手動擴展</strong>：某些系統具有彈性，可自動擴展資源以應對負載增長，而手動擴展則依賴人工分析資源需求。彈性系統適合應對不可預測的負載，但手動擴展更簡單，且運營風險較少。</p>
+<p><strong>有狀態系統的複雜性</strong>：無狀態服務的擴展相對簡單，而將有狀態數據系統從單節點擴展到分佈式系統會增加複雜性。過去的建議是將數據庫存在單節點，除非出現高成本或高可用性需求，但隨著分佈式系統工具的進步，這種觀點可能會改變。</p>
+<blockquote>
+<p>延伸: <a target="_blank" rel="noopener" href="https://medium.com/brobridge/%E5%A6%82%E4%BD%95%E8%A7%A3%E8%80%A6%E7%85%A9%E4%BA%BA%E7%9A%84%E6%9C%89%E7%8B%80%E6%85%8B%E6%9C%8D%E5%8B%99-stateful-service-bfc14f865878">如何解耦煩人的有狀態服務(Stateful Service)</a></p>
+</blockquote>
+<p><strong>無通用擴展架構</strong>：應用層級的擴展架構往往是特定的，根據讀取量、寫入量、數據量、回應時間和訪問模式等參數量身定制。一個適合特定應用的架構通常基於對常見操作的假設。如果假設錯誤，擴展的工程可能無效甚至適得其反。</p>
+<p>儘管擴展架構是針對具體應用設計的，它們往往是<code>通用構建模塊</code>的組合。本書將深入探討這些模塊與架構模式。</p>
+<h2 id="Maintainability（可維護性）"><a href="#Maintainability（可維護性）" class="headerlink" title="Maintainability（可維護性）"></a>Maintainability（可維護性）</h2><p>軟體的主要成本在於後續的維護，而非初期開發。維護工作包括修復bug、保持系統運行、調查故障、適應新平台、修改以支持新需求、償還技術債以及新增功能。</p>
+<p>然而，許多從事軟體開發的人對於維護<code>legacy systems</code>（遺留系統）抱持負面態度，因為這可能涉及修正他人的錯誤，或者處理過時的平台和系統。然而，儘管每個遺留系統都有其獨特的挑戰，我們仍應該以減少未來的維護痛點來設計軟體，避免我們的系統成為遺留系統。</p>
+<p>為了達到這個目標，本文強調三個設計原則：</p>
+<p><strong>Operability</strong>（可操作性）<br>使運營團隊能夠輕鬆保持系統穩定運行。</p>
+<p><strong>Simplicity</strong>（簡單性）<br>盡可能減少系統的複雜性，使新工程師能夠容易理解系統（這與使用者介面的簡單性不同）。</p>
+<p><strong>Evolvability</strong>（可演進性）<br>讓工程師能夠輕鬆地對系統進行修改，以適應未來不可預期的需求變更。這也被稱為Extensibility（可擴展性）、Modifiability（可修改性）或Plasticity（可塑性）。</p>
+<p>正如Reliability（可靠性）和Scalability（可擴展性），這些設計目標沒有簡單的解決方案，但我們應該在設計系統時，時刻考慮這些原則。</p>
+<h2 id="Operability-Making-Life-Easy-for-Operations"><a href="#Operability-Making-Life-Easy-for-Operations" class="headerlink" title="Operability: Making Life Easy for Operations"></a>Operability: Making Life Easy for Operations</h2><p>儘管部分運營工作可以自動化，仍需人員設置和監控這些自動化工具的運行。因此，運營團隊對於軟體系統的順利運行至關重要。</p>
+<p>良好的運營團隊通常負責以下工作：</p>
+<ul>
+<li>監控系統狀況，並迅速恢復服務</li>
+<li>查找問題根源，如系統故障或性能下降</li>
+<li>更新軟體與平台，確保安全性</li>
+<li>追蹤系統之間的影響，避免有害變更</li>
+<li>預測未來問題，並提前解決（例如容量規劃）</li>
+<li>建立部署和配置管理的最佳實踐</li>
+<li>執行複雜的維護任務，如遷移應用到不同平台</li>
+<li>在配置變更中維持系統安全</li>
+<li>定義流程以確保運營的可預測性並保持穩定的生產環境</li>
+<li>保留系統的組織知識，即使團隊成員變動</li>
+</ul>
+<p>良好的可操作性能夠簡化日常任務，使運營團隊可以專注於高價值的活動。數據系統可以通過多種方式提高可操作性：</p>
+<ul>
+<li>提供對系統運行行為的可視性，並提供良好的監控</li>
+<li>支持自動化並與標準工具集成</li>
+<li>避免依賴單台機器，允許系統維護期間不間斷運行</li>
+<li>提供良好的文檔及易於理解的操作模型</li>
+<li>提供良好的默認行為，同時允許管理員在需要時覆蓋默認設置</li>
+<li>適當地具備自我修復能力，但也給予管理員手動控制的權限</li>
+<li>表現出可預測的行為，盡量減少意外</li>
+</ul>
+<p>這些措施旨在讓運營團隊更輕鬆地管理系統，從而專注於長期改善和提升系統價值。</p>
+<h2 id="Simplicity-Managing-Complexity"><a href="#Simplicity-Managing-Complexity" class="headerlink" title="Simplicity: Managing Complexity"></a>Simplicity: Managing Complexity</h2><p>本段落討論了如何通過Simplicity（簡單性）來管理軟體系統的複雜性，特別是在隨著專案規模增大後，系統變得難以理解和維護的情況。複雜性通常會影響系統的維護，導致開發和運營成本增加，甚至有可能帶來潛在的風險和問題。簡化系統不僅能提高效率，還能減少意外錯誤的出現。</p>
+<p>複雜性的症狀可能包括：狀態空間的爆炸、模塊間的緊密耦合、依賴關係的混亂、命名和術語的不一致、為解決性能問題而進行的臨時修補，以及為解決系統其他部分的問題而進行的特例處理。這些都會使系統變得難以理解和維護。</p>
+<p>然而，簡化系統並不意味著削減功能，而是指移除<code>accidental complexity</code>（偶然複雜性）。這種複雜性不是系統解決問題的本質，而是來自具體實現的過程。Moseley和Marks將其定義為不必要的複雜性，並強調移除這些複雜性的重要性。</p>
+<p>一個減少偶然複雜性的重要工具是<code>abstraction</code>（抽象）。一個好的抽象可以隱藏許多具體的實現細節，並且提供一個簡單易懂的介面，使開發者不必直接處理底層的細節。例如，高階程式語言抽象了機器語言、CPU暫存器和系統調用，而SQL則抽象了複雜的數據結構和處理並行請求的邏輯。透過這些抽象，我們得以專注於解決問題，而無需考慮過多的實現細節。</p>
+<p>不過，找到好的抽象並不容易，尤其在分散式系統領域。雖然有很多優秀的算法，但如何將這些算法封裝成可以幫助我們管理複雜度的抽象仍是個挑戰。</p>
+<h2 id="Evolvability-Making-Change-Easy"><a href="#Evolvability-Making-Change-Easy" class="headerlink" title="Evolvability: Making Change Easy"></a>Evolvability: Making Change Easy</h2><p>系統的需求幾乎不可能永遠保持不變，反而更有可能隨著時間不斷變動：你會學到新知識，出現意想不到的使用案例，商業優先級改變，用戶要求新功能，新平台取代舊平台，法規要求改變，系統成長導致架構改變等等。</p>
+<p>在組織流程中，敏捷工作模式提供了一個適應變化的框架。敏捷社群也發展了許多技術工具和模式，有助於在經常變動的環境中開發軟體，例如測試驅動開發 (TDD) 和重構。</p>
+<p>修改資料系統的難易度，與其簡單性和抽象性息息相關：簡單且易於理解的系統通常比複雜的系統更容易修改。由於這個概念極為重要，我們將使用另一個詞來描述資料系統層面的敏捷性：演進性 (evolvability)。</p>
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p><strong>資料密集型應用的基本原則</strong>：介紹了應用的功能需求（functional requirements，如數據存儲、檢索等）及非功能需求（nonfunctional requirements，如安全性、安全性（security）、可靠性（reliability）、可擴展性（scalability）等）。</p>
+<p><strong>可靠性（Reliability）</strong>：確保系統在故障（硬體、軟體或人為錯誤）發生時仍能正確運作，容錯技術（fault-tolerance techniques）能隱藏某些故障。</p>
+<p><strong>可擴展性（Scalability）</strong>：維持高負載（load）下的良好性能，並通過增加處理能力來應對負載增長，使用量化的方式來描述負載和性能（performance）。</p>
+<p><strong>可維護性（Maintainability）</strong>：減少系統複雜性，提升系統的修改和適應能力，並確保系統運作良好（operability）。</p>
+<p><strong>沒有萬能解法</strong>：雖然沒有簡單的解決方案來達成這些目標，但一些常見模式和技術在不同應用中反覆出現。</p>
+<blockquote>
+<p>以上總結由ChatGPT輔助產生</p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B/" class="category-chain-item">軟體工程</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B/%E8%BB%9F%E9%AB%94%E8%A8%AD%E8%A8%88/" class="category-chain-item">軟體設計</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Data/" class="print-no-link">#Data</a>
+      
+        <a href="/tags/Reliability/" class="print-no-link">#Reliability</a>
+      
+        <a href="/tags/Scalability/" class="print-no-link">#Scalability</a>
+      
+        <a href="/tags/Maintainability/" class="print-no-link">#Maintainability</a>
+      
+        <a href="/tags/Fault-tolerance/" class="print-no-link">#Fault-tolerance</a>
+      
+        <a href="/tags/Performance-measurement/" class="print-no-link">#Performance measurement</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Designing Data-Intensive Applications - 第一章筆記</div>
+      <div>https://f88083.github.io/2024/09/18/Designing-Data-Intensive-Applications-第一章筆記/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Simon Lai</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>發布於</div>
+          <div>2024年9月18日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>許可協議</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="NC - 非商業性使用">
+                    <i class="iconfont icon-nc"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                    <i class="iconfont icon-sa"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/09/18/116-Populating-Next-Right-Pointers-in-Each-Node-Medium/" title="116. Populating Next Right Pointers in Each Node - Medium">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">116. Populating Next Right Pointers in Each Node - Medium</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/09/17/2616-Minimize-the-Maximum-Difference-of-Pairs-Medium/" title="2616. Minimize the Maximum Difference of Pairs - Medium">
+                        <span class="hidden-mobile">2616. Minimize the Maximum Difference of Pairs - Medium</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"f88083/blog-comments","repo-id":"R_kgDOKvLNrw","category":"Announcements","category-id":"DIC_kwDOKvLNr84CbPZE","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-TW"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目錄</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">關鍵字</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允許 JavaScript 運行的環境下瀏覽效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -253,15 +253,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/07/04/7%E5%80%8B%E5%A5%BD%E7%9A%84API%E6%87%89%E8%A9%B2%E6%9C%89%E7%9A%84%E8%A8%AD%E8%A8%88/" target="_self">
-          7個好的API應該有的設計
+        <a href="/2024/08/29/341-Flatten-Nested-List-Iterator/" target="_self">
+          341. Flatten Nested List Iterator
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/04/7%E5%80%8B%E5%A5%BD%E7%9A%84API%E6%87%89%E8%A9%B2%E6%9C%89%E7%9A%84%E8%A8%AD%E8%A8%88/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/29/341-Flatten-Nested-List-Iterator/" target="_self">
         <div>
-          1. Use clear  naming例如: http://example.com/api/v1/carts/123  而不要 http://example.com/api/v1/cart/123  因為是一個集合的資料，而不是單個，這樣比較合乎邏輯 2. Ensure reliability through idempotent API無論執行多少次相同操作都要產生相同結果，避免問題產生
+          前往題目  想法 Queue or Stack  思路 用dfs，遇到數字就加入queue，遇到list就再呼叫dfs  Code  /**  * // This is the interface that allows for creating nested lists.  * // You should not implement it, or speculate about its impl
         </div>
       </a>
 
@@ -269,50 +269,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-07-04 17:20" pubdate>
-              2024-07-04
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/API/">#API</a>
-            
-              <a href="/tags/System-Design/">#System Design</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/07/04/779-K-th-Symbol-in-Grammar/" target="_self">
-          779. K-th Symbol in Grammar - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/04/779-K-th-Symbol-in-Grammar/" target="_self">
-        <div>
-          前往題目  想法 Recursion?  思路把圖畫出來會發現是一個類似樹的結構，可以判斷是在左分支還是右分支每次都去除一半，直到k層  左右雙指針 疊代n-1次，因為第一次是起始點0，所以跳過 每次決定中點 並判斷k是否在中點的左邊或右邊 在左邊的話會和之前的數字一樣，而右邊會和之前的相反 最後直接輸出數字  /*  0 0 1 以及  1 1 0 可以看到左邊都和上面的數字一樣，右邊都和上面的
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-07-04 11:59" pubdate>
-              2024-07-04
+            <time datetime="2024-08-29 11:22" pubdate>
+              2024-08-29
             </time>
           </div>
         
@@ -353,13 +311,17 @@
             
               <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
             
-              <a href="/tags/Recursion/">#Recursion</a>
+              <a href="/tags/Stack/">#Stack</a>
             
-              <a href="/tags/Math/">#Math</a>
+              <a href="/tags/Queue/">#Queue</a>
             
-              <a href="/tags/Two-Pointers/">#Two Pointers</a>
+              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
             
-              <a href="/tags/Bit-Manipulation/">#Bit Manipulation</a>
+              <a href="/tags/Tree/">#Tree</a>
+            
+              <a href="/tags/Design/">#Design</a>
+            
+              <a href="/tags/Iterator/">#Iterator</a>
             
           </div>
         
@@ -373,15 +335,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/07/04/2108-Find-First-Palindromic-String-in-the-Array/" target="_self">
-          2108. Find First Palindromic String in the Array - Easy
+        <a href="/2024/08/28/456-132-Pattern-Medium/" target="_self">
+          456. 132 Pattern - Medium
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/04/2108-Find-First-Palindromic-String-in-the-Array/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/28/456-132-Pattern-Medium/" target="_self">
         <div>
-          前往題目  想法 雙指針，每個單字都檢查一遍  思路秒殺題  雙指針，每個單字都檢查一遍  Codeclass Solution &#123;     public String firstPalindrome(String[] words) &#123;         // 疊代每個單字         for (String word : words) &#123;
+          前往題目  想法 stack  思路挺難理解的一題，巧妙的運用monotonic stack 大致上是：利用monotonic stack，使推進去的數字遞減，只要當前數字比stack的頂端小，就pop，先當作132的2，因為3是當前數字，而下一個循環一開始就看當前是否比2還要小，如果是，就找到了 Code✅ 99.35% Stack &amp; Left Approach &amp; Binar
         </div>
       </a>
 
@@ -389,8 +351,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-07-04 11:13" pubdate>
-              2024-07-04
+            <time datetime="2024-08-28 11:33" pubdate>
+              2024-08-28
             </time>
           </div>
         
@@ -410,7 +372,7 @@
   
     <span>></span>
     
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
   
   
 
@@ -430,13 +392,91 @@
               <a href="/tags/Leetcode/">#Leetcode</a>
             
               <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Stack/">#Stack</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Monotonic-Stack/">#Monotonic Stack</a>
+            
+              <a href="/tags/Binary-Search/">#Binary Search</a>
+            
+              <a href="/tags/Ordered-Set/">#Ordered Set</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/08/21/1209-Remove-All-Adjacent-Duplicates-in-String-II-Medium/" target="_self">
+          1209. Remove All Adjacent Duplicates in String II - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/21/1209-Remove-All-Adjacent-Duplicates-in-String-II-Medium/" target="_self">
+        <div>
+          前往題目  想法 Stack  思路 用Stack儲存每個字母和當前有幾個相鄰且相同的 達到k就pop 沒達到就計數+1然後繼續 相鄰的不是同字母計數=1 回傳結果  Code看了Hint自己寫出來了，insert耗費資源，用append最後再reverse就好 class Solution &#123;     public String removeDuplicates(String s, i
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-08-21 10:53" pubdate>
+              2024-08-21
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Stack/">#Stack</a>
             
               <a href="/tags/String/">#String</a>
             
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Two-Pointers/">#Two Pointers</a>
-            
           </div>
         
       </div>
@@ -449,15 +489,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/07/04/1662-Check-If-Two-String-Arrays-are-Equivalent/" target="_self">
-          1662. Check If Two String Arrays are Equivalent - Easy
+        <a href="/2024/08/20/402-Remove-K-Digits-Medium/" target="_self">
+          402. Remove K Digits - Medium
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/07/04/1662-Check-If-Two-String-Arrays-are-Equivalent/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/20/402-Remove-K-Digits-Medium/" target="_self">
         <div>
-          前往題目  想法 雙指針，一對一對比較  思路自己寫出來了，不過應該可以再更簡潔一點，麻煩的就是出界問題而已  疊代所有word直到有一方或雙方都出界 每次都檢查是否為相同字母 相同就字母指針往前 檢查字母指針是否出界，如果出界就移動word指針，並且歸零字母指針  Codeclass Solution &#123;     public boolean arrayStringsAreEqual(
+          前往題目  想法 Stack  思路Monotonic Stack，由小到大  疊代整個string 遇到當前數字比前一個小就彈出上一個數字(最多彈出k個) 還有k剩餘就彈出最後面的數字 回傳結果  要想到monotonic stack是這題的解法還真的有難度 Code  class Solution &#123;     public String removeKdigits(String nu
         </div>
       </a>
 
@@ -465,8 +505,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-07-04 11:02" pubdate>
-              2024-07-04
+            <time datetime="2024-08-20 11:44" pubdate>
+              2024-08-20
             </time>
           </div>
         
@@ -486,7 +526,7 @@
   
     <span>></span>
     
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
   
   
 
@@ -506,10 +546,14 @@
               <a href="/tags/Leetcode/">#Leetcode</a>
             
               <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Stack/">#Stack</a>
             
               <a href="/tags/String/">#String</a>
             
-              <a href="/tags/Array/">#Array</a>
+              <a href="/tags/Monotonic-Stack/">#Monotonic Stack</a>
+            
+              <a href="/tags/Greedy/">#Greedy</a>
             
           </div>
         
@@ -523,15 +567,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/06/26/881-Boats-to-Save-People-Medium/" target="_self">
-          881. Boats to Save People - Medium
+        <a href="/2024/08/16/71-Simplify-Path-Medium/" target="_self">
+          71. Simplify Path - Medium
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/26/881-Boats-to-Save-People-Medium/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/16/71-Simplify-Path-Medium/" target="_self">
         <div>
-          前往題目  想法 雙指針，因為最多兩人，所以蠻簡單的  思路 排序，由小到大 雙指針，最左和最右，一開始都先取當前可能的最大值 然後再判斷能否再取一個當前最小值 移動指針  Codeclass Solution &#123;     public int numRescueBoats(int[] people, int limit) &#123;         Arrays.sort(peopl
+          前往題目  想法 stack  思路這題不難，不過edge case很多，要一次想出完美的條件判斷不容易  先用/分開 疊代分開後的每個部分 遇到.或是空的就跳過，因為不用做任何處理，直接忽略就好 遇到..就把上一個東西刪掉 其餘就都記錄下來 最後重新拼裝就好了  Codeclass Solution &#123;     public String simplifyPath(String pat
         </div>
       </a>
 
@@ -539,8 +583,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-06-26 10:58" pubdate>
-              2024-06-26
+            <time datetime="2024-08-16 10:57" pubdate>
+              2024-08-16
             </time>
           </div>
         
@@ -581,13 +625,9 @@
             
               <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
             
-              <a href="/tags/Array/">#Array</a>
+              <a href="/tags/Stack/">#Stack</a>
             
-              <a href="/tags/Two-Pointers/">#Two Pointers</a>
-            
-              <a href="/tags/Greedy/">#Greedy</a>
-            
-              <a href="/tags/Sorting/">#Sorting</a>
+              <a href="/tags/String/">#String</a>
             
           </div>
         
@@ -601,15 +641,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/06/26/948-Bag-of-Tokens-Medium/" target="_self">
-          948. Bag of Tokens - Medium
+        <a href="/2024/08/15/901-Online-Stock-Span-Medium/" target="_self">
+          901. Online Stock Span - Medium
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/26/948-Bag-of-Tokens-Medium/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/15/901-Online-Stock-Span-Medium/" target="_self">
         <div>
-          前往題目  想法 2 pointers，但怎麼利用這個規則是個問題  思路貪婪  排序，由小到大 雙指針，分別指向兩端 嘗試face up(因為可以增加score，也就是我們的最終目的，因此首選它)，不行的話face down(並且是選擇右指針，因為要最大化power，才能有本錢face down)，再不行直接回傳  Code  class Solution &#123;     public i
+          前往題目  想法 Stack，但無從下手  思路 next()時，預設span為1 stack裡如果有&lt;= price的，就pop然後加到當前span直到stack裡的數比當前price還要大。如此一來就可以捨去一些數字，因為span都儲存在後來的數字裡 結束前把新的price以及span推進stack  變成Monotonic decreasing的stack Code  class St
         </div>
       </a>
 
@@ -617,8 +657,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-06-26 10:13" pubdate>
-              2024-06-26
+            <time datetime="2024-08-15 12:46" pubdate>
+              2024-08-15
             </time>
           </div>
         
@@ -659,13 +699,13 @@
             
               <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
             
-              <a href="/tags/Array/">#Array</a>
+              <a href="/tags/Stack/">#Stack</a>
             
-              <a href="/tags/Two-Pointers/">#Two Pointers</a>
+              <a href="/tags/Monotonic-Stack/">#Monotonic Stack</a>
             
-              <a href="/tags/Greedy/">#Greedy</a>
+              <a href="/tags/Design/">#Design</a>
             
-              <a href="/tags/Sorting/">#Sorting</a>
+              <a href="/tags/Data-Stream/">#Data Stream</a>
             
           </div>
         
@@ -679,15 +719,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/06/02/455-Assign-Cookies-Easy/" target="_self">
-          455. Assign Cookies - Easy
+        <a href="/2024/08/06/946-Validate-Stack-Sequences-Medium/" target="_self">
+          946. Validate Stack Sequences - Medium
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/02/455-Assign-Cookies-Easy/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/06/946-Validate-Stack-Sequences-Medium/" target="_self">
         <div>
-          前往題目  想法 排序後從最小餅乾開始匹配  思路想法對了，實作有點小bug，馬上修好  兩個陣列都排序 如果餅乾不夠滿足當前小孩，換下一個餅乾，直到餅乾沒了或是小孩都滿足了  Codeclass Solution &#123;     public int findContentChildren(int[] g, int[] s) &#123;         Arrays.sort(g);
+          前往題目  想法 stack 疊代pushed的部分，去匹配popped的元素  思路 循環pushed 每次循環都看stack的頂端是否和popped的元素相符 相符就pop，不相符就繼續 最後看stack是否為空判斷  Code  class Solution &#123;     public boolean validateStackSequences(int[] pushed, int[
         </div>
       </a>
 
@@ -695,8 +735,160 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-06-02 12:18" pubdate>
-              2024-06-02
+            <time datetime="2024-08-06 10:41" pubdate>
+              2024-08-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Stack/">#Stack</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Simulation/">#Simulation</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/08/06/2390-Removing-Stars-From-a-String-Medium/" target="_self">
+          2390. Removing Stars From a String - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/06/2390-Removing-Stars-From-a-String-Medium/" target="_self">
+        <div>
+          前往題目  想法 Stack  思路這題很簡單遇到米字號直接pop Codeclass Solution &#123;     public String removeStars(String s) &#123;         Stack&lt;Character> stack = new Stack();          for (char c : s.toCharArray()) &#12
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-08-06 10:25" pubdate>
+              2024-08-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Stack/">#Stack</a>
+            
+              <a href="/tags/String/">#String</a>
+            
+              <a href="/tags/Simulation/">#Simulation</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/08/05/1544-Make-The-String-Great/" target="_self">
+          1544. Make The String Great - Easy
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/05/1544-Make-The-String-Great/" target="_self">
+        <div>
+          前往題目  想法 Stack  思路 循環每個字符 找到bad string時，彈出，其他都push到stack 建構答案並回傳  Codeclass Solution &#123;     public String makeGood(String s) &#123;         Stack&lt;Character> stack = new Stack&lt;>();          /
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-08-05 18:57" pubdate>
+              2024-08-05
             </time>
           </div>
         
@@ -737,13 +929,9 @@
             
               <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
             
-              <a href="/tags/Array/">#Array</a>
+              <a href="/tags/Stack/">#Stack</a>
             
-              <a href="/tags/Two-Pointers/">#Two Pointers</a>
-            
-              <a href="/tags/Greedy/">#Greedy</a>
-            
-              <a href="/tags/Sorting/">#Sorting</a>
+              <a href="/tags/String/">#String</a>
             
           </div>
         
@@ -757,15 +945,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/06/02/1968-Array-With-Elements-Not-Equal-to-Average-of-Neighbors-Medium/" target="_self">
-          1968. Array With Elements Not Equal to Average of Neighbors - Medium
+        <a href="/2024/08/02/225-Implement-Stack-using-Queues/" target="_self">
+          225. Implement Stack using Queues - Easy
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/02/1968-Array-With-Elements-Not-Equal-to-Average-of-Neighbors-Medium/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/02/225-Implement-Stack-using-Queues/" target="_self">
         <div>
-          前往題目  想法 把數字小於等於中位數的都放到奇數位，其餘放到偶數位  思路 排序 小和大的數字交錯，這樣每個數字就會被比他自己大的兩個數字包圍或是兩個比他自己小的數字包圍，所以可以保證絕對不會等於兩數相加除二  Code  class Solution &#123;     public int[] rearrangeArray(int[] nums) &#123;         Arrays
+          前往題目  想法 用兩個queue，雖然題目也有寫  思路這題很簡單，注意前後順序就好 push: 看哪個queue不是空的就放哪個pop: 看哪個是空的，把另一個queue的元素搬過來，最後剩一個直接回傳top: 一樣看哪個是空的，搬過去，剩下最後一個記錄下來回傳，也要辦過去另一個queueempty: 看兩個queue是否都為空 只用一個queue的反而更簡單，只要每次push的時候都反轉使其
         </div>
       </a>
 
@@ -773,8 +961,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-06-02 11:27" pubdate>
-              2024-06-02
+            <time datetime="2024-08-02 10:43" pubdate>
+              2024-08-02
             </time>
           </div>
         
@@ -794,7 +982,7 @@
   
     <span>></span>
     
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
   
   
 
@@ -815,161 +1003,11 @@
             
               <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
             
-              <a href="/tags/Array/">#Array</a>
+              <a href="/tags/Stack/">#Stack</a>
             
-              <a href="/tags/Greedy/">#Greedy</a>
+              <a href="/tags/Queue/">#Queue</a>
             
-              <a href="/tags/Sorting/">#Sorting</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/06/01/18-4Sum-Medium/" target="_self">
-          18. 4Sum - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/01/18-4Sum-Medium/" target="_self">
-        <div>
-          前往題目  想法 3 sum是固定一個數字，然後就變成2 sum問題；那4 sum要固定兩個數字？  思路 先排序(這樣才能輕鬆跳過重複的數字) 當不確定的數字超過2個，就固定當前數字然後再次呼叫方法(Recursion) 當不確定的數字只剩2個，就變成2sum問題，找出哪兩個相加等於target就是答案之一並加入結果  Code  class Solution &#123;     List&l
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-06-01 10:37" pubdate>
-              2024-06-01
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Two-Pointers/">#Two Pointers</a>
-            
-              <a href="/tags/Sorting/">#Sorting</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/05/30/2348-Number-of-Zero-Filled-Subarrays-Medium/" target="_self">
-          2348. Number of Zero-Filled Subarrays - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/05/30/2348-Number-of-Zero-Filled-Subarrays-Medium/" target="_self">
-        <div>
-          前往題目  想法 想法大致和以下答案一樣，但有點複雜(例如n個連續零，就加上n + n - 1 + n - 2 + ... + 0)  思路 走過所有數字 每次遇到0，計數器+1，result直接加上當前zero的數量  因為如果00，subarray有1+2個;000，subarray有1+2+3個，以此類推 Code  class Solution &#123;     public long
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-05-30 13:47" pubdate>
-              2024-05-30
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Math/">#Math</a>
+              <a href="/tags/Design/">#Design</a>
             
           </div>
         
@@ -981,7 +1019,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/3/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/#board">27</a><a class="extend next" rel="next" href="/page/5/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/3/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/#board">30</a><a class="extend next" rel="next" href="/page/5/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
