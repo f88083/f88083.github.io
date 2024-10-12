@@ -368,9 +368,9 @@
       
       <tag>心得</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Hash Table</tag>
+      
+      <tag>Two Pointers</tag>
       
       <tag>Linked List</tag>
       
@@ -438,9 +438,9 @@
       
       <tag>Array</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Sorting</tag>
+      
+      <tag>Two Pointers</tag>
       
       <tag>Binary Search</tag>
       
@@ -475,9 +475,9 @@
       
       <tag>Array</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Sorting</tag>
+      
+      <tag>Two Pointers</tag>
       
     </tags>
     
@@ -683,13 +683,13 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Depth-First Search</tag>
-      
-      <tag>Breadth-First Search</tag>
-      
       <tag>Linked List</tag>
       
+      <tag>Depth-First Search</tag>
+      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -2091,9 +2091,9 @@
       
       <tag>Array</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Sorting</tag>
+      
+      <tag>Two Pointers</tag>
       
     </tags>
     
@@ -2252,11 +2252,11 @@
       
       <tag>Array</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Greedy</tag>
       
       <tag>Sorting</tag>
+      
+      <tag>Two Pointers</tag>
       
     </tags>
     
@@ -2289,11 +2289,11 @@
       
       <tag>Array</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Greedy</tag>
       
       <tag>Sorting</tag>
+      
+      <tag>Two Pointers</tag>
       
     </tags>
     
@@ -2326,11 +2326,11 @@
       
       <tag>Array</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Greedy</tag>
       
       <tag>Sorting</tag>
+      
+      <tag>Two Pointers</tag>
       
     </tags>
     
@@ -2398,9 +2398,9 @@
       
       <tag>Array</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Sorting</tag>
+      
+      <tag>Two Pointers</tag>
       
     </tags>
     
@@ -2608,9 +2608,9 @@
       
       <tag>String</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Greedy</tag>
+      
+      <tag>Two Pointers</tag>
       
     </tags>
     
@@ -2781,9 +2781,9 @@
       
       <tag>String</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Two Pointers</tag>
       
     </tags>
     
@@ -3172,9 +3172,9 @@
       
       <tag>Array</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Greedy</tag>
+      
+      <tag>Two Pointers</tag>
       
     </tags>
     
@@ -3561,9 +3561,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -3952,9 +3952,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -4092,9 +4092,9 @@
       
       <tag>Math</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Hash Table</tag>
+      
+      <tag>Two Pointers</tag>
       
     </tags>
     
@@ -4164,11 +4164,11 @@
       
       <tag>String</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Greedy</tag>
       
       <tag>Hash Table</tag>
+      
+      <tag>Two Pointers</tag>
       
     </tags>
     
@@ -4739,9 +4739,9 @@
       
       <tag>Array</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Sorting</tag>
+      
+      <tag>Two Pointers</tag>
       
     </tags>
     
@@ -5556,9 +5556,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -5739,9 +5739,9 @@
       
       <tag>String</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Hash Table</tag>
+      
+      <tag>Two Pointers</tag>
       
       <tag>Sliding Window</tag>
       
@@ -5953,9 +5953,9 @@
       
       <tag>Array</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Greedy</tag>
+      
+      <tag>Two Pointers</tag>
       
     </tags>
     
@@ -6425,7 +6425,7 @@
     <link href="/2024/01/23/61-Rotate-List-Medium/"/>
     <url>/2024/01/23/61-Rotate-List-Medium/</url>
     
-    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/rotate-list/description/"  title="61. Rotate List" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>找到<code>middle</code>的時候也順便知道這個<code>list</code>有多長，這樣就能算出是哪幾個要接到前面去，或甚至連動都不用動直接回傳</li><li>當<code>k=list</code>的長度時候就不用動，剛好一循環</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>大致上自己想出來了，可惜為了存<code>middle</code>讓<code>code</code>變得複雜，但實際上根本不用<code>middle</code></p><ol><li>找到尾巴<code>node</code>和<code>list</code>的長度</li><li>然後根據長度就可以算出新的尾巴在哪裡</li><li>重新拼接就可以了</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/UcGtPs2LE_c" title="Rotate List - Linked List - Leetcode 61 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token class-name">ListNode</span> <span class="token function">rotateRight</span><span class="token punctuation">(</span><span class="token class-name">ListNode</span> head<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>head <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> head<span class="token punctuation">.</span>next <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> head<span class="token punctuation">;</span>        <span class="token class-name">ListNode</span> tail <span class="token operator">=</span> head<span class="token punctuation">;</span>        <span class="token keyword">int</span> length <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>        <span class="token comment">// Find tail and the length of the list</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>tail<span class="token punctuation">.</span>next <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            tail <span class="token operator">=</span> tail<span class="token punctuation">.</span>next<span class="token punctuation">;</span>            <span class="token operator">++</span>length<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// Eliminate unecessary k</span>        k <span class="token operator">%=</span> length<span class="token punctuation">;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>k <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> head<span class="token punctuation">;</span>        <span class="token class-name">ListNode</span> curNode <span class="token operator">=</span> head<span class="token punctuation">;</span>        <span class="token comment">// Find new tail</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token punctuation">(</span>length <span class="token operator">-</span> k <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            curNode <span class="token operator">=</span> curNode<span class="token punctuation">.</span>next<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token class-name">ListNode</span> newHead <span class="token operator">=</span> curNode<span class="token punctuation">.</span>next<span class="token punctuation">;</span>        <span class="token comment">// Update new tail</span>        curNode<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>        <span class="token comment">// Update old tail</span>        tail<span class="token punctuation">.</span>next <span class="token operator">=</span> head<span class="token punctuation">;</span>        <span class="token keyword">return</span> newHead<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/rotate-list/description/"  title="61. Rotate List" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>找到<code>middle</code>的時候也順便知道這個<code>list</code>有多長，這樣就能算出是哪幾個要接到前面去，或甚至連動都不用動直接回傳</li><li>當<code>k=list</code>的長度時候就不用動，剛好一循環</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>大致上自己想出來了，可惜為了存<code>middle</code>讓<code>code</code>變得複雜，但實際上根本不用<code>middle</code></p><ol><li>找到尾巴<code>node</code>和<code>list</code>的長度</li><li>然後根據長度就可以算出新的尾巴在哪裡</li><li>重新拼接就可以了</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/UcGtPs2LE_c" title="Rotate List - Linked List - Leetcode 61 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token class-name">ListNode</span> <span class="token function">rotateRight</span><span class="token punctuation">(</span><span class="token class-name">ListNode</span> head<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>head <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> head<span class="token punctuation">.</span>next <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> head<span class="token punctuation">;</span>        <span class="token class-name">ListNode</span> tail <span class="token operator">=</span> head<span class="token punctuation">;</span>        <span class="token keyword">int</span> length <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>        <span class="token comment">// Find tail and the length of the list</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>tail<span class="token punctuation">.</span>next <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            tail <span class="token operator">=</span> tail<span class="token punctuation">.</span>next<span class="token punctuation">;</span>            <span class="token operator">++</span>length<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// Eliminate unecessary k</span>        k <span class="token operator">%=</span> length<span class="token punctuation">;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>k <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> head<span class="token punctuation">;</span>        <span class="token class-name">ListNode</span> curNode <span class="token operator">=</span> head<span class="token punctuation">;</span>        <span class="token comment">// Find new tail</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token punctuation">(</span>length <span class="token operator">-</span> k <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            curNode <span class="token operator">=</span> curNode<span class="token punctuation">.</span>next<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token class-name">ListNode</span> newHead <span class="token operator">=</span> curNode<span class="token punctuation">.</span>next<span class="token punctuation">;</span>        <span class="token comment">// Update new tail</span>        curNode<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>        <span class="token comment">// Update old tail</span>        tail<span class="token punctuation">.</span>next <span class="token operator">=</span> head<span class="token punctuation">;</span>        <span class="token keyword">return</span> newHead<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure><h2 id="2024-10-12"><a href="#2024-10-12" class="headerlink" title="2024&#x2F;10&#x2F;12"></a>2024&#x2F;10&#x2F;12</h2><ul><li>想得太複雜了，還反轉了，其實只要簡單的在關鍵點轉換一下指針就好</li></ul>]]></content>
     
     
     <categories>
@@ -6478,9 +6478,9 @@
       
       <tag>Array</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Sorting</tag>
+      
+      <tag>Two Pointers</tag>
       
     </tags>
     
@@ -6513,9 +6513,9 @@
       
       <tag>Array</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Sorting</tag>
+      
+      <tag>Two Pointers</tag>
       
     </tags>
     
@@ -6882,9 +6882,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -7174,9 +7174,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -7312,9 +7312,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -7590,9 +7590,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -7625,9 +7625,9 @@
       
       <tag>Array</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Sorting</tag>
+      
+      <tag>Two Pointers</tag>
       
     </tags>
     
@@ -7957,9 +7957,9 @@
       
       <tag>心得</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Sorting</tag>
+      
+      <tag>Two Pointers</tag>
       
       <tag>Linked List</tag>
       
@@ -8274,9 +8274,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
