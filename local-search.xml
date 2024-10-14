@@ -4,6 +4,37 @@
   
   
   <entry>
+    <title>725. Split Linked List in Parts - Medium</title>
+    <link href="/2024/10/14/725-Split-Linked-List-in-Parts-Medium/"/>
+    <url>/2024/10/14/725-Split-Linked-List-in-Parts-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/split-linked-list-in-parts/description/"  title="725. Split Linked List in Parts" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>沒想到如何處理前面需要補上的部分</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>得到<code>list</code>總長度</li><li>利用除法以及取餘得到最少要多少個元素在一個<code>part</code>，然後需要補多少個</li><li>開始建造<code>part</code>，如果有需要補的也要加上去，一次補一個(題目規定)</li><li>建造完一個<code>part</code>就把尾巴斷開，補上<code>null</code></li></ol><p>很多條件需要考慮…</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/-OTlqdrxrVI" title="Split Linked List in Parts - Leetcode 725 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token class-name">ListNode</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">splitListToParts</span><span class="token punctuation">(</span><span class="token class-name">ListNode</span> head<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token class-name">ListNode</span><span class="token punctuation">[</span><span class="token punctuation">]</span> res <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token class-name">ListNode</span> cur <span class="token operator">=</span> head<span class="token punctuation">;</span>        <span class="token keyword">int</span> len <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token comment">// Obtain the length</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>cur <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            cur <span class="token operator">=</span> cur<span class="token punctuation">.</span>next<span class="token punctuation">;</span>            <span class="token operator">++</span>len<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">int</span> baseLen <span class="token operator">=</span> len <span class="token operator">/</span> k<span class="token punctuation">;</span> <span class="token comment">// Min. element of a part</span>        <span class="token keyword">int</span> remainder <span class="token operator">=</span> len <span class="token operator">%</span> k<span class="token punctuation">;</span> <span class="token comment">// Number of element should be put in the first part</span>        cur <span class="token operator">=</span> head<span class="token punctuation">;</span>        <span class="token comment">// Build all the parts</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> k<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// Init. a part</span>            res<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> cur<span class="token punctuation">;</span>            <span class="token comment">// Build a part</span>            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> baseLen <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">+</span> <span class="token punctuation">(</span>remainder <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">?</span> <span class="token number">1</span> <span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token keyword">if</span> <span class="token punctuation">(</span>cur <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>                    <span class="token keyword">break</span><span class="token punctuation">;</span>                cur <span class="token operator">=</span> cur<span class="token punctuation">.</span>next<span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>            <span class="token comment">// No two parts should have a size differing by more than one</span>            remainder <span class="token operator">=</span> remainder <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">?</span> remainder <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">:</span> remainder<span class="token punctuation">;</span>            <span class="token comment">// Break the tail, set cur for the next part</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>cur <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token class-name">ListNode</span> next <span class="token operator">=</span> cur<span class="token punctuation">.</span>next<span class="token punctuation">;</span>                cur<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>                cur <span class="token operator">=</span> next<span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> res<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Linked List</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>92. Reverse Linked List II - Medium</title>
     <link href="/2024/10/11/92-Reverse-Linked-List-II-Medium/"/>
     <url>/2024/10/11/92-Reverse-Linked-List-II-Medium/</url>
@@ -368,9 +399,9 @@
       
       <tag>心得</tag>
       
-      <tag>Hash Table</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Hash Table</tag>
       
       <tag>Linked List</tag>
       
@@ -438,9 +469,9 @@
       
       <tag>Array</tag>
       
-      <tag>Sorting</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Sorting</tag>
       
       <tag>Binary Search</tag>
       
@@ -475,9 +506,9 @@
       
       <tag>Array</tag>
       
-      <tag>Sorting</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Sorting</tag>
       
     </tags>
     
@@ -683,13 +714,13 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Linked List</tag>
-      
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Linked List</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -2091,9 +2122,9 @@
       
       <tag>Array</tag>
       
-      <tag>Sorting</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Sorting</tag>
       
     </tags>
     
@@ -2252,11 +2283,11 @@
       
       <tag>Array</tag>
       
+      <tag>Two Pointers</tag>
+      
       <tag>Greedy</tag>
       
       <tag>Sorting</tag>
-      
-      <tag>Two Pointers</tag>
       
     </tags>
     
@@ -2289,11 +2320,11 @@
       
       <tag>Array</tag>
       
+      <tag>Two Pointers</tag>
+      
       <tag>Greedy</tag>
       
       <tag>Sorting</tag>
-      
-      <tag>Two Pointers</tag>
       
     </tags>
     
@@ -2326,11 +2357,11 @@
       
       <tag>Array</tag>
       
+      <tag>Two Pointers</tag>
+      
       <tag>Greedy</tag>
       
       <tag>Sorting</tag>
-      
-      <tag>Two Pointers</tag>
       
     </tags>
     
@@ -2398,9 +2429,9 @@
       
       <tag>Array</tag>
       
-      <tag>Sorting</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Sorting</tag>
       
     </tags>
     
@@ -2608,9 +2639,9 @@
       
       <tag>String</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Greedy</tag>
       
     </tags>
     
@@ -2781,9 +2812,9 @@
       
       <tag>String</tag>
       
-      <tag>Dynamic Programming</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Dynamic Programming</tag>
       
     </tags>
     
@@ -3172,9 +3203,9 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Greedy</tag>
       
     </tags>
     
@@ -3561,9 +3592,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -3952,9 +3983,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -4092,9 +4123,9 @@
       
       <tag>Math</tag>
       
-      <tag>Hash Table</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Hash Table</tag>
       
     </tags>
     
@@ -4164,11 +4195,11 @@
       
       <tag>String</tag>
       
+      <tag>Two Pointers</tag>
+      
       <tag>Greedy</tag>
       
       <tag>Hash Table</tag>
-      
-      <tag>Two Pointers</tag>
       
     </tags>
     
@@ -4739,9 +4770,9 @@
       
       <tag>Array</tag>
       
-      <tag>Sorting</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Sorting</tag>
       
     </tags>
     
@@ -5556,9 +5587,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -5739,9 +5770,9 @@
       
       <tag>String</tag>
       
-      <tag>Hash Table</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Hash Table</tag>
       
       <tag>Sliding Window</tag>
       
@@ -5953,9 +5984,9 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Greedy</tag>
       
     </tags>
     
@@ -6478,9 +6509,9 @@
       
       <tag>Array</tag>
       
-      <tag>Sorting</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Sorting</tag>
       
     </tags>
     
@@ -6513,9 +6544,9 @@
       
       <tag>Array</tag>
       
-      <tag>Sorting</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Sorting</tag>
       
     </tags>
     
@@ -6882,9 +6913,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -7174,9 +7205,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -7312,9 +7343,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -7590,9 +7621,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -7625,9 +7656,9 @@
       
       <tag>Array</tag>
       
-      <tag>Sorting</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Sorting</tag>
       
     </tags>
     
@@ -7939,7 +7970,7 @@
     <link href="/2023/12/30/148-Sort-List-Medium/"/>
     <url>/2023/12/30/148-Sort-List-Medium/</url>
     
-    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/sort-list/description/"  title="148. Sort List" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>全部存下來，然後排序完再重新連接，但這樣就至少<code>O(2n + nlogn)</code>也是挺暴力了的😂</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>這題的思路很簡單，但是指針操作一樣很容易搞混😂</p><ol><li>把<code>list</code>分成左半部和右半部</li><li>利用<code>mergesort</code>把左半和右半排序好</li><li>最後再把左右合併</li></ol><p><strong>Linked List找中心點的方法</strong></p><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">private</span> <span class="token class-name">ListNode</span> <span class="token function">getMid</span><span class="token punctuation">(</span><span class="token class-name">ListNode</span> head<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>    <span class="token comment">// Slow fast pointer to determine the middle node</span>    <span class="token class-name">ListNode</span> slow <span class="token operator">=</span> head<span class="token punctuation">,</span> fast <span class="token operator">=</span> head<span class="token punctuation">.</span>next<span class="token punctuation">;</span>    <span class="token comment">// When the fast pointer is still valid</span>    <span class="token keyword">while</span> <span class="token punctuation">(</span>fast <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> fast<span class="token punctuation">.</span>next <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        slow <span class="token operator">=</span> slow<span class="token punctuation">.</span>next<span class="token punctuation">;</span>        fast <span class="token operator">=</span> fast<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next<span class="token punctuation">;</span> <span class="token comment">// Shift twice</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">return</span> slow<span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/TGveA1oFhrc" title="Sort List - Merge Sort - Leetcode 148" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token class-name">ListNode</span> <span class="token function">sortList</span><span class="token punctuation">(</span><span class="token class-name">ListNode</span> head<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token comment">// Base case</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>head <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> head<span class="token punctuation">.</span>next <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">return</span> head<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// Split the list</span>        <span class="token class-name">ListNode</span> left <span class="token operator">=</span> head<span class="token punctuation">;</span>        <span class="token class-name">ListNode</span> right <span class="token operator">=</span> <span class="token function">getMid</span><span class="token punctuation">(</span>head<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// Hold the initial right pointer</span>        <span class="token class-name">ListNode</span> tmp <span class="token operator">=</span> right<span class="token punctuation">.</span>next<span class="token punctuation">;</span>        right<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>        right <span class="token operator">=</span> tmp<span class="token punctuation">;</span> <span class="token comment">// Move pointer</span>        left <span class="token operator">=</span> <span class="token function">sortList</span><span class="token punctuation">(</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>        right <span class="token operator">=</span> <span class="token function">sortList</span><span class="token punctuation">(</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">return</span> <span class="token function">merge</span><span class="token punctuation">(</span>left<span class="token punctuation">,</span> right<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token class-name">ListNode</span> <span class="token function">getMid</span><span class="token punctuation">(</span><span class="token class-name">ListNode</span> head<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token comment">// Slow fast pointer to determine the middle node</span>        <span class="token class-name">ListNode</span> slow <span class="token operator">=</span> head<span class="token punctuation">,</span> fast <span class="token operator">=</span> head<span class="token punctuation">.</span>next<span class="token punctuation">;</span>        <span class="token comment">// When the fast pointer is still valid</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>fast <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> fast<span class="token punctuation">.</span>next <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            slow <span class="token operator">=</span> slow<span class="token punctuation">.</span>next<span class="token punctuation">;</span>            fast <span class="token operator">=</span> fast<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next<span class="token punctuation">;</span> <span class="token comment">// Shift twice</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> slow<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token class-name">ListNode</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token class-name">ListNode</span> left<span class="token punctuation">,</span> <span class="token class-name">ListNode</span> right<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token comment">// Store the beginning</span>        <span class="token class-name">ListNode</span> dummy <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token class-name">ListNode</span> tail <span class="token operator">=</span> dummy<span class="token punctuation">;</span>        <span class="token comment">// traverse the nodes</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>left <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> right <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>left<span class="token punctuation">.</span>val <span class="token operator">&lt;</span> right<span class="token punctuation">.</span>val<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                tail<span class="token punctuation">.</span>next <span class="token operator">=</span> left<span class="token punctuation">;</span>                left <span class="token operator">=</span> left<span class="token punctuation">.</span>next<span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span> <span class="token comment">// left equal or larger than right</span>                tail<span class="token punctuation">.</span>next <span class="token operator">=</span> right<span class="token punctuation">;</span>                right <span class="token operator">=</span> right<span class="token punctuation">.</span>next<span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>            tail <span class="token operator">=</span> tail<span class="token punctuation">.</span>next<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// Merge all the remaining nodes</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>left <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            tail<span class="token punctuation">.</span>next <span class="token operator">=</span> left<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>right <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            tail<span class="token punctuation">.</span>next <span class="token operator">=</span> right<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> dummy<span class="token punctuation">.</span>next<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure><h2 id="2024-05-06"><a href="#2024-05-06" class="headerlink" title="2024&#x2F;05&#x2F;06"></a>2024&#x2F;05&#x2F;06</h2><ul><li>還不熟悉<code>mergesort</code></li></ul>]]></content>
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/sort-list/description/"  title="148. Sort List" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>全部存下來，然後排序完再重新連接，但這樣就至少<code>O(2n + nlogn)</code>也是挺暴力了的😂</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>這題的思路很簡單，但是指針操作一樣很容易搞混😂</p><ol><li>把<code>list</code>分成左半部和右半部</li><li>利用<code>mergesort</code>把左半和右半排序好</li><li>最後再把左右合併</li></ol><p><strong>Linked List找中心點的方法</strong></p><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">private</span> <span class="token class-name">ListNode</span> <span class="token function">getMid</span><span class="token punctuation">(</span><span class="token class-name">ListNode</span> head<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>    <span class="token comment">// Slow fast pointer to determine the middle node</span>    <span class="token class-name">ListNode</span> slow <span class="token operator">=</span> head<span class="token punctuation">,</span> fast <span class="token operator">=</span> head<span class="token punctuation">.</span>next<span class="token punctuation">;</span>    <span class="token comment">// When the fast pointer is still valid</span>    <span class="token keyword">while</span> <span class="token punctuation">(</span>fast <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> fast<span class="token punctuation">.</span>next <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        slow <span class="token operator">=</span> slow<span class="token punctuation">.</span>next<span class="token punctuation">;</span>        fast <span class="token operator">=</span> fast<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next<span class="token punctuation">;</span> <span class="token comment">// Shift twice</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">return</span> slow<span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/TGveA1oFhrc" title="Sort List - Merge Sort - Leetcode 148" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token class-name">ListNode</span> <span class="token function">sortList</span><span class="token punctuation">(</span><span class="token class-name">ListNode</span> head<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token comment">// Base case</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>head <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> head<span class="token punctuation">.</span>next <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">return</span> head<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// Split the list</span>        <span class="token class-name">ListNode</span> left <span class="token operator">=</span> head<span class="token punctuation">;</span>        <span class="token class-name">ListNode</span> right <span class="token operator">=</span> <span class="token function">getMid</span><span class="token punctuation">(</span>head<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// Hold the initial right pointer</span>        <span class="token class-name">ListNode</span> tmp <span class="token operator">=</span> right<span class="token punctuation">.</span>next<span class="token punctuation">;</span>        right<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>        right <span class="token operator">=</span> tmp<span class="token punctuation">;</span> <span class="token comment">// Move pointer</span>        left <span class="token operator">=</span> <span class="token function">sortList</span><span class="token punctuation">(</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>        right <span class="token operator">=</span> <span class="token function">sortList</span><span class="token punctuation">(</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">return</span> <span class="token function">merge</span><span class="token punctuation">(</span>left<span class="token punctuation">,</span> right<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token class-name">ListNode</span> <span class="token function">getMid</span><span class="token punctuation">(</span><span class="token class-name">ListNode</span> head<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token comment">// Slow fast pointer to determine the middle node</span>        <span class="token class-name">ListNode</span> slow <span class="token operator">=</span> head<span class="token punctuation">,</span> fast <span class="token operator">=</span> head<span class="token punctuation">.</span>next<span class="token punctuation">;</span>        <span class="token comment">// When the fast pointer is still valid</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>fast <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> fast<span class="token punctuation">.</span>next <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            slow <span class="token operator">=</span> slow<span class="token punctuation">.</span>next<span class="token punctuation">;</span>            fast <span class="token operator">=</span> fast<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next<span class="token punctuation">;</span> <span class="token comment">// Shift twice</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> slow<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token class-name">ListNode</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token class-name">ListNode</span> left<span class="token punctuation">,</span> <span class="token class-name">ListNode</span> right<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token comment">// Store the beginning</span>        <span class="token class-name">ListNode</span> dummy <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token class-name">ListNode</span> tail <span class="token operator">=</span> dummy<span class="token punctuation">;</span>        <span class="token comment">// traverse the nodes</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>left <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> right <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>left<span class="token punctuation">.</span>val <span class="token operator">&lt;</span> right<span class="token punctuation">.</span>val<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                tail<span class="token punctuation">.</span>next <span class="token operator">=</span> left<span class="token punctuation">;</span>                left <span class="token operator">=</span> left<span class="token punctuation">.</span>next<span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span> <span class="token comment">// left equal or larger than right</span>                tail<span class="token punctuation">.</span>next <span class="token operator">=</span> right<span class="token punctuation">;</span>                right <span class="token operator">=</span> right<span class="token punctuation">.</span>next<span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>            tail <span class="token operator">=</span> tail<span class="token punctuation">.</span>next<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// Merge all the remaining nodes</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>left <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            tail<span class="token punctuation">.</span>next <span class="token operator">=</span> left<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>right <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            tail<span class="token punctuation">.</span>next <span class="token operator">=</span> right<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> dummy<span class="token punctuation">.</span>next<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure><h2 id="2024-05-06"><a href="#2024-05-06" class="headerlink" title="2024&#x2F;05&#x2F;06"></a>2024&#x2F;05&#x2F;06</h2><ul><li>還不熟悉<code>mergesort</code></li></ul><h2 id="2024-10-13"><a href="#2024-10-13" class="headerlink" title="2024&#x2F;10&#x2F;13"></a>2024&#x2F;10&#x2F;13</h2><ul><li>又忘了<code>mergesort</code></li></ul>]]></content>
     
     
     <categories>
@@ -7957,9 +7988,9 @@
       
       <tag>心得</tag>
       
-      <tag>Sorting</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Sorting</tag>
       
       <tag>Linked List</tag>
       
@@ -8274,9 +8305,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
