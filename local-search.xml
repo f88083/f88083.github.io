@@ -4,6 +4,39 @@
   
   
   <entry>
+    <title>Discord是如何降低40%的WebSocket流量?</title>
+    <link href="/2024/10/14/Discord%E6%98%AF%E5%A6%82%E4%BD%95%E9%99%8D%E4%BD%8E40-WebSocket%E6%B5%81%E9%87%8F/"/>
+    <url>/2024/10/14/Discord%E6%98%AF%E5%A6%82%E4%BD%95%E9%99%8D%E4%BD%8E40-WebSocket%E6%B5%81%E9%87%8F/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p>以下為Quastor的<a href="https://blog.quastor.org/p/how-discord-reduced-outgoing-traffic-by-40?_bhlid=e69b76620f869b14c9e16952bea5eae257561cdb&last_resource_guid=Post:807fadb3-3601-49e6-9577-2b3cdd2320c7&utm_campaign=how-discord-reduced-outgoing-traffic-by-40&utm_medium=newsletter&utm_source=blog.quastor.org">文章</a>總結，該文章是總結Discord的<a href="https://discord.com/blog/how-discord-reduced-websocket-traffic-by-40-percent?utm_source=blog.quastor.org&utm_medium=newsletter&utm_campaign=how-discord-reduced-outgoing-traffic-by-40&_bhlid=eb3a51890c54c7a7f2e513130806056b2d373434">文章</a></p></blockquote><p><code>Discord</code>就不多做介紹了，所有的文字、檔案以及影片都需要透過網路傳遞，因此盡可能的降低流量至關重要</p><h2 id="原本用什麼壓縮"><a href="#原本用什麼壓縮" class="headerlink" title="原本用什麼壓縮?"></a>原本用什麼壓縮?</h2><p>自2017，Discord都是使用<code>zlib</code>壓縮訊息，可以讓檔案變小2至10倍小</p><h2 id="現在換成什麼"><a href="#現在換成什麼" class="headerlink" title="現在換成什麼?"></a>現在換成什麼?</h2><p>經過Discord團隊的測試和調校，改為使用<code>zstd</code>以及<code>Passive Sessions v2</code>，本文重點討論<code>zstd</code>的部分</p><h2 id="zstd-那是什麼"><a href="#zstd-那是什麼" class="headerlink" title="zstd?那是什麼?"></a>zstd?那是什麼?</h2><p><code>Zstandard</code>(zstd)是由Facebook開發的壓縮演算法，因其高效性和靈活性而受到許多科技公司採用，例如Uber, AWS, Meta。它具有22種壓縮等級，可調整速度和壓縮率的平衡，且支援字典壓縮技術，特別適合於小型訊息的壓縮。</p><p>賣點:</p><ul><li>自由的調整<code>Compression ratios</code>和速度之間的平衡</li><li>良好的支援</li><li>適合小型訊息的壓縮(小資料的壓縮是大多數壓縮演算法的痛點)</li></ul><h2 id="Discord怎麼測試其效能"><a href="#Discord怎麼測試其效能" class="headerlink" title="Discord怎麼測試其效能?"></a>Discord怎麼測試其效能?</h2><p>他們使用名為<code>dark launch</code>的方法進行測試</p><ol><li>在後端同時使用<code>zlib</code>以及<code>zstd</code>壓縮一小部分流量</li><li>收集測量數據</li><li>拋棄被<code>zstd</code>壓縮的資料，因為測量數據已經被儲存了</li></ol><p>不過起初<code>zstd</code>並未贏過<code>zlib</code></p><p>原因是<code>zlib</code>使用了<a href="https://wiki.tcl-lang.org/page/zlib+stream?utm_source=blog.quastor.org&utm_medium=newsletter&utm_campaign=how-discord-reduced-outgoing-traffic-by-40&_bhlid=d5a50ec1964abdc24c3588952973f8aa2d1fe7f4">streaming compression</a>而<code>zstd</code>沒有，所以Discord就幫<code>zstd</code>實作了這個功能貢獻社群，在<a href="https://github.com/silviucpp/ezstd?utm_source=blog.quastor.org&utm_medium=newsletter&utm_campaign=how-discord-reduced-outgoing-traffic-by-40&_bhlid=3f8e1468e230ce692cadb27be0ef17dfe716b5b5">estd library</a>，此後<code>zstd</code>的壓縮率就贏過<code>zlib</code>了</p><p>壓縮率從6變成10，平均<code>payload</code>從270bytes降到166bytes</p><h2 id="調校zstd"><a href="#調校zstd" class="headerlink" title="調校zstd"></a>調校zstd</h2><p>要充分發揮<code>zstd</code>的功能就必須調校其參數以完美適用，團隊主要調整以下三個參數</p><ul><li>Hashlog: 決定最大<code>Hash Table</code>大小，越大壓縮效果越好但效能越差</li><li>Chainlog: 二級資料結構，用於解析<code>collision</code>，也是數值越大壓縮效果越好，但需要更多記憶體與壓縮時間</li><li>Windowlog: <code>sliding window</code>的大小，一樣也是越大壓縮率越好，但需要更多記憶體和時間</li></ul><h2 id="結果"><a href="#結果" class="headerlink" title="結果"></a>結果</h2><p>最終把所有平台都換成<code>zstd</code>，這些改進讓<code>bandwidth</code>使用減少了40%</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>軟體工程</category>
+      
+      <category>系統設計</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Discord</tag>
+      
+      <tag>WebSocket</tag>
+      
+      <tag>zlib</tag>
+      
+      <tag>zstd</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>725. Split Linked List in Parts - Medium</title>
     <link href="/2024/10/14/725-Split-Linked-List-in-Parts-Medium/"/>
     <url>/2024/10/14/725-Split-Linked-List-in-Parts-Medium/</url>
@@ -6301,9 +6334,9 @@
       
       <tag>Greedy</tag>
       
-      <tag>Dynamic Programming</tag>
-      
       <tag>Sorting</tag>
+      
+      <tag>Dynamic Programming</tag>
       
     </tags>
     
@@ -10043,9 +10076,9 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Algorithms</tag>
+      
+      <tag>Stack</tag>
       
       <tag>筆記</tag>
       
