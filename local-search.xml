@@ -4,6 +4,43 @@
   
   
   <entry>
+    <title>145. Binary Tree Postorder Traversal - Easy</title>
+    <link href="/2024/10/17/145-Binary-Tree-Postorder-Traversal-Easy/"/>
+    <url>/2024/10/17/145-Binary-Tree-Postorder-Traversal-Easy/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/binary-tree-postorder-traversal/description/"  title="145. Binary Tree Postorder Traversal" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>和<code>inorder</code>與<code>preorder</code>差不多，調換加入的順序</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>與<code>inorder</code>還有<code>preorder</code>有點區別，比較刁鑽</p><ol><li>迭代整個樹</li><li>過程中只要當前節點不是<code>null</code>就加入答案，並且放入<code>stack</code>，繼續往右邊節點走</li><li>當前節點為<code>null</code>時才去左邊節點</li><li>反轉答案並回傳</li></ol><p><code>postorder</code>是先訪問左右子節點再訪問父節點，因此這個思路是反過來操作，所以在最後直接反轉就是答案</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p><a href="https://leetcode.com/problems/binary-tree-postorder-traversal/solutions/45551/preorder-inorder-and-postorder-iteratively-summarization/">網友解答</a></p><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> <span class="token function">postorderTraversal</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> root<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> res <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token class-name">Stack</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">TreeNode</span><span class="token punctuation">></span></span> stack <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Stack</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token class-name">TreeNode</span> cur <span class="token operator">=</span> root<span class="token punctuation">;</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>cur <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">||</span> <span class="token operator">!</span>stack<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// Go to the right child</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>cur <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token comment">// Add before going to children, that's why reverse at the end</span>                res<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>cur<span class="token punctuation">.</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>                stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>cur<span class="token punctuation">)</span><span class="token punctuation">;</span>                cur <span class="token operator">=</span> cur<span class="token punctuation">.</span>right<span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>                cur <span class="token operator">=</span> stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                cur <span class="token operator">=</span> cur<span class="token punctuation">.</span>left<span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token class-name">Collections</span><span class="token punctuation">.</span><span class="token function">reverse</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">return</span> res<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Easy</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Stack</tag>
+      
+      <tag>Binary Tree</tag>
+      
+      <tag>Depth-First Search</tag>
+      
+      <tag>Tree</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>144. Binary Tree Preorder Traversal - Easy</title>
     <link href="/2024/10/16/144-Binary-Tree-Preorder-Traversal-Easy/"/>
     <url>/2024/10/16/144-Binary-Tree-Preorder-Traversal-Easy/</url>
@@ -22,11 +59,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Binary Tree</tag>
       
@@ -59,11 +96,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Binary Tree</tag>
       
@@ -257,15 +294,15 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
       
-      <tag>Monotonic Stack</tag>
+      <tag>Stack</tag>
       
       <tag>Recursion</tag>
+      
+      <tag>Monotonic Stack</tag>
       
       <tag>Linked List</tag>
       
@@ -389,11 +426,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Two Pointers</tag>
       
@@ -461,9 +498,9 @@
       
       <tag>心得</tag>
       
-      <tag>Array</tag>
-      
       <tag>Queue</tag>
+      
+      <tag>Array</tag>
       
       <tag>Linked List</tag>
       
@@ -494,11 +531,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Array</tag>
       
@@ -858,9 +895,9 @@
       
       <tag>Breadth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Linked List</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -1225,11 +1262,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Queue</tag>
       
@@ -1266,11 +1303,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Array</tag>
       
@@ -1305,11 +1342,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>String</tag>
       
@@ -1338,11 +1375,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>String</tag>
       
@@ -1375,11 +1412,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>String</tag>
       
@@ -1408,11 +1445,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Monotonic Stack</tag>
       
@@ -1445,11 +1482,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Array</tag>
       
@@ -1480,11 +1517,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>String</tag>
       
@@ -1515,11 +1552,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>String</tag>
       
@@ -1548,11 +1585,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Queue</tag>
       
@@ -1583,11 +1620,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Array</tag>
       
@@ -2701,11 +2738,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Array</tag>
       
@@ -2771,11 +2808,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>String</tag>
       
@@ -3625,9 +3662,9 @@
       
       <tag>Hash Table</tag>
       
-      <tag>Hash Function</tag>
-      
       <tag>Design</tag>
+      
+      <tag>Hash Function</tag>
       
     </tags>
     
@@ -3804,9 +3841,9 @@
       
       <tag>Linked List</tag>
       
-      <tag>Hash Function</tag>
-      
       <tag>Design</tag>
+      
+      <tag>Hash Function</tag>
       
     </tags>
     
@@ -3843,9 +3880,9 @@
       
       <tag>Linked List</tag>
       
-      <tag>Hash Function</tag>
-      
       <tag>Design</tag>
+      
+      <tag>Hash Function</tag>
       
     </tags>
     
@@ -4292,11 +4329,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>String</tag>
       
@@ -4871,11 +4908,11 @@
       
       <tag>Array</tag>
       
-      <tag>Dynamic Programming</tag>
-      
       <tag>Hash Table</tag>
       
       <tag>Trie</tag>
+      
+      <tag>Dynamic Programming</tag>
       
       <tag>Memoization</tag>
       
@@ -5334,9 +5371,9 @@
       
       <tag>Array</tag>
       
-      <tag>Depth-First Search</tag>
-      
       <tag>Matrix</tag>
+      
+      <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
       
@@ -5373,9 +5410,9 @@
       
       <tag>Array</tag>
       
-      <tag>Depth-First Search</tag>
-      
       <tag>Matrix</tag>
+      
+      <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
       
@@ -5822,11 +5859,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Array</tag>
       
@@ -6365,11 +6402,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Design</tag>
       
@@ -6441,9 +6478,9 @@
       
       <tag>Greedy</tag>
       
-      <tag>Dynamic Programming</tag>
-      
       <tag>Sorting</tag>
+      
+      <tag>Dynamic Programming</tag>
       
     </tags>
     
@@ -6542,11 +6579,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>String</tag>
       
@@ -6961,7 +6998,7 @@
     <link href="/2024/01/19/108-Convert-Sorted-Array-to-Binary-Search-Tree-Easy/"/>
     <url>/2024/01/19/108-Convert-Sorted-Array-to-Binary-Search-Tree-Easy/</url>
     
-    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/description/"  title="108. Convert Sorted Array to Binary Search Tree" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>也是很久以前做過的題目了，但完全忘了怎麼寫</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>binary search就可以建構出這個tree</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token class-name">TreeNode</span> <span class="token function">sortedArrayToBST</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">return</span> <span class="token function">createTree</span><span class="token punctuation">(</span>nums<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> nums<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token class-name">TreeNode</span> <span class="token function">createTree</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">,</span> <span class="token keyword">int</span> l<span class="token punctuation">,</span> <span class="token keyword">int</span> r<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>l <span class="token operator">></span> r<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> mid <span class="token operator">=</span> l <span class="token operator">+</span> <span class="token punctuation">(</span>r <span class="token operator">-</span> l<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>        <span class="token class-name">TreeNode</span> res <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TreeNode</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>mid<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        res<span class="token punctuation">.</span>left <span class="token operator">=</span> <span class="token function">createTree</span><span class="token punctuation">(</span>nums<span class="token punctuation">,</span> l<span class="token punctuation">,</span> mid <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        res<span class="token punctuation">.</span>right <span class="token operator">=</span> <span class="token function">createTree</span><span class="token punctuation">(</span>nums<span class="token punctuation">,</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> r<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">return</span> res<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/description/"  title="108. Convert Sorted Array to Binary Search Tree" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>也是很久以前做過的題目了，但完全忘了怎麼寫</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>binary search就可以建構出這個tree</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token class-name">TreeNode</span> <span class="token function">sortedArrayToBST</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">return</span> <span class="token function">createTree</span><span class="token punctuation">(</span>nums<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> nums<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token class-name">TreeNode</span> <span class="token function">createTree</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">,</span> <span class="token keyword">int</span> l<span class="token punctuation">,</span> <span class="token keyword">int</span> r<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>l <span class="token operator">></span> r<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> mid <span class="token operator">=</span> l <span class="token operator">+</span> <span class="token punctuation">(</span>r <span class="token operator">-</span> l<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>        <span class="token class-name">TreeNode</span> res <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TreeNode</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>mid<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        res<span class="token punctuation">.</span>left <span class="token operator">=</span> <span class="token function">createTree</span><span class="token punctuation">(</span>nums<span class="token punctuation">,</span> l<span class="token punctuation">,</span> mid <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        res<span class="token punctuation">.</span>right <span class="token operator">=</span> <span class="token function">createTree</span><span class="token punctuation">(</span>nums<span class="token punctuation">,</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> r<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">return</span> res<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure><h2 id="2024-10-17"><a href="#2024-10-17" class="headerlink" title="2024&#x2F;10&#x2F;17"></a>2024&#x2F;10&#x2F;17</h2><ul><li>忘了怎麼找要插入的數:D</li></ul>]]></content>
     
     
     <categories>
@@ -7086,9 +7123,9 @@
       
       <tag>心得</tag>
       
-      <tag>Dynamic Programming</tag>
-      
       <tag>Depth-First Search</tag>
+      
+      <tag>Dynamic Programming</tag>
       
       <tag>Breadth-First Search</tag>
       
@@ -7123,11 +7160,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Recursion</tag>
       
@@ -7553,9 +7590,9 @@
       
       <tag>Array</tag>
       
-      <tag>Dynamic Programming</tag>
-      
       <tag>Matrix</tag>
+      
+      <tag>Dynamic Programming</tag>
       
     </tags>
     
@@ -7646,11 +7683,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Recursion</tag>
       
@@ -7683,11 +7720,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Array</tag>
       
@@ -8000,11 +8037,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Array</tag>
       
@@ -8507,11 +8544,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>String</tag>
       
@@ -8707,11 +8744,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Queue</tag>
       
@@ -9251,9 +9288,9 @@
       
       <tag>心得</tag>
       
-      <tag>Depth-First Search</tag>
-      
       <tag>Matrix</tag>
+      
+      <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
       
@@ -9693,11 +9730,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>String</tag>
       
@@ -9923,11 +9960,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Array</tag>
       
@@ -10183,9 +10220,9 @@
     
     <tags>
       
-      <tag>Algorithms</tag>
-      
       <tag>Stack</tag>
+      
+      <tag>Algorithms</tag>
       
       <tag>筆記</tag>
       
@@ -10216,11 +10253,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>String</tag>
       
