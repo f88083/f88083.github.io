@@ -253,6 +253,162 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/10/18/112-Path-Sum-Easy/" target="_self">
+          112. Path Sum - Easy
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/18/112-Path-Sum-Easy/" target="_self">
+        <div>
+          前往題目  想法 走訪所有node，遇到leaf判斷當前總合是否等於目標總和  思路遞迴  遇到null回傳 否則更新當前總和，如果不是leaf則繼續呼叫方法走訪左右子樹 如果總和相等標記true  Codeclass Solution &#123;     boolean res;      public boolean hasPathSum(TreeNode root, int targetS
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-10-18 11:09" pubdate>
+              2024-10-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Binary-Tree/">#Binary Tree</a>
+            
+              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
+            
+              <a href="/tags/Breadth-First-Search/">#Breadth-First Search</a>
+            
+              <a href="/tags/Tree/">#Tree</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/10/18/617-Merge-Two-Binary-Trees-Easy/" target="_self">
+          617. Merge Two Binary Trees - Easy
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/18/617-Merge-Two-Binary-Trees-Easy/" target="_self">
+        <div>
+          前往題目  想法 建立新的樹，每個節點的值相加  思路遞迴  遇到root1或root2其中一個是null就回傳另一個，兩個都是null也無所謂，因為就是把null加到樹上 兩個節點的值相加 左右節點再次呼叫方法 回傳當前節點  Code網友解答 但是這個方法挪用了舊的樹，也就是root1，題目想要我們merge them into a new binary tree class Solution
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-10-18 10:40" pubdate>
+              2024-10-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Binary-Tree/">#Binary Tree</a>
+            
+              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
+            
+              <a href="/tags/Breadth-First-Search/">#Breadth-First Search</a>
+            
+              <a href="/tags/Tree/">#Tree</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2024/10/17/145-Binary-Tree-Postorder-Traversal-Easy/" target="_self">
           145. Binary Tree Postorder Traversal - Easy
         </a>
@@ -847,161 +1003,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/10/08/2487-Remove-Nodes-From-Linked-List-Medium/" target="_self">
-          2487. Remove Nodes From Linked List - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/08/2487-Remove-Nodes-From-Linked-List-Medium/" target="_self">
-        <div>
-          前往題目  思路 反轉list 疊代所有元素，並紀錄最大值，小於最大值的話直接移除(略過) 再次反轉  Code  class Solution &#123;     public ListNode removeNodes(ListNode head) &#123;                  // Reverse the list         head = reverse(head);
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-10-08 11:18" pubdate>
-              2024-10-08
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Stack/">#Stack</a>
-            
-              <a href="/tags/Recursion/">#Recursion</a>
-            
-              <a href="/tags/Monotonic-Stack/">#Monotonic Stack</a>
-            
-              <a href="/tags/Linked-List/">#Linked List</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/10/08/83-Remove-Duplicates-from-Sorted-List-Easy/" target="_self">
-          83. Remove Duplicates from Sorted List - Easy
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/08/83-Remove-Duplicates-from-Sorted-List-Easy/" target="_self">
-        <div>
-          前往題目  想法 簡單的去元素操作  思路想得有點太複雜，原本還想把去掉的元素的next也改成null，網友的解法並沒有這樣做，不知道gc會不會回收  循環直到cur.next為null 兩兩比較，如果數值一樣，就更改next為下一個，但不要移動當前的node，除非數值不同再移動  Code網友解答 class Solution &#123;     public ListNode deleteD
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-10-08 10:42" pubdate>
-              2024-10-08
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Linked-List/">#Linked List</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/#board">30</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/31/#board">31</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

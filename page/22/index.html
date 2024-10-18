@@ -253,6 +253,166 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/01/14/179-Largest-Number-Medium/" target="_self">
+          179. Largest Number - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/14/179-Largest-Number-Medium/" target="_self">
+        <div>
+          前往題目  思路 利用string比較時會照數字先後排序(0, 1, 2, 3, ...) 排序完之後第一位是最小的(以第一個數字來看)，然後越來越大 檢查最後一個數字的第一位是不是0，如果是就直接回傳0，因為沒有其他可能了 最後把string array由後往前拼起來就是答案了  Code討論區解答 class Solution &#123;     public String largestN
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-14 17:32" pubdate>
+              2024-01-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/String/">#String</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Greedy/">#Greedy</a>
+            
+              <a href="/tags/Sorting/">#Sorting</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/14/268-Missing-Number-Easy/" target="_self">
+          268. Missing Number - Easy
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/14/268-Missing-Number-Easy/" target="_self">
+        <div>
+          前往題目  想法 只想到了用HashSet存，然後比較，雖然是時間是O(N)但空間也是，不符合題目要求  思路這題大致有兩種做法，Bit manipulation和Sum Bit manipulation  算0~n的XOR應該是多少 再用上面的結果去XOR實際的nums陣列 因為XOR的特性是與自己相同的XOR完會是0，所以全部XOR一遍的結果就是答案，也就是缺失的那個  Sum  可以用公式直
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-14 15:20" pubdate>
+              2024-01-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Math/">#Math</a>
+            
+              <a href="/tags/Hash-Table/">#Hash Table</a>
+            
+              <a href="/tags/Sorting/">#Sorting</a>
+            
+              <a href="/tags/Bit-Manipulation/">#Bit Manipulation</a>
+            
+              <a href="/tags/Binary-Search/">#Binary Search</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2024/01/14/101-Symmetric-Tree-Easy/" target="_self">
           101. Symmetric Tree - Easy
         </a>
@@ -846,163 +1006,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/09/283-Move-Zeroes-Easy/" target="_self">
-          283. Move Zeroes - Easy
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/09/283-Move-Zeroes-Easy/" target="_self">
-        <div>
-          前往題目  想法 只想得到用一個額外的陣列儲存非零項，這樣空間和時間都是O(N)  思路題目很詐，說move all 0&#39;s to the end of it，這樣第一眼就在想要怎麼把0移到後面，但其實只要反過來想，把非零項移到前面就好了，最後再補上零即可…  把非零項移到前面 補上所需的零  Codeclass Solution &#123;     public void moveZe
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-09 13:29" pubdate>
-              2024-01-09
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Two-Pointers/">#Two Pointers</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/09/234-Palindrome-Linked-List-Easy/" target="_self">
-          234. Palindrome Linked List - Easy
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/09/234-Palindrome-Linked-List-Easy/" target="_self">
-        <div>
-          前往題目  想法 因為是單鏈，所以只能先找中間點，不然沒有基準 找到中間點後就可以知道左半部和右半部的分水嶺 沒想到可以Reverse  思路 找到中間點 反轉右半邊 檢查palindrome  反轉那邊有點繞，但基本上就是  定義一個previous指針，然後會從slow指針開始反轉(因為他一定在mid+1) 存slow.next，也就是原來的下一個 slow.next換成previous，這裡
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-09 10:58" pubdate>
-              2024-01-09
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Stack/">#Stack</a>
-            
-              <a href="/tags/Recursion/">#Recursion</a>
-            
-              <a href="/tags/Two-Pointers/">#Two Pointers</a>
-            
-              <a href="/tags/Linked-List/">#Linked List</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/21/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/#board">20</a><a class="page-number" href="/page/21/#board">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/#board">23</a><a class="page-number" href="/page/24/#board">24</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/#board">30</a><a class="extend next" rel="next" href="/page/23/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/21/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/#board">20</a><a class="page-number" href="/page/21/#board">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/#board">23</a><a class="page-number" href="/page/24/#board">24</a><span class="space">&hellip;</span><a class="page-number" href="/page/31/#board">31</a><a class="extend next" rel="next" href="/page/23/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

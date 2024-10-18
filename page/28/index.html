@@ -253,6 +253,156 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2023/12/02/211-Design-Add-and-Search-Words-Data-Structure-Medium/" target="_self">
+          211. Design Add and Search Words Data Structure - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/02/211-Design-Add-and-Search-Words-Data-Structure-Medium/" target="_self">
+        <div>
+          前往題目  想法 可搜尋字詞功能我第一個想法是建構一顆樹(Trie)，字母連著字母 這題是資料結構，比較好玩一點😆  思路 Trie的資料結構，用array儲存字母，因為固定最多26個 加入就直接判斷有沒有該字母，沒有的話init.有的話直接略過，看下一個 Search用Backtracking的方式加入帶有.的詞  比較妙的是backtracking的部分，參照以下的code可以看到，遇到.的
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-02 10:41" pubdate>
+              2023-12-02
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/String/">#String</a>
+            
+              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
+            
+              <a href="/tags/Trie/">#Trie</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/12/01/152-Maximum-Product-Subarray-Medium/" target="_self">
+          152. Maximum Product Subarray - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/01/152-Maximum-Product-Subarray-Medium/" target="_self">
+        <div>
+          前往題目  想法 毫無想法，每次看到這種subarray都覺得是不是backtracking🤣  思路這題的解法也很妙  使用min和max紀錄每個點的當前最小值和最大值，紀錄最小值的原因是有可能遇到負數，但如果再遇到一個就會變成正數，所以也要考慮進去 疊代nums，每個迴圈都判斷是否有更小和更大的值  這題蠻不像DP，但他的確是DP🥺 Codeclass Solution &#123;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-01 11:59" pubdate>
+              2023-12-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Dynamic-Programming/">#Dynamic Programming</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2023/12/01/49-Group-Anagrams-Medium/" target="_self">
           49. Group Anagrams - Medium
         </a>
@@ -810,148 +960,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/24/134-Gas-Station-Medium/" target="_self">
-          134. Gas Station - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/24/134-Gas-Station-Medium/" target="_self">
-        <div>
-          前往題目  想法 沒什麼想法，甚至覺得是不是要用DP  思路一樣是Neetcode大大給的解法，也是我看到最好理解的    一開始先藉由兩個array的各自的總和比較，就可以看出是否沒有解，也就是-1。因為gas的sum &lt; cost的sum的時候代表就算從汽油最充足的地方開始一樣不可能抵達，因為起點也是終點 接著就知道一定會有解，那只要找到最靠左的gas[i] - cost[i]不為零的起
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-24 10:45" pubdate>
-              2023-11-24
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Greedy/">#Greedy</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/11/23/%E5%A6%82%E4%BD%95%E4%BF%AE%E5%BE%A9Hexo-Fluid%E4%B8%BB%E9%A1%8CFold%E6%91%BA%E7%96%8A%E5%8A%9F%E8%83%BD%E9%8C%AF%E8%AA%A4%E7%9A%84%E5%95%8F%E9%A1%8C/" target="_self">
-          如何修復Hexo Fluid主題Fold摺疊功能錯誤的問題
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/11/23/%E5%A6%82%E4%BD%95%E4%BF%AE%E5%BE%A9Hexo-Fluid%E4%B8%BB%E9%A1%8CFold%E6%91%BA%E7%96%8A%E5%8A%9F%E8%83%BD%E9%8C%AF%E8%AA%A4%E7%9A%84%E5%95%8F%E9%A1%8C/" target="_self">
-        <div>
-          問題前往github issue  以上issue解釋了tag中fold的問題 觀察通過觀察，發現fluid的官方文件裡面有提到可使用此功能，但使用最新版的fluid v1.9.5根本就沒有 Source裡也找不到相關的js檔案，代表應該根本就沒這個功能，於是在Fluid的repo搜尋了一下發現有善心人士三個月前提出了PR，但還在develop的branch裡。那我就不懂了，為何沒有的功能會在文件
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-23 16:09" pubdate>
-              2023-11-23
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%B6%9C%E5%90%88/" class="category-chain-item">綜合</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Fluid%E4%BF%AE%E5%BE%A9/">#Fluid修復</a>
-            
-              <a href="/tags/Github/">#Github</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/27/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/#board">26</a><a class="page-number" href="/page/27/#board">27</a><span class="page-number current">28</span><a class="page-number" href="/page/29/#board">29</a><a class="page-number" href="/page/30/#board">30</a><a class="extend next" rel="next" href="/page/29/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/27/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/#board">26</a><a class="page-number" href="/page/27/#board">27</a><span class="page-number current">28</span><a class="page-number" href="/page/29/#board">29</a><a class="page-number" href="/page/30/#board">30</a><a class="page-number" href="/page/31/#board">31</a><a class="extend next" rel="next" href="/page/29/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

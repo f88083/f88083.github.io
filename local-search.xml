@@ -4,6 +4,80 @@
   
   
   <entry>
+    <title>112. Path Sum - Easy</title>
+    <link href="/2024/10/18/112-Path-Sum-Easy/"/>
+    <url>/2024/10/18/112-Path-Sum-Easy/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/path-sum/description/"  title="112. Path Sum" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>走訪所有<code>node</code>，遇到<code>leaf</code>判斷當前總合是否等於目標總和</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>遞迴</p><ol><li>遇到<code>null</code>回傳</li><li>否則更新當前總和，如果不是<code>leaf</code>則繼續呼叫方法走訪左右子樹</li><li>如果總和相等標記<code>true</code></li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">boolean</span> res<span class="token punctuation">;</span>    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">hasPathSum</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> root<span class="token punctuation">,</span> <span class="token keyword">int</span> targetSum<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        res <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>        <span class="token function">find</span><span class="token punctuation">(</span>root<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> targetSum<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">return</span> res<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">find</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> node<span class="token punctuation">,</span> <span class="token keyword">int</span> curSum<span class="token punctuation">,</span> <span class="token keyword">int</span> targetSum<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>node <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>        curSum <span class="token operator">+=</span> node<span class="token punctuation">.</span>val<span class="token punctuation">;</span>                <span class="token comment">// Reached the leaf</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">.</span>left <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> node<span class="token punctuation">.</span>right <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>curSum <span class="token operator">==</span> targetSum<span class="token punctuation">)</span>                res <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>            <span class="token keyword">return</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token function">find</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>left<span class="token punctuation">,</span> curSum<span class="token punctuation">,</span> targetSum<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token function">find</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>right<span class="token punctuation">,</span> curSum<span class="token punctuation">,</span> targetSum<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure><p>不用額外的變數可以這樣寫</p><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">hasPathSum</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> root<span class="token punctuation">,</span> <span class="token keyword">int</span> targetSum<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">return</span> <span class="token function">find</span><span class="token punctuation">(</span>root<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> targetSum<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token keyword">boolean</span> <span class="token function">find</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> node<span class="token punctuation">,</span> <span class="token keyword">int</span> curSum<span class="token punctuation">,</span> <span class="token keyword">int</span> targetSum<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>node <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>        curSum <span class="token operator">+=</span> node<span class="token punctuation">.</span>val<span class="token punctuation">;</span>        <span class="token comment">// Reached the leaf</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">.</span>left <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> node<span class="token punctuation">.</span>right <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>curSum <span class="token operator">==</span> targetSum<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> <span class="token function">find</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>left<span class="token punctuation">,</span> curSum<span class="token punctuation">,</span> targetSum<span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token function">find</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>right<span class="token punctuation">,</span> curSum<span class="token punctuation">,</span> targetSum<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Easy</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Binary Tree</tag>
+      
+      <tag>Depth-First Search</tag>
+      
+      <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>617. Merge Two Binary Trees - Easy</title>
+    <link href="/2024/10/18/617-Merge-Two-Binary-Trees-Easy/"/>
+    <url>/2024/10/18/617-Merge-Two-Binary-Trees-Easy/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/merge-two-binary-trees/description/"  title="617. Merge Two Binary Trees" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>建立新的樹，每個節點的值相加</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>遞迴</p><ol><li>遇到<code>root1</code>或<code>root2</code>其中一個是<code>null</code>就回傳另一個，兩個都是<code>null</code>也無所謂，因為就是把<code>null</code>加到樹上</li><li>兩個節點的值相加</li><li>左右節點再次呼叫方法</li><li>回傳當前節點</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p><a href="https://leetcode.com/problems/merge-two-binary-trees/solutions/3317995/easiest-solution-in-5-lines-of-code/">網友解答</a></p><p>但是這個方法挪用了舊的樹，也就是<code>root1</code>，題目想要我們merge them into a new binary tree</p><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token class-name">TreeNode</span> <span class="token function">mergeTrees</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> root1<span class="token punctuation">,</span> <span class="token class-name">TreeNode</span> root2<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>root1 <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> root2<span class="token punctuation">;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>root2 <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> root1<span class="token punctuation">;</span>        <span class="token comment">// Sum up the current nodes</span>        root1<span class="token punctuation">.</span>val <span class="token operator">+=</span> root2<span class="token punctuation">.</span>val<span class="token punctuation">;</span>        <span class="token comment">// Build the left and right nodes</span>        root1<span class="token punctuation">.</span>left <span class="token operator">=</span> <span class="token function">mergeTrees</span><span class="token punctuation">(</span>root1<span class="token punctuation">.</span>left<span class="token punctuation">,</span> root2<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>        root1<span class="token punctuation">.</span>right <span class="token operator">=</span> <span class="token function">mergeTrees</span><span class="token punctuation">(</span>root1<span class="token punctuation">.</span>right<span class="token punctuation">,</span> root2<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">return</span> root1<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure><p>建立新的樹</p><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token class-name">TreeNode</span> <span class="token function">mergeTrees</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> root1<span class="token punctuation">,</span> <span class="token class-name">TreeNode</span> root2<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>root1 <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> root2 <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>        <span class="token comment">// In case a null node present</span>        <span class="token keyword">int</span> val1 <span class="token operator">=</span> root1 <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">?</span> root1<span class="token punctuation">.</span>val <span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> val2 <span class="token operator">=</span> root2 <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">?</span> root2<span class="token punctuation">.</span>val <span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token comment">// Build the new tree</span>        <span class="token class-name">TreeNode</span> res <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TreeNode</span><span class="token punctuation">(</span>val1 <span class="token operator">+</span> val2<span class="token punctuation">)</span><span class="token punctuation">;</span>        res<span class="token punctuation">.</span>left <span class="token operator">=</span> <span class="token function">mergeTrees</span><span class="token punctuation">(</span>root1 <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">?</span> root1<span class="token punctuation">.</span>left <span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span> root2 <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">?</span> root2<span class="token punctuation">.</span>left <span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        res<span class="token punctuation">.</span>right <span class="token operator">=</span> <span class="token function">mergeTrees</span><span class="token punctuation">(</span>root1 <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">?</span> root1<span class="token punctuation">.</span>right <span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span> root2 <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">?</span> root2<span class="token punctuation">.</span>right <span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">return</span> res<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Easy</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Binary Tree</tag>
+      
+      <tag>Depth-First Search</tag>
+      
+      <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>145. Binary Tree Postorder Traversal - Easy</title>
     <link href="/2024/10/17/145-Binary-Tree-Postorder-Traversal-Easy/"/>
     <url>/2024/10/17/145-Binary-Tree-Postorder-Traversal-Easy/</url>
@@ -895,9 +969,9 @@
       
       <tag>Breadth-First Search</tag>
       
-      <tag>Linked List</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Linked List</tag>
       
     </tags>
     
@@ -4910,9 +4984,9 @@
       
       <tag>Hash Table</tag>
       
-      <tag>Trie</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Trie</tag>
       
       <tag>Memoization</tag>
       
@@ -6478,9 +6552,9 @@
       
       <tag>Greedy</tag>
       
-      <tag>Sorting</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Sorting</tag>
       
     </tags>
     
@@ -7123,9 +7197,9 @@
       
       <tag>心得</tag>
       
-      <tag>Depth-First Search</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
       
@@ -10127,11 +10201,11 @@
       
       <tag>Algorithms</tag>
       
+      <tag>Queue</tag>
+      
       <tag>筆記</tag>
       
       <tag>演算法</tag>
-      
-      <tag>Queue</tag>
       
     </tags>
     

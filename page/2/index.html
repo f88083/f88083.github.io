@@ -253,6 +253,156 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/10/08/2487-Remove-Nodes-From-Linked-List-Medium/" target="_self">
+          2487. Remove Nodes From Linked List - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/08/2487-Remove-Nodes-From-Linked-List-Medium/" target="_self">
+        <div>
+          前往題目  思路 反轉list 疊代所有元素，並紀錄最大值，小於最大值的話直接移除(略過) 再次反轉  Code  class Solution &#123;     public ListNode removeNodes(ListNode head) &#123;                  // Reverse the list         head = reverse(head);
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-10-08 11:18" pubdate>
+              2024-10-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Stack/">#Stack</a>
+            
+              <a href="/tags/Recursion/">#Recursion</a>
+            
+              <a href="/tags/Monotonic-Stack/">#Monotonic Stack</a>
+            
+              <a href="/tags/Linked-List/">#Linked List</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/10/08/83-Remove-Duplicates-from-Sorted-List-Easy/" target="_self">
+          83. Remove Duplicates from Sorted List - Easy
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/08/83-Remove-Duplicates-from-Sorted-List-Easy/" target="_self">
+        <div>
+          前往題目  想法 簡單的去元素操作  思路想得有點太複雜，原本還想把去掉的元素的next也改成null，網友的解法並沒有這樣做，不知道gc會不會回收  循環直到cur.next為null 兩兩比較，如果數值一樣，就更改next為下一個，但不要移動當前的node，除非數值不同再移動  Code網友解答 class Solution &#123;     public ListNode deleteD
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-10-08 10:42" pubdate>
+              2024-10-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Linked-List/">#Linked List</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2024/10/07/86-Partition-List-Medium/" target="_self">
           86. Partition List - Medium
         </a>
@@ -853,165 +1003,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/09/25/2300-Successful-Pairs-of-Spells-and-Potions-Medium/" target="_self">
-          2300. Successful Pairs of Spells and Potions - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/25/2300-Successful-Pairs-of-Spells-and-Potions-Medium/" target="_self">
-        <div>
-          前往題目  想法 暴力解很直觀 可以先排序，這樣就可以用Binary Search找那個最弱的藥水  思路 排序藥水，從大到小 一個咒語一個咒語循環 每個咒語都用二元搜尋去找第一個success的藥水，找到就可以知道總共有幾個藥水可以成功 每個咒語都檢查過就可以得到答案  Code網友解答 class Solution &#123;     public int[] successfulPairs
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-09-25 11:05" pubdate>
-              2024-09-25
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Two-Pointers/">#Two Pointers</a>
-            
-              <a href="/tags/Sorting/">#Sorting</a>
-            
-              <a href="/tags/Binary-Search/">#Binary Search</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/09/25/977-Squares-of-a-Sorted-Array-Easy/" target="_self">
-          977. Squares of a Sorted Array - Easy
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/25/977-Squares-of-a-Sorted-Array-Easy/" target="_self">
-        <div>
-          前往題目  想法 暴力解也只要n + nlognhe  思路 雙指針，從大排到小，因為這樣左右指針可以在最左和最右  Code  class Solution &#123;     public int[] sortedSquares(int[] nums) &#123;         int[] res = new int[nums.length];                  int
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-09-25 10:35" pubdate>
-              2024-09-25
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Two-Pointers/">#Two Pointers</a>
-            
-              <a href="/tags/Sorting/">#Sorting</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/#board">30</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/31/#board">31</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

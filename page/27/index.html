@@ -253,6 +253,156 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2023/12/09/338-Counting-Bits-Easy/" target="_self">
+          338. Counting Bits - Easy
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/09/338-Counting-Bits-Easy/" target="_self">
+        <div>
+          前往題目  想法 毫無想法，只想得到轉成binary然後直接疊代  思路 觀察0~8的binary會發現有一定規律，如下圖 Offset從0,1,4,8,16，兩倍成長 只要1加上最近的offset的值就是答案，那個1就是MSB(Most significant bit)  可能看解是有點模糊，但是看code應該就會清楚很多了 Code  class Solution &#123;     pub
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-09 11:17" pubdate>
+              2023-12-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Dynamic-Programming/">#Dynamic Programming</a>
+            
+              <a href="/tags/Bit-Manipulation/">#Bit Manipulation</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/12/08/542-01-Matrix-Medium/" target="_self">
+          542. 01 Matrix - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/08/542-01-Matrix-Medium/" target="_self">
+        <div>
+          前往題目  想法 為了這題先花了兩三個小時弄懂直到能自己寫出BFS 隔一天再來挑戰這題寫的就蠻順的，但是回想BFS加上coding，從頭寫到尾就花了半小時 最後雖然還是fail，但離正解只差一步之遙 原因是沒完全搞清楚需要更新的cell以及不用更新的cell之間的關係 因為需要更新的cell，初始值是1，讓我腦袋打結  思路由於是算距離，所以這題利用BFS不斷更新每個相鄰cell的距離  一樣先記
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-08 16:42" pubdate>
+              2023-12-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Matrix/">#Matrix</a>
+            
+              <a href="/tags/Breadth-First-Search/">#Breadth-First Search</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2023/12/08/692-Top-K-Frequent-Words-Medium/" target="_self">
           692. Top K Frequent Words - Medium
         </a>
@@ -833,161 +983,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/12/02/211-Design-Add-and-Search-Words-Data-Structure-Medium/" target="_self">
-          211. Design Add and Search Words Data Structure - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/02/211-Design-Add-and-Search-Words-Data-Structure-Medium/" target="_self">
-        <div>
-          前往題目  想法 可搜尋字詞功能我第一個想法是建構一顆樹(Trie)，字母連著字母 這題是資料結構，比較好玩一點😆  思路 Trie的資料結構，用array儲存字母，因為固定最多26個 加入就直接判斷有沒有該字母，沒有的話init.有的話直接略過，看下一個 Search用Backtracking的方式加入帶有.的詞  比較妙的是backtracking的部分，參照以下的code可以看到，遇到.的
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-02 10:41" pubdate>
-              2023-12-02
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/String/">#String</a>
-            
-              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
-            
-              <a href="/tags/Trie/">#Trie</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/12/01/152-Maximum-Product-Subarray-Medium/" target="_self">
-          152. Maximum Product Subarray - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/01/152-Maximum-Product-Subarray-Medium/" target="_self">
-        <div>
-          前往題目  想法 毫無想法，每次看到這種subarray都覺得是不是backtracking🤣  思路這題的解法也很妙  使用min和max紀錄每個點的當前最小值和最大值，紀錄最小值的原因是有可能遇到負數，但如果再遇到一個就會變成正數，所以也要考慮進去 疊代nums，每個迴圈都判斷是否有更小和更大的值  這題蠻不像DP，但他的確是DP🥺 Codeclass Solution &#123;
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-01 11:59" pubdate>
-              2023-12-01
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Dynamic-Programming/">#Dynamic Programming</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/26/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/#board">25</a><a class="page-number" href="/page/26/#board">26</a><span class="page-number current">27</span><a class="page-number" href="/page/28/#board">28</a><a class="page-number" href="/page/29/#board">29</a><a class="page-number" href="/page/30/#board">30</a><a class="extend next" rel="next" href="/page/28/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/26/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/#board">25</a><a class="page-number" href="/page/26/#board">26</a><span class="page-number current">27</span><a class="page-number" href="/page/28/#board">28</a><a class="page-number" href="/page/29/#board">29</a><span class="space">&hellip;</span><a class="page-number" href="/page/31/#board">31</a><a class="extend next" rel="next" href="/page/28/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

@@ -253,6 +253,154 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/02/27/647-Palindromic-Substrings-Medium/" target="_self">
+          647. Palindromic Substrings - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/27/647-Palindromic-Substrings-Medium/" target="_self">
+        <div>
+          前往題目  思路有兩種解法，暴力和Manacher algorithm(馬拉車) 暴力解  疊代整個string 把每個char都當作是中心點，用雙指針向外擴張找尋palindrome 奇數長度的palindrome找一輪，偶數長度也找一輪 最終就是答案  馬拉車實在是複雜，所以就跳過了 Code  class Solution &#123;     public int countSubstri
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-02-27 10:38" pubdate>
+              2024-02-27
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/String/">#String</a>
+            
+              <a href="/tags/Dynamic-Programming/">#Dynamic Programming</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/02/26/213-House-Robber-II-Medium/" target="_self">
+          213. House Robber II - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/26/213-House-Robber-II-Medium/" target="_self">
+        <div>
+          前往題目  思路這題的關鍵是如何盡量像House Robber I  分成兩部分，不搶第一間與不搶最後一間，這樣問題就變成House Robber I 各自循環找出最大值  Code文字解析   class Solution &#123;     public int rob(int[] nums) &#123;         // 邊界條件         if (nums.length ==
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-02-26 10:08" pubdate>
+              2024-02-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Dynamic-Programming/">#Dynamic Programming</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2024/02/25/139-Word-Break-Medium/" target="_self">
           139. Word Break - Medium
         </a>
@@ -317,9 +465,9 @@
             
               <a href="/tags/Hash-Table/">#Hash Table</a>
             
-              <a href="/tags/Trie/">#Trie</a>
-            
               <a href="/tags/Dynamic-Programming/">#Dynamic Programming</a>
+            
+              <a href="/tags/Trie/">#Trie</a>
             
               <a href="/tags/Memoization/">#Memoization</a>
             
@@ -875,161 +1023,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/02/17/236-Lowest-Common-Ancestor-of-a-Binary-Tree-Medium/" target="_self">
-          236. Lowest Common Ancestor of a Binary Tree - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/17/236-Lowest-Common-Ancestor-of-a-Binary-Tree-Medium/" target="_self">
-        <div>
-          前往題目  之前寫的文章 想法 用DFS然後每個node回傳之前要判斷並帶值 沒有想出關鍵的判斷部分該怎麼寫  思路 DFS 當找到目標的a或b的時候就+1 這樣搜尋到底然後準備往回的時候就會經過各個可能的ancestor，只要發現該node包含ab就可以直接回傳了  Codeclass Solution &#123;     TreeNode res;     public TreeNode l
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-17 11:44" pubdate>
-              2024-02-17
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Binary-Tree/">#Binary Tree</a>
-            
-              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
-            
-              <a href="/tags/Tree/">#Tree</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/02/17/56-Merge-Intervals-Medium/" target="_self">
-          56. Merge Intervals - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/17/56-Merge-Intervals-Medium/" target="_self">
-        <div>
-          前往題目  之前寫的文章 想法 先sort再用掃描線加入 這次只差條件沒寫好  思路 先照start point由小到大排序，才能讓可以merge的排在一起 接著疊代所有區間，遇到起始點小於等於暫存區間的終點等於有重疊，先merge但還不要加入答案，因為有可能好幾個區間都重疊  Codeclass Solution &#123;     public int[][] merge(int[][] i
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-17 11:16" pubdate>
-              2024-02-17
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Sorting/">#Sorting</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/14/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/#board">13</a><a class="page-number" href="/page/14/#board">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/#board">16</a><a class="page-number" href="/page/17/#board">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/#board">30</a><a class="extend next" rel="next" href="/page/16/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/14/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/#board">13</a><a class="page-number" href="/page/14/#board">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/#board">16</a><a class="page-number" href="/page/17/#board">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/31/#board">31</a><a class="extend next" rel="next" href="/page/16/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
