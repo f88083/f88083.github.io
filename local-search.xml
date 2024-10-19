@@ -4,6 +4,78 @@
   
   
   <entry>
+    <title>872. Leaf-Similar Trees - Easy</title>
+    <link href="/2024/10/19/872-Leaf-Similar-Trees-Easy/"/>
+    <url>/2024/10/19/872-Leaf-Similar-Trees-Easy/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/leaf-similar-trees/description/"  title="872. Leaf-Similar Trees" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>走訪所有<code>leaf</code>並記錄下來，最後比較</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li><code>DFS</code>遇到<code>leaf</code>放入<code>list</code>，走訪兩棵樹</li><li>比較是否兩個<code>list</code>順序一致</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">leafSimilar</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> root1<span class="token punctuation">,</span> <span class="token class-name">TreeNode</span> root2<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> val1List <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> val2List <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token function">findLeaves</span><span class="token punctuation">(</span>root1<span class="token punctuation">,</span> val1List<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token function">findLeaves</span><span class="token punctuation">(</span>root2<span class="token punctuation">,</span> val2List<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// Check length</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>val1List<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> val2List<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// Check elements</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> val1List<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>val1List<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>val2List<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">findLeaves</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> node<span class="token punctuation">,</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> list<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>node <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">.</span>left <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> node<span class="token punctuation">.</span>right <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token function">findLeaves</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>left<span class="token punctuation">,</span> list<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token function">findLeaves</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>right<span class="token punctuation">,</span> list<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Easy</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Binary Tree</tag>
+      
+      <tag>Depth-First Search</tag>
+      
+      <tag>Tree</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>938. Range Sum of BST - Easy</title>
+    <link href="/2024/10/19/938-Range-Sum-of-BST-Easy/"/>
+    <url>/2024/10/19/938-Range-Sum-of-BST-Easy/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/range-sum-of-bst/"  title="938. Range Sum of BST" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>走訪所有節點時判斷並加入結果</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>遞迴</p><ol><li>除了遇到<code>null</code>節點，其餘都判斷其值是否在範圍內，是的話就更新結果</li><li>呼叫兩次方法，並傳入左子節點和右子節點</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">rangeSumBST</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> root<span class="token punctuation">,</span> <span class="token keyword">int</span> low<span class="token punctuation">,</span> <span class="token keyword">int</span> high<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>root<span class="token punctuation">.</span>val <span class="token operator">>=</span> low <span class="token operator">&amp;&amp;</span> root<span class="token punctuation">.</span>val <span class="token operator">&lt;=</span> high<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            res <span class="token operator">+=</span> root<span class="token punctuation">.</span>val<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token function">rangeSumBST</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">,</span> low<span class="token punctuation">,</span> high<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token function">rangeSumBST</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">,</span> low<span class="token punctuation">,</span> high<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">return</span> res<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure><p><a href="https://leetcode.com/problems/range-sum-of-bst/">不用額外全局變數的寫法</a></p><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">rangeSumBST</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> root<span class="token punctuation">,</span> <span class="token keyword">int</span> low<span class="token punctuation">,</span> <span class="token keyword">int</span> high<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">int</span> currentVal <span class="token operator">=</span> <span class="token punctuation">(</span>root<span class="token punctuation">.</span>val <span class="token operator">>=</span> low <span class="token operator">&amp;&amp;</span> root<span class="token punctuation">.</span>val <span class="token operator">&lt;=</span> high<span class="token punctuation">)</span> <span class="token operator">?</span> root<span class="token punctuation">.</span>val <span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> leftSum <span class="token operator">=</span> <span class="token function">rangeSumBST</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">,</span> low<span class="token punctuation">,</span> high<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> rightSum <span class="token operator">=</span> <span class="token function">rangeSumBST</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">,</span> low<span class="token punctuation">,</span> high<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">return</span> currentVal <span class="token operator">+</span> leftSum <span class="token operator">+</span> rightSum<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Easy</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Binary Search Tree</tag>
+      
+      <tag>Binary Tree</tag>
+      
+      <tag>Depth-First Search</tag>
+      
+      <tag>Tree</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>112. Path Sum - Easy</title>
     <link href="/2024/10/18/112-Path-Sum-Easy/"/>
     <url>/2024/10/18/112-Path-Sum-Easy/</url>
@@ -6552,9 +6624,9 @@
       
       <tag>Greedy</tag>
       
-      <tag>Dynamic Programming</tag>
-      
       <tag>Sorting</tag>
+      
+      <tag>Dynamic Programming</tag>
       
     </tags>
     
@@ -10201,11 +10273,11 @@
       
       <tag>Algorithms</tag>
       
-      <tag>Queue</tag>
-      
       <tag>筆記</tag>
       
       <tag>演算法</tag>
+      
+      <tag>Queue</tag>
       
     </tags>
     

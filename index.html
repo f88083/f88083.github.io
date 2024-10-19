@@ -253,6 +253,160 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/10/19/872-Leaf-Similar-Trees-Easy/" target="_self">
+          872. Leaf-Similar Trees - Easy
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/19/872-Leaf-Similar-Trees-Easy/" target="_self">
+        <div>
+          前往題目  想法 走訪所有leaf並記錄下來，最後比較  思路 DFS遇到leaf放入list，走訪兩棵樹 比較是否兩個list順序一致  Codeclass Solution &#123;     public boolean leafSimilar(TreeNode root1, TreeNode root2) &#123;         ArrayList&lt;Integer> val1
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-10-19 20:07" pubdate>
+              2024-10-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Binary-Tree/">#Binary Tree</a>
+            
+              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
+            
+              <a href="/tags/Tree/">#Tree</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/10/19/938-Range-Sum-of-BST-Easy/" target="_self">
+          938. Range Sum of BST - Easy
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/19/938-Range-Sum-of-BST-Easy/" target="_self">
+        <div>
+          前往題目  想法 走訪所有節點時判斷並加入結果  思路遞迴  除了遇到null節點，其餘都判斷其值是否在範圍內，是的話就更新結果 呼叫兩次方法，並傳入左子節點和右子節點  Codeclass Solution &#123;     int res = 0;     public int rangeSumBST(TreeNode root, int low, int high) &#123;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-10-19 11:47" pubdate>
+              2024-10-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Binary-Search-Tree/">#Binary Search Tree</a>
+            
+              <a href="/tags/Binary-Tree/">#Binary Tree</a>
+            
+              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
+            
+              <a href="/tags/Tree/">#Tree</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2024/10/18/112-Path-Sum-Easy/" target="_self">
           112. Path Sum - Easy
         </a>
@@ -848,152 +1002,6 @@
               <a href="/tags/Leetcode/">#Leetcode</a>
             
               <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Linked-List/">#Linked List</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/10/11/92-Reverse-Linked-List-II-Medium/" target="_self">
-          92. Reverse Linked List II - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/11/92-Reverse-Linked-List-II-Medium/" target="_self">
-        <div>
-          前往題目  想法 先找左右邊界，然後再根據左右邊界定位翻轉  思路結果left和right根本就是index，還是1-based的  找到left node 循環right - left + 1次，期間都翻轉node 最後再拼接  Code  class Solution &#123;     public ListNode reverseBetween(ListNode head, int le
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-10-11 11:07" pubdate>
-              2024-10-11
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Linked-List/">#Linked List</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/10/10/203-Remove-Linked-List-Elements-Easy/" target="_self">
-          203. Remove Linked List Elements - Easy
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/10/203-Remove-Linked-List-Elements-Easy/" target="_self">
-        <div>
-          前往題目  想法 直覺的操作，單純刪除node  思路 循環直到cur.next為null 如果next的值等於目標值那就把next賦值為next.next 否則移動當前指針到下一個  Codeclass Solution &#123;     public ListNode removeElements(ListNode head, int val) &#123;         ListNod
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-10-10 10:16" pubdate>
-              2024-10-10
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Recursion/">#Recursion</a>
             
               <a href="/tags/Linked-List/">#Linked List</a>
             

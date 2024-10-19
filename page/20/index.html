@@ -253,6 +253,156 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/01/25/377-Combination-Sum-IV-Medium/" target="_self">
+          377. Combination Sum IV - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/25/377-Combination-Sum-IV-Medium/" target="_self">
+        <div>
+          前往題目  想法 會不會是用backtracking?  思路 利用array當作cache base case是0，因為只有一種組合是0 接著疊代1~target，逐步建立cache 每個循環裡面要再看一次所有的nums並相加，因為先前的加起來才是當前的組合總數  可以看這個discussion的解釋，非常清楚 Code  class Solution &#123;     public int
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-25 10:46" pubdate>
+              2024-01-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Dynamic-Programming/">#Dynamic Programming</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/24/227-Basic-Calculator-II-Medium/" target="_self">
+          227. Basic Calculator II - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/24/227-Basic-Calculator-II-Medium/" target="_self">
+        <div>
+          前往題目  想法 用stack，只壓入數字和+-，乘除直接用stack最上層的數字計算就可以  思路沒看到數字不一定是一個digit  疊代整個string 每次判斷是否為數字，如果是則看有多少位，把整串擷取，然後看是什麼operator做相應的計算(如果是整個運算式的第一個數字那就會剛好直接加入) 如果不是數字，也不是空格，那就一定是operator，紀錄  Code這個解法沒有用到stack，
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-24 11:35" pubdate>
+              2024-01-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Stack/">#Stack</a>
+            
+              <a href="/tags/String/">#String</a>
+            
+              <a href="/tags/Math/">#Math</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2024/01/24/153-Find-Minimum-in-Rotated-Sorted-Array-Medium/" target="_self">
           153. Find Minimum in Rotated Sorted Array - Medium
         </a>
@@ -846,145 +996,6 @@
               <a href="/tags/Dynamic-Programming/">#Dynamic Programming</a>
             
               <a href="/tags/Breadth-First-Search/">#Breadth-First Search</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/20/208-Implement-Trie-Prefix-Tree-Medium/" target="_self">
-          208. Implement Trie (Prefix Tree) - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/20/208-Implement-Trie-Prefix-Tree-Medium/" target="_self">
-        <div>
-          前往題目  之前寫過，搬運一下 想法 大概念是看影片才得來 一半是自己照著概念寫出來的 但class之間attribute的操作不熟練 而且原來inner class的private，包含他的class是可以存取的 本來想說要寫get set，但根本不用  思路 新建TrieNode class，用以表示Trie的節點 每個node都有自己的children Trie物件裡新增instance v
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-20 10:49" pubdate>
-              2024-01-20
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/String/">#String</a>
-            
-              <a href="/tags/Hash-Table/">#Hash Table</a>
-            
-              <a href="/tags/Trie/">#Trie</a>
-            
-              <a href="/tags/Design/">#Design</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/19/%E5%A6%82%E4%BD%95%E5%AF%AB%E5%A5%BDgit-commit-message/" target="_self">
-          如何寫好git commit message
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/19/%E5%A6%82%E4%BD%95%E5%AF%AB%E5%A5%BDgit-commit-message/" target="_self">
-        <div>
-          本篇筆記搬運以及修改WadeHuang大大的部分文章:Git Commit Message 這樣寫會更好，替專案引入規範與範例 寫好commit訊息，造福同行，也為自己積陰德 怎麼寫比較好? 註解紀錄在commit裡面可以保持程式碼的整潔和可讀性 獨立commit每個不同意義的異動才不會混在一起 Commit只包含: Why和What Commit加上issue編號方便追蹤異動原因  規範範例 詳
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-19 16:00" pubdate>
-              2024-01-19
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%B6%9C%E5%90%88/" class="category-chain-item">綜合</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/git/">#git</a>
             
           </div>
         

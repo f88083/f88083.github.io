@@ -253,6 +253,156 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2023/12/13/973-K-Closest-Points-to-Origin-Medium/" target="_self">
+          973. K Closest Points to Origin - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/13/973-K-Closest-Points-to-Origin-Medium/" target="_self">
+        <div>
+          前往題目  這題之前寫過心得，照搬一下 心得 這題非常妙，用到的資料結構也不一樣，只要知道如何使用就很簡單 使用MinHeap或是MaxHeap就可以完美解決 使用MaxHeap的時間複雜度更好一點 PriorityQueue會根據Comparator來排序，排序時間是logN(因為使用heap，樹結構)，N是項數  思路 (以MinHeap為例子) 新建一個MinHeap 把point都放入mi
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-13 10:27" pubdate>
+              2023-12-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Heap/">#Heap</a>
+            
+              <a href="/tags/Priority-Queue/">#Priority Queue</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/12/11/300-Longest-Increasing-Subsequence-Medium/" target="_self">
+          300. Longest Increasing Subsequence - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/11/300-Longest-Increasing-Subsequence-Medium/" target="_self">
+        <div>
+          前往題目  想法 毫無頭緒因為不需要連續，中間可以斷掉…  思路有很多種作法:  DFS DFS with cache DP  採用DP，因為$O(n^2)$，相較於DFS $O(2^n)$  觀察規律，從後往前，因為最後一個一定是只有自己，也就是長度為1，以此往前推  影片中解釋得更清楚 Code  class Solution &#123;     public int lengthOfLIS
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-11 11:29" pubdate>
+              2023-12-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Dynamic-Programming/">#Dynamic Programming</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2023/12/09/338-Counting-Bits-Easy/" target="_self">
           338. Counting Bits - Easy
         </a>
@@ -831,151 +981,6 @@
               <a href="/tags/Two-Pointers/">#Two Pointers</a>
             
               <a href="/tags/Linked-List/">#Linked List</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/12/04/417-Pacific-Atlantic-Water-Flow-Medium/" target="_self">
-          417. Pacific Atlantic Water Flow - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/04/417-Pacific-Atlantic-Water-Flow-Medium/" target="_self">
-        <div>
-          前往題目  想法 用DFS但不知道該怎麼處理重複visit的部分，不處理的話就會變成$O(M*N)^2$  思路 從上下左右開始往內檢查，因為上下左右一定可以碰到其中一個海洋，或甚至兩個海洋都碰到 每個cell都檢查其是否比前一個cell大，是的話就標記為true，不是的話直接return。因為這代表當前cell沒辦法流過前一個cell 最後看哪些cell能碰到兩個海洋就是答案  這題我覺得蠻難的
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-04 10:48" pubdate>
-              2023-12-04
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Matrix/">#Matrix</a>
-            
-              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
-            
-              <a href="/tags/Breadth-First-Search/">#Breadth-First Search</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/12/03/%E7%94%A8Flask%E5%AF%AB%E4%B8%80%E5%80%8B%E6%89%8B%E5%8B%95%E5%84%B2%E5%AD%98%E8%A7%80%E7%9C%8B%E7%B4%80%E9%8C%84%E7%9A%84%E7%B6%B2%E9%A0%81%E7%9A%84%E9%96%8B%E7%99%BC%E6%97%A5%E8%AA%8C/" target="_self">
-          用Flask寫一個手動儲存觀看紀錄的網頁的開發日誌
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/03/%E7%94%A8Flask%E5%AF%AB%E4%B8%80%E5%80%8B%E6%89%8B%E5%8B%95%E5%84%B2%E5%AD%98%E8%A7%80%E7%9C%8B%E7%B4%80%E9%8C%84%E7%9A%84%E7%B6%B2%E9%A0%81%E7%9A%84%E9%96%8B%E7%99%BC%E6%97%A5%E8%AA%8C/" target="_self">
-        <div>
-          方便自己整理所有的觀看紀錄，無論是動漫、電影、還是劇  有什麼用? 純粹我自己會在各種網站上看電影、動漫等等的，但有些網頁會記錄，下次登入紀錄又沒了。又或者是例如有些漫畫網站，手機和電腦瀏覽的紀錄又不同，久了沒看，回來要再看的時候就又忘了看到哪，翻半天。總之呢，做這個project的目的，就是解決這個我一直想開發的工具，順便玩玩網頁。 網路上找不到相似的工具，可能有很多替代方案，例如純手寫就是一
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-03 22:02" pubdate>
-              2023-12-03
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Project/" class="category-chain-item">Project</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Flask/">#Flask</a>
-            
-              <a href="/tags/CRUD/">#CRUD</a>
-            
-              <a href="/tags/HTML/">#HTML</a>
-            
-              <a href="/tags/CSS/">#CSS</a>
-            
-              <a href="/tags/%E7%B6%B2%E9%A0%81%E9%96%8B%E7%99%BC/">#網頁開發</a>
             
           </div>
         
