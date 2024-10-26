@@ -4,6 +4,45 @@
   
   
   <entry>
+    <title>783. Minimum Distance Between BST Nodes - Easy</title>
+    <link href="/2024/10/26/783-Minimum-Distance-Between-BST-Nodes-Easy/"/>
+    <url>/2024/10/26/783-Minimum-Distance-Between-BST-Nodes-Easy/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/minimum-distance-between-bst-nodes/description/"  title="783. Minimum Distance Between BST Nodes" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>左右子樹和父節點比較就好</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>這樣的想法問題是孫子可能跟爺爺更近，相較於兒子</p><ol><li><code>inorder</code>可以在<code>BST</code>從最小數節點迭代到最大數節點</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/joxx4hTYwcw" title="Minimum Distance between BST Nodes - Leetcode 783 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">int</span> min<span class="token punctuation">;</span>    <span class="token class-name">TreeNode</span> prev<span class="token punctuation">;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">minDiffInBST</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> root<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        min <span class="token operator">=</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token constant">MAX_VALUE</span><span class="token punctuation">;</span>        prev <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>        <span class="token function">inorder</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">return</span> min<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">inorder</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> cur<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>cur <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>        <span class="token function">inorder</span><span class="token punctuation">(</span>cur<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// Not in the root node</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>prev <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            min <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>min<span class="token punctuation">,</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span>cur<span class="token punctuation">.</span>val <span class="token operator">-</span> prev<span class="token punctuation">.</span>val<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        prev <span class="token operator">=</span> cur<span class="token punctuation">;</span>        <span class="token function">inorder</span><span class="token punctuation">(</span>cur<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Easy</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Binary Search Tree</tag>
+      
+      <tag>Binary Tree</tag>
+      
+      <tag>Depth-First Search</tag>
+      
+      <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>450. Delete Node in a BST - Medium</title>
     <link href="/2024/10/25/450-Delete-Node-in-a-BST-Medium/"/>
     <url>/2024/10/25/450-Delete-Node-in-a-BST-Medium/</url>
@@ -1177,9 +1216,9 @@
       
       <tag>Array</tag>
       
-      <tag>Trie</tag>
-      
       <tag>Sorting</tag>
+      
+      <tag>Trie</tag>
       
       <tag>Binary Search</tag>
       
@@ -1284,9 +1323,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Linked List</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Linked List</tag>
       
       <tag>Tree</tag>
       
@@ -2746,9 +2785,9 @@
       
       <tag>Recursion</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Math</tag>
+      
+      <tag>Two Pointers</tag>
       
       <tag>Bit Manipulation</tag>
       
@@ -4689,9 +4728,9 @@
       
       <tag>心得</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Math</tag>
+      
+      <tag>Two Pointers</tag>
       
       <tag>Hash Table</tag>
       
@@ -5299,11 +5338,11 @@
       
       <tag>Array</tag>
       
+      <tag>Hash Table</tag>
+      
       <tag>Dynamic Programming</tag>
       
       <tag>Trie</tag>
-      
-      <tag>Hash Table</tag>
       
       <tag>Memoization</tag>
       
@@ -5375,11 +5414,11 @@
       
       <tag>Array</tag>
       
-      <tag>Depth-First Search</tag>
-      
       <tag>Hash Table</tag>
       
       <tag>Sorting</tag>
+      
+      <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
       
@@ -5762,9 +5801,9 @@
       
       <tag>Array</tag>
       
-      <tag>Depth-First Search</tag>
-      
       <tag>Matrix</tag>
+      
+      <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
       
@@ -5801,9 +5840,9 @@
       
       <tag>Array</tag>
       
-      <tag>Depth-First Search</tag>
-      
       <tag>Matrix</tag>
+      
+      <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
       
@@ -7289,9 +7328,9 @@
       
       <tag>String</tag>
       
-      <tag>Trie</tag>
-      
       <tag>Hash Table</tag>
+      
+      <tag>Trie</tag>
       
       <tag>Design</tag>
       
@@ -7751,7 +7790,7 @@
     <link href="/2024/01/14/101-Symmetric-Tree-Easy/"/>
     <url>/2024/01/14/101-Symmetric-Tree-Easy/</url>
     
-    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/symmetric-tree/description/"  title="101. Symmetric Tree" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>嘗試用了<code>BFS</code>但沒有成功，本來想說要用<code>size</code>來判斷然後分左右邊</li><li>看了<code>discussion</code>才知道直接用<code>left</code>和<code>right</code>就好，跟<code>DFS</code>一樣</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>DFS</p><ol><li>每輪都比較<code>left</code>和<code>right node</code>的值</li><li>繼續用<code>left</code>的子樹還有<code>right</code>的子樹呼叫<code>DFS</code></li></ol><p><a href="https://leetcode.com/problems/symmetric-tree/solutions/433170/ismirror-dfs-recursion-one-two-stacks-bfs-queue-solution-in-java/">BFS解法</a></p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/Mao9uzxwvmc" title="Symmetric Tree - Leetcode 101 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isSymmetric</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> root<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">return</span> <span class="token function">dfs</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">,</span> root<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token keyword">boolean</span> <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> left<span class="token punctuation">,</span> <span class="token class-name">TreeNode</span> right<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token comment">// Reach the end</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>left <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> right <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// One of them reach the end but other one hasnt</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>left <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> right <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// Check their values, check left and right sub node values</span>        <span class="token keyword">return</span> left<span class="token punctuation">.</span>val <span class="token operator">==</span> right<span class="token punctuation">.</span>val <span class="token operator">&amp;&amp;</span>               <span class="token function">dfs</span><span class="token punctuation">(</span>left<span class="token punctuation">.</span>left<span class="token punctuation">,</span> right<span class="token punctuation">.</span>right<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>               <span class="token function">dfs</span><span class="token punctuation">(</span>left<span class="token punctuation">.</span>right<span class="token punctuation">,</span> right<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/symmetric-tree/description/"  title="101. Symmetric Tree" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>嘗試用了<code>BFS</code>但沒有成功，本來想說要用<code>size</code>來判斷然後分左右邊</li><li>看了<code>discussion</code>才知道直接用<code>left</code>和<code>right</code>就好，跟<code>DFS</code>一樣</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>DFS</p><ol><li>每輪都比較<code>left</code>和<code>right node</code>的值</li><li>繼續用<code>left</code>的子樹還有<code>right</code>的子樹呼叫<code>DFS</code></li></ol><p><a href="https://leetcode.com/problems/symmetric-tree/solutions/433170/ismirror-dfs-recursion-one-two-stacks-bfs-queue-solution-in-java/">BFS解法</a></p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/Mao9uzxwvmc" title="Symmetric Tree - Leetcode 101 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isSymmetric</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> root<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">return</span> <span class="token function">dfs</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">,</span> root<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token keyword">boolean</span> <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> left<span class="token punctuation">,</span> <span class="token class-name">TreeNode</span> right<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token comment">// Reach the end</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>left <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> right <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// One of them reach the end but other one hasnt</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>left <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> right <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// Check their values, check left and right sub node values</span>        <span class="token keyword">return</span> left<span class="token punctuation">.</span>val <span class="token operator">==</span> right<span class="token punctuation">.</span>val <span class="token operator">&amp;&amp;</span>               <span class="token function">dfs</span><span class="token punctuation">(</span>left<span class="token punctuation">.</span>left<span class="token punctuation">,</span> right<span class="token punctuation">.</span>right<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>               <span class="token function">dfs</span><span class="token punctuation">(</span>left<span class="token punctuation">.</span>right<span class="token punctuation">,</span> right<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure><h2 id="2024-10-26"><a href="#2024-10-26" class="headerlink" title="2024&#x2F;10&#x2F;26"></a>2024&#x2F;10&#x2F;26</h2><ul><li>這次想到的是BFS，也是蠻好寫的</li></ul><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isSymmetric</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> root<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token class-name">Queue</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">TreeNode</span><span class="token punctuation">></span></span> q <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// Skip the root</span>        q<span class="token punctuation">.</span><span class="token function">offer</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>        q<span class="token punctuation">.</span><span class="token function">offer</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span>q<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">int</span> size <span class="token operator">=</span> q<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token class-name">TreeNode</span> left <span class="token operator">=</span> q<span class="token punctuation">.</span><span class="token function">poll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token class-name">TreeNode</span> right <span class="token operator">=</span> q<span class="token punctuation">.</span><span class="token function">poll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment">// Reached the leaf, skip it</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>left <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> right <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>                <span class="token keyword">continue</span><span class="token punctuation">;</span>            <span class="token comment">// One of them is null, means not the same</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>left <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> right <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>left<span class="token punctuation">.</span>val <span class="token operator">!=</span> right<span class="token punctuation">.</span>val<span class="token punctuation">)</span>                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>                        <span class="token comment">// Offer the following nodes</span>            q<span class="token punctuation">.</span><span class="token function">offer</span><span class="token punctuation">(</span>left<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>            q<span class="token punctuation">.</span><span class="token function">offer</span><span class="token punctuation">(</span>right<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>                        q<span class="token punctuation">.</span><span class="token function">offer</span><span class="token punctuation">(</span>left<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>            q<span class="token punctuation">.</span><span class="token function">offer</span><span class="token punctuation">(</span>right<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
     
     
     <categories>
@@ -7981,9 +8020,9 @@
       
       <tag>Array</tag>
       
-      <tag>Dynamic Programming</tag>
-      
       <tag>Matrix</tag>
+      
+      <tag>Dynamic Programming</tag>
       
     </tags>
     
@@ -8150,9 +8189,9 @@
       
       <tag>心得</tag>
       
-      <tag>Depth-First Search</tag>
-      
       <tag>Hash Table</tag>
+      
+      <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
       
@@ -9005,9 +9044,9 @@
       
       <tag>Array</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Math</tag>
+      
+      <tag>Two Pointers</tag>
       
     </tags>
     
@@ -9679,9 +9718,9 @@
       
       <tag>心得</tag>
       
-      <tag>Depth-First Search</tag>
-      
       <tag>Matrix</tag>
+      
+      <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
       
@@ -10392,9 +10431,9 @@
       
       <tag>Array</tag>
       
-      <tag>Java</tag>
-      
       <tag>kadanes Algorithm</tag>
+      
+      <tag>Java</tag>
       
     </tags>
     
