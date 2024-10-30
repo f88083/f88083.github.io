@@ -4,6 +4,43 @@
   
   
   <entry>
+    <title>1443. Minimum Time to Collect All Apples in a Tree - Medium</title>
+    <link href="/2024/10/30/1443-Minimum-Time-to-Collect-All-Apples-in-a-Tree-Medium/"/>
+    <url>/2024/10/30/1443-Minimum-Time-to-Collect-All-Apples-in-a-Tree-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/minimum-time-to-collect-all-apples-in-a-tree/description/"  title="1443. Minimum Time to Collect All Apples in a Tree" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>建立一棵樹？</li><li>儲存每個<code>node</code>的鄰居？</li><li><code>DFS</code>?</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>這題的關鍵在於</p><ul><li>儲存每個<code>node</code>的鄰居</li><li>走訪全部節點</li></ul><ol><li>儲存鄰居</li><li><code>DFS</code>走訪所有節點</li><li>不要走回父節點，不然會無限迴圈</li><li>呼叫<code>dfs</code>往鄰居接著走訪</li><li>當當前的節點是蘋果或是子節點有蘋果就代表來回需要兩秒，所以加上結果</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/Xdt5Z583auM" title="Minimum Time to Collect All Apples in a Tree - Leetcode 1443 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">List</span><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span><span class="token punctuation">></span></span> adj<span class="token punctuation">;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">minTime</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> edges<span class="token punctuation">,</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Boolean</span><span class="token punctuation">></span></span> hasApple<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token comment">// Build adjacent edges</span>        adj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            adj<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> edge <span class="token operator">:</span> edges<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// build double connections</span>            adj<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>edge<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>edge<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            adj<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>edge<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>edge<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> hasApple<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token keyword">int</span> <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token keyword">int</span> cur<span class="token punctuation">,</span> <span class="token keyword">int</span> parent<span class="token punctuation">,</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Boolean</span><span class="token punctuation">></span></span> hasApple<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span> time <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> neighbor <span class="token operator">:</span> adj<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>cur<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// Prevent infinite loop</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>neighbor <span class="token operator">==</span> parent<span class="token punctuation">)</span> <span class="token keyword">continue</span><span class="token punctuation">;</span>            <span class="token comment">// Obtain its child time</span>            <span class="token keyword">int</span> childTime <span class="token operator">=</span> <span class="token function">dfs</span><span class="token punctuation">(</span>neighbor<span class="token punctuation">,</span> cur<span class="token punctuation">,</span> hasApple<span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>childTime <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">||</span> hasApple<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>neighbor<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                time <span class="token operator">+=</span> <span class="token number">2</span> <span class="token operator">+</span> childTime<span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> time<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Hash Table</tag>
+      
+      <tag>Depth-First Search</tag>
+      
+      <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>783. Minimum Distance Between BST Nodes - Easy</title>
     <link href="/2024/10/26/783-Minimum-Distance-Between-BST-Nodes-Easy/"/>
     <url>/2024/10/26/783-Minimum-Distance-Between-BST-Nodes-Easy/</url>
@@ -1325,9 +1362,9 @@
       
       <tag>Breadth-First Search</tag>
       
-      <tag>Linked List</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Linked List</tag>
       
     </tags>
     
@@ -6908,9 +6945,9 @@
       
       <tag>Greedy</tag>
       
-      <tag>Dynamic Programming</tag>
-      
       <tag>Sorting</tag>
+      
+      <tag>Dynamic Programming</tag>
       
     </tags>
     

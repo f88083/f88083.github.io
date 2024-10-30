@@ -16,27 +16,27 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前往題目  想法 用掃描線，但實作卡住了  思路 用每個array的第一項排序 以第一項為基準開始疊代確認是否相交 如果不相交就更新區間的尾端 如果相交，多一個需要移除，並且取比較小的尾端，這樣可以減低之後再相交的機率  Code  &#x2F;&#x2F; T: O(nlogn) &#x2F;&#x2F; S: O(1) class Solution &#123;     public int eraseOverlapInterval">
+    <meta name="description" content="前往題目  想法 建立一棵樹？ 儲存每個node的鄰居？ DFS?  思路這題的關鍵在於  儲存每個node的鄰居 走訪全部節點   儲存鄰居 DFS走訪所有節點 不要走回父節點，不然會無限迴圈 呼叫dfs往鄰居接著走訪 當當前的節點是蘋果或是子節點有蘋果就代表來回需要兩秒，所以加上結果  Code  class Solution &#123;     List&lt;List&lt;Intege">
 <meta property="og:type" content="article">
-<meta property="og:title" content="435. Non-overlapping Intervals - Medium">
-<meta property="og:url" content="https://f88083.github.io/2024/01/26/435-Non-overlapping-Intervals-Medium/index.html">
+<meta property="og:title" content="1443. Minimum Time to Collect All Apples in a Tree - Medium">
+<meta property="og:url" content="https://f88083.github.io/2024/10/30/1443-Minimum-Time-to-Collect-All-Apples-in-a-Tree-Medium/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="前往題目  想法 用掃描線，但實作卡住了  思路 用每個array的第一項排序 以第一項為基準開始疊代確認是否相交 如果不相交就更新區間的尾端 如果相交，多一個需要移除，並且取比較小的尾端，這樣可以減低之後再相交的機率  Code  &#x2F;&#x2F; T: O(nlogn) &#x2F;&#x2F; S: O(1) class Solution &#123;     public int eraseOverlapInterval">
+<meta property="og:description" content="前往題目  想法 建立一棵樹？ 儲存每個node的鄰居？ DFS?  思路這題的關鍵在於  儲存每個node的鄰居 走訪全部節點   儲存鄰居 DFS走訪所有節點 不要走回父節點，不然會無限迴圈 呼叫dfs往鄰居接著走訪 當當前的節點是蘋果或是子節點有蘋果就代表來回需要兩秒，所以加上結果  Code  class Solution &#123;     List&lt;List&lt;Intege">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2024-01-26T03:38:53.000Z">
-<meta property="article:modified_time" content="2024-05-29T16:47:04.961Z">
+<meta property="article:published_time" content="2024-10-30T04:48:31.000Z">
+<meta property="article:modified_time" content="2024-10-30T05:02:09.918Z">
 <meta property="article:author" content="Simon Lai">
 <meta property="article:tag" content="Leetcode">
 <meta property="article:tag" content="心得">
-<meta property="article:tag" content="Array">
-<meta property="article:tag" content="Greedy">
-<meta property="article:tag" content="Sorting">
-<meta property="article:tag" content="Dynamic Programming">
+<meta property="article:tag" content="Hash Table">
+<meta property="article:tag" content="Depth-First Search">
+<meta property="article:tag" content="Breadth-First Search">
+<meta property="article:tag" content="Tree">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>435. Non-overlapping Intervals - Medium - Simon Lai&#39;s Blog</title>
+  <title>1443. Minimum Time to Collect All Apples in a Tree - Medium - Simon Lai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -231,7 +231,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="435. Non-overlapping Intervals - Medium"></span>
+            <span id="subtitle" data-typed-text="1443. Minimum Time to Collect All Apples in a Tree - Medium"></span>
           
         </div>
 
@@ -242,8 +242,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-26 11:38" pubdate>
-          2024年1月26日 中午
+        <time datetime="2024-10-30 12:48" pubdate>
+          2024年10月30日 下午
         </time>
       </span>
     
@@ -254,7 +254,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          164 字
+          207 字
         
       </span>
     
@@ -302,51 +302,68 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">435. Non-overlapping Intervals - Medium</h1>
+            <h1 id="seo-header">1443. Minimum Time to Collect All Apples in a Tree - Medium</h1>
             
             
               <div class="markdown-body">
                 
-                <a class="btn" href="https://leetcode.com/problems/non-overlapping-intervals/description/"  title="435. Non-overlapping Intervals" target="_blank">前往題目</a>
+                <a class="btn" href="https://leetcode.com/problems/minimum-time-to-collect-all-apples-in-a-tree/description/"  title="1443. Minimum Time to Collect All Apples in a Tree" target="_blank">前往題目</a>
 
 <h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul>
-<li>用掃描線，但實作卡住了</li>
+<li>建立一棵樹？</li>
+<li>儲存每個<code>node</code>的鄰居？</li>
+<li><code>DFS</code>?</li>
 </ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
-<li>用每個<code>array</code>的第一項排序</li>
-<li>以第一項為基準開始疊代確認是否相交</li>
-<li>如果不相交就更新區間的尾端</li>
-<li>如果相交，多一個需要移除，並且取比較小的尾端，這樣可以減低之後再相交的機率</li>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>這題的關鍵在於</p>
+<ul>
+<li>儲存每個<code>node</code>的鄰居</li>
+<li>走訪全部節點</li>
+</ul>
+<ol>
+<li>儲存鄰居</li>
+<li><code>DFS</code>走訪所有節點</li>
+<li>不要走回父節點，不然會無限迴圈</li>
+<li>呼叫<code>dfs</code>往鄰居接著走訪</li>
+<li>當當前的節點是蘋果或是子節點有蘋果就代表來回需要兩秒，所以加上結果</li>
 </ol>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/nONCGxWoUfM" title="Non-Overlapping Intervals - Leetcode 435 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/Xdt5Z583auM" title="Minimum Time to Collect All Apples in a Tree - Leetcode 1443 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// T: O(nlogn)</span>
-<span class="token comment">// S: O(1)</span>
-<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">eraseOverlapIntervals</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> intervals<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>intervals<span class="token punctuation">.</span>length <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span>
-            <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">List</span><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span><span class="token punctuation">></span></span> adj<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">minTime</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> edges<span class="token punctuation">,</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Boolean</span><span class="token punctuation">></span></span> hasApple<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// Build adjacent edges</span>
+        adj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="token comment">// Sort by the first element</span>
-        <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>intervals<span class="token punctuation">,</span> <span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">compare</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> b<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> prevEnd <span class="token operator">=</span> intervals<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            adj<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
 
-        <span class="token comment">// Start from the second item</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> intervals<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token comment">// Not overlapping</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>prevEnd <span class="token operator">&lt;=</span> intervals<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                prevEnd <span class="token operator">=</span> intervals<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span> <span class="token comment">// Overlapping</span>
-                <span class="token operator">++</span>res<span class="token punctuation">;</span>
-                <span class="token comment">// Pick the smaller end to minimize the overlapping possibility</span>
-                prevEnd <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>prevEnd<span class="token punctuation">,</span> intervals<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> edge <span class="token operator">:</span> edges<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// build double connections</span>
+            adj<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>edge<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>edge<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            adj<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>edge<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>edge<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token keyword">return</span> <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> hasApple<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">int</span> <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token keyword">int</span> cur<span class="token punctuation">,</span> <span class="token keyword">int</span> parent<span class="token punctuation">,</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Boolean</span><span class="token punctuation">></span></span> hasApple<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">int</span> time <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> neighbor <span class="token operator">:</span> adj<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>cur<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// Prevent infinite loop</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>neighbor <span class="token operator">==</span> parent<span class="token punctuation">)</span> <span class="token keyword">continue</span><span class="token punctuation">;</span>
+
+            <span class="token comment">// Obtain its child time</span>
+            <span class="token keyword">int</span> childTime <span class="token operator">=</span> <span class="token function">dfs</span><span class="token punctuation">(</span>neighbor<span class="token punctuation">,</span> cur<span class="token punctuation">,</span> hasApple<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>childTime <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">||</span> hasApple<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>neighbor<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                time <span class="token operator">+=</span> <span class="token number">2</span> <span class="token operator">+</span> childTime<span class="token punctuation">;</span>
             <span class="token punctuation">&#125;</span>
         <span class="token punctuation">&#125;</span>
 
-        <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> time<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
                 
               </div>
@@ -391,13 +408,13 @@
       
         <a href="/tags/%E5%BF%83%E5%BE%97/" class="print-no-link">#心得</a>
       
-        <a href="/tags/Array/" class="print-no-link">#Array</a>
+        <a href="/tags/Hash-Table/" class="print-no-link">#Hash Table</a>
       
-        <a href="/tags/Greedy/" class="print-no-link">#Greedy</a>
+        <a href="/tags/Depth-First-Search/" class="print-no-link">#Depth-First Search</a>
       
-        <a href="/tags/Sorting/" class="print-no-link">#Sorting</a>
+        <a href="/tags/Breadth-First-Search/" class="print-no-link">#Breadth-First Search</a>
       
-        <a href="/tags/Dynamic-Programming/" class="print-no-link">#Dynamic Programming</a>
+        <a href="/tags/Tree/" class="print-no-link">#Tree</a>
       
     </div>
   
@@ -409,8 +426,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>435. Non-overlapping Intervals - Medium</div>
-      <div>https://f88083.github.io/2024/01/26/435-Non-overlapping-Intervals-Medium/</div>
+      <div>1443. Minimum Time to Collect All Apples in a Tree - Medium</div>
+      <div>https://f88083.github.io/2024/10/30/1443-Minimum-Time-to-Collect-All-Apples-in-a-Tree-Medium/</div>
     </div>
     <div class="license-meta">
       
@@ -422,7 +439,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>發布於</div>
-          <div>2024年1月26日</div>
+          <div>2024年10月30日</div>
         </div>
       
       
@@ -466,18 +483,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/27/409-Longest-Palindrome-Easy/" title="409. Longest Palindrome - Easy">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">409. Longest Palindrome - Easy</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/25/380-Insert-Delete-GetRandom-O-1-Medium/" title="380. Insert Delete GetRandom O(1) - Medium">
-                        <span class="hidden-mobile">380. Insert Delete GetRandom O(1) - Medium</span>
+                      <a href="/2024/10/26/783-Minimum-Distance-Between-BST-Nodes-Easy/" title="783. Minimum Distance Between BST Nodes - Easy">
+                        <span class="hidden-mobile">783. Minimum Distance Between BST Nodes - Easy</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
