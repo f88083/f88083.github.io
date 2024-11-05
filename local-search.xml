@@ -4,6 +4,43 @@
   
   
   <entry>
+    <title>427. Construct Quad Tree - Medium</title>
+    <link href="/2024/11/05/427-Construct-Quad-Tree-Medium/"/>
+    <url>/2024/11/05/427-Construct-Quad-Tree-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/construct-quad-tree/description/"  title="427. Construct Quad Tree" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>讀不懂題目:D</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>第一次看到這種題，其實目的就只是分成一堆正方形，每個正方形裡面數值都一樣，並建立樹</p><ol><li>DFS，每次都先檢查當前正方形裡是否數值完全相同(一開始是整個大正方形)</li><li>是的話直接回傳<code>node</code>，不是的話切割當前正方形為四象限每個象限再各自檢查是否數值相同</li><li>最後形成<code>node</code>，並加入子節點們，形成樹</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/UQ-1sBMV0v4" title="Construct Quad Tree - Leetcode 427 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token class-name">Node</span> <span class="token function">construct</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> grid<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">return</span> <span class="token function">dfs</span><span class="token punctuation">(</span>grid<span class="token punctuation">,</span> grid<span class="token punctuation">.</span>length<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token class-name">Node</span> <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> grid<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">,</span> <span class="token keyword">int</span> r<span class="token punctuation">,</span> <span class="token keyword">int</span> c<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">boolean</span> allSame <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>        <span class="token comment">// Check if all the values in the current area are the same</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token comment">// Not the same, comparing to the original cell</span>                <span class="token keyword">if</span> <span class="token punctuation">(</span>grid<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">[</span>c<span class="token punctuation">]</span> <span class="token operator">!=</span> grid<span class="token punctuation">[</span>r <span class="token operator">+</span> i<span class="token punctuation">]</span><span class="token punctuation">[</span>c <span class="token operator">+</span> j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                    allSame <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>                    <span class="token keyword">break</span><span class="token punctuation">;</span>                <span class="token punctuation">&#125;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// All the same! This could be a node</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>allSame<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span>grid<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">[</span>c<span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// Not the same, so split the square into squares</span>        n <span class="token operator">=</span> n <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>        <span class="token comment">// Obtain each quadrant</span>        <span class="token class-name">Node</span> topLeft <span class="token operator">=</span> <span class="token function">dfs</span><span class="token punctuation">(</span>grid<span class="token punctuation">,</span> n<span class="token punctuation">,</span> r<span class="token punctuation">,</span> c<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token class-name">Node</span> topRight <span class="token operator">=</span> <span class="token function">dfs</span><span class="token punctuation">(</span>grid<span class="token punctuation">,</span> n<span class="token punctuation">,</span> r<span class="token punctuation">,</span> c <span class="token operator">+</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token class-name">Node</span> bottomLeft <span class="token operator">=</span> <span class="token function">dfs</span><span class="token punctuation">(</span>grid<span class="token punctuation">,</span> n<span class="token punctuation">,</span> r <span class="token operator">+</span> n<span class="token punctuation">,</span> c<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token class-name">Node</span> bottomRight <span class="token operator">=</span> <span class="token function">dfs</span><span class="token punctuation">(</span>grid<span class="token punctuation">,</span> n<span class="token punctuation">,</span> r <span class="token operator">+</span> n<span class="token punctuation">,</span> c <span class="token operator">+</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// Build the tree</span>        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> topLeft<span class="token punctuation">,</span> topRight<span class="token punctuation">,</span> bottomLeft<span class="token punctuation">,</span> bottomRight<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Array</tag>
+      
+      <tag>Matrix</tag>
+      
+      <tag>Tree</tag>
+      
+      <tag>Divide and Conquer</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>1443. Minimum Time to Collect All Apples in a Tree - Medium</title>
     <link href="/2024/10/30/1443-Minimum-Time-to-Collect-All-Apples-in-a-Tree-Medium/"/>
     <url>/2024/10/30/1443-Minimum-Time-to-Collect-All-Apples-in-a-Tree-Medium/</url>
@@ -312,9 +349,9 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Math</tag>
+      
+      <tag>Greedy</tag>
       
       <tag>Number Theory</tag>
       
@@ -1360,9 +1397,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Linked List</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Linked List</tag>
       
       <tag>Tree</tag>
       
@@ -2927,9 +2964,9 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Greedy</tag>
       
       <tag>Sorting</tag>
       
@@ -2964,9 +3001,9 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Greedy</tag>
       
       <tag>Sorting</tag>
       
@@ -3001,9 +3038,9 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Greedy</tag>
       
       <tag>Sorting</tag>
       
@@ -3283,9 +3320,9 @@
       
       <tag>String</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Greedy</tag>
       
     </tags>
     
@@ -3847,9 +3884,9 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Greedy</tag>
       
     </tags>
     
@@ -4839,9 +4876,9 @@
       
       <tag>String</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Greedy</tag>
       
       <tag>Hash Table</tag>
       
@@ -6628,9 +6665,9 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Greedy</tag>
       
     </tags>
     
@@ -6945,9 +6982,9 @@
       
       <tag>Greedy</tag>
       
-      <tag>Sorting</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Sorting</tag>
       
     </tags>
     
@@ -10468,9 +10505,9 @@
       
       <tag>Array</tag>
       
-      <tag>kadanes Algorithm</tag>
-      
       <tag>Java</tag>
+      
+      <tag>kadanes Algorithm</tag>
       
     </tags>
     
@@ -10594,11 +10631,11 @@
       
       <tag>Algorithms</tag>
       
+      <tag>Queue</tag>
+      
       <tag>筆記</tag>
       
       <tag>演算法</tag>
-      
-      <tag>Queue</tag>
       
     </tags>
     
