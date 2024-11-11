@@ -4,6 +4,43 @@
   
   
   <entry>
+    <title>662. Maximum Width of Binary Tree - Medium</title>
+    <link href="/2024/11/11/662-Maximum-Width-of-Binary-Tree-Medium/"/>
+    <url>/2024/11/11/662-Maximum-Width-of-Binary-Tree-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/maximum-width-of-binary-tree/description/"  title="662. Maximum Width of Binary Tree" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li><code>BFS</code></li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>紀錄<code>index</code>就可以完美解決</p><ol><li>一般的<code>BFS</code></li><li>每個點除了把自身加入到<code>queue</code>，還要加入節點的<code>index</code>，表示在這層當中的<code>index</code></li><li>利用節點的<code>index</code>就可以在最後算出這層可以多長</li><li>循環每層到最後取最大值</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/FPzLE2L7uHs" title="Maximum Width of Binary Tree - Leetcode 662 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">widthOfBinaryTree</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> root<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token comment">// Node, index</span>        <span class="token class-name">Queue</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Pair</span><span class="token punctuation">&lt;</span><span class="token class-name">TreeNode</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span><span class="token punctuation">></span></span> q <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        q<span class="token punctuation">.</span><span class="token function">offer</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Pair</span><span class="token punctuation">(</span>root<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span>q<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">int</span> len <span class="token operator">=</span> q<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment">// Starting index of the current level</span>            <span class="token keyword">int</span> initialIndex <span class="token operator">=</span> q<span class="token punctuation">.</span><span class="token function">peek</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment">// Index of the current node</span>            <span class="token keyword">int</span> index <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token class-name">Pair</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">TreeNode</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span></span> p <span class="token operator">=</span> q<span class="token punctuation">.</span><span class="token function">poll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token class-name">TreeNode</span> curNode <span class="token operator">=</span> p<span class="token punctuation">.</span><span class="token function">getKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                index <span class="token operator">=</span> p<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token keyword">if</span> <span class="token punctuation">(</span>curNode<span class="token punctuation">.</span>left <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                    q<span class="token punctuation">.</span><span class="token function">offer</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Pair</span><span class="token punctuation">(</span>curNode<span class="token punctuation">.</span>left<span class="token punctuation">,</span> index <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token punctuation">&#125;</span>                <span class="token keyword">if</span> <span class="token punctuation">(</span>curNode<span class="token punctuation">.</span>right <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                    q<span class="token punctuation">.</span><span class="token function">offer</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Pair</span><span class="token punctuation">(</span>curNode<span class="token punctuation">.</span>right<span class="token punctuation">,</span> index <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token punctuation">&#125;</span>            <span class="token punctuation">&#125;</span>            <span class="token comment">// Cal. the length</span>            res <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>res<span class="token punctuation">,</span> index <span class="token operator">-</span> initialIndex <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> res<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Binary Tree</tag>
+      
+      <tag>Depth-First Search</tag>
+      
+      <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>106. Construct Binary Tree from Inorder and Postorder Traversal - Medium</title>
     <link href="/2024/11/07/106-Construct-Binary-Tree-from-Inorder-and-Postorder-Traversal-Medium/"/>
     <url>/2024/11/07/106-Construct-Binary-Tree-from-Inorder-and-Postorder-Traversal-Medium/</url>
@@ -915,9 +952,9 @@
       
       <tag>Stack</tag>
       
-      <tag>Monotonic Stack</tag>
-      
       <tag>Recursion</tag>
+      
+      <tag>Monotonic Stack</tag>
       
       <tag>Linked List</tag>
       
@@ -3075,9 +3112,9 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Greedy</tag>
       
       <tag>Sorting</tag>
       
@@ -3112,9 +3149,9 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Greedy</tag>
       
       <tag>Sorting</tag>
       
@@ -3149,9 +3186,9 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Greedy</tag>
       
       <tag>Sorting</tag>
       
@@ -3431,9 +3468,9 @@
       
       <tag>String</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Greedy</tag>
       
     </tags>
     
@@ -3995,9 +4032,9 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Greedy</tag>
       
     </tags>
     
@@ -4277,9 +4314,9 @@
       
       <tag>Hash Table</tag>
       
-      <tag>Hash Function</tag>
-      
       <tag>Design</tag>
+      
+      <tag>Hash Function</tag>
       
     </tags>
     
@@ -4456,9 +4493,9 @@
       
       <tag>Linked List</tag>
       
-      <tag>Hash Function</tag>
-      
       <tag>Design</tag>
+      
+      <tag>Hash Function</tag>
       
     </tags>
     
@@ -4495,9 +4532,9 @@
       
       <tag>Linked List</tag>
       
-      <tag>Hash Function</tag>
-      
       <tag>Design</tag>
+      
+      <tag>Hash Function</tag>
       
     </tags>
     
@@ -4987,9 +5024,9 @@
       
       <tag>String</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Greedy</tag>
       
       <tag>Hash Table</tag>
       
@@ -5525,9 +5562,9 @@
       
       <tag>Hash Table</tag>
       
-      <tag>Trie</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Trie</tag>
       
       <tag>Memoization</tag>
       
@@ -5986,9 +6023,9 @@
       
       <tag>Array</tag>
       
-      <tag>Depth-First Search</tag>
-      
       <tag>Matrix</tag>
+      
+      <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
       
@@ -6025,9 +6062,9 @@
       
       <tag>Array</tag>
       
-      <tag>Depth-First Search</tag>
-      
       <tag>Matrix</tag>
+      
+      <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
       
@@ -6776,9 +6813,9 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Greedy</tag>
       
     </tags>
     
@@ -7093,9 +7130,9 @@
       
       <tag>Greedy</tag>
       
-      <tag>Sorting</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Sorting</tag>
       
     </tags>
     
@@ -7478,9 +7515,9 @@
       
       <tag>Array</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -7738,11 +7775,11 @@
       
       <tag>心得</tag>
       
+      <tag>Dynamic Programming</tag>
+      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
-      
-      <tag>Dynamic Programming</tag>
       
       <tag>Graph</tag>
       
@@ -9903,9 +9940,9 @@
       
       <tag>心得</tag>
       
-      <tag>Depth-First Search</tag>
-      
       <tag>Matrix</tag>
+      
+      <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
       
@@ -10742,11 +10779,11 @@
       
       <tag>Algorithms</tag>
       
+      <tag>Queue</tag>
+      
       <tag>筆記</tag>
       
       <tag>演算法</tag>
-      
-      <tag>Queue</tag>
       
     </tags>
     
