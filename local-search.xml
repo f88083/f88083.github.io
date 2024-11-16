@@ -4,6 +4,80 @@
   
   
   <entry>
+    <title>96. Unique Binary Search Trees - Medium</title>
+    <link href="/2024/11/16/96-Unique-Binary-Search-Trees-Medium/"/>
+    <url>/2024/11/16/96-Unique-Binary-Search-Trees-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/unique-binary-search-trees/description/"  title="96. Unique Binary Search Trees" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>找規律？</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li><code>DP</code></li><li><code>0</code>和<code>1</code>個節點是base case</li><li>嘗試把每個點當作<code>root</code>，左樹和右樹再各自當成<code>root</code>直到base case就可以推導出當前<code>n</code>總共有幾種樹</li></ol><p>例如<code>n=2</code>總共是兩種可能的樹<code>[0,1], [1,0]</code>，<code>n=3</code>是五種，因為<code>[0,2], [1,1], [2, 0] =&gt; 2 + 1 + 2 = 5</code>，<code>n=4</code>是14種，因為<code>[0,3], [1,2], [2,1], [3,0] =&gt; 5 + 2 + 2 + 5 = 14</code></p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p><a href="https://leetcode.com/problems/unique-binary-search-trees/solutions/409987/summary-of-all-solutions-in-java-with-explanations/">網友解答</a></p><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span></span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">numTrees</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">||</span> n <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">int</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token comment">// From 1 to n</span>        <span class="token comment">// e.g. 4 -> [0,3], [1,2], [2, 1], [3, 0]</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>map<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token function">numTrees</span><span class="token punctuation">(</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>map<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>n <span class="token operator">-</span> i<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>n <span class="token operator">-</span> i<span class="token punctuation">,</span> <span class="token function">numTrees</span><span class="token punctuation">(</span>n <span class="token operator">-</span> i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>            sum <span class="token operator">+=</span> map<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">*</span> map<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>n <span class="token operator">-</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> sum<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Binary Search Tree</tag>
+      
+      <tag>Binary Tree</tag>
+      
+      <tag>Math</tag>
+      
+      <tag>Dynamic Programming</tag>
+      
+      <tag>Tree</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>1376. Time Needed to Inform All Employees - Medium</title>
+    <link href="/2024/11/16/1376-Time-Needed-to-Inform-All-Employees-Medium/"/>
+    <url>/2024/11/16/1376-Time-Needed-to-Inform-All-Employees-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/time-needed-to-inform-all-employees/description/"  title="1376. Time Needed to Inform All Employees" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li><code>DFS</code>找最長路徑</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li><code>BFS</code></li><li>先建立<code>manager -&gt; employees</code>的map</li><li>然後就是一般的<code>BFS</code>，每個<code>employee</code>都要加上其<code>manager</code>的時間，這樣才是通知到那位<code>employee</code>的完整時間</li><li>每次到新的僱員時更新結果</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/zdBYi0p4L5Q" title="Time Needed to Inform All Employees - Leetcode 1376 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">numOfMinutes</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">,</span> <span class="token keyword">int</span> headID<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> manager<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> informTime<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token comment">// Manager -> employees</span>        <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">,</span> <span class="token class-name">ArrayList</span><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span><span class="token punctuation">></span></span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// Build the relationships</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// Get the list or create a new one</span>            <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> list <span class="token operator">=</span> map<span class="token punctuation">.</span><span class="token function">getOrDefault</span><span class="token punctuation">(</span>manager<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Add the element to the list</span>            map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>manager<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> list<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Put the updated list back in the map</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>                <span class="token comment">// Queue of "id, time"</span>        <span class="token class-name">Queue</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Pair</span><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span><span class="token punctuation">></span></span> q <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// Add the CEO</span>        q<span class="token punctuation">.</span><span class="token function">offer</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Pair</span><span class="token punctuation">(</span>headID<span class="token punctuation">,</span> informTime<span class="token punctuation">[</span>headID<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span>q<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">int</span> size <span class="token operator">=</span> q<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token keyword">int</span> id <span class="token operator">=</span> q<span class="token punctuation">.</span><span class="token function">peek</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token keyword">int</span> time <span class="token operator">=</span> q<span class="token punctuation">.</span><span class="token function">poll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment">// Update the result</span>            res <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>res<span class="token punctuation">,</span> time<span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>map<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token comment">// Add the employees of the current manager</span>                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> emp <span class="token operator">:</span> map<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                    q<span class="token punctuation">.</span><span class="token function">offer</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Pair</span><span class="token punctuation">(</span>emp<span class="token punctuation">,</span> time <span class="token operator">+</span> informTime<span class="token punctuation">[</span>emp<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token punctuation">&#125;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> res<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Depth-First Search</tag>
+      
+      <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>662. Maximum Width of Binary Tree - Medium</title>
     <link href="/2024/11/11/662-Maximum-Width-of-Binary-Tree-Medium/"/>
     <url>/2024/11/11/662-Maximum-Width-of-Binary-Tree-Medium/</url>
@@ -3007,9 +3081,9 @@
       
       <tag>Recursion</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Math</tag>
+      
+      <tag>Two Pointers</tag>
       
       <tag>Bit Manipulation</tag>
       
@@ -3112,9 +3186,9 @@
       
       <tag>Array</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Greedy</tag>
+      
+      <tag>Two Pointers</tag>
       
       <tag>Sorting</tag>
       
@@ -3149,9 +3223,9 @@
       
       <tag>Array</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Greedy</tag>
+      
+      <tag>Two Pointers</tag>
       
       <tag>Sorting</tag>
       
@@ -3186,9 +3260,9 @@
       
       <tag>Array</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Greedy</tag>
+      
+      <tag>Two Pointers</tag>
       
       <tag>Sorting</tag>
       
@@ -3468,9 +3542,9 @@
       
       <tag>String</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Greedy</tag>
+      
+      <tag>Two Pointers</tag>
       
     </tags>
     
@@ -4032,9 +4106,9 @@
       
       <tag>Array</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Greedy</tag>
+      
+      <tag>Two Pointers</tag>
       
     </tags>
     
@@ -4950,9 +5024,9 @@
       
       <tag>心得</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Math</tag>
+      
+      <tag>Two Pointers</tag>
       
       <tag>Hash Table</tag>
       
@@ -5024,9 +5098,9 @@
       
       <tag>String</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Greedy</tag>
+      
+      <tag>Two Pointers</tag>
       
       <tag>Hash Table</tag>
       
@@ -6813,9 +6887,9 @@
       
       <tag>Array</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Greedy</tag>
+      
+      <tag>Two Pointers</tag>
       
     </tags>
     
@@ -9266,9 +9340,9 @@
       
       <tag>Array</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Math</tag>
+      
+      <tag>Two Pointers</tag>
       
     </tags>
     
