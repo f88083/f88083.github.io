@@ -253,6 +253,240 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/10/30/1443-Minimum-Time-to-Collect-All-Apples-in-a-Tree-Medium/" target="_self">
+          1443. Minimum Time to Collect All Apples in a Tree - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/30/1443-Minimum-Time-to-Collect-All-Apples-in-a-Tree-Medium/" target="_self">
+        <div>
+          前往題目  想法 建立一棵樹？ 儲存每個node的鄰居？ DFS?  思路這題的關鍵在於  儲存每個node的鄰居 走訪全部節點   儲存鄰居 DFS走訪所有節點 不要走回父節點，不然會無限迴圈 呼叫dfs往鄰居接著走訪 當當前的節點是蘋果或是子節點有蘋果就代表來回需要兩秒，所以加上結果  Code  class Solution &#123;     List&lt;List&lt;Intege
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-10-30 12:48" pubdate>
+              2024-10-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Hash-Table/">#Hash Table</a>
+            
+              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
+            
+              <a href="/tags/Breadth-First-Search/">#Breadth-First Search</a>
+            
+              <a href="/tags/Tree/">#Tree</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/10/26/783-Minimum-Distance-Between-BST-Nodes-Easy/" target="_self">
+          783. Minimum Distance Between BST Nodes - Easy
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/26/783-Minimum-Distance-Between-BST-Nodes-Easy/" target="_self">
+        <div>
+          前往題目  想法 左右子樹和父節點比較就好  思路這樣的想法問題是孫子可能跟爺爺更近，相較於兒子  inorder可以在BST從最小數節點迭代到最大數節點  Code  class Solution &#123;     int min;     TreeNode prev;     public int minDiffInBST(TreeNode root) &#123;         min
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-10-26 11:03" pubdate>
+              2024-10-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Binary-Search-Tree/">#Binary Search Tree</a>
+            
+              <a href="/tags/Binary-Tree/">#Binary Tree</a>
+            
+              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
+            
+              <a href="/tags/Breadth-First-Search/">#Breadth-First Search</a>
+            
+              <a href="/tags/Tree/">#Tree</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/10/25/450-Delete-Node-in-a-BST-Medium/" target="_self">
+          450. Delete Node in a BST - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/25/450-Delete-Node-in-a-BST-Medium/" target="_self">
+        <div>
+          前往題目  想法 找到目標後直接刪除，把parent直接接到他的子樹  思路但這樣的想法有點問題，因為沒有考慮到樹的右子樹必須要大於父節點 Recursion  遇到null直接回傳root，回傳null也行，反正都是同樣的值 接著就看當前節點是否是Key，大於的話就往左邊繼續搜尋，反之往右邊 如果找到同樣的值，只有左或者右一個子樹的時候直接捨棄當前節點，接上子樹就好 如果他同時有右子樹和左子樹，
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-10-25 21:14" pubdate>
+              2024-10-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Binary-Search-Tree/">#Binary Search Tree</a>
+            
+              <a href="/tags/Binary-Tree/">#Binary Tree</a>
+            
+              <a href="/tags/Tree/">#Tree</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2024/10/24/701-Insert-into-a-Binary-Search-Tree-Medium/" target="_self">
           701. Insert into a Binary Search Tree - Medium
         </a>
@@ -781,245 +1015,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/10/19/938-Range-Sum-of-BST-Easy/" target="_self">
-          938. Range Sum of BST - Easy
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/19/938-Range-Sum-of-BST-Easy/" target="_self">
-        <div>
-          前往題目  想法 走訪所有節點時判斷並加入結果  思路遞迴  除了遇到null節點，其餘都判斷其值是否在範圍內，是的話就更新結果 呼叫兩次方法，並傳入左子節點和右子節點  Codeclass Solution &#123;     int res = 0;     public int rangeSumBST(TreeNode root, int low, int high) &#123;
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-10-19 11:47" pubdate>
-              2024-10-19
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Binary-Search-Tree/">#Binary Search Tree</a>
-            
-              <a href="/tags/Binary-Tree/">#Binary Tree</a>
-            
-              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
-            
-              <a href="/tags/Tree/">#Tree</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/10/18/112-Path-Sum-Easy/" target="_self">
-          112. Path Sum - Easy
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/18/112-Path-Sum-Easy/" target="_self">
-        <div>
-          前往題目  想法 走訪所有node，遇到leaf判斷當前總合是否等於目標總和  思路遞迴  遇到null回傳 否則更新當前總和，如果不是leaf則繼續呼叫方法走訪左右子樹 如果總和相等標記true  Codeclass Solution &#123;     boolean res;      public boolean hasPathSum(TreeNode root, int targetS
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-10-18 11:09" pubdate>
-              2024-10-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Binary-Tree/">#Binary Tree</a>
-            
-              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
-            
-              <a href="/tags/Tree/">#Tree</a>
-            
-              <a href="/tags/Breadth-First-Search/">#Breadth-First Search</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/10/18/617-Merge-Two-Binary-Trees-Easy/" target="_self">
-          617. Merge Two Binary Trees - Easy
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/18/617-Merge-Two-Binary-Trees-Easy/" target="_self">
-        <div>
-          前往題目  想法 建立新的樹，每個節點的值相加  思路遞迴  遇到root1或root2其中一個是null就回傳另一個，兩個都是null也無所謂，因為就是把null加到樹上 兩個節點的值相加 左右節點再次呼叫方法 回傳當前節點  Code網友解答 但是這個方法挪用了舊的樹，也就是root1，題目想要我們merge them into a new binary tree class Solution
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-10-18 10:40" pubdate>
-              2024-10-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Binary-Tree/">#Binary Tree</a>
-            
-              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
-            
-              <a href="/tags/Tree/">#Tree</a>
-            
-              <a href="/tags/Breadth-First-Search/">#Breadth-First Search</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/33/#board">33</a><a class="extend next" rel="next" href="/page/4/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/#board">34</a><a class="extend next" rel="next" href="/page/4/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

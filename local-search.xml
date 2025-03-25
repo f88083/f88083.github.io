@@ -4,6 +4,99 @@
   
   
   <entry>
+    <title>3394. Check if Grid can be Cut into Sections - Medium</title>
+    <link href="/2025/03/25/3394-Check-if-Grid-can-be-Cut-into-Sections-Medium/"/>
+    <url>/2025/03/25/3394-Check-if-Grid-can-be-Cut-into-Sections-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/check-if-grid-can-be-cut-into-sections/description/?envType=daily-question&envId=2025-03-25"  title="3394. Check if Grid can be Cut into Sections" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>不知該如何檢查是否可切成三塊</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>看成是<code>intervals</code>來解</p><ol><li>分成<code>x</code>和<code>y</code>座標並排序</li><li>垂直和水平方向分開來檢查是否重疊，並記錄不重疊數</li><li>輸出結果</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/X9QtxzsAsYo" title="Check if Grid can be Cut into Sections - Leetcode 3394 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">checkValidCuts</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> rectangles<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> x <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>rectangles<span class="token punctuation">.</span>length<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> y <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>rectangles<span class="token punctuation">.</span>length<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token comment">// Build x and y coordinates array, so that we can check horizontally and vertically</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> rectangles<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            x<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> rectangles<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>            x<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> rectangles<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>            y<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> rectangles<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>            y<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> rectangles<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">-></span> a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">-</span> b<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>y<span class="token punctuation">,</span> <span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">-></span> a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">-</span> b<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token keyword">return</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span><span class="token function">checkNonOverlapping</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">checkNonOverlapping</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">3</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token keyword">int</span> <span class="token function">checkNonOverlapping</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> intervals<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> prevEnd <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>        <span class="token comment">// Start checking overlapping</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> intervals<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">int</span> start <span class="token operator">=</span> intervals<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>            <span class="token keyword">int</span> end <span class="token operator">=</span> intervals<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>            <span class="token comment">// When non-overlapping</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>prevEnd <span class="token operator">&lt;=</span> start<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token operator">++</span>count<span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>            prevEnd <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>prevEnd<span class="token punctuation">,</span> end<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> count<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Array</tag>
+      
+      <tag>Sorting</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>如何使用python的venv</title>
+    <link href="/2025/03/24/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8python%E7%9A%84venv/"/>
+    <url>/2025/03/24/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8python%E7%9A%84venv/</url>
+    
+    <content type="html"><![CDATA[<p>當python有問題的時候直接使用venv通常都能解決，甚至每個專案都用venv是最好的，這樣就可以把package分開</p><ol><li>要先安裝<code>python3-venv</code>，例如Linux<br><code>sudo apt install python3-venv</code></li><li>建立<code>venv</code>目錄<br><code>python3 -m venv venv</code></li><li>進入<code>venv</code>環境<br><code>source venv/bin/activate</code></li><li>然後就可以自由安裝套件了，注意每次要安裝都須先進去<code>venv</code>，如果是使用<code>IDE</code>，要確保切換到<code>venv</code>裡面的<code>python</code>再執行</li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>綜合</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>venv</tag>
+      
+      <tag>python</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>3169. Count Days Without Meetings - Medium</title>
+    <link href="/2025/03/24/3169-Count-Days-Without-Meetings-Medium/"/>
+    <url>/2025/03/24/3169-Count-Days-Without-Meetings-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/count-days-without-meetings/description/?envType=daily-question&envId=2025-03-24"  title="3169. Count Days Without Meetings" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>最直觀的就是用<code>set</code>裝滿天數，然後用所有的<code>meetings</code>去排除，最後看<code>size</code>，但很明顯的這太慢了，每個區間有n天，然後有n個區間，就要n^n次了</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>先依照<code>starting day</code>排序</li><li>然後檢查每個區間是否和上一個重疊</li><li>是就合併，否則紀錄天數</li><li>最後天數減去總天數就是答案</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p><a href="https://www.catxcoder.com/medium/2024/08/24/3169-Count-Days-Without-Meetings.html">網友解答</a></p><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">countDays</span><span class="token punctuation">(</span><span class="token keyword">int</span> days<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> meetings<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token comment">// Sort the meetings by start day</span>        <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>meetings<span class="token punctuation">,</span> <span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">-></span> a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">-</span> b<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> totalMeetingDays <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> s <span class="token operator">=</span> meetings<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// Start day</span>        <span class="token keyword">int</span> e <span class="token operator">=</span> meetings<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// End day</span>        <span class="token comment">// Start to merge and record total meeting days</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> meetings<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// Need to merge (- 1 for continuous meetings)</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>e <span class="token operator">>=</span> meetings<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                e <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>e<span class="token punctuation">,</span> meetings<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>                <span class="token comment">// Update the meeting days</span>                totalMeetingDays <span class="token operator">+=</span> e <span class="token operator">-</span> s <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>                <span class="token comment">// Update the interval to the next meeting</span>                s <span class="token operator">=</span> meetings<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>                e <span class="token operator">=</span> meetings<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// Add the last meeting</span>        totalMeetingDays <span class="token operator">+=</span> e <span class="token operator">-</span> s <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>        <span class="token keyword">return</span> days <span class="token operator">-</span> totalMeetingDays<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Array</tag>
+      
+      <tag>Sorting</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>macos如何轉換java的JDK版本</title>
     <link href="/2025/03/21/macos/"/>
     <url>/2025/03/21/macos/</url>
@@ -405,9 +498,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -442,9 +535,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -516,9 +609,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -627,9 +720,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -666,9 +759,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -1022,9 +1115,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -1059,9 +1152,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -1959,11 +2052,11 @@
       
       <tag>Depth-First Search</tag>
       
+      <tag>Breadth-First Search</tag>
+      
       <tag>Linked List</tag>
       
       <tag>Tree</tag>
-      
-      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -4730,9 +4823,9 @@
       
       <tag>Hash Table</tag>
       
-      <tag>Hash Function</tag>
-      
       <tag>Design</tag>
+      
+      <tag>Hash Function</tag>
       
     </tags>
     
@@ -4837,9 +4930,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -4909,9 +5002,9 @@
       
       <tag>Linked List</tag>
       
-      <tag>Hash Function</tag>
-      
       <tag>Design</tag>
+      
+      <tag>Hash Function</tag>
       
     </tags>
     
@@ -4948,9 +5041,9 @@
       
       <tag>Linked List</tag>
       
-      <tag>Hash Function</tag>
-      
       <tag>Design</tag>
+      
+      <tag>Hash Function</tag>
       
     </tags>
     
@@ -5228,9 +5321,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -5978,9 +6071,9 @@
       
       <tag>Hash Table</tag>
       
-      <tag>Trie</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Trie</tag>
       
       <tag>Memoization</tag>
       
@@ -6832,9 +6925,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -7546,9 +7639,9 @@
       
       <tag>Greedy</tag>
       
-      <tag>Sorting</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Sorting</tag>
       
     </tags>
     
@@ -8158,9 +8251,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -8191,9 +8284,9 @@
       
       <tag>心得</tag>
       
-      <tag>Depth-First Search</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
       
@@ -8450,9 +8543,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -8588,9 +8681,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -8866,9 +8959,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -9550,9 +9643,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
