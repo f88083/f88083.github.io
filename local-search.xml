@@ -4,6 +4,72 @@
   
   
   <entry>
+    <title>Shell基礎筆記 - The Missing Semester of Your CS Education</title>
+    <link href="/2025/03/26/Shell/"/>
+    <url>/2025/03/26/Shell/</url>
+    
+    <content type="html"><![CDATA[<p>可惜還是學生的時候不知道有這門好課，雖然已經有些經驗了，但還是想看看這門課能帶給我什麼新東西</p><h2 id="快速複習"><a href="#快速複習" class="headerlink" title="快速複習"></a>快速複習</h2><h3 id="Basics-of-the-Shell"><a href="#Basics-of-the-Shell" class="headerlink" title="Basics of the Shell"></a>Basics of the Shell</h3><ul><li>Shell &#x3D; text-based interface for executing commands.  </li><li>Bash (Bourne Again Shell) is widely used.</li></ul><h3 id="Basic-Commands"><a href="#Basic-Commands" class="headerlink" title="Basic Commands"></a>Basic Commands</h3><ul><li><code>date</code> → Show current date&#x2F;time  </li><li><code>echo hello</code> → Print text to terminal  </li><li><code>echo $PATH</code> → Show directories searched for commands  </li><li><code>which command</code> → Locate the binary file of a command</li></ul><h3 id="Navigating-the-Filesystem"><a href="#Navigating-the-Filesystem" class="headerlink" title="Navigating the Filesystem"></a>Navigating the Filesystem</h3><ul><li><code>pwd</code> → Show current directory  </li><li><code>cd /path/to/dir</code> → Change directory  </li><li><code>ls</code> → List files  </li><li><code>ls -l</code> → Show detailed file info  </li><li><code>cd ..</code> → Move up one directory  </li><li><code>mkdir newdir</code> → Create a directory</li></ul><h3 id="File-Operations"><a href="#File-Operations" class="headerlink" title="File Operations"></a>File Operations</h3><ul><li><code>mv old new</code> → Rename&#x2F;move a file  </li><li><code>cp source dest</code> → Copy a file  </li><li><code>rm file</code> → Delete a file  </li><li><code>man command</code> → Show manual for a command</li></ul><h3 id="Redirection-Pipes"><a href="#Redirection-Pipes" class="headerlink" title="Redirection &amp; Pipes"></a>Redirection &amp; Pipes</h3><ul><li><code>command &gt; file</code> → Redirect output to a file  </li><li><code>command &gt;&gt; file</code> → Append output to a file  </li><li><code>command &lt; file</code> → Use file as input  </li><li><code>command1 | command2</code> → Pipe output of one command to another</li></ul><h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><ul><li><code>echo hello &gt; hello.txt</code> → Write “hello” to a file  </li><li><code>cat hello.txt</code> → Display file contents  </li><li><code>ls -l / | tail -n1</code> → Show the last line of <code>ls -l /</code> output  </li><li><code>curl --head --silent google.com | grep -i content-length | cut -d &#39; &#39; -f2</code> → Get content length of a webpage</li></ul><h3 id="Running-Commands-as-Root"><a href="#Running-Commands-as-Root" class="headerlink" title="Running Commands as Root"></a>Running Commands as Root</h3><ul><li><code>sudo command</code> → Run command as superuser  </li><li><code>echo 3 | sudo tee /sys/class/backlight/thinkpad_screen/brightness</code> → Change screen brightness  </li><li>tee displays program output and copying to a file</li></ul><hr><h3 id="Exercises"><a href="#Exercises" class="headerlink" title="Exercises"></a>Exercises</h3><p>第五題</p><ul><li>不能直接寫入，因為<code>#</code>是comment</li><li>不能用雙引號因為<code>!</code>是event</li><li>要用單引號或是<code>\</code>把驚嘆號轉換成字</li><li><code>echo &#39;#!/bin/sh&#39; &gt; semester</code></li><li><code>echo &quot;#\!/bin/sh&quot; &gt; semester</code></li></ul><p>第九題</p><ul><li>因為<code>#!</code>這行</li></ul><p>第十題</p><ul><li><code>./semester | grep last-modified &gt; last-modified.txt</code></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>電腦科學</category>
+      
+      <category>The Missing Semester of Your CS Education</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>shell</tag>
+      
+      <tag>the-missing-semester-of-your-cs-education</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>2033. Minimum Operations to Make a Uni-Value Grid - Medium</title>
+    <link href="/2025/03/26/2033-Minimum-Operations-to-Make-a-Uni-Value-Grid-Medium/"/>
+    <url>/2025/03/26/2033-Minimum-Operations-to-Make-a-Uni-Value-Grid-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/minimum-operations-to-make-a-uni-value-grid/description/?envType=daily-question&envId=2025-03-26"  title="2033. Minimum Operations to Make a Uni-Value Grid" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>中位數應該是最靠近所有數字的數</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>把陣列扁平化，因為位置資訊不重要</li><li>扁平化後就可以排序並找到中位數</li><li>接著計算步數</li><li>只有當前數字減去中位數後，不能以每次<code>x</code>的步伐走到中位數才是<code>invalid</code>的狀況</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">minOperations</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> grid<span class="token punctuation">,</span> <span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> elements <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>grid<span class="token punctuation">.</span>length <span class="token operator">*</span> grid<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>length<span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> index <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token comment">// Move the elements from the grid</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> grid<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> grid<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                elements<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">=</span> grid<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>                <span class="token operator">++</span>index<span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// Sort it to find median</span>        <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>elements<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> median <span class="token operator">=</span> elements<span class="token punctuation">[</span><span class="token punctuation">(</span>elements<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> steps <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token comment">// Count steps</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> elements<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// Skip the median itself</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>elements<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> median<span class="token punctuation">)</span> <span class="token keyword">continue</span><span class="token punctuation">;</span>            <span class="token comment">// Found invalid value</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span>elements<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> median<span class="token punctuation">)</span> <span class="token operator">%</span> x <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>            <span class="token comment">// Update steps</span>            steps <span class="token operator">+=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span>elements<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> median<span class="token punctuation">)</span> <span class="token operator">/</span> x<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> steps<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Array</tag>
+      
+      <tag>Math</tag>
+      
+      <tag>Matrix</tag>
+      
+      <tag>Sorting</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>3394. Check if Grid can be Cut into Sections - Medium</title>
     <link href="/2025/03/25/3394-Check-if-Grid-can-be-Cut-into-Sections-Medium/"/>
     <url>/2025/03/25/3394-Check-if-Grid-can-be-Cut-into-Sections-Medium/</url>
@@ -1185,9 +1251,9 @@
       
       <tag>心得</tag>
       
-      <tag>Stack</tag>
-      
       <tag>Binary Tree</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Depth-First Search</tag>
       
@@ -1222,9 +1288,9 @@
       
       <tag>心得</tag>
       
-      <tag>Stack</tag>
-      
       <tag>Binary Tree</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Depth-First Search</tag>
       
@@ -1259,9 +1325,9 @@
       
       <tag>心得</tag>
       
-      <tag>Stack</tag>
-      
       <tag>Binary Tree</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Depth-First Search</tag>
       
@@ -1941,9 +2007,9 @@
       
       <tag>心得</tag>
       
-      <tag>String</tag>
-      
       <tag>Array</tag>
+      
+      <tag>String</tag>
       
       <tag>Sorting</tag>
       
@@ -2159,9 +2225,9 @@
       
       <tag>心得</tag>
       
-      <tag>String</tag>
-      
       <tag>Array</tag>
+      
+      <tag>String</tag>
       
       <tag>Two Pointers</tag>
       
@@ -2341,7 +2407,7 @@
     <link href="/2024/09/07/xbox-series%E6%89%8B%E6%8A%8A%E8%98%91%E8%8F%87%E9%A0%AD%E9%A3%84%E7%A7%BB%E4%BF%AE%E5%BE%A9%E6%96%B9%E6%B3%95/"/>
     <url>/2024/09/07/xbox-series%E6%89%8B%E6%8A%8A%E8%98%91%E8%8F%87%E9%A0%AD%E9%A3%84%E7%A7%BB%E4%BF%AE%E5%BE%A9%E6%96%B9%E6%B3%95/</url>
     
-    <content type="html"><![CDATA[<p>最近用了三年的xbox series的手把右蘑菇開始飄移，不動它偶爾就會自己慢慢往上，剛好又在打黑神話，常常跑一跑視角就沒了，不考慮焊接換微動，因為不像滑鼠那樣拆開來就可以整個板子拿出來，手把結構較為緊密複雜，網路上都有很多影片參考，反而有個民間小偏方讓我的手把這兩天都恢復正常，再次秀逗的話我再刪文🤣</p><p>我是參考這篇ptt網友的<a href="https://www.ptt.cc/bbs/XBOX/M.1668438243.A.56B.html">文章</a>，大致步驟如下</p><ol><li>拆開蓋子後，把蘑菇頭拿掉</li><li>如果是Y軸(上下)出問題，那就把右邊的綠色感應器撬開，如下圖<br><img src="https://i.imgur.com/Q58XpvI.png" alt="Image"><br>紅色框框是撬開的部分<br>黃色框框則是原本的樣子</li></ol><p>我大概翹成這樣就沒有飄移問題了，可以去ptt網友附上的<a href="https://hardwaretester.com/gamepad">測試網站</a>看看會不會飄移</p><blockquote><p>特別感謝<code>LonoHead (大頭)</code>大大分享的文章，讓我的手把再生</p></blockquote>]]></content>
+    <content type="html"><![CDATA[<p>最近用了三年的xbox series的手把右蘑菇開始飄移，不動它偶爾就會自己慢慢往上，剛好又在打黑神話，常常跑一跑視角就沒了，不考慮焊接換微動，因為不像滑鼠那樣拆開來就可以整個板子拿出來，手把結構較為緊密複雜，網路上都有很多影片參考，反而有個民間小偏方讓我的手把這兩天都恢復正常，再次秀逗的話我再刪文🤣</p><p>我是參考這篇ptt網友的<a href="https://www.ptt.cc/bbs/XBOX/M.1668438243.A.56B.html">文章</a>，大致步驟如下</p><ol><li>拆開蓋子後，把蘑菇頭拿掉</li><li>如果是Y軸(上下)出問題，那就把右邊的綠色感應器撬開，如下圖<br><img src="https://i.imgur.com/Q58XpvI.png" alt="Image"><br>紅色框框是撬開的部分<br>黃色框框則是原本的樣子</li></ol><p>我大概翹成這樣就沒有飄移問題了，可以去ptt網友附上的<a href="https://hardwaretester.com/gamepad">測試網站</a>看看會不會飄移</p><blockquote><p>特別感謝<code>LonoHead (大頭)</code>大大分享的文章，讓我的手把再生</p></blockquote><h2 id="過兩個禮拜蘑菇頭又開始秀逗了，後來買了個新的"><a href="#過兩個禮拜蘑菇頭又開始秀逗了，後來買了個新的" class="headerlink" title="過兩個禮拜蘑菇頭又開始秀逗了，後來買了個新的"></a>過兩個禮拜蘑菇頭又開始秀逗了，後來買了個新的</h2>]]></content>
     
     
     <categories>
@@ -3320,9 +3386,9 @@
       
       <tag>心得</tag>
       
-      <tag>String</tag>
-      
       <tag>Array</tag>
+      
+      <tag>String</tag>
       
       <tag>Greedy</tag>
       
@@ -3551,9 +3617,9 @@
       
       <tag>心得</tag>
       
-      <tag>String</tag>
-      
       <tag>Array</tag>
+      
+      <tag>String</tag>
       
       <tag>Two Pointers</tag>
       
@@ -3586,9 +3652,9 @@
       
       <tag>心得</tag>
       
-      <tag>String</tag>
-      
       <tag>Array</tag>
+      
+      <tag>String</tag>
       
     </tags>
     
@@ -4467,9 +4533,9 @@
       
       <tag>心得</tag>
       
-      <tag>String</tag>
-      
       <tag>Array</tag>
+      
+      <tag>String</tag>
       
       <tag>Matrix</tag>
       
@@ -6065,9 +6131,9 @@
       
       <tag>心得</tag>
       
-      <tag>String</tag>
-      
       <tag>Array</tag>
+      
+      <tag>String</tag>
       
       <tag>Hash Table</tag>
       
@@ -6141,9 +6207,9 @@
       
       <tag>心得</tag>
       
-      <tag>String</tag>
-      
       <tag>Array</tag>
+      
+      <tag>String</tag>
       
       <tag>Hash Table</tag>
       
@@ -8461,9 +8527,9 @@
       
       <tag>心得</tag>
       
-      <tag>String</tag>
-      
       <tag>Array</tag>
+      
+      <tag>String</tag>
       
       <tag>Greedy</tag>
       
@@ -10585,9 +10651,9 @@
       
       <tag>心得</tag>
       
-      <tag>String</tag>
-      
       <tag>Array</tag>
+      
+      <tag>String</tag>
       
       <tag>Hash Table</tag>
       
