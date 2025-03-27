@@ -4,6 +4,41 @@
   
   
   <entry>
+    <title>2780. Minimum Index of a Valid Split - Medium</title>
+    <link href="/2025/03/27/2780-Minimum-Index-of-a-Valid-Split-Medium/"/>
+    <url>/2025/03/27/2780-Minimum-Index-of-a-Valid-Split-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/minimum-index-of-a-valid-split/description/?envType=daily-question&envId=2025-03-27"  title="2780. Minimum Index of a Valid Split" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>先找出最多的那個元素，然後迭代的時候再算其元素在左邊以及右邊各有多少</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>就和我的想法一樣，不過最後我忘了除二或乘二去正確判斷超過半數</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">minimumIndex</span><span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> dominant <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">&#123;</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>        <span class="token comment">// Number -> count</span>        <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span></span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// Find the dominant element</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> num <span class="token operator">:</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>num<span class="token punctuation">,</span> <span class="token number">1</span> <span class="token operator">+</span> map<span class="token punctuation">.</span><span class="token function">getOrDefault</span><span class="token punctuation">(</span>num<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment">// Update the dominant element</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>dominant<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span> map<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                dominant<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> num<span class="token punctuation">;</span>                dominant<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> map<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">int</span> currentDominantCount <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// When encounter dominant value</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">==</span> dominant<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token operator">++</span>currentDominantCount<span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>            <span class="token keyword">int</span> secondDominantCount <span class="token operator">=</span> dominant<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> currentDominantCount<span class="token punctuation">;</span>            <span class="token comment">// When dominant dominates</span>            <span class="token comment">// Times 2 or divided by two ((i + 1) / 2) || ((nums.size() - i - 1) / 2) are both valid, since the point is to check the elements are more than half of the range</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>currentDominantCount <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">></span> <span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> secondDominantCount <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">></span> <span class="token punctuation">(</span>nums<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token keyword">return</span> i<span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Array</tag>
+      
+      <tag>Hash Table</tag>
+      
+      <tag>Sorting</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Shell基礎筆記 - The Missing Semester of Your CS Education</title>
     <link href="/2025/03/26/Shell/"/>
     <url>/2025/03/26/Shell/</url>
@@ -928,9 +963,9 @@
       
       <tag>心得</tag>
       
-      <tag>Binary Tree</tag>
-      
       <tag>String</tag>
+      
+      <tag>Binary Tree</tag>
       
       <tag>Depth-First Search</tag>
       
@@ -1251,9 +1286,9 @@
       
       <tag>心得</tag>
       
-      <tag>Binary Tree</tag>
-      
       <tag>Stack</tag>
+      
+      <tag>Binary Tree</tag>
       
       <tag>Depth-First Search</tag>
       
@@ -1288,9 +1323,9 @@
       
       <tag>心得</tag>
       
-      <tag>Binary Tree</tag>
-      
       <tag>Stack</tag>
+      
+      <tag>Binary Tree</tag>
       
       <tag>Depth-First Search</tag>
       
@@ -1325,9 +1360,9 @@
       
       <tag>心得</tag>
       
-      <tag>Binary Tree</tag>
-      
       <tag>Stack</tag>
+      
+      <tag>Binary Tree</tag>
       
       <tag>Depth-First Search</tag>
       
@@ -2007,13 +2042,13 @@
       
       <tag>心得</tag>
       
-      <tag>Array</tag>
-      
       <tag>String</tag>
       
-      <tag>Sorting</tag>
+      <tag>Array</tag>
       
       <tag>Trie</tag>
+      
+      <tag>Sorting</tag>
       
       <tag>Binary Search</tag>
       
@@ -2225,9 +2260,9 @@
       
       <tag>心得</tag>
       
-      <tag>Array</tag>
-      
       <tag>String</tag>
+      
+      <tag>Array</tag>
       
       <tag>Two Pointers</tag>
       
@@ -3386,9 +3421,9 @@
       
       <tag>心得</tag>
       
-      <tag>Array</tag>
-      
       <tag>String</tag>
+      
+      <tag>Array</tag>
       
       <tag>Greedy</tag>
       
@@ -3617,9 +3652,9 @@
       
       <tag>心得</tag>
       
-      <tag>Array</tag>
-      
       <tag>String</tag>
+      
+      <tag>Array</tag>
       
       <tag>Two Pointers</tag>
       
@@ -3652,9 +3687,9 @@
       
       <tag>心得</tag>
       
-      <tag>Array</tag>
-      
       <tag>String</tag>
+      
+      <tag>Array</tag>
       
     </tags>
     
@@ -4533,9 +4568,9 @@
       
       <tag>心得</tag>
       
-      <tag>Array</tag>
-      
       <tag>String</tag>
+      
+      <tag>Array</tag>
       
       <tag>Matrix</tag>
       
@@ -6131,9 +6166,9 @@
       
       <tag>心得</tag>
       
-      <tag>Array</tag>
-      
       <tag>String</tag>
+      
+      <tag>Array</tag>
       
       <tag>Hash Table</tag>
       
@@ -6207,15 +6242,15 @@
       
       <tag>心得</tag>
       
-      <tag>Array</tag>
-      
       <tag>String</tag>
+      
+      <tag>Array</tag>
       
       <tag>Hash Table</tag>
       
-      <tag>Sorting</tag>
-      
       <tag>Depth-First Search</tag>
+      
+      <tag>Sorting</tag>
       
       <tag>Breadth-First Search</tag>
       
@@ -8527,9 +8562,9 @@
       
       <tag>心得</tag>
       
-      <tag>Array</tag>
-      
       <tag>String</tag>
+      
+      <tag>Array</tag>
       
       <tag>Greedy</tag>
       
@@ -10651,9 +10686,9 @@
       
       <tag>心得</tag>
       
-      <tag>Array</tag>
-      
       <tag>String</tag>
+      
+      <tag>Array</tag>
       
       <tag>Hash Table</tag>
       
@@ -11447,9 +11482,9 @@
     
     <tags>
       
-      <tag>Algorithms</tag>
-      
       <tag>Stack</tag>
+      
+      <tag>Algorithms</tag>
       
       <tag>筆記</tag>
       
