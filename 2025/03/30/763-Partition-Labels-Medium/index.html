@@ -16,27 +16,27 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前往題目  想法 用掃描線，但實作卡住了  思路 用每個array的第一項排序 以第一項為基準開始疊代確認是否相交 如果不相交就更新區間的尾端 如果相交，多一個需要移除，並且取比較小的尾端，這樣可以減低之後再相交的機率  Code  &#x2F;&#x2F; T: O(nlogn) &#x2F;&#x2F; S: O(1) class Solution &#123;     public int eraseOverlapInterval">
+    <meta name="description" content="前往題目  想法 每個字母的第一個和最後一個為區間  思路 記錄每個字母的最後一位的位置 開始循環s，每次更新當前的最後一位在哪，取最遠的（因為最大區間不能被切開，否則會有同個字母分隔兩邊的情況） 遇到盡頭時（當前字母最後一位與最遠的同位），切開並記錄  這題是把每個字母都當區間來看，只是開頭並不重要，重要的是每個字母最後在哪裡出現，因為不能在中途就切開，不然就會出現同個字母被切開的情況，這也是題">
 <meta property="og:type" content="article">
-<meta property="og:title" content="435. Non-overlapping Intervals - Medium">
-<meta property="og:url" content="https://f88083.github.io/2024/01/26/435-Non-overlapping-Intervals-Medium/index.html">
+<meta property="og:title" content="763. Partition Labels - Medium">
+<meta property="og:url" content="https://f88083.github.io/2025/03/30/763-Partition-Labels-Medium/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="前往題目  想法 用掃描線，但實作卡住了  思路 用每個array的第一項排序 以第一項為基準開始疊代確認是否相交 如果不相交就更新區間的尾端 如果相交，多一個需要移除，並且取比較小的尾端，這樣可以減低之後再相交的機率  Code  &#x2F;&#x2F; T: O(nlogn) &#x2F;&#x2F; S: O(1) class Solution &#123;     public int eraseOverlapInterval">
+<meta property="og:description" content="前往題目  想法 每個字母的第一個和最後一個為區間  思路 記錄每個字母的最後一位的位置 開始循環s，每次更新當前的最後一位在哪，取最遠的（因為最大區間不能被切開，否則會有同個字母分隔兩邊的情況） 遇到盡頭時（當前字母最後一位與最遠的同位），切開並記錄  這題是把每個字母都當區間來看，只是開頭並不重要，重要的是每個字母最後在哪裡出現，因為不能在中途就切開，不然就會出現同個字母被切開的情況，這也是題">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2024-01-26T03:38:53.000Z">
-<meta property="article:modified_time" content="2024-05-29T16:47:04.961Z">
+<meta property="article:published_time" content="2025-03-30T02:54:17.000Z">
+<meta property="article:modified_time" content="2025-03-30T03:05:15.528Z">
 <meta property="article:author" content="Simon Lai">
 <meta property="article:tag" content="Leetcode">
 <meta property="article:tag" content="心得">
-<meta property="article:tag" content="Array">
+<meta property="article:tag" content="String">
+<meta property="article:tag" content="Two Pointers">
 <meta property="article:tag" content="Greedy">
-<meta property="article:tag" content="Sorting">
-<meta property="article:tag" content="Dynamic Programming">
+<meta property="article:tag" content="Hash Table">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>435. Non-overlapping Intervals - Medium - Simon Lai&#39;s Blog</title>
+  <title>763. Partition Labels - Medium - Simon Lai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -231,7 +231,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="435. Non-overlapping Intervals - Medium"></span>
+            <span id="subtitle" data-typed-text="763. Partition Labels - Medium"></span>
           
         </div>
 
@@ -242,8 +242,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-26 11:38" pubdate>
-          2024年1月26日 中午
+        <time datetime="2025-03-30 10:54" pubdate>
+          2025年3月30日 上午
         </time>
       </span>
     
@@ -254,7 +254,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          164 字
+          257 字
         
       </span>
     
@@ -265,7 +265,7 @@
         
         
         
-          1 分鐘
+          2 分鐘
         
       </span>
     
@@ -302,51 +302,51 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">435. Non-overlapping Intervals - Medium</h1>
+            <h1 id="seo-header">763. Partition Labels - Medium</h1>
             
             
               <div class="markdown-body">
                 
-                <a class="btn" href="https://leetcode.com/problems/non-overlapping-intervals/description/"  title="435. Non-overlapping Intervals" target="_blank">前往題目</a>
+                <a class="btn" href="https://leetcode.com/problems/partition-labels/description/?envType=daily-question&envId=2025-03-30"  title="763. Partition Labels" target="_blank">前往題目</a>
 
 <h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul>
-<li>用掃描線，但實作卡住了</li>
+<li>每個字母的第一個和最後一個為區間</li>
 </ul>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
-<li>用每個<code>array</code>的第一項排序</li>
-<li>以第一項為基準開始疊代確認是否相交</li>
-<li>如果不相交就更新區間的尾端</li>
-<li>如果相交，多一個需要移除，並且取比較小的尾端，這樣可以減低之後再相交的機率</li>
+<li>記錄每個字母的最後一位的位置</li>
+<li>開始循環<code>s</code>，每次更新當前的最後一位在哪，取最遠的（因為最大區間不能被切開，否則會有同個字母分隔兩邊的情況）</li>
+<li>遇到盡頭時（當前字母最後一位與最遠的同位），切開並記錄</li>
 </ol>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/nONCGxWoUfM" title="Non-Overlapping Intervals - Leetcode 435 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<p>這題是把每個字母都當區間來看，只是開頭並不重要，重要的是每個字母最後在哪裡出現，因為不能在中途就切開，不然就會出現同個字母被切開的情況，這也是題目不允許的</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> <span class="token function">partitionLabels</span><span class="token punctuation">(</span><span class="token class-name">String</span> s<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Character</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">></span></span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// T: O(nlogn)</span>
-<span class="token comment">// S: O(1)</span>
-<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">eraseOverlapIntervals</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> intervals<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>intervals<span class="token punctuation">.</span>length <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span>
-            <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-
-        <span class="token comment">// Sort by the first element</span>
-        <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>intervals<span class="token punctuation">,</span> <span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">compare</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> b<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> prevEnd <span class="token operator">=</span> intervals<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-
-        <span class="token comment">// Start from the second item</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> intervals<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token comment">// Not overlapping</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>prevEnd <span class="token operator">&lt;=</span> intervals<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                prevEnd <span class="token operator">=</span> intervals<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span> <span class="token comment">// Overlapping</span>
-                <span class="token operator">++</span>res<span class="token punctuation">;</span>
-                <span class="token comment">// Pick the smaller end to minimize the overlapping possibility</span>
-                prevEnd <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>prevEnd<span class="token punctuation">,</span> intervals<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>
+        <span class="token comment">// Build up the last occurence of each character map</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">&#125;</span>
 
+        <span class="token keyword">int</span> prev <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> max <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> res <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// Start partitioning</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">char</span> c <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            
+            <span class="token comment">// Update the last occurence</span>
+            max <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>max<span class="token punctuation">,</span> map<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            
+            <span class="token comment">// Reach the last occurence of the current interval</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>max <span class="token operator">==</span> i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                res<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>max <span class="token operator">-</span> prev<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                prev <span class="token operator">=</span> i<span class="token punctuation">;</span> <span class="token comment">// Set to the last split</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
         <span class="token keyword">return</span> res<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
                 
               </div>
@@ -391,13 +391,13 @@
       
         <a href="/tags/%E5%BF%83%E5%BE%97/" class="print-no-link">#心得</a>
       
-        <a href="/tags/Array/" class="print-no-link">#Array</a>
+        <a href="/tags/String/" class="print-no-link">#String</a>
+      
+        <a href="/tags/Two-Pointers/" class="print-no-link">#Two Pointers</a>
       
         <a href="/tags/Greedy/" class="print-no-link">#Greedy</a>
       
-        <a href="/tags/Sorting/" class="print-no-link">#Sorting</a>
-      
-        <a href="/tags/Dynamic-Programming/" class="print-no-link">#Dynamic Programming</a>
+        <a href="/tags/Hash-Table/" class="print-no-link">#Hash Table</a>
       
     </div>
   
@@ -409,8 +409,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>435. Non-overlapping Intervals - Medium</div>
-      <div>https://f88083.github.io/2024/01/26/435-Non-overlapping-Intervals-Medium/</div>
+      <div>763. Partition Labels - Medium</div>
+      <div>https://f88083.github.io/2025/03/30/763-Partition-Labels-Medium/</div>
     </div>
     <div class="license-meta">
       
@@ -422,7 +422,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>發布於</div>
-          <div>2024年1月26日</div>
+          <div>2025年3月30日</div>
         </div>
       
       
@@ -466,18 +466,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/27/409-Longest-Palindrome-Easy/" title="409. Longest Palindrome - Easy">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">409. Longest Palindrome - Easy</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/25/380-Insert-Delete-GetRandom-O-1-Medium/" title="380. Insert Delete GetRandom O(1) - Medium">
-                        <span class="hidden-mobile">380. Insert Delete GetRandom O(1) - Medium</span>
+                      <a href="/2025/03/27/2780-Minimum-Index-of-a-Valid-Split-Medium/" title="2780. Minimum Index of a Valid Split - Medium">
+                        <span class="hidden-mobile">2780. Minimum Index of a Valid Split - Medium</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
