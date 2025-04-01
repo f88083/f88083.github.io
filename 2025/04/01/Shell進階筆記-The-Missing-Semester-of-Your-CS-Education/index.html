@@ -16,27 +16,23 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前往題目  想法 嘗試用了BFS但沒有成功，本來想說要用size來判斷然後分左右邊 看了discussion才知道直接用left和right就好，跟DFS一樣  思路DFS  每輪都比較left和right node的值 繼續用left的子樹還有right的子樹呼叫DFS  BFS解法 Code  class Solution &#123;     public boolean isSymmetr">
+    <meta name="description" content="Shell Scripting Variables:    Assign: foo&#x3D;bar   Access: $foo   Note: No spaces around &#x3D; in assignment.   Strings:    Single quotes (&#39;) → Literal string (no variable substitution).   Double quotes">
 <meta property="og:type" content="article">
-<meta property="og:title" content="101. Symmetric Tree - Easy">
-<meta property="og:url" content="https://f88083.github.io/2024/01/14/101-Symmetric-Tree-Easy/index.html">
+<meta property="og:title" content="Shell進階筆記 - The Missing Semester of Your CS Education">
+<meta property="og:url" content="https://f88083.github.io/2025/04/01/Shell%E9%80%B2%E9%9A%8E%E7%AD%86%E8%A8%98-The-Missing-Semester-of-Your-CS-Education/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="前往題目  想法 嘗試用了BFS但沒有成功，本來想說要用size來判斷然後分左右邊 看了discussion才知道直接用left和right就好，跟DFS一樣  思路DFS  每輪都比較left和right node的值 繼續用left的子樹還有right的子樹呼叫DFS  BFS解法 Code  class Solution &#123;     public boolean isSymmetr">
+<meta property="og:description" content="Shell Scripting Variables:    Assign: foo&#x3D;bar   Access: $foo   Note: No spaces around &#x3D; in assignment.   Strings:    Single quotes (&#39;) → Literal string (no variable substitution).   Double quotes">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2024-01-14T06:23:20.000Z">
-<meta property="article:modified_time" content="2024-10-26T03:42:50.931Z">
+<meta property="article:published_time" content="2025-04-01T09:50:52.000Z">
+<meta property="article:modified_time" content="2025-04-01T09:51:13.889Z">
 <meta property="article:author" content="Simon Lai">
-<meta property="article:tag" content="Leetcode">
-<meta property="article:tag" content="心得">
-<meta property="article:tag" content="Binary Tree">
-<meta property="article:tag" content="Depth-First Search">
-<meta property="article:tag" content="Breadth-First Search">
-<meta property="article:tag" content="Tree">
+<meta property="article:tag" content="shell">
+<meta property="article:tag" content="the-missing-semester-of-your-cs-education">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>101. Symmetric Tree - Easy - Simon Lai&#39;s Blog</title>
+  <title>Shell進階筆記 - The Missing Semester of Your CS Education - Simon Lai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -231,7 +227,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="101. Symmetric Tree - Easy"></span>
+            <span id="subtitle" data-typed-text="Shell進階筆記 - The Missing Semester of Your CS Education"></span>
           
         </div>
 
@@ -242,8 +238,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-14 14:23" pubdate>
-          2024年1月14日 下午
+        <time datetime="2025-04-01 17:50" pubdate>
+          2025年4月1日 下午
         </time>
       </span>
     
@@ -254,7 +250,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          215 字
+          208 字
         
       </span>
     
@@ -265,7 +261,7 @@
         
         
         
-          2 分鐘
+          1 分鐘
         
       </span>
     
@@ -302,84 +298,185 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">101. Symmetric Tree - Easy</h1>
+            <h1 id="seo-header">Shell進階筆記 - The Missing Semester of Your CS Education</h1>
             
             
               <div class="markdown-body">
                 
-                <a class="btn" href="https://leetcode.com/problems/symmetric-tree/description/"  title="101. Symmetric Tree" target="_blank">前往題目</a>
-
-<h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul>
-<li>嘗試用了<code>BFS</code>但沒有成功，本來想說要用<code>size</code>來判斷然後分左右邊</li>
-<li>看了<code>discussion</code>才知道直接用<code>left</code>和<code>right</code>就好，跟<code>DFS</code>一樣</li>
+                <h2 id="Shell-Scripting"><a href="#Shell-Scripting" class="headerlink" title="Shell Scripting"></a>Shell Scripting</h2><ol>
+<li><p><strong>Variables</strong>:  </p>
+<ul>
+<li>Assign: <code>foo=bar</code>  </li>
+<li>Access: <code>$foo</code>  </li>
+<li><strong>Note</strong>: No spaces around <code>=</code> in assignment.</li>
 </ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>DFS</p>
-<ol>
-<li>每輪都比較<code>left</code>和<code>right node</code>的值</li>
-<li>繼續用<code>left</code>的子樹還有<code>right</code>的子樹呼叫<code>DFS</code></li>
+</li>
+<li><p><strong>Strings</strong>:  </p>
+<ul>
+<li>Single quotes (<code>&#39;</code>) → Literal string (no variable substitution).  </li>
+<li>Double quotes (<code>&quot;</code>) → Variable substitution.</li>
+</ul>
+</li>
+<li><p><strong>Special Variables</strong>:  </p>
+<ul>
+<li><p><code>$0</code> → Script name.  </p>
+</li>
+<li><p><code>$1</code> to <code>$9</code> → Script arguments.  </p>
+</li>
+<li><p><code>$@</code> → All arguments.  </p>
+</li>
+<li><p><code>$#</code> → Number of arguments.  </p>
+</li>
+<li><p><code>$?</code> → Return code of the last command.  </p>
+</li>
+<li><p><code>$$</code> → Current script PID.  </p>
+</li>
+<li><p><code>!!</code> → Last command (useful for <code>sudo !!</code>).  </p>
+</li>
+<li><p><code>$_</code> → Last argument of the last command.</p>
+</li>
+<li><p>can run like this</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token variable">$?</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure></li>
+</ul>
+</li>
+<li><p><strong>Control Flow</strong>:  </p>
+<ul>
+<li><p><code>if</code>, <code>case</code>, <code>while</code>, <code>for</code> constructs.  </p>
+</li>
+<li><p>Example function:  </p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function-name function">mcd</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">mkdir</span> <span class="token parameter variable">-p</span> <span class="token string">"<span class="token variable">$1</span>"</span>
+    <span class="token builtin class-name">cd</span> <span class="token string">"<span class="token variable">$1</span>"</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure></li>
+</ul>
+</li>
+<li><p><strong>Exit Codes &amp; Operators</strong>:  </p>
+<ul>
+<li><p><code>0</code> → Success, non-zero → Error.  </p>
+</li>
+<li><p><code>&amp;&amp;</code> (AND), <code>||</code> (OR), <code>;</code> (sequential execution).  </p>
+</li>
+<li><p>Examples:  </p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token boolean">false</span> <span class="token operator">||</span> <span class="token builtin class-name">echo</span> <span class="token string">"Oops, fail"</span> <span class="token comment"># Oops, fail</span>
+<span class="token boolean">true</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span> <span class="token string">"Success"</span> <span class="token comment"># Success</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure></li>
+</ul>
+</li>
+<li><p><strong>Command &amp; Process Substitution</strong>:  </p>
+<ul>
+<li><code>$(CMD)</code> → Substitute command output.  </li>
+<li><code>&lt;(CMD)</code> → Process substitution (temporary file).</li>
+</ul>
+</li>
+<li><p><strong>Globbing</strong>:  </p>
+<ul>
+<li><p>Wildcards: <code>?</code> (single char), <code>*</code> (any chars).  </p>
+</li>
+<li><p>Curly braces <code>&#123;&#125;</code> for expansion:</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">convert image.<span class="token punctuation">&#123;</span>png,jpg<span class="token punctuation">&#125;</span> → convert image.png image.jpg  <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure></li>
+</ul>
+</li>
+<li><p><strong>Shebang</strong>:  </p>
+<ul>
+<li><code>#!/usr/bin/env python</code> → Portable script execution.</li>
+</ul>
+</li>
+<li><p><strong>Scripts vs. Functions</strong>:  </p>
+<ul>
+<li>Scripts run in their own process; functions modify the current shell.</li>
+</ul>
+</li>
 </ol>
-<p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/symmetric-tree/solutions/433170/ismirror-dfs-recursion-one-two-stacks-bfs-queue-solution-in-java/">BFS解法</a></p>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/Mao9uzxwvmc" title="Symmetric Tree - Leetcode 101 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isSymmetric</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> root<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">return</span> <span class="token function">dfs</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">,</span> root<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-
-    <span class="token keyword">private</span> <span class="token keyword">boolean</span> <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> left<span class="token punctuation">,</span> <span class="token class-name">TreeNode</span> right<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">// Reach the end</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>left <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> right <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token comment">// One of them reach the end but other one hasnt</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>left <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> right <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-
-        <span class="token comment">// Check their values, check left and right sub node values</span>
-        <span class="token keyword">return</span> left<span class="token punctuation">.</span>val <span class="token operator">==</span> right<span class="token punctuation">.</span>val <span class="token operator">&amp;&amp;</span>
-               <span class="token function">dfs</span><span class="token punctuation">(</span>left<span class="token punctuation">.</span>left<span class="token punctuation">,</span> right<span class="token punctuation">.</span>right<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>
-               <span class="token function">dfs</span><span class="token punctuation">(</span>left<span class="token punctuation">.</span>right<span class="token punctuation">,</span> right<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
-
-<h2 id="2024-10-26"><a href="#2024-10-26" class="headerlink" title="2024&#x2F;10&#x2F;26"></a>2024&#x2F;10&#x2F;26</h2><ul>
-<li>這次想到的是BFS，也是蠻好寫的</li>
+<hr>
+<h2 id="Shell-Tools"><a href="#Shell-Tools" class="headerlink" title="Shell Tools"></a><strong>Shell Tools</strong></h2><ol>
+<li><p><strong>Finding Commands</strong>:  </p>
+<ul>
+<li><code>CMD -h</code> or <code>--help</code> → Quick help.  </li>
+<li><code>man CMD</code> → Full manual.  </li>
+<li><code>tldr CMD</code> → Simplified examples.</li>
 </ul>
-<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isSymmetric</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> root<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token class-name">Queue</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">TreeNode</span><span class="token punctuation">></span></span> q <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token comment">// Skip the root</span>
-        q<span class="token punctuation">.</span><span class="token function">offer</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        q<span class="token punctuation">.</span><span class="token function">offer</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span>q<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">int</span> size <span class="token operator">=</span> q<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            <span class="token class-name">TreeNode</span> left <span class="token operator">=</span> q<span class="token punctuation">.</span><span class="token function">poll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token class-name">TreeNode</span> right <span class="token operator">=</span> q<span class="token punctuation">.</span><span class="token function">poll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            <span class="token comment">// Reached the leaf, skip it</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>left <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> right <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
-                <span class="token keyword">continue</span><span class="token punctuation">;</span>
-            <span class="token comment">// One of them is null, means not the same</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>left <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> right <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
-                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>left<span class="token punctuation">.</span>val <span class="token operator">!=</span> right<span class="token punctuation">.</span>val<span class="token punctuation">)</span>
-                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-            
-            <span class="token comment">// Offer the following nodes</span>
-            q<span class="token punctuation">.</span><span class="token function">offer</span><span class="token punctuation">(</span>left<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            q<span class="token punctuation">.</span><span class="token function">offer</span><span class="token punctuation">(</span>right<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            
-            q<span class="token punctuation">.</span><span class="token function">offer</span><span class="token punctuation">(</span>left<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            q<span class="token punctuation">.</span><span class="token function">offer</span><span class="token punctuation">(</span>right<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-
-        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+</li>
+<li><p><strong>Finding Files</strong>:  </p>
+<ul>
+<li><p><code>find</code>:  </p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">find</span> <span class="token builtin class-name">.</span> <span class="token parameter variable">-name</span> <span class="token string">"*.txt"</span> <span class="token parameter variable">-type</span> f  
+<span class="token function">find</span> <span class="token builtin class-name">.</span> <span class="token parameter variable">-mtime</span> <span class="token parameter variable">-1</span>  <span class="token comment"># Modified in last day  </span>
+<span class="token function">find</span> <span class="token builtin class-name">.</span> <span class="token parameter variable">-size</span> +1M  <span class="token comment"># Files >1MB  </span>
+<span class="token function">find</span> <span class="token builtin class-name">.</span> <span class="token parameter variable">-exec</span> <span class="token function">rm</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span> <span class="token punctuation">\</span><span class="token punctuation">;</span>  <span class="token comment"># Delete matches  </span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+</li>
+<li><p>Alternatives:  </p>
+<ul>
+<li><code>fd PATTERN</code> → Faster, user-friendly.  </li>
+<li><code>locate FILE</code> → Uses pre-built database.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Finding Code</strong>:  </p>
+<ul>
+<li><p><code>grep</code>:  </p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">grep</span> <span class="token parameter variable">-R</span> <span class="token string">"pattern"</span> <span class="token builtin class-name">.</span>  <span class="token comment"># Recursive search  </span>
+<span class="token function">grep</span> <span class="token parameter variable">-C</span> <span class="token number">5</span> <span class="token string">"pattern"</span>  <span class="token comment"># Context (5 lines around match)  </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+</li>
+<li><p>Alternatives: <code>rg</code> (ripgrep), <code>ag</code>, <code>ack</code>.</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Finding Shell Commands</strong>:  </p>
+<ul>
+<li><code>history | grep CMD</code> → Search past commands.  </li>
+<li><code>Ctrl+R</code> → Reverse search.  </li>
+<li><code>fzf</code> → Fuzzy history search.</li>
+</ul>
+</li>
+<li><p><strong>Directory Navigation</strong>:  </p>
+<ul>
+<li><code>z DIR</code> (fasd) &#x2F; <code>j DIR</code> (autojump) → Quick directory jumps.  </li>
+<li>Tools: <code>tree</code>, <code>broot</code>, <code>nnn</code>, <code>ranger</code>.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="Key-Commands-Summary"><a href="#Key-Commands-Summary" class="headerlink" title="Key Commands Summary"></a><strong>Key Commands Summary</strong></h2><table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Commands&#x2F;Tools</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Variables</strong></td>
+<td><code>foo=bar</code>, <code>$foo</code>, <code>$1</code>-<code>$9</code>, <code>$?</code></td>
+</tr>
+<tr>
+<td><strong>Strings</strong></td>
+<td><code>&#39;literal&#39;</code>, <code>&quot;substitute $var&quot;</code></td>
+</tr>
+<tr>
+<td><strong>Control</strong></td>
+<td><code>if</code>, <code>for</code>, <code>while</code>, <code>&amp;&amp;</code>, <code>||</code></td>
+</tr>
+<tr>
+<td><strong>Substitution</strong></td>
+<td><code>$(CMD)</code>, <code>&lt;(CMD)</code></td>
+</tr>
+<tr>
+<td><strong>Globbing</strong></td>
+<td><code>*</code>, <code>?</code>, <code>&#123;&#125;</code></td>
+</tr>
+<tr>
+<td><strong>Finding</strong></td>
+<td><code>find</code>, <code>fd</code>, <code>grep</code>, <code>rg</code>, <code>locate</code></td>
+</tr>
+<tr>
+<td><strong>History</strong></td>
+<td><code>history</code>, <code>Ctrl+R</code>, <code>fzf</code></td>
+</tr>
+<tr>
+<td><strong>Navigation</strong></td>
+<td><code>z</code>, <code>j</code>, <code>tree</code>, <code>ranger</code></td>
+</tr>
+</tbody></table>
 
                 
               </div>
@@ -398,12 +495,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  <a href="/categories/%E9%9B%BB%E8%85%A6%E7%A7%91%E5%AD%B8/" class="category-chain-item">電腦科學</a>
   
   
     <span>></span>
     
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
+  <a href="/categories/%E9%9B%BB%E8%85%A6%E7%A7%91%E5%AD%B8/The-Missing-Semester-of-Your-CS-Education/" class="category-chain-item">The Missing Semester of Your CS Education</a>
   
   
 
@@ -420,17 +517,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Leetcode/" class="print-no-link">#Leetcode</a>
+        <a href="/tags/shell/" class="print-no-link">#shell</a>
       
-        <a href="/tags/%E5%BF%83%E5%BE%97/" class="print-no-link">#心得</a>
-      
-        <a href="/tags/Binary-Tree/" class="print-no-link">#Binary Tree</a>
-      
-        <a href="/tags/Depth-First-Search/" class="print-no-link">#Depth-First Search</a>
-      
-        <a href="/tags/Breadth-First-Search/" class="print-no-link">#Breadth-First Search</a>
-      
-        <a href="/tags/Tree/" class="print-no-link">#Tree</a>
+        <a href="/tags/the-missing-semester-of-your-cs-education/" class="print-no-link">#the-missing-semester-of-your-cs-education</a>
       
     </div>
   
@@ -442,8 +531,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>101. Symmetric Tree - Easy</div>
-      <div>https://f88083.github.io/2024/01/14/101-Symmetric-Tree-Easy/</div>
+      <div>Shell進階筆記 - The Missing Semester of Your CS Education</div>
+      <div>https://f88083.github.io/2025/04/01/Shell進階筆記-The-Missing-Semester-of-Your-CS-Education/</div>
     </div>
     <div class="license-meta">
       
@@ -455,7 +544,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>發布於</div>
-          <div>2024年1月14日</div>
+          <div>2025年4月1日</div>
         </div>
       
       
@@ -499,18 +588,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/14/268-Missing-Number-Easy/" title="268. Missing Number - Easy">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">268. Missing Number - Easy</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/12/74-Search-a-2D-Matrix-Medium/" title="74. Search a 2D Matrix - Medium">
-                        <span class="hidden-mobile">74. Search a 2D Matrix - Medium</span>
+                      <a href="/2025/04/01/2140-Solving-Questions-With-Brainpower-Medium/" title="2140. Solving Questions With Brainpower - Medium">
+                        <span class="hidden-mobile">2140. Solving Questions With Brainpower - Medium</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>Shell進階筆記 - The Missing Semester of Your CS Education</title>
+    <link href="/2025/04/01/Shell%E9%80%B2%E9%9A%8E%E7%AD%86%E8%A8%98-The-Missing-Semester-of-Your-CS-Education/"/>
+    <url>/2025/04/01/Shell%E9%80%B2%E9%9A%8E%E7%AD%86%E8%A8%98-The-Missing-Semester-of-Your-CS-Education/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Shell-Scripting"><a href="#Shell-Scripting" class="headerlink" title="Shell Scripting"></a>Shell Scripting</h2><ol><li><p><strong>Variables</strong>:  </p><ul><li>Assign: <code>foo=bar</code>  </li><li>Access: <code>$foo</code>  </li><li><strong>Note</strong>: No spaces around <code>=</code> in assignment.</li></ul></li><li><p><strong>Strings</strong>:  </p><ul><li>Single quotes (<code>&#39;</code>) → Literal string (no variable substitution).  </li><li>Double quotes (<code>&quot;</code>) → Variable substitution.</li></ul></li><li><p><strong>Special Variables</strong>:  </p><ul><li><p><code>$0</code> → Script name.  </p></li><li><p><code>$1</code> to <code>$9</code> → Script arguments.  </p></li><li><p><code>$@</code> → All arguments.  </p></li><li><p><code>$#</code> → Number of arguments.  </p></li><li><p><code>$?</code> → Return code of the last command.  </p></li><li><p><code>$$</code> → Current script PID.  </p></li><li><p><code>!!</code> → Last command (useful for <code>sudo !!</code>).  </p></li><li><p><code>$_</code> → Last argument of the last command.</p></li><li><p>can run like this</p><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token variable">$?</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure></li></ul></li><li><p><strong>Control Flow</strong>:  </p><ul><li><p><code>if</code>, <code>case</code>, <code>while</code>, <code>for</code> constructs.  </p></li><li><p>Example function:  </p><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function-name function">mcd</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>    <span class="token function">mkdir</span> <span class="token parameter variable">-p</span> <span class="token string">"<span class="token variable">$1</span>"</span>    <span class="token builtin class-name">cd</span> <span class="token string">"<span class="token variable">$1</span>"</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure></li></ul></li><li><p><strong>Exit Codes &amp; Operators</strong>:  </p><ul><li><p><code>0</code> → Success, non-zero → Error.  </p></li><li><p><code>&amp;&amp;</code> (AND), <code>||</code> (OR), <code>;</code> (sequential execution).  </p></li><li><p>Examples:  </p><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token boolean">false</span> <span class="token operator">||</span> <span class="token builtin class-name">echo</span> <span class="token string">"Oops, fail"</span> <span class="token comment"># Oops, fail</span><span class="token boolean">true</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span> <span class="token string">"Success"</span> <span class="token comment"># Success</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure></li></ul></li><li><p><strong>Command &amp; Process Substitution</strong>:  </p><ul><li><code>$(CMD)</code> → Substitute command output.  </li><li><code>&lt;(CMD)</code> → Process substitution (temporary file).</li></ul></li><li><p><strong>Globbing</strong>:  </p><ul><li><p>Wildcards: <code>?</code> (single char), <code>*</code> (any chars).  </p></li><li><p>Curly braces <code>&#123;&#125;</code> for expansion:</p><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">convert image.<span class="token punctuation">&#123;</span>png,jpg<span class="token punctuation">&#125;</span> → convert image.png image.jpg  <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure></li></ul></li><li><p><strong>Shebang</strong>:  </p><ul><li><code>#!/usr/bin/env python</code> → Portable script execution.</li></ul></li><li><p><strong>Scripts vs. Functions</strong>:  </p><ul><li>Scripts run in their own process; functions modify the current shell.</li></ul></li></ol><hr><h2 id="Shell-Tools"><a href="#Shell-Tools" class="headerlink" title="Shell Tools"></a><strong>Shell Tools</strong></h2><ol><li><p><strong>Finding Commands</strong>:  </p><ul><li><code>CMD -h</code> or <code>--help</code> → Quick help.  </li><li><code>man CMD</code> → Full manual.  </li><li><code>tldr CMD</code> → Simplified examples.</li></ul></li><li><p><strong>Finding Files</strong>:  </p><ul><li><p><code>find</code>:  </p><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">find</span> <span class="token builtin class-name">.</span> <span class="token parameter variable">-name</span> <span class="token string">"*.txt"</span> <span class="token parameter variable">-type</span> f  <span class="token function">find</span> <span class="token builtin class-name">.</span> <span class="token parameter variable">-mtime</span> <span class="token parameter variable">-1</span>  <span class="token comment"># Modified in last day  </span><span class="token function">find</span> <span class="token builtin class-name">.</span> <span class="token parameter variable">-size</span> +1M  <span class="token comment"># Files >1MB  </span><span class="token function">find</span> <span class="token builtin class-name">.</span> <span class="token parameter variable">-exec</span> <span class="token function">rm</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span> <span class="token punctuation">\</span><span class="token punctuation">;</span>  <span class="token comment"># Delete matches  </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure></li><li><p>Alternatives:  </p><ul><li><code>fd PATTERN</code> → Faster, user-friendly.  </li><li><code>locate FILE</code> → Uses pre-built database.</li></ul></li></ul></li><li><p><strong>Finding Code</strong>:  </p><ul><li><p><code>grep</code>:  </p><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">grep</span> <span class="token parameter variable">-R</span> <span class="token string">"pattern"</span> <span class="token builtin class-name">.</span>  <span class="token comment"># Recursive search  </span><span class="token function">grep</span> <span class="token parameter variable">-C</span> <span class="token number">5</span> <span class="token string">"pattern"</span>  <span class="token comment"># Context (5 lines around match)  </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure></li><li><p>Alternatives: <code>rg</code> (ripgrep), <code>ag</code>, <code>ack</code>.</p></li></ul></li><li><p><strong>Finding Shell Commands</strong>:  </p><ul><li><code>history | grep CMD</code> → Search past commands.  </li><li><code>Ctrl+R</code> → Reverse search.  </li><li><code>fzf</code> → Fuzzy history search.</li></ul></li><li><p><strong>Directory Navigation</strong>:  </p><ul><li><code>z DIR</code> (fasd) &#x2F; <code>j DIR</code> (autojump) → Quick directory jumps.  </li><li>Tools: <code>tree</code>, <code>broot</code>, <code>nnn</code>, <code>ranger</code>.</li></ul></li></ol><hr><h2 id="Key-Commands-Summary"><a href="#Key-Commands-Summary" class="headerlink" title="Key Commands Summary"></a><strong>Key Commands Summary</strong></h2><table><thead><tr><th>Category</th><th>Commands&#x2F;Tools</th></tr></thead><tbody><tr><td><strong>Variables</strong></td><td><code>foo=bar</code>, <code>$foo</code>, <code>$1</code>-<code>$9</code>, <code>$?</code></td></tr><tr><td><strong>Strings</strong></td><td><code>&#39;literal&#39;</code>, <code>&quot;substitute $var&quot;</code></td></tr><tr><td><strong>Control</strong></td><td><code>if</code>, <code>for</code>, <code>while</code>, <code>&amp;&amp;</code>, <code>||</code></td></tr><tr><td><strong>Substitution</strong></td><td><code>$(CMD)</code>, <code>&lt;(CMD)</code></td></tr><tr><td><strong>Globbing</strong></td><td><code>*</code>, <code>?</code>, <code>&#123;&#125;</code></td></tr><tr><td><strong>Finding</strong></td><td><code>find</code>, <code>fd</code>, <code>grep</code>, <code>rg</code>, <code>locate</code></td></tr><tr><td><strong>History</strong></td><td><code>history</code>, <code>Ctrl+R</code>, <code>fzf</code></td></tr><tr><td><strong>Navigation</strong></td><td><code>z</code>, <code>j</code>, <code>tree</code>, <code>ranger</code></td></tr></tbody></table>]]></content>
+    
+    
+    <categories>
+      
+      <category>電腦科學</category>
+      
+      <category>The Missing Semester of Your CS Education</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>shell</tag>
+      
+      <tag>the-missing-semester-of-your-cs-education</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>2140. Solving Questions With Brainpower - Medium</title>
     <link href="/2025/04/01/2140-Solving-Questions-With-Brainpower-Medium/"/>
     <url>/2025/04/01/2140-Solving-Questions-With-Brainpower-Medium/</url>
@@ -669,9 +698,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -706,9 +735,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -780,9 +809,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -891,9 +920,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -930,9 +959,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -1286,9 +1315,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -1323,9 +1352,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -2223,11 +2252,11 @@
       
       <tag>Depth-First Search</tag>
       
+      <tag>Breadth-First Search</tag>
+      
       <tag>Linked List</tag>
       
       <tag>Tree</tag>
-      
-      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -5101,9 +5130,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -5492,9 +5521,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -7096,9 +7125,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -8422,9 +8451,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -8714,9 +8743,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -8852,9 +8881,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -9130,9 +9159,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -9814,9 +9843,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -11552,9 +11581,9 @@
     
     <tags>
       
-      <tag>Algorithms</tag>
-      
       <tag>Stack</tag>
+      
+      <tag>Algorithms</tag>
       
       <tag>筆記</tag>
       
