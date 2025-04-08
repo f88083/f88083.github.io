@@ -4,6 +4,181 @@
   
   
   <entry>
+    <title>3396. Minimum Number of Operations to Make Elements in Array Distinct - Easy</title>
+    <link href="/2025/04/08/3396-Minimum-Number-of-Operations-to-Make-Elements-in-Array-Distinct-Easy/"/>
+    <url>/2025/04/08/3396-Minimum-Number-of-Operations-to-Make-Elements-in-Array-Distinct-Easy/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/minimum-number-of-operations-to-make-elements-in-array-distinct/description/?envType=daily-question&envId=2025-04-08"  title="3396. Minimum Number of Operations to Make Elements in Array Distinct" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>用<code>Set</code>暴力解</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>從後面比較快，每次往前一位就加入<code>set</code>，同時判斷是否已經有</li><li>如果已經重複就可以直接算出需要幾次<code>operation</code></li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p><a href="https://github.com/doocs/leetcode/blob/main/solution/3300-3399/3396.Minimum%20Number%20of%20Operations%20to%20Make%20Elements%20in%20Array%20Distinct/README.md">網友解答</a></p><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">minimumOperations</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> set <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashSet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> nums<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token operator">--</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// Found duplicate</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>set<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token keyword">return</span> i <span class="token operator">/</span> <span class="token number">3</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// Cal. operations</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Easy</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Array</tag>
+      
+      <tag>Hash Table</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>1863. Sum of All Subset XOR Totals - Easy</title>
+    <link href="/2025/04/05/1863-Sum-of-All-Subset-XOR-Totals-Easy/"/>
+    <url>/2025/04/05/1863-Sum-of-All-Subset-XOR-Totals-Easy/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/sum-of-all-subset-xor-totals/description/?envType=daily-question&envId=2025-04-05"  title="1863. Sum of All Subset XOR Totals" target="_blank">前往題目</a><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li><code>Recursion</code>把所有<code>subset</code>都找到並計算</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/LI7YR-bwNYY" title="Sum of All Subsets XOR Total - Leetcode 1863 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">subsetXORSum</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">return</span> <span class="token function">dfs</span><span class="token punctuation">(</span>nums<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token keyword">int</span> <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">,</span> <span class="token keyword">int</span> index<span class="token punctuation">,</span> <span class="token keyword">int</span> total<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token comment">// Reach the end</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>index <span class="token operator">==</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token keyword">return</span> total<span class="token punctuation">;</span>        <span class="token comment">// Include or not, to process all the subsets</span>        <span class="token keyword">int</span> includeI <span class="token operator">=</span> <span class="token function">dfs</span><span class="token punctuation">(</span>nums<span class="token punctuation">,</span> index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> total <span class="token operator">^</span> nums<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> notIncludeI <span class="token operator">=</span> <span class="token function">dfs</span><span class="token punctuation">(</span>nums<span class="token punctuation">,</span> index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> total<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">return</span> includeI <span class="token operator">+</span> notIncludeI<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Easy</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Array</tag>
+      
+      <tag>Math</tag>
+      
+      <tag>Bit Manipulation</tag>
+      
+      <tag>Backtracking</tag>
+      
+      <tag>Combinatorics</tag>
+      
+      <tag>Enumeration</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>1123. Lowest Common Ancestor of Deepest Leaves - Medium</title>
+    <link href="/2025/04/04/1123-Lowest-Common-Ancestor-of-Deepest-Leaves-Medium/"/>
+    <url>/2025/04/04/1123-Lowest-Common-Ancestor-of-Deepest-Leaves-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/lowest-common-ancestor-of-deepest-leaves/?envType=daily-question&envId=2025-04-04"  title="1123. Lowest Common Ancestor of Deepest Leaves" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li><code>DFS</code></li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li><code>DFS</code></li><li>往最深處找，找到大於當前已知最深的深度就更新，<code>node</code>也要一併更新因為有可能沒有共同<code>ancestor</code>這時答案就是<code>leaf node</code>本身</li><li>左右都找到最深，並且每次都要判斷是否當前是最深<code>leaf</code>的<code>ancestor</code>以更新答案</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/kuzz6f5V1-M" title="LOWEST COMMON ANCESTOR OF DEEPEST LEAVES | LEETCODE 1123 | PYTHON DFS SOLUTION" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token class-name">TreeNode</span> res<span class="token punctuation">;</span>    <span class="token keyword">int</span> maxDepth<span class="token punctuation">;</span>    <span class="token keyword">public</span> <span class="token class-name">TreeNode</span> <span class="token function">lcaDeepestLeaves</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> root<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        res <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TreeNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        maxDepth <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>        <span class="token function">dfs</span><span class="token punctuation">(</span>root<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">return</span> res<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token keyword">int</span> <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> node<span class="token punctuation">,</span> <span class="token keyword">int</span> depth<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>node <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token comment">// Leaf</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">.</span>left <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> node<span class="token punctuation">.</span>right <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>depth <span class="token operator">></span> maxDepth<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                res <span class="token operator">=</span> node<span class="token punctuation">;</span>                maxDepth <span class="token operator">=</span> depth<span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>            <span class="token keyword">return</span> depth<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">int</span> leftDepth <span class="token operator">=</span> <span class="token function">dfs</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>left<span class="token punctuation">,</span> depth <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> rightDepth <span class="token operator">=</span> <span class="token function">dfs</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>right<span class="token punctuation">,</span> depth <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token comment">// Found the parent which has the deepest leaf</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>leftDepth <span class="token operator">==</span> rightDepth <span class="token operator">&amp;&amp;</span> leftDepth <span class="token operator">==</span> maxDepth<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            res <span class="token operator">=</span> node<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>leftDepth<span class="token punctuation">,</span> rightDepth<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Binary Tree</tag>
+      
+      <tag>Hash Table</tag>
+      
+      <tag>Depth-First Search</tag>
+      
+      <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>2874. Maximum Value of an Ordered Triplet II - Medium</title>
+    <link href="/2025/04/03/2874-Maximum-Value-of-an-Ordered-Triplet-II-Medium/"/>
+    <url>/2025/04/03/2874-Maximum-Value-of-an-Ordered-Triplet-II-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/maximum-value-of-an-ordered-triplet-ii/description/?envType=daily-question&envId=2025-04-03"  title="2874. Maximum Value of an Ordered Triplet II" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>與昨天的daily題目一模一樣，只是這次不允許$n^3$複雜度暴力解法</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p><a href="https://f88083.github.io/2025/04/02/2873-Maximum-Value-of-an-Ordered-Triplet-I-Easy/#:~:text=%E9%A1%8C%E7%9B%AE%E8%A6%81%E6%B1%82%E6%9C%80%E5%A4%A7,%E6%98%AF%E6%9C%AA%E4%BE%86%E7%9A%84">請見</a></p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">long</span> <span class="token function">maximumTripletValue</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">long</span> maxVal <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> maxTriplet <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> maxDiff <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> num <span class="token operator">:</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            maxTriplet <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>maxTriplet<span class="token punctuation">,</span> maxDiff <span class="token operator">*</span> num<span class="token punctuation">)</span><span class="token punctuation">;</span>            maxVal <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>maxVal<span class="token punctuation">,</span> num<span class="token punctuation">)</span><span class="token punctuation">;</span>            maxDiff <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>maxDiff<span class="token punctuation">,</span> maxVal <span class="token operator">-</span> num<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> maxTriplet<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Array</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>2873. Maximum Value of an Ordered Triplet I - Easy</title>
+    <link href="/2025/04/02/2873-Maximum-Value-of-an-Ordered-Triplet-I-Easy/"/>
+    <url>/2025/04/02/2873-Maximum-Value-of-an-Ordered-Triplet-I-Easy/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/maximum-value-of-an-ordered-triplet-i/description/?envType=daily-question&envId=2025-04-02"  title="2873. Maximum Value of an Ordered Triplet I" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>三個循環，難怪是Easy，但八成不是最優解</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>題目要求最大化<code>(nums[i] - nums[j]) * nums[k]</code></li><li>可拆解為 -&gt; <code>nums[i] - nums[j]</code> 以及 <code>nums[k]</code>最大化</li><li>於是在疊代的過程中，維護三個值分別是<code>最大的nums[i] - nums[j]</code>，<code>最大的nums[k]</code>，以及最重要的<code>答案</code></li><li>因為都是往右走，所以不會有順序問題產生，每次的值都是之前的，不會是未來的</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">long</span> <span class="token function">maximumTripletValue</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">long</span> largestVal <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">long</span> largestDiff <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">long</span> largestTripVal <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> num <span class="token operator">:</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            largestTripVal <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>largestTripVal<span class="token punctuation">,</span> largestDiff <span class="token operator">*</span> num<span class="token punctuation">)</span><span class="token punctuation">;</span>            largestDiff <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>largestDiff<span class="token punctuation">,</span> largestVal <span class="token operator">-</span> num<span class="token punctuation">)</span><span class="token punctuation">;</span>            largestVal <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>largestVal<span class="token punctuation">,</span> num<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> largestTripVal<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Easy</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Array</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Shell進階筆記 - The Missing Semester of Your CS Education</title>
     <link href="/2025/04/01/Shell%E9%80%B2%E9%9A%8E%E7%AD%86%E8%A8%98-The-Missing-Semester-of-Your-CS-Education/"/>
     <url>/2025/04/01/Shell%E9%80%B2%E9%9A%8E%E7%AD%86%E8%A8%98-The-Missing-Semester-of-Your-CS-Education/</url>
@@ -2145,9 +2320,9 @@
       
       <tag>Array</tag>
       
-      <tag>Sorting</tag>
-      
       <tag>Trie</tag>
+      
+      <tag>Sorting</tag>
       
       <tag>Binary Search</tag>
       
@@ -5023,9 +5198,9 @@
       
       <tag>Hash Table</tag>
       
-      <tag>Design</tag>
-      
       <tag>Hash Function</tag>
+      
+      <tag>Design</tag>
       
     </tags>
     
@@ -5202,9 +5377,9 @@
       
       <tag>Linked List</tag>
       
-      <tag>Design</tag>
-      
       <tag>Hash Function</tag>
+      
+      <tag>Design</tag>
       
     </tags>
     
@@ -5241,9 +5416,9 @@
       
       <tag>Linked List</tag>
       
-      <tag>Design</tag>
-      
       <tag>Hash Function</tag>
+      
+      <tag>Design</tag>
       
     </tags>
     
@@ -6347,11 +6522,11 @@
       
       <tag>Hash Table</tag>
       
-      <tag>Sorting</tag>
-      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
+      
+      <tag>Sorting</tag>
       
       <tag>Union Find</tag>
       
@@ -9528,9 +9703,9 @@
       
       <tag>Two Pointers</tag>
       
-      <tag>Sorting</tag>
-      
       <tag>Linked List</tag>
+      
+      <tag>Sorting</tag>
       
       <tag>Merge Sort</tag>
       
