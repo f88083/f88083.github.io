@@ -244,13 +244,13 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Depth-First Search</tag>
-      
       <tag>Hash Table</tag>
       
-      <tag>Tree</tag>
+      <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -407,9 +407,9 @@
       
       <tag>String</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Greedy</tag>
       
       <tag>Hash Table</tag>
       
@@ -1015,9 +1015,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -1052,9 +1052,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -1085,9 +1085,9 @@
       
       <tag>心得</tag>
       
-      <tag>Array</tag>
-      
       <tag>Binary Tree</tag>
+      
+      <tag>Array</tag>
       
       <tag>Hash Table</tag>
       
@@ -1126,9 +1126,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -1161,9 +1161,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Depth-First Search</tag>
-      
       <tag>Hash Table</tag>
+      
+      <tag>Depth-First Search</tag>
       
       <tag>Tree</tag>
       
@@ -1198,9 +1198,9 @@
       
       <tag>Array</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Matrix</tag>
+      
+      <tag>Tree</tag>
       
       <tag>Divide and Conquer</tag>
       
@@ -1233,13 +1233,13 @@
       
       <tag>心得</tag>
       
-      <tag>Depth-First Search</tag>
-      
       <tag>Hash Table</tag>
       
-      <tag>Tree</tag>
+      <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -1276,9 +1276,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -1379,9 +1379,9 @@
       
       <tag>心得</tag>
       
-      <tag>String</tag>
-      
       <tag>Binary Tree</tag>
+      
+      <tag>String</tag>
       
       <tag>Depth-First Search</tag>
       
@@ -1632,9 +1632,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -1669,9 +1669,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -2458,13 +2458,13 @@
       
       <tag>心得</tag>
       
-      <tag>String</tag>
-      
       <tag>Array</tag>
       
-      <tag>Trie</tag>
+      <tag>String</tag>
       
       <tag>Sorting</tag>
+      
+      <tag>Trie</tag>
       
       <tag>Binary Search</tag>
       
@@ -2569,11 +2569,11 @@
       
       <tag>Depth-First Search</tag>
       
+      <tag>Breadth-First Search</tag>
+      
       <tag>Linked List</tag>
       
       <tag>Tree</tag>
-      
-      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -2676,9 +2676,9 @@
       
       <tag>心得</tag>
       
-      <tag>String</tag>
-      
       <tag>Array</tag>
+      
+      <tag>String</tag>
       
       <tag>Two Pointers</tag>
       
@@ -3059,9 +3059,9 @@
       
       <tag>Stack</tag>
       
-      <tag>String</tag>
-      
       <tag>Monotonic Stack</tag>
+      
+      <tag>String</tag>
       
       <tag>Greedy</tag>
       
@@ -3837,9 +3837,9 @@
       
       <tag>心得</tag>
       
-      <tag>String</tag>
-      
       <tag>Array</tag>
+      
+      <tag>String</tag>
       
       <tag>Greedy</tag>
       
@@ -4068,9 +4068,9 @@
       
       <tag>心得</tag>
       
-      <tag>String</tag>
-      
       <tag>Array</tag>
+      
+      <tag>String</tag>
       
       <tag>Two Pointers</tag>
       
@@ -4103,9 +4103,9 @@
       
       <tag>心得</tag>
       
-      <tag>String</tag>
-      
       <tag>Array</tag>
+      
+      <tag>String</tag>
       
     </tags>
     
@@ -4138,9 +4138,9 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Greedy</tag>
       
       <tag>Sorting</tag>
       
@@ -4175,9 +4175,9 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Greedy</tag>
       
       <tag>Sorting</tag>
       
@@ -4212,9 +4212,9 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Greedy</tag>
       
       <tag>Sorting</tag>
       
@@ -4494,9 +4494,9 @@
       
       <tag>String</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Greedy</tag>
       
     </tags>
     
@@ -4984,9 +4984,9 @@
       
       <tag>心得</tag>
       
-      <tag>String</tag>
-      
       <tag>Array</tag>
+      
+      <tag>String</tag>
       
       <tag>Matrix</tag>
       
@@ -5058,9 +5058,9 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Greedy</tag>
       
     </tags>
     
@@ -5091,9 +5091,9 @@
       
       <tag>心得</tag>
       
-      <tag>Array</tag>
-      
       <tag>Binary Tree</tag>
+      
+      <tag>Array</tag>
       
       <tag>Hash Table</tag>
       
@@ -5447,9 +5447,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -5838,9 +5838,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -6050,9 +6050,9 @@
       
       <tag>String</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Greedy</tag>
       
       <tag>Hash Table</tag>
       
@@ -6582,15 +6582,15 @@
       
       <tag>心得</tag>
       
-      <tag>String</tag>
-      
       <tag>Array</tag>
       
-      <tag>Trie</tag>
+      <tag>String</tag>
+      
+      <tag>Dynamic Programming</tag>
       
       <tag>Hash Table</tag>
       
-      <tag>Dynamic Programming</tag>
+      <tag>Trie</tag>
       
       <tag>Memoization</tag>
       
@@ -6658,15 +6658,15 @@
       
       <tag>心得</tag>
       
-      <tag>String</tag>
-      
       <tag>Array</tag>
       
-      <tag>Depth-First Search</tag>
+      <tag>String</tag>
       
       <tag>Hash Table</tag>
       
       <tag>Sorting</tag>
+      
+      <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
       
@@ -7051,9 +7051,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Matrix</tag>
+      
+      <tag>Breadth-First Search</tag>
       
       <tag>Union Find</tag>
       
@@ -7090,9 +7090,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Matrix</tag>
+      
+      <tag>Breadth-First Search</tag>
       
       <tag>Union Find</tag>
       
@@ -7442,9 +7442,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -7662,9 +7662,9 @@
       
       <tag>Array</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Matrix</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -7839,9 +7839,9 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Greedy</tag>
       
     </tags>
     
@@ -8156,9 +8156,9 @@
       
       <tag>Greedy</tag>
       
-      <tag>Sorting</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Sorting</tag>
       
     </tags>
     
@@ -8576,9 +8576,9 @@
       
       <tag>String</tag>
       
-      <tag>Trie</tag>
-      
       <tag>Hash Table</tag>
+      
+      <tag>Trie</tag>
       
       <tag>Design</tag>
       
@@ -8694,11 +8694,11 @@
       
       <tag>心得</tag>
       
-      <tag>Array</tag>
-      
       <tag>Binary Search Tree</tag>
       
       <tag>Binary Tree</tag>
+      
+      <tag>Array</tag>
       
       <tag>Tree</tag>
       
@@ -8768,9 +8768,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -8801,9 +8801,9 @@
       
       <tag>心得</tag>
       
-      <tag>Depth-First Search</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
       
@@ -8978,9 +8978,9 @@
       
       <tag>心得</tag>
       
-      <tag>String</tag>
-      
       <tag>Array</tag>
+      
+      <tag>String</tag>
       
       <tag>Greedy</tag>
       
@@ -9060,9 +9060,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -9198,9 +9198,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -9437,9 +9437,9 @@
       
       <tag>心得</tag>
       
-      <tag>Depth-First Search</tag>
-      
       <tag>Hash Table</tag>
+      
+      <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
       
@@ -9476,9 +9476,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -10160,9 +10160,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -10733,9 +10733,9 @@
       
       <tag>Array</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Matrix</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -10968,9 +10968,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Matrix</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -11102,9 +11102,9 @@
       
       <tag>心得</tag>
       
-      <tag>String</tag>
-      
       <tag>Array</tag>
+      
+      <tag>String</tag>
       
       <tag>Hash Table</tag>
       
@@ -11898,9 +11898,9 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Algorithms</tag>
+      
+      <tag>Stack</tag>
       
       <tag>筆記</tag>
       
