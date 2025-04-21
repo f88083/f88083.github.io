@@ -16,15 +16,15 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前往題目  想法 之前做過，題目要求O(log(m * n))以為不能疊代整個矩陣，於是先用binary search尋找target可能在哪一行，然後再搜尋特定那一行 看了之前我的submission才發現其實可以，因為都用binary search所以每行都檢查的話就符合題目要求的time complexity  思路 疊代每行 在每行binary search target  Codecla">
+    <meta name="description" content="前往題目  想法 之前做過，題目要求O(log(m * n))以為不能疊代整個矩陣，於是先用binary search尋找target可能在哪一行，然後再搜尋特定那一行 看了之前我的submission才發現其實可以，因為都用binary search所以每行都檢查的話就符合題目要求的time complexity  思路 疊代每行 在每行binary search target  Code$O(">
 <meta property="og:type" content="article">
 <meta property="og:title" content="74. Search a 2D Matrix - Medium">
 <meta property="og:url" content="https://f88083.github.io/2024/01/12/74-Search-a-2D-Matrix-Medium/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="前往題目  想法 之前做過，題目要求O(log(m * n))以為不能疊代整個矩陣，於是先用binary search尋找target可能在哪一行，然後再搜尋特定那一行 看了之前我的submission才發現其實可以，因為都用binary search所以每行都檢查的話就符合題目要求的time complexity  思路 疊代每行 在每行binary search target  Codecla">
+<meta property="og:description" content="前往題目  想法 之前做過，題目要求O(log(m * n))以為不能疊代整個矩陣，於是先用binary search尋找target可能在哪一行，然後再搜尋特定那一行 看了之前我的submission才發現其實可以，因為都用binary search所以每行都檢查的話就符合題目要求的time complexity  思路 疊代每行 在每行binary search target  Code$O(">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2024-01-12T03:41:23.000Z">
-<meta property="article:modified_time" content="2024-05-29T16:47:04.958Z">
+<meta property="article:modified_time" content="2025-04-21T02:13:44.606Z">
 <meta property="article:author" content="Simon Lai">
 <meta property="article:tag" content="Leetcode">
 <meta property="article:tag" content="心得">
@@ -253,7 +253,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          162 字
+          268 字
         
       </span>
     
@@ -264,7 +264,7 @@
         
         
         
-          1 分鐘
+          2 分鐘
         
       </span>
     
@@ -316,7 +316,8 @@
 <li>疊代每行</li>
 <li>在每行binary search target</li>
 </ol>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p>$O(mlogn)$</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">searchMatrix</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> matrix<span class="token punctuation">,</span> <span class="token keyword">int</span> target<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token keyword">final</span> <span class="token keyword">int</span> <span class="token class-name">M</span> <span class="token operator">=</span> matrix<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
         <span class="token keyword">final</span> <span class="token keyword">int</span> <span class="token class-name">N</span> <span class="token operator">=</span> matrix<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span>
@@ -340,6 +341,32 @@
         <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h3 id="2025-04-21"><a href="#2025-04-21" class="headerlink" title="2025&#x2F;04&#x2F;21"></a>2025&#x2F;04&#x2F;21</h3><ul>
+<li>以下方法更快：$O(log(mn))$</li>
+<li>直接把整個 matrix 當作陣列來看，就可以實施一般的二元搜尋</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">searchMatrix</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> matrix<span class="token punctuation">,</span> <span class="token keyword">int</span> target<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">final</span> <span class="token keyword">int</span> <span class="token constant">ROWS</span> <span class="token operator">=</span> matrix<span class="token punctuation">.</span>length<span class="token punctuation">,</span> <span class="token constant">COLS</span> <span class="token operator">=</span> matrix<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+
+        <span class="token keyword">int</span> l <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> r <span class="token operator">=</span> <span class="token constant">ROWS</span> <span class="token operator">*</span> <span class="token constant">COLS</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>l <span class="token operator">&lt;=</span> r<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">int</span> mid <span class="token operator">=</span> l <span class="token operator">+</span> <span class="token punctuation">(</span>r <span class="token operator">-</span> l<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">int</span> row <span class="token operator">=</span> mid <span class="token operator">/</span> <span class="token constant">COLS</span><span class="token punctuation">,</span> col <span class="token operator">=</span> mid <span class="token operator">%</span> <span class="token constant">COLS</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>target <span class="token operator">==</span> matrix<span class="token punctuation">[</span>row<span class="token punctuation">]</span><span class="token punctuation">[</span>col<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>target <span class="token operator">&lt;</span> matrix<span class="token punctuation">[</span>row<span class="token punctuation">]</span><span class="token punctuation">[</span>col<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                r <span class="token operator">=</span> mid <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+                l <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
                 
               </div>
