@@ -4,6 +4,69 @@
   
   
   <entry>
+    <title>從「週期性任務」優化談起，一步步深入後端核心議題第二篇 🚀 快取策略：讓網頁不卡卡的第一步</title>
+    <link href="/2025/04/22/%E5%BE%9E%E3%80%8C%E9%80%B1%E6%9C%9F%E6%80%A7%E4%BB%BB%E5%8B%99%E3%80%8D%E5%84%AA%E5%8C%96%E8%AB%87%E8%B5%B7%EF%BC%8C%E4%B8%80%E6%AD%A5%E6%AD%A5%E6%B7%B1%E5%85%A5%E5%BE%8C%E7%AB%AF%E6%A0%B8%E5%BF%83%E8%AD%B0%E9%A1%8C%E7%AC%AC%E4%BA%8C%E7%AF%87-%F0%9F%9A%80-%E5%BF%AB%E5%8F%96%E7%AD%96%E7%95%A5%EF%BC%9A%E8%AE%93%E7%B6%B2%E9%A0%81%E4%B8%8D%E5%8D%A1%E5%8D%A1%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AD%A5/"/>
+    <url>/2025/04/22/%E5%BE%9E%E3%80%8C%E9%80%B1%E6%9C%9F%E6%80%A7%E4%BB%BB%E5%8B%99%E3%80%8D%E5%84%AA%E5%8C%96%E8%AB%87%E8%B5%B7%EF%BC%8C%E4%B8%80%E6%AD%A5%E6%AD%A5%E6%B7%B1%E5%85%A5%E5%BE%8C%E7%AB%AF%E6%A0%B8%E5%BF%83%E8%AD%B0%E9%A1%8C%E7%AC%AC%E4%BA%8C%E7%AF%87-%F0%9F%9A%80-%E5%BF%AB%E5%8F%96%E7%AD%96%E7%95%A5%EF%BC%9A%E8%AE%93%E7%B6%B2%E9%A0%81%E4%B8%8D%E5%8D%A1%E5%8D%A1%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AD%A5/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p>💡 選擇一種聰明的流程設計，比引入各種複雜解決方案更有效、更易維護</p></blockquote><p>在一開始研究週期性任務該怎麼實作時，我發現 Microsoft To Do 採用了一個聰明的設計方式，<br>他們<strong>不會提前計算所有未來的任務，也不會一次產生一整串任務清單</strong>。而是：<br>🕹️ <strong>當用戶完成任務的那一刻，根據任務的週期設定，自動計算並產生下一個任務。</strong>(這是我在使用中觀察到的，嘗試理解我所看到的，實際上我並不知道資料如何傳遞，以及在後端是如何被處理的，我也很想知道🥲)</p><p>這樣的好處是：</p><ul><li>✅ 不需要排程系統定時處理，也不會產生過多冗餘資料</li><li>✅ 只要根據「當前任務的到期日 + 週期設定」去產生下一個即可，不用額外記錄週期歷史</li></ul><p>也因此，像這樣的設計，<strong>本質上就大幅降低了「需要快取」的場景</strong>。<br>但若產品情境或需求比較偏向下列這些：</p><ul><li>想要在首頁快速載入任務列表</li><li>想要顯示月曆檢視、日程總覽等</li><li>有很多使用者同時操作，容易造成資料庫壓力</li></ul><p>那麼快取策略就會是一個非常值得探討的方向。</p><h2 id="🔍-為什麼我們需要快取？"><a href="#🔍-為什麼我們需要快取？" class="headerlink" title="🔍 為什麼我們需要快取？"></a>🔍 為什麼我們需要快取？</h2><p>即使已經採用了「事件驅動式生成任務」，仍有一些資料是可以快取來提升效能的，例如：</p><ul><li>用戶每次登入要看到哪些任務？是不是每次都查資料庫？</li><li>同一筆資料會不會被多次請求？</li></ul><p>此外，如果未來要實作<strong>週期任務的預覽功能</strong>（例如：「下個月我有哪些重複任務？」），那麼我們還是得做一些計算，而這些計算也可以快取下來避免重複。</p><h2 id="💾-後端快取策略：別讓資料庫喘不過氣"><a href="#💾-後端快取策略：別讓資料庫喘不過氣" class="headerlink" title="💾 後端快取策略：別讓資料庫喘不過氣"></a>💾 後端快取策略：別讓資料庫喘不過氣</h2><p>我想先從後端快取開始談起。在多使用者的情境下，如果每個人登入都重新查一次資料庫，那當使用者量成長時，系統的負擔會會上升。這時候，我們可以考慮將部分重複查詢且耗巨大資源的資料快取在記憶體中，減少資料庫的查詢次數。不過這當然增加了系統的複雜度，如果流量沒有造成瓶頸，就不要引入快取。</p><p>以下是幾個常見的後端快取策略與使用時機 👇</p><h3 id="⌛️-何時使用快取"><a href="#⌛️-何時使用快取" class="headerlink" title="⌛️ 何時使用快取"></a>⌛️ 何時使用快取</h3><ul><li>需要大量計算才能得到的值</li><li>讀多寫少的資料</li></ul><h3 id="🧠-記憶體內快取（In-Memory-Cache）"><a href="#🧠-記憶體內快取（In-Memory-Cache）" class="headerlink" title="🧠 記憶體內快取（In-Memory Cache）"></a>🧠 記憶體內快取（In-Memory Cache）</h3><p>最直接的方式就是使用應用程式記憶體來快取資料。這種方式最簡單，但有一些限制：</p><ul><li>適合單一實例的應用程式（例如只有一台後端伺服器）</li><li>快速、無需額外部署</li><li>常用的框架如 Spring Boot 提供了簡易的 <code>@Cacheable</code> 註解就能實作</li></ul><p>範例：</p><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Cacheable</span><span class="token punctuation">(</span><span class="token string">"tasks"</span><span class="token punctuation">)</span><span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Task</span><span class="token punctuation">></span></span> <span class="token function">getTasksByUser</span><span class="token punctuation">(</span><span class="token class-name">Long</span> userId<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">return</span> taskRepository<span class="token punctuation">.</span><span class="token function">findByUserId</span><span class="token punctuation">(</span>userId<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure><hr><h3 id="🌐-分散式快取：Redis-登場"><a href="#🌐-分散式快取：Redis-登場" class="headerlink" title="🌐 分散式快取：Redis 登場"></a>🌐 分散式快取：Redis 登場</h3><p>當服務需要橫向擴展（scalable）時，我們通常會用像 Redis 這樣的分散式快取來取代記憶體快取：</p><ul><li>✅ 可以橫向擴展，支援多實例存取</li><li>✅ 支援快取失效時間（TTL），幫助控制資料新鮮度</li><li>✅ 可以當成 pub&#x2F;sub、session 儲存或 ranking 使用（功能很廣）</li><li>🚧 需要額外部署與監控，也有資料一致性的考量</li></ul><p>Redis 是目前業界非常主流的解法，使用上可以搭配 Spring Data Redis</p><p><img src="https://i.imgur.com/ysMqp3L.png" alt="Redis 使用案例 | credited: AWS"></p><hr><h3 id="🧩-資料一致性：常見策略"><a href="#🧩-資料一致性：常見策略" class="headerlink" title="🧩 資料一致性：常見策略"></a>🧩 資料一致性：常見策略</h3><p>快取的核心價值在於加速存取，但這樣就會出現一個問題：<strong>當資料改變時，要怎麼讓快取也同步更新？</strong><br>這是所謂的 <strong>cache invalidation 問題</strong>，而以下是幾種常見做法：</p><table><thead><tr><th>名稱</th><th>說明</th><th>優點</th><th>缺點</th></tr></thead><tbody><tr><td>Cache Aside</td><td>先查快取，沒有再查 DB 並寫入快取</td><td>常見簡單，控制權完整</td><td>可能會有 cache miss 高峰</td></tr><tr><td>Read&#x2F;Write Through</td><td>寫入 DB 時也同時寫入快取</td><td>快取資料一定是最新的</td><td>寫入操作會變慢</td></tr><tr><td>Write Behind Cache</td><td>寫入快取，可根據不同策略決定寫入 DB 的時機</td><td>高效能寫入</td><td>有資料遺失風險</td></tr></tbody></table><p><img src="https://explainthis.s3-ap-northeast-1.amazonaws.com/30e18dbb8ecc410695eb07f3c3228d1f.png" alt="Cache aside | credited: ExplainThis"></p><p><img src="https://explainthis.s3-ap-northeast-1.amazonaws.com/b9cf73025d014b438101f085395c9970.png" alt="Read/Write through| credited: ExplainThis"></p><p>在 Spring 中也可以使用 <code>@CacheEvict</code> 搭配 CRUD 操作來維護快取的一致性，例如：</p><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@CacheEvict</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"userTasks"</span><span class="token punctuation">,</span> key <span class="token operator">=</span> <span class="token string">"#userId"</span><span class="token punctuation">)</span><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">completeTask</span><span class="token punctuation">(</span><span class="token class-name">Long</span> userId<span class="token punctuation">,</span> <span class="token class-name">Long</span> taskId<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>    taskRepository<span class="token punctuation">.</span><span class="token function">markComplete</span><span class="token punctuation">(</span>taskId<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure><h3 id="🧨-快取的潛在問題"><a href="#🧨-快取的潛在問題" class="headerlink" title="🧨 快取的潛在問題"></a>🧨 快取的潛在問題</h3><p>雖然快取帶來了效能提升，但也伴隨著一些常見陷阱。如果沒注意設計，反而可能讓系統更脆弱。以下是幾個業界常見的快取問題與對應策略 🔧：</p><h4 id="🚫-Cache-Penetration"><a href="#🚫-Cache-Penetration" class="headerlink" title="🚫 Cache Penetration"></a>🚫 Cache Penetration</h4><p>這代表快取查不到資料，結果還是要回去查資料庫，等於快取白設了。常見情境有兩種：</p><ul><li><p>查詢的資料本來就不存在（惡意請求或髒資料）</p><ul><li>解法 1：對常被查但不存在的 Key 設一個預設空值，避免每次都回 DB</li><li>解法 2：使用 Bloom Filter 預先過濾不存在的 Key，直接拒絕請求</li></ul></li><li><p>快取資料太大，資源吃緊導致經常 miss</p><ul><li>解法：僅快取熱門資料，並分頁載入；避免整包塞進快取造成浪費</li></ul></li></ul><h4 id="⏰-Cache-Avalanche"><a href="#⏰-Cache-Avalanche" class="headerlink" title="⏰ Cache Avalanche"></a>⏰ Cache Avalanche</h4><p>當所有快取的過期時間都一樣時，一到時間點所有快取同時失效，大量請求湧入資料庫造成崩潰。</p><ul><li>解法：設定快取時加入「隨機延遲時間」，避免同時過期的情況發生</li></ul><h4 id="🧱-Cache-Breakdown"><a href="#🧱-Cache-Breakdown" class="headerlink" title="🧱 Cache Breakdown"></a>🧱 Cache Breakdown</h4><p>當某一筆熱門資料剛好過期，短時間內大量請求同時查詢，瞬間灌爆資料庫。</p><ul><li>解法 1：<strong>加鎖更新快取</strong>，只有一個 thread 可以重新查詢 DB，其他等候。分佈式系統可用 Zookeeper</li><li>解法 2：<strong>後台更新快取</strong>，例如透過 background thread 或 queue 通知更新，主線程不阻塞</li></ul><h4 id="🔥-Hotspot-Cache（熱點快取）"><a href="#🔥-Hotspot-Cache（熱點快取）" class="headerlink" title="🔥 Hotspot Cache（熱點快取）"></a>🔥 Hotspot Cache（熱點快取）</h4><p>某些資料太熱門（例如首頁、熱門文章），全部人都查同一筆資料，導致單一快取節點壓力爆表。</p><ul><li>解法：複製多份快取副本分散到多個節點<br>✅ 注意副本之間設定不同的過期時間，否則同時失效又會造成雪崩</li></ul><hr><p>下一篇，我會從這篇延伸一個很常見但又容易被忽略的問題 ——<br>👥 <strong>多用戶同時操作時，如何避免資料競爭與不一致的情況？我們該加鎖嗎？</strong></p><h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ol><li><p><a href="https://medium.com/@genchilu/%E4%BE%86%E8%AB%87%E8%AB%87%E5%BE%8C%E7%AB%AF%E5%BF%AB%E5%8F%96%E7%AD%96%E7%95%A5-fa4a1511f446">來談談後端快取策略</a></p></li><li><p><a href="https://www.explainthis.io/zh-hant/swe/cache-mechanism">什麼是快取 (Cache)？快取 (Cache) 的機制為何？</a></p></li><li><p><a href="https://medium.com/@yashbatra11111/why-i-stopped-overengineering-my-backend-systems-9e2f260f5a5c">Why I Stopped Overengineering My Backend Systems</a></p></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>後端</category>
+      
+      <category>從「週期性任務」優化談起，一步步深入後端核心議題</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Java</tag>
+      
+      <tag>快取</tag>
+      
+      <tag>快取策略</tag>
+      
+      <tag>後端開發</tag>
+      
+      <tag>系統效能優化</tag>
+      
+      <tag>Redis</tag>
+      
+      <tag>Spring Boot</tag>
+      
+      <tag>記憶體快取</tag>
+      
+      <tag>分散式系統</tag>
+      
+      <tag>資料一致性</tag>
+      
+      <tag>Cache Invalidation</tag>
+      
+      <tag>Cache Aside</tag>
+      
+      <tag>Write-Through</tag>
+      
+      <tag>Write-Behind</tag>
+      
+      <tag>分頁快取</tag>
+      
+      <tag>熱點快取</tag>
+      
+      <tag>Cache Avalanche</tag>
+      
+      <tag>Cache Breakdown</tag>
+      
+      <tag>系統設計</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>從「週期性任務」優化談起，一步步深入後端核心議題第一篇</title>
     <link href="/2025/04/18/%E5%BE%9E%E3%80%8C%E9%80%B1%E6%9C%9F%E6%80%A7%E4%BB%BB%E5%8B%99%E3%80%8D%E5%84%AA%E5%8C%96%E8%AB%87%E8%B5%B7%EF%BC%8C%E4%B8%80%E6%AD%A5%E6%AD%A5%E6%B7%B1%E5%85%A5%E5%BE%8C%E7%AB%AF%E6%A0%B8%E5%BF%83%E8%AD%B0%E9%A1%8C%E7%AC%AC%E4%B8%80%E7%AF%87/"/>
     <url>/2025/04/18/%E5%BE%9E%E3%80%8C%E9%80%B1%E6%9C%9F%E6%80%A7%E4%BB%BB%E5%8B%99%E3%80%8D%E5%84%AA%E5%8C%96%E8%AB%87%E8%B5%B7%EF%BC%8C%E4%B8%80%E6%AD%A5%E6%AD%A5%E6%B7%B1%E5%85%A5%E5%BE%8C%E7%AB%AF%E6%A0%B8%E5%BF%83%E8%AD%B0%E9%A1%8C%E7%AC%AC%E4%B8%80%E7%AF%87/</url>
@@ -244,9 +307,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Depth-First Search</tag>
-      
       <tag>Hash Table</tag>
+      
+      <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
       
@@ -510,9 +573,9 @@
       
       <tag>Math</tag>
       
-      <tag>Sorting</tag>
-      
       <tag>Matrix</tag>
+      
+      <tag>Sorting</tag>
       
     </tags>
     
@@ -1085,9 +1148,9 @@
       
       <tag>心得</tag>
       
-      <tag>Array</tag>
-      
       <tag>Binary Tree</tag>
+      
+      <tag>Array</tag>
       
       <tag>Hash Table</tag>
       
@@ -1161,9 +1224,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Depth-First Search</tag>
-      
       <tag>Hash Table</tag>
+      
+      <tag>Depth-First Search</tag>
       
       <tag>Tree</tag>
       
@@ -1233,9 +1296,9 @@
       
       <tag>心得</tag>
       
-      <tag>Depth-First Search</tag>
-      
       <tag>Hash Table</tag>
+      
+      <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
       
@@ -2462,9 +2525,9 @@
       
       <tag>Array</tag>
       
-      <tag>Trie</tag>
-      
       <tag>Sorting</tag>
+      
+      <tag>Trie</tag>
       
       <tag>Binary Search</tag>
       
@@ -2571,9 +2634,9 @@
       
       <tag>Breadth-First Search</tag>
       
-      <tag>Linked List</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Linked List</tag>
       
     </tags>
     
@@ -3512,9 +3575,9 @@
       
       <tag>String</tag>
       
-      <tag>Sliding Window</tag>
-      
       <tag>Binary Search</tag>
+      
+      <tag>Sliding Window</tag>
       
       <tag>Prefix Sum</tag>
       
@@ -3551,9 +3614,9 @@
       
       <tag>Hash Table</tag>
       
-      <tag>Sliding Window</tag>
-      
       <tag>Binary Search</tag>
+      
+      <tag>Sliding Window</tag>
       
       <tag>Prefix Sum</tag>
       
@@ -3588,9 +3651,9 @@
       
       <tag>Array</tag>
       
-      <tag>Sliding Window</tag>
-      
       <tag>Binary Search</tag>
+      
+      <tag>Sliding Window</tag>
       
       <tag>Prefix Sum</tag>
       
@@ -3734,9 +3797,9 @@
       
       <tag>Sorting</tag>
       
-      <tag>Sliding Window</tag>
-      
       <tag>Binary Search</tag>
+      
+      <tag>Sliding Window</tag>
       
       <tag>Prefix Sum</tag>
       
@@ -5091,9 +5154,9 @@
       
       <tag>心得</tag>
       
-      <tag>Array</tag>
-      
       <tag>Binary Tree</tag>
+      
+      <tag>Array</tag>
       
       <tag>Hash Table</tag>
       
@@ -6588,9 +6651,9 @@
       
       <tag>Dynamic Programming</tag>
       
-      <tag>Trie</tag>
-      
       <tag>Hash Table</tag>
+      
+      <tag>Trie</tag>
       
       <tag>Memoization</tag>
       
@@ -6662,11 +6725,11 @@
       
       <tag>Array</tag>
       
-      <tag>Depth-First Search</tag>
-      
       <tag>Hash Table</tag>
       
       <tag>Sorting</tag>
+      
+      <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
       
@@ -7049,11 +7112,11 @@
       
       <tag>Array</tag>
       
+      <tag>Matrix</tag>
+      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
-      
-      <tag>Matrix</tag>
       
       <tag>Union Find</tag>
       
@@ -7088,11 +7151,11 @@
       
       <tag>Array</tag>
       
+      <tag>Matrix</tag>
+      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
-      
-      <tag>Matrix</tag>
       
       <tag>Union Find</tag>
       
@@ -7490,7 +7553,7 @@
     <link href="/2024/02/06/875-Koko-Eating-Bananas-Medium/"/>
     <url>/2024/02/06/875-Koko-Eating-Bananas-Medium/</url>
     
-    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/koko-eating-bananas/description/"  title="875. Koko Eating Bananas" target="_blank">前往題目</a><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>利用<code>binary search</code>(不是搜尋<code>piles array</code>，而是最小數與最大數的區間)</li><li>最少的可能是每小時<code>1</code>根香蕉，最大就是<code>piles</code>裡面最大的，因為<code>piles.length &lt;= h</code>，所以最大值一定可以在時限內吃完</li><li><code>binary search</code>搜尋，每次計算<code>piles</code>能不能只需要每小時<code>mid</code>根香蕉吃完，如果不行，小指針指向<code>mid + 1</code>，如果可以，那大指針就變為<code>mid</code>，繼續搜尋有沒有可能k更小</li></ol><p>沒想到不是<code>search piles</code>，而是區間</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/yfWVWbi9pts" title="【每日一题】875. Koko Eating Bananas, 11/04/2019" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">minEatingSpeed</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> piles<span class="token punctuation">,</span> <span class="token keyword">int</span> h<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span> l <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// Possible minimum is 1</span>        <span class="token keyword">int</span> r <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token comment">// Maximum is the largest pile</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> pile <span class="token operator">:</span> piles<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            r <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>r<span class="token punctuation">,</span> pile<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>                <span class="token comment">// Until converge</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>l <span class="token operator">&lt;</span> r<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">int</span> mid <span class="token operator">=</span> l <span class="token operator">+</span> <span class="token punctuation">(</span>r <span class="token operator">-</span> l<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>            <span class="token comment">// 無法以每小時mid根吃完</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">eat</span><span class="token punctuation">(</span>piles<span class="token punctuation">,</span> mid<span class="token punctuation">)</span> <span class="token operator">></span> h<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                l <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>                r <span class="token operator">=</span> mid<span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// l和r相交就一定是解，因為題目一定有解</span>        <span class="token keyword">return</span> l<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token keyword">int</span> <span class="token function">eat</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> piles<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span> h <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> pile <span class="token operator">:</span> piles<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// 剛好整除</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>pile <span class="token operator">%</span> k <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                h <span class="token operator">+=</span> pile <span class="token operator">/</span> k<span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 非整除要再多一小時把剩下的吃完</span>                h <span class="token operator">+=</span> pile <span class="token operator">/</span> k <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> h<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/koko-eating-bananas/description/"  title="875. Koko Eating Bananas" target="_blank">前往題目</a><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>利用<code>binary search</code>(不是搜尋<code>piles array</code>，而是最小數與最大數的區間)</li><li>最少的可能是每小時<code>1</code>根香蕉，最大就是<code>piles</code>裡面最大的，因為<code>piles.length &lt;= h</code>，所以最大值一定可以在時限內吃完</li><li><code>binary search</code>搜尋，每次計算<code>piles</code>能不能只需要每小時<code>mid</code>根香蕉吃完，如果不行，小指針指向<code>mid + 1</code>，如果可以，那大指針就變為<code>mid</code>，繼續搜尋有沒有可能k更小</li></ol><p>沒想到不是<code>search piles</code>，而是區間</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/yfWVWbi9pts" title="【每日一题】875. Koko Eating Bananas, 11/04/2019" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">minEatingSpeed</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> piles<span class="token punctuation">,</span> <span class="token keyword">int</span> h<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span> l <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// Possible minimum is 1</span>        <span class="token keyword">int</span> r <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token comment">// Maximum is the largest pile</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> pile <span class="token operator">:</span> piles<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            r <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>r<span class="token punctuation">,</span> pile<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>                <span class="token comment">// Until converge</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>l <span class="token operator">&lt;</span> r<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">int</span> mid <span class="token operator">=</span> l <span class="token operator">+</span> <span class="token punctuation">(</span>r <span class="token operator">-</span> l<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>            <span class="token comment">// 無法以每小時mid根吃完</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">eat</span><span class="token punctuation">(</span>piles<span class="token punctuation">,</span> mid<span class="token punctuation">)</span> <span class="token operator">></span> h<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                l <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>                r <span class="token operator">=</span> mid<span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// l和r相交就一定是解，因為題目一定有解</span>        <span class="token keyword">return</span> l<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token keyword">int</span> <span class="token function">eat</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> piles<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span> h <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> pile <span class="token operator">:</span> piles<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// 剛好整除</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>pile <span class="token operator">%</span> k <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                h <span class="token operator">+=</span> pile <span class="token operator">/</span> k<span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 非整除要再多一小時把剩下的吃完</span>                h <span class="token operator">+=</span> pile <span class="token operator">/</span> k <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> h<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure><h3 id="2025-04-21"><a href="#2025-04-21" class="headerlink" title="2025&#x2F;04&#x2F;21"></a>2025&#x2F;04&#x2F;21</h3><ul><li>和上面差不多的解法</li></ul><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">minEatingSpeed</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> piles<span class="token punctuation">,</span> <span class="token keyword">int</span> h<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span> l <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> r <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span>piles<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getAsInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> res <span class="token operator">=</span> r<span class="token punctuation">;</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>l <span class="token operator">&lt;=</span> r<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">int</span> k <span class="token operator">=</span> l <span class="token operator">+</span> <span class="token punctuation">(</span>r <span class="token operator">-</span> l<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>            <span class="token keyword">long</span> totalTime <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> pile <span class="token operator">:</span> piles<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                totalTime <span class="token operator">+=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">ceil</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">1.0</span> <span class="token operator">*</span> pile<span class="token punctuation">)</span> <span class="token operator">/</span> k<span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>totalTime <span class="token operator">&lt;=</span> h<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                res <span class="token operator">=</span> k<span class="token punctuation">;</span>                r <span class="token operator">=</span> k <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>                l <span class="token operator">=</span> k <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> res<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
     
     
     <categories>
@@ -7662,9 +7725,9 @@
       
       <tag>Array</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Matrix</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -7697,9 +7760,9 @@
       
       <tag>String</tag>
       
-      <tag>Sliding Window</tag>
-      
       <tag>Binary Search</tag>
+      
+      <tag>Sliding Window</tag>
       
       <tag>Prefix Sum</tag>
       
@@ -7734,9 +7797,9 @@
       
       <tag>Array</tag>
       
-      <tag>Sliding Window</tag>
-      
       <tag>Binary Search</tag>
+      
+      <tag>Sliding Window</tag>
       
       <tag>Prefix Sum</tag>
       
@@ -8576,9 +8639,9 @@
       
       <tag>String</tag>
       
-      <tag>Trie</tag>
-      
       <tag>Hash Table</tag>
+      
+      <tag>Trie</tag>
       
       <tag>Design</tag>
       
@@ -8694,11 +8757,11 @@
       
       <tag>心得</tag>
       
-      <tag>Array</tag>
-      
       <tag>Binary Search Tree</tag>
       
       <tag>Binary Tree</tag>
+      
+      <tag>Array</tag>
       
       <tag>Tree</tag>
       
@@ -9437,9 +9500,9 @@
       
       <tag>心得</tag>
       
-      <tag>Depth-First Search</tag>
-      
       <tag>Hash Table</tag>
+      
+      <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
       
@@ -10125,9 +10188,9 @@
       
       <tag>Two Pointers</tag>
       
-      <tag>Sliding Window</tag>
-      
       <tag>Binary Search</tag>
+      
+      <tag>Sliding Window</tag>
       
     </tags>
     
@@ -10733,9 +10796,9 @@
       
       <tag>Array</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Matrix</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -10966,11 +11029,11 @@
       
       <tag>心得</tag>
       
+      <tag>Matrix</tag>
+      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
-      
-      <tag>Matrix</tag>
       
     </tags>
     
