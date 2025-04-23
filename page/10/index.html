@@ -253,6 +253,450 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/09/13/162-Find-Peak-Element-Medium/" target="_self">
+          162. Find Peak Element - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/13/162-Find-Peak-Element-Medium/" target="_self">
+        <div>
+          前往題目  想法 Binary search，只要注意左右邊界外的數字都比界內數字小  思路 一般的Binary search 每次選中mid看其左右邊相鄰數字 如果左邊比較大那他就有可能是peak，所以往左邊繼續找，因為當前數字比他小；反之右邊也是如此道理 左右邊都沒有比較大的時候就是找到peak了，邊界也是一樣，因為界外數字一定比較小  Code這題想得有點複雜，其實規律就是哪邊有比較大的就往
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-13 11:12" pubdate>
+              2024-09-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Binary-Search/">#Binary Search</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/12/34-Find-First-and-Last-Position-of-Element-in-Sorted-Array-Medium/" target="_self">
+          34. Find First and Last Position of Element in Sorted Array - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/12/34-Find-First-and-Last-Position-of-Element-in-Sorted-Array-Medium/" target="_self">
+        <div>
+          前往題目  想法 用binary search搜尋兩次 但我沒想到可以怎麼變化，因為一般的二元搜索沒辦法  思路 兩次二元搜索，第一次找第一個，第二次找最後一個 每次找到target不要急著回傳，找first就往左邊繼續找，直到l == r；找last就往右邊繼續找，一樣直到l == r  所以不會錯過第一個和最後一個 Code網友解答 class Solution &#123;     publ
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-12 15:10" pubdate>
+              2024-09-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Binary-Search/">#Binary Search</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/12/3281-Maximize-Score-of-Numbers-in-Ranges-Medium/" target="_self">
+          3281. Maximize Score of Numbers in Ranges - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/12/3281-Maximize-Score-of-Numbers-in-Ranges-Medium/" target="_self">
+        <div>
+          前往題目  想法 毫無頭緒，只覺得應該要用binary search來做，但無從下手  思路即便思考許久，也參考網路上解答，但還是沒有完全理解這題  Binary serach搜尋最終的結果 下為0，上為Integer.MAX_VALUE 每次都檢查是否這個score可以是答案(這裡檢查的部分就是我無法完全懂的地方) 每次都檢查前數 + score是否大於當前數字 + d，如果大於就代表這個sco
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-12 10:55" pubdate>
+              2024-09-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Binary-Search/">#Binary Search</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/09/1011-Capacity-To-Ship-Packages-Within-D-Days-Medium/" target="_self">
+          1011. Capacity To Ship Packages Within D Days - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/09/1011-Capacity-To-Ship-Packages-Within-D-Days-Medium/" target="_self">
+        <div>
+          前往題目  想法 Binary Search，通常找min或max的都可以先往這方面想  思路 算出所有貨物總和，這樣就知道最大需要多重的運輸能力 從一半的可能重量開始看是否可以在期限內運送 如果可以就嘗試減少重量再看看是否可以 如果不行就嘗試增加重量  Code網友解答 class Solution &#123;     public int shipWithinDays(int[] weigh
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-09 11:52" pubdate>
+              2024-09-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Binary-Search/">#Binary Search</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/07/xbox-series%E6%89%8B%E6%8A%8A%E8%98%91%E8%8F%87%E9%A0%AD%E9%A3%84%E7%A7%BB%E4%BF%AE%E5%BE%A9%E6%96%B9%E6%B3%95/" target="_self">
+          xbox series手把蘑菇頭飄移修復方法
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/07/xbox-series%E6%89%8B%E6%8A%8A%E8%98%91%E8%8F%87%E9%A0%AD%E9%A3%84%E7%A7%BB%E4%BF%AE%E5%BE%A9%E6%96%B9%E6%B3%95/" target="_self">
+        <div>
+          最近用了三年的xbox series的手把右蘑菇開始飄移，不動它偶爾就會自己慢慢往上，剛好又在打黑神話，常常跑一跑視角就沒了，不考慮焊接換微動，因為不像滑鼠那樣拆開來就可以整個板子拿出來，手把結構較為緊密複雜，網路上都有很多影片參考，反而有個民間小偏方讓我的手把這兩天都恢復正常，再次秀逗的話我再刪文🤣 我是參考這篇ptt網友的文章，大致步驟如下  拆開蓋子後，把蘑菇頭拿掉 如果是Y軸(上下)出問
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-07 20:44" pubdate>
+              2024-09-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%81%8A%E6%88%B2/" class="category-chain-item">遊戲</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E9%81%8A%E6%88%B2/%E6%89%8B%E6%8A%8A%E4%BF%AE%E5%BE%A9/" class="category-chain-item">手把修復</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/xbox/">#xbox</a>
+            
+              <a href="/tags/controller/">#controller</a>
+            
+              <a href="/tags/%E9%81%8A%E6%88%B2/">#遊戲</a>
+            
+              <a href="/tags/%E6%89%8B%E6%8A%8A%E4%BF%AE%E5%BE%A9/">#手把修復</a>
+            
+              <a href="/tags/%E8%98%91%E8%8F%87%E9%A0%AD%E9%A3%84%E7%A7%BB/">#蘑菇頭飄移</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/04/441-Arranging-Coins-Easy/" target="_self">
+          441. Arranging Coins - Easy
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/04/441-Arranging-Coins-Easy/" target="_self">
+        <div>
+          前往題目  想法 循環扣除每行所需硬幣  思路 同想法  這題還能用binary search做，但反而就變困難了 CodeNeetcode大大用BS做的   class Solution &#123;     public int arrangeCoins(int n) &#123;         int i = 1; // row                  // Until used
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-04 14:01" pubdate>
+              2024-09-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Math/">#Math</a>
+            
+              <a href="/tags/Binary-Search/">#Binary Search</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2024/08/29/341-Flatten-Nested-List-Iterator/" target="_self">
           341. Flatten Nested List Iterator
         </a>
@@ -307,11 +751,11 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Stack/">#Stack</a>
-            
               <a href="/tags/Leetcode/">#Leetcode</a>
             
               <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Stack/">#Stack</a>
             
               <a href="/tags/Queue/">#Queue</a>
             
@@ -389,11 +833,11 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Stack/">#Stack</a>
-            
               <a href="/tags/Leetcode/">#Leetcode</a>
             
               <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Stack/">#Stack</a>
             
               <a href="/tags/Array/">#Array</a>
             
@@ -469,11 +913,11 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Stack/">#Stack</a>
-            
               <a href="/tags/Leetcode/">#Leetcode</a>
             
               <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Stack/">#Stack</a>
             
               <a href="/tags/String/">#String</a>
             
@@ -543,471 +987,17 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Stack/">#Stack</a>
-            
               <a href="/tags/Leetcode/">#Leetcode</a>
             
               <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Stack/">#Stack</a>
             
               <a href="/tags/String/">#String</a>
             
               <a href="/tags/Monotonic-Stack/">#Monotonic Stack</a>
             
               <a href="/tags/Greedy/">#Greedy</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/16/71-Simplify-Path-Medium/" target="_self">
-          71. Simplify Path - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/16/71-Simplify-Path-Medium/" target="_self">
-        <div>
-          前往題目  想法 stack  思路這題不難，不過edge case很多，要一次想出完美的條件判斷不容易  先用/分開 疊代分開後的每個部分 遇到.或是空的就跳過，因為不用做任何處理，直接忽略就好 遇到..就把上一個東西刪掉 其餘就都記錄下來 最後重新拼裝就好了  Codeclass Solution &#123;     public String simplifyPath(String pat
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-16 10:57" pubdate>
-              2024-08-16
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Stack/">#Stack</a>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/String/">#String</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/15/901-Online-Stock-Span-Medium/" target="_self">
-          901. Online Stock Span - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/15/901-Online-Stock-Span-Medium/" target="_self">
-        <div>
-          前往題目  想法 Stack，但無從下手  思路 next()時，預設span為1 stack裡如果有&lt;= price的，就pop然後加到當前span直到stack裡的數比當前price還要大。如此一來就可以捨去一些數字，因為span都儲存在後來的數字裡 結束前把新的price以及span推進stack  變成Monotonic decreasing的stack Code  class St
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-15 12:46" pubdate>
-              2024-08-15
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Stack/">#Stack</a>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Monotonic-Stack/">#Monotonic Stack</a>
-            
-              <a href="/tags/Design/">#Design</a>
-            
-              <a href="/tags/Data-Stream/">#Data Stream</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/06/946-Validate-Stack-Sequences-Medium/" target="_self">
-          946. Validate Stack Sequences - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/06/946-Validate-Stack-Sequences-Medium/" target="_self">
-        <div>
-          前往題目  想法 stack 疊代pushed的部分，去匹配popped的元素  思路 循環pushed 每次循環都看stack的頂端是否和popped的元素相符 相符就pop，不相符就繼續 最後看stack是否為空判斷  Code  class Solution &#123;     public boolean validateStackSequences(int[] pushed, int[
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-06 10:41" pubdate>
-              2024-08-06
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Stack/">#Stack</a>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Simulation/">#Simulation</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/06/2390-Removing-Stars-From-a-String-Medium/" target="_self">
-          2390. Removing Stars From a String - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/06/2390-Removing-Stars-From-a-String-Medium/" target="_self">
-        <div>
-          前往題目  想法 Stack  思路這題很簡單遇到米字號直接pop Codeclass Solution &#123;     public String removeStars(String s) &#123;         Stack&lt;Character> stack = new Stack();          for (char c : s.toCharArray()) &#12
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-06 10:25" pubdate>
-              2024-08-06
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Stack/">#Stack</a>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/String/">#String</a>
-            
-              <a href="/tags/Simulation/">#Simulation</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/05/1544-Make-The-String-Great/" target="_self">
-          1544. Make The String Great - Easy
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/05/1544-Make-The-String-Great/" target="_self">
-        <div>
-          前往題目  想法 Stack  思路 循環每個字符 找到bad string時，彈出，其他都push到stack 建構答案並回傳  Codeclass Solution &#123;     public String makeGood(String s) &#123;         Stack&lt;Character> stack = new Stack&lt;>();          /
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-05 18:57" pubdate>
-              2024-08-05
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Stack/">#Stack</a>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/String/">#String</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/02/225-Implement-Stack-using-Queues/" target="_self">
-          225. Implement Stack using Queues - Easy
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/02/225-Implement-Stack-using-Queues/" target="_self">
-        <div>
-          前往題目  想法 用兩個queue，雖然題目也有寫  思路這題很簡單，注意前後順序就好 push: 看哪個queue不是空的就放哪個pop: 看哪個是空的，把另一個queue的元素搬過來，最後剩一個直接回傳top: 一樣看哪個是空的，搬過去，剩下最後一個記錄下來回傳，也要辦過去另一個queueempty: 看兩個queue是否都為空 只用一個queue的反而更簡單，只要每次push的時候都反轉使其
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-02 10:43" pubdate>
-              2024-08-02
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Stack/">#Stack</a>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Queue/">#Queue</a>
-            
-              <a href="/tags/Design/">#Design</a>
             
           </div>
         

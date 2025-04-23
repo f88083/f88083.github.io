@@ -253,6 +253,464 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/09/24/69-Sqrt-x-Easy/" target="_self">
+          69. Sqrt(x) - Easy
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/24/69-Sqrt-x-Easy/" target="_self">
+        <div>
+          前往題目  想法 Binary Search  思路 在0~x之間搜尋 如果當前位置平方小於x那就往右繼續找 如果大於，就往左邊(更小的數字)找 最後收斂的位置左邊就是答案，因為無條件捨去小數  Codeclass Solution &#123;     public int mySqrt(int x) &#123;         if (x == 0) return 0;         if
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-24 15:59" pubdate>
+              2024-09-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Math/">#Math</a>
+            
+              <a href="/tags/Binary-Search/">#Binary Search</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/24/540-Single-Element-in-a-Sorted-Array-Medium/" target="_self">
+          540. Single Element in a Sorted Array - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/24/540-Single-Element-in-a-Sorted-Array-Medium/" target="_self">
+        <div>
+          前往題目  想法 Binary Search  思路規律是只要pair第一個數字不在偶數位上，就代表當前位置已在單一個數字之後，所以規律被打亂了 例如:[1, 1, 3, 3, 2, 4, 4]，1和3組合是第一個在偶數位，第二個在奇數位，當單一數字2出現後，組合4的位置就被打亂了，變成第一個數字在奇數位，而第二個數字在偶數位。因為只有一個單一數字，所以規則一定會被打亂  binary searc
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-24 10:54" pubdate>
+              2024-09-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Binary-Search/">#Binary Search</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/19/1268-Search-Suggestions-System-Medium/" target="_self">
+          1268. Search Suggestions System - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/19/1268-Search-Suggestions-System-Medium/" target="_self">
+        <div>
+          前往題目  想法 排好之後，Binary Search匹配searchWord，但有可能原本匹配的那些多加一個searchWod字母後就全部不匹配了，反而是最後面的匹配，這部分不知道怎麼解決  思路解決辦法就是把區間找出來，一個一個找，慢慢收斂區間  排序 一個字母一個字母來 雙指針，左右指針循環直到遇到匹配的字母，但要略過長度不夠的item，藉此判斷出區間 區間找出後，直接把該區間加入答案裡
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-19 11:19" pubdate>
+              2024-09-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/String/">#String</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Sorting/">#Sorting</a>
+            
+              <a href="/tags/Trie/">#Trie</a>
+            
+              <a href="/tags/Binary-Search/">#Binary Search</a>
+            
+              <a href="/tags/Heap-Priority-Queue/">#Heap (Priority Queue)</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/19/35-Search-Insert-Position-Easy/" target="_self">
+          35. Search Insert Position - Easy
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/19/35-Search-Insert-Position-Easy/" target="_self">
+        <div>
+          前往題目  想法 基本的Binary Search  思路 Binary Search 如果沒找到，就回傳左指針(右指針也可以因為沒找到一定收斂在同一個index)  Code一次過，就是注意回傳條件而已 class Solution &#123;     public int searchInsert(int[] nums, int target) &#123;         int l =
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-19 10:18" pubdate>
+              2024-09-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Binary-Search/">#Binary Search</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/18/81-Search-in-Rotated-Sorted-Array-II-Medium/" target="_self">
+          81. Search in Rotated Sorted Array II - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/18/81-Search-in-Rotated-Sorted-Array-II-Medium/" target="_self">
+        <div>
+          前往題目  想法 Binary Search 先找pivot  思路 Binary Search 搜尋的時候判斷mid是在哪個部分，左還是右，然後再判斷target是否在範圍裡，這樣才能確切知道到底要往左還是右搜尋  原本以為要先找出pivot，這題的關鍵是找到方法確切判斷要往左還是往右找，因為有可能左、中、右的數字都一模一樣，而解決辦法就是只能一格一格移動 Codeclass Solution
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-18 20:16" pubdate>
+              2024-09-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Binary-Search/">#Binary Search</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/09/18/116-Populating-Next-Right-Pointers-in-Each-Node-Medium/" target="_self">
+          116. Populating Next Right Pointers in Each Node - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/18/116-Populating-Next-Right-Pointers-in-Each-Node-Medium/" target="_self">
+        <div>
+          前往題目  想法 用Breadth-First Search  思路 Breadth-First Search 搜尋的時候建立next指針，因為每次循環都剛好是整層，疊代整層的時候順便把指針也設定好了  Code一陣子沒寫BFS了，但還記得! class Solution &#123;     public Node connect(Node root) &#123;         if (ro
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-09-18 19:13" pubdate>
+              2024-09-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Binary-Tree/">#Binary Tree</a>
+            
+              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
+            
+              <a href="/tags/Breadth-First-Search/">#Breadth-First Search</a>
+            
+              <a href="/tags/Linked-List/">#Linked List</a>
+            
+              <a href="/tags/Tree/">#Tree</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2024/09/18/Designing-Data-Intensive-Applications-%E7%AC%AC%E4%B8%80%E7%AB%A0%E7%AD%86%E8%A8%98/" target="_self">
           Designing Data-Intensive Applications - 第一章筆記
         </a>
@@ -546,450 +1004,6 @@
               <a href="/tags/Binary-Search/">#Binary Search</a>
             
               <a href="/tags/Interactive/">#Interactive</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/09/13/162-Find-Peak-Element-Medium/" target="_self">
-          162. Find Peak Element - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/13/162-Find-Peak-Element-Medium/" target="_self">
-        <div>
-          前往題目  想法 Binary search，只要注意左右邊界外的數字都比界內數字小  思路 一般的Binary search 每次選中mid看其左右邊相鄰數字 如果左邊比較大那他就有可能是peak，所以往左邊繼續找，因為當前數字比他小；反之右邊也是如此道理 左右邊都沒有比較大的時候就是找到peak了，邊界也是一樣，因為界外數字一定比較小  Code這題想得有點複雜，其實規律就是哪邊有比較大的就往
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-09-13 11:12" pubdate>
-              2024-09-13
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Binary-Search/">#Binary Search</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/09/12/34-Find-First-and-Last-Position-of-Element-in-Sorted-Array-Medium/" target="_self">
-          34. Find First and Last Position of Element in Sorted Array - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/12/34-Find-First-and-Last-Position-of-Element-in-Sorted-Array-Medium/" target="_self">
-        <div>
-          前往題目  想法 用binary search搜尋兩次 但我沒想到可以怎麼變化，因為一般的二元搜索沒辦法  思路 兩次二元搜索，第一次找第一個，第二次找最後一個 每次找到target不要急著回傳，找first就往左邊繼續找，直到l == r；找last就往右邊繼續找，一樣直到l == r  所以不會錯過第一個和最後一個 Code網友解答 class Solution &#123;     publ
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-09-12 15:10" pubdate>
-              2024-09-12
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Binary-Search/">#Binary Search</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/09/12/3281-Maximize-Score-of-Numbers-in-Ranges-Medium/" target="_self">
-          3281. Maximize Score of Numbers in Ranges - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/12/3281-Maximize-Score-of-Numbers-in-Ranges-Medium/" target="_self">
-        <div>
-          前往題目  想法 毫無頭緒，只覺得應該要用binary search來做，但無從下手  思路即便思考許久，也參考網路上解答，但還是沒有完全理解這題  Binary serach搜尋最終的結果 下為0，上為Integer.MAX_VALUE 每次都檢查是否這個score可以是答案(這裡檢查的部分就是我無法完全懂的地方) 每次都檢查前數 + score是否大於當前數字 + d，如果大於就代表這個sco
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-09-12 10:55" pubdate>
-              2024-09-12
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Binary-Search/">#Binary Search</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/09/09/1011-Capacity-To-Ship-Packages-Within-D-Days-Medium/" target="_self">
-          1011. Capacity To Ship Packages Within D Days - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/09/1011-Capacity-To-Ship-Packages-Within-D-Days-Medium/" target="_self">
-        <div>
-          前往題目  想法 Binary Search，通常找min或max的都可以先往這方面想  思路 算出所有貨物總和，這樣就知道最大需要多重的運輸能力 從一半的可能重量開始看是否可以在期限內運送 如果可以就嘗試減少重量再看看是否可以 如果不行就嘗試增加重量  Code網友解答 class Solution &#123;     public int shipWithinDays(int[] weigh
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-09-09 11:52" pubdate>
-              2024-09-09
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Binary-Search/">#Binary Search</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/09/07/xbox-series%E6%89%8B%E6%8A%8A%E8%98%91%E8%8F%87%E9%A0%AD%E9%A3%84%E7%A7%BB%E4%BF%AE%E5%BE%A9%E6%96%B9%E6%B3%95/" target="_self">
-          xbox series手把蘑菇頭飄移修復方法
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/07/xbox-series%E6%89%8B%E6%8A%8A%E8%98%91%E8%8F%87%E9%A0%AD%E9%A3%84%E7%A7%BB%E4%BF%AE%E5%BE%A9%E6%96%B9%E6%B3%95/" target="_self">
-        <div>
-          最近用了三年的xbox series的手把右蘑菇開始飄移，不動它偶爾就會自己慢慢往上，剛好又在打黑神話，常常跑一跑視角就沒了，不考慮焊接換微動，因為不像滑鼠那樣拆開來就可以整個板子拿出來，手把結構較為緊密複雜，網路上都有很多影片參考，反而有個民間小偏方讓我的手把這兩天都恢復正常，再次秀逗的話我再刪文🤣 我是參考這篇ptt網友的文章，大致步驟如下  拆開蓋子後，把蘑菇頭拿掉 如果是Y軸(上下)出問
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-09-07 20:44" pubdate>
-              2024-09-07
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E9%81%8A%E6%88%B2/" class="category-chain-item">遊戲</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E9%81%8A%E6%88%B2/%E6%89%8B%E6%8A%8A%E4%BF%AE%E5%BE%A9/" class="category-chain-item">手把修復</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/xbox/">#xbox</a>
-            
-              <a href="/tags/controller/">#controller</a>
-            
-              <a href="/tags/%E9%81%8A%E6%88%B2/">#遊戲</a>
-            
-              <a href="/tags/%E6%89%8B%E6%8A%8A%E4%BF%AE%E5%BE%A9/">#手把修復</a>
-            
-              <a href="/tags/%E8%98%91%E8%8F%87%E9%A0%AD%E9%A3%84%E7%A7%BB/">#蘑菇頭飄移</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/09/04/441-Arranging-Coins-Easy/" target="_self">
-          441. Arranging Coins - Easy
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/04/441-Arranging-Coins-Easy/" target="_self">
-        <div>
-          前往題目  想法 循環扣除每行所需硬幣  思路 同想法  這題還能用binary search做，但反而就變困難了 CodeNeetcode大大用BS做的   class Solution &#123;     public int arrangeCoins(int n) &#123;         int i = 1; // row                  // Until used
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-09-04 14:01" pubdate>
-              2024-09-04
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Math/">#Math</a>
-            
-              <a href="/tags/Binary-Search/">#Binary Search</a>
             
           </div>
         

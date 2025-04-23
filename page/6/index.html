@@ -253,6 +253,464 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/10/24/701-Insert-into-a-Binary-Search-Tree-Medium/" target="_self">
+          701. Insert into a Binary Search Tree - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/24/701-Insert-into-a-Binary-Search-Tree-Medium/" target="_self">
+        <div>
+          前往題目  想法 直接加在最後面？不知道怎麼處理balance的問題  思路這題根本無需balance，加到合理的地方就好了  Recusion直到null回傳新的節點，其包含新的值 如果當前父節點比較大，那就加到左子節點，否則右子節點  因為BST的特性，所以只會被加到樹裡一次 Code網友解答 class Solution &#123;     public TreeNode insertIn
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-10-24 10:33" pubdate>
+              2024-10-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Binary-Search-Tree/">#Binary Search Tree</a>
+            
+              <a href="/tags/Binary-Tree/">#Binary Tree</a>
+            
+              <a href="/tags/Tree/">#Tree</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/10/23/606-Construct-String-from-Binary-Tree-Medium/" target="_self">
+          606. Construct String from Binary Tree - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/23/606-Construct-String-from-Binary-Tree-Medium/" target="_self">
+        <div>
+          前往題目  想法 Preorder的順序，然後在數字左右加上括號  思路 Preorder順序 刻意跳過leaf的左右子節點，否則會加無謂的括號 建立左子樹 建立右子樹，但只有右子樹不為空才建立  Code第一次寫出來沒考慮到遇到leaf要直接回傳，否則會加入空的括號 class Solution &#123;     StringBuilder res;     public String tr
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-10-23 11:12" pubdate>
+              2024-10-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Binary-Tree/">#Binary Tree</a>
+            
+              <a href="/tags/String/">#String</a>
+            
+              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
+            
+              <a href="/tags/Tree/">#Tree</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/10/22/2331-Evaluate-Boolean-Binary-Tree-Easy/" target="_self">
+          2331. Evaluate Boolean Binary Tree - Easy
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/22/2331-Evaluate-Boolean-Binary-Tree-Easy/" target="_self">
+        <div>
+          前往題目  想法 DFS，根據情況賦予0或1  思路Recursion  遇到null就回傳false 然後記錄左右子節點的布林值 如果當前節點為OR就把當前的值改為left || right的結果 AND也是一樣 最後回傳當前節點的布林值  Codeclass Solution &#123;     public boolean evaluateTree(TreeNode root) &#123
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-10-22 11:24" pubdate>
+              2024-10-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Binary-Tree/">#Binary Tree</a>
+            
+              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
+            
+              <a href="/tags/Tree/">#Tree</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/10/22/3325-Count-Substrings-With-K-Frequency-Characters-I-Medium/" target="_self">
+          3325. Count Substrings With K-Frequency Characters I - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/22/3325-Count-Substrings-With-K-Frequency-Characters-I-Medium/" target="_self">
+        <div>
+          前往題目  想法 sliding window直接暴力解  思路Weekly contest 420的題目  左指針固定，右指針移動，每次都檢查當前字母數量是否大於等於k 如果是的話更新結果，之後移動右指針也繼續結果+1，因為都還包含在內所以一定&gt;=k 右指針走到盡頭時，左指針往右移動一步，右指針重新初始化，重新一步一步展開window  Codeclass Solution &#123;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-10-22 10:57" pubdate>
+              2024-10-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/String/">#String</a>
+            
+              <a href="/tags/Hash-Table/">#Hash Table</a>
+            
+              <a href="/tags/Sliding-Window/">#Sliding Window</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/10/22/3324-Find-the-Sequence-of-Strings-Appeared-on-the-Screen-Medium/" target="_self">
+          3324. Find the Sequence of Strings Appeared on the Screen - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/22/3324-Find-the-Sequence-of-Strings-Appeared-on-the-Screen-Medium/" target="_self">
+        <div>
+          前往題目  想法 先把第一個字母當基準點準備好，再來就直接循環建立剩餘的字母  思路weekly contest 420的題目 完賽後再看一遍其實直接循環建立就好  循環把字母建立好 先放入a，然後加到結果，接著比較字母是否和目標的一樣，不是的話ascii + 1再加入結果再比較  Codeclass Solution &#123;     public List&lt;String> strin
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-10-22 10:50" pubdate>
+              2024-10-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/String/">#String</a>
+            
+              <a href="/tags/Simulation/">#Simulation</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/10/22/3326-Minimum-Division-Operations-to-Make-Array-Non-Decreasing-Medium/" target="_self">
+          3326. Minimum Division Operations to Make Array Non Decreasing - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/22/3326-Minimum-Division-Operations-to-Make-Array-Non-Decreasing-Medium/" target="_self">
+        <div>
+          前往題目  想法 從後往前，遇到invalid的地方去試所有可行的divisor，找不到就是-1  思路這題是weekly contest差一點就寫出來了，TLE，應該是找divisor那邊太花時間  從後往前，因為最後一個是基準 循環過程中，遇到invalid的部分，嘗試把前數除到比後數小或等於 有辦法的話就繼續，沒有的話直接失敗回傳-1  Code網友解答 class Solution &#1
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-10-22 10:36" pubdate>
+              2024-10-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Math/">#Math</a>
+            
+              <a href="/tags/Greedy/">#Greedy</a>
+            
+              <a href="/tags/Number-Theory/">#Number Theory</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2024/10/19/872-Leaf-Similar-Trees-Easy/" target="_self">
           872. Leaf-Similar Trees - Easy
         </a>
@@ -550,460 +1008,6 @@
               <a href="/tags/Breadth-First-Search/">#Breadth-First Search</a>
             
               <a href="/tags/Tree/">#Tree</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/10/17/145-Binary-Tree-Postorder-Traversal-Easy/" target="_self">
-          145. Binary Tree Postorder Traversal - Easy
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/17/145-Binary-Tree-Postorder-Traversal-Easy/" target="_self">
-        <div>
-          前往題目  想法 和inorder與preorder差不多，調換加入的順序  思路與inorder還有preorder有點區別，比較刁鑽  迭代整個樹 過程中只要當前節點不是null就加入答案，並且放入stack，繼續往右邊節點走 當前節點為null時才去左邊節點 反轉答案並回傳  postorder是先訪問左右子節點再訪問父節點，因此這個思路是反過來操作，所以在最後直接反轉就是答案 Code網友
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-10-17 10:24" pubdate>
-              2024-10-17
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Stack/">#Stack</a>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Binary-Tree/">#Binary Tree</a>
-            
-              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
-            
-              <a href="/tags/Tree/">#Tree</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/10/16/144-Binary-Tree-Preorder-Traversal-Easy/" target="_self">
-          144. Binary Tree Preorder Traversal - Easy
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/16/144-Binary-Tree-Preorder-Traversal-Easy/" target="_self">
-        <div>
-          前往題目  想法 和Inorder那題大同小異，加入結果的位置調換一下就好  思路Recursive:  加入結果 呼叫方法，並傳遞left 呼叫方法，並傳遞right  Iterative:  迭代整個樹 嘗試走到最左邊，期間遇到節點就加入(他們都是父節點) 把當前指針變為右邊繼續迭代  CodeRecursive class Solution &#123;     List&lt;Intege
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-10-16 10:59" pubdate>
-              2024-10-16
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Stack/">#Stack</a>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Binary-Tree/">#Binary Tree</a>
-            
-              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
-            
-              <a href="/tags/Tree/">#Tree</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/10/16/94-Binary-Tree-Inorder-Traversal-Easy/" target="_self">
-          94. Binary Tree Inorder Traversal - Easy
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/16/94-Binary-Tree-Inorder-Traversal-Easy/" target="_self">
-        <div>
-          前往題目  想法 Recursion  思路Recursive:  呼叫方法，並傳遞left 加入結果 呼叫方法，並傳遞right  Iterative:  迭代整個樹 嘗試走到最左邊，無法再走時加入其父節點到結果 把當前指針變為右邊繼續迭代  Code  Recursive class Solution &#123;     List&lt;Integer> res = new ArrayLis
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-10-16 10:31" pubdate>
-              2024-10-16
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Stack/">#Stack</a>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Binary-Tree/">#Binary Tree</a>
-            
-              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
-            
-              <a href="/tags/Tree/">#Tree</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/10/15/1721-Swapping-Nodes-in-a-Linked-List-Medium/" target="_self">
-          1721. Swapping Nodes in a Linked List - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/15/1721-Swapping-Nodes-in-a-Linked-List-Medium/" target="_self">
-        <div>
-          前往題目  想法 循環一次就能找到第一個目標，以及list的長度加以利用  思路寫出來了但還有我認為再更聰明一點的做法 我的解法：  走訪list找到第一個目標以及長度 利用長度再計算需要走多少步到目標，再次走訪 交換數值  更為聰明的解法：  走k步到達第一個目標 再一個指針cur從頭開始，與剛剛的第一個目標指針一起往右走訪直到最後，這時cur指針就會在第二個目標上 交換  Codeclass
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-10-15 11:14" pubdate>
-              2024-10-15
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Two-Pointers/">#Two Pointers</a>
-            
-              <a href="/tags/Linked-List/">#Linked List</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/10/14/Discord%E6%98%AF%E5%A6%82%E4%BD%95%E9%99%8D%E4%BD%8E40-WebSocket%E6%B5%81%E9%87%8F/" target="_self">
-          Discord是如何降低40%的WebSocket流量?
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/14/Discord%E6%98%AF%E5%A6%82%E4%BD%95%E9%99%8D%E4%BD%8E40-WebSocket%E6%B5%81%E9%87%8F/" target="_self">
-        <div>
-          以下為Quastor的文章總結，該文章是總結Discord的文章  Discord就不多做介紹了，所有的文字、檔案以及影片都需要透過網路傳遞，因此盡可能的降低流量至關重要 原本用什麼壓縮?自2017，Discord都是使用zlib壓縮訊息，可以讓檔案變小2至10倍小 現在換成什麼?經過Discord團隊的測試和調校，改為使用zstd以及Passive Sessions v2，本文重點討論zstd
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-10-14 22:28" pubdate>
-              2024-10-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B/" class="category-chain-item">軟體工程</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B/%E7%B3%BB%E7%B5%B1%E8%A8%AD%E8%A8%88/" class="category-chain-item">系統設計</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Discord/">#Discord</a>
-            
-              <a href="/tags/WebSocket/">#WebSocket</a>
-            
-              <a href="/tags/zlib/">#zlib</a>
-            
-              <a href="/tags/zstd/">#zstd</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/10/14/725-Split-Linked-List-in-Parts-Medium/" target="_self">
-          725. Split Linked List in Parts - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/14/725-Split-Linked-List-in-Parts-Medium/" target="_self">
-        <div>
-          前往題目  想法 沒想到如何處理前面需要補上的部分  思路 得到list總長度 利用除法以及取餘得到最少要多少個元素在一個part，然後需要補多少個 開始建造part，如果有需要補的也要加上去，一次補一個(題目規定) 建造完一個part就把尾巴斷開，補上null  很多條件需要考慮… Code  class Solution &#123;     public ListNode[] splitLi
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-10-14 11:32" pubdate>
-              2024-10-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Linked-List/">#Linked List</a>
             
           </div>
         
