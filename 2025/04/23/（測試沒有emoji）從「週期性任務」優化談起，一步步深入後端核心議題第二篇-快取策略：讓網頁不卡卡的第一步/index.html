@@ -16,29 +16,21 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前往題目  想法 排好之後，Binary Search匹配searchWord，但有可能原本匹配的那些多加一個searchWod字母後就全部不匹配了，反而是最後面的匹配，這部分不知道怎麼解決  思路解決辦法就是把區間找出來，一個一個找，慢慢收斂區間  排序 一個字母一個字母來 雙指針，左右指針循環直到遇到匹配的字母，但要略過長度不夠的item，藉此判斷出區間 區間找出後，直接把該區間加入答案裡">
+    <meta name="description" content="一個知識和心得的分享空間">
 <meta property="og:type" content="article">
-<meta property="og:title" content="1268. Search Suggestions System - Medium">
-<meta property="og:url" content="https://f88083.github.io/2024/09/19/1268-Search-Suggestions-System-Medium/index.html">
+<meta property="og:title" content="（測試沒有emoji）從「週期性任務」優化談起，一步步深入後端核心議題第二篇 快取策略：讓網頁不卡卡的第一步">
+<meta property="og:url" content="https://f88083.github.io/2025/04/23/%EF%BC%88%E6%B8%AC%E8%A9%A6%E6%B2%92%E6%9C%89emoji%EF%BC%89%E5%BE%9E%E3%80%8C%E9%80%B1%E6%9C%9F%E6%80%A7%E4%BB%BB%E5%8B%99%E3%80%8D%E5%84%AA%E5%8C%96%E8%AB%87%E8%B5%B7%EF%BC%8C%E4%B8%80%E6%AD%A5%E6%AD%A5%E6%B7%B1%E5%85%A5%E5%BE%8C%E7%AB%AF%E6%A0%B8%E5%BF%83%E8%AD%B0%E9%A1%8C%E7%AC%AC%E4%BA%8C%E7%AF%87-%E5%BF%AB%E5%8F%96%E7%AD%96%E7%95%A5%EF%BC%9A%E8%AE%93%E7%B6%B2%E9%A0%81%E4%B8%8D%E5%8D%A1%E5%8D%A1%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AD%A5/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="前往題目  想法 排好之後，Binary Search匹配searchWord，但有可能原本匹配的那些多加一個searchWod字母後就全部不匹配了，反而是最後面的匹配，這部分不知道怎麼解決  思路解決辦法就是把區間找出來，一個一個找，慢慢收斂區間  排序 一個字母一個字母來 雙指針，左右指針循環直到遇到匹配的字母，但要略過長度不夠的item，藉此判斷出區間 區間找出後，直接把該區間加入答案裡">
+<meta property="og:description" content="一個知識和心得的分享空間">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2024-09-19T03:19:56.000Z">
-<meta property="article:modified_time" content="2024-10-11T03:07:01.991Z">
+<meta property="article:published_time" content="2025-04-23T07:30:55.000Z">
+<meta property="article:modified_time" content="2025-04-23T07:30:55.732Z">
 <meta property="article:author" content="Simon Lai">
-<meta property="article:tag" content="Leetcode">
-<meta property="article:tag" content="心得">
-<meta property="article:tag" content="String">
-<meta property="article:tag" content="Array">
-<meta property="article:tag" content="Trie">
-<meta property="article:tag" content="Sorting">
-<meta property="article:tag" content="Binary Search">
-<meta property="article:tag" content="Heap (Priority Queue)">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>1268. Search Suggestions System - Medium - Simon Lai&#39;s Blog</title>
+  <title>（測試沒有emoji）從「週期性任務」優化談起，一步步深入後端核心議題第二篇 快取策略：讓網頁不卡卡的第一步 - Simon Lai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -233,7 +225,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="1268. Search Suggestions System - Medium"></span>
+            <span id="subtitle" data-typed-text="（測試沒有emoji）從「週期性任務」優化談起，一步步深入後端核心議題第二篇 快取策略：讓網頁不卡卡的第一步"></span>
           
         </div>
 
@@ -244,8 +236,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-09-19 11:19" pubdate>
-          2024年9月19日 上午
+        <time datetime="2025-04-23 15:30" pubdate>
+          2025年4月23日 下午
         </time>
       </span>
     
@@ -256,7 +248,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          287 字
+          0 字
         
       </span>
     
@@ -267,7 +259,7 @@
         
         
         
-          2 分鐘
+          1 分鐘
         
       </span>
     
@@ -304,64 +296,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">1268. Search Suggestions System - Medium</h1>
+            <h1 id="seo-header">（測試沒有emoji）從「週期性任務」優化談起，一步步深入後端核心議題第二篇 快取策略：讓網頁不卡卡的第一步</h1>
             
             
               <div class="markdown-body">
                 
-                <a class="btn" href="https://leetcode.com/problems/search-suggestions-system/description/"  title="1268. Search Suggestions System" target="_blank">前往題目</a>
-
-<h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul>
-<li>排好之後，<code>Binary Search</code>匹配<code>searchWord</code>，但有可能原本匹配的那些多加一個<code>searchWod</code>字母後就全部不匹配了，反而是最後面的匹配，這部分不知道怎麼解決</li>
-</ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>解決辦法就是把區間找出來，一個一個找，慢慢收斂區間</p>
-<ol>
-<li>排序</li>
-<li>一個字母一個字母來</li>
-<li>雙指針，左右指針循環直到遇到匹配的字母，但要略過長度不夠的<code>item</code>，藉此判斷出區間</li>
-<li>區間找出後，直接把該區間加入答案裡</li>
-</ol>
-<p>這題關鍵是如何找出區間，條件寫好就可以輕鬆判斷</p>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/D4T2N0yAr20" title="Search Suggestions System - Leetcode 1268 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">List</span><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span><span class="token punctuation">></span></span> <span class="token function">suggestedProducts</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> products<span class="token punctuation">,</span> <span class="token class-name">String</span> searchWord<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">// Base case</span>
-
-        <span class="token comment">// Sort the products lexicographically</span>
-        <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>products<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">List</span><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span><span class="token punctuation">></span></span> res <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">List</span><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">int</span> l <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> r <span class="token operator">=</span> products<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
-        
-        <span class="token comment">// Match the word</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> searchWord<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">char</span> c <span class="token operator">=</span> searchWord<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            <span class="token comment">// When index exceeds products' item length or it doesn't match with the character</span>
-            <span class="token keyword">while</span> <span class="token punctuation">(</span>l <span class="token operator">&lt;=</span> r <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>products<span class="token punctuation">[</span>l<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> i <span class="token operator">||</span> products<span class="token punctuation">[</span>l<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">!=</span> c<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                <span class="token operator">++</span>l<span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>
-            <span class="token keyword">while</span> <span class="token punctuation">(</span>l <span class="token operator">&lt;=</span> r <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>products<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> i <span class="token operator">||</span> products<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">!=</span> c<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                <span class="token operator">--</span>r<span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>
-
-            <span class="token keyword">int</span> remainWindowLen <span class="token operator">=</span> r <span class="token operator">-</span> l <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
-            <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> tempList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            <span class="token comment">// Add the window</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> remainWindowLen<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                tempList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>products<span class="token punctuation">[</span>l <span class="token operator">+</span> j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>
-
-            <span class="token comment">// Add to the result</span>
-            res<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>tempList<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">return</span> res<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
-
+                
                 
               </div>
             
@@ -369,55 +309,6 @@
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/Leetcode/" class="print-no-link">#Leetcode</a>
-      
-        <a href="/tags/%E5%BF%83%E5%BE%97/" class="print-no-link">#心得</a>
-      
-        <a href="/tags/String/" class="print-no-link">#String</a>
-      
-        <a href="/tags/Array/" class="print-no-link">#Array</a>
-      
-        <a href="/tags/Trie/" class="print-no-link">#Trie</a>
-      
-        <a href="/tags/Sorting/" class="print-no-link">#Sorting</a>
-      
-        <a href="/tags/Binary-Search/" class="print-no-link">#Binary Search</a>
-      
-        <a href="/tags/Heap-Priority-Queue/" class="print-no-link">#Heap (Priority Queue)</a>
-      
-    </div>
   
 </div>
 
@@ -427,8 +318,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>1268. Search Suggestions System - Medium</div>
-      <div>https://f88083.github.io/2024/09/19/1268-Search-Suggestions-System-Medium/</div>
+      <div>（測試沒有emoji）從「週期性任務」優化談起，一步步深入後端核心議題第二篇 快取策略：讓網頁不卡卡的第一步</div>
+      <div>https://f88083.github.io/2025/04/23/（測試沒有emoji）從「週期性任務」優化談起，一步步深入後端核心議題第二篇-快取策略：讓網頁不卡卡的第一步/</div>
     </div>
     <div class="license-meta">
       
@@ -440,7 +331,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>發布於</div>
-          <div>2024年9月19日</div>
+          <div>2025年4月23日</div>
         </div>
       
       
@@ -484,18 +375,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/09/24/540-Single-Element-in-a-Sorted-Array-Medium/" title="540. Single Element in a Sorted Array - Medium">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">540. Single Element in a Sorted Array - Medium</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/09/19/35-Search-Insert-Position-Easy/" title="35. Search Insert Position - Easy">
-                        <span class="hidden-mobile">35. Search Insert Position - Easy</span>
+                      <a href="/2025/04/22/%E5%BE%9E%E3%80%8C%E9%80%B1%E6%9C%9F%E6%80%A7%E4%BB%BB%E5%8B%99%E3%80%8D%E5%84%AA%E5%8C%96%E8%AB%87%E8%B5%B7%EF%BC%8C%E4%B8%80%E6%AD%A5%E6%AD%A5%E6%B7%B1%E5%85%A5%E5%BE%8C%E7%AB%AF%E6%A0%B8%E5%BF%83%E8%AD%B0%E9%A1%8C%E7%AC%AC%E4%BA%8C%E7%AF%87-%F0%9F%9A%80-%E5%BF%AB%E5%8F%96%E7%AD%96%E7%95%A5%EF%BC%9A%E8%AE%93%E7%B6%B2%E9%A0%81%E4%B8%8D%E5%8D%A1%E5%8D%A1%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AD%A5/" title="從「週期性任務」優化談起，一步步深入後端核心議題第二篇 🚀 快取策略：讓網頁不卡卡的第一步">
+                        <span class="hidden-mobile">從「週期性任務」優化談起，一步步深入後端核心議題第二篇 🚀 快取策略：讓網頁不卡卡的第一步</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
