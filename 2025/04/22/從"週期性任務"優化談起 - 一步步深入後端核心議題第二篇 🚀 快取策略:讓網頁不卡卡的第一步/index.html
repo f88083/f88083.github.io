@@ -16,33 +16,44 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言這個系列文章是以我的 side project “DoIt” 的尚未實作的功能——「週期性任務功能」為起點，模擬開發過程中可能遇到的問題，並延伸探討後端架構設計相關的議題，如資料庫設計、效能瓶頸、系統擴充與穩定性等。 🗓️ 摘要在這篇文章中，我會紀錄我從 side project 中尚未實作的功能「週期性任務（Recurring Task）」當作情境並討論解決方案和問題。這是一個在 ToDo">
+    <meta name="description" content="💡 選擇一種聰明的流程設計，比引入各種複雜解決方案更有效、更易維護  在一開始研究週期性任務該怎麼實作時，我發現 Microsoft To Do 採用了一個聰明的設計方式，他們不會提前計算所有未來的任務，也不會一次產生一整串任務清單。而是：🕹️ 當用戶完成任務的那一刻，根據任務的週期設定，自動計算並產生下一個任務。(這是我在使用中觀察到的，嘗試理解我所看到的，實際上我並不知道資料如何傳遞，以">
 <meta property="og:type" content="article">
-<meta property="og:title" content="從&quot;週期性任務&quot;優化談起 - 一步步深入後端核心議題第一篇">
-<meta property="og:url" content="https://f88083.github.io/2025/04/18/%E5%BE%9E%E3%80%8C%E9%80%B1%E6%9C%9F%E6%80%A7%E4%BB%BB%E5%8B%99%E3%80%8D%E5%84%AA%E5%8C%96%E8%AB%87%E8%B5%B7%EF%BC%8C%E4%B8%80%E6%AD%A5%E6%AD%A5%E6%B7%B1%E5%85%A5%E5%BE%8C%E7%AB%AF%E6%A0%B8%E5%BF%83%E8%AD%B0%E9%A1%8C%E7%AC%AC%E4%B8%80%E7%AF%87/index.html">
+<meta property="og:title" content="從&quot;週期性任務&quot;優化談起 - 一步步深入後端核心議題第二篇 🚀 快取策略:讓網頁不卡卡的第一步">
+<meta property="og:url" content="https://f88083.github.io/2025/04/22/%E5%BE%9E%22%E9%80%B1%E6%9C%9F%E6%80%A7%E4%BB%BB%E5%8B%99%22%E5%84%AA%E5%8C%96%E8%AB%87%E8%B5%B7%20-%20%E4%B8%80%E6%AD%A5%E6%AD%A5%E6%B7%B1%E5%85%A5%E5%BE%8C%E7%AB%AF%E6%A0%B8%E5%BF%83%E8%AD%B0%E9%A1%8C%E7%AC%AC%E4%BA%8C%E7%AF%87%20%F0%9F%9A%80%20%E5%BF%AB%E5%8F%96%E7%AD%96%E7%95%A5:%E8%AE%93%E7%B6%B2%E9%A0%81%E4%B8%8D%E5%8D%A1%E5%8D%A1%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AD%A5/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="前言這個系列文章是以我的 side project “DoIt” 的尚未實作的功能——「週期性任務功能」為起點，模擬開發過程中可能遇到的問題，並延伸探討後端架構設計相關的議題，如資料庫設計、效能瓶頸、系統擴充與穩定性等。 🗓️ 摘要在這篇文章中，我會紀錄我從 side project 中尚未實作的功能「週期性任務（Recurring Task）」當作情境並討論解決方案和問題。這是一個在 ToDo">
+<meta property="og:description" content="💡 選擇一種聰明的流程設計，比引入各種複雜解決方案更有效、更易維護  在一開始研究週期性任務該怎麼實作時，我發現 Microsoft To Do 採用了一個聰明的設計方式，他們不會提前計算所有未來的任務，也不會一次產生一整串任務清單。而是：🕹️ 當用戶完成任務的那一刻，根據任務的週期設定，自動計算並產生下一個任務。(這是我在使用中觀察到的，嘗試理解我所看到的，實際上我並不知道資料如何傳遞，以">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://i.imgur.com/tEhu43t.png">
-<meta property="article:published_time" content="2025-04-18T08:55:00.000Z">
-<meta property="article:modified_time" content="2025-04-23T08:10:17.343Z">
+<meta property="og:image" content="https://i.imgur.com/ysMqp3L.png">
+<meta property="og:image" content="https://explainthis.s3-ap-northeast-1.amazonaws.com/30e18dbb8ecc410695eb07f3c3228d1f.png">
+<meta property="og:image" content="https://explainthis.s3-ap-northeast-1.amazonaws.com/b9cf73025d014b438101f085395c9970.png">
+<meta property="article:published_time" content="2025-04-22T08:40:15.000Z">
+<meta property="article:modified_time" content="2025-04-23T08:10:09.645Z">
 <meta property="article:author" content="Simon Lai">
-<meta property="article:tag" content="backend">
-<meta property="article:tag" content="system-design">
-<meta property="article:tag" content="database">
-<meta property="article:tag" content="recurring-tasks">
-<meta property="article:tag" content="async">
-<meta property="article:tag" content="caching">
-<meta property="article:tag" content="api-rate-limit">
-<meta property="article:tag" content="data-consistency">
-<meta property="article:tag" content="architecture">
-<meta property="article:tag" content="software-engineering">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="快取">
+<meta property="article:tag" content="快取策略">
+<meta property="article:tag" content="後端開發">
+<meta property="article:tag" content="系統效能優化">
+<meta property="article:tag" content="Redis">
+<meta property="article:tag" content="Spring Boot">
+<meta property="article:tag" content="記憶體快取">
+<meta property="article:tag" content="分散式系統">
+<meta property="article:tag" content="資料一致性">
+<meta property="article:tag" content="Cache Invalidation">
+<meta property="article:tag" content="Cache Aside">
+<meta property="article:tag" content="Write-Through">
+<meta property="article:tag" content="Write-Behind">
+<meta property="article:tag" content="分頁快取">
+<meta property="article:tag" content="熱點快取">
+<meta property="article:tag" content="Cache Avalanche">
+<meta property="article:tag" content="Cache Breakdown">
+<meta property="article:tag" content="系統設計">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://i.imgur.com/tEhu43t.png">
+<meta name="twitter:image" content="https://i.imgur.com/ysMqp3L.png">
   
   
   
-  <title>從&#34;週期性任務&#34;優化談起 - 一步步深入後端核心議題第一篇 - Simon Lai&#39;s Blog</title>
+  <title>從&#34;週期性任務&#34;優化談起 - 一步步深入後端核心議題第二篇 🚀 快取策略:讓網頁不卡卡的第一步 - Simon Lai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -237,7 +248,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="從&#34;週期性任務&#34;優化談起 - 一步步深入後端核心議題第一篇"></span>
+            <span id="subtitle" data-typed-text="從&#34;週期性任務&#34;優化談起 - 一步步深入後端核心議題第二篇 🚀 快取策略:讓網頁不卡卡的第一步"></span>
           
         </div>
 
@@ -248,8 +259,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-04-18 16:55" pubdate>
-          2025年4月18日 下午
+        <time datetime="2025-04-22 16:40" pubdate>
+          2025年4月22日 下午
         </time>
       </span>
     
@@ -260,7 +271,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          1.6k 字
         
       </span>
     
@@ -271,7 +282,7 @@
         
         
         
-          6 分鐘
+          8 分鐘
         
       </span>
     
@@ -308,97 +319,137 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">從&#34;週期性任務&#34;優化談起 - 一步步深入後端核心議題第一篇</h1>
+            <h1 id="seo-header">從&#34;週期性任務&#34;優化談起 - 一步步深入後端核心議題第二篇 🚀 快取策略:讓網頁不卡卡的第一步</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>這個系列文章是以我的 side project “DoIt” 的尚未實作的功能——「週期性任務功能」為起點，模擬開發過程中可能遇到的問題，並延伸探討後端架構設計相關的議題，如資料庫設計、效能瓶頸、系統擴充與穩定性等。</p>
-<h2 id="🗓️-摘要"><a href="#🗓️-摘要" class="headerlink" title="🗓️ 摘要"></a>🗓️ 摘要</h2><p>在這篇文章中，我會紀錄我從 side project 中尚未實作的功能「週期性任務（Recurring Task）」當作情境並討論解決方案和問題。這是一個在 ToDo 類型應用中非常常見的功能，然而背後所需要處理的資料結構與效能考量，往往比想像中複雜。透過這個功能，我也會自然地延伸到一些更進階的主題：如快取、非同步、API 限流與資料一致性等。</p>
-
-<pre>
-<code class="mermaid" >
-
-graph TD
-  A[🗓️ 週期性任務功能探討<br>📦 資料庫設計 + 職責切分] --> B[🚀 快取設計實戰<br>🧠 避免重複計算]
-  B --> C[⏳ 非同步與背景任務處理<br>🛠️ 任務排程與延遲處理]
-  C --> D[📉 API 限流與防爆策略<br>🧱 避免同時大量操作導致崩潰]
-  D --> E[🧩 資料一致性與併發處理<br>🔒 Race condition & 加鎖處理]
-
-</code>
-</pre>
-
-<h2 id="週期性任務？"><a href="#週期性任務？" class="headerlink" title="週期性任務？"></a>週期性任務？</h2><p>週期性任務指的是使用者可以建立一個會「每日」、「每週」、「每月」或「每年」重複出現的任務。舉例來說：每週一打掃房間、每個月繳房租、每年報稅等。</p>
-<h2 id="🏗️-為了他，要做什麼更動？"><a href="#🏗️-為了他，要做什麼更動？" class="headerlink" title="🏗️ 為了他，要做什麼更動？"></a>🏗️ 為了他，要做什麼更動？</h2><p>這是我目前的結構，只能支援一般功能</p>
-<p><img src="https://i.imgur.com/tEhu43t.png" srcset="/img/loading.gif" lazyload alt="DB structure"></p>
-<h3 id="🔧-前端"><a href="#🔧-前端" class="headerlink" title="🔧 前端"></a>🔧 前端</h3><ul>
-<li>介面上需提供週期性任務的設定，例如重複頻率、結束時間等欄位</li>
-<li>任務 model 的資料結構需要能夠攜帶週期性設定並傳送至後端</li>
-</ul>
-<h3 id="🧱-後端"><a href="#🧱-後端" class="headerlink" title="🧱 後端"></a>🧱 後端</h3><ul>
-<li>各層（Controller → Service → Repository）需要能夠處理週期性任務的建立與管理</li>
-<li>資料庫結構調整：</li>
-</ul>
-<h4 id="選項一：直接塞在原本-task-表裡"><a href="#選項一：直接塞在原本-task-表裡" class="headerlink" title="選項一：直接塞在原本 task 表裡"></a>選項一：直接塞在原本 <code>task</code> 表裡</h4><ul>
-<li>缺點：邏輯會變得複雜、不易維護</li>
-</ul>
-<h4 id="✅-選項二：新增一個-recurring-task-表"><a href="#✅-選項二：新增一個-recurring-task-表" class="headerlink" title="✅ 選項二：新增一個 recurring_task 表"></a>✅ 選項二：新增一個 <code>recurring_task</code> 表</h4><p>這種做法更乾淨，可以讓 recurring 的邏輯獨立於一般任務，避免污染原始任務表。</p>
-<p>範例 schema：</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> recurring_task <span class="token punctuation">(</span>
-  id <span class="token keyword">BIGINT</span> <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span><span class="token punctuation">,</span>
-  title <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  description <span class="token keyword">TEXT</span><span class="token punctuation">,</span>
-  start_time <span class="token keyword">TIMESTAMP</span><span class="token punctuation">,</span>
-  user_id <span class="token keyword">BIGINT</span><span class="token punctuation">,</span>
-  recurrence_type <span class="token keyword">ENUM</span><span class="token punctuation">(</span><span class="token string">'DAILY'</span><span class="token punctuation">,</span> <span class="token string">'WEEKLY'</span><span class="token punctuation">,</span> <span class="token string">'MONTHLY'</span><span class="token punctuation">,</span> <span class="token string">'YEARLY'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  recur_every <span class="token keyword">INT</span><span class="token punctuation">,</span>
-  end_time <span class="token keyword">TIMESTAMP</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
-
+                <blockquote>
+<p>💡 選擇一種聰明的流程設計，比引入各種複雜解決方案更有效、更易維護</p>
+</blockquote>
+<p>在一開始研究週期性任務該怎麼實作時，我發現 Microsoft To Do 採用了一個聰明的設計方式，<br>他們<strong>不會提前計算所有未來的任務，也不會一次產生一整串任務清單</strong>。而是：<br>🕹️ <strong>當用戶完成任務的那一刻，根據任務的週期設定，自動計算並產生下一個任務。</strong>(這是我在使用中觀察到的，嘗試理解我所看到的，實際上我並不知道資料如何傳遞，以及在後端是如何被處理的，我也很想知道🥲)</p>
+<p>這樣的好處是：</p>
 <ul>
-<li>如果要支援更複雜的重複規則（如每週一與週三），可以考慮：<ul>
-<li>儲存為 JSON 欄位（<code>repeat_pattern JSON</code>）</li>
-<li>或再開一張 <code>recurrence_schedule</code> 表來儲存規則細節</li>
+<li>✅ 不需要排程系統定時處理，也不會產生過多冗餘資料</li>
+<li>✅ 只要根據「當前任務的到期日 + 週期設定」去產生下一個即可，不用額外記錄週期歷史</li>
+</ul>
+<p>也因此，像這樣的設計，<strong>本質上就大幅降低了「需要快取」的場景</strong>。<br>但若產品情境或需求比較偏向下列這些：</p>
+<ul>
+<li>想要在首頁快速載入任務列表</li>
+<li>想要顯示月曆檢視、日程總覽等</li>
+<li>有很多使用者同時操作，容易造成資料庫壓力</li>
+</ul>
+<p>那麼快取策略就會是一個非常值得探討的方向。</p>
+<h2 id="🔍-為什麼我們需要快取？"><a href="#🔍-為什麼我們需要快取？" class="headerlink" title="🔍 為什麼我們需要快取？"></a>🔍 為什麼我們需要快取？</h2><p>即使已經採用了「事件驅動式生成任務」，仍有一些資料是可以快取來提升效能的，例如：</p>
+<ul>
+<li>用戶每次登入要看到哪些任務？是不是每次都查資料庫？</li>
+<li>同一筆資料會不會被多次請求？</li>
+</ul>
+<p>此外，如果未來要實作<strong>週期任務的預覽功能</strong>（例如：「下個月我有哪些重複任務？」），那麼我們還是得做一些計算，而這些計算也可以快取下來避免重複。</p>
+<h2 id="💾-後端快取策略：別讓資料庫喘不過氣"><a href="#💾-後端快取策略：別讓資料庫喘不過氣" class="headerlink" title="💾 後端快取策略：別讓資料庫喘不過氣"></a>💾 後端快取策略：別讓資料庫喘不過氣</h2><p>我想先從後端快取開始談起。在多使用者的情境下，如果每個人登入都重新查一次資料庫，那當使用者量成長時，系統的負擔會會上升。這時候，我們可以考慮將部分重複查詢且耗巨大資源的資料快取在記憶體中，減少資料庫的查詢次數。不過這當然增加了系統的複雜度，如果流量沒有造成瓶頸，就不要引入快取。</p>
+<p>以下是幾個常見的後端快取策略與使用時機 👇</p>
+<h3 id="⌛️-何時使用快取"><a href="#⌛️-何時使用快取" class="headerlink" title="⌛️ 何時使用快取"></a>⌛️ 何時使用快取</h3><ul>
+<li>需要大量計算才能得到的值</li>
+<li>讀多寫少的資料</li>
+</ul>
+<h3 id="🧠-記憶體內快取（In-Memory-Cache）"><a href="#🧠-記憶體內快取（In-Memory-Cache）" class="headerlink" title="🧠 記憶體內快取（In-Memory Cache）"></a>🧠 記憶體內快取（In-Memory Cache）</h3><p>最直接的方式就是使用應用程式記憶體來快取資料。這種方式最簡單，但有一些限制：</p>
+<ul>
+<li>適合單一實例的應用程式（例如只有一台後端伺服器）</li>
+<li>快速、無需額外部署</li>
+<li>常用的框架如 Spring Boot 提供了簡易的 <code>@Cacheable</code> 註解就能實作</li>
+</ul>
+<p>範例：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Cacheable</span><span class="token punctuation">(</span><span class="token string">"tasks"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Task</span><span class="token punctuation">></span></span> <span class="token function">getTasksByUser</span><span class="token punctuation">(</span><span class="token class-name">Long</span> userId<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> taskRepository<span class="token punctuation">.</span><span class="token function">findByUserId</span><span class="token punctuation">(</span>userId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<hr>
+<h3 id="🌐-分散式快取：Redis-登場"><a href="#🌐-分散式快取：Redis-登場" class="headerlink" title="🌐 分散式快取：Redis 登場"></a>🌐 分散式快取：Redis 登場</h3><p>當服務需要橫向擴展（scalable）時，我們通常會用像 Redis 這樣的分散式快取來取代記憶體快取：</p>
+<ul>
+<li>✅ 可以橫向擴展，支援多實例存取</li>
+<li>✅ 支援快取失效時間（TTL），幫助控制資料新鮮度</li>
+<li>✅ 可以當成 pub&#x2F;sub、session 儲存或 ranking 使用（功能很廣）</li>
+<li>🚧 需要額外部署與監控，也有資料一致性的考量</li>
+</ul>
+<p>Redis 是目前業界非常主流的解法，使用上可以搭配 Spring Data Redis</p>
+<p><img src="https://i.imgur.com/ysMqp3L.png" srcset="/img/loading.gif" lazyload alt="Redis 使用案例 | credited: AWS"></p>
+<hr>
+<h3 id="🧩-資料一致性：常見策略"><a href="#🧩-資料一致性：常見策略" class="headerlink" title="🧩 資料一致性：常見策略"></a>🧩 資料一致性：常見策略</h3><p>快取的核心價值在於加速存取，但這樣就會出現一個問題：<strong>當資料改變時，要怎麼讓快取也同步更新？</strong><br>這是所謂的 <strong>cache invalidation 問題</strong>，而以下是幾種常見做法：</p>
+<table>
+<thead>
+<tr>
+<th>名稱</th>
+<th>說明</th>
+<th>優點</th>
+<th>缺點</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Cache Aside</td>
+<td>先查快取，沒有再查 DB 並寫入快取</td>
+<td>常見簡單，控制權完整</td>
+<td>可能會有 cache miss 高峰</td>
+</tr>
+<tr>
+<td>Read&#x2F;Write Through</td>
+<td>寫入 DB 時也同時寫入快取</td>
+<td>快取資料一定是最新的</td>
+<td>寫入操作會變慢</td>
+</tr>
+<tr>
+<td>Write Behind Cache</td>
+<td>寫入快取，可根據不同策略決定寫入 DB 的時機</td>
+<td>高效能寫入</td>
+<td>有資料遺失風險</td>
+</tr>
+</tbody></table>
+<p><img src="https://explainthis.s3-ap-northeast-1.amazonaws.com/30e18dbb8ecc410695eb07f3c3228d1f.png" srcset="/img/loading.gif" lazyload alt="Cache aside | credited: ExplainThis"></p>
+<p><img src="https://explainthis.s3-ap-northeast-1.amazonaws.com/b9cf73025d014b438101f085395c9970.png" srcset="/img/loading.gif" lazyload alt="Read/Write through| credited: ExplainThis"></p>
+<p>在 Spring 中也可以使用 <code>@CacheEvict</code> 搭配 CRUD 操作來維護快取的一致性，例如：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@CacheEvict</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"userTasks"</span><span class="token punctuation">,</span> key <span class="token operator">=</span> <span class="token string">"#userId"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">completeTask</span><span class="token punctuation">(</span><span class="token class-name">Long</span> userId<span class="token punctuation">,</span> <span class="token class-name">Long</span> taskId<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    taskRepository<span class="token punctuation">.</span><span class="token function">markComplete</span><span class="token punctuation">(</span>taskId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h3 id="🧨-快取的潛在問題"><a href="#🧨-快取的潛在問題" class="headerlink" title="🧨 快取的潛在問題"></a>🧨 快取的潛在問題</h3><p>雖然快取帶來了效能提升，但也伴隨著一些常見陷阱。如果沒注意設計，反而可能讓系統更脆弱。以下是幾個業界常見的快取問題與對應策略 🔧：</p>
+<h4 id="🚫-Cache-Penetration"><a href="#🚫-Cache-Penetration" class="headerlink" title="🚫 Cache Penetration"></a>🚫 Cache Penetration</h4><p>這代表快取查不到資料，結果還是要回去查資料庫，等於快取白設了。常見情境有兩種：</p>
+<ul>
+<li><p>查詢的資料本來就不存在（惡意請求或髒資料）</p>
+<ul>
+<li>解法 1：對常被查但不存在的 Key 設一個預設空值，避免每次都回 DB</li>
+<li>解法 2：使用 Bloom Filter 預先過濾不存在的 Key，直接拒絕請求</li>
+</ul>
+</li>
+<li><p>快取資料太大，資源吃緊導致經常 miss</p>
+<ul>
+<li>解法：僅快取熱門資料，並分頁載入；避免整包塞進快取造成浪費</li>
 </ul>
 </li>
 </ul>
-<h2 id="✨-其他提升使用者體驗的功能"><a href="#✨-其他提升使用者體驗的功能" class="headerlink" title="✨ 其他提升使用者體驗的功能"></a>✨ 其他提升使用者體驗的功能</h2><p>這樣的資料結構設計也方便之後延伸：</p>
+<h4 id="⏰-Cache-Avalanche"><a href="#⏰-Cache-Avalanche" class="headerlink" title="⏰ Cache Avalanche"></a>⏰ Cache Avalanche</h4><p>當所有快取的過期時間都一樣時，一到時間點所有快取同時失效，大量請求湧入資料庫造成崩潰。</p>
 <ul>
-<li>推播即將到期的週期任務</li>
-<li>自動產生下一期任務</li>
-<li>任務完成記錄管理（下一段會說）</li>
+<li>解法：設定快取時加入「隨機延遲時間」，避免同時過期的情況發生</li>
 </ul>
-<h2 id="🤔-前端每次都重新算週期任務？"><a href="#🤔-前端每次都重新算週期任務？" class="headerlink" title="🤔 前端每次都重新算週期任務？"></a>🤔 前端每次都重新算週期任務？</h2><p>直接在前端根據 recurring 設定去算下一次到期時間雖然可行，但效能上仍有一些考量：</p>
+<h4 id="🧱-Cache-Breakdown"><a href="#🧱-Cache-Breakdown" class="headerlink" title="🧱 Cache Breakdown"></a>🧱 Cache Breakdown</h4><p>當某一筆熱門資料剛好過期，短時間內大量請求同時查詢，瞬間灌爆資料庫。</p>
 <ul>
-<li>使用者一多、任務一多、每次進入畫面都重新運算，效能不穩定</li>
-<li>如果這個計算轉交給後端，在高併發下也可能造成負擔</li>
+<li>解法 1：<strong>加鎖更新快取</strong>，只有一個 thread 可以重新查詢 DB，其他等候。分佈式系統可用 Zookeeper</li>
+<li>解法 2：<strong>後台更新快取</strong>，例如透過 background thread 或 queue 通知更新，主線程不阻塞</li>
 </ul>
-<p>那該怎麼辦？</p>
-<p>核心目標：</p>
-<p>✅ 減少即時計算（Reduce On-Demand Calculation）</p>
-<p>✅ 將結果預算好、儲存下來，以空間換時間</p>
-<h2 id="📉-如何減少計算量"><a href="#📉-如何減少計算量" class="headerlink" title="📉 如何減少計算量"></a>📉 如何減少計算量</h2><h3 id="Lazy-Loading（延遲載入）"><a href="#Lazy-Loading（延遲載入）" class="headerlink" title="Lazy Loading（延遲載入）"></a>Lazy Loading（延遲載入）</h3><ul>
-<li>像載入圖片一樣，先載入必要範圍</li>
-<li>只在使用者需要看到某區段任務時才進行資料查詢與轉換</li>
-</ul>
-<h3 id="預先計算好並快取結果"><a href="#預先計算好並快取結果" class="headerlink" title="預先計算好並快取結果"></a>預先計算好並快取結果</h3><ul>
-<li>後端定期（或使用者建立時）預計算好未來幾期的任務，並快取</li>
-<li>前端從快取中讀取到期日與任務資訊，避免重複計算</li>
-</ul>
-<h2 id="✅-任務完成怎麼處理？"><a href="#✅-任務完成怎麼處理？" class="headerlink" title="✅ 任務完成怎麼處理？"></a>✅ 任務完成怎麼處理？</h2><p>使用者完成了週期性任務後，要避免「刷新後又變回未完成」的窘境。這代表我們需要記錄「這一次」的完成狀態。</p>
-<h3 id="做法：每一期都是一個獨立實體（順便解決上面計算問題）"><a href="#做法：每一期都是一個獨立實體（順便解決上面計算問題）" class="headerlink" title="做法：每一期都是一個獨立實體（順便解決上面計算問題）"></a>做法：每一期都是一個獨立實體（順便解決上面計算問題）</h3><p>參考 Microsoft To Do 的設計：</p>
+<h4 id="🔥-Hotspot-Cache（熱點快取）"><a href="#🔥-Hotspot-Cache（熱點快取）" class="headerlink" title="🔥 Hotspot Cache（熱點快取）"></a>🔥 Hotspot Cache（熱點快取）</h4><p>某些資料太熱門（例如首頁、熱門文章），全部人都查同一筆資料，導致單一快取節點壓力爆表。</p>
 <ul>
-<li>每個週期性任務都是獨立的實體，跟一般的 task 一樣</li>
-<li>當一個週期性任務被完成，會移到已完成區域</li>
-<li>同時產生下一期新的任務（根據 recurrence 計算）</li>
-</ul>
-<p>好處：</p>
-<ul>
-<li>看起來只有一個實體，每次完成會生出已完成的紀錄</li>
-<li>顯示「已完成任務」時也能分期清楚列出</li>
+<li>解法：複製多份快取副本分散到多個節點<br>✅ 注意副本之間設定不同的過期時間，否則同時失效又會造成雪崩</li>
 </ul>
 <hr>
-<p>📌 下一篇將會延伸到「🚀 快取策略：讓網頁不卡卡的第一步」，探討各種快取與策略（例如 Redis 快取、前端快取策略）</p>
+<p>下一篇，我會從這篇延伸一個很常見但又容易被忽略的問題 ——<br>👥 <strong>多用戶同時操作時，如何避免資料競爭與不一致的情況？我們該加鎖嗎？</strong></p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ol>
+<li><p><a target="_blank" rel="noopener" href="https://medium.com/@genchilu/%E4%BE%86%E8%AB%87%E8%AB%87%E5%BE%8C%E7%AB%AF%E5%BF%AB%E5%8F%96%E7%AD%96%E7%95%A5-fa4a1511f446">來談談後端快取策略</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.explainthis.io/zh-hant/swe/cache-mechanism">什麼是快取 (Cache)？快取 (Cache) 的機制為何？</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://medium.com/@yashbatra11111/why-i-stopped-overengineering-my-backend-systems-9e2f260f5a5c">Why I Stopped Overengineering My Backend Systems</a></p>
+</li>
+</ol>
 
                 
               </div>
@@ -439,25 +490,43 @@ graph TD
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/backend/" class="print-no-link">#backend</a>
+        <a href="/tags/Java/" class="print-no-link">#Java</a>
       
-        <a href="/tags/system-design/" class="print-no-link">#system-design</a>
+        <a href="/tags/%E5%BF%AB%E5%8F%96/" class="print-no-link">#快取</a>
       
-        <a href="/tags/database/" class="print-no-link">#database</a>
+        <a href="/tags/%E5%BF%AB%E5%8F%96%E7%AD%96%E7%95%A5/" class="print-no-link">#快取策略</a>
       
-        <a href="/tags/recurring-tasks/" class="print-no-link">#recurring-tasks</a>
+        <a href="/tags/%E5%BE%8C%E7%AB%AF%E9%96%8B%E7%99%BC/" class="print-no-link">#後端開發</a>
       
-        <a href="/tags/async/" class="print-no-link">#async</a>
+        <a href="/tags/%E7%B3%BB%E7%B5%B1%E6%95%88%E8%83%BD%E5%84%AA%E5%8C%96/" class="print-no-link">#系統效能優化</a>
       
-        <a href="/tags/caching/" class="print-no-link">#caching</a>
+        <a href="/tags/Redis/" class="print-no-link">#Redis</a>
       
-        <a href="/tags/api-rate-limit/" class="print-no-link">#api-rate-limit</a>
+        <a href="/tags/Spring-Boot/" class="print-no-link">#Spring Boot</a>
       
-        <a href="/tags/data-consistency/" class="print-no-link">#data-consistency</a>
+        <a href="/tags/%E8%A8%98%E6%86%B6%E9%AB%94%E5%BF%AB%E5%8F%96/" class="print-no-link">#記憶體快取</a>
       
-        <a href="/tags/architecture/" class="print-no-link">#architecture</a>
+        <a href="/tags/%E5%88%86%E6%95%A3%E5%BC%8F%E7%B3%BB%E7%B5%B1/" class="print-no-link">#分散式系統</a>
       
-        <a href="/tags/software-engineering/" class="print-no-link">#software-engineering</a>
+        <a href="/tags/%E8%B3%87%E6%96%99%E4%B8%80%E8%87%B4%E6%80%A7/" class="print-no-link">#資料一致性</a>
+      
+        <a href="/tags/Cache-Invalidation/" class="print-no-link">#Cache Invalidation</a>
+      
+        <a href="/tags/Cache-Aside/" class="print-no-link">#Cache Aside</a>
+      
+        <a href="/tags/Write-Through/" class="print-no-link">#Write-Through</a>
+      
+        <a href="/tags/Write-Behind/" class="print-no-link">#Write-Behind</a>
+      
+        <a href="/tags/%E5%88%86%E9%A0%81%E5%BF%AB%E5%8F%96/" class="print-no-link">#分頁快取</a>
+      
+        <a href="/tags/%E7%86%B1%E9%BB%9E%E5%BF%AB%E5%8F%96/" class="print-no-link">#熱點快取</a>
+      
+        <a href="/tags/Cache-Avalanche/" class="print-no-link">#Cache Avalanche</a>
+      
+        <a href="/tags/Cache-Breakdown/" class="print-no-link">#Cache Breakdown</a>
+      
+        <a href="/tags/%E7%B3%BB%E7%B5%B1%E8%A8%AD%E8%A8%88/" class="print-no-link">#系統設計</a>
       
     </div>
   
@@ -469,8 +538,8 @@ graph TD
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>從&#34;週期性任務&#34;優化談起 - 一步步深入後端核心議題第一篇</div>
-      <div>https://f88083.github.io/2025/04/18/從「週期性任務」優化談起，一步步深入後端核心議題第一篇/</div>
+      <div>從&#34;週期性任務&#34;優化談起 - 一步步深入後端核心議題第二篇 🚀 快取策略:讓網頁不卡卡的第一步</div>
+      <div>https://f88083.github.io/2025/04/22/從&#34;週期性任務&#34;優化談起 - 一步步深入後端核心議題第二篇 🚀 快取策略:讓網頁不卡卡的第一步/</div>
     </div>
     <div class="license-meta">
       
@@ -482,7 +551,7 @@ graph TD
       
         <div class="license-meta-item license-meta-date">
           <div>發布於</div>
-          <div>2025年4月18日</div>
+          <div>2025年4月22日</div>
         </div>
       
       
@@ -526,9 +595,9 @@ graph TD
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/04/22/%E5%BE%9E%E3%80%8C%E9%80%B1%E6%9C%9F%E6%80%A7%E4%BB%BB%E5%8B%99%E3%80%8D%E5%84%AA%E5%8C%96%E8%AB%87%E8%B5%B7%EF%BC%8C%E4%B8%80%E6%AD%A5%E6%AD%A5%E6%B7%B1%E5%85%A5%E5%BE%8C%E7%AB%AF%E6%A0%B8%E5%BF%83%E8%AD%B0%E9%A1%8C%E7%AC%AC%E4%BA%8C%E7%AF%87-%F0%9F%9A%80-%E5%BF%AB%E5%8F%96%E7%AD%96%E7%95%A5%EF%BC%9A%E8%AE%93%E7%B6%B2%E9%A0%81%E4%B8%8D%E5%8D%A1%E5%8D%A1%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AD%A5/" title="從&#34;週期性任務&#34;優化談起 - 一步步深入後端核心議題第二篇 🚀 快取策略:讓網頁不卡卡的第一步">
+                      <a href="/2025/04/23/%EF%BC%88%E6%B8%AC%E8%A9%A6%E6%B2%92%E6%9C%89emoji%EF%BC%89%E5%BE%9E%E3%80%8C%E9%80%B1%E6%9C%9F%E6%80%A7%E4%BB%BB%E5%8B%99%E3%80%8D%E5%84%AA%E5%8C%96%E8%AB%87%E8%B5%B7%EF%BC%8C%E4%B8%80%E6%AD%A5%E6%AD%A5%E6%B7%B1%E5%85%A5%E5%BE%8C%E7%AB%AF%E6%A0%B8%E5%BF%83%E8%AD%B0%E9%A1%8C%E7%AC%AC%E4%BA%8C%E7%AF%87-%E5%BF%AB%E5%8F%96%E7%AD%96%E7%95%A5%EF%BC%9A%E8%AE%93%E7%B6%B2%E9%A0%81%E4%B8%8D%E5%8D%A1%E5%8D%A1%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AD%A5/" title="（測試沒有emoji）從「週期性任務」優化談起，一步步深入後端核心議題第二篇 快取策略：讓網頁不卡卡的第一步">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">從&#34;週期性任務&#34;優化談起 - 一步步深入後端核心議題第二篇 🚀 快取策略:讓網頁不卡卡的第一步</span>
+                        <span class="hidden-mobile">（測試沒有emoji）從「週期性任務」優化談起，一步步深入後端核心議題第二篇 快取策略：讓網頁不卡卡的第一步</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -536,8 +605,8 @@ graph TD
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/04/17/2176-Count-Equal-and-Divisible-Pairs-in-an-Array-Easy/" title="2176. Count Equal and Divisible Pairs in an Array - Easy">
-                        <span class="hidden-mobile">2176. Count Equal and Divisible Pairs in an Array - Easy</span>
+                      <a href="/2025/04/18/%E5%BE%9E%22%E9%80%B1%E6%9C%9F%E6%80%A7%E4%BB%BB%E5%8B%99%22%E5%84%AA%E5%8C%96%E8%AB%87%E8%B5%B7%20-%20%E4%B8%80%E6%AD%A5%E6%AD%A5%E6%B7%B1%E5%85%A5%E5%BE%8C%E7%AB%AF%E6%A0%B8%E5%BF%83%E8%AD%B0%E9%A1%8C%E7%AC%AC%E4%B8%80%E7%AF%87/" title="從&#34;週期性任務&#34;優化談起 - 一步步深入後端核心議題第一篇">
+                        <span class="hidden-mobile">從&#34;週期性任務&#34;優化談起 - 一步步深入後端核心議題第一篇</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -645,21 +714,6 @@ graph TD
 
 
 
-
-
-  <script>
-  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/mermaid@11.6.0/dist/mermaid.min.js', function() {
-    mermaid.initialize({"theme":"default"});
-
-    Fluid.utils.listenDOMLoaded(function() {
-      Fluid.events.registerRefreshCallback(function() {
-        if ('mermaid' in window) {
-          mermaid.init();
-        }
-      });
-    });
-  });
-</script>
 
 
 
