@@ -16,28 +16,21 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前往題目  想法 用Breadth-First Search  思路 Breadth-First Search 搜尋的時候建立next指針，因為每次循環都剛好是整層，疊代整層的時候順便把指針也設定好了  Code一陣子沒寫BFS了，但還記得! class Solution &#123;     public Node connect(Node root) &#123;         if (ro">
+    <meta name="description" content="一個知識和心得的分享空間">
 <meta property="og:type" content="article">
-<meta property="og:title" content="116. Populating Next Right Pointers in Each Node - Medium">
-<meta property="og:url" content="https://f88083.github.io/2024/09/18/116-Populating-Next-Right-Pointers-in-Each-Node-Medium/index.html">
+<meta property="og:title" content="測試有全形名稱不長有emoji「」👀">
+<meta property="og:url" content="https://f88083.github.io/2025/04/23/%E6%B8%AC%E8%A9%A6%E6%9C%89%E5%85%A8%E5%BD%A2%E5%90%8D%E7%A8%B1%E4%B8%8D%E9%95%B7%E6%9C%89emoji%E3%80%8C%E3%80%8D%F0%9F%91%80/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="前往題目  想法 用Breadth-First Search  思路 Breadth-First Search 搜尋的時候建立next指針，因為每次循環都剛好是整層，疊代整層的時候順便把指針也設定好了  Code一陣子沒寫BFS了，但還記得! class Solution &#123;     public Node connect(Node root) &#123;         if (ro">
+<meta property="og:description" content="一個知識和心得的分享空間">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2024-09-18T11:13:41.000Z">
-<meta property="article:modified_time" content="2024-10-11T03:07:01.991Z">
+<meta property="article:published_time" content="2025-04-23T08:34:10.000Z">
+<meta property="article:modified_time" content="2025-04-23T08:34:10.894Z">
 <meta property="article:author" content="Simon Lai">
-<meta property="article:tag" content="Leetcode">
-<meta property="article:tag" content="心得">
-<meta property="article:tag" content="Binary Tree">
-<meta property="article:tag" content="Depth-First Search">
-<meta property="article:tag" content="Breadth-First Search">
-<meta property="article:tag" content="Tree">
-<meta property="article:tag" content="Linked List">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>116. Populating Next Right Pointers in Each Node - Medium - Simon Lai&#39;s Blog</title>
+  <title>測試有全形名稱不長有emoji「」👀 - Simon Lai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -232,7 +225,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="116. Populating Next Right Pointers in Each Node - Medium"></span>
+            <span id="subtitle" data-typed-text="測試有全形名稱不長有emoji「」👀"></span>
           
         </div>
 
@@ -243,8 +236,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-09-18 19:13" pubdate>
-          2024年9月18日 晚上
+        <time datetime="2025-04-23 16:34" pubdate>
+          2025年4月23日 下午
         </time>
       </span>
     
@@ -255,7 +248,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          233 字
+          0 字
         
       </span>
     
@@ -266,7 +259,7 @@
         
         
         
-          2 分鐘
+          1 分鐘
         
       </span>
     
@@ -303,86 +296,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">116. Populating Next Right Pointers in Each Node - Medium</h1>
+            <h1 id="seo-header">測試有全形名稱不長有emoji「」👀</h1>
             
             
               <div class="markdown-body">
                 
-                <a class="btn" href="https://leetcode.com/problems/populating-next-right-pointers-in-each-node/description/"  title="116. Populating Next Right Pointers in Each Node" target="_blank">前往題目</a>
-
-<h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul>
-<li>用<code>Breadth-First Search</code></li>
-</ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
-<li><code>Breadth-First Search</code></li>
-<li>搜尋的時候建立<code>next</code>指針，因為每次循環都剛好是整層，疊代整層的時候順便把指針也設定好了</li>
-</ol>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p>一陣子沒寫<code>BFS</code>了，但還記得!</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token class-name">Node</span> <span class="token function">connect</span><span class="token punctuation">(</span><span class="token class-name">Node</span> root<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
-        
-        <span class="token class-name">Queue</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Node</span><span class="token punctuation">></span></span> q <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        q<span class="token punctuation">.</span><span class="token function">offer</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span>q<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">int</span> size <span class="token operator">=</span> q<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>size <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                <span class="token class-name">Node</span> cur <span class="token operator">=</span> q<span class="token punctuation">.</span><span class="token function">poll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>cur<span class="token punctuation">.</span>left <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> q<span class="token punctuation">.</span><span class="token function">offer</span><span class="token punctuation">(</span>cur<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>cur<span class="token punctuation">.</span>right <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> q<span class="token punctuation">.</span><span class="token function">offer</span><span class="token punctuation">(</span>cur<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">continue</span><span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>
-
-            <span class="token class-name">Node</span> prevNode <span class="token operator">=</span> q<span class="token punctuation">.</span><span class="token function">poll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>prevNode<span class="token punctuation">.</span>left <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> q<span class="token punctuation">.</span><span class="token function">offer</span><span class="token punctuation">(</span>prevNode<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>prevNode<span class="token punctuation">.</span>right <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> q<span class="token punctuation">.</span><span class="token function">offer</span><span class="token punctuation">(</span>prevNode<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> size<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            
-                <span class="token class-name">Node</span> curNode <span class="token operator">=</span> q<span class="token punctuation">.</span><span class="token function">poll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                prevNode<span class="token punctuation">.</span>next <span class="token operator">=</span> curNode<span class="token punctuation">;</span>
-                prevNode <span class="token operator">=</span> curNode<span class="token punctuation">;</span>
-
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>curNode<span class="token punctuation">.</span>left <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> q<span class="token punctuation">.</span><span class="token function">offer</span><span class="token punctuation">(</span>curNode<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>curNode<span class="token punctuation">.</span>right <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> q<span class="token punctuation">.</span><span class="token function">offer</span><span class="token punctuation">(</span>curNode<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span>
-
-        <span class="token keyword">return</span> root<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
-
-<p>另外<code>NeetCode</code>給的解法更加的簡潔</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token class-name">Node</span> <span class="token function">connect</span><span class="token punctuation">(</span><span class="token class-name">Node</span> root<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token class-name">Node</span> current <span class="token operator">=</span> root<span class="token punctuation">;</span>
-        <span class="token class-name">Node</span> next <span class="token operator">=</span> root <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">?</span> <span class="token keyword">null</span> <span class="token operator">:</span> root<span class="token punctuation">.</span>left<span class="token punctuation">;</span>
-
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>current <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> next <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token comment">// Connect the children of the current node</span>
-            current<span class="token punctuation">.</span>left<span class="token punctuation">.</span>next <span class="token operator">=</span> current<span class="token punctuation">.</span>right<span class="token punctuation">;</span>
-
-            <span class="token comment">// When the node besides the current node exists</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>current<span class="token punctuation">.</span>next <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                current<span class="token punctuation">.</span>right<span class="token punctuation">.</span>next <span class="token operator">=</span> current<span class="token punctuation">.</span>next<span class="token punctuation">.</span>left<span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>
-
-            <span class="token comment">// Assign current node to its neighbor</span>
-            current <span class="token operator">=</span> current<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
-
-            <span class="token comment">// When the neighbor doesn't exist</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>current <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                current <span class="token operator">=</span> next<span class="token punctuation">;</span>
-                next <span class="token operator">=</span> current<span class="token punctuation">.</span>left<span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span>
-
-        <span class="token keyword">return</span> root<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
-
+                
                 
               </div>
             
@@ -390,53 +309,6 @@
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/Leetcode/" class="print-no-link">#Leetcode</a>
-      
-        <a href="/tags/%E5%BF%83%E5%BE%97/" class="print-no-link">#心得</a>
-      
-        <a href="/tags/Binary-Tree/" class="print-no-link">#Binary Tree</a>
-      
-        <a href="/tags/Depth-First-Search/" class="print-no-link">#Depth-First Search</a>
-      
-        <a href="/tags/Breadth-First-Search/" class="print-no-link">#Breadth-First Search</a>
-      
-        <a href="/tags/Tree/" class="print-no-link">#Tree</a>
-      
-        <a href="/tags/Linked-List/" class="print-no-link">#Linked List</a>
-      
-    </div>
   
 </div>
 
@@ -446,8 +318,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>116. Populating Next Right Pointers in Each Node - Medium</div>
-      <div>https://f88083.github.io/2024/09/18/116-Populating-Next-Right-Pointers-in-Each-Node-Medium/</div>
+      <div>測試有全形名稱不長有emoji「」👀</div>
+      <div>https://f88083.github.io/2025/04/23/測試有全形名稱不長有emoji「」👀/</div>
     </div>
     <div class="license-meta">
       
@@ -459,7 +331,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>發布於</div>
-          <div>2024年9月18日</div>
+          <div>2025年4月23日</div>
         </div>
       
       
@@ -503,18 +375,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/09/18/81-Search-in-Rotated-Sorted-Array-II-Medium/" title="81. Search in Rotated Sorted Array II - Medium">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">81. Search in Rotated Sorted Array II - Medium</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/09/18/Designing-Data-Intensive-Applications-%E7%AC%AC%E4%B8%80%E7%AB%A0%E7%AD%86%E8%A8%98/" title="Designing Data-Intensive Applications - 第一章筆記">
-                        <span class="hidden-mobile">Designing Data-Intensive Applications - 第一章筆記</span>
+                      <a href="/2025/04/23/%E6%B8%AC%E8%A9%A6%E6%9C%89emoji%E6%B2%92%E6%9C%89%E5%85%A8%E5%BD%A2%E7%AC%A6%E8%99%9F%F0%9F%91%80/" title="測試有emoji沒有全形符號👀">
+                        <span class="hidden-mobile">測試有emoji沒有全形符號👀</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
