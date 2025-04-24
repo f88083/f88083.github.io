@@ -253,15 +253,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/03/25/3394-Check-if-Grid-can-be-Cut-into-Sections-Medium/" target="_self">
-          3394. Check if Grid can be Cut into Sections - Medium
+        <a href="/2024/11/16/1376-Time-Needed-to-Inform-All-Employees-Medium/" target="_self">
+          1376. Time Needed to Inform All Employees - Medium
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/25/3394-Check-if-Grid-can-be-Cut-into-Sections-Medium/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/11/16/1376-Time-Needed-to-Inform-All-Employees-Medium/" target="_self">
         <div>
-          前往題目  想法 不知該如何檢查是否可切成三塊  思路看成是intervals來解  分成x和y座標並排序 垂直和水平方向分開來檢查是否重疊，並記錄不重疊數 輸出結果  Code  class Solution &#123;     public boolean checkValidCuts(int n, int[][] rectangles) &#123;         int[][] x =
+          前往題目  想法 DFS找最長路徑  思路 BFS 先建立manager -&gt; employees的map 然後就是一般的BFS，每個employee都要加上其manager的時間，這樣才是通知到那位employee的完整時間 每次到新的僱員時更新結果  Code  class Solution &#123;     public int numOfMinutes(int n, int he
         </div>
       </a>
 
@@ -269,8 +269,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-25 10:40" pubdate>
-              2025-03-25
+            <time datetime="2024-11-16 10:23" pubdate>
+              2024-11-16
             </time>
           </div>
         
@@ -311,72 +311,11 @@
             
               <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
             
-              <a href="/tags/Array/">#Array</a>
+              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
             
-              <a href="/tags/Sorting/">#Sorting</a>
+              <a href="/tags/Breadth-First-Search/">#Breadth-First Search</a>
             
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/03/24/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8python%E7%9A%84venv/" target="_self">
-          如何使用python的venv
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/24/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8python%E7%9A%84venv/" target="_self">
-        <div>
-          當python有問題的時候直接使用venv通常都能解決，甚至每個專案都用venv是最好的，這樣就可以把package分開  要先安裝python3-venv，例如Linuxsudo apt install python3-venv 建立venv目錄python3 -m venv venv 進入venv環境source venv/bin/activate 然後就可以自由安裝套件了，注意每次要安裝都須
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-24 10:32" pubdate>
-              2025-03-24
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%B6%9C%E5%90%88/" class="category-chain-item">綜合</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/venv/">#venv</a>
-            
-              <a href="/tags/python/">#python</a>
+              <a href="/tags/Tree/">#Tree</a>
             
           </div>
         
@@ -390,15 +329,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/03/24/3169-Count-Days-Without-Meetings-Medium/" target="_self">
-          3169. Count Days Without Meetings - Medium
+        <a href="/2024/11/11/662-Maximum-Width-of-Binary-Tree-Medium/" target="_self">
+          662. Maximum Width of Binary Tree - Medium
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/24/3169-Count-Days-Without-Meetings-Medium/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/11/11/662-Maximum-Width-of-Binary-Tree-Medium/" target="_self">
         <div>
-          前往題目  想法 最直觀的就是用set裝滿天數，然後用所有的meetings去排除，最後看size，但很明顯的這太慢了，每個區間有n天，然後有n個區間，就要n^n次了  思路 先依照starting day排序 然後檢查每個區間是否和上一個重疊 是就合併，否則紀錄天數 最後天數減去總天數就是答案  Code網友解答 class Solution &#123;     public int coun
+          前往題目  想法 BFS  思路紀錄index就可以完美解決  一般的BFS 每個點除了把自身加入到queue，還要加入節點的index，表示在這層當中的index 利用節點的index就可以在最後算出這層可以多長 循環每層到最後取最大值  Code  class Solution &#123;     public int widthOfBinaryTree(TreeNode root) &#1
         </div>
       </a>
 
@@ -406,8 +345,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-24 10:16" pubdate>
-              2025-03-24
+            <time datetime="2024-11-11 10:27" pubdate>
+              2024-11-11
             </time>
           </div>
         
@@ -448,74 +387,13 @@
             
               <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
             
-              <a href="/tags/Array/">#Array</a>
+              <a href="/tags/Binary-Tree/">#Binary Tree</a>
             
-              <a href="/tags/Sorting/">#Sorting</a>
+              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
             
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/03/21/macos/" target="_self">
-          macos如何轉換java的JDK版本
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/21/macos/" target="_self">
-        <div>
-          安裝JDK之後檢查一下，應有兩個版本/usr/libexec/java_home -V    export JAVA_HOME=`/usr/libexec/java_home -v 欲切換的版本`  3.java -version檢查一下是否切換成功 參考
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-21 19:09" pubdate>
-              2025-03-21
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
+              <a href="/tags/Breadth-First-Search/">#Breadth-First Search</a>
             
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%B6%9C%E5%90%88/" class="category-chain-item">綜合</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/macos/">#macos</a>
-            
-              <a href="/tags/java/">#java</a>
-            
-              <a href="/tags/jdk/">#jdk</a>
+              <a href="/tags/Tree/">#Tree</a>
             
           </div>
         
@@ -529,15 +407,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/03/19/3191-Minimum-Operations-to-Make-Binary-Array-Elements-Equal-to-One-I-Medium/" target="_self">
-          3191. Minimum Operations to Make Binary Array Elements Equal to One I - Medium
+        <a href="/2024/11/07/106-Construct-Binary-Tree-from-Inorder-and-Postorder-Traversal-Medium/" target="_self">
+          106. Construct Binary Tree from Inorder and Postorder Traversal - Medium
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/19/3191-Minimum-Operations-to-Make-Binary-Array-Elements-Equal-to-One-I-Medium/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/11/07/106-Construct-Binary-Tree-from-Inorder-and-Postorder-Traversal-Medium/" target="_self">
         <div>
-          前往題目  想法 或許可以用sliding window但對於如何判斷是否應該翻轉bit毫無想法  思路運用Greedy概念，只需要專注在當前的數字，0就翻轉，否則不管，如果valid最後一定全部都是1，否則會有一或兩個0  三個為一個window，第一個為基準判斷是否翻轉 每次翻轉紀錄次數 結束後，如果最後兩位有1或2個0就是invalid  對於如何確定這是可行的並不清楚…但應該可以看作是每次
+          前往題目  想法 postorder最後面一定是root  思路用root去定位，就可以得知左右子樹  dfs inorder和postorder都使用雙指針 當左指針超過右指針時回傳null，代表沒有子節點 取得根節點的值，以及其在inorder中的index 然後就可以建立父節點以及其左右子節點並遞迴呼叫  postorder只是拿來找根節點的 Code網友解答 class Solution
         </div>
       </a>
 
@@ -545,8 +423,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-19 14:40" pubdate>
-              2025-03-19
+            <time datetime="2024-11-07 13:36" pubdate>
+              2024-11-07
             </time>
           </div>
         
@@ -587,169 +465,15 @@
             
               <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
             
-              <a href="/tags/Queue/">#Queue</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Bit-Manipulation/">#Bit Manipulation</a>
-            
-              <a href="/tags/Sliding-Window/">#Sliding Window</a>
-            
-              <a href="/tags/Prefix-Sum/">#Prefix Sum</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/03/18/2401-Longest-Nice-Subarray-Medium/" target="_self">
-          2401. Longest Nice Subarray - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/18/2401-Longest-Nice-Subarray-Medium/" target="_self">
-        <div>
-          前往題目  想法 忘了有sliding window:D太久沒寫了  思路關鍵是紀錄哪些bit已經被使用，以及利用sliding window鎖定範圍 Code網友解答 class Solution &#123;     public int longestNiceSubarray(int[] nums) &#123;         int usedBits = 0, l = 0, res =
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-18 10:53" pubdate>
-              2025-03-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Bit-Manipulation/">#Bit Manipulation</a>
-            
-              <a href="/tags/Sliding-Window/">#Sliding Window</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/03/17/2206-Divide-Array-Into-Equal-Pairs-Easy/" target="_self">
-          2206. Divide Array Into Equal Pairs - Easy
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/17/2206-Divide-Array-Into-Equal-Pairs-Easy/" target="_self">
-        <div>
-          前往題目  思路這題也十分簡單，只要看是否每個數字都有對應的自己就好 Codeclass Solution &#123;     public boolean divideArray(int[] nums) &#123;         // Base case         if (nums.length &lt; 2) return false;          Set&lt;Intege
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-17 19:52" pubdate>
-              2025-03-17
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+              <a href="/tags/Binary-Tree/">#Binary Tree</a>
             
               <a href="/tags/Array/">#Array</a>
             
               <a href="/tags/Hash-Table/">#Hash Table</a>
             
-              <a href="/tags/Bit-Manipulation/">#Bit Manipulation</a>
+              <a href="/tags/Tree/">#Tree</a>
             
-              <a href="/tags/Counting/">#Counting</a>
+              <a href="/tags/Divide-and-Conquer/">#Divide and Conquer</a>
             
           </div>
         
@@ -763,15 +487,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/03/16/3487-Maximum-Unique-Subarray-Sum-After-Deletion-Easy/" target="_self">
-          3487. Maximum Unique Subarray Sum After Deletion - Easy
+        <a href="/2024/11/07/958-Check-Completeness-of-a-Binary-Tree-Medium/" target="_self">
+          958. Check Completeness of a Binary Tree - Medium
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/16/3487-Maximum-Unique-Subarray-Sum-After-Deletion-Easy/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/11/07/958-Check-Completeness-of-a-Binary-Tree-Medium/" target="_self">
         <div>
-          前往題目  思路這題寫出來了  用Set紀錄重複的，且跳過小於1的數字 切記要追蹤並判斷是否全部都是負數，全部都是負數的話反而要輸出最大負數，只要有一個正數(&gt;&#x3D;0)，就一定不會是輸出負數  Codeclass Solution &#123;     public int maxSum(int[] nums) &#123;         HashSet&lt;Integer> s
+          前往題目  想法 BFS檢查左邊node是否為null  思路 BFS 紀錄上一個node，只要當前node不為null上一個node為null，就是有空缺處，回傳false  Code網友解答 class Solution &#123;     public boolean isCompleteTree(TreeNode root) &#123;         Queue&lt;TreeNod
         </div>
       </a>
 
@@ -779,8 +503,318 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-16 14:53" pubdate>
-              2025-03-16
+            <time datetime="2024-11-07 11:01" pubdate>
+              2024-11-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Binary-Tree/">#Binary Tree</a>
+            
+              <a href="/tags/Breadth-First-Search/">#Breadth-First Search</a>
+            
+              <a href="/tags/Tree/">#Tree</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/11/06/652-Find-Duplicate-Subtrees-Medium/" target="_self">
+          652. Find Duplicate Subtrees - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/11/06/652-Find-Duplicate-Subtrees-Medium/" target="_self">
+        <div>
+          前往題目  想法 每個可能都比較，不過至少會需要$O(N^2)$  思路以空間換取時間，把走過的每個路徑都記錄下來，相同路徑就是duplicate  preorder，其餘迭代順序也可以 遇到null就回傳null，路徑用字串紀錄 遇到相同路徑（字串）就加入根節點到結果  Code  class Solution &#123;     Map&lt;String, Integer> map;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-11-06 12:41" pubdate>
+              2024-11-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Binary-Tree/">#Binary Tree</a>
+            
+              <a href="/tags/Hash-Table/">#Hash Table</a>
+            
+              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
+            
+              <a href="/tags/Tree/">#Tree</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/11/05/427-Construct-Quad-Tree-Medium/" target="_self">
+          427. Construct Quad Tree - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/11/05/427-Construct-Quad-Tree-Medium/" target="_self">
+        <div>
+          前往題目  想法 讀不懂題目:D  思路第一次看到這種題，其實目的就只是分成一堆正方形，每個正方形裡面數值都一樣，並建立樹  DFS，每次都先檢查當前正方形裡是否數值完全相同(一開始是整個大正方形) 是的話直接回傳node，不是的話切割當前正方形為四象限每個象限再各自檢查是否數值相同 最後形成node，並加入子節點們，形成樹  Code  class Solution &#123;      pu
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-11-05 11:25" pubdate>
+              2024-11-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Matrix/">#Matrix</a>
+            
+              <a href="/tags/Tree/">#Tree</a>
+            
+              <a href="/tags/Divide-and-Conquer/">#Divide and Conquer</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/10/30/1443-Minimum-Time-to-Collect-All-Apples-in-a-Tree-Medium/" target="_self">
+          1443. Minimum Time to Collect All Apples in a Tree - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/30/1443-Minimum-Time-to-Collect-All-Apples-in-a-Tree-Medium/" target="_self">
+        <div>
+          前往題目  想法 建立一棵樹？ 儲存每個node的鄰居？ DFS?  思路這題的關鍵在於  儲存每個node的鄰居 走訪全部節點   儲存鄰居 DFS走訪所有節點 不要走回父節點，不然會無限迴圈 呼叫dfs往鄰居接著走訪 當當前的節點是蘋果或是子節點有蘋果就代表來回需要兩秒，所以加上結果  Code  class Solution &#123;     List&lt;List&lt;Intege
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-10-30 12:48" pubdate>
+              2024-10-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Hash-Table/">#Hash Table</a>
+            
+              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
+            
+              <a href="/tags/Breadth-First-Search/">#Breadth-First Search</a>
+            
+              <a href="/tags/Tree/">#Tree</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/10/26/783-Minimum-Distance-Between-BST-Nodes-Easy/" target="_self">
+          783. Minimum Distance Between BST Nodes - Easy
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/26/783-Minimum-Distance-Between-BST-Nodes-Easy/" target="_self">
+        <div>
+          前往題目  想法 左右子樹和父節點比較就好  思路這樣的想法問題是孫子可能跟爺爺更近，相較於兒子  inorder可以在BST從最小數節點迭代到最大數節點  Code  class Solution &#123;     int min;     TreeNode prev;     public int minDiffInBST(TreeNode root) &#123;         min
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-10-26 11:03" pubdate>
+              2024-10-26
             </time>
           </div>
         
@@ -821,9 +855,15 @@
             
               <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
             
-              <a href="/tags/Array/">#Array</a>
+              <a href="/tags/Binary-Search-Tree/">#Binary Search Tree</a>
             
-              <a href="/tags/HashSet/">#HashSet</a>
+              <a href="/tags/Binary-Tree/">#Binary Tree</a>
+            
+              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
+            
+              <a href="/tags/Breadth-First-Search/">#Breadth-First Search</a>
+            
+              <a href="/tags/Tree/">#Tree</a>
             
           </div>
         
@@ -837,15 +877,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/03/16/3488-Closest-Equal-Element-Queries-Medium/" target="_self">
-          3488. Closest Equal Element Queries - Medium
+        <a href="/2024/10/25/450-Delete-Node-in-a-BST-Medium/" target="_self">
+          450. Delete Node in a BST - Medium
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/16/3488-Closest-Equal-Element-Queries-Medium/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/25/450-Delete-Node-in-a-BST-Medium/" target="_self">
         <div>
-          前往題目  想法 紀錄所有數字的index 根據query計算每個數字距離鄰居的最短距離  思路寫完先瘋一半，要一直切換數字與index，腦袋快炸掉，這是這週周賽的第二題  紀錄所有數字的index 找出當前query的index在query的實際數字的index list中的位置(這樣才能更快判斷鄰居，因為index list中鄰居都是相同數字，只紀錄index) 每個query數字計算其左邊鄰
+          前往題目  想法 找到目標後直接刪除，把parent直接接到他的子樹  思路但這樣的想法有點問題，因為沒有考慮到樹的右子樹必須要大於父節點 Recursion  遇到null直接回傳root，回傳null也行，反正都是同樣的值 接著就看當前節點是否是Key，大於的話就往左邊繼續搜尋，反之往右邊 如果找到同樣的值，只有左或者右一個子樹的時候直接捨棄當前節點，接上子樹就好 如果他同時有右子樹和左子樹，
         </div>
       </a>
 
@@ -853,8 +893,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-16 13:47" pubdate>
-              2025-03-16
+            <time datetime="2024-10-25 21:14" pubdate>
+              2024-10-25
             </time>
           </div>
         
@@ -895,9 +935,11 @@
             
               <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
             
-              <a href="/tags/Array/">#Array</a>
+              <a href="/tags/Binary-Search-Tree/">#Binary Search Tree</a>
             
-              <a href="/tags/Binary-Search/">#Binary Search</a>
+              <a href="/tags/Binary-Tree/">#Binary Tree</a>
+            
+              <a href="/tags/Tree/">#Tree</a>
             
           </div>
         
@@ -911,15 +953,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/03/16/2594-Minimum-Time-to-Repair-Cars-Medium/" target="_self">
-          2594. Minimum Time to Repair Cars - Medium
+        <a href="/2024/10/24/701-Insert-into-a-Binary-Search-Tree-Medium/" target="_self">
+          701. Insert into a Binary Search Tree - Medium
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/16/2594-Minimum-Time-to-Repair-Cars-Medium/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/24/701-Insert-into-a-Binary-Search-Tree-Medium/" target="_self">
         <div>
-          前往題目  想法 猜答案，二元搜尋  思路 二元搜尋分鐘數，範圍是最小可能到最大可能 計算以當前分鐘數來看可以修多少台車 比目標少，就增加分鐘；比目標多就減少分鐘數 最後收斂的位置就是答案  Codeclass Solution &#123;     public long repairCars(int[] ranks, int cars) &#123;         long l = 0, r
+          前往題目  想法 直接加在最後面？不知道怎麼處理balance的問題  思路這題根本無需balance，加到合理的地方就好了  Recusion直到null回傳新的節點，其包含新的值 如果當前父節點比較大，那就加到左子節點，否則右子節點  因為BST的特性，所以只會被加到樹裡一次 Code網友解答 class Solution &#123;     public TreeNode insertIn
         </div>
       </a>
 
@@ -927,8 +969,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-16 13:16" pubdate>
-              2025-03-16
+            <time datetime="2024-10-24 10:33" pubdate>
+              2024-10-24
             </time>
           </div>
         
@@ -969,9 +1011,11 @@
             
               <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
             
-              <a href="/tags/Array/">#Array</a>
+              <a href="/tags/Binary-Search-Tree/">#Binary Search Tree</a>
             
-              <a href="/tags/Binary-Search/">#Binary Search</a>
+              <a href="/tags/Binary-Tree/">#Binary Tree</a>
+            
+              <a href="/tags/Tree/">#Tree</a>
             
           </div>
         
@@ -983,7 +1027,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/3/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/#board">37</a><a class="extend next" rel="next" href="/page/5/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/3/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/35/#board">35</a><a class="extend next" rel="next" href="/page/5/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

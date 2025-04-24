@@ -253,15 +253,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/04/05/1863-Sum-of-All-Subset-XOR-Totals-Easy/" target="_self">
-          1863. Sum of All Subset XOR Totals - Easy
+        <a href="/2025/03/19/3191-Minimum-Operations-to-Make-Binary-Array-Elements-Equal-to-One-I-Medium/" target="_self">
+          3191. Minimum Operations to Make Binary Array Elements Equal to One I - Medium
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/05/1863-Sum-of-All-Subset-XOR-Totals-Easy/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/19/3191-Minimum-Operations-to-Make-Binary-Array-Elements-Equal-to-One-I-Medium/" target="_self">
         <div>
-          前往題目  思路 Recursion把所有subset都找到並計算  Code  class Solution &#123;     public int subsetXORSum(int[] nums) &#123;         return dfs(nums, 0, 0);     &#125;      private int dfs(int[] nums, int index, int
+          前往題目  想法 或許可以用sliding window但對於如何判斷是否應該翻轉bit毫無想法  思路運用Greedy概念，只需要專注在當前的數字，0就翻轉，否則不管，如果valid最後一定全部都是1，否則會有一或兩個0  三個為一個window，第一個為基準判斷是否翻轉 每次翻轉紀錄次數 結束後，如果最後兩位有1或2個0就是invalid  對於如何確定這是可行的並不清楚…但應該可以看作是每次
         </div>
       </a>
 
@@ -269,8 +269,164 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-04-05 14:07" pubdate>
-              2025-04-05
+            <time datetime="2025-03-19 14:40" pubdate>
+              2025-03-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Queue/">#Queue</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Bit-Manipulation/">#Bit Manipulation</a>
+            
+              <a href="/tags/Sliding-Window/">#Sliding Window</a>
+            
+              <a href="/tags/Prefix-Sum/">#Prefix Sum</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/03/18/2401-Longest-Nice-Subarray-Medium/" target="_self">
+          2401. Longest Nice Subarray - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/18/2401-Longest-Nice-Subarray-Medium/" target="_self">
+        <div>
+          前往題目  想法 忘了有sliding window:D太久沒寫了  思路關鍵是紀錄哪些bit已經被使用，以及利用sliding window鎖定範圍 Code網友解答 class Solution &#123;     public int longestNiceSubarray(int[] nums) &#123;         int usedBits = 0, l = 0, res =
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-03-18 10:53" pubdate>
+              2025-03-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Bit-Manipulation/">#Bit Manipulation</a>
+            
+              <a href="/tags/Sliding-Window/">#Sliding Window</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/03/17/2206-Divide-Array-Into-Equal-Pairs-Easy/" target="_self">
+          2206. Divide Array Into Equal Pairs - Easy
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/17/2206-Divide-Array-Into-Equal-Pairs-Easy/" target="_self">
+        <div>
+          前往題目  思路這題也十分簡單，只要看是否每個數字都有對應的自己就好 Codeclass Solution &#123;     public boolean divideArray(int[] nums) &#123;         // Base case         if (nums.length &lt; 2) return false;          Set&lt;Intege
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-03-17 19:52" pubdate>
+              2025-03-17
             </time>
           </div>
         
@@ -313,13 +469,448 @@
             
               <a href="/tags/Array/">#Array</a>
             
-              <a href="/tags/Math/">#Math</a>
+              <a href="/tags/Hash-Table/">#Hash Table</a>
             
               <a href="/tags/Bit-Manipulation/">#Bit Manipulation</a>
             
-              <a href="/tags/Backtracking/">#Backtracking</a>
+              <a href="/tags/Counting/">#Counting</a>
             
-              <a href="/tags/Combinatorics/">#Combinatorics</a>
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/03/16/3487-Maximum-Unique-Subarray-Sum-After-Deletion-Easy/" target="_self">
+          3487. Maximum Unique Subarray Sum After Deletion - Easy
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/16/3487-Maximum-Unique-Subarray-Sum-After-Deletion-Easy/" target="_self">
+        <div>
+          前往題目  思路這題寫出來了  用Set紀錄重複的，且跳過小於1的數字 切記要追蹤並判斷是否全部都是負數，全部都是負數的話反而要輸出最大負數，只要有一個正數(&gt;&#x3D;0)，就一定不會是輸出負數  Codeclass Solution &#123;     public int maxSum(int[] nums) &#123;         HashSet&lt;Integer> s
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-03-16 14:53" pubdate>
+              2025-03-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/HashSet/">#HashSet</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/03/16/3488-Closest-Equal-Element-Queries-Medium/" target="_self">
+          3488. Closest Equal Element Queries - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/16/3488-Closest-Equal-Element-Queries-Medium/" target="_self">
+        <div>
+          前往題目  想法 紀錄所有數字的index 根據query計算每個數字距離鄰居的最短距離  思路寫完先瘋一半，要一直切換數字與index，腦袋快炸掉，這是這週周賽的第二題  紀錄所有數字的index 找出當前query的index在query的實際數字的index list中的位置(這樣才能更快判斷鄰居，因為index list中鄰居都是相同數字，只紀錄index) 每個query數字計算其左邊鄰
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-03-16 13:47" pubdate>
+              2025-03-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Binary-Search/">#Binary Search</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/03/16/2594-Minimum-Time-to-Repair-Cars-Medium/" target="_self">
+          2594. Minimum Time to Repair Cars - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/16/2594-Minimum-Time-to-Repair-Cars-Medium/" target="_self">
+        <div>
+          前往題目  想法 猜答案，二元搜尋  思路 二元搜尋分鐘數，範圍是最小可能到最大可能 計算以當前分鐘數來看可以修多少台車 比目標少，就增加分鐘；比目標多就減少分鐘數 最後收斂的位置就是答案  Codeclass Solution &#123;     public long repairCars(int[] ranks, int cars) &#123;         long l = 0, r
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-03-16 13:16" pubdate>
+              2025-03-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Binary-Search/">#Binary Search</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/03/14/%E4%BB%80%E9%BA%BC%E6%98%AFModel-Context-Protocol-MCP-%EF%BC%8C%E4%B8%B2%E6%8E%A5AI%E8%88%87%E5%B7%A5%E5%85%B7%E4%B9%8B%E9%96%93%E7%9A%84%E6%A9%8B%E6%A8%91/" target="_self">
+          什麼是Model Context Protocol(MCP)，串接AI與工具之間的橋樑
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/14/%E4%BB%80%E9%BA%BC%E6%98%AFModel-Context-Protocol-MCP-%EF%BC%8C%E4%B8%B2%E6%8E%A5AI%E8%88%87%E5%B7%A5%E5%85%B7%E4%B9%8B%E9%96%93%E7%9A%84%E6%A9%8B%E6%A8%91/" target="_self">
+        <div>
+          MCP 是一種創新的開放標準，旨在簡化 AI 系統（特別是大型語言模型，LLMs）與外部工具、數據源和服務的互動方式。MCP 最初由 Anthropic 開發，目的是解決傳統 API 整合中的碎片化問題以及資訊不互通現象，這些問題阻礙了 AI 獲取所需的數據以產生相關且準確的回應。通過提供一個通用協議，MCP 簡化了 AI 整合，使其比傳統的 API 方法更高效、可擴展且安全。 什麼是 MCP？M
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-03-14 16:24" pubdate>
+              2025-03-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/AI/" class="category-chain-item">AI</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/API/">#API</a>
+            
+              <a href="/tags/Model-Context-Protocol/">#Model-Context-Protocol</a>
+            
+              <a href="/tags/AI/">#AI</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/03/14/2523-Closest-Prime-Numbers-in-Range-Medium/" target="_self">
+          2523. Closest Prime Numbers in Range - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/14/2523-Closest-Prime-Numbers-in-Range-Medium/" target="_self">
+        <div>
+          前往題目  想法 先用昨天的Sieve of Eratosthenes找出範圍內所有質數 比較各質數區間就可以回傳結果  思路 Sieve of Eratosthenes找出範圍內所有質數 比較質數區間的大小找出最小值  Codeclass Solution &#123;     public int[] closestPrimes(int left, int right) &#123;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-03-14 11:10" pubdate>
+              2025-03-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Math/">#Math</a>
+            
+              <a href="/tags/Number-Theory/">#Number Theory</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/03/13/204-Count-Primes-Medium/" target="_self">
+          204. Count Primes - Medium
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/13/204-Count-Primes-Medium/" target="_self">
+        <div>
+          前往題目  回歸leetcode，四個月的當兵猶如一場夢，自由真好 想法 略過2, 3, 5, 7的倍數  思路Sieve of Eratosthenes Algorithm  從第一個質數開始(2)，並標記2的所有倍數(&lt;n)為非質數 往下一個未被標記的數字，重複步驟一 直到當前數字的平方大於n，後面的數字直接看標記為質數或非質數更新結果即可  Code  class Solution &
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-03-13 16:53" pubdate>
+              2025-03-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Leetcode/">#Leetcode</a>
+            
+              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Array/">#Array</a>
+            
+              <a href="/tags/Math/">#Math</a>
+            
+              <a href="/tags/Number-Theory/">#Number Theory</a>
             
               <a href="/tags/Enumeration/">#Enumeration</a>
             
@@ -335,15 +926,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/04/04/1123-Lowest-Common-Ancestor-of-Deepest-Leaves-Medium/" target="_self">
-          1123. Lowest Common Ancestor of Deepest Leaves - Medium
+        <a href="/2024/11/16/96-Unique-Binary-Search-Trees-Medium/" target="_self">
+          96. Unique Binary Search Trees - Medium
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/04/1123-Lowest-Common-Ancestor-of-Deepest-Leaves-Medium/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/11/16/96-Unique-Binary-Search-Trees-Medium/" target="_self">
         <div>
-          前往題目  想法 DFS  思路 DFS 往最深處找，找到大於當前已知最深的深度就更新，node也要一併更新因為有可能沒有共同ancestor這時答案就是leaf node本身 左右都找到最深，並且每次都要判斷是否當前是最深leaf的ancestor以更新答案  Code  class Solution &#123;     TreeNode res;     int maxDepth;
+          前往題目  想法 找規律？  思路 DP 0和1個節點是base case 嘗試把每個點當作root，左樹和右樹再各自當成root直到base case就可以推導出當前n總共有幾種樹  例如n=2總共是兩種可能的樹[0,1], [1,0]，n=3是五種，因為[0,2], [1,1], [2, 0] =&gt; 2 + 1 + 2 = 5，n=4是14種，因為[0,3], [1,2], [2,1],
         </div>
       </a>
 
@@ -351,8 +942,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-04-04 10:34" pubdate>
-              2025-04-04
+            <time datetime="2024-11-16 11:24" pubdate>
+              2024-11-16
             </time>
           </div>
         
@@ -392,606 +983,16 @@
               <a href="/tags/Leetcode/">#Leetcode</a>
             
               <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
+            
+              <a href="/tags/Binary-Search-Tree/">#Binary Search Tree</a>
             
               <a href="/tags/Binary-Tree/">#Binary Tree</a>
             
-              <a href="/tags/Depth-First-Search/">#Depth-First Search</a>
-            
-              <a href="/tags/Hash-Table/">#Hash Table</a>
-            
-              <a href="/tags/Breadth-First-Search/">#Breadth-First Search</a>
-            
-              <a href="/tags/Tree/">#Tree</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/04/03/2874-Maximum-Value-of-an-Ordered-Triplet-II-Medium/" target="_self">
-          2874. Maximum Value of an Ordered Triplet II - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/03/2874-Maximum-Value-of-an-Ordered-Triplet-II-Medium/" target="_self">
-        <div>
-          前往題目  想法 與昨天的daily題目一模一樣，只是這次不允許$n^3$複雜度暴力解法  思路請見 Codeclass Solution &#123;     public long maximumTripletValue(int[] nums) &#123;         long maxVal = 0, maxTriplet = 0, maxDiff = 0;          for (
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-04-03 13:22" pubdate>
-              2025-04-03
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/04/02/2873-Maximum-Value-of-an-Ordered-Triplet-I-Easy/" target="_self">
-          2873. Maximum Value of an Ordered Triplet I - Easy
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/02/2873-Maximum-Value-of-an-Ordered-Triplet-I-Easy/" target="_self">
-        <div>
-          前往題目  想法 三個循環，難怪是Easy，但八成不是最優解  思路 題目要求最大化(nums[i] - nums[j]) * nums[k] 可拆解為 -&gt; nums[i] - nums[j] 以及 nums[k]最大化 於是在疊代的過程中，維護三個值分別是最大的nums[i] - nums[j]，最大的nums[k]，以及最重要的答案 因為都是往右走，所以不會有順序問題產生，每次的值都是
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-04-02 16:28" pubdate>
-              2025-04-02
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/04/01/Shell%E9%80%B2%E9%9A%8E%E7%AD%86%E8%A8%98-The-Missing-Semester-of-Your-CS-Education/" target="_self">
-          Shell進階筆記 - The Missing Semester of Your CS Education
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/01/Shell%E9%80%B2%E9%9A%8E%E7%AD%86%E8%A8%98-The-Missing-Semester-of-Your-CS-Education/" target="_self">
-        <div>
-          Shell Scripting Variables:    Assign: foo=bar   Access: $foo   Note: No spaces around = in assignment.   Strings:    Single quotes (&#39;) → Literal string (no variable substitution).   Double quotes
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-04-01 17:50" pubdate>
-              2025-04-01
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E9%9B%BB%E8%85%A6%E7%A7%91%E5%AD%B8/" class="category-chain-item">電腦科學</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E9%9B%BB%E8%85%A6%E7%A7%91%E5%AD%B8/The-Missing-Semester-of-Your-CS-Education/" class="category-chain-item">The Missing Semester of Your CS Education</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/shell/">#shell</a>
-            
-              <a href="/tags/the-missing-semester-of-your-cs-education/">#the-missing-semester-of-your-cs-education</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/04/01/2140-Solving-Questions-With-Brainpower-Medium/" target="_self">
-          2140. Solving Questions With Brainpower - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/01/2140-Solving-Questions-With-Brainpower-Medium/" target="_self">
-        <div>
-          前往題目  想法 選或不選都要考慮  思路題目解釋得很糟糕，這題的目的就是當前問題解決了就要跳過接下來的brainpower個問題，不解決就下一個  用遞迴的方式 每次都紀錄選與不選的結果 紀錄每個題目的最大可能值，這樣後面遇到就不需要再重算  Codeclass Solution &#123;     // Record the questions already been considered
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-04-01 11:17" pubdate>
-              2025-04-01
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
+              <a href="/tags/Math/">#Math</a>
             
               <a href="/tags/Dynamic-Programming/">#Dynamic Programming</a>
             
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/03/30/763-Partition-Labels-Medium/" target="_self">
-          763. Partition Labels - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/30/763-Partition-Labels-Medium/" target="_self">
-        <div>
-          前往題目  想法 每個字母的第一個和最後一個為區間  思路 記錄每個字母的最後一位的位置 開始循環s，每次更新當前的最後一位在哪，取最遠的（因為最大區間不能被切開，否則會有同個字母分隔兩邊的情況） 遇到盡頭時（當前字母最後一位與最遠的同位），切開並記錄  這題是把每個字母都當區間來看，只是開頭並不重要，重要的是每個字母最後在哪裡出現，因為不能在中途就切開，不然就會出現同個字母被切開的情況，這也是題
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-30 10:54" pubdate>
-              2025-03-30
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/String/">#String</a>
-            
-              <a href="/tags/Two-Pointers/">#Two Pointers</a>
-            
-              <a href="/tags/Greedy/">#Greedy</a>
-            
-              <a href="/tags/Hash-Table/">#Hash Table</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/03/27/2780-Minimum-Index-of-a-Valid-Split-Medium/" target="_self">
-          2780. Minimum Index of a Valid Split - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/27/2780-Minimum-Index-of-a-Valid-Split-Medium/" target="_self">
-        <div>
-          前往題目  想法 先找出最多的那個元素，然後迭代的時候再算其元素在左邊以及右邊各有多少  思路就和我的想法一樣，不過最後我忘了除二或乘二去正確判斷超過半數 Codeclass Solution &#123;     public int minimumIndex(List&lt;Integer> nums) &#123;         int[] dominant = new int[]&#12
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-27 10:10" pubdate>
-              2025-03-27
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Hash-Table/">#Hash Table</a>
-            
-              <a href="/tags/Sorting/">#Sorting</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/03/26/Shell/" target="_self">
-          Shell基礎筆記 - The Missing Semester of Your CS Education
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/26/Shell/" target="_self">
-        <div>
-          可惜還是學生的時候不知道有這門好課，雖然已經有些經驗了，但還是想看看這門課能帶給我什麼新東西 快速複習Basics of the Shell Shell &#x3D; text-based interface for executing commands.   Bash (Bourne Again Shell) is widely used.  Basic Commands date → Show
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-26 14:30" pubdate>
-              2025-03-26
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E9%9B%BB%E8%85%A6%E7%A7%91%E5%AD%B8/" class="category-chain-item">電腦科學</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E9%9B%BB%E8%85%A6%E7%A7%91%E5%AD%B8/The-Missing-Semester-of-Your-CS-Education/" class="category-chain-item">The Missing Semester of Your CS Education</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/shell/">#shell</a>
-            
-              <a href="/tags/the-missing-semester-of-your-cs-education/">#the-missing-semester-of-your-cs-education</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/03/26/2033-Minimum-Operations-to-Make-a-Uni-Value-Grid-Medium/" target="_self">
-          2033. Minimum Operations to Make a Uni-Value Grid - Medium
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/03/26/2033-Minimum-Operations-to-Make-a-Uni-Value-Grid-Medium/" target="_self">
-        <div>
-          前往題目  想法 中位數應該是最靠近所有數字的數  思路 把陣列扁平化，因為位置資訊不重要 扁平化後就可以排序並找到中位數 接著計算步數 只有當前數字減去中位數後，不能以每次x的步伐走到中位數才是invalid的狀況  Codeclass Solution &#123;     public int minOperations(int[][] grid, int x) &#123;
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-03-26 11:02" pubdate>
-              2025-03-26
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Leetcode/" class="category-chain-item">Leetcode</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Leetcode/">#Leetcode</a>
-            
-              <a href="/tags/%E5%BF%83%E5%BE%97/">#心得</a>
-            
-              <a href="/tags/Array/">#Array</a>
-            
-              <a href="/tags/Math/">#Math</a>
-            
-              <a href="/tags/Matrix/">#Matrix</a>
-            
-              <a href="/tags/Sorting/">#Sorting</a>
+              <a href="/tags/Tree/">#Tree</a>
             
           </div>
         
@@ -1003,7 +1004,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/#board">37</a><a class="extend next" rel="next" href="/page/4/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/35/#board">35</a><a class="extend next" rel="next" href="/page/4/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
