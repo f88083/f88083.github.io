@@ -573,9 +573,9 @@
       
       <tag>Math</tag>
       
-      <tag>Sorting</tag>
-      
       <tag>Matrix</tag>
+      
+      <tag>Sorting</tag>
       
     </tags>
     
@@ -728,9 +728,9 @@
       
       <tag>心得</tag>
       
-      <tag>Queue</tag>
-      
       <tag>Array</tag>
+      
+      <tag>Queue</tag>
       
       <tag>Bit Manipulation</tag>
       
@@ -2237,9 +2237,9 @@
       
       <tag>心得</tag>
       
-      <tag>Queue</tag>
-      
       <tag>Array</tag>
+      
+      <tag>Queue</tag>
       
       <tag>Linked List</tag>
       
@@ -2632,9 +2632,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Linked List</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Linked List</tag>
       
       <tag>Tree</tag>
       
@@ -4096,9 +4096,9 @@
       
       <tag>Recursion</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Math</tag>
+      
+      <tag>Two Pointers</tag>
       
       <tag>Bit Manipulation</tag>
       
@@ -5403,9 +5403,9 @@
       
       <tag>Hash Table</tag>
       
-      <tag>Hash Function</tag>
-      
       <tag>Design</tag>
+      
+      <tag>Hash Function</tag>
       
     </tags>
     
@@ -5582,9 +5582,9 @@
       
       <tag>Linked List</tag>
       
-      <tag>Hash Function</tag>
-      
       <tag>Design</tag>
+      
+      <tag>Hash Function</tag>
       
     </tags>
     
@@ -5621,9 +5621,9 @@
       
       <tag>Linked List</tag>
       
-      <tag>Hash Function</tag>
-      
       <tag>Design</tag>
+      
+      <tag>Hash Function</tag>
       
     </tags>
     
@@ -6039,9 +6039,9 @@
       
       <tag>心得</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Math</tag>
+      
+      <tag>Two Pointers</tag>
       
       <tag>Hash Table</tag>
       
@@ -6651,9 +6651,9 @@
       
       <tag>Hash Table</tag>
       
-      <tag>Trie</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Trie</tag>
       
       <tag>Memoization</tag>
       
@@ -7112,11 +7112,11 @@
       
       <tag>Array</tag>
       
+      <tag>Matrix</tag>
+      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
-      
-      <tag>Matrix</tag>
       
       <tag>Union Find</tag>
       
@@ -7151,11 +7151,11 @@
       
       <tag>Array</tag>
       
+      <tag>Matrix</tag>
+      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
-      
-      <tag>Matrix</tag>
       
       <tag>Union Find</tag>
       
@@ -7725,9 +7725,9 @@
       
       <tag>Array</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Matrix</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -8219,9 +8219,9 @@
       
       <tag>Greedy</tag>
       
-      <tag>Sorting</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Sorting</tag>
       
     </tags>
     
@@ -8864,9 +8864,9 @@
       
       <tag>心得</tag>
       
-      <tag>Depth-First Search</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
       
@@ -9331,9 +9331,9 @@
       
       <tag>Array</tag>
       
-      <tag>Dynamic Programming</tag>
-      
       <tag>Matrix</tag>
+      
+      <tag>Dynamic Programming</tag>
       
     </tags>
     
@@ -9912,9 +9912,9 @@
       
       <tag>Linked List</tag>
       
-      <tag>Divide and Conquer</tag>
-      
       <tag>Merge Sort</tag>
+      
+      <tag>Divide and Conquer</tag>
       
     </tags>
     
@@ -10355,9 +10355,9 @@
       
       <tag>Array</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Math</tag>
+      
+      <tag>Two Pointers</tag>
       
     </tags>
     
@@ -10796,9 +10796,9 @@
       
       <tag>Array</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Matrix</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -10912,7 +10912,7 @@
     <link href="/2023/12/06/287-Find-the-Duplicate-Number-Medium/"/>
     <url>/2023/12/06/287-Find-the-Duplicate-Number-Medium/</url>
     
-    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/find-the-duplicate-number/description/"  title="287. Find the Duplicate Number" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>毫無想法，因為不能動<code>array</code>，然後一定要<code>constant time</code></li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>這題連neetcode大大都說討厭，這是我第一次聽到他說不喜歡題目🤣總之就是一個沒看過的人根本就幾乎不可能30分鐘內想出來的問題</p><ol><li><code>Linked List cycle</code></li><li>快慢指針</li><li><code>Floyd&#39;s algo.</code></li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p>這題背就對了</p><p>詳細解釋可以看Neetcode大大的影片或是<a href="https://leetcode.com/problems/find-the-duplicate-number/solutions/4062141/97-77-6-approaches-set-count-binary-search-fast-slow-mark-sort/">討論區</a></p><iframe width="100%" height="500" src="https://www.youtube.com/embed/wjYnzkAhcNk" title="Find the Duplicate Number - Floyd&#39;s Cycle Detection - Leetcode 287 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">findDuplicate</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token comment">// Floyd's algo.</span>        <span class="token comment">// Init. pointers at the beginning</span>        <span class="token keyword">int</span> slow <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> fast <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            slow <span class="token operator">=</span> nums<span class="token punctuation">[</span>slow<span class="token punctuation">]</span><span class="token punctuation">;</span>            fast <span class="token operator">=</span> nums<span class="token punctuation">[</span>nums<span class="token punctuation">[</span>fast<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>slow <span class="token operator">==</span> fast<span class="token punctuation">)</span> <span class="token keyword">break</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">int</span> slow2 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token comment">// Move 1 step until meet</span>        <span class="token comment">// by mathematics</span>        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            slow <span class="token operator">=</span> nums<span class="token punctuation">[</span>slow<span class="token punctuation">]</span><span class="token punctuation">;</span>            slow2 <span class="token operator">=</span> nums<span class="token punctuation">[</span>slow2<span class="token punctuation">]</span><span class="token punctuation">;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>slow <span class="token operator">==</span> slow2<span class="token punctuation">)</span> <span class="token keyword">break</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> slow<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure><h2 id="2024-04-23"><a href="#2024-04-23" class="headerlink" title="2024&#x2F;04&#x2F;23"></a>2024&#x2F;04&#x2F;23</h2><ul><li>背誦題😂</li></ul>]]></content>
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/find-the-duplicate-number/description/"  title="287. Find the Duplicate Number" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>毫無想法，因為不能動<code>array</code>，然後一定要<code>constant time</code></li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>這題連neetcode大大都說討厭，這是我第一次聽到他說不喜歡題目🤣總之就是一個沒看過的人根本就幾乎不可能30分鐘內想出來的問題</p><ol><li><code>Linked List cycle</code></li><li>快慢指針</li><li><code>Floyd&#39;s algo.</code></li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p>這題背就對了</p><p>詳細解釋可以看Neetcode大大的影片或是<a href="https://leetcode.com/problems/find-the-duplicate-number/solutions/4062141/97-77-6-approaches-set-count-binary-search-fast-slow-mark-sort/">討論區</a></p><iframe width="100%" height="500" src="https://www.youtube.com/embed/wjYnzkAhcNk" title="Find the Duplicate Number - Floyd&#39;s Cycle Detection - Leetcode 287 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">findDuplicate</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token comment">// Floyd's algo.</span>        <span class="token comment">// Init. pointers at the beginning</span>        <span class="token keyword">int</span> slow <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> fast <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            slow <span class="token operator">=</span> nums<span class="token punctuation">[</span>slow<span class="token punctuation">]</span><span class="token punctuation">;</span>            fast <span class="token operator">=</span> nums<span class="token punctuation">[</span>nums<span class="token punctuation">[</span>fast<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>slow <span class="token operator">==</span> fast<span class="token punctuation">)</span> <span class="token keyword">break</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">int</span> slow2 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token comment">// Move 1 step until meet</span>        <span class="token comment">// by mathematics</span>        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            slow <span class="token operator">=</span> nums<span class="token punctuation">[</span>slow<span class="token punctuation">]</span><span class="token punctuation">;</span>            slow2 <span class="token operator">=</span> nums<span class="token punctuation">[</span>slow2<span class="token punctuation">]</span><span class="token punctuation">;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>slow <span class="token operator">==</span> slow2<span class="token punctuation">)</span> <span class="token keyword">break</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> slow<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure><h2 id="2024-04-23"><a href="#2024-04-23" class="headerlink" title="2024&#x2F;04&#x2F;23"></a>2024&#x2F;04&#x2F;23</h2><ul><li>背誦題😂</li></ul><h2 id="2025-04-25"><a href="#2025-04-25" class="headerlink" title="2025&#x2F;04&#x2F;25"></a>2025&#x2F;04&#x2F;25</h2><ul><li>這個解法似乎更好理解，直接把原始的 array 拿來當記錄，不管那個位置上的數字，只在意 index</li><li>反正有重複的話就一定會再回到同一個 index</li></ul><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">findDuplicate</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> num <span class="token operator">:</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">int</span> idx <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">[</span>idx<span class="token punctuation">]</span> <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token keyword">return</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>            nums<span class="token punctuation">[</span>idx<span class="token punctuation">]</span> <span class="token operator">*=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
     
     
     <categories>
@@ -11029,11 +11029,11 @@
       
       <tag>心得</tag>
       
+      <tag>Matrix</tag>
+      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
-      
-      <tag>Matrix</tag>
       
     </tags>
     
@@ -11742,9 +11742,9 @@
       
       <tag>Array</tag>
       
-      <tag>Java</tag>
-      
       <tag>kadanes Algorithm</tag>
+      
+      <tag>Java</tag>
       
     </tags>
     
@@ -11961,9 +11961,9 @@
     
     <tags>
       
-      <tag>Algorithms</tag>
-      
       <tag>Stack</tag>
+      
+      <tag>Algorithms</tag>
       
       <tag>筆記</tag>
       
