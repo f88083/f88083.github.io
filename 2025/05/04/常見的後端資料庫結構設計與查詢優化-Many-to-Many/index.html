@@ -27,7 +27,7 @@
 <meta property="og:description" content="假如用戶有很多 checkbox 勾選項目（A&#x2F;B&#x2F;C…），怎麼設計 DB？  在實作表單或個人化偏好設定時，常會遇到讓用戶勾選多個選項（如興趣、工作領域等）的需求。這類需求該如何設計資料庫結構？資料量大時查詢又該怎麼優化？這篇文章會從資料結構設計出發，一步步說明到查詢技巧與效能優化策略。 ✅ 多選項目資料表設計：用中介表處理多對多關係🧩 資料關聯關係 一位用戶可以選擇多個">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2025-05-04T03:21:22.000Z">
-<meta property="article:modified_time" content="2025-05-04T04:03:01.091Z">
+<meta property="article:modified_time" content="2025-05-04T05:55:56.248Z">
 <meta property="article:author" content="Simon Lai">
 <meta property="article:tag" content="系統設計">
 <meta property="article:tag" content="Database Design">
@@ -259,7 +259,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          803 字
+          806 字
         
       </span>
     
@@ -440,7 +440,7 @@
 <ul>
 <li>範例如：<code>WHERE id &gt; ? ORDER BY id LIMIT 100</code></li>
 <li>效能穩定，不需跳過大量資料。</li>
-<li>實作時可用 <a target="_blank" rel="noopener" href="https://tec.xenby.com/36-%E9%BE%90%E5%A4%A7%E8%B3%87%E6%96%99%E5%BA%AB%E5%88%86%E9%A0%81%E6%96%B9%E6%A1%88-cursor-based-pagination#:~:text=%E5%AF%A6%E9%9A%9B%E5%AF%A6%E4%BD%9C-,Page%20Token%20%E4%BB%8B%E7%B4%B9,-%E5%9C%A8%E5%AF%A6%E4%BD%9C%E6%99%82">PageToken</a> 進行封裝以及往後後端更改也不會影響前端（因為對於前端來說就是一個字串而已）</li>
+<li>實作時可用 <a target="_blank" rel="noopener" href="https://tec.xenby.com/36-%E9%BE%90%E5%A4%A7%E8%B3%87%E6%96%99%E5%BA%AB%E5%88%86%E9%A0%81%E6%96%B9%E6%A1%88-cursor-based-pagination#:~:text=%E5%AF%A6%E9%9A%9B%E5%AF%A6%E4%BD%9C-,Page%20Token%20%E4%BB%8B%E7%B4%B9,-%E5%9C%A8%E5%AF%A6%E4%BD%9C%E6%99%82">PageToken</a> ，優點是進行封裝以及往後後端更改也不會影響前端（因為對於前端來說就是一個字串而已）</li>
 </ul>
 </li>
 </ul>
