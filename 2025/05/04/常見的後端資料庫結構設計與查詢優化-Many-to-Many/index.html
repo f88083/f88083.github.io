@@ -1,0 +1,960 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/logo.png">
+  <link rel="icon" href="/images/logo.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Simon Lai">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="假如用戶有很多 checkbox 勾選項目（A&#x2F;B&#x2F;C…），怎麼設計 DB？  在實作表單或個人化偏好設定時，常會遇到讓用戶勾選多個選項（如興趣、工作領域等）的需求。這類需求該如何設計資料庫結構？資料量大時查詢又該怎麼優化？這篇文章會從資料結構設計出發，一步步說明到查詢技巧與效能優化策略。 ✅ 多選項目資料表設計：用中介表處理多對多關係🧩 資料關聯關係 一位用戶可以選擇多個">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常見的後端資料庫結構設計與查詢優化 - Many to Many">
+<meta property="og:url" content="https://f88083.github.io/2025/05/04/%E5%B8%B8%E8%A6%8B%E7%9A%84%E5%BE%8C%E7%AB%AF%E8%B3%87%E6%96%99%E5%BA%AB%E7%B5%90%E6%A7%8B%E8%A8%AD%E8%A8%88%E8%88%87%E6%9F%A5%E8%A9%A2%E5%84%AA%E5%8C%96-Many-to-Many/index.html">
+<meta property="og:site_name" content="Simon Lai&#39;s Blog">
+<meta property="og:description" content="假如用戶有很多 checkbox 勾選項目（A&#x2F;B&#x2F;C…），怎麼設計 DB？  在實作表單或個人化偏好設定時，常會遇到讓用戶勾選多個選項（如興趣、工作領域等）的需求。這類需求該如何設計資料庫結構？資料量大時查詢又該怎麼優化？這篇文章會從資料結構設計出發，一步步說明到查詢技巧與效能優化策略。 ✅ 多選項目資料表設計：用中介表處理多對多關係🧩 資料關聯關係 一位用戶可以選擇多個">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2025-05-04T03:21:22.000Z">
+<meta property="article:modified_time" content="2025-05-04T04:03:01.091Z">
+<meta property="article:author" content="Simon Lai">
+<meta property="article:tag" content="系統設計">
+<meta property="article:tag" content="Database Design">
+<meta property="article:tag" content="多對多關係">
+<meta property="article:tag" content="查詢優化">
+<meta property="article:tag" content="Index 使用技巧">
+<meta property="article:tag" content="SQL 實務">
+<meta property="article:tag" content="表單設計">
+<meta property="article:tag" content="分頁查詢">
+<meta property="article:tag" content="Keyset Pagination">
+<meta property="article:tag" content="軟刪除策略">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>常見的後端資料庫結構設計與查詢優化 - Many to Many - Simon Lai&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"f88083.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":35,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":"G-HJLTHPCQMP"},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=G-HJLTHPCQMP", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', 'G-HJLTHPCQMP');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Simon Lai&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首頁</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>歸檔</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分類</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>標籤</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>關於</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/images/bg.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="常見的後端資料庫結構設計與查詢優化 - Many to Many"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-05-04 11:21" pubdate>
+          2025年5月4日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          803 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          4 分鐘
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">常見的後端資料庫結構設計與查詢優化 - Many to Many</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <blockquote>
+<p>假如用戶有很多 checkbox 勾選項目（A&#x2F;B&#x2F;C…），怎麼設計 DB？</p>
+</blockquote>
+<p>在實作表單或個人化偏好設定時，常會遇到讓用戶勾選多個選項（如興趣、工作領域等）的需求。這類需求該如何設計資料庫結構？資料量大時查詢又該怎麼優化？這篇文章會從資料結構設計出發，一步步說明到查詢技巧與效能優化策略。</p>
+<h2 id="✅-多選項目資料表設計：用中介表處理多對多關係"><a href="#✅-多選項目資料表設計：用中介表處理多對多關係" class="headerlink" title="✅ 多選項目資料表設計：用中介表處理多對多關係"></a>✅ 多選項目資料表設計：用中介表處理多對多關係</h2><h3 id="🧩-資料關聯關係"><a href="#🧩-資料關聯關係" class="headerlink" title="🧩 資料關聯關係"></a>🧩 資料關聯關係</h3><ul>
+<li><strong>一位用戶</strong>可以選擇<strong>多個選項</strong></li>
+<li><strong>一個選項</strong>也可以被<strong>多位用戶選擇</strong></li>
+</ul>
+<p>因此，最適合的設計是使用<strong>多對多關係</strong>，透過中介表紀錄每位用戶的選擇。</p>
+<h3 id="🗂-資料表結構如下"><a href="#🗂-資料表結構如下" class="headerlink" title="🗂 資料表結構如下"></a>🗂 資料表結構如下</h3><h4 id="users-會員表"><a href="#users-會員表" class="headerlink" title="users 會員表"></a><code>users</code> 會員表</h4><p>記錄用戶基本資料。</p>
+<h4 id="options-categories-類別表"><a href="#options-categories-類別表" class="headerlink" title="options_categories 類別表"></a><code>options_categories</code> 類別表</h4><p>用來分類選項，例如「興趣」、「工作領域」。</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>興趣</td>
+</tr>
+<tr>
+<td>2</td>
+<td>工作領域</td>
+</tr>
+</tbody></table>
+<h4 id="options-選項表"><a href="#options-選項表" class="headerlink" title="options 選項表"></a><code>options</code> 選項表</h4><p>儲存每個選項，並標示它屬於哪個類別。</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>category_id</th>
+<th>label</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>1</td>
+<td>閱讀</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>運動</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1</td>
+<td>旅行</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2</td>
+<td>軟體工程師</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2</td>
+<td>行銷</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2</td>
+<td>設計師</td>
+</tr>
+</tbody></table>
+<h4 id="users-options-中介表"><a href="#users-options-中介表" class="headerlink" title="users_options 中介表"></a><code>users_options</code> 中介表</h4><p>用來記錄用戶選了哪些選項。</p>
+<h2 id="🔍-一般的查詢某用戶的勾選項目（含分類）"><a href="#🔍-一般的查詢某用戶的勾選項目（含分類）" class="headerlink" title="🔍 一般的查詢某用戶的勾選項目（含分類）"></a>🔍 一般的查詢某用戶的勾選項目（含分類）</h2><figure><div class="code-wrapper"><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> u<span class="token punctuation">.</span>name <span class="token keyword">AS</span> user_name<span class="token punctuation">,</span> c<span class="token punctuation">.</span>name <span class="token keyword">AS</span> category<span class="token punctuation">,</span> o<span class="token punctuation">.</span>label <span class="token keyword">AS</span> option_label
+<span class="token keyword">FROM</span> users u
+<span class="token keyword">JOIN</span> user_options uo <span class="token keyword">ON</span> u<span class="token punctuation">.</span>id <span class="token operator">=</span> uo<span class="token punctuation">.</span>user_id
+<span class="token keyword">JOIN</span> options o <span class="token keyword">ON</span> uo<span class="token punctuation">.</span>option_id <span class="token operator">=</span> o<span class="token punctuation">.</span>id
+<span class="token keyword">JOIN</span> option_categories c <span class="token keyword">ON</span> o<span class="token punctuation">.</span>category_id <span class="token operator">=</span> c<span class="token punctuation">.</span>id
+<span class="token keyword">WHERE</span> u<span class="token punctuation">.</span>id <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">-- 換成目標用戶的 ID</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h2 id="⚙️-若選項可能變動，該怎麼設計？"><a href="#⚙️-若選項可能變動，該怎麼設計？" class="headerlink" title="⚙️ 若選項可能變動，該怎麼設計？"></a>⚙️ 若選項可能變動，該怎麼設計？</h2><table>
+<thead>
+<tr>
+<th>做法</th>
+<th>原因與說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>使用 UUID 作為主鍵</td>
+<td>避免選項重構時產生主鍵衝突</td>
+</tr>
+<tr>
+<td><code>is_active</code> 軟刪除</td>
+<td>避免刪除選項導致歷史資料錯誤</td>
+</tr>
+<tr>
+<td>禁止&#x2F;警告有關聯的刪除</td>
+<td>若選項已被勾選，禁止直接刪除或改分類</td>
+</tr>
+<tr>
+<td>支援 label 改名</td>
+<td>不影響既有勾選資料，只變更顯示名稱</td>
+</tr>
+</tbody></table>
+<h2 id="🚀-查詢效能優化：資料多時該怎麼提升速度？"><a href="#🚀-查詢效能優化：資料多時該怎麼提升速度？" class="headerlink" title="🚀 查詢效能優化：資料多時該怎麼提升速度？"></a>🚀 查詢效能優化：資料多時該怎麼提升速度？</h2><p>當資料量增加，查詢效能成為關鍵。以下是幾個實務上的優化策略：</p>
+<pre><code class="mermaid">mindmap
+  root((查詢優化))
+
+    加 Index
+      只撈需要欄位 ⚡
+      快取熱門資料 🔍
+      建立 Materialized View
+      使用 EXPLAIN 工具
+
+    分頁策略
+      OFFSET + LIMIT（效率差）
+      Keyset Pagination（推薦）
+      主鍵作為 Cursor
+      避免大 OFFSET
+
+    加 Index 的原理與效益
+      快速定位資料行
+      支持 WHERE / JOIN / ORDER BY
+      B+ Tree
+        儲存與維護成本
+        順序重要<span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="🔹-分頁技巧"><a href="#🔹-分頁技巧" class="headerlink" title="🔹 分頁技巧"></a>🔹 分頁技巧</h3><p>如果要撈 100 筆資料顯示在前端，不建議使用 <code>OFFSET + LIMIT</code>，效能會隨著偏移量變差。</p>
+<ul>
+<li><p>✅ <strong>推薦：Keyset Pagination（主鍵作為游標）</strong></p>
+<ul>
+<li>範例如：<code>WHERE id &gt; ? ORDER BY id LIMIT 100</code></li>
+<li>效能穩定，不需跳過大量資料。</li>
+<li>實作時可用 <a target="_blank" rel="noopener" href="https://tec.xenby.com/36-%E9%BE%90%E5%A4%A7%E8%B3%87%E6%96%99%E5%BA%AB%E5%88%86%E9%A0%81%E6%96%B9%E6%A1%88-cursor-based-pagination#:~:text=%E5%AF%A6%E9%9A%9B%E5%AF%A6%E4%BD%9C-,Page%20Token%20%E4%BB%8B%E7%B4%B9,-%E5%9C%A8%E5%AF%A6%E4%BD%9C%E6%99%82">PageToken</a> 進行封裝以及往後後端更改也不會影響前端（因為對於前端來說就是一個字串而已）</li>
+</ul>
+</li>
+</ul>
+<h3 id="🔹-為什麼加-Index-能加速查詢？"><a href="#🔹-為什麼加-Index-能加速查詢？" class="headerlink" title="🔹 為什麼加 Index 能加速查詢？"></a>🔹 為什麼加 Index 能加速查詢？</h3><ul>
+<li>可快速定位資料，不用全表掃描。</li>
+<li>對 <code>WHERE</code>、<code>JOIN</code>、<code>ORDER BY</code> 都有幫助。</li>
+<li>常見結構如 B+ Tree，支援範圍查詢與排序。</li>
+</ul>
+<h2 id="🧠-總結"><a href="#🧠-總結" class="headerlink" title="🧠 總結"></a>🧠 總結</h2><ul>
+<li>勾選多選項目時，使用中介表建立多對多關係是最清晰與彈性的做法。</li>
+<li>設計時要考慮選項是否固定，以及日後是否會更動。</li>
+<li>查詢優化不可忽略，分頁與加索引是效能關鍵。</li>
+<li>工具如 <code>EXPLAIN</code> 可幫助分析查詢計劃，避免不必要的全表掃描。</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%BE%8C%E7%AB%AF/" class="category-chain-item">後端</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%B3%BB%E7%B5%B1%E8%A8%AD%E8%A8%88/" class="print-no-link">#系統設計</a>
+      
+        <a href="/tags/Database-Design/" class="print-no-link">#Database Design</a>
+      
+        <a href="/tags/%E5%A4%9A%E5%B0%8D%E5%A4%9A%E9%97%9C%E4%BF%82/" class="print-no-link">#多對多關係</a>
+      
+        <a href="/tags/%E6%9F%A5%E8%A9%A2%E5%84%AA%E5%8C%96/" class="print-no-link">#查詢優化</a>
+      
+        <a href="/tags/Index-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/" class="print-no-link">#Index 使用技巧</a>
+      
+        <a href="/tags/SQL-%E5%AF%A6%E5%8B%99/" class="print-no-link">#SQL 實務</a>
+      
+        <a href="/tags/%E8%A1%A8%E5%96%AE%E8%A8%AD%E8%A8%88/" class="print-no-link">#表單設計</a>
+      
+        <a href="/tags/%E5%88%86%E9%A0%81%E6%9F%A5%E8%A9%A2/" class="print-no-link">#分頁查詢</a>
+      
+        <a href="/tags/Keyset-Pagination/" class="print-no-link">#Keyset Pagination</a>
+      
+        <a href="/tags/%E8%BB%9F%E5%88%AA%E9%99%A4%E7%AD%96%E7%95%A5/" class="print-no-link">#軟刪除策略</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>常見的後端資料庫結構設計與查詢優化 - Many to Many</div>
+      <div>https://f88083.github.io/2025/05/04/常見的後端資料庫結構設計與查詢優化-Many-to-Many/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Simon Lai</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>發布於</div>
+          <div>2025年5月4日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>許可協議</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="NC - 非商業性使用">
+                    <i class="iconfont icon-cc-nc"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                    <i class="iconfont icon-cc-sa"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/04/22/%E5%BE%9E%E9%80%B1%E6%9C%9F%E6%80%A7%E4%BB%BB%E5%8B%99%E5%84%AA%E5%8C%96%E8%AB%87%E8%B5%B7%E4%B8%80%E6%AD%A5%E6%AD%A5%E6%B7%B1%E5%85%A5%E5%BE%8C%E7%AB%AF%E6%A0%B8%E5%BF%83%E8%AD%B0%E9%A1%8C%E7%AC%AC%E4%BA%8C%E7%AF%87/" title="從「週期性任務」優化談起，一步步深入後端核心議題第二篇 🚀 快取策略：讓網頁不卡卡的第一步">
+                        <span class="hidden-mobile">從「週期性任務」優化談起，一步步深入後端核心議題第二篇 🚀 快取策略：讓網頁不卡卡的第一步</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"f88083/blog-comments","repo-id":"R_kgDOKvLNrw","category":"Announcements","category-id":"DIC_kwDOKvLNr84CbPZE","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-TW","strict":0,"crossorigin":"anonymous"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目錄</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/mermaid@11.6.0/dist/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">關鍵字</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允許 JavaScript 運行的環境下瀏覽效果更佳</div>
+  </noscript>
+</body>
+</html>
