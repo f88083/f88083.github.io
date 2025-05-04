@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>The mechanism of the event loop in browser and node.js</title>
+    <link href="/2025/05/04/The-mechanism-of-the-event-loop-in-browser-and-node-js/"/>
+    <url>/2025/05/04/The-mechanism-of-the-event-loop-in-browser-and-node-js/</url>
+    
+    <content type="html"><![CDATA[<p>以下兩篇解釋得非常詳細，我就不班門弄斧了，做個傳送門記錄一下</p><p><a href="https://notes.andywu.tw/2020/%E5%AE%8C%E6%95%B4%E5%9C%96%E8%A7%A3node-js%E7%9A%84event-loop%E4%BA%8B%E4%BB%B6%E8%BF%B4%E5%9C%88/">完整圖解Node.js的Event Loop(事件迴圈)</a></p><p><a href="https://www.programfarmer.com/articles/2021/javascript-browser-event-loop">瀏覽器 Event Loop</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>JavaScript</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>EventLoop</tag>
+      
+      <tag>Browser</tag>
+      
+      <tag>Node.js</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>常見的後端資料庫結構設計與查詢優化 - Many to Many</title>
     <link href="/2025/05/04/%E5%B8%B8%E8%A6%8B%E7%9A%84%E5%BE%8C%E7%AB%AF%E8%B3%87%E6%96%99%E5%BA%AB%E7%B5%90%E6%A7%8B%E8%A8%AD%E8%A8%88%E8%88%87%E6%9F%A5%E8%A9%A2%E5%84%AA%E5%8C%96-Many-to-Many/"/>
     <url>/2025/05/04/%E5%B8%B8%E8%A6%8B%E7%9A%84%E5%BE%8C%E7%AB%AF%E8%B3%87%E6%96%99%E5%BA%AB%E7%B5%90%E6%A7%8B%E8%A8%AD%E8%A8%88%E8%88%87%E6%9F%A5%E8%A9%A2%E5%84%AA%E5%8C%96-Many-to-Many/</url>
@@ -12004,9 +12033,9 @@
     
     <tags>
       
-      <tag>Algorithms</tag>
-      
       <tag>Stack</tag>
+      
+      <tag>Algorithms</tag>
       
       <tag>筆記</tag>
       
