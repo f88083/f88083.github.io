@@ -4,6 +4,43 @@
   
   
   <entry>
+    <title>146. LRU Cache — Medium</title>
+    <link href="/2025/05/10/146-LRU-Cache-%E2%80%94-Medium/"/>
+    <url>/2025/05/10/146-LRU-Cache-%E2%80%94-Medium/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/lru-cache/description/"  title="146. LRU Cache" target="_blank">前往題目</a><p>搬運一下很久以前寫的</p><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>需要Map來快速定位item</li><li>但我想不通如何儲存LRU和MRU(Most Recently Used)</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>既然 get 和 put 需要 O(1) 的時間完成，get 很明顯就是用 Map，put 的話則是 DoubleLinkedList 可以做到!至於怎麼儲存 LRU 和 MRU，其實很簡單，只要每次 get 和 put 都重新放入 list 的最右邊，那最左邊就一定是 LRU，因為會被擠到最左邊去。</p><ol><li>需要 HashMap 來快速定位 item</li><li>需要 DoubleLinkedList 來快速插入 item</li><li>使用 dummy node 作為 LRU 和 MRU 的連結，這樣就不用處理 null pointer 的問題</li><li>put 裡要注意 exceeding capacity</li></ol><p>其餘就是 pointer 操作了，不贅述。</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p><a href="https://isdaniel.github.io/lru-algorithm/?source=post_page-----920fe16eacbb---------------------------------------">LRU 演算法解說</a></p><p><a href="https://github.com/neetcode-gh/leetcode/blob/main/java%2F0146-lru-cache.java?source=post_page-----920fe16eacbb---------------------------------------">0146-lru-cache.java</a></p><iframe width="100%" height="500" src="https://www.youtube.com/embed/7ABFKPK2hD4" title="LRU Cache - Twitch Interview Question - Leetcode 146" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">LRUCache</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">private</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">,</span> <span class="token class-name">Node</span><span class="token punctuation">></span></span> cache<span class="token punctuation">;</span>    <span class="token keyword">private</span> <span class="token keyword">int</span> capacity<span class="token punctuation">;</span>    <span class="token keyword">private</span> <span class="token class-name">Node</span> left<span class="token punctuation">;</span>    <span class="token keyword">private</span> <span class="token class-name">Node</span> right<span class="token punctuation">;</span>    <span class="token keyword">public</span> <span class="token class-name">LRUCache</span><span class="token punctuation">(</span><span class="token keyword">int</span> capacity<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">this</span><span class="token punctuation">.</span>capacity <span class="token operator">=</span> capacity<span class="token punctuation">;</span>        cache <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// Init. LRU and MRU</span>        <span class="token keyword">this</span><span class="token punctuation">.</span>left <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// dummy node</span>        <span class="token keyword">this</span><span class="token punctuation">.</span>right <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// dummy node</span>        <span class="token keyword">this</span><span class="token punctuation">.</span>left<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>right<span class="token punctuation">;</span> <span class="token comment">// Real LRU</span>        <span class="token keyword">this</span><span class="token punctuation">.</span>right<span class="token punctuation">.</span>prev <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>left<span class="token punctuation">;</span> <span class="token comment">// Real MRU</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token keyword">int</span> key<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>cache<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token function">remove</span><span class="token punctuation">(</span>cache<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token function">insert</span><span class="token punctuation">(</span>cache<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Become MRU</span>            <span class="token keyword">return</span> cache<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">.</span>val<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">put</span><span class="token punctuation">(</span><span class="token keyword">int</span> key<span class="token punctuation">,</span> <span class="token keyword">int</span> val<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>cache<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token function">remove</span><span class="token punctuation">(</span>cache<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        cache<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> val<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token function">insert</span><span class="token punctuation">(</span>cache<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token comment">// Exceed capacity</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>cache<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> capacity<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token class-name">Node</span> lru <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>left<span class="token punctuation">.</span>next<span class="token punctuation">;</span>            <span class="token function">remove</span><span class="token punctuation">(</span>lru<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Remove from list</span>            cache<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>lru<span class="token punctuation">.</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Remove from map</span>        <span class="token punctuation">&#125;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">remove</span><span class="token punctuation">(</span><span class="token class-name">Node</span> node<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token comment">// Previous Node of node</span>        <span class="token class-name">Node</span> prevNode <span class="token operator">=</span> node<span class="token punctuation">.</span>prev<span class="token punctuation">;</span>        <span class="token comment">// Next Node of node</span>        <span class="token class-name">Node</span> nextNode <span class="token operator">=</span> node<span class="token punctuation">.</span>next<span class="token punctuation">;</span>        prevNode<span class="token punctuation">.</span>next <span class="token operator">=</span> nextNode<span class="token punctuation">;</span>        nextNode<span class="token punctuation">.</span>prev <span class="token operator">=</span> prevNode<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">insert</span><span class="token punctuation">(</span><span class="token class-name">Node</span> node<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token comment">// New node as the MRU</span>        <span class="token class-name">Node</span> prevNode <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>right<span class="token punctuation">.</span>prev<span class="token punctuation">;</span>        <span class="token comment">// Dummy node</span>        <span class="token class-name">Node</span> nextNode <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>right<span class="token punctuation">;</span>        <span class="token comment">// Point to the new node</span>        prevNode<span class="token punctuation">.</span>next <span class="token operator">=</span> node<span class="token punctuation">;</span>        nextNode<span class="token punctuation">.</span>prev <span class="token operator">=</span> node<span class="token punctuation">;</span>        <span class="token comment">// New node point to its neighbours</span>        node<span class="token punctuation">.</span>prev <span class="token operator">=</span> prevNode<span class="token punctuation">;</span>        node<span class="token punctuation">.</span>next <span class="token operator">=</span> nextNode<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token keyword">class</span> <span class="token class-name">Node</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">private</span> <span class="token keyword">int</span> key<span class="token punctuation">;</span>        <span class="token keyword">private</span> <span class="token keyword">int</span> val<span class="token punctuation">;</span>        <span class="token class-name">Node</span> prev<span class="token punctuation">;</span>        <span class="token class-name">Node</span> next<span class="token punctuation">;</span>        <span class="token keyword">public</span> <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token keyword">int</span> key<span class="token punctuation">,</span> <span class="token keyword">int</span> val<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">this</span><span class="token punctuation">.</span>key <span class="token operator">=</span> key<span class="token punctuation">;</span>            <span class="token keyword">this</span><span class="token punctuation">.</span>val <span class="token operator">=</span> val<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token comment">/** * Your LRUCache object will be instantiated and called as such: * LRUCache obj = new LRUCache(capacity); * int param_1 = obj.get(key); * obj.put(key,value); */</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Medium</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>Hash Table</tag>
+      
+      <tag>Linked List</tag>
+      
+      <tag>Design</tag>
+      
+      <tag>Doubly-Linked List</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>The mechanism of the event loop in browser and node.js</title>
     <link href="/2025/05/04/The-mechanism-of-the-event-loop-in-browser-and-node-js/"/>
     <url>/2025/05/04/The-mechanism-of-the-event-loop-in-browser-and-node-js/</url>
@@ -1656,9 +1693,9 @@
       
       <tag>Array</tag>
       
-      <tag>Math</tag>
-      
       <tag>Greedy</tag>
+      
+      <tag>Math</tag>
       
       <tag>Number Theory</tag>
       
@@ -2597,9 +2634,9 @@
       
       <tag>Array</tag>
       
-      <tag>Trie</tag>
-      
       <tag>Sorting</tag>
+      
+      <tag>Trie</tag>
       
       <tag>Binary Search</tag>
       
@@ -4168,9 +4205,9 @@
       
       <tag>Recursion</tag>
       
-      <tag>Math</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Math</tag>
       
       <tag>Bit Manipulation</tag>
       
@@ -6111,9 +6148,9 @@
       
       <tag>心得</tag>
       
-      <tag>Math</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Math</tag>
       
       <tag>Hash Table</tag>
       
@@ -6799,9 +6836,9 @@
       
       <tag>Hash Table</tag>
       
-      <tag>Depth-First Search</tag>
-      
       <tag>Sorting</tag>
+      
+      <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
       
@@ -10427,9 +10464,9 @@
       
       <tag>Array</tag>
       
-      <tag>Math</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Math</tag>
       
     </tags>
     
