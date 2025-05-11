@@ -19,26 +19,26 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前往題目  想法 一直算新的數字，然後每次都存到set裡面 檢查是否有一樣的，有的話就代表進入loop了，因為數字一樣，算出來的結果就一樣  思路 循環直到當前數字為1 每次循環都根據題目的公式算出新的值，然後檢查是否hashset裡面已經有了 有的話就代表無限迴圈 沒有的話就繼續  難得自己寫出來的題目:D Codeclass Solution &#123;     public boolean">
+    <meta name="description" content="前往題目  搬運一下以前的文章，幸好我對於這題的第一想法已經不是用 hashmap 了，有進步！ 想法 非常簡單，但一開始用了hashmap，太冗餘了，簡單的array存count就可以了  Codeclass Solution &#123;     public boolean isAnagram(String s, String t) &#123;         &#x2F;&#x2F; Base case">
 <meta property="og:type" content="article">
-<meta property="og:title" content="202. Happy Number - Easy">
-<meta property="og:url" content="https://f88083.github.io/2024/03/13/202-Happy-Number-Easy/index.html">
+<meta property="og:title" content="242. Valid Anagram — Easy">
+<meta property="og:url" content="https://f88083.github.io/2025/05/11/242-Valid-Anagram-%E2%80%94-Easy/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="前往題目  想法 一直算新的數字，然後每次都存到set裡面 檢查是否有一樣的，有的話就代表進入loop了，因為數字一樣，算出來的結果就一樣  思路 循環直到當前數字為1 每次循環都根據題目的公式算出新的值，然後檢查是否hashset裡面已經有了 有的話就代表無限迴圈 沒有的話就繼續  難得自己寫出來的題目:D Codeclass Solution &#123;     public boolean">
+<meta property="og:description" content="前往題目  搬運一下以前的文章，幸好我對於這題的第一想法已經不是用 hashmap 了，有進步！ 想法 非常簡單，但一開始用了hashmap，太冗餘了，簡單的array存count就可以了  Codeclass Solution &#123;     public boolean isAnagram(String s, String t) &#123;         &#x2F;&#x2F; Base case">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2024-03-13T03:07:14.000Z">
-<meta property="article:modified_time" content="2024-05-29T16:47:04.967Z">
+<meta property="article:published_time" content="2025-05-11T08:27:49.000Z">
+<meta property="article:modified_time" content="2025-05-11T08:32:29.030Z">
 <meta property="article:author" content="Simon Lai">
 <meta property="article:tag" content="Leetcode">
 <meta property="article:tag" content="心得">
-<meta property="article:tag" content="Math">
-<meta property="article:tag" content="Two Pointers">
+<meta property="article:tag" content="String">
 <meta property="article:tag" content="Hash Table">
+<meta property="article:tag" content="Sorting">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>202. Happy Number - Easy - Simon Lai&#39;s Blog</title>
+  <title>242. Valid Anagram — Easy - Simon Lai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -231,7 +231,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="202. Happy Number - Easy"></span>
+            <span id="subtitle" data-typed-text="242. Valid Anagram — Easy"></span>
           
         </div>
 
@@ -242,8 +242,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-03-13 11:07" pubdate>
-          2024年3月13日 上午
+        <time datetime="2025-05-11 16:27" pubdate>
+          2025年5月11日 下午
         </time>
       </span>
     
@@ -254,7 +254,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          193 字
+          103 字
         
       </span>
     
@@ -302,54 +302,40 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">202. Happy Number - Easy</h1>
+            <h1 id="seo-header">242. Valid Anagram — Easy</h1>
             
             
               <div class="markdown-body">
                 
-                <a class="btn" href="https://leetcode.com/problems/happy-number/description/"  title="202. Happy Number" target="_blank">前往題目</a>
+                <a class="btn" href="https://leetcode.com/problems/valid-anagram/description/"  title="242. Valid Anagram" target="_blank">前往題目</a>
 
+<p>搬運一下以前的文章，幸好我對於這題的第一想法已經不是用 hashmap 了，有進步！</p>
 <h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul>
-<li>一直算新的數字，然後每次都存到<code>set</code>裡面</li>
-<li>檢查是否有一樣的，有的話就代表進入<code>loop</code>了，因為數字一樣，算出來的結果就一樣</li>
+<li>非常簡單，但一開始用了hashmap，太冗餘了，簡單的array存count就可以了</li>
 </ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
-<li>循環直到當前數字為<code>1</code></li>
-<li>每次循環都根據題目的公式算出新的值，然後檢查是否<code>hashset</code>裡面已經有了</li>
-<li>有的話就代表無限迴圈</li>
-<li>沒有的話就繼續</li>
-</ol>
-<p>難得自己寫出來的題目:D</p>
 <h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isHappy</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token class-name">HashSet</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> computed <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashSet</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isAnagram</span><span class="token punctuation">(</span><span class="token class-name">String</span> s<span class="token punctuation">,</span> <span class="token class-name">String</span> t<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// Base case</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> t<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
 
-        <span class="token keyword">int</span> current <span class="token operator">=</span> n<span class="token punctuation">;</span>
-
-        <span class="token comment">// 1 is true</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>current <span class="token operator">!=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            
-            <span class="token comment">// Waiting to cut digits</span>
-            <span class="token keyword">int</span> meat <span class="token operator">=</span> current<span class="token punctuation">;</span>
-            current <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// reset for new value</span>
-
-            <span class="token comment">// Separate the digit and make the new value</span>
-            <span class="token keyword">while</span> <span class="token punctuation">(</span>meat <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                <span class="token comment">// 平方加起來</span>
-                current <span class="token operator">+=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span>meat <span class="token operator">%</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token comment">// 更新肉</span>
-                meat <span class="token operator">/=</span> <span class="token number">10</span><span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>
-
-            <span class="token comment">// 檢查是否已經有了</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>computed<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span>current<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-            <span class="token comment">// 加到set裡面</span>
-            computed<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>current<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// Store alphabetes counts</span>
+        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> count <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">26</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        
+        <span class="token comment">// Record counts</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">char</span> c <span class="token operator">:</span> s<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            count<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token number">97</span><span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span>
         <span class="token punctuation">&#125;</span>
 
+        <span class="token comment">// Check counts</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">char</span> c <span class="token operator">:</span> t<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>count<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token number">97</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+
+            count<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token number">97</span><span class="token punctuation">]</span><span class="token operator">--</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        
         <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
                 
               </div>
@@ -394,11 +380,11 @@
       
         <a href="/tags/%E5%BF%83%E5%BE%97/" class="print-no-link">#心得</a>
       
-        <a href="/tags/Math/" class="print-no-link">#Math</a>
-      
-        <a href="/tags/Two-Pointers/" class="print-no-link">#Two Pointers</a>
+        <a href="/tags/String/" class="print-no-link">#String</a>
       
         <a href="/tags/Hash-Table/" class="print-no-link">#Hash Table</a>
+      
+        <a href="/tags/Sorting/" class="print-no-link">#Sorting</a>
       
     </div>
   
@@ -410,8 +396,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>202. Happy Number - Easy</div>
-      <div>https://f88083.github.io/2024/03/13/202-Happy-Number-Easy/</div>
+      <div>242. Valid Anagram — Easy</div>
+      <div>https://f88083.github.io/2025/05/11/242-Valid-Anagram-—-Easy/</div>
     </div>
     <div class="license-meta">
       
@@ -423,7 +409,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>發布於</div>
-          <div>2024年3月13日</div>
+          <div>2025年5月11日</div>
         </div>
       
       
@@ -467,18 +453,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/03/14/43-Multiply-Strings-Medium/" title="43. Multiply Strings - Medium">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">43. Multiply Strings - Medium</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/03/12/678-Valid-Parenthesis-String-Medium/" title="678. Valid Parenthesis String - Medium">
-                        <span class="hidden-mobile">678. Valid Parenthesis String - Medium</span>
+                      <a href="/2025/05/10/146-LRU-Cache-%E2%80%94-Medium/" title="146. LRU Cache — Medium">
+                        <span class="hidden-mobile">146. LRU Cache — Medium</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

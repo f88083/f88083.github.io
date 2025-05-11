@@ -4,6 +4,41 @@
   
   
   <entry>
+    <title>242. Valid Anagram — Easy</title>
+    <link href="/2025/05/11/242-Valid-Anagram-%E2%80%94-Easy/"/>
+    <url>/2025/05/11/242-Valid-Anagram-%E2%80%94-Easy/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/valid-anagram/description/"  title="242. Valid Anagram" target="_blank">前往題目</a><p>搬運一下以前的文章，幸好我對於這題的第一想法已經不是用 hashmap 了，有進步！</p><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>非常簡單，但一開始用了hashmap，太冗餘了，簡單的array存count就可以了</li></ul><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isAnagram</span><span class="token punctuation">(</span><span class="token class-name">String</span> s<span class="token punctuation">,</span> <span class="token class-name">String</span> t<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token comment">// Base case</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> t<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>        <span class="token comment">// Store alphabetes counts</span>        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> count <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">26</span><span class="token punctuation">]</span><span class="token punctuation">;</span>                <span class="token comment">// Record counts</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">char</span> c <span class="token operator">:</span> s<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            count<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token number">97</span><span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// Check counts</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">char</span> c <span class="token operator">:</span> t<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>count<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token number">97</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>            count<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token number">97</span><span class="token punctuation">]</span><span class="token operator">--</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>                <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Easy</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>String</tag>
+      
+      <tag>Hash Table</tag>
+      
+      <tag>Sorting</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>146. LRU Cache — Medium</title>
     <link href="/2025/05/10/146-LRU-Cache-%E2%80%94-Medium/"/>
     <url>/2025/05/10/146-LRU-Cache-%E2%80%94-Medium/</url>
@@ -420,9 +455,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -581,9 +616,9 @@
       
       <tag>Two Pointers</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Hash Table</tag>
+      
+      <tag>Greedy</tag>
       
     </tags>
     
@@ -837,9 +872,9 @@
       
       <tag>心得</tag>
       
-      <tag>Queue</tag>
-      
       <tag>Array</tag>
+      
+      <tag>Queue</tag>
       
       <tag>Bit Manipulation</tag>
       
@@ -1187,9 +1222,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -1224,9 +1259,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -1298,9 +1333,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -1409,9 +1444,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -1448,9 +1483,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -1693,9 +1728,9 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Math</tag>
+      
+      <tag>Greedy</tag>
       
       <tag>Number Theory</tag>
       
@@ -1804,9 +1839,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -1841,9 +1876,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -2346,9 +2381,9 @@
       
       <tag>心得</tag>
       
-      <tag>Queue</tag>
-      
       <tag>Array</tag>
+      
+      <tag>Queue</tag>
       
       <tag>Linked List</tag>
       
@@ -2741,11 +2776,11 @@
       
       <tag>Depth-First Search</tag>
       
+      <tag>Breadth-First Search</tag>
+      
       <tag>Linked List</tag>
       
       <tag>Tree</tag>
-      
-      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -3118,9 +3153,9 @@
       
       <tag>Stack</tag>
       
-      <tag>Queue</tag>
-      
       <tag>Depth-First Search</tag>
+      
+      <tag>Queue</tag>
       
       <tag>Tree</tag>
       
@@ -3797,9 +3832,9 @@
       
       <tag>String</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Greedy</tag>
       
       <tag>Sliding Window</tag>
       
@@ -3902,9 +3937,9 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Sorting</tag>
+      
+      <tag>Greedy</tag>
       
       <tag>Binary Search</tag>
       
@@ -4013,9 +4048,9 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Greedy</tag>
       
     </tags>
     
@@ -4205,9 +4240,9 @@
       
       <tag>Recursion</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Math</tag>
+      
+      <tag>Two Pointers</tag>
       
       <tag>Bit Manipulation</tag>
       
@@ -4312,9 +4347,9 @@
       
       <tag>Two Pointers</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Sorting</tag>
+      
+      <tag>Greedy</tag>
       
     </tags>
     
@@ -4349,9 +4384,9 @@
       
       <tag>Two Pointers</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Sorting</tag>
+      
+      <tag>Greedy</tag>
       
     </tags>
     
@@ -4386,9 +4421,9 @@
       
       <tag>Two Pointers</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Sorting</tag>
+      
+      <tag>Greedy</tag>
       
     </tags>
     
@@ -4421,9 +4456,9 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Sorting</tag>
+      
+      <tag>Greedy</tag>
       
     </tags>
     
@@ -5045,11 +5080,11 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Hash Table</tag>
       
       <tag>Sorting</tag>
+      
+      <tag>Greedy</tag>
       
       <tag>Heap (Priority Queue)</tag>
       
@@ -5619,9 +5654,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -5973,9 +6008,9 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Greedy</tag>
       
     </tags>
     
@@ -6010,9 +6045,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -6148,9 +6183,9 @@
       
       <tag>心得</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Math</tag>
+      
+      <tag>Two Pointers</tag>
       
       <tag>Hash Table</tag>
       
@@ -6187,9 +6222,9 @@
       
       <tag>String</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Greedy</tag>
       
     </tags>
     
@@ -6224,9 +6259,9 @@
       
       <tag>Two Pointers</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Hash Table</tag>
+      
+      <tag>Greedy</tag>
       
     </tags>
     
@@ -6391,11 +6426,11 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Hash Table</tag>
       
       <tag>Sorting</tag>
+      
+      <tag>Greedy</tag>
       
     </tags>
     
@@ -6428,9 +6463,9 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Greedy</tag>
       
     </tags>
     
@@ -7614,9 +7649,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -8291,9 +8326,9 @@
       
       <tag>String</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Hash Table</tag>
+      
+      <tag>Greedy</tag>
       
     </tags>
     
@@ -8326,11 +8361,11 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Dynamic Programming</tag>
       
       <tag>Sorting</tag>
+      
+      <tag>Greedy</tag>
       
     </tags>
     
@@ -8940,9 +8975,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -9154,9 +9189,9 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Sorting</tag>
+      
+      <tag>Greedy</tag>
       
     </tags>
     
@@ -9232,9 +9267,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -9370,9 +9405,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -9648,9 +9683,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -10126,9 +10161,9 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Greedy</tag>
       
     </tags>
     
@@ -10332,9 +10367,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -10464,9 +10499,9 @@
       
       <tag>Array</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Math</tag>
+      
+      <tag>Two Pointers</tag>
       
     </tags>
     
