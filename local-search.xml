@@ -490,9 +490,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -649,9 +649,9 @@
       
       <tag>String</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Greedy</tag>
       
       <tag>Hash Table</tag>
       
@@ -1257,9 +1257,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -1294,9 +1294,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -1368,9 +1368,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -1479,9 +1479,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -1518,9 +1518,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -1874,9 +1874,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -1911,9 +1911,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -2813,9 +2813,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -4380,9 +4380,9 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Greedy</tag>
       
       <tag>Sorting</tag>
       
@@ -4417,9 +4417,9 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Greedy</tag>
       
       <tag>Sorting</tag>
       
@@ -4454,9 +4454,9 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Greedy</tag>
       
       <tag>Sorting</tag>
       
@@ -4736,9 +4736,9 @@
       
       <tag>String</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Greedy</tag>
       
     </tags>
     
@@ -5300,9 +5300,9 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Greedy</tag>
       
     </tags>
     
@@ -5689,9 +5689,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -6080,9 +6080,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -6292,9 +6292,9 @@
       
       <tag>String</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Greedy</tag>
       
       <tag>Hash Table</tag>
       
@@ -7573,9 +7573,9 @@
       
       <tag>Linked List</tag>
       
-      <tag>Heap (Priority Queue)</tag>
-      
       <tag>Design</tag>
+      
+      <tag>Heap (Priority Queue)</tag>
       
     </tags>
     
@@ -7645,9 +7645,9 @@
       
       <tag>Tree</tag>
       
-      <tag>Heap (Priority Queue)</tag>
-      
       <tag>Design</tag>
+      
+      <tag>Heap (Priority Queue)</tag>
       
       <tag>Data Stream</tag>
       
@@ -7684,9 +7684,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -8081,9 +8081,9 @@
       
       <tag>Array</tag>
       
-      <tag>Greedy</tag>
-      
       <tag>Two Pointers</tag>
+      
+      <tag>Greedy</tag>
       
     </tags>
     
@@ -8798,7 +8798,7 @@
     <link href="/2024/01/20/208-Implement-Trie-Prefix-Tree-Medium/"/>
     <url>/2024/01/20/208-Implement-Trie-Prefix-Tree-Medium/</url>
     
-    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/implement-trie-prefix-tree/description/"  title="208. Implement Trie (Prefix Tree) - Medium" target="_blank">前往題目</a><p>之前寫過，搬運一下</p><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>大概念是看影片才得來</li><li>一半是自己照著概念寫出來的</li><li>但<code>class</code>之間<code>attribute</code>的操作不熟練</li><li>而且原來<code>inner class</code>的<code>private</code>，包含他的<code>class</code>是可以存取的</li><li>本來想說要寫<code>get set</code>，但根本不用</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>新建<code>TrieNode class</code>，用以表示<code>Trie</code>的節點</li><li>每個<code>node</code>都有自己的<code>children</code></li><li><code>Trie</code>物件裡新增<code>instance variable</code>作為<code>root</code></li><li>每個<code>function</code>都從<code>root</code>開始一個一個<code>char</code>看</li><li>對有或沒有該<code>char</code>做處理</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="400" src="https://www.youtube.com/embed/5fntVoXeW_A" title="【每日一题】207. Course Schedule, 7/20/2020" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><iframe width="100%" height="400" src="https://www.youtube.com/embed/oobqoCJlHA0" title="Implement Trie (Prefix Tree) - Leetcode 208" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Trie</span> <span class="token punctuation">&#123;</span>    <span class="token class-name">TrieNode</span> root<span class="token punctuation">;</span>    <span class="token keyword">public</span> <span class="token class-name">Trie</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        root <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TrieNode</span><span class="token punctuation">(</span><span class="token char">'\0'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Insert dummy node as root</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">insert</span><span class="token punctuation">(</span><span class="token class-name">String</span> word<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token class-name">TrieNode</span> currNode <span class="token operator">=</span> root<span class="token punctuation">;</span>                <span class="token comment">// Iterate each character of the words</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">char</span> c <span class="token operator">:</span> word<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// Check if not exist</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>currNode<span class="token punctuation">.</span>children<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token comment">// Insert if the char is not present</span>                currNode<span class="token punctuation">.</span>children<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TrieNode</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>            <span class="token comment">// When exist switch to it and go on</span>            currNode <span class="token operator">=</span> currNode<span class="token punctuation">.</span>children<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// Mark the last as the end of the word</span>        currNode<span class="token punctuation">.</span>isWord <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">search</span><span class="token punctuation">(</span><span class="token class-name">String</span> word<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token class-name">TrieNode</span> currNode <span class="token operator">=</span> root<span class="token punctuation">;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">char</span> c <span class="token operator">:</span> word<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// Check if not exist</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>currNode<span class="token punctuation">.</span>children<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>            <span class="token comment">// Switch to the character and keep searching the next</span>            currNode <span class="token operator">=</span> currNode<span class="token punctuation">.</span>children<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// Check the last character is the end of the word</span>        <span class="token keyword">return</span> currNode<span class="token punctuation">.</span>isWord <span class="token operator">==</span> <span class="token boolean">true</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token class-name">String</span> prefix<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token class-name">TrieNode</span> currNode <span class="token operator">=</span> root<span class="token punctuation">;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">char</span> c <span class="token operator">:</span> prefix<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// Check if not exist</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>currNode<span class="token punctuation">.</span>children<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>            <span class="token comment">// Switch to the character and keep searching the next</span>            currNode <span class="token operator">=</span> currNode<span class="token punctuation">.</span>children<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">class</span> <span class="token class-name">TrieNode</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">private</span> <span class="token keyword">char</span> value<span class="token punctuation">;</span>        <span class="token keyword">private</span> <span class="token keyword">boolean</span> isWord<span class="token punctuation">;</span>        <span class="token keyword">private</span> <span class="token class-name">TrieNode</span><span class="token punctuation">[</span><span class="token punctuation">]</span> children<span class="token punctuation">;</span>        <span class="token keyword">public</span> <span class="token class-name">TrieNode</span><span class="token punctuation">(</span><span class="token keyword">char</span> val<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">this</span><span class="token punctuation">.</span>value <span class="token operator">=</span> val<span class="token punctuation">;</span>            <span class="token keyword">this</span><span class="token punctuation">.</span>isWord <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>            <span class="token keyword">this</span><span class="token punctuation">.</span>children <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TrieNode</span><span class="token punctuation">[</span><span class="token number">26</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure><h2 id="2024-01-20"><a href="#2024-01-20" class="headerlink" title="2024&#x2F;01&#x2F;20"></a>2024&#x2F;01&#x2F;20</h2><ul><li>大致上自己寫出來了，還是參考了一點之前寫的</li><li>決定用哪種資料結構的時候還是有些掙扎</li></ul>]]></content>
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/implement-trie-prefix-tree/description/"  title="208. Implement Trie (Prefix Tree) - Medium" target="_blank">前往題目</a><p>之前寫過，搬運一下</p><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>大概念是看影片才得來</li><li>一半是自己照著概念寫出來的</li><li>但<code>class</code>之間<code>attribute</code>的操作不熟練</li><li>而且原來<code>inner class</code>的<code>private</code>，包含他的<code>class</code>是可以存取的</li><li>本來想說要寫<code>get set</code>，但根本不用</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>新建<code>TrieNode class</code>，用以表示<code>Trie</code>的節點</li><li>每個<code>node</code>都有自己的<code>children</code></li><li><code>Trie</code>物件裡新增<code>instance variable</code>作為<code>root</code></li><li>每個<code>function</code>都從<code>root</code>開始一個一個<code>char</code>看</li><li>對有或沒有該<code>char</code>做處理</li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="400" src="https://www.youtube.com/embed/oobqoCJlHA0" title="Implement Trie (Prefix Tree) - Leetcode 208" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Trie</span> <span class="token punctuation">&#123;</span>    <span class="token class-name">TrieNode</span> root<span class="token punctuation">;</span>    <span class="token keyword">public</span> <span class="token class-name">Trie</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        root <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TrieNode</span><span class="token punctuation">(</span><span class="token char">'\0'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Insert dummy node as root</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">insert</span><span class="token punctuation">(</span><span class="token class-name">String</span> word<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token class-name">TrieNode</span> currNode <span class="token operator">=</span> root<span class="token punctuation">;</span>                <span class="token comment">// Iterate each character of the words</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">char</span> c <span class="token operator">:</span> word<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// Check if not exist</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>currNode<span class="token punctuation">.</span>children<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token comment">// Insert if the char is not present</span>                currNode<span class="token punctuation">.</span>children<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TrieNode</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>            <span class="token comment">// When exist switch to it and go on</span>            currNode <span class="token operator">=</span> currNode<span class="token punctuation">.</span>children<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// Mark the last as the end of the word</span>        currNode<span class="token punctuation">.</span>isWord <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">search</span><span class="token punctuation">(</span><span class="token class-name">String</span> word<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token class-name">TrieNode</span> currNode <span class="token operator">=</span> root<span class="token punctuation">;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">char</span> c <span class="token operator">:</span> word<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// Check if not exist</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>currNode<span class="token punctuation">.</span>children<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>            <span class="token comment">// Switch to the character and keep searching the next</span>            currNode <span class="token operator">=</span> currNode<span class="token punctuation">.</span>children<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// Check the last character is the end of the word</span>        <span class="token keyword">return</span> currNode<span class="token punctuation">.</span>isWord <span class="token operator">==</span> <span class="token boolean">true</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token class-name">String</span> prefix<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token class-name">TrieNode</span> currNode <span class="token operator">=</span> root<span class="token punctuation">;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">char</span> c <span class="token operator">:</span> prefix<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// Check if not exist</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>currNode<span class="token punctuation">.</span>children<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>            <span class="token comment">// Switch to the character and keep searching the next</span>            currNode <span class="token operator">=</span> currNode<span class="token punctuation">.</span>children<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">class</span> <span class="token class-name">TrieNode</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">private</span> <span class="token keyword">char</span> value<span class="token punctuation">;</span>        <span class="token keyword">private</span> <span class="token keyword">boolean</span> isWord<span class="token punctuation">;</span>        <span class="token keyword">private</span> <span class="token class-name">TrieNode</span><span class="token punctuation">[</span><span class="token punctuation">]</span> children<span class="token punctuation">;</span>        <span class="token keyword">public</span> <span class="token class-name">TrieNode</span><span class="token punctuation">(</span><span class="token keyword">char</span> val<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">this</span><span class="token punctuation">.</span>value <span class="token operator">=</span> val<span class="token punctuation">;</span>            <span class="token keyword">this</span><span class="token punctuation">.</span>isWord <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>            <span class="token keyword">this</span><span class="token punctuation">.</span>children <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TrieNode</span><span class="token punctuation">[</span><span class="token number">26</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure><h2 id="2024-01-20"><a href="#2024-01-20" class="headerlink" title="2024&#x2F;01&#x2F;20"></a>2024&#x2F;01&#x2F;20</h2><ul><li>大致上自己寫出來了，還是參考了一點之前寫的</li><li>決定用哪種資料結構的時候還是有些掙扎</li></ul>]]></content>
     
     
     <categories>
@@ -9010,9 +9010,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -9302,9 +9302,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -9440,9 +9440,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -9718,9 +9718,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -10402,9 +10402,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
