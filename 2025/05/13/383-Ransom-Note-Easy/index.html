@@ -19,27 +19,26 @@
   <meta name="author" content="Simon Lai">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前往題目  想法 不知道如何判斷partition在何時結束  思路其實很簡單，疊代s的字符，每次都取最大的終點，這樣在一個partition結束時指針就會剛好等於end，因為此區間沒有更遠的字符了  紀錄每個字符(總共26個小寫字母)的終點 疊代s的所有字符，每次更新size和終點 指針等於終點的時候就是一個partition結束的時候 加入結果，並且歸零size  Code  class So">
+    <meta name="description" content="前往題目  想法 簡單的 hash table 或是用 array 更快更省空間  Codeclass Solution &#123;     public boolean canConstruct(String ransomNote, String magazine) &#123;         int[] count &#x3D; new int[26];          Arrays.fill(c">
 <meta property="og:type" content="article">
-<meta property="og:title" content="763. Partition Labels - Medium">
-<meta property="og:url" content="https://f88083.github.io/2024/03/11/763-Partition-Labels-Medium/index.html">
+<meta property="og:title" content="383. Ransom Note - Easy">
+<meta property="og:url" content="https://f88083.github.io/2025/05/13/383-Ransom-Note-Easy/index.html">
 <meta property="og:site_name" content="Simon Lai&#39;s Blog">
-<meta property="og:description" content="前往題目  想法 不知道如何判斷partition在何時結束  思路其實很簡單，疊代s的字符，每次都取最大的終點，這樣在一個partition結束時指針就會剛好等於end，因為此區間沒有更遠的字符了  紀錄每個字符(總共26個小寫字母)的終點 疊代s的所有字符，每次更新size和終點 指針等於終點的時候就是一個partition結束的時候 加入結果，並且歸零size  Code  class So">
+<meta property="og:description" content="前往題目  想法 簡單的 hash table 或是用 array 更快更省空間  Codeclass Solution &#123;     public boolean canConstruct(String ransomNote, String magazine) &#123;         int[] count &#x3D; new int[26];          Arrays.fill(c">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2024-03-11T03:15:43.000Z">
-<meta property="article:modified_time" content="2024-05-29T16:47:04.967Z">
+<meta property="article:published_time" content="2025-05-13T03:19:02.000Z">
+<meta property="article:modified_time" content="2025-05-13T03:20:39.086Z">
 <meta property="article:author" content="Simon Lai">
 <meta property="article:tag" content="Leetcode">
 <meta property="article:tag" content="心得">
 <meta property="article:tag" content="String">
-<meta property="article:tag" content="Greedy">
-<meta property="article:tag" content="Two Pointers">
 <meta property="article:tag" content="Hash Table">
+<meta property="article:tag" content="Counting">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>763. Partition Labels - Medium - Simon Lai&#39;s Blog</title>
+  <title>383. Ransom Note - Easy - Simon Lai&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -232,7 +231,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="763. Partition Labels - Medium"></span>
+            <span id="subtitle" data-typed-text="383. Ransom Note - Easy"></span>
           
         </div>
 
@@ -243,8 +242,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-03-11 11:15" pubdate>
-          2024年3月11日 上午
+        <time datetime="2025-05-13 11:19" pubdate>
+          2025年5月13日 上午
         </time>
       </span>
     
@@ -255,7 +254,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          204 字
+          64 字
         
       </span>
     
@@ -303,55 +302,37 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">763. Partition Labels - Medium</h1>
+            <h1 id="seo-header">383. Ransom Note - Easy</h1>
             
             
               <div class="markdown-body">
                 
-                <a class="btn" href="https://leetcode.com/problems/partition-labels/"  title="763. Partition Labels" target="_blank">前往題目</a>
+                <a class="btn" href="https://leetcode.com/problems/ransom-note/description/"  title="383. Ransom Note" target="_blank">前往題目</a>
 
 <h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul>
-<li>不知道如何判斷<code>partition</code>在何時結束</li>
+<li>簡單的 hash table 或是用 array 更快更省空間</li>
 </ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>其實很簡單，疊代<code>s</code>的字符，每次都取最大的終點，這樣在一個<code>partition</code>結束時指針就會剛好等於<code>end</code>，因為此區間沒有更遠的字符了</p>
-<ol>
-<li>紀錄每個字符(總共26個小寫字母)的終點</li>
-<li>疊代<code>s</code>的所有字符，每次更新<code>size</code>和終點</li>
-<li>指針等於終點的時候就是一個<code>partition</code>結束的時候</li>
-<li>加入結果，並且歸零<code>size</code></li>
-</ol>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><iframe width="100%" height="500" src="https://www.youtube.com/embed/B7m8UmZE-vw" title="Partition Labels - Leetcode 763 - Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">canConstruct</span><span class="token punctuation">(</span><span class="token class-name">String</span> ransomNote<span class="token punctuation">,</span> <span class="token class-name">String</span> magazine<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> count <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">26</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> <span class="token function">partitionLabels</span><span class="token punctuation">(</span><span class="token class-name">String</span> s<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> res <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">26</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// alphabet -> lastIndex</span>
-        
-        <span class="token comment">// Store each character's last position</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            map<span class="token punctuation">[</span>s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span> <span class="token operator">=</span> i<span class="token punctuation">;</span>
+        <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span>count<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// Store counting of each character in magazine</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">char</span> c <span class="token operator">:</span> magazine<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            count<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">;</span>
         <span class="token punctuation">&#125;</span>
 
-        <span class="token comment">// Keep track of the partition size</span>
-        <span class="token keyword">int</span> size <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token comment">// The temp end of the partition</span>
-        <span class="token keyword">int</span> end <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-
-        <span class="token comment">// Go through the string</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token operator">++</span>size<span class="token punctuation">;</span>
-
-            end <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>end<span class="token punctuation">,</span> map<span class="token punctuation">[</span>s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    
-            
-            <span class="token comment">// Reach the end of the current partition</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">==</span> end<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                res<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>size<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                size <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>
+        <span class="token comment">// Check ransomNote</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">char</span> c <span class="token operator">:</span> ransomNote<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            count<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span> <span class="token operator">-=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>count<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span> 
         <span class="token punctuation">&#125;</span>
-        <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
                 
               </div>
@@ -375,7 +356,7 @@
   
     <span>></span>
     
-  <a href="/categories/Leetcode/Medium/" class="category-chain-item">Medium</a>
+  <a href="/categories/Leetcode/Easy/" class="category-chain-item">Easy</a>
   
   
 
@@ -398,11 +379,9 @@
       
         <a href="/tags/String/" class="print-no-link">#String</a>
       
-        <a href="/tags/Greedy/" class="print-no-link">#Greedy</a>
-      
-        <a href="/tags/Two-Pointers/" class="print-no-link">#Two Pointers</a>
-      
         <a href="/tags/Hash-Table/" class="print-no-link">#Hash Table</a>
+      
+        <a href="/tags/Counting/" class="print-no-link">#Counting</a>
       
     </div>
   
@@ -414,8 +393,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>763. Partition Labels - Medium</div>
-      <div>https://f88083.github.io/2024/03/11/763-Partition-Labels-Medium/</div>
+      <div>383. Ransom Note - Easy</div>
+      <div>https://f88083.github.io/2025/05/13/383-Ransom-Note-Easy/</div>
     </div>
     <div class="license-meta">
       
@@ -427,7 +406,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>發布於</div>
-          <div>2024年3月11日</div>
+          <div>2025年5月13日</div>
         </div>
       
       
@@ -471,18 +450,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/03/12/678-Valid-Parenthesis-String-Medium/" title="678. Valid Parenthesis String - Medium">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">678. Valid Parenthesis String - Medium</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/03/11/1899-Merge-Triplets-to-Form-Target-Triplet-Medium/" title="1899. Merge Triplets to Form Target Triplet - Medium">
-                        <span class="hidden-mobile">1899. Merge Triplets to Form Target Triplet - Medium</span>
+                      <a href="/2025/05/11/242-Valid-Anagram-%E2%80%94-Easy/" title="242. Valid Anagram — Easy">
+                        <span class="hidden-mobile">242. Valid Anagram — Easy</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

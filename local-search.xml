@@ -4,6 +4,41 @@
   
   
   <entry>
+    <title>383. Ransom Note - Easy</title>
+    <link href="/2025/05/13/383-Ransom-Note-Easy/"/>
+    <url>/2025/05/13/383-Ransom-Note-Easy/</url>
+    
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/ransom-note/description/"  title="383. Ransom Note" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>簡單的 hash table 或是用 array 更快更省空間</li></ul><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">canConstruct</span><span class="token punctuation">(</span><span class="token class-name">String</span> ransomNote<span class="token punctuation">,</span> <span class="token class-name">String</span> magazine<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> count <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">26</span><span class="token punctuation">]</span><span class="token punctuation">;</span>        <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span>count<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// Store counting of each character in magazine</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">char</span> c <span class="token operator">:</span> magazine<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            count<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token comment">// Check ransomNote</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">char</span> c <span class="token operator">:</span> ransomNote<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            count<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span> <span class="token operator">-=</span> <span class="token number">1</span><span class="token punctuation">;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>count<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>         <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+      <category>Easy</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Leetcode</tag>
+      
+      <tag>心得</tag>
+      
+      <tag>String</tag>
+      
+      <tag>Hash Table</tag>
+      
+      <tag>Counting</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>242. Valid Anagram — Easy</title>
     <link href="/2025/05/11/242-Valid-Anagram-%E2%80%94-Easy/"/>
     <url>/2025/05/11/242-Valid-Anagram-%E2%80%94-Easy/</url>
@@ -614,11 +649,11 @@
       
       <tag>String</tag>
       
+      <tag>Greedy</tag>
+      
       <tag>Two Pointers</tag>
       
       <tag>Hash Table</tag>
-      
-      <tag>Greedy</tag>
       
     </tags>
     
@@ -872,9 +907,9 @@
       
       <tag>心得</tag>
       
-      <tag>Array</tag>
-      
       <tag>Queue</tag>
+      
+      <tag>Array</tag>
       
       <tag>Bit Manipulation</tag>
       
@@ -2381,9 +2416,9 @@
       
       <tag>心得</tag>
       
-      <tag>Array</tag>
-      
       <tag>Queue</tag>
+      
+      <tag>Array</tag>
       
       <tag>Linked List</tag>
       
@@ -2774,11 +2809,11 @@
       
       <tag>Binary Tree</tag>
       
+      <tag>Linked List</tag>
+      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
-      
-      <tag>Linked List</tag>
       
       <tag>Tree</tag>
       
@@ -3153,9 +3188,9 @@
       
       <tag>Stack</tag>
       
-      <tag>Depth-First Search</tag>
-      
       <tag>Queue</tag>
+      
+      <tag>Depth-First Search</tag>
       
       <tag>Tree</tag>
       
@@ -3832,9 +3867,9 @@
       
       <tag>String</tag>
       
-      <tag>Dynamic Programming</tag>
-      
       <tag>Greedy</tag>
+      
+      <tag>Dynamic Programming</tag>
       
       <tag>Sliding Window</tag>
       
@@ -3937,9 +3972,9 @@
       
       <tag>Array</tag>
       
-      <tag>Sorting</tag>
-      
       <tag>Greedy</tag>
+      
+      <tag>Sorting</tag>
       
       <tag>Binary Search</tag>
       
@@ -4048,9 +4083,9 @@
       
       <tag>Array</tag>
       
-      <tag>Dynamic Programming</tag>
-      
       <tag>Greedy</tag>
+      
+      <tag>Dynamic Programming</tag>
       
     </tags>
     
@@ -4345,11 +4380,11 @@
       
       <tag>Array</tag>
       
+      <tag>Greedy</tag>
+      
       <tag>Two Pointers</tag>
       
       <tag>Sorting</tag>
-      
-      <tag>Greedy</tag>
       
     </tags>
     
@@ -4382,11 +4417,11 @@
       
       <tag>Array</tag>
       
+      <tag>Greedy</tag>
+      
       <tag>Two Pointers</tag>
       
       <tag>Sorting</tag>
-      
-      <tag>Greedy</tag>
       
     </tags>
     
@@ -4419,11 +4454,11 @@
       
       <tag>Array</tag>
       
+      <tag>Greedy</tag>
+      
       <tag>Two Pointers</tag>
       
       <tag>Sorting</tag>
-      
-      <tag>Greedy</tag>
       
     </tags>
     
@@ -4456,9 +4491,9 @@
       
       <tag>Array</tag>
       
-      <tag>Sorting</tag>
-      
       <tag>Greedy</tag>
+      
+      <tag>Sorting</tag>
       
     </tags>
     
@@ -4701,9 +4736,9 @@
       
       <tag>String</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Greedy</tag>
+      
+      <tag>Two Pointers</tag>
       
     </tags>
     
@@ -5080,11 +5115,11 @@
       
       <tag>Array</tag>
       
+      <tag>Greedy</tag>
+      
       <tag>Hash Table</tag>
       
       <tag>Sorting</tag>
-      
-      <tag>Greedy</tag>
       
       <tag>Heap (Priority Queue)</tag>
       
@@ -5265,9 +5300,9 @@
       
       <tag>Array</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Greedy</tag>
+      
+      <tag>Two Pointers</tag>
       
     </tags>
     
@@ -6008,9 +6043,9 @@
       
       <tag>Array</tag>
       
-      <tag>Dynamic Programming</tag>
-      
       <tag>Greedy</tag>
+      
+      <tag>Dynamic Programming</tag>
       
     </tags>
     
@@ -6222,9 +6257,9 @@
       
       <tag>String</tag>
       
-      <tag>Dynamic Programming</tag>
-      
       <tag>Greedy</tag>
+      
+      <tag>Dynamic Programming</tag>
       
     </tags>
     
@@ -6257,11 +6292,11 @@
       
       <tag>String</tag>
       
+      <tag>Greedy</tag>
+      
       <tag>Two Pointers</tag>
       
       <tag>Hash Table</tag>
-      
-      <tag>Greedy</tag>
       
     </tags>
     
@@ -6426,11 +6461,11 @@
       
       <tag>Array</tag>
       
+      <tag>Greedy</tag>
+      
       <tag>Hash Table</tag>
       
       <tag>Sorting</tag>
-      
-      <tag>Greedy</tag>
       
     </tags>
     
@@ -6463,9 +6498,9 @@
       
       <tag>Array</tag>
       
-      <tag>Dynamic Programming</tag>
-      
       <tag>Greedy</tag>
+      
+      <tag>Dynamic Programming</tag>
       
     </tags>
     
@@ -8046,9 +8081,9 @@
       
       <tag>Array</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Greedy</tag>
+      
+      <tag>Two Pointers</tag>
       
     </tags>
     
@@ -8326,9 +8361,9 @@
       
       <tag>String</tag>
       
-      <tag>Hash Table</tag>
-      
       <tag>Greedy</tag>
+      
+      <tag>Hash Table</tag>
       
     </tags>
     
@@ -8361,11 +8396,11 @@
       
       <tag>Array</tag>
       
+      <tag>Greedy</tag>
+      
       <tag>Dynamic Programming</tag>
       
       <tag>Sorting</tag>
-      
-      <tag>Greedy</tag>
       
     </tags>
     
@@ -9189,9 +9224,9 @@
       
       <tag>Array</tag>
       
-      <tag>Sorting</tag>
-      
       <tag>Greedy</tag>
+      
+      <tag>Sorting</tag>
       
     </tags>
     
@@ -10161,9 +10196,9 @@
       
       <tag>Array</tag>
       
-      <tag>Dynamic Programming</tag>
-      
       <tag>Greedy</tag>
+      
+      <tag>Dynamic Programming</tag>
       
     </tags>
     
