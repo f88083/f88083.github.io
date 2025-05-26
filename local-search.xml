@@ -8,7 +8,7 @@
     <link href="/2025/05/25/3407-Substring-Matching-Pattern-Easy/"/>
     <url>/2025/05/25/3407-Substring-Matching-Pattern-Easy/</url>
     
-    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/substring-matching-pattern/description/"  title="3407. Substring Matching Pattern" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>直接匹配，略過星號</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>以星號為準切分<code>p</code></li><li>嘗試匹配第一段與第二段<code>p</code></li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p>以下是不用 built-in 方法的寫法</p><p><a href="https://leetcode.com/problems/substring-matching-pattern/solutions/6230054/without-any-inbuilt-function-beats-100/">解法連結</a></p><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">hasMatch</span><span class="token punctuation">(</span><span class="token class-name">String</span> s<span class="token punctuation">,</span> <span class="token class-name">String</span> p<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token comment">// star index</span>        <span class="token keyword">int</span> index <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> p<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>p<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token char">'*'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                index <span class="token operator">=</span> i<span class="token punctuation">;</span>                <span class="token keyword">break</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">int</span> num1 <span class="token operator">=</span> <span class="token function">check</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> p<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> index<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>num1 <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> num2 <span class="token operator">=</span> <span class="token function">check</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span>num1<span class="token punctuation">)</span><span class="token punctuation">,</span> p<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span>index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">return</span> num2 <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token keyword">int</span> <span class="token function">check</span><span class="token punctuation">(</span><span class="token class-name">String</span> s<span class="token punctuation">,</span> <span class="token class-name">String</span> p<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span> n <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> m <span class="token operator">=</span> p<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token comment">// Iterate through string s, pattern matching</span>        <span class="token comment">// &lt;= n - m in case out of bound</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n <span class="token operator">-</span> m<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// string p</span>            <span class="token keyword">for</span> <span class="token punctuation">(</span>j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> m<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token keyword">char</span> c1 <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>j <span class="token operator">+</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token keyword">char</span> c2 <span class="token operator">=</span> p<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token keyword">if</span> <span class="token punctuation">(</span>c1 <span class="token operator">!=</span> c2<span class="token punctuation">)</span> <span class="token keyword">break</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>            <span class="token comment">// Pattern matched, return tail index + 1</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>j <span class="token operator">==</span> m<span class="token punctuation">)</span> <span class="token keyword">return</span> i <span class="token operator">+</span> j<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// Matching failed</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
+    <content type="html"><![CDATA[<a class="btn" href="https://leetcode.com/problems/substring-matching-pattern/description/"  title="3407. Substring Matching Pattern" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul><li>直接匹配，略過星號</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol><li>以星號為準切分<code>p</code></li><li>嘗試匹配第一段與第二段<code>p</code></li></ol><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p>以下是不用 built-in 方法的寫法</p><p><a href="https://leetcode.com/problems/substring-matching-pattern/solutions/6230054/without-any-inbuilt-function-beats-100/"></a></p><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">hasMatch</span><span class="token punctuation">(</span><span class="token class-name">String</span> s<span class="token punctuation">,</span> <span class="token class-name">String</span> p<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token comment">// star index</span>        <span class="token keyword">int</span> index <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> p<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>p<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token char">'*'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                index <span class="token operator">=</span> i<span class="token punctuation">;</span>                <span class="token keyword">break</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">int</span> num1 <span class="token operator">=</span> <span class="token function">check</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> p<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> index<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>num1 <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> num2 <span class="token operator">=</span> <span class="token function">check</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span>num1<span class="token punctuation">)</span><span class="token punctuation">,</span> p<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span>index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">return</span> num2 <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">private</span> <span class="token keyword">int</span> <span class="token function">check</span><span class="token punctuation">(</span><span class="token class-name">String</span> s<span class="token punctuation">,</span> <span class="token class-name">String</span> p<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span> n <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> m <span class="token operator">=</span> p<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>        <span class="token comment">// Iterate through string s, pattern matching</span>        <span class="token comment">// &lt;= n - m in case out of bound</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n <span class="token operator">-</span> m<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>            <span class="token comment">// string p</span>            <span class="token keyword">for</span> <span class="token punctuation">(</span>j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> m<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>                <span class="token keyword">char</span> c1 <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>j <span class="token operator">+</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token keyword">char</span> c2 <span class="token operator">=</span> p<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token keyword">if</span> <span class="token punctuation">(</span>c1 <span class="token operator">!=</span> c2<span class="token punctuation">)</span> <span class="token keyword">break</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>            <span class="token comment">// Pattern matched, return tail index + 1</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>j <span class="token operator">==</span> m<span class="token punctuation">)</span> <span class="token keyword">return</span> i <span class="token operator">+</span> j<span class="token punctuation">;</span>        <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// Matching failed</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>]]></content>
     
     
     <categories>
@@ -523,9 +523,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -1290,9 +1290,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -1327,9 +1327,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -1401,9 +1401,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -1512,9 +1512,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -1551,9 +1551,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -1907,9 +1907,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -1944,9 +1944,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -2251,9 +2251,9 @@
       
       <tag>Stack</tag>
       
-      <tag>Monotonic Stack</tag>
-      
       <tag>Recursion</tag>
+      
+      <tag>Monotonic Stack</tag>
       
       <tag>Linked List</tag>
       
@@ -2737,9 +2737,9 @@
       
       <tag>Array</tag>
       
-      <tag>Trie</tag>
-      
       <tag>Sorting</tag>
+      
+      <tag>Trie</tag>
       
       <tag>Binary Search</tag>
       
@@ -2844,11 +2844,11 @@
       
       <tag>Depth-First Search</tag>
       
+      <tag>Breadth-First Search</tag>
+      
       <tag>Linked List</tag>
       
       <tag>Tree</tag>
-      
-      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -5722,9 +5722,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -6113,9 +6113,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -6939,9 +6939,9 @@
       
       <tag>Hash Table</tag>
       
-      <tag>Depth-First Search</tag>
-      
       <tag>Sorting</tag>
+      
+      <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
       
@@ -7717,9 +7717,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -9043,9 +9043,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -9335,9 +9335,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -9473,9 +9473,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -9751,9 +9751,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -10120,9 +10120,9 @@
       
       <tag>Two Pointers</tag>
       
-      <tag>Linked List</tag>
-      
       <tag>Sorting</tag>
+      
+      <tag>Linked List</tag>
       
       <tag>Merge Sort</tag>
       
@@ -10435,9 +10435,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Tree</tag>
-      
       <tag>Breadth-First Search</tag>
+      
+      <tag>Tree</tag>
       
     </tags>
     
@@ -12173,9 +12173,9 @@
     
     <tags>
       
-      <tag>Algorithms</tag>
-      
       <tag>Stack</tag>
+      
+      <tag>Algorithms</tag>
       
       <tag>筆記</tag>
       
