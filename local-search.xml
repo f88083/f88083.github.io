@@ -4,33 +4,6 @@
   
   
   <entry>
-    <title>TEST</title>
-    <link href="/2025/05/26/TEST/"/>
-    <url>/2025/05/26/TEST/</url>
-    
-    <content type="html"><![CDATA[<a class="btn" href="url"  title="title" target="_blank">前往題目</a><h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>]]></content>
-    
-    
-    <categories>
-      
-      <category>Leetcode</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Leetcode</tag>
-      
-      <tag>心得</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>3407. Substring Matching Pattern - Easy</title>
     <link href="/2025/05/25/3407-Substring-Matching-Pattern-Easy/"/>
     <url>/2025/05/25/3407-Substring-Matching-Pattern-Easy/</url>
@@ -550,9 +523,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -1317,9 +1290,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -1354,9 +1327,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -1428,9 +1401,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -1539,9 +1512,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -1578,9 +1551,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -1681,9 +1654,9 @@
       
       <tag>心得</tag>
       
-      <tag>Binary Tree</tag>
-      
       <tag>String</tag>
+      
+      <tag>Binary Tree</tag>
       
       <tag>Depth-First Search</tag>
       
@@ -1934,9 +1907,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -1971,9 +1944,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -2000,11 +1973,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Binary Tree</tag>
       
@@ -2037,11 +2010,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Binary Tree</tag>
       
@@ -2074,11 +2047,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Binary Tree</tag>
       
@@ -2272,15 +2245,15 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
       
-      <tag>Recursion</tag>
+      <tag>Stack</tag>
       
       <tag>Monotonic Stack</tag>
+      
+      <tag>Recursion</tag>
       
       <tag>Linked List</tag>
       
@@ -2404,11 +2377,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Two Pointers</tag>
       
@@ -2509,11 +2482,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Array</tag>
       
@@ -2760,13 +2733,13 @@
       
       <tag>心得</tag>
       
-      <tag>Array</tag>
-      
       <tag>String</tag>
       
-      <tag>Sorting</tag>
+      <tag>Array</tag>
       
       <tag>Trie</tag>
+      
+      <tag>Sorting</tag>
       
       <tag>Binary Search</tag>
       
@@ -2871,11 +2844,11 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Linked List</tag>
       
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -2978,9 +2951,9 @@
       
       <tag>心得</tag>
       
-      <tag>Array</tag>
-      
       <tag>String</tag>
+      
+      <tag>Array</tag>
       
       <tag>Two Pointers</tag>
       
@@ -3242,11 +3215,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Queue</tag>
       
@@ -3283,11 +3256,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Array</tag>
       
@@ -3322,11 +3295,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>String</tag>
       
@@ -3355,11 +3328,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>String</tag>
       
@@ -3392,11 +3365,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>String</tag>
       
@@ -3425,11 +3398,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Monotonic Stack</tag>
       
@@ -3462,11 +3435,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Array</tag>
       
@@ -3497,11 +3470,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>String</tag>
       
@@ -3532,11 +3505,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>String</tag>
       
@@ -3565,11 +3538,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Queue</tag>
       
@@ -3600,11 +3573,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Array</tag>
       
@@ -4139,9 +4112,9 @@
       
       <tag>心得</tag>
       
-      <tag>Array</tag>
-      
       <tag>String</tag>
+      
+      <tag>Array</tag>
       
       <tag>Greedy</tag>
       
@@ -4335,9 +4308,9 @@
       
       <tag>Recursion</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Math</tag>
+      
+      <tag>Two Pointers</tag>
       
       <tag>Bit Manipulation</tag>
       
@@ -4370,9 +4343,9 @@
       
       <tag>心得</tag>
       
-      <tag>Array</tag>
-      
       <tag>String</tag>
+      
+      <tag>Array</tag>
       
       <tag>Two Pointers</tag>
       
@@ -4405,9 +4378,9 @@
       
       <tag>心得</tag>
       
-      <tag>Array</tag>
-      
       <tag>String</tag>
+      
+      <tag>Array</tag>
       
     </tags>
     
@@ -4718,11 +4691,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Array</tag>
       
@@ -4788,11 +4761,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>String</tag>
       
@@ -5286,9 +5259,9 @@
       
       <tag>心得</tag>
       
-      <tag>Array</tag>
-      
       <tag>String</tag>
+      
+      <tag>Array</tag>
       
       <tag>Matrix</tag>
       
@@ -5749,9 +5722,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -6140,9 +6113,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -6278,9 +6251,9 @@
       
       <tag>心得</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Math</tag>
+      
+      <tag>Two Pointers</tag>
       
       <tag>Hash Table</tag>
       
@@ -6309,11 +6282,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>String</tag>
       
@@ -6884,15 +6857,15 @@
       
       <tag>心得</tag>
       
-      <tag>Array</tag>
-      
       <tag>String</tag>
+      
+      <tag>Array</tag>
       
       <tag>Hash Table</tag>
       
-      <tag>Trie</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Trie</tag>
       
       <tag>Memoization</tag>
       
@@ -6960,15 +6933,15 @@
       
       <tag>心得</tag>
       
-      <tag>Array</tag>
-      
       <tag>String</tag>
+      
+      <tag>Array</tag>
       
       <tag>Hash Table</tag>
       
-      <tag>Sorting</tag>
-      
       <tag>Depth-First Search</tag>
+      
+      <tag>Sorting</tag>
       
       <tag>Breadth-First Search</tag>
       
@@ -7744,9 +7717,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -7839,11 +7812,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Array</tag>
       
@@ -8382,11 +8355,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Design</tag>
       
@@ -8458,9 +8431,9 @@
       
       <tag>Greedy</tag>
       
-      <tag>Sorting</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Sorting</tag>
       
     </tags>
     
@@ -8559,11 +8532,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>String</tag>
       
@@ -8843,9 +8816,9 @@
       
       <tag>Array</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Dynamic Programming</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -9070,9 +9043,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -9103,11 +9076,11 @@
       
       <tag>心得</tag>
       
+      <tag>Dynamic Programming</tag>
+      
       <tag>Depth-First Search</tag>
       
       <tag>Breadth-First Search</tag>
-      
-      <tag>Dynamic Programming</tag>
       
       <tag>Graph</tag>
       
@@ -9140,11 +9113,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Recursion</tag>
       
@@ -9280,9 +9253,9 @@
       
       <tag>心得</tag>
       
-      <tag>Array</tag>
-      
       <tag>String</tag>
+      
+      <tag>Array</tag>
       
       <tag>Greedy</tag>
       
@@ -9362,9 +9335,9 @@
       
       <tag>Depth-First Search</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -9500,9 +9473,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -9663,11 +9636,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Recursion</tag>
       
@@ -9700,11 +9673,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Array</tag>
       
@@ -9778,9 +9751,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -10017,11 +9990,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Array</tag>
       
@@ -10147,9 +10120,9 @@
       
       <tag>Two Pointers</tag>
       
-      <tag>Sorting</tag>
-      
       <tag>Linked List</tag>
+      
+      <tag>Sorting</tag>
       
       <tag>Merge Sort</tag>
       
@@ -10462,9 +10435,9 @@
       
       <tag>Binary Tree</tag>
       
-      <tag>Breadth-First Search</tag>
-      
       <tag>Tree</tag>
+      
+      <tag>Breadth-First Search</tag>
       
     </tags>
     
@@ -10524,11 +10497,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>String</tag>
       
@@ -10594,9 +10567,9 @@
       
       <tag>Array</tag>
       
-      <tag>Two Pointers</tag>
-      
       <tag>Math</tag>
+      
+      <tag>Two Pointers</tag>
       
     </tags>
     
@@ -10724,11 +10697,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Queue</tag>
       
@@ -11404,9 +11377,9 @@
       
       <tag>心得</tag>
       
-      <tag>Array</tag>
-      
       <tag>String</tag>
+      
+      <tag>Array</tag>
       
       <tag>Hash Table</tag>
       
@@ -11710,11 +11683,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>String</tag>
       
@@ -11940,11 +11913,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>Array</tag>
       
@@ -12233,11 +12206,11 @@
     
     <tags>
       
-      <tag>Stack</tag>
-      
       <tag>Leetcode</tag>
       
       <tag>心得</tag>
+      
+      <tag>Stack</tag>
       
       <tag>String</tag>
       
